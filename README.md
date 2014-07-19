@@ -7,7 +7,8 @@ WTRequestCenter
 
 
 
-Requirement  需要
+Requirement  
+需要
 ===============
 Only iOS 5.0 and later,no more!
 仅仅需要iOS5 ！ 不需要其他任何import和配置
