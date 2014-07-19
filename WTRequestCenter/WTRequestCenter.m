@@ -28,6 +28,7 @@ static NSOperationQueue *shareQueue = nil;
             [shareQueue setSuspended:NO];
             [shareQueue setMaxConcurrentOperationCount:10];
             shareQueue.name = @"WTRequestCentershareQueue";
+            
         }
     });
     return shareQueue;
@@ -41,6 +42,7 @@ static NSOperationQueue *shareQueue = nil;
 +(NSURLCache*)sharedCache
 {
     NSURLCache *cache = [NSURLCache sharedURLCache];
+
     return cache;
 }
 
