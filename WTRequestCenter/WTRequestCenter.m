@@ -10,11 +10,21 @@
 
 @implementation WTRequestCenter
 
+
+
 //清除所有缓存
 +(void)clearAllCache
 {
     NSURLCache *cache = [WTRequestCenter sharedCache];
     [cache removeAllCachedResponses];
+
+}
+
+//当前缓存大小
++(NSUInteger)currentMemoryUsage
+{
+    NSURLCache *cache = [WTRequestCenter sharedCache];
+    return [cache currentMemoryUsage];
 }
 
 
