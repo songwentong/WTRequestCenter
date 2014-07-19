@@ -26,14 +26,14 @@
 #pragma mark - GET
 //get请求
 +(NSURLRequest*)getWithURL:(NSURL*)url
-         completionHandler:(void (^)(NSURLResponse* response,NSData *data))handler;
+         completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 
 
 #pragma mark - POST
 //post 请求
 +(NSURLRequest*)postWithURL:(NSURL*)url
                      params:(NSDictionary*)dict
-          completionHandler:(void (^)(NSURLResponse* response,NSData *data))handler;
+          completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 
 #pragma mark - Image
 +(void)getImageWithURL:(NSURL*)url imageComplectionHandler:(void(^) (UIImage* image))handler;

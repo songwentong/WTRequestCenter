@@ -64,7 +64,9 @@ static NSOperationQueue *shareQueue = nil;
 }
 #pragma mark - Block
 //网络请求
-void (^completionHandler) (NSURLResponse* response,NSData *data);
+//void (^completion) (NSURLResponse* response,NSData *data);
+//带错误的请求
+void (^completionHandler) (NSURLResponse* response,NSData *data,NSError *error);
 //图片请求
 void (^imageComplectionHandler) (UIImage* image);
 
@@ -75,7 +77,7 @@ void (^imageComplectionHandler) (UIImage* image);
 #pragma mark - Get
 //get请求
 //Available in iOS 5.0 and later.
-+(NSURLRequest*)getWithURL:(NSURL*)url completionHandler:(void (^)(NSURLResponse* response,NSData *data))handler
++(NSURLRequest*)getWithURL:(NSURL*)url completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
 {
     NSURLCache *cache = [WTRequestCenter sharedCache];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:1.0];
@@ -86,15 +88,16 @@ void (^imageComplectionHandler) (UIImage* image);
         [NSURLConnection sendAsynchronousRequest:request
                                            queue:[WTRequestCenter shareQueue]
                                completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-                                   dispatch_async(dispatch_get_main_queue(), ^{
-            handler(response,data);
+                                   
+       dispatch_async(dispatch_get_main_queue(), ^{
+            handler(response,data,connectionError);
                                        
-                                   });
+       });
         }];
     }else
     {
         dispatch_async(dispatch_get_main_queue(), ^{
-        handler(response.response,response.data);
+        handler(response.response,response.data,nil);
         });
     }
 
@@ -104,7 +107,7 @@ void (^imageComplectionHandler) (UIImage* image);
 #pragma mark - POST
 // post 请求
 //Available in iOS 5.0 and later.
-+(NSURLRequest*)postWithURL:(NSURL*)url params:(NSDictionary*)dict completionHandler:(void (^)(NSURLResponse* response,NSData *data))handler
++(NSURLRequest*)postWithURL:(NSURL*)url params:(NSDictionary*)dict completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
 {
     NSURLCache *cache = [WTRequestCenter sharedCache];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url
@@ -132,14 +135,14 @@ void (^imageComplectionHandler) (UIImage* image);
                                completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
                                    
                    dispatch_async(dispatch_get_main_queue(), ^{
-               handler(response,data);
+               handler(response,data,connectionError);
                    });
  
         }];
     }else
     {
         dispatch_async(dispatch_get_main_queue(), ^{
-        handler(response.response,response.data);
+        handler(response.response,response.data,nil);
         });
     }
 
@@ -149,7 +152,7 @@ void (^imageComplectionHandler) (UIImage* image);
 #pragma mark - Image
 +(void)getImageWithURL:(NSURL*)url imageComplectionHandler:(void(^) (UIImage* image))handler
 {
-    [WTRequestCenter getWithURL:url completionHandler:^(NSURLResponse *response, NSData *data) {
+    [WTRequestCenter getWithURL:url completionHandler:^(NSURLResponse *response, NSData *data,NSError *error) {
         UIImage *image = [UIImage imageWithData:data];
         dispatch_async(dispatch_get_main_queue(), ^{
             handler(image);

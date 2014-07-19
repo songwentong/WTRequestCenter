@@ -47,7 +47,7 @@
     for (int i=0; i<10; i++) {
         
         [WTRequestCenter getWithURL:url
-                  completionHandler:^(NSURLResponse *response, NSData *data) {
+                  completionHandler:^(NSURLResponse *response, NSData *data,NSError *error) {
                       NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
                       NSLog(@"%@",string);
                   }];
@@ -56,7 +56,7 @@
         [dict setValue:@"2" forKey:@"b"];
         [dict setValue:@"3" forKey:@"c"];
         
-        [WTRequestCenter postWithURL:url params:dict completionHandler:^(NSURLResponse *response, NSData *data) {
+        [WTRequestCenter postWithURL:url params:dict completionHandler:^(NSURLResponse *response, NSData *data,NSError *error) {
             
         }];
 
