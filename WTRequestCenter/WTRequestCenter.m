@@ -151,8 +151,6 @@ void (^imageComplectionHandler) (UIImage* image);
 {
     [WTRequestCenter getWithURL:url completionHandler:^(NSURLResponse *response, NSData *data) {
         UIImage *image = [UIImage imageWithData:data];
-        NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(@"%@",string);
         dispatch_async(dispatch_get_main_queue(), ^{
             handler(image);
         });
