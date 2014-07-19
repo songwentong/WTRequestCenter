@@ -9,6 +9,8 @@
 #import "WTRequestCenter.h"
 
 @implementation WTRequestCenter
+
+//清除所有缓存
 +(void)clearAllCache
 {
     NSURLCache *cache = [WTRequestCenter sharedCache];
@@ -42,14 +44,21 @@ static NSOperationQueue *shareQueue = nil;
     return cache;
 }
 
-+(void)removeRequest:(NSURLRequest*)request
+//清除请求的缓存
++(void)removeRequestCache:(NSURLRequest*)request
 {
     NSURLCache *cache = [WTRequestCenter sharedCache];
     [cache removeCachedResponseForRequest:request];
 }
+#pragma mark - Block
+//网络请求
+void (^completionHandler) (NSURLResponse* response,NSData *data);
+//图片请求
+void (^imageComplectionHandler) (UIImage* image);
 
-void (^completionHander) (NSURLResponse* response,NSData *data);
-
+#pragma mark - Get
+//get请求
+//Available in iOS 5.0 and later.
 +(NSURLRequest*)getWithURL:(NSURL*)url completionHandler:(void (^)(NSURLResponse* response,NSData *data))handler
 {
     NSURLCache *cache = [WTRequestCenter sharedCache];
@@ -58,7 +67,9 @@ void (^completionHander) (NSURLResponse* response,NSData *data);
     NSCachedURLResponse *response =[cache cachedResponseForRequest:request];
 
     if (!response) {
-        [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter shareQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        [NSURLConnection sendAsynchronousRequest:request
+                                           queue:[WTRequestCenter shareQueue]
+                               completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
             handler(response,data);
         }];
     }else
@@ -69,8 +80,9 @@ void (^completionHander) (NSURLResponse* response,NSData *data);
     return request;
 }
 
-
+#pragma mark - POST
 // post 请求
+//Available in iOS 5.0 and later.
 +(NSURLRequest*)postWithURL:(NSURL*)url params:(NSDictionary*)dict completionHandler:(void (^)(NSURLResponse* response,NSData *data))handler
 {
     NSURLCache *cache = [WTRequestCenter sharedCache];
@@ -88,9 +100,11 @@ void (^completionHander) (NSURLResponse* response,NSData *data);
     [request setHTTPBody:postData];
     
     NSCachedURLResponse *response =[cache cachedResponseForRequest:request];
-    
+
     if (!response) {
-        [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter shareQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        [NSURLConnection sendAsynchronousRequest:request
+                                           queue:[WTRequestCenter shareQueue]
+                               completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
 
             handler(response,data);
         }];
@@ -98,6 +112,18 @@ void (^completionHander) (NSURLResponse* response,NSData *data);
     {
         handler(response.response,response.data);
     }
+
     return request;
+}
+
+#pragma mark - Image
++(void)getImageWithURL:(NSURL*)url imageComplectionHandler:(void(^) (UIImage* image))handler
+{
+    [WTRequestCenter getWithURL:url completionHandler:^(NSURLResponse *response, NSData *data) {
+        UIImage *image = [UIImage imageWithData:data];
+        NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"%@",string);
+        handler(image);
+    }];
 }
 @end
