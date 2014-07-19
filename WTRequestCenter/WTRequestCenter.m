@@ -4,7 +4,7 @@
 //
 //  Created by song on 14-7-19.
 //  Copyright (c) 2014年 song. All rights reserved.
-//
+//  
 
 #import "WTRequestCenter.h"
 
@@ -87,17 +87,22 @@ void (^imageComplectionHandler) (UIImage* image);
     if (!response) {
         [NSURLConnection sendAsynchronousRequest:request
                                            queue:[WTRequestCenter shareQueue]
-                               completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-                                   
+                               completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
+        {
+
        dispatch_async(dispatch_get_main_queue(), ^{
+           if (handler) {
             handler(response,data,connectionError);
-                                       
+           }
        });
         }];
     }else
     {
+
         dispatch_async(dispatch_get_main_queue(), ^{
+            if (handler) {
         handler(response.response,response.data,nil);
+            }
         });
     }
 
@@ -135,14 +140,22 @@ void (^imageComplectionHandler) (UIImage* image);
                                completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
                                    
                    dispatch_async(dispatch_get_main_queue(), ^{
+                       
+                       if (handler) {
                handler(response,data,connectionError);
-                   });
+                       }
+
+                       
+                       
+                   });//end main
  
         }];
     }else
     {
         dispatch_async(dispatch_get_main_queue(), ^{
+            if (handler) {
         handler(response.response,response.data,nil);
+            }
         });
     }
 
@@ -155,7 +168,11 @@ void (^imageComplectionHandler) (UIImage* image);
     [WTRequestCenter getWithURL:url completionHandler:^(NSURLResponse *response, NSData *data,NSError *error) {
         UIImage *image = [UIImage imageWithData:data];
         dispatch_async(dispatch_get_main_queue(), ^{
-            handler(image);
+            if (handler) {
+                handler(image);
+            }
+
+            
         });
 
     }];

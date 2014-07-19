@@ -29,14 +29,16 @@
     imageView.backgroundColor = [UIColor clearColor];
     imageView.contentMode = UIViewContentModeCenter;
     [self.view addSubview:imageView];
+    [WTRequestCenter getImageWithURL:imageURL imageComplectionHandler:nil];
+    /*
     [WTRequestCenter getImageWithURL:imageURL imageComplectionHandler:^(UIImage *image) {
         
         imageView.image = image;
         
     }];
+    */
     
-    
-    
+    return;
     
 //    缓存用量
     usage = [WTRequestCenter currentDiskUsage];
@@ -45,12 +47,14 @@
 //    -------post request--------
    
     for (int i=0; i<10; i++) {
-        
+        [WTRequestCenter getImageWithURL:url imageComplectionHandler:nil];
+        /*
         [WTRequestCenter getWithURL:url
                   completionHandler:^(NSURLResponse *response, NSData *data,NSError *error) {
                       NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
                       NSLog(@"%@",string);
                   }];
+         */
         NSMutableDictionary *dict = [NSMutableDictionary dictionary];
         [dict setValue:@"1" forKey:@"a"];
         [dict setValue:@"2" forKey:@"b"];
