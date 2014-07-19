@@ -68,6 +68,10 @@ void (^completionHandler) (NSURLResponse* response,NSData *data);
 //图片请求
 void (^imageComplectionHandler) (UIImage* image);
 
+
+
+
+
 #pragma mark - Get
 //get请求
 //Available in iOS 5.0 and later.
@@ -77,16 +81,21 @@ void (^imageComplectionHandler) (UIImage* image);
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:1.0];
     [cache removeAllCachedResponses];
     NSCachedURLResponse *response =[cache cachedResponseForRequest:request];
-
+    
     if (!response) {
         [NSURLConnection sendAsynchronousRequest:request
                                            queue:[WTRequestCenter shareQueue]
                                completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                                   dispatch_async(dispatch_get_main_queue(), ^{
             handler(response,data);
+                                       
+                                   });
         }];
     }else
     {
+        dispatch_async(dispatch_get_main_queue(), ^{
         handler(response.response,response.data);
+        });
     }
 
     return request;
@@ -98,7 +107,8 @@ void (^imageComplectionHandler) (UIImage* image);
 +(NSURLRequest*)postWithURL:(NSURL*)url params:(NSDictionary*)dict completionHandler:(void (^)(NSURLResponse* response,NSData *data))handler
 {
     NSURLCache *cache = [WTRequestCenter sharedCache];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:1.0];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url
+                cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:1.0];
     [request setHTTPMethod:@"POST"];
     
     NSMutableString *paramString = [[NSMutableString alloc] init];
@@ -108,6 +118,9 @@ void (^imageComplectionHandler) (UIImage* image);
         [paramString appendString:str];
         [paramString appendString:@"&"];
     }
+    
+    paramString = [[paramString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] mutableCopy];
+    
     NSData *postData = [paramString dataUsingEncoding:NSUTF8StringEncoding];
     [request setHTTPBody:postData];
     
@@ -117,12 +130,17 @@ void (^imageComplectionHandler) (UIImage* image);
         [NSURLConnection sendAsynchronousRequest:request
                                            queue:[WTRequestCenter shareQueue]
                                completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-
-            handler(response,data);
+                                   
+                   dispatch_async(dispatch_get_main_queue(), ^{
+               handler(response,data);
+                   });
+ 
         }];
     }else
     {
+        dispatch_async(dispatch_get_main_queue(), ^{
         handler(response.response,response.data);
+        });
     }
 
     return request;
@@ -135,7 +153,10 @@ void (^imageComplectionHandler) (UIImage* image);
         UIImage *image = [UIImage imageWithData:data];
         NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"%@",string);
-        handler(image);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            handler(image);
+        });
+
     }];
 }
 @end
