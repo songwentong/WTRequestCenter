@@ -9,7 +9,7 @@ WTRequestCenter
 
 Requirement  
 ===============
-Only iOS 5.0 and later,no more!
+Only need iOS 5.0 and later,no more!
 
 需要
 ===============
