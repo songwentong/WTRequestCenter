@@ -13,7 +13,7 @@
 //清除所有缓存
 +(void)clearAllCache;
 
-//停止所有的请求
+//停止所有的请求  建议在NavigationController pop之前调用
 +(void)stopAllRequest;
 
 //当前缓存大小

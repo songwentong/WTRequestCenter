@@ -66,9 +66,9 @@ static NSOperationQueue *shareQueue = nil;
 //网络请求
 //void (^completion) (NSURLResponse* response,NSData *data);
 //带错误的请求
-void (^completionHandler) (NSURLResponse* response,NSData *data,NSError *error);
+//void (^completionHandler) (NSURLResponse* response,NSData *data,NSError *error);
 //图片请求
-void (^imageComplectionHandler) (UIImage* image);
+//void (^imageComplectionHandler) (UIImage* image);
 
 
 

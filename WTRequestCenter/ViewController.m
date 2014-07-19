@@ -23,22 +23,22 @@
     
     NSUInteger usage = [WTRequestCenter currentDiskUsage];
     NSLog(@"%u",usage);
-    NSURL *url = [NSURL URLWithString:@"http://www.baidu.com"];
+    NSURL *url = [NSURL URLWithString:@"http://www.baieqwwedu.com"];
     NSURL *imageURL = [NSURL URLWithString:[@"http://img0.bdstatic.com/img/image/百度0529.jpg" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
     imageView.backgroundColor = [UIColor clearColor];
     imageView.contentMode = UIViewContentModeCenter;
     [self.view addSubview:imageView];
     [WTRequestCenter getImageWithURL:imageURL imageComplectionHandler:nil];
-    /*
+    
     [WTRequestCenter getImageWithURL:imageURL imageComplectionHandler:^(UIImage *image) {
         
         imageView.image = image;
         
     }];
-    */
     
-    return;
+    
+
     
 //    缓存用量
     usage = [WTRequestCenter currentDiskUsage];
@@ -47,23 +47,25 @@
 //    -------post request--------
    
     for (int i=0; i<10; i++) {
-        [WTRequestCenter getImageWithURL:url imageComplectionHandler:nil];
-        /*
+        [WTRequestCenter getImageWithURL:url imageComplectionHandler:NULL];
+        
         [WTRequestCenter getWithURL:url
                   completionHandler:^(NSURLResponse *response, NSData *data,NSError *error) {
                       NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
                       NSLog(@"%@",string);
                   }];
-         */
+        
         NSMutableDictionary *dict = [NSMutableDictionary dictionary];
         [dict setValue:@"1" forKey:@"a"];
         [dict setValue:@"2" forKey:@"b"];
         [dict setValue:@"3" forKey:@"c"];
         
+        [WTRequestCenter postWithURL:url params:dict completionHandler:NULL];
+        /*
         [WTRequestCenter postWithURL:url params:dict completionHandler:^(NSURLResponse *response, NSData *data,NSError *error) {
             
         }];
-
+*/
     }
 }
 
