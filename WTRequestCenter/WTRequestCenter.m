@@ -26,10 +26,8 @@ static NSOperationQueue *shareQueue = nil;
             [shareQueue setSuspended:NO];
             [shareQueue setMaxConcurrentOperationCount:10];
             shareQueue.name = @"WTRequestCentershareQueue";
-//            [shareQueue ru]
         }
     });
-//    return [NSOperationQueue mainQueue];
     return shareQueue;
 }
 
@@ -61,33 +59,39 @@ void (^completionHander) (NSURLResponse* response,NSData *data);
 
     if (!response) {
         [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter shareQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-            if (data) {
-                NSLog(@"成功");
-            }else
-            {
-                NSLog(@"失败");
-            }
             handler(response,data);
         }];
     }else
     {
         handler(response.response,response.data);
     }
-//    NSOperationQueue *queue = [WTRequestCenter shareQueue];
 
     return request;
 }
 
+
+// post 请求
 +(NSURLRequest*)postWithURL:(NSURL*)url params:(NSDictionary*)dict completionHandler:(void (^)(NSURLResponse* response,NSData *data))handler
 {
     NSURLCache *cache = [WTRequestCenter sharedCache];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:1.0];
     [request setHTTPMethod:@"POST"];
     
+    NSMutableString *paramString = [[NSMutableString alloc] init];
+    for (NSString *key in [dict allKeys]) {
+        NSString *value = [dict valueForKey:key];
+        NSString *str = [NSString stringWithFormat:@"%@=%@",key,value];
+        [paramString appendString:str];
+        [paramString appendString:@"&"];
+    }
+    NSData *postData = [paramString dataUsingEncoding:NSUTF8StringEncoding];
+    [request setHTTPBody:postData];
+    
     NSCachedURLResponse *response =[cache cachedResponseForRequest:request];
     
     if (!response) {
         [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter shareQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+
             handler(response,data);
         }];
     }else

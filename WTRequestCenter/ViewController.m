@@ -21,11 +21,19 @@
     NSURL *url = [NSURL URLWithString:@"http://www.baidu.com"];
     
     for (int i=0; i<10; i++) {
+        /*
         [WTRequestCenter getWithURL:url
                   completionHandler:^(NSURLResponse *response, NSData *data) {
                       NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
                       NSLog(@"%@",string);
-                  }];
+                  }];*/
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        [dict setValue:@"1" forKey:@"a"];
+        [dict setValue:@"2" forKey:@"b"];
+        [dict setValue:@"3" forKey:@"c"];
+        [WTRequestCenter postWithURL:url params:dict completionHandler:^(NSURLResponse *response, NSData *data) {
+            
+        }];
 
     }
 }
