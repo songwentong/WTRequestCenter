@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import "WTRequestCenter.h"
 @interface ViewController ()
 
 @end
@@ -18,6 +18,16 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    NSURL *url = [NSURL URLWithString:@"http://www.baidu.com"];
+    
+    for (int i=0; i<10; i++) {
+        [WTRequestCenter getWithURL:url
+                  completionHandler:^(NSURLResponse *response, NSData *data) {
+                      NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                      NSLog(@"%@",string);
+                  }];
+
+    }
 }
 
 - (void)didReceiveMemoryWarning

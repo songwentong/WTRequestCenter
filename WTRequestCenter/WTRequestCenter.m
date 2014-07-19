@@ -14,21 +14,28 @@
     NSURLCache *cache = [WTRequestCenter sharedCache];
     [cache removeAllCachedResponses];
 }
-static NSOperationQueue *requestQueue = nil;
-+(NSOperationQueue*)requestQueue
+
+
+static NSOperationQueue *shareQueue = nil;
++(NSOperationQueue*)shareQueue
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        if (!requestQueue) {
-            requestQueue = [[NSOperationQueue alloc] init];
-            [requestQueue setSuspended:NO];
-            [requestQueue setMaxConcurrentOperationCount:10];
-            requestQueue.name = @"WTRequestCenterRequestQueue";
-//            [requestQueue ru]
+        if (!shareQueue) {
+            shareQueue = [[NSOperationQueue alloc] init];
+            [shareQueue setSuspended:NO];
+            [shareQueue setMaxConcurrentOperationCount:10];
+            shareQueue.name = @"WTRequestCentershareQueue";
+//            [shareQueue ru]
         }
     });
 //    return [NSOperationQueue mainQueue];
-    return requestQueue;
+    return shareQueue;
+}
+
++(void)stopAllRequest
+{
+    [[WTRequestCenter shareQueue] cancelAllOperations];
 }
 
 +(NSURLCache*)sharedCache
@@ -53,7 +60,7 @@ void (^completionHander) (NSURLResponse* response,NSData *data);
     NSCachedURLResponse *response =[cache cachedResponseForRequest:request];
 
     if (!response) {
-        [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter requestQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter shareQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
             if (data) {
                 NSLog(@"成功");
             }else
@@ -66,7 +73,7 @@ void (^completionHander) (NSURLResponse* response,NSData *data);
     {
         handler(response.response,response.data);
     }
-//    NSOperationQueue *queue = [WTRequestCenter requestQueue];
+//    NSOperationQueue *queue = [WTRequestCenter shareQueue];
 
     return request;
 }
@@ -80,7 +87,7 @@ void (^completionHander) (NSURLResponse* response,NSData *data);
     NSCachedURLResponse *response =[cache cachedResponseForRequest:request];
     
     if (!response) {
-        [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter requestQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter shareQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
             handler(response,data);
         }];
     }else

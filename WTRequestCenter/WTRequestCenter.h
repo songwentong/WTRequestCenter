@@ -10,6 +10,13 @@
 
 @interface WTRequestCenter : NSObject
 
+//清除所有缓存
++(void)clearAllCache;
+
+//停止所有的请求
++(void)stopAllRequest;
+
+//get请求
 +(NSMutableURLRequest*)getWithURL:(NSURL*)url completionHandler:(void (^)(NSURLResponse* response,NSData *data))handler;
 
 @end
