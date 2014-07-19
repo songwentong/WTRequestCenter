@@ -21,10 +21,10 @@
 }
 
 //当前缓存大小
-+(NSUInteger)currentMemoryUsage
++(NSUInteger)currentDiskUsage
 {
     NSURLCache *cache = [WTRequestCenter sharedCache];
-    return [cache currentMemoryUsage];
+    return [cache currentDiskUsage];
 }
 
 

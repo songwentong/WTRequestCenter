@@ -17,7 +17,7 @@
 +(void)stopAllRequest;
 
 //当前缓存大小
-+(NSUInteger)currentMemoryUsage;
++(NSUInteger)currentDiskUsage;
 
 //清除请求的缓存
 +(void)removeRequestCache:(NSURLRequest*)request;
