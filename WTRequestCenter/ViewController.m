@@ -19,30 +19,30 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    
-    
-    NSUInteger usage = [WTRequestCenter currentDiskUsage];
-    NSLog(@"%u",usage);
-    NSURL *url = [NSURL URLWithString:@"http://www.baieqwwedu.com"];
+    [self get];
+    return;
+//    NSUInteger usage = [WTRequestCenter currentDiskUsage];
+//    NSLog(@"%u",usage);
+    NSURL *url = [NSURL URLWithString:@"http://www.baidu.com"];
     NSURL *imageURL = [NSURL URLWithString:[@"http://img0.bdstatic.com/img/image/百度0529.jpg" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
     imageView.backgroundColor = [UIColor clearColor];
     imageView.contentMode = UIViewContentModeCenter;
     [self.view addSubview:imageView];
     [WTRequestCenter getImageWithURL:imageURL imageComplectionHandler:nil];
-    
-    [WTRequestCenter getImageWithURL:imageURL imageComplectionHandler:^(UIImage *image) {
+    /*
+    [WTRequestCenter getImageWithURL:url imageComplectionHandler:^(UIImage *image) {
         
         imageView.image = image;
         
     }];
-    
-    
+    */
+    return;
 
     
 //    缓存用量
-    usage = [WTRequestCenter currentDiskUsage];
-    NSLog(@"%u",usage);
+//    usage = [WTRequestCenter currentDiskUsage];
+//    NSLog(@"%u",usage);
     
 //    -------post request--------
    
@@ -60,12 +60,28 @@
         [dict setValue:@"2" forKey:@"b"];
         [dict setValue:@"3" forKey:@"c"];
         
-        [WTRequestCenter postWithURL:url params:dict completionHandler:NULL];
+        [WTRequestCenter postWithURL:url parameters:dict completionHandler:NULL];
         /*
-        [WTRequestCenter postWithURL:url params:dict completionHandler:^(NSURLResponse *response, NSData *data,NSError *error) {
+        [WTRequestCenter postWithURL:url parameters:dict completionHandler:^(NSURLResponse *response, NSData *data,NSError *error) {
             
         }];
 */
+    }
+}
+
+-(void)get
+{
+    NSURL *imageURL = [NSURL URLWithString:[@"http://img0.bdstatic.com/img/image/百度0529.jpg" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSURL *url = [NSURL URLWithString:@"http://www.baidu.com"];
+    for (int i=0; i<1; i++) {
+//        [WTRequestCenter getImageWithURL:url imageComplectionHandler:NULL];
+        
+        [WTRequestCenter getWithURL:imageURL
+                  completionHandler:^(NSURLResponse *response, NSData *data,NSError *error) {
+                      NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                      NSLog(@"%@",string);
+                  }];
+        
     }
 }
 

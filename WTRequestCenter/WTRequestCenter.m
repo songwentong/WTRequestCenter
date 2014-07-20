@@ -10,6 +10,51 @@
 
 @implementation WTRequestCenter
 
+//设置失效日期
++(void)setExpireTimeInterval:(NSTimeInterval)expireTime
+{
+    [[NSUserDefaults standardUserDefaults] setFloat:expireTime forKey:@"WTRequestCenterExpireTime"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+//失效日期
++(NSTimeInterval)expireTimeInterval
+{
+    
+    CGFloat time = [[NSUserDefaults standardUserDefaults] floatForKey:@"WTRequestCenterExpireTime"];
+    if (time==0) {
+//        默认时效日期
+        time = 3600*24*7;
+    }
+    return time;
+}
+
++(BOOL)checkRequestIsExpired:(NSHTTPURLResponse*)request
+{
+//    NSHTTPURLResponse *res = (NSHTTPURLResponse*)response.response;
+    NSDictionary *allHeaderFields = request.allHeaderFields;
+    
+    NSString *dateString = [allHeaderFields valueForKey:@"Date"];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"eee, dd MMM yyyy HH:mm:ss VVVV"];
+    NSDate *now = [NSDate date];
+    //            NSString *string = [formatter stringFromDate:now];
+    //            NSLog(@"%@",string);
+    NSDate *date = [formatter dateFromString:dateString];
+    //            NSLog(@"%@",date);
+    
+    NSTimeInterval delta = [now timeIntervalSince1970] - [date timeIntervalSince1970];
+    NSTimeInterval expireTimeInterval = [WTRequestCenter expireTimeInterval];
+    if (delta<expireTimeInterval) {
+//        没有失效
+        return NO;
+    }else
+    {
+//        失效了
+        return YES;
+    }
+    
+}
 
 
 //清除所有缓存
@@ -26,6 +71,7 @@
     NSURLCache *cache = [WTRequestCenter sharedCache];
     return [cache currentDiskUsage];
 }
+
 
 
 static NSOperationQueue *shareQueue = nil;
@@ -52,7 +98,10 @@ static NSOperationQueue *shareQueue = nil;
 +(NSURLCache*)sharedCache
 {
     NSURLCache *cache = [NSURLCache sharedURLCache];
-
+//    最大内存空间
+    [cache setMemoryCapacity:1024*1024*10];//10M
+//    最大储存（硬盘）空间
+    [cache setDiskCapacity:1024*1024*100];//100M
     return cache;
 }
 
@@ -83,26 +132,45 @@ static NSOperationQueue *shareQueue = nil;
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:1.0];
     [cache removeAllCachedResponses];
     NSCachedURLResponse *response =[cache cachedResponseForRequest:request];
-    
+
     if (!response) {
         [NSURLConnection sendAsynchronousRequest:request
                                            queue:[WTRequestCenter shareQueue]
                                completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
         {
-
+            
        dispatch_async(dispatch_get_main_queue(), ^{
            if (handler) {
             handler(response,data,connectionError);
            }
        });
-        }];
+    }];
     }else
     {
-
+//NSDateFormatter 在iOS7.0以后是线程安全的，为了保证5.0可用，在这里用主线程括起来
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (handler) {
-        handler(response.response,response.data,nil);
+
+        if ([response.response isKindOfClass:[NSHTTPURLResponse class]]) {
+            
+            BOOL isExpired = [WTRequestCenter checkRequestIsExpired:(NSHTTPURLResponse*)response.response];
+            if (isExpired) {
+                if (handler) {
+                    handler(response.response,response.data,nil);
+                }
+                [WTRequestCenter removeRequestCache:request];
+                [WTRequestCenter getWithURL:url completionHandler:handler];
+            }else
+            {
+                if (handler) {
+                    handler(response.response,response.data,nil);
+                }
             }
+            
+            
+            
+        }
+            handler(response.response,response.data,nil);
+            
         });
     }
 
@@ -112,7 +180,8 @@ static NSOperationQueue *shareQueue = nil;
 #pragma mark - POST
 // post 请求
 //Available in iOS 5.0 and later.
-+(NSURLRequest*)postWithURL:(NSURL*)url params:(NSDictionary*)dict completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
+//parameters
++(NSURLRequest*)postWithURL:(NSURL*)url parameters:(NSDictionary*)dict completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
 {
     NSURLCache *cache = [WTRequestCenter sharedCache];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url
