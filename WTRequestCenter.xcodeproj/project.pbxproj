@@ -21,7 +21,7 @@
 		E4440D92197A01B1001E6D88 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4440D74197A01B1001E6D88 /* UIKit.framework */; };
 		E4440D9A197A01B1001E6D88 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E4440D98197A01B1001E6D88 /* InfoPlist.strings */; };
 		E4440D9C197A01B1001E6D88 /* WTRequestCenterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E4440D9B197A01B1001E6D88 /* WTRequestCenterTests.m */; };
-		E4440DA7197A01BA001E6D88 /* WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E4440DA6197A01BA001E6D88 /* WTRequestCenter.m */; };
+		E4DBC944197D14F3004F9393 /* WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E4DBC943197D14F3004F9393 /* WTRequestCenter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,8 +54,8 @@
 		E4440D97197A01B1001E6D88 /* WTRequestCenterTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WTRequestCenterTests-Info.plist"; sourceTree = "<group>"; };
 		E4440D99197A01B1001E6D88 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E4440D9B197A01B1001E6D88 /* WTRequestCenterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WTRequestCenterTests.m; sourceTree = "<group>"; };
-		E4440DA5197A01BA001E6D88 /* WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTRequestCenter.h; sourceTree = "<group>"; };
-		E4440DA6197A01BA001E6D88 /* WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTRequestCenter.m; sourceTree = "<group>"; };
+		E4DBC942197D14F3004F9393 /* WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTRequestCenter.h; sourceTree = "<group>"; };
+		E4DBC943197D14F3004F9393 /* WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTRequestCenter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +85,7 @@
 		E4440D64197A01B1001E6D88 = {
 			isa = PBXGroup;
 			children = (
+				E4DBC941197D14C9004F9393 /* WTRequestCenter */,
 				E4440D76197A01B1001E6D88 /* WTRequestCenter */,
 				E4440D95197A01B1001E6D88 /* WTRequestCenterTests */,
 				E4440D6F197A01B1001E6D88 /* Frameworks */,
@@ -120,8 +121,6 @@
 				E4440D82197A01B1001E6D88 /* Main.storyboard */,
 				E4440D85197A01B1001E6D88 /* ViewController.h */,
 				E4440D86197A01B1001E6D88 /* ViewController.m */,
-				E4440DA5197A01BA001E6D88 /* WTRequestCenter.h */,
-				E4440DA6197A01BA001E6D88 /* WTRequestCenter.m */,
 				E4440D88197A01B1001E6D88 /* Images.xcassets */,
 				E4440D77197A01B1001E6D88 /* Supporting Files */,
 			);
@@ -155,6 +154,16 @@
 				E4440D98197A01B1001E6D88 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E4DBC941197D14C9004F9393 /* WTRequestCenter */ = {
+			isa = PBXGroup;
+			children = (
+				E4DBC942197D14F3004F9393 /* WTRequestCenter.h */,
+				E4DBC943197D14F3004F9393 /* WTRequestCenter.m */,
+			);
+			name = WTRequestCenter;
+			path = WTRequestCenter/WTRequestCenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,7 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4440D87197A01B1001E6D88 /* ViewController.m in Sources */,
-				E4440DA7197A01BA001E6D88 /* WTRequestCenter.m in Sources */,
+				E4DBC944197D14F3004F9393 /* WTRequestCenter.m in Sources */,
 				E4440D81197A01B1001E6D88 /* AppDelegate.m in Sources */,
 				E4440D7D197A01B1001E6D88 /* main.m in Sources */,
 			);
@@ -462,6 +471,7 @@
 				E4440DA1197A01B1001E6D88 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E4440DA2197A01B1001E6D88 /* Build configuration list for PBXNativeTarget "WTRequestCenterTests" */ = {
 			isa = XCConfigurationList;
@@ -470,6 +480,7 @@
 				E4440DA4197A01B1001E6D88 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

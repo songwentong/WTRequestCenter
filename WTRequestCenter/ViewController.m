@@ -74,13 +74,24 @@
 -(void)get
 {
     NSURL *imageURL = [NSURL URLWithString:[@"http://img0.bdstatic.com/img/image/百度0529.jpg" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    NSURL *url = [NSURL URLWithString:@"http://www.baidu.com"];
+    NSURL *url = [NSURL URLWithString:@"http://mapi.v1baobao.com/user/user_login"];
+    NSDictionary *parameters = @{@"username": @"321321",@"password":@"111111"};
     for (int i=0; i<1; i++) {
 //        [WTRequestCenter getImageWithURL:url imageComplectionHandler:NULL];
-        [WTRequestCenter getWithURL:url completionHandler:NULL];
+        
+        [WTRequestCenter postWithURL:url parameters:parameters completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+            NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+            
+            NSLog(@"%@",dict);
+        }];
+        return;
+        [WTRequestCenter getImageWithURL:imageURL imageComplectionHandler:^(UIImage *image) {
+            NSLog(@"%@",image);
+        }];
+//        [WTRequestCenter getWithURL:url completionHandler:NULL];
         [WTRequestCenter getWithURL:url completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
 //            dasdasd
-            NSLog(@"%@",response);
+//            NSLog(@"%@",response);
         }];
         
       /*
