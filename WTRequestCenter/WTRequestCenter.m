@@ -202,7 +202,9 @@ static NSOperationQueue *shareQueue = nil;
     
     NSCachedURLResponse *response =[cache cachedResponseForRequest:request];
 
+    //        如果不存在，重新请求
     if (!response) {
+
         [NSURLConnection sendAsynchronousRequest:request
                                            queue:[WTRequestCenter shareQueue]
                                completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
@@ -220,10 +222,30 @@ static NSOperationQueue *shareQueue = nil;
         }];
     }else
     {
+        //NSDateFormatter 在iOS7.0以后是线程安全的，为了保证5.0可用，在这里用主线程括起来
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (handler) {
-        handler(response.response,response.data,nil);
+            
+            if ([response.response isKindOfClass:[NSHTTPURLResponse class]]) {
+                
+                BOOL isExpired = [WTRequestCenter checkRequestIsExpired:(NSHTTPURLResponse*)response.response];
+                if (isExpired) {
+                    if (handler) {
+                        handler(response.response,response.data,nil);
+                    }
+                    [WTRequestCenter removeRequestCache:request];
+                    [WTRequestCenter postWithURL:url parameters:dict completionHandler:handler];
+                }else
+                {
+                    if (handler) {
+                        handler(response.response,response.data,nil);
+                    }
+                }
+                
+                
+                
             }
+            
+            
         });
     }
 
