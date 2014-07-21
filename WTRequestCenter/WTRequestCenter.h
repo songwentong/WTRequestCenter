@@ -19,7 +19,7 @@
 //清除所有缓存
 +(void)clearAllCache;
 
-//停止所有的请求  建议在NavigationController pop之前调用
+//停止所有的请求  建议在NavigationController pop之前调用，防止崩溃
 +(void)stopAllRequest;
 
 //当前缓存大小，目前有问题，不建议用
@@ -38,7 +38,7 @@
 #pragma mark - POST
 //post 请求
 +(NSURLRequest*)postWithURL:(NSURL*)url
-                     parameters:(NSDictionary*)dict
+                 parameters:(NSDictionary*)dict
           completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 
 #pragma mark - Image

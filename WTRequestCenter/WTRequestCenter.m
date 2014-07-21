@@ -130,7 +130,6 @@ static NSOperationQueue *shareQueue = nil;
 {
     NSURLCache *cache = [WTRequestCenter sharedCache];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:1.0];
-    [cache removeAllCachedResponses];
     NSCachedURLResponse *response =[cache cachedResponseForRequest:request];
 
     if (!response) {
@@ -169,7 +168,7 @@ static NSOperationQueue *shareQueue = nil;
             
             
         }
-            handler(response.response,response.data,nil);
+
             
         });
     }
