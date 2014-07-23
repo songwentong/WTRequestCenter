@@ -111,14 +111,7 @@ static NSOperationQueue *shareQueue = nil;
     NSURLCache *cache = [WTRequestCenter sharedCache];
     [cache removeCachedResponseForRequest:request];
 }
-#pragma mark - Block
-//网络请求
-//void (^completion) (NSURLResponse* response,NSData *data);
-//带错误的请求
-//void (^completionHandler) (NSURLResponse* response,NSData *data,NSError *error);
-//图片请求
-//void (^imageComplectionHandler) (UIImage* image);
-
+#pragma mark - 辅助
 
 
 
@@ -267,4 +260,7 @@ static NSOperationQueue *shareQueue = nil;
 
     }];
 }
+
+#pragma mark - NSURLSession
+
 @end

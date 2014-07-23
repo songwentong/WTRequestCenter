@@ -10,6 +10,9 @@
 
 @interface WTRequestCenter : NSObject
 
+
++(NSURLCache*)sharedCache;
+
 //设置失效日期,单位是秒
 +(void)setExpireTimeInterval:(NSTimeInterval)expireTime;
 
