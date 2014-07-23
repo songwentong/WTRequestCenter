@@ -35,16 +35,20 @@
 #pragma mark - GET
 //get请求
 +(NSURLRequest*)getWithURL:(NSURL*)url
+                parameters:(NSDictionary*)parameters
          completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
-
 
 #pragma mark - POST
 //post 请求
 +(NSURLRequest*)postWithURL:(NSURL*)url
-                 parameters:(NSDictionary*)dict
+                 parameters:(NSDictionary*)parameters
           completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 
 #pragma mark - Image
 //下载图片
 +(void)getImageWithURL:(NSURL*)url imageComplectionHandler:(void(^) (UIImage* image))handler;
+#pragma mark - URL
+
+//实际应用示例
++(NSString*)urlWithIndex:(NSInteger)index;
 @end

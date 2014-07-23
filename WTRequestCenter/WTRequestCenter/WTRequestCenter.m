@@ -24,7 +24,7 @@
     CGFloat time = [[NSUserDefaults standardUserDefaults] floatForKey:@"WTRequestCenterExpireTime"];
     if (time==0) {
 //        默认时效日期
-        time = 3600*24*7;
+        time = 3600*24;
     }
     return time;
 }
@@ -117,55 +117,71 @@ static NSOperationQueue *shareQueue = nil;
 
 
 #pragma mark - Get
+
 //get请求
 //Available in iOS 5.0 and later.
-+(NSURLRequest*)getWithURL:(NSURL*)url completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
++(NSURLRequest*)getWithURL:(NSURL*)url parameters:(NSDictionary*)parameters completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
 {
     NSURLCache *cache = [WTRequestCenter sharedCache];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:1.0];
+    
+    NSMutableString *paramString = [[NSMutableString alloc] init];
+    for (NSString *key in [parameters allKeys]) {
+        NSString *value = [parameters valueForKey:key];
+        NSString *str = [NSString stringWithFormat:@"%@=%@",key,value];
+        [paramString appendString:str];
+        [paramString appendString:@"&"];
+    }
+    
+    paramString = [[paramString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] mutableCopy];
+    
+    NSData *postData = [paramString dataUsingEncoding:NSUTF8StringEncoding];
+    [request setHTTPBody:postData];
+    
     NSCachedURLResponse *response =[cache cachedResponseForRequest:request];
-
+    
     if (!response) {
         [NSURLConnection sendAsynchronousRequest:request
                                            queue:[WTRequestCenter shareQueue]
                                completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
-        {
-            
-       dispatch_async(dispatch_get_main_queue(), ^{
-           if (handler) {
-            handler(response,data,connectionError);
-           }
-       });
-    }];
+         {
+             
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 if (handler) {
+                     handler(response,data,connectionError);
+                 }
+             });
+         }];
     }else
     {
-//NSDateFormatter 在iOS7.0以后是线程安全的，为了保证5.0可用，在这里用主线程括起来
+        //NSDateFormatter 在iOS7.0以后是线程安全的，为了保证5.0可用，在这里用主线程括起来
         dispatch_async(dispatch_get_main_queue(), ^{
-
-        if ([response.response isKindOfClass:[NSHTTPURLResponse class]]) {
             
-            BOOL isExpired = [WTRequestCenter checkRequestIsExpired:(NSHTTPURLResponse*)response.response];
-            if (isExpired) {
-                if (handler) {
-                    handler(response.response,response.data,nil);
+            if ([response.response isKindOfClass:[NSHTTPURLResponse class]]) {
+                
+                BOOL isExpired = [WTRequestCenter checkRequestIsExpired:(NSHTTPURLResponse*)response.response];
+                if (isExpired) {
+                    if (handler) {
+                        handler(response.response,response.data,nil);
+                    }
+                    [WTRequestCenter removeRequestCache:request];
+//                    [WTRequestCenter getWithURL:url completionHandler:handler];
+                    [WTRequestCenter getWithURL:url parameters:parameters completionHandler:handler];
+                }else
+                {
+                    if (handler) {
+                        handler(response.response,response.data,nil);
+                    }
                 }
-                [WTRequestCenter removeRequestCache:request];
-                [WTRequestCenter getWithURL:url completionHandler:handler];
-            }else
-            {
-                if (handler) {
-                    handler(response.response,response.data,nil);
-                }
+                
+                
+                
             }
             
             
-            
-        }
-
-            
         });
     }
-
+    
     return request;
 }
 
@@ -173,7 +189,7 @@ static NSOperationQueue *shareQueue = nil;
 // post 请求
 //Available in iOS 5.0 and later.
 //parameters
-+(NSURLRequest*)postWithURL:(NSURL*)url parameters:(NSDictionary*)dict completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
++(NSURLRequest*)postWithURL:(NSURL*)url parameters:(NSDictionary*)parameters completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
 {
     NSURLCache *cache = [WTRequestCenter sharedCache];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url
@@ -181,8 +197,8 @@ static NSOperationQueue *shareQueue = nil;
     [request setHTTPMethod:@"POST"];
     
     NSMutableString *paramString = [[NSMutableString alloc] init];
-    for (NSString *key in [dict allKeys]) {
-        NSString *value = [dict valueForKey:key];
+    for (NSString *key in [parameters allKeys]) {
+        NSString *value = [parameters valueForKey:key];
         NSString *str = [NSString stringWithFormat:@"%@=%@",key,value];
         [paramString appendString:str];
         [paramString appendString:@"&"];
@@ -226,7 +242,7 @@ static NSOperationQueue *shareQueue = nil;
                         handler(response.response,response.data,nil);
                     }
                     [WTRequestCenter removeRequestCache:request];
-                    [WTRequestCenter postWithURL:url parameters:dict completionHandler:handler];
+                    [WTRequestCenter postWithURL:url parameters:parameters completionHandler:handler];
                 }else
                 {
                     if (handler) {
@@ -248,7 +264,7 @@ static NSOperationQueue *shareQueue = nil;
 #pragma mark - Image
 +(void)getImageWithURL:(NSURL*)url imageComplectionHandler:(void(^) (UIImage* image))handler
 {
-    [WTRequestCenter getWithURL:url completionHandler:^(NSURLResponse *response, NSData *data,NSError *error) {
+    [WTRequestCenter getWithURL:url  parameters:nil  completionHandler:^(NSURLResponse *response, NSData *data,NSError *error) {
         UIImage *image = [UIImage imageWithData:data];
         dispatch_async(dispatch_get_main_queue(), ^{
             if (handler) {
@@ -261,6 +277,47 @@ static NSOperationQueue *shareQueue = nil;
     }];
 }
 
-#pragma mark - NSURLSession
+
+
+#pragma mark - URL
++(NSString *)baseURL
+{
+    return @"http://www.xxx.com";
+}
+//实际应用示例
++(NSString*)urlWithIndex:(NSInteger)index
+{
+    NSMutableArray *urls = [[NSMutableArray alloc] init];
+//    0-9
+    [urls addObject:@"interface0"];
+    [urls addObject:@"interface1"];
+    [urls addObject:@"interface2"];
+    [urls addObject:@"interface3"];
+    [urls addObject:@"interface0"];
+    [urls addObject:@"interface0"];
+    [urls addObject:@"interface0"];
+    [urls addObject:@"interface0"];
+    [urls addObject:@"interface0"];
+    [urls addObject:@"interface0"];
+    
+//  10-19
+    [urls addObject:@"interface0"];
+    [urls addObject:@"interface0"];
+    [urls addObject:@"interface0"];
+    [urls addObject:@"interface0"];
+    [urls addObject:@"interface0"];
+    [urls addObject:@"interface0"];
+    [urls addObject:@"interface0"];
+    [urls addObject:@"interface0"];
+    [urls addObject:@"interface0"];
+    [urls addObject:@"interface0"];
+    
+    
+    
+    NSString *url = urls[index];
+    NSString *urlString = [NSString stringWithFormat:@"%@/%@",[WTRequestCenter baseURL],url];
+    return urlString;
+}
+
 
 @end
