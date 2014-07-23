@@ -41,11 +41,17 @@
                               NSError *jsonError = nil;
                               id obj = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonError];
                               if (!jsonError) {
-                                  NSLog(@"%@",obj);
+                                  NSLog(@"result:%@",obj);
+                              }else
+                              {
+                                  NSLog(@"jsonError:%@",jsonError);
                               }
                               
+                          }else
+                          {
+                              NSLog(@"error:%@",error);
                           }
-                          
+                  
                       }];
 }
 
@@ -62,9 +68,15 @@
                               NSError *jsonError = nil;
                               id obj = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonError];
                               if (!jsonError) {
-                                  NSLog(@"%@",obj);
+                                  NSLog(@"result:%@",obj);
+                              }else
+                              {
+                                  NSLog(@"jsonError:%@",jsonError);
                               }
                               
+                          }else
+                          {
+                              NSLog(@"error:%@",error);
                           }
                           
                       }];
