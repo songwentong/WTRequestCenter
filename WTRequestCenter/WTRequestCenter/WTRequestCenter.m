@@ -283,4 +283,33 @@ static NSOperationQueue *shareQueue = nil;
 
     }];
 }
+
+
+#pragma mark - URL
++(NSString *)baseURL
+{
+    return @"http://www.xxx.com";
+}
+//实际应用示例
++(NSString*)urlWithIndex:(NSInteger)index
+{
+    NSMutableArray *urls = [[NSMutableArray alloc] init];
+//    0-9
+    [urls addObject:@"interface0"];
+    [urls addObject:@"interface0"];
+    [urls addObject:@"interface0"];
+    [urls addObject:@"interface0"];
+    [urls addObject:@"interface0"];
+    
+//  10-19
+    
+    
+    
+    
+    
+    NSString *url = urls[index];
+    NSString *urlString = [NSString stringWithFormat:@"%@/%@",[WTRequestCenter baseURL],url];
+    return urlString;
+}
+
 @end
