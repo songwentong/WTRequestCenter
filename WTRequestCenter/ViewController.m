@@ -49,7 +49,7 @@
     for (int i=0; i<10; i++) {
         [WTRequestCenter getImageWithURL:url imageComplectionHandler:NULL];
         
-        [WTRequestCenter getWithURL:url
+        [WTRequestCenter getWithURL:url parameters:nil
                   completionHandler:^(NSURLResponse *response, NSData *data,NSError *error) {
                       NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
                       NSLog(@"%@",string);
@@ -89,11 +89,7 @@
             NSLog(@"%@",image);
         }];
 //        [WTRequestCenter getWithURL:url completionHandler:NULL];
-        [WTRequestCenter getWithURL:url completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-//            dasdasd
-//            NSLog(@"%@",response);
-        }];
-        
+               
       /*
         [WTRequestCenter getWithURL:imageURL
                   completionHandler:^(NSURLResponse *response, NSData *data,NSError *error) {
