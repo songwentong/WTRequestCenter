@@ -23,7 +23,7 @@ GET 请求
                      parameters:parameters
               completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
               
-              ｝
+              }
 ```
               
 POST 请求
@@ -32,5 +32,5 @@ POST 请求
                   parameters:parameters 
            completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
            
-                      ｝
+               }
 ```
