@@ -23,7 +23,8 @@ GET 请求
 [WTRequestCenter getWithURL:url
                      parameters:parameters
               completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-              
+              id obj = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonError];
+              NSLog(@"result:%@",obj);
               }
 ```
               
@@ -32,7 +33,8 @@ POST 请求
 [WTRequestCenter postWithURL:url
                   parameters:parameters 
            completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-           
+                     id obj = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonError];
+              NSLog(@"result:%@",obj);
                }
 ```
 
