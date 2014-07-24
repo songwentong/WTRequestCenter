@@ -14,3 +14,20 @@ Only need iOS 5.0 and later,no more!
 需要
 ===============
 仅仅需要iOS5 ！ 不需要其他任何import和配置
+
+使用方法 Usage
+===============
+GET 请求
+[WTRequestCenter getWithURL:url
+                     parameters:parameters
+              completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+              
+              ｝
+              
+              
+POST 请求
+[WTRequestCenter postWithURL:url
+                  parameters:parameters 
+           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+           
+                      ｝
