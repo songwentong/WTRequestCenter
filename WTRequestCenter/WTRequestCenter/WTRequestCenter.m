@@ -281,8 +281,14 @@ static NSOperationQueue *shareQueue = nil;
     [request setHTTPBody:postData];
     
     [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter shareQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (handler) {
         handler(response,data,connectionError);
+            }
+        });
+        
     }];
+                       
     return request;
 }
 
