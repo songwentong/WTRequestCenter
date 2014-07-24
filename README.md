@@ -18,16 +18,19 @@ Only need iOS 5.0 and later,no more!
 使用方法 Usage
 ===============
 GET 请求
+```objective-c
 [WTRequestCenter getWithURL:url
                      parameters:parameters
               completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
               
               ｝
-              
+```
               
 POST 请求
+```objective-c
 [WTRequestCenter postWithURL:url
                   parameters:parameters 
            completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
            
                       ｝
+```
