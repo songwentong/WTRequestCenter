@@ -5,16 +5,6 @@ WTRequestCenter
 无需任何import和配置，目前实现了基础需求
 如果有其他需要请在issue 上提出，谢谢！
 
-
-
-Requirement  
-===============
-Only need iOS 5.0 and later,no more!
-
-需要
-===============
-仅仅需要iOS5 ！ 不需要其他任何import和配置
-
 使用方法 Usage
 ===============
 注意：所有的请求都是缓存的
@@ -46,3 +36,13 @@ POST 请求
         imageView.image = image;
     }];
 ```
+
+
+
+Requirement  
+===============
+Only need iOS 5.0 and later,no more!
+
+需要
+===============
+仅仅需要iOS5 ！ 不需要其他任何import和配置
