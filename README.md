@@ -17,6 +17,7 @@ Only need iOS 5.0 and later,no more!
 
 使用方法 Usage
 ===============
+注意：所有的请求都是缓存的
 GET 请求
 ```objective-c
 [WTRequestCenter getWithURL:url
@@ -33,4 +34,13 @@ POST 请求
            completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
            
                }
+```
+
+缓存图片
+```objective-c
+NSURL *url = [NSURL URLWithString:@"http://www.xxx.com/eqdsa.jpg"];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    [WTRequestCenter getImageWithURL:url imageComplectionHandler:^(UIImage *image) {
+        imageView.image = image;
+    }];
 ```
