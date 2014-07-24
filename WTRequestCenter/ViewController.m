@@ -18,6 +18,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    UIImage *image = [UIImage imageWithData:nil];
+    NSLog(@"%@",image);
+    
 //    GET请求
     [self get];
 //    POST请求
@@ -34,6 +38,7 @@
     [parameters setValue:@"1" forKey:@"a"];
     [parameters setValue:@"2" forKey:@"b"];
     [parameters setValue:@"3" forKey:@"c"];
+    
     [WTRequestCenter getWithURL:url
                      parameters:parameters
               completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
@@ -84,7 +89,11 @@
 
 -(void)loadImage
 {
-    
+    NSURL *url = [NSURL URLWithString:@"http://www.xxx.com/eqdsa.jpg"];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    [WTRequestCenter getImageWithURL:url imageComplectionHandler:^(UIImage *image) {
+        imageView.image = image;
+    }];
 }
 
 - (void)didReceiveMemoryWarning

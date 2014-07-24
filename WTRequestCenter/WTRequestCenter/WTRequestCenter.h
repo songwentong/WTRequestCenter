@@ -44,6 +44,10 @@
                  parameters:(NSDictionary*)parameters
           completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 
+
+//不使用缓存的post请求
++(NSURLRequest*)postWithoutCacheURL:(NSURL*)url parameters:(NSDictionary*)parameters completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
+
 #pragma mark - Image
 //下载图片
 +(void)getImageWithURL:(NSURL*)url imageComplectionHandler:(void(^) (UIImage* image))handler;
@@ -51,4 +55,6 @@
 
 //实际应用示例
 +(NSString*)urlWithIndex:(NSInteger)index;
+
+
 @end
