@@ -38,7 +38,7 @@ POST 请求
 
 缓存图片
 ```objective-c
-NSURL *url = [NSURL URLWithString:@"http://www.xxx.com/eqdsa.jpg"];
+    NSURL *url = [NSURL URLWithString:@"http://www.xxx.com/eqdsa.jpg"];
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     [WTRequestCenter getImageWithURL:url imageComplectionHandler:^(UIImage *image) {
         imageView.image = image;
