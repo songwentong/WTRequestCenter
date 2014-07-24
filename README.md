@@ -11,8 +11,8 @@ WTRequestCenter
 #### GET 请求
 ```objective-c
 [WTRequestCenter getWithURL:url
-                     parameters:parameters
-              completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                 parameters:parameters
+          completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
               id obj = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonError];
               NSLog(@"result:%@",obj);
               }
