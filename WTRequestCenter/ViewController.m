@@ -94,7 +94,7 @@
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     imageView.contentMode = UIViewContentModeCenter;
     imageView.image = [UIImage imageNamed:@"xxx.png"];
-    [WTRequestCenter getImageWithURL:url imageComplectionHandler:^(UIImage *image) {
+    [WTRequestCenter getImageWithURL:url completionHandler:^(UIImage *image) {
         imageView.image = image;
     }];
 }

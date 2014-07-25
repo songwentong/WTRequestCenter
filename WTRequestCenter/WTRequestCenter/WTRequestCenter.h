@@ -3,8 +3,8 @@
 //  TestCache
 //
 //  Created by song on 14-7-19.
-//  Copyright (c) 2014年 song. All rights reserved.
-//
+//  Copyright (c) Mike song(mailto:275712575@qq.com). All rights reserved.
+//  site:https://github.com/swtlovewtt/WTRequestCenter
 
 #import <Foundation/Foundation.h>
 
@@ -63,7 +63,8 @@
 
 
 //下载图片  Download  (Cache)
-+(void)getImageWithURL:(NSURL*)url imageComplectionHandler:(void(^) (UIImage* image))handler;
++(void)getImageWithURL:(NSURL*)url
+     completionHandler:(void(^) (UIImage* image))handler;
 
 #pragma mark - URL
 
