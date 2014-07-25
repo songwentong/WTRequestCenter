@@ -301,9 +301,7 @@ static NSOperationQueue *shareQueue = nil;
     //NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
     
     NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] init] ;
-//    [urlRequest setURL:[NSURL URLWithString:url]];
     urlRequest.URL = url;
-    //[urlRequest setURL:url];
     
     [urlRequest setHTTPMethod:@"POST"];
     
@@ -341,6 +339,23 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
         });
     }];
 }
+
+
+
+//多图片上传
++(void)upLoadImageWithURL:(NSURL*)url datas:(NSArray*)datas fileNames:(NSArray*)names
+completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
+{
+    for (int i=0; i<[datas count]; i++) {
+        NSData *data = datas[i];
+        NSString *name = names[i];
+        [WTRequestCenter upLoadImageWithURL:url data:data fileName:name completionHandler:handler];
+    }
+}
+ 
+
+
+//下载图片  Download  (Cache)
 +(void)getImageWithURL:(NSURL*)url imageComplectionHandler:(void(^) (UIImage* image))handler
 {
     [WTRequestCenter getWithURL:url  parameters:nil  completionHandler:^(NSURLResponse *response, NSData *data,NSError *error) {
@@ -349,10 +364,7 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
             if (handler) {
                 handler(image);
             }
-
-            
         });
-
     }];
 }
 

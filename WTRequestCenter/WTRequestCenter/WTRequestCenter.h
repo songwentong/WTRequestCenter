@@ -54,6 +54,12 @@
                      data:(NSData *)data
                  fileName:(NSString*)fileName
         completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
+
+//多图片上传
++(void)upLoadImageWithURL:(NSURL*)url datas:(NSArray*)datas fileNames:(NSArray*)names
+        completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
+
+
 //下载图片  Download  (Cache)
 +(void)getImageWithURL:(NSURL*)url imageComplectionHandler:(void(^) (UIImage* image))handler;
 
