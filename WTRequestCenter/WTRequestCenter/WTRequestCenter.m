@@ -79,13 +79,13 @@ static NSOperationQueue *shareQueue = nil;
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        if (!shareQueue) {
+//        if (!shareQueue) {
             shareQueue = [[NSOperationQueue alloc] init];
             [shareQueue setSuspended:NO];
             [shareQueue setMaxConcurrentOperationCount:10];
             shareQueue.name = @"WTRequestCentershareQueue";
             
-        }
+//        }
     });
     return shareQueue;
 }
@@ -124,7 +124,7 @@ static NSOperationQueue *shareQueue = nil;
 {
     NSURLCache *cache = [WTRequestCenter sharedCache];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:1.0];
-    
+
     NSMutableString *paramString = [[NSMutableString alloc] init];
     for (NSString *key in [parameters allKeys]) {
         NSString *value = [parameters valueForKey:key];
@@ -132,12 +132,8 @@ static NSOperationQueue *shareQueue = nil;
         [paramString appendString:str];
         [paramString appendString:@"&"];
     }
-    
-    paramString = [[paramString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] mutableCopy];
-    
-    NSData *postData = [paramString dataUsingEncoding:NSUTF8StringEncoding];
-    [request setHTTPBody:postData];
-    
+    NSMutableString *urlString = [[NSMutableString alloc] initWithFormat:@"%@?%@",url,paramString];
+    request.URL = [NSURL URLWithString:urlString];
     NSCachedURLResponse *response =[cache cachedResponseForRequest:request];
     
     if (!response) {
@@ -203,7 +199,7 @@ static NSOperationQueue *shareQueue = nil;
         [paramString appendString:str];
         [paramString appendString:@"&"];
     }
-    
+    NSLog(@"\nurl:\n%@  \nparameters:\n%@",url,parameters);
     paramString = [[paramString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] mutableCopy];
     
     NSData *postData = [paramString dataUsingEncoding:NSUTF8StringEncoding];
@@ -314,14 +310,14 @@ static NSOperationQueue *shareQueue = nil;
 #pragma mark - URL
 +(NSString *)baseURL
 {
-    return @"http://www.xxx.com";
+    return @"http://mapi.v1baobao.com";
 }
 //实际应用示例
 +(NSString*)urlWithIndex:(NSInteger)index
 {
     NSMutableArray *urls = [[NSMutableArray alloc] init];
 //    0-9
-    [urls addObject:@"interface0"];
+    [urls addObject:@"article/detail"];
     [urls addObject:@"interface1"];
     [urls addObject:@"interface2"];
     [urls addObject:@"interface3"];

@@ -35,10 +35,10 @@
 {
     NSURL *url = [NSURL URLWithString:[WTRequestCenter urlWithIndex:0]];
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters setValue:@"1" forKey:@"a"];
-    [parameters setValue:@"2" forKey:@"b"];
-    [parameters setValue:@"3" forKey:@"c"];
-    
+    [parameters setValue:@"46" forKey:@"article_id"];
+//    [parameters setValue:@"2" forKey:@"b"];
+//    [parameters setValue:@"3" forKey:@"c"];
+//    article_id=46
     [WTRequestCenter getWithURL:url
                      parameters:parameters
               completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
@@ -58,6 +58,7 @@
                           }
                   
                       }];
+//    [WTRequestCenter stopAllRequest];
 }
 
 -(void)post
