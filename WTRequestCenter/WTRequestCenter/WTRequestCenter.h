@@ -32,7 +32,7 @@
 +(void)removeRequestCache:(NSURLRequest*)request;
 
 
-#pragma mark - GET
+#pragma mark - GET (Cache)
 //get请求
 +(NSURLRequest*)getWithURL:(NSURL*)url
                 parameters:(NSDictionary*)parameters
@@ -49,8 +49,14 @@
 +(NSURLRequest*)postWithoutCacheURL:(NSURL*)url parameters:(NSDictionary*)parameters completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 
 #pragma mark - Image
-//下载图片
+//图片上传  Upload
++(void)upLoadImageWithURL:(NSURL*)url
+                     data:(NSData *)data
+                 fileName:(NSString*)fileName
+        completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
+//下载图片  Download  (Cache)
 +(void)getImageWithURL:(NSURL*)url imageComplectionHandler:(void(^) (UIImage* image))handler;
+
 #pragma mark - URL
 
 //实际应用示例

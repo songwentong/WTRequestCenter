@@ -19,9 +19,9 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    UIImage *image = [UIImage imageWithData:nil];
-    NSLog(@"%@",image);
-    
+//    UIImage *image = [UIImage imageWithData:nil];
+//    NSLog(@"%@",image);
+    NSLog(@"%@",[[NSProcessInfo processInfo] globallyUniqueString]);
 //    GET请求
     [self get];
 //    POST请求
