@@ -56,7 +56,9 @@
         completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 
 //多图片上传
-+(void)upLoadImageWithURL:(NSURL*)url datas:(NSArray*)datas fileNames:(NSArray*)names
++(void)upLoadImageWithURL:(NSURL*)url
+                    datas:(NSArray*)datas
+                fileNames:(NSArray*)names
         completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 
 
