@@ -375,7 +375,7 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
 #pragma mark - URL
 +(NSString *)baseURL
 {
-    return @"http://mapi.v1baobao.com";
+    return @"http://www.xxx.com";
 }
 //实际应用示例
 +(NSString*)urlWithIndex:(NSInteger)index
