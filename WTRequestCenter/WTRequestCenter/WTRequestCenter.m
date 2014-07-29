@@ -37,6 +37,7 @@
     NSString *dateString = [allHeaderFields valueForKey:@"Date"];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"eee, dd MMM yyyy HH:mm:ss VVVV"];
+    [formatter setLocale:[NSLocale currentLocale]];
     NSDate *now = [NSDate date];
     //            NSString *string = [formatter stringFromDate:now];
     //            NSLog(@"%@",string);

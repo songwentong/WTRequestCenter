@@ -23,9 +23,10 @@
 //    NSLog(@"%@",image);
     NSLog(@"%@",[[NSProcessInfo processInfo] globallyUniqueString]);
 //    GET请求
-    [self get];
+//    [self get];
 //    POST请求
-    [self post];
+//    [self post];
+    [self loadImage];
     
 }
 
@@ -90,13 +91,15 @@
 
 -(void)loadImage
 {
-    NSURL *url = [NSURL URLWithString:@"http://www.xxx.com/xxx.jpg"];
+    NSURL *url = [NSURL URLWithString:@"http://img02.v1pin.com/photo/201407/201407089004037836461.jpg"];
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     imageView.contentMode = UIViewContentModeCenter;
     imageView.image = [UIImage imageNamed:@"xxx.png"];
+    imageView.frame = CGRectMake(0, 0, 200, 200);
     [WTRequestCenter getImageWithURL:url completionHandler:^(UIImage *image) {
         imageView.image = image;
     }];
+    [self.view addSubview:imageView];
 }
 
 - (void)didReceiveMemoryWarning
