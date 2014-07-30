@@ -94,11 +94,10 @@
     NSURL *url = [NSURL URLWithString:@"http://img02.v1pin.com/photo/201407/201407089004037836461.jpg"];
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     imageView.contentMode = UIViewContentModeCenter;
-    imageView.image = [UIImage imageNamed:@"xxx.png"];
     imageView.frame = CGRectMake(0, 0, 200, 200);
-    [WTRequestCenter getImageWithURL:url completionHandler:^(UIImage *image) {
-        imageView.image = image;
-    }];
+    UIImage *placeHolderImage = [UIImage imageNamed:@"xxx.png"];
+    [imageView setImageWithURL:url placeholderImage:placeHolderImage];
+    
     [self.view addSubview:imageView];
 }
 

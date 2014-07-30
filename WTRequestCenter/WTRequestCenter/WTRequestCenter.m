@@ -378,6 +378,7 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
             dispatch_async(dispatch_get_main_queue(), ^{
                 handler(image);
             });
+            
         }
     }else
     {
