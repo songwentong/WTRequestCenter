@@ -10,6 +10,36 @@
 
 @implementation WTRequestCenter
 
+
+#pragma mark - 请求队列和缓存
+//请求队列
+static NSOperationQueue *shareQueue = nil;
++(NSOperationQueue*)shareQueue
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        shareQueue = [[NSOperationQueue alloc] init];
+        [shareQueue setSuspended:NO];
+        [shareQueue setMaxConcurrentOperationCount:10];
+        shareQueue.name = @"WTRequestCentershareQueue";
+    });
+    return shareQueue;
+}
+
+
+//缓存
++(NSURLCache*)sharedCache
+{
+    NSURLCache *cache = [NSURLCache sharedURLCache];
+    //    最大内存空间
+    [cache setMemoryCapacity:1024*1024*10];//10M
+    //    最大储存（硬盘）空间
+    [cache setDiskCapacity:1024*1024*100];//100M
+    return cache;
+}
+
+
+#pragma mark - 配置设置
 //设置失效日期
 +(void)setExpireTimeInterval:(NSTimeInterval)expireTime
 {
@@ -75,36 +105,13 @@
 
 
 
-static NSOperationQueue *shareQueue = nil;
-+(NSOperationQueue*)shareQueue
-{
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-//        if (!shareQueue) {
-            shareQueue = [[NSOperationQueue alloc] init];
-            [shareQueue setSuspended:NO];
-            [shareQueue setMaxConcurrentOperationCount:10];
-            shareQueue.name = @"WTRequestCentershareQueue";
-            
-//        }
-    });
-    return shareQueue;
-}
+
 
 +(void)stopAllRequest
 {
     [[WTRequestCenter shareQueue] cancelAllOperations];
 }
 
-+(NSURLCache*)sharedCache
-{
-    NSURLCache *cache = [NSURLCache sharedURLCache];
-//    最大内存空间
-    [cache setMemoryCapacity:1024*1024*10];//10M
-//    最大储存（硬盘）空间
-    [cache setDiskCapacity:1024*1024*100];//100M
-    return cache;
-}
 
 //清除请求的缓存
 +(void)removeRequestCache:(NSURLRequest*)request

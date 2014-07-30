@@ -2,9 +2,9 @@
 //  UIImageView+WTImageCache.h
 //  WTRequestCenter
 //
-//  Created by songwt on 14-7-30.
-//  Copyright (c) 2014年 song. All rights reserved.
-//
+//  Created by song on 14-7-19.
+//  Copyright (c) Mike song(mailto:275712575@qq.com). All rights reserved.
+//  site:https://github.com/swtlovewtt/WTRequestCenter
 
 #import <UIKit/UIKit.h>
 
