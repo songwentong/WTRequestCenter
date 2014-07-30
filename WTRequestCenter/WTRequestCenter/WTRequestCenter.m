@@ -124,7 +124,7 @@ static NSOperationQueue *shareQueue = nil;
 +(NSURLRequest*)getWithURL:(NSURL*)url parameters:(NSDictionary*)parameters completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
 {
     NSURLCache *cache = [WTRequestCenter sharedCache];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:1.0];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30.0];
 
     NSMutableString *paramString = [[NSMutableString alloc] init];
     for (NSString *key in [parameters allKeys]) {
@@ -193,7 +193,7 @@ static NSOperationQueue *shareQueue = nil;
 {
     NSURLCache *cache = [WTRequestCenter sharedCache];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url
-                cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:1.0];
+                cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30.0];
     [request setHTTPMethod:@"POST"];
     
     NSMutableString *paramString = [[NSMutableString alloc] init];
@@ -268,7 +268,7 @@ static NSOperationQueue *shareQueue = nil;
 +(NSURLRequest*)postWithoutCacheURL:(NSURL*)url parameters:(NSDictionary*)parameters completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
 {
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url
-                                                                cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:1.0];
+                                                                cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30.0];
     [request setHTTPMethod:@"POST"];
     
     NSMutableString *paramString = [[NSMutableString alloc] init];
@@ -369,14 +369,28 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
 +(void)getImageWithURL:(NSURL*)url
      completionHandler:(void(^) (UIImage* image))handler
 {
-    [WTRequestCenter getWithURL:url  parameters:nil  completionHandler:^(NSURLResponse *response, NSData *data,NSError *error) {
-        UIImage *image = [UIImage imageWithData:data];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (handler) {
+    NSURLCache *cache = [WTRequestCenter sharedCache];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30.0];
+    NSCachedURLResponse *response =[cache cachedResponseForRequest:request];
+    if (response) {
+        if (handler) {
+            UIImage *image = [UIImage imageWithData:response.data];
+            dispatch_async(dispatch_get_main_queue(), ^{
                 handler(image);
+            });
+        }
+    }else
+    {
+        [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter shareQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+            if (handler) {
+                UIImage *image = [UIImage imageWithData:data];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    handler(image);
+                });
             }
-        });
-    }];
+        }];
+    }
+   
 }
 
 
