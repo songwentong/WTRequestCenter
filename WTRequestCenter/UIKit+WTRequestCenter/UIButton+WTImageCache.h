@@ -16,4 +16,11 @@
 - (void)setImageForState:(UIControlState)state
                  withURL:(NSURL *)url
         placeholderImage:(UIImage *)placeholderImage;
+
+- (void)setBackgroundImage:(UIControlState)state
+                   withURL:(NSURL *)url;
+
+- (void)setBackgroundImage:(UIControlState)state
+                   withURL:(NSURL *)url
+          placeholderImage:(UIImage *)placeholderImage;
 @end
