@@ -71,6 +71,7 @@
      completionHandler:(void(^) (UIImage* image))handler;
 
 #pragma mark - 辅助
+//JSON解析
 +(id)JSONObjectWithData:(NSData*)data;
 
 #pragma mark - URL
