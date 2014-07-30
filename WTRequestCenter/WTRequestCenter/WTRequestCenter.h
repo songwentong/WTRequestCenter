@@ -28,7 +28,7 @@
 +(void)stopAllRequest;
 
 //当前缓存大小，目前有问题，不建议用
-//+(NSUInteger)currentDiskUsage;
++(NSUInteger)currentDiskUsage;
 
 //清除请求的缓存
 +(void)removeRequestCache:(NSURLRequest*)request;
@@ -48,7 +48,9 @@
 
 
 //不使用缓存的post请求  (Without Cache)
-+(NSURLRequest*)postWithoutCacheURL:(NSURL*)url parameters:(NSDictionary*)parameters completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
++(NSURLRequest*)postWithoutCacheURL:(NSURL*)url
+                         parameters:(NSDictionary*)parameters
+                  completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 
 #pragma mark - Image
 //图片上传  Upload

@@ -23,11 +23,18 @@
 //    NSLog(@"%@",image);
     NSLog(@"%@",[[NSProcessInfo processInfo] globallyUniqueString]);
 //    GET请求
-//    [self get];
+    [self get];
 //    POST请求
-//    [self post];
+    [self post];
+//    下载图片
     [self loadImage];
     
+    
+//    查看内存用量
+    NSLog(@"%d",[[WTRequestCenter sharedCache] currentMemoryUsage]);
+    
+//    查看缓存（Cache）用量
+    NSLog(@"%d",[WTRequestCenter currentDiskUsage]);
 }
 
 
