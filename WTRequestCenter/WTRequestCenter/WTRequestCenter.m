@@ -117,7 +117,10 @@ static NSOperationQueue *shareQueue = nil;
     [cache removeCachedResponseForRequest:request];
 }
 #pragma mark - 辅助
-
++(id)JSONObjectWithData:(NSData*)data
+{
+    return [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+}
 
 
 

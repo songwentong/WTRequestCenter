@@ -70,6 +70,9 @@
 +(void)getImageWithURL:(NSURL*)url
      completionHandler:(void(^) (UIImage* image))handler;
 
+#pragma mark - 辅助
++(id)JSONObjectWithData:(NSData*)data;
+
 #pragma mark - URL
 
 //实际应用示例
