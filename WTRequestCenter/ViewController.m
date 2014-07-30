@@ -98,11 +98,11 @@
 
 -(void)loadImage
 {
-    NSURL *url = [NSURL URLWithString:@"http://img02.v1pin.com/photo/201407/201407089004037836461.jpg"];
+    NSURL *url = [NSURL URLWithString:@"http://img0.bdstatic.com/img/image/shouye/dengni47.jpg"];
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     imageView.contentMode = UIViewContentModeCenter;
-    imageView.frame = CGRectMake(0, 0, 200, 200);
-    UIImage *placeHolderImage = [UIImage imageNamed:@"xxx.png"];
+    imageView.frame = self.view.bounds;
+    UIImage *placeHolderImage = [UIImage imageNamed:@"image.jpg"];
     [imageView setImageWithURL:url placeholderImage:placeHolderImage];
     
     [self.view addSubview:imageView];
