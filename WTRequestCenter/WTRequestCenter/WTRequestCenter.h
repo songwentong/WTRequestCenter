@@ -7,10 +7,12 @@
 //  site:https://github.com/swtlovewtt/WTRequestCenter
 
 #import <Foundation/Foundation.h>
-
+#import "UIImageView+WTImageCache.h"
 @interface WTRequestCenter : NSObject
 
-
+//请求队列
++(NSOperationQueue*)shareQueue;
+//缓存
 +(NSURLCache*)sharedCache;
 
 //设置失效日期,单位是秒
@@ -26,7 +28,7 @@
 +(void)stopAllRequest;
 
 //当前缓存大小，目前有问题，不建议用
-//+(NSUInteger)currentDiskUsage;
++(NSUInteger)currentDiskUsage;
 
 //清除请求的缓存
 +(void)removeRequestCache:(NSURLRequest*)request;
@@ -46,7 +48,9 @@
 
 
 //不使用缓存的post请求  (Without Cache)
-+(NSURLRequest*)postWithoutCacheURL:(NSURL*)url parameters:(NSDictionary*)parameters completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
++(NSURLRequest*)postWithoutCacheURL:(NSURL*)url
+                         parameters:(NSDictionary*)parameters
+                  completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 
 #pragma mark - Image
 //图片上传  Upload
@@ -65,6 +69,10 @@
 //下载图片  Download  (Cache)
 +(void)getImageWithURL:(NSURL*)url
      completionHandler:(void(^) (UIImage* image))handler;
+
+#pragma mark - 辅助
+//JSON解析
++(id)JSONObjectWithData:(NSData*)data;
 
 #pragma mark - URL
 

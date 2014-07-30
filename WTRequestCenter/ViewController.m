@@ -26,7 +26,15 @@
     [self get];
 //    POST请求
     [self post];
+//    下载图片
+    [self loadImage];
     
+    
+//    查看内存用量
+    NSLog(@"%d",[[WTRequestCenter sharedCache] currentMemoryUsage]);
+    
+//    查看缓存（Cache）用量
+    NSLog(@"%d",[WTRequestCenter currentDiskUsage]);
 }
 
 
@@ -90,13 +98,14 @@
 
 -(void)loadImage
 {
-    NSURL *url = [NSURL URLWithString:@"http://www.xxx.com/xxx.jpg"];
+    NSURL *url = [NSURL URLWithString:@"http://img0.bdstatic.com/img/image/shouye/dengni47.jpg"];
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     imageView.contentMode = UIViewContentModeCenter;
-    imageView.image = [UIImage imageNamed:@"xxx.png"];
-    [WTRequestCenter getImageWithURL:url completionHandler:^(UIImage *image) {
-        imageView.image = image;
-    }];
+    imageView.frame = self.view.bounds;
+    UIImage *placeHolderImage = [UIImage imageNamed:@"image.jpg"];
+    [imageView setImageWithURL:url placeholderImage:placeHolderImage];
+    
+    [self.view addSubview:imageView];
 }
 
 - (void)didReceiveMemoryWarning

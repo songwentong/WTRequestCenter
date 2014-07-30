@@ -10,6 +10,36 @@
 
 @implementation WTRequestCenter
 
+
+#pragma mark - 请求队列和缓存
+//请求队列
+static NSOperationQueue *shareQueue = nil;
++(NSOperationQueue*)shareQueue
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        shareQueue = [[NSOperationQueue alloc] init];
+        [shareQueue setSuspended:NO];
+        [shareQueue setMaxConcurrentOperationCount:10];
+        shareQueue.name = @"WTRequestCentershareQueue";
+    });
+    return shareQueue;
+}
+
+
+//缓存
++(NSURLCache*)sharedCache
+{
+    NSURLCache *cache = [NSURLCache sharedURLCache];
+    //    最大内存空间
+    [cache setMemoryCapacity:1024*1024*20];//20M
+    //    最大储存（硬盘）空间
+    [cache setDiskCapacity:1024*1024*300];//300M
+    return cache;
+}
+
+
+#pragma mark - 配置设置
 //设置失效日期
 +(void)setExpireTimeInterval:(NSTimeInterval)expireTime
 {
@@ -37,6 +67,7 @@
     NSString *dateString = [allHeaderFields valueForKey:@"Date"];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"eee, dd MMM yyyy HH:mm:ss VVVV"];
+    [formatter setLocale:[NSLocale currentLocale]];
     NSDate *now = [NSDate date];
     //            NSString *string = [formatter stringFromDate:now];
     //            NSLog(@"%@",string);
@@ -72,38 +103,12 @@
     return [cache currentDiskUsage];
 }
 
-
-
-static NSOperationQueue *shareQueue = nil;
-+(NSOperationQueue*)shareQueue
-{
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-//        if (!shareQueue) {
-            shareQueue = [[NSOperationQueue alloc] init];
-            [shareQueue setSuspended:NO];
-            [shareQueue setMaxConcurrentOperationCount:10];
-            shareQueue.name = @"WTRequestCentershareQueue";
-            
-//        }
-    });
-    return shareQueue;
-}
-
 +(void)stopAllRequest
 {
     [[WTRequestCenter shareQueue] cancelAllOperations];
+    
 }
 
-+(NSURLCache*)sharedCache
-{
-    NSURLCache *cache = [NSURLCache sharedURLCache];
-//    最大内存空间
-    [cache setMemoryCapacity:1024*1024*10];//10M
-//    最大储存（硬盘）空间
-    [cache setDiskCapacity:1024*1024*100];//100M
-    return cache;
-}
 
 //清除请求的缓存
 +(void)removeRequestCache:(NSURLRequest*)request
@@ -112,7 +117,10 @@ static NSOperationQueue *shareQueue = nil;
     [cache removeCachedResponseForRequest:request];
 }
 #pragma mark - 辅助
-
++(id)JSONObjectWithData:(NSData*)data
+{
+    return [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+}
 
 
 
@@ -123,7 +131,7 @@ static NSOperationQueue *shareQueue = nil;
 +(NSURLRequest*)getWithURL:(NSURL*)url parameters:(NSDictionary*)parameters completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
 {
     NSURLCache *cache = [WTRequestCenter sharedCache];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:1.0];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30.0];
 
     NSMutableString *paramString = [[NSMutableString alloc] init];
     for (NSString *key in [parameters allKeys]) {
@@ -151,31 +159,34 @@ static NSOperationQueue *shareQueue = nil;
     }else
     {
         //NSDateFormatter 在iOS7.0以后是线程安全的，为了保证5.0可用，在这里用主线程括起来
-        dispatch_async(dispatch_get_main_queue(), ^{
+        
             
             if ([response.response isKindOfClass:[NSHTTPURLResponse class]]) {
                 
                 BOOL isExpired = [WTRequestCenter checkRequestIsExpired:(NSHTTPURLResponse*)response.response];
                 if (isExpired) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
                     if (handler) {
                         handler(response.response,response.data,nil);
                     }
+                    });
                     [WTRequestCenter removeRequestCache:request];
 //                    [WTRequestCenter getWithURL:url completionHandler:handler];
                     [WTRequestCenter getWithURL:url parameters:parameters completionHandler:handler];
                 }else
                 {
+                    dispatch_async(dispatch_get_main_queue(), ^{
                     if (handler) {
                         handler(response.response,response.data,nil);
                     }
+                    });
                 }
                 
                 
                 
             }
             
-            
-        });
+        
     }
     
     return request;
@@ -189,7 +200,7 @@ static NSOperationQueue *shareQueue = nil;
 {
     NSURLCache *cache = [WTRequestCenter sharedCache];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url
-                cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:1.0];
+                cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30.0];
     [request setHTTPMethod:@"POST"];
     
     NSMutableString *paramString = [[NSMutableString alloc] init];
@@ -228,22 +239,26 @@ static NSOperationQueue *shareQueue = nil;
     }else
     {
         //NSDateFormatter 在iOS7.0以后是线程安全的，为了保证5.0可用，在这里用主线程括起来
-        dispatch_async(dispatch_get_main_queue(), ^{
+        
             
             if ([response.response isKindOfClass:[NSHTTPURLResponse class]]) {
                 
                 BOOL isExpired = [WTRequestCenter checkRequestIsExpired:(NSHTTPURLResponse*)response.response];
                 if (isExpired) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
                     if (handler) {
                         handler(response.response,response.data,nil);
                     }
+                    });
                     [WTRequestCenter removeRequestCache:request];
                     [WTRequestCenter postWithURL:url parameters:parameters completionHandler:handler];
                 }else
                 {
+                    dispatch_async(dispatch_get_main_queue(), ^{
                     if (handler) {
                         handler(response.response,response.data,nil);
                     }
+                     });
                 }
                 
                 
@@ -251,7 +266,7 @@ static NSOperationQueue *shareQueue = nil;
             }
             
             
-        });
+       
     }
 
     return request;
@@ -260,7 +275,7 @@ static NSOperationQueue *shareQueue = nil;
 +(NSURLRequest*)postWithoutCacheURL:(NSURL*)url parameters:(NSDictionary*)parameters completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
 {
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url
-                                                                cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:1.0];
+                                                                cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30.0];
     [request setHTTPMethod:@"POST"];
     
     NSMutableString *paramString = [[NSMutableString alloc] init];
@@ -361,14 +376,29 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
 +(void)getImageWithURL:(NSURL*)url
      completionHandler:(void(^) (UIImage* image))handler
 {
-    [WTRequestCenter getWithURL:url  parameters:nil  completionHandler:^(NSURLResponse *response, NSData *data,NSError *error) {
-        UIImage *image = [UIImage imageWithData:data];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (handler) {
+    NSURLCache *cache = [WTRequestCenter sharedCache];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30.0];
+    NSCachedURLResponse *response =[cache cachedResponseForRequest:request];
+    if (response) {
+        if (handler) {
+            UIImage *image = [UIImage imageWithData:response.data];
+            dispatch_async(dispatch_get_main_queue(), ^{
                 handler(image);
+            });
+            
+        }
+    }else
+    {
+        [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter shareQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+            if (handler) {
+                UIImage *image = [UIImage imageWithData:data];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    handler(image);
+                });
             }
-        });
-    }];
+        }];
+    }
+   
 }
 
 
