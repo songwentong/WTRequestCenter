@@ -7,10 +7,12 @@
 //  site:https://github.com/swtlovewtt/WTRequestCenter
 
 #import <Foundation/Foundation.h>
-
+#import "UIImageView+WTImageCache.h"
 @interface WTRequestCenter : NSObject
 
-
+//请求队列
++(NSOperationQueue*)shareQueue;
+//缓存
 +(NSURLCache*)sharedCache;
 
 //设置失效日期,单位是秒

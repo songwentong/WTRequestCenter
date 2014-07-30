@@ -32,9 +32,9 @@ static NSOperationQueue *shareQueue = nil;
 {
     NSURLCache *cache = [NSURLCache sharedURLCache];
     //    最大内存空间
-    [cache setMemoryCapacity:1024*1024*10];//10M
+    [cache setMemoryCapacity:1024*1024*20];//20M
     //    最大储存（硬盘）空间
-    [cache setDiskCapacity:1024*1024*100];//100M
+    [cache setDiskCapacity:1024*1024*300];//300M
     return cache;
 }
 
@@ -103,13 +103,10 @@ static NSOperationQueue *shareQueue = nil;
     return [cache currentDiskUsage];
 }
 
-
-
-
-
 +(void)stopAllRequest
 {
     [[WTRequestCenter shareQueue] cancelAllOperations];
+    
 }
 
 
