@@ -23,7 +23,7 @@
     
     CGFloat time = [[NSUserDefaults standardUserDefaults] floatForKey:@"WTRequestCenterExpireTime"];
     if (time==0) {
-//        默认时效日期
+//        默认时效日期一天
         time = 3600*24;
     }
     return time;
