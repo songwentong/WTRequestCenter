@@ -103,10 +103,9 @@ static NSOperationQueue *shareQueue = nil;
     return [cache currentDiskUsage];
 }
 
-+(void)stopAllRequest
++(void)cancelAllRequest
 {
     [[WTRequestCenter shareQueue] cancelAllOperations];
-    
 }
 
 
@@ -171,7 +170,6 @@ static NSOperationQueue *shareQueue = nil;
                     }
                     });
                     [WTRequestCenter removeRequestCache:request];
-//                    [WTRequestCenter getWithURL:url completionHandler:handler];
                     [WTRequestCenter getWithURL:url parameters:parameters completionHandler:handler];
                 }else
                 {
@@ -191,6 +189,8 @@ static NSOperationQueue *shareQueue = nil;
     
     return request;
 }
+
+
 
 #pragma mark - POST
 // post 请求

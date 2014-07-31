@@ -25,7 +25,7 @@
 +(void)clearAllCache;
 
 //停止所有的请求  建议在NavigationController pop之前调用，防止崩溃
-+(void)stopAllRequest;
++(void)cancelAllRequest;
 
 //当前缓存大小，目前有问题，不建议用
 +(NSUInteger)currentDiskUsage;

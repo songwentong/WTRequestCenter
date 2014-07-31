@@ -66,7 +66,7 @@
                           }
                   
                       }];
-//    [WTRequestCenter stopAllRequest];
+//    [WTRequestCenter cancelAllRequest];
 }
 
 -(void)post
