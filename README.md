@@ -8,7 +8,7 @@ WTRequestCenter
 使用方法 Usage
 ===============
 #### 注意：所有的请求都是缓存的
-#### GET 请求
+### GET 请求
 ```objective-c
 [WTRequestCenter getWithURL:url
                  parameters:parameters
@@ -18,7 +18,7 @@ WTRequestCenter
               }
 ```
               
-#### POST 请求
+### POST 请求
 ```objective-c
 [WTRequestCenter postWithURL:url
                   parameters:parameters 
@@ -28,7 +28,7 @@ WTRequestCenter
                }
 ```
 
-#### 缓存图片
+### 缓存图片
 ```objective-c
     NSURL *url = [NSURL URLWithString:@"http://www.xxx.com/eqdsa.jpg"];
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
@@ -37,7 +37,10 @@ WTRequestCenter
     }];
 ```
 
-
+### 取消所有请求
+```objective-c
+[WTRequestCenter cancelAllRequest];
+```
 
 Requirement  
 ===============
