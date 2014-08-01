@@ -13,17 +13,17 @@
 
 #pragma mark - 请求队列和缓存
 //请求队列
-static NSOperationQueue *shareQueue = nil;
-+(NSOperationQueue*)shareQueue
+static NSOperationQueue *sharedQueue = nil;
++(NSOperationQueue*)sharedQueue
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        shareQueue = [[NSOperationQueue alloc] init];
-        [shareQueue setSuspended:NO];
-        [shareQueue setMaxConcurrentOperationCount:10];
-        shareQueue.name = @"WTRequestCentershareQueue";
+        sharedQueue = [[NSOperationQueue alloc] init];
+        [sharedQueue setSuspended:NO];
+        [sharedQueue setMaxConcurrentOperationCount:10];
+        sharedQueue.name = @"WTRequestCentersharedQueue";
     });
-    return shareQueue;
+    return sharedQueue;
 }
 
 
@@ -40,6 +40,18 @@ static NSOperationQueue *shareQueue = nil;
 
 
 #pragma mark - 配置设置
+
+-(BOOL)isRequesting
+{
+    BOOL requesting = NO;
+    NSOperationQueue *sharedQueue = [WTRequestCenter sharedQueue];
+    
+    if ([sharedQueue operationCount]!=0) {
+        requesting = YES;
+    }
+    return requesting;
+}
+
 //设置失效日期
 +(void)setExpireTimeInterval:(NSTimeInterval)expireTime
 {
@@ -105,7 +117,7 @@ static NSOperationQueue *shareQueue = nil;
 
 +(void)cancelAllRequest
 {
-    [[WTRequestCenter shareQueue] cancelAllOperations];
+    [[WTRequestCenter sharedQueue] cancelAllOperations];
 }
 
 
@@ -145,7 +157,7 @@ static NSOperationQueue *shareQueue = nil;
     
     if (!response) {
         [NSURLConnection sendAsynchronousRequest:request
-                                           queue:[WTRequestCenter shareQueue]
+                                           queue:[WTRequestCenter sharedQueue]
                                completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
          {
              
@@ -222,7 +234,7 @@ static NSOperationQueue *shareQueue = nil;
     if (!response) {
 
         [NSURLConnection sendAsynchronousRequest:request
-                                           queue:[WTRequestCenter shareQueue]
+                                           queue:[WTRequestCenter sharedQueue]
                                completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
                                    
                    dispatch_async(dispatch_get_main_queue(), ^{
@@ -291,7 +303,7 @@ static NSOperationQueue *shareQueue = nil;
     NSData *postData = [paramString dataUsingEncoding:NSUTF8StringEncoding];
     [request setHTTPBody:postData];
     
-    [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter shareQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+    [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (handler) {
         handler(response,data,connectionError);
@@ -346,7 +358,7 @@ static NSOperationQueue *shareQueue = nil;
 completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
 {
     NSURLRequest *request = [WTRequestCenter uploadRequestWithURL:url data:data fileName:fileName];
-    [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter shareQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+    [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (handler) {
                 handler(response,data,connectionError);
@@ -389,7 +401,7 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
         }
     }else
     {
-        [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter shareQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
             if (handler) {
                 UIImage *image = [UIImage imageWithData:data];
                 dispatch_async(dispatch_get_main_queue(), ^{

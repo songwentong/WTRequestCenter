@@ -11,7 +11,7 @@
 @interface WTRequestCenter : NSObject
 
 //请求队列
-+(NSOperationQueue*)shareQueue;
++(NSOperationQueue*)sharedQueue;
 //缓存
 +(NSURLCache*)sharedCache;
 
