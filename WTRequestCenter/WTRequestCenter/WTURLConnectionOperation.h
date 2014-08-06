@@ -29,7 +29,7 @@
 /**
  响应的数据
  */
-@property (readonly, nonatomic, strong) NSData *responseData;
+@property (readonly, nonatomic, strong) NSMutableData *responseData;
 
 /**
  响应的字符串
