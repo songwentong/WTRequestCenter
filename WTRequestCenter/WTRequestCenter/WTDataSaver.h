@@ -17,3 +17,10 @@
 +(NSData*)dataWithIndex:(NSInteger)index;
 +(NSData*)dataWithName:(NSString*)name;
 @end
+/*
+ index占用表
+ 1：A页面XX数据
+ 2：B页面XX数据
+ 3：C页面XX数据
+ 
+ */
