@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A33099C21993131400BC3774 /* WTDataSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = A33099C11993131400BC3774 /* WTDataSaver.m */; };
 		A3B70F591988BDFA002776F4 /* image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A3B70F581988BDFA002776F4 /* image.jpg */; };
 		A3B70F641988DC5B002776F4 /* UIButton+WTImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B70F611988DC5B002776F4 /* UIButton+WTImageCache.m */; };
 		A3B70F651988DC5B002776F4 /* UIImageView+WTImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B70F631988DC5B002776F4 /* UIImageView+WTImageCache.m */; };
@@ -40,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A33099C01993131400BC3774 /* WTDataSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTDataSaver.h; sourceTree = "<group>"; };
+		A33099C11993131400BC3774 /* WTDataSaver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTDataSaver.m; sourceTree = "<group>"; };
 		A3B70F581988BDFA002776F4 /* image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpg; sourceTree = "<group>"; };
 		A3B70F601988DC5B002776F4 /* UIButton+WTImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+WTImageCache.h"; sourceTree = "<group>"; };
 		A3B70F611988DC5B002776F4 /* UIButton+WTImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+WTImageCache.m"; sourceTree = "<group>"; };
@@ -201,6 +204,8 @@
 				E4DBC943197D14F3004F9393 /* WTRequestCenter.m */,
 				E4FB6C39198BC2A300138FE0 /* WTURLConnectionOperation.h */,
 				E4FB6C3A198BC2A300138FE0 /* WTURLConnectionOperation.m */,
+				A33099C01993131400BC3774 /* WTDataSaver.h */,
+				A33099C11993131400BC3774 /* WTDataSaver.m */,
 			);
 			name = NSURLRequest;
 			sourceTree = "<group>";
@@ -319,6 +324,7 @@
 				E4FB6C3B198BC2A300138FE0 /* WTURLConnectionOperation.m in Sources */,
 				E4440D81197A01B1001E6D88 /* AppDelegate.m in Sources */,
 				E4440D7D197A01B1001E6D88 /* main.m in Sources */,
+				A33099C21993131400BC3774 /* WTDataSaver.m in Sources */,
 				A3B70F641988DC5B002776F4 /* UIButton+WTImageCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
