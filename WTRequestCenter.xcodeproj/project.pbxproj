@@ -202,10 +202,10 @@
 			children = (
 				E4DBC942197D14F3004F9393 /* WTRequestCenter.h */,
 				E4DBC943197D14F3004F9393 /* WTRequestCenter.m */,
-				E4FB6C39198BC2A300138FE0 /* WTURLConnectionOperation.h */,
-				E4FB6C3A198BC2A300138FE0 /* WTURLConnectionOperation.m */,
 				A33099C01993131400BC3774 /* WTDataSaver.h */,
 				A33099C11993131400BC3774 /* WTDataSaver.m */,
+				E4FB6C39198BC2A300138FE0 /* WTURLConnectionOperation.h */,
+				E4FB6C3A198BC2A300138FE0 /* WTURLConnectionOperation.m */,
 			);
 			name = NSURLRequest;
 			sourceTree = "<group>";
