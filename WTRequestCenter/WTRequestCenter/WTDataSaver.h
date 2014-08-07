@@ -11,6 +11,8 @@
  存到Library下的Cache下的WTDataSaver下，方便管理。
  
     这个库提供了许多快捷存取文件的功能，方便使用。
+                                            
+                                        Mike
  */
 #import <Foundation/Foundation.h>
 
