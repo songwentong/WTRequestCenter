@@ -16,6 +16,9 @@
 //取数据
 +(NSData*)dataWithIndex:(NSInteger)index;
 +(NSData*)dataWithName:(NSString*)name;
+//异步取数据
++(void)dataWithName:(NSString*)name
+         completion:(void(^)(NSData*data))completion;
 @end
 /*
  index占用表

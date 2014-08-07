@@ -42,6 +42,7 @@
     }];
     [block start];
 }
+
 +(NSData*)dataWithName:(NSString*)name
 {
     NSData *data = nil;
@@ -49,5 +50,24 @@
     data = [NSData dataWithContentsOfFile:filePath];
     return data;
 }
+
++(void)dataWithName:(NSString*)name completion:(void(^)(NSData*data))completion
+{
+    __block NSData *data = nil;
+    NSString *filePath = [NSString stringWithFormat:@"%@/%@",[self savePath],name];
+    NSBlockOperation *block = [NSBlockOperation blockOperationWithBlock:^{
+        data = [NSData dataWithContentsOfFile:filePath];
+    }];
+    /*
+    [block setCompletionBlock:^{
+        
+    }];*/
+    
+    block.completionBlock = ^{
+        completion(data);
+    };
+    [block start];
+}
+
 
 @end
