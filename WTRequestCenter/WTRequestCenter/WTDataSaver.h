@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface WTDataSaver : NSObject
+
+
+#pragma mark - 存数据 Save Data
 //存数据（都是异步）
 +(void)saveData:(NSData*)data withIndex:(NSInteger)index;
 +(void)saveData:(NSData*)data withName:(NSString*)name;
@@ -22,6 +25,8 @@
      completion:(void(^)())completion;
 
 
+
+#pragma mark - 读数据 Read Data
 //同步取数据（不推荐）
 +(NSData*)dataWithIndex:(NSInteger)index;
 +(NSData*)dataWithName:(NSString*)name;
@@ -33,10 +38,10 @@
 +(void)dataWithName:(NSString*)name
          completion:(void(^)(NSData*data))completion;
 
-#pragma mark - 清数据
+#pragma mark - 清数据  RemoveAllData
 +(void)removeAllData;
 
-#pragma mark - 大小
+#pragma mark - 大小   file Size
 +(void)fileSizeComplection:(void(^)(NSInteger size))complection;
 
 #if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000) || (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= 1090)
