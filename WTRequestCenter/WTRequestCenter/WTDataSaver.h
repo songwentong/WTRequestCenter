@@ -12,7 +12,13 @@
 //存数据（都是异步）
 +(void)saveData:(NSData*)data withIndex:(NSInteger)index;
 +(void)saveData:(NSData*)data withName:(NSString*)name;
+
+
 //完成回调
++(void)saveData:(NSData *)data
+      withIndex:(NSInteger)index
+     completion:(void (^)())completion;
+
 +(void)saveData:(NSData*)data
        withName:(NSString*)name
      completion:(void(^)())completion;

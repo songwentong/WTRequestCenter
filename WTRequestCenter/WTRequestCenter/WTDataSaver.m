@@ -36,7 +36,11 @@
 {
     [self saveData:data withName:name completion:nil];
 }
-
++(void)saveData:(NSData *)data withIndex:(NSInteger)index completion:(void (^)())completion
+{
+    NSString *name = [NSString stringWithFormat:@"%d",index];
+    [self saveData:data withName:name completion:completion];
+}
 +(void)saveData:(NSData*)data withName:(NSString*)name completion:(void(^)())completion
 {
     [self configureDirectory];
@@ -50,7 +54,6 @@
                 completion();
             });
         }
-        
     }];
     [block start];
 }
