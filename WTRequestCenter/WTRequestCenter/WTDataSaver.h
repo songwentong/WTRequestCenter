@@ -3,8 +3,8 @@
 //  WTRequestCenter
 //
 //  Created by songwt on 14-8-7.
-//  Copyright (c) 2014年 song. All rights reserved.
-//
+//  Copyright (c) Mike song(mailto:275712575@qq.com). All rights reserved.
+//  site:https://github.com/swtlovewtt/WTRequestCenter
 
 #import <Foundation/Foundation.h>
 
@@ -12,8 +12,6 @@
 //存数据（都是异步）
 +(void)saveData:(NSData*)data withIndex:(NSInteger)index;
 +(void)saveData:(NSData*)data withName:(NSString*)name;
-
-
 //完成回调
 +(void)saveData:(NSData *)data
       withIndex:(NSInteger)index
