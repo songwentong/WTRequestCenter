@@ -64,7 +64,11 @@
     }];*/
     
     block.completionBlock = ^{
-        completion(data);
+        if (completion) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+            completion(data);
+            });
+        }
     };
     [block start];
 }
