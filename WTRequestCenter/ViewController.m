@@ -113,6 +113,9 @@
 
 -(void)saveAndWrite
 {
+    
+    
+    [WTDataSaver testiOS7];
     NSLog(@"%@",NSHomeDirectory());
     NSData *data = [@"狂拽酷眩叼炸天" dataUsingEncoding:NSUTF8StringEncoding];
     [WTDataSaver saveData:data withName:@"data"];
