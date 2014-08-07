@@ -116,14 +116,19 @@
     
     
     [WTDataSaver testiOS7];
-    [WTDataSaver removeAllData];
-    return;
+//    [WTDataSaver removeAllData];
+    
+
     NSLog(@"%@",NSHomeDirectory());
     NSData *data = [@"狂拽酷眩叼炸天" dataUsingEncoding:NSUTF8StringEncoding];
     [WTDataSaver saveData:data withName:@"data"];
     [WTDataSaver dataWithName:@"data" completion:^(NSData *data) {
         NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"%@",string);
+    }];
+    
+    [WTDataSaver fileSizeComplection:^(NSInteger size) {
+        NSLog(@"%d",size);
     }];
 }
 

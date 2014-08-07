@@ -123,6 +123,32 @@
 }
 
 #pragma mark - 其他
++(void)fileSizeComplection:(void(^)(NSInteger size))complection
+{
+    [self configureDirectory];
+//  总大小，单位是字节（Byte）
+    __block NSInteger totalSize = 0;
+
+    NSBlockOperation *blockOperation = [NSBlockOperation blockOperationWithBlock:^{
+        NSFileManager *manager = [NSFileManager defaultManager];
+
+        NSDirectoryEnumerator* directoryEnumerator =[manager enumeratorAtPath:[self savePath]];
+        while ([directoryEnumerator nextObject]) {
+            NSLog(@"%@",[directoryEnumerator fileAttributes]);
+            NSInteger fileSize = [[[directoryEnumerator fileAttributes] valueForKey:@"NSFileSize"] integerValue];
+            totalSize += fileSize;
+        }
+    }];
+    [blockOperation setCompletionBlock:^{
+        if (complection) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+            complection(totalSize);
+            });
+        }
+    }];
+    [blockOperation start];
+}
+
 
 #if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000) || (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= 1090)
 +(void)testiOS7
