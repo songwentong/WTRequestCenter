@@ -9,8 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface WTDataSaver : NSObject
+//存数据
 +(void)saveData:(NSData*)data withIndex:(NSInteger)index;
-+(NSData*)dataWithIndex:(NSInteger)index;
 +(void)saveData:(NSData*)data withName:(NSString*)name;
+
+//取数据
++(NSData*)dataWithIndex:(NSInteger)index;
 +(NSData*)dataWithName:(NSString*)name;
 @end
