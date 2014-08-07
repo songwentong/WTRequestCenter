@@ -35,6 +35,8 @@
 
 #pragma mark - 清数据
 +(void)removeAllData;
+
+#pragma mark - 大小
 +(void)fileSizeComplection:(void(^)(NSInteger size))complection;
 
 #if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000) || (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= 1090)

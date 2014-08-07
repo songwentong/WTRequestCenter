@@ -10,12 +10,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WTRequestCenter/WTRequestCenter/WTDataSaver.m"
-            timestampString = "429080463.920672"
+            timestampString = "429080716.690587"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
             landmarkName = "+fileSizeComplection:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WTRequestCenter/WTRequestCenter/WTDataSaver.m"
+            timestampString = "429080720.624291"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "+removeAllData"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

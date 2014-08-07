@@ -134,7 +134,7 @@
 
         NSDirectoryEnumerator* directoryEnumerator =[manager enumeratorAtPath:[self savePath]];
         while ([directoryEnumerator nextObject]) {
-            NSLog(@"%@",[directoryEnumerator fileAttributes]);
+//            NSLog(@"%@",[directoryEnumerator fileAttributes]);
             NSInteger fileSize = [[[directoryEnumerator fileAttributes] valueForKey:@"NSFileSize"] integerValue];
             totalSize += fileSize;
         }

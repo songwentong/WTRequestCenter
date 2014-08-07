@@ -116,7 +116,7 @@
     
     
     [WTDataSaver testiOS7];
-//    [WTDataSaver removeAllData];
+//
     
 
     NSLog(@"%@",NSHomeDirectory());
@@ -130,6 +130,7 @@
     [WTDataSaver fileSizeComplection:^(NSInteger size) {
         NSLog(@"%d",size);
     }];
+    [WTDataSaver removeAllData];
 }
 
 - (void)didReceiveMemoryWarning
