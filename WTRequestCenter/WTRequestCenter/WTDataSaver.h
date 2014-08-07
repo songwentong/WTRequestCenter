@@ -27,7 +27,11 @@
 //同步取数据（不推荐）
 +(NSData*)dataWithIndex:(NSInteger)index;
 +(NSData*)dataWithName:(NSString*)name;
+
 //异步取数据(推荐)
++(void)dataWithIndex:(NSInteger)index
+          completion:(void(^)(NSData*data))completion;
+
 +(void)dataWithName:(NSString*)name
          completion:(void(^)(NSData*data))completion;
 @end

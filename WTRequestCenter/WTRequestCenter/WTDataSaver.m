@@ -77,7 +77,11 @@
     data = [NSData dataWithContentsOfFile:filePath];
     return data;
 }
-
++(void)dataWithIndex:(NSInteger)index completion:(void(^)(NSData*data))completion
+{
+    NSString *name = [NSString stringWithFormat:@"%d",index];
+    [self dataWithName:name completion:completion];
+}
 +(void)dataWithName:(NSString*)name completion:(void(^)(NSData*data))completion
 {
     [self configureDirectory];
