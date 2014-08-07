@@ -9,14 +9,19 @@
 #import <Foundation/Foundation.h>
 
 @interface WTDataSaver : NSObject
-//存数据
+//存数据（都是异步）
 +(void)saveData:(NSData*)data withIndex:(NSInteger)index;
 +(void)saveData:(NSData*)data withName:(NSString*)name;
+//完成回调
++(void)saveData:(NSData*)data
+       withName:(NSString*)name
+     completion:(void(^)())completion;
 
-//取数据
+
+//同步取数据（不推荐）
 +(NSData*)dataWithIndex:(NSInteger)index;
 +(NSData*)dataWithName:(NSString*)name;
-//异步取数据
+//异步取数据(推荐)
 +(void)dataWithName:(NSString*)name
          completion:(void(^)(NSData*data))completion;
 @end

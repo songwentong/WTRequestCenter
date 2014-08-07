@@ -9,11 +9,14 @@
 #import "WTDataSaver.h"
 
 @implementation WTDataSaver
+#pragma mark - 保存路径
 +(NSString*)savePath
 {
     NSString *path = [NSString stringWithFormat:@"%@/Library/Caches/WTDataSaver",NSHomeDirectory()];
     return path;
 }
+
+//创建文件夹
 +(void)configureDirectory
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -23,28 +26,49 @@
         [fileManager createDirectoryAtPath:[WTDataSaver savePath] withIntermediateDirectories:NO attributes:nil error:nil];
     }
 }
+#pragma mark - 存数据
 +(void)saveData:(NSData*)data withIndex:(NSInteger)index
 {
     [self saveData:data withName:[NSString stringWithFormat:@"%d",index]];
 }
-+(NSData*)dataWithIndex:(NSInteger)index
-{
-    NSData *data = nil;
-    data = [self dataWithName:[NSString stringWithFormat:@"%d",index]];
-    return data;
-}
+
 +(void)saveData:(NSData*)data withName:(NSString*)name
+{
+    [self saveData:data withName:name completion:nil];
+}
+
++(void)saveData:(NSData*)data withName:(NSString*)name completion:(void(^)())completion
 {
     [self configureDirectory];
     NSString *filePath = [NSString stringWithFormat:@"%@/%@",[self savePath],name];
     NSBlockOperation *block = [NSBlockOperation blockOperationWithBlock:^{
         [data writeToFile:filePath atomically:YES];
     }];
+    [block setCompletionBlock:^{
+        if (completion) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion();
+            });
+        }
+        
+    }];
     [block start];
 }
 
+
+#pragma mark - 取数据
++(NSData*)dataWithIndex:(NSInteger)index
+{
+    NSData *data = nil;
+    data = [self dataWithName:[NSString stringWithFormat:@"%d",index]];
+    return data;
+}
+
+
 +(NSData*)dataWithName:(NSString*)name
 {
+    
+    [self configureDirectory];
     NSData *data = nil;
     NSString *filePath = [NSString stringWithFormat:@"%@/%@",[self savePath],name];
     data = [NSData dataWithContentsOfFile:filePath];
@@ -53,6 +77,7 @@
 
 +(void)dataWithName:(NSString*)name completion:(void(^)(NSData*data))completion
 {
+    [self configureDirectory];
     __block NSData *data = nil;
     NSString *filePath = [NSString stringWithFormat:@"%@/%@",[self savePath],name];
     NSBlockOperation *block = [NSBlockOperation blockOperationWithBlock:^{
