@@ -5,7 +5,13 @@
 //  Created by songwt on 14-8-7.
 //  Copyright (c) Mike song(mailto:275712575@qq.com). All rights reserved.
 //  site:https://github.com/swtlovewtt/WTRequestCenter
-
+/*
+    这是一个快捷文件存取工具，由于我使用中总会遇到一些
+ 需要缓存的数据，于是我就想写一个数据缓存工具，我把数据
+ 存到Library下的Cache下的WTDataSaver下，方便管理。
+ 
+    这个库提供了许多快捷存取文件的功能，方便使用。
+ */
 #import <Foundation/Foundation.h>
 
 @interface WTDataSaver : NSObject
