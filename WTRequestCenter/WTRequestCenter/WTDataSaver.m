@@ -9,6 +9,24 @@
 #import "WTDataSaver.h"
 
 @implementation WTDataSaver
+
+
+#pragma mark - 对象转换
++(NSData*)dataWithJSONObject:(id)obj
+{
+    NSData *data = nil;
+    if ([NSJSONSerialization isValidJSONObject:obj]) {
+        data = [NSJSONSerialization dataWithJSONObject:obj options:NSJSONWritingPrettyPrinted error:nil];
+    }
+    return data;
+}
+
++(id)JSONObjectWithData:(NSData*)data
+{
+    id obj = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+    return obj;
+}
+
 #pragma mark - 保存路径
 +(NSString*)savePath
 {

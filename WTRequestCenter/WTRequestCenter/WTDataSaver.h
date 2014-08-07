@@ -17,7 +17,11 @@
 #import <Foundation/Foundation.h>
 
 @interface WTDataSaver : NSObject
+#pragma mark - 对象转换
 
+//用于对象和Data的转换，类型可以是NSDictionary或者NSArray
++(NSData*)dataWithJSONObject:(id)obj;
++(id)JSONObjectWithData:(NSData*)data;
 
 #pragma mark - 存数据 Save Data
 //存数据（都是异步）
