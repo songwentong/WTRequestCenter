@@ -105,6 +105,25 @@
     [block start];
 }
 
+#pragma mark - 清数据
++(void)removeAllData
+{
+    [self configureDirectory];
+    NSBlockOperation *blockOperation = [NSBlockOperation blockOperationWithBlock:^{
+        
+        NSFileManager *manager = [NSFileManager defaultManager];
+        NSArray *array = [manager contentsOfDirectoryAtPath:[WTDataSaver savePath] error:nil];
+        for (NSString *string  in array) {
+            NSString *filePath = [NSString stringWithFormat:@"%@/%@",[self savePath],string];
+            [manager removeItemAtPath:filePath error:nil];
+        }
+    }];
+   
+    [blockOperation start];
+}
+
+#pragma mark - 其他
+
 #if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000) || (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= 1090)
 +(void)testiOS7
 {
