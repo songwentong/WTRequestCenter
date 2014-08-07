@@ -29,6 +29,8 @@
 //    下载图片
     [self loadImage];
     
+//    存取
+    [self saveAndWrite];
     
 //    查看内存用量
     NSLog(@"%d",[[WTRequestCenter sharedCache] currentMemoryUsage]);
@@ -107,6 +109,17 @@
     [imageView setImageWithURL:url placeholderImage:placeHolderImage];
     
     [self.view addSubview:imageView];
+}
+
+-(void)saveAndWrite
+{
+    NSLog(@"%@",NSHomeDirectory());
+    NSData *data = [@"狂拽酷眩叼炸天" dataUsingEncoding:NSUTF8StringEncoding];
+    [WTDataSaver saveData:data withName:@"data"];
+    [WTDataSaver dataWithName:@"data" completion:^(NSData *data) {
+        NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"%@",string);
+    }];
 }
 
 - (void)didReceiveMemoryWarning

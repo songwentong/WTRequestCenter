@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "UIImageView+WTImageCache.h"
+#import "WTDataSaver.h"
+
+
 @interface WTRequestCenter : NSObject
 
 //请求队列
