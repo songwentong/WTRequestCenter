@@ -12,7 +12,8 @@ any question please write at issues ,thank you
 使用方法 Usage
 ===============
 #### 注意：所有的请求都是缓存的，POST提供非缓存方式的请求，详情请看Wiki
-### GET 请求
+#### notice:all request is cached ,and the POST request have a request not cached ,please view deatial at Wiki
+### GET 请求 GET Request
 ```objective-c
 [WTRequestCenter getWithURL:url
                  parameters:parameters
@@ -22,7 +23,7 @@ any question please write at issues ,thank you
               }
 ```
               
-### POST 请求
+### POST 请求 POST Request
 ```objective-c
 [WTRequestCenter postWithURL:url
                   parameters:parameters 
@@ -32,7 +33,7 @@ any question please write at issues ,thank you
                }
 ```
 
-### 缓存图片
+### 缓存图片  cache image
 ```objective-c
     NSURL *url = [NSURL URLWithString:@"http://www.xxx.com/eqdsa.jpg"];
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
@@ -41,15 +42,13 @@ any question please write at issues ,thank you
     }];
 ```
 
-### 取消所有请求
+### 取消所有请求   Cancel all request
 ```objective-c
 [WTRequestCenter cancelAllRequest];
 ```
 
-Requirement  
+Requirement   需要
 ===============
-Only need iOS 5.0 and later,no more!
-
-需要
-===============
+Only need iOS 5.0 and later,no more import and Configuration!
 仅仅需要iOS5 ！ 不需要其他任何import和配置
+
