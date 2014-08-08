@@ -5,6 +5,10 @@ WTRequestCenter
 无需任何import和配置，目前实现了基础需求
 如果有其他需要请在issue 上提出，谢谢！
 
+
+Convenient cache request library
+no any import and Configuration,At present, the foundation needs to achieve is Finised
+any question please write at issues ,thank you
 使用方法 Usage
 ===============
 #### 注意：所有的请求都是缓存的，POST提供非缓存方式的请求，详情请看Wiki
