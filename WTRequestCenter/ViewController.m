@@ -21,7 +21,7 @@
     
 //    UIImage *image = [UIImage imageWithData:nil];
 //    NSLog(@"%@",image);
-    NSLog(@"%@",[[NSProcessInfo processInfo] globallyUniqueString]);
+    NSLog(@"%@",[[NSProcessInfo processInfo] environment]);
 //    GET请求
     [self get];
 //    POST请求
