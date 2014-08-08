@@ -51,9 +51,11 @@
 
 #pragma mark - GET (Cache)
 //get请求
+
 +(NSURLRequest*)getWithURL:(NSURL*)url
                 parameters:(NSDictionary*)parameters
          completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
+
 
 #pragma mark - POST
 //post 请求  (Cache)

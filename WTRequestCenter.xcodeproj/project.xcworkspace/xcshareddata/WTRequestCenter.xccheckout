@@ -10,29 +10,29 @@
 	<string>WTRequestCenter</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>88E298C8-2700-4AE3-BCB1-A4CFA9FEA153</key>
+		<key>A15136FB1874570C8EFAB67292BBBB8F333A64C0</key>
 		<string>https://github.com/swtlovewtt/WTRequestCenter.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>WTRequestCenter.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>88E298C8-2700-4AE3-BCB1-A4CFA9FEA153</key>
+		<key>A15136FB1874570C8EFAB67292BBBB8F333A64C0</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/swtlovewtt/WTRequestCenter.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>88E298C8-2700-4AE3-BCB1-A4CFA9FEA153</string>
+	<string>A15136FB1874570C8EFAB67292BBBB8F333A64C0</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>88E298C8-2700-4AE3-BCB1-A4CFA9FEA153</string>
+			<string>A15136FB1874570C8EFAB67292BBBB8F333A64C0</string>
 			<key>IDESourceControlWCCName</key>
 			<string>WTRequestCenter</string>
 		</dict>

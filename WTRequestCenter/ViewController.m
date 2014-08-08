@@ -49,6 +49,7 @@
 //    [parameters setValue:@"2" forKey:@"b"];
 //    [parameters setValue:@"3" forKey:@"c"];
 //    article_id=46
+    
     [WTRequestCenter getWithURL:url
                      parameters:parameters
               completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {

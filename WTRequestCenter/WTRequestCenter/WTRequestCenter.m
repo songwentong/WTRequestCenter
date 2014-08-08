@@ -152,6 +152,7 @@ static NSOperationQueue *sharedQueue = nil;
         [paramString appendString:@"&"];
     }
     NSMutableString *urlString = [[NSMutableString alloc] initWithFormat:@"%@?%@",url,paramString];
+    urlString = [[[urlString copy] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] mutableCopy];
     request.URL = [NSURL URLWithString:urlString];
     NSCachedURLResponse *response =[cache cachedResponseForRequest:request];
     
