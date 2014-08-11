@@ -19,9 +19,11 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-//    UIImage *image = [UIImage imageWithData:nil];
-//    NSLog(@"%@",image);
-    NSLog(@"%@",[[NSProcessInfo processInfo] environment]);
+
+    NSLog(@"%f",[WTRequestCenter expireTimeInterval]);
+    [WTRequestCenter setExpireTimeInterval:1000000];
+    NSLog(@"%@",NSHomeDirectory());
+    
 //    GET请求
     [self get];
 //    POST请求

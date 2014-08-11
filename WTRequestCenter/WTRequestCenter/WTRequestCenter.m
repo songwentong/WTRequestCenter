@@ -52,18 +52,35 @@ static NSOperationQueue *sharedQueue = nil;
     return requesting;
 }
 
++(NSUserDefaults*)sharedUserDefaults
+{
+    UIDevice *currentDevice = [UIDevice currentDevice];
+    NSUserDefaults *myUserDefaults = nil;
+    if (currentDevice.systemVersion.floatValue>=7.0) {
+//        使用新方法
+       myUserDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"WTRequestCenter"];
+    }else
+    {
+//    使用旧方法
+        myUserDefaults = [[NSUserDefaults alloc] initWithUser:@"WTRequestCenter"];
+    }
+    return myUserDefaults;
+}
+
 //设置失效日期
 +(void)setExpireTimeInterval:(NSTimeInterval)expireTime
 {
-    [[NSUserDefaults standardUserDefaults] setFloat:expireTime forKey:@"WTRequestCenterExpireTime"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    NSUserDefaults *myUserDefaults = [WTRequestCenter sharedUserDefaults];
+    [myUserDefaults setFloat:expireTime forKey:@"WTRequestCenterExpireTime"];
+    [myUserDefaults synchronize];
 }
 
 //失效日期
 +(NSTimeInterval)expireTimeInterval
 {
     
-    CGFloat time = [[NSUserDefaults standardUserDefaults] floatForKey:@"WTRequestCenterExpireTime"];
+    NSUserDefaults *myUserDefaults = [WTRequestCenter sharedUserDefaults];
+    CGFloat time = [myUserDefaults floatForKey:@"WTRequestCenterExpireTime"];
     if (time==0) {
 //        默认时效日期一天
         time = 3600*24;
