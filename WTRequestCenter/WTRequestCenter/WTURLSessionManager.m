@@ -28,11 +28,21 @@
     }
     return self;
 }
-
-
+#pragma mark - Adding Data Tasks to a Session
+- (NSURLSessionDataTask *)dataTaskWithURL:(NSURL *)url
+                            completionHandler:(void (^)(NSData *data, NSURLResponse *response, NSError *error))completionHandler{
+    NSURLSessionDataTask *task = nil;
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [_URLSession dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (completionHandler) {
+            completionHandler(data,response,error);
+        }
+    }];
+    
+    return task;
+}
 - (NSURLSessionDataTask *)dataTaskWithRequest:(NSURLRequest *)request
-                            completionHandler:(void (^)(NSData *data, NSURLResponse *response, NSError *error))completionHandler
-{
+                            completionHandler:(void (^)(NSData *data, NSURLResponse *response, NSError *error))completionHandler{
     NSURLSessionDataTask *task = nil;
     [_URLSession dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (completionHandler) {
@@ -42,4 +52,64 @@
     
     return task;
 }
+
+#pragma mark - Adding Download Tasks to a Session
+- (NSURLSessionDownloadTask *)downloadTaskWithURL:(NSURL *)url completionHandler:(void (^)(NSURL *location, NSURLResponse *response, NSError *error))completionHandler{
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSURLSessionDownloadTask *task = nil;
+    [_URLSession downloadTaskWithRequest:request completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
+        if (completionHandler) {
+            completionHandler(location,response,error);
+        }
+    }];
+    return task;
+}
+ 
+
+- (NSURLSessionDownloadTask *)downloadTaskWithRequest:(NSURLRequest *)request completionHandler:(void (^)(NSURL *location, NSURLResponse *response, NSError *error))completionHandler{
+    NSURLSessionDownloadTask *task = nil;
+    [_URLSession downloadTaskWithRequest:request completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
+        if (completionHandler) {
+            completionHandler(location,response,error);
+        }
+    }];
+    return task;
+}
+
+
+- (NSURLSessionDownloadTask *)downloadTaskWithResumeData:(NSData *)resumeData completionHandler:(void (^)(NSURL *location, NSURLResponse *response, NSError *error))completionHandler
+{
+    NSURLSessionDownloadTask *task = nil;
+    [_URLSession downloadTaskWithResumeData:resumeData completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
+        if (completionHandler) {
+            completionHandler(location,response,error);
+        }
+    }];
+    return task;
+}
+
+#pragma mark - Adding Upload Tasks to a Session
+- (NSURLSessionUploadTask *)uploadTaskWithRequest:(NSURLRequest *)request fromData:(NSData *)bodyData completionHandler:(void (^)(NSData *data, NSURLResponse *response, NSError *error))completionHandler
+{
+    NSURLSessionUploadTask *task = nil;
+    [_URLSession uploadTaskWithRequest:request fromData:bodyData completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (completionHandler) {
+            completionHandler(data,response,error);
+        }
+    }];
+    return task;
+}
+
+- (NSURLSessionUploadTask *)uploadTaskWithRequest:(NSURLRequest *)request fromFile:(NSURL *)fileURL completionHandler:(void (^)(NSData *data, NSURLResponse *response, NSError *error))completionHandler
+{
+    NSURLSessionUploadTask *task = nil;
+    [_URLSession uploadTaskWithRequest:request fromFile:fileURL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (completionHandler) {
+            completionHandler(data,response,error);
+        }
+    }];
+    return task;
+}
+
 @end
