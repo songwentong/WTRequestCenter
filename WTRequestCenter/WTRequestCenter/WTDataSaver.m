@@ -28,7 +28,8 @@
 }
 
 #pragma mark - 保存路径
-+(NSString*)savePath
+//跟目录
++(NSString*)rootDir
 {
     NSString *path = [NSString stringWithFormat:@"%@/Library/Caches/WTDataSaver",NSHomeDirectory()];
     return path;
@@ -39,11 +40,18 @@
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
-    BOOL fileExists = [fileManager fileExistsAtPath:[WTDataSaver savePath] isDirectory:nil];
+    BOOL fileExists = [fileManager fileExistsAtPath:[WTDataSaver rootDir] isDirectory:nil];
     if (!fileExists) {
-        [fileManager createDirectoryAtPath:[WTDataSaver savePath] withIntermediateDirectories:NO attributes:nil error:nil];
+        [fileManager createDirectoryAtPath:[WTDataSaver rootDir] withIntermediateDirectories:NO attributes:nil error:nil];
     }
 }
+
++(NSString*)pathWithName:(NSString*)name
+{
+    NSString *filePath = [NSString stringWithFormat:@"%@/%@",[self rootDir],name];
+    return filePath;
+}
+
 #pragma mark - 存数据
 +(void)saveData:(NSData*)data withIndex:(NSInteger)index
 {
@@ -62,7 +70,7 @@
 +(void)saveData:(NSData*)data withName:(NSString*)name completion:(void(^)())completion
 {
     [self configureDirectory];
-    NSString *filePath = [NSString stringWithFormat:@"%@/%@",[self savePath],name];
+    NSString *filePath = [NSString stringWithFormat:@"%@/%@",[self rootDir],name];
     NSBlockOperation *block = [NSBlockOperation blockOperationWithBlock:^{
         [data writeToFile:filePath atomically:YES];
     }];
@@ -91,7 +99,7 @@
     
     [self configureDirectory];
     NSData *data = nil;
-    NSString *filePath = [NSString stringWithFormat:@"%@/%@",[self savePath],name];
+    NSString *filePath = [NSString stringWithFormat:@"%@/%@",[self rootDir],name];
     data = [NSData dataWithContentsOfFile:filePath];
     return data;
 }
@@ -104,7 +112,7 @@
 {
     [self configureDirectory];
     __block NSData *data = nil;
-    NSString *filePath = [NSString stringWithFormat:@"%@/%@",[self savePath],name];
+    NSString *filePath = [NSString stringWithFormat:@"%@/%@",[self rootDir],name];
     NSBlockOperation *block = [NSBlockOperation blockOperationWithBlock:^{
         data = [NSData dataWithContentsOfFile:filePath];
     }];
@@ -130,9 +138,9 @@
     NSBlockOperation *blockOperation = [NSBlockOperation blockOperationWithBlock:^{
         
         NSFileManager *manager = [NSFileManager defaultManager];
-        NSArray *array = [manager contentsOfDirectoryAtPath:[WTDataSaver savePath] error:nil];
+        NSArray *array = [manager contentsOfDirectoryAtPath:[WTDataSaver rootDir] error:nil];
         for (NSString *string  in array) {
-            NSString *filePath = [NSString stringWithFormat:@"%@/%@",[self savePath],string];
+            NSString *filePath = [NSString stringWithFormat:@"%@/%@",[self rootDir],string];
             [manager removeItemAtPath:filePath error:nil];
         }
     }];
@@ -150,7 +158,7 @@
     NSBlockOperation *blockOperation = [NSBlockOperation blockOperationWithBlock:^{
         NSFileManager *manager = [NSFileManager defaultManager];
 
-        NSDirectoryEnumerator* directoryEnumerator =[manager enumeratorAtPath:[self savePath]];
+        NSDirectoryEnumerator* directoryEnumerator =[manager enumeratorAtPath:[self rootDir]];
         while ([directoryEnumerator nextObject]) {
 //            NSLog(@"%@",[directoryEnumerator fileAttributes]);
             NSInteger fileSize = [[[directoryEnumerator fileAttributes] valueForKey:@"NSFileSize"] integerValue];
@@ -168,10 +176,4 @@
 }
 
 
-#if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000) || (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= 1090)
-+(void)testiOS7
-{
-    NSLog(@"iOS7");
-}
-#endif
 @end

@@ -6,6 +6,7 @@
 //  Copyright (c) Mike song(mailto:275712575@qq.com). All rights reserved.
 //  site:https://github.com/swtlovewtt/WTRequestCenter
 
+//  如果需要适配iOS6以及以前的版本，请移除这块的东西
 /*
  施工中🚧，你看到了不改看到的东西，😄，这个东西暂时不可以用，谢谢
  */

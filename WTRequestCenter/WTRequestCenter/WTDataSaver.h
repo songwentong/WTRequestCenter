@@ -23,6 +23,9 @@
 +(NSData*)dataWithJSONObject:(id)obj;
 +(id)JSONObjectWithData:(NSData*)data;
 
+
+//根据文件名返回文件路径，用于自定义储存NSDicitonary，NSString和NSArray
++(NSString*)pathWithName:(NSString*)name;
 #pragma mark - 存数据 Save Data
 //存数据（都是异步）
 +(void)saveData:(NSData*)data withIndex:(NSInteger)index;
@@ -56,9 +59,7 @@
 #pragma mark - 大小   file Size
 +(void)fileSizeComplection:(void(^)(NSInteger size))complection;
 
-#if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000) || (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= 1090)
-+(void)testiOS7;
-#endif
+
 @end
 /*
  index占用表
