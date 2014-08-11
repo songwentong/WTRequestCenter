@@ -46,6 +46,10 @@ typedef NS_ENUM(NSInteger, WTOperationState) {
 
 
 #pragma mark - NSOperation
+- (BOOL)isPaused
+{
+    return NO;
+}
 - (BOOL)isConcurrent
 {
     return YES;
