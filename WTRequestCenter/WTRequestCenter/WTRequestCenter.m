@@ -434,9 +434,23 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
 
 
 #pragma mark - URL
+
++(BOOL)setBaseURL:(NSString*)url
+{
+    NSUserDefaults *a = [self sharedUserDefaults];
+    [a setValue:url forKey:@"baseURL"];
+    return [a synchronize];
+}
+
 +(NSString *)baseURL
 {
-    return @"http://www.xxx.com";
+    NSUserDefaults *a = [self sharedUserDefaults];
+    NSString *url = [a valueForKey:@"baseURL"];
+    if (url) {
+        return @"http://www.xxx.com";
+    }
+    return url;
+
 }
 //实际应用示例
 +(NSString*)urlWithIndex:(NSInteger)index

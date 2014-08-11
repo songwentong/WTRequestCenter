@@ -15,6 +15,7 @@
  还有JSON解析功能，还提供来一个URL的表让你来填写
  然后直接快捷取URL。
     希望能帮到你，谢谢。
+    如果有任何问题可以在github上向我提出
                                 Mike
  
  */
@@ -92,7 +93,9 @@
 +(id)JSONObjectWithData:(NSData*)data;
 
 #pragma mark - URL
-
+//根路径
++(BOOL)setBaseURL:(NSString*)url;
++(NSString *)baseURL;
 //实际应用示例
 +(NSString*)urlWithIndex:(NSInteger)index;
 
