@@ -60,7 +60,6 @@
               }];
 
     
-//    [WTRequestCenter cancelAllRequest];
 }
 
 -(void)post

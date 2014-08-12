@@ -147,7 +147,8 @@ static NSOperationQueue *sharedQueue = nil;
 #pragma mark - 辅助
 +(id)JSONObjectWithData:(NSData*)data
 {
-    return [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+//    容器解析成可变的，string解析成可变的，并且允许顶对象不是dict或者array
+    return [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers|NSJSONReadingMutableLeaves|NSJSONReadingAllowFragments error:nil];
 }
 
 
