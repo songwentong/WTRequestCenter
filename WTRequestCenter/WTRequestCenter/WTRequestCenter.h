@@ -21,8 +21,6 @@
  */
 #import <Foundation/Foundation.h>
 #import "WTDataSaver.h"
-#import "UIImageView+WTImageCache.h"
-#import "UIButton+WTImageCache.h"
 
 @interface WTRequestCenter : NSObject
 
@@ -88,7 +86,7 @@
 +(void)getImageWithURL:(NSURL*)url
      completionHandler:(void(^) (UIImage* image))handler;
 
-#pragma mark - 辅助
+#pragma mark - 辅助  （JSON解析）
 //JSON解析
 +(id)JSONObjectWithData:(NSData*)data;
 
