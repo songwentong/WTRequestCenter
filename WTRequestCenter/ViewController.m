@@ -51,26 +51,14 @@
     [parameters setValue:@"2" forKey:@"b"];
     [parameters setValue:@"3" forKey:@"c"];
 //    article_id=46
-//    http://mapi.v1baobao.com/article/detail?article_id=46
+
     [WTRequestCenter getWithURL:url
                      parameters:parameters
               completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-                          if (!error) {
-                              NSError *jsonError = nil;
-                              id obj = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonError];
-                              if (!jsonError) {
-                                  NSLog(@"result:%@",obj);
-                              }else
-                              {
-                                  NSLog(@"jsonError:%@",jsonError);
-                              }
-                              
-                          }else
-                          {
-                              NSLog(@"error:%@",error);
-                          }
-                  
-                      }];
+                  id obj = [WTRequestCenter JSONObjectWithData:data];
+                  NSLog(@"result is %@",obj);
+              }];
+
     
 //    [WTRequestCenter cancelAllRequest];
 }
@@ -84,20 +72,8 @@
     [parameters setValue:@"3" forKey:@"c"];
     [WTRequestCenter postWithURL:url
                       parameters:parameters completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-                          if (!error) {
-                              NSError *jsonError = nil;
-                              id obj = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonError];
-                              if (!jsonError) {
-                                  NSLog(@"result:%@",obj);
-                              }else
-                              {
-                                  NSLog(@"jsonError:%@",jsonError);
-                              }
-                              
-                          }else
-                          {
-                              NSLog(@"error:%@",error);
-                          }
+                          id obj = [WTRequestCenter JSONObjectWithData:data];
+                          NSLog(@"result is %@",obj);
                           
                       }];
 }
