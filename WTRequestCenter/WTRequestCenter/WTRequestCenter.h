@@ -20,9 +20,9 @@
  
  */
 #import <Foundation/Foundation.h>
-#import "UIImageView+WTImageCache.h"
 #import "WTDataSaver.h"
-
+#import "UIImageView+WTImageCache.h"
+#import "UIButton+WTImageCache.h"
 
 @interface WTRequestCenter : NSObject
 
