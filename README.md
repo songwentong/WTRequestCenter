@@ -52,3 +52,13 @@ Requirement   需要
 Only need iOS 5.0 and later,no more import and Configuration!
 仅仅需要iOS5 ！ 不需要其他任何import和配置
 
+
+## Communication  沟通
+- If you **found a bug**, open an issue.
+- If you **want to contribute**, submit a pull request.
+- If you **have a feature request**, open an issue.
+
+- 如果你**发现bug**,打开右侧的问题
+- 如果你**想做出贡献**，提交一个推（pull）的请求
+- 如果你**有功能需求**，打开问题
+
