@@ -20,10 +20,12 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-
+//  设置响应失效日期
     NSLog(@"%f",[WTRequestCenter expireTimeInterval]);
     [WTRequestCenter setExpireTimeInterval:1000000];
     NSLog(@"%@",NSHomeDirectory());
+    
+    
     
 //    GET请求
     [self get];
@@ -32,9 +34,10 @@
 //    下载图片
     [self loadImage];
     
+//    gif
     [self loadGif];
     
-//    存取
+//    存取数据
     [self saveAndWrite];
     
 //    查看内存用量
