@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "WTRequestCenter.h"
+#import "UIImage+animatedGIF.h"
 @interface ViewController ()
 
 @end
@@ -30,6 +31,8 @@
     [self post];
 //    下载图片
     [self loadImage];
+    
+    [self loadGif];
     
 //    存取
     [self saveAndWrite];
@@ -83,10 +86,21 @@
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     imageView.contentMode = UIViewContentModeCenter;
     imageView.frame = self.view.bounds;
+    imageView.frame = CGRectMake(0, 0, 320, 480/2);
     UIImage *placeHolderImage = [UIImage imageNamed:@"image.jpg"];
     [imageView setImageWithURL:url placeholderImage:placeHolderImage];
     
     [self.view addSubview:imageView];
+}
+
+-(void)loadGif
+{
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    imageView.frame = CGRectMake(0, 480/2, 320, 480/2);
+    imageView.contentMode = UIViewContentModeCenter;
+    [self.view addSubview:imageView];
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"aaa" withExtension:@"gif"];
+    imageView.image = [UIImage animatedImageWithAnimatedGIFURL:url];
 }
 
 -(void)saveAndWrite
