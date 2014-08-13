@@ -27,5 +27,5 @@
 #define WTRequestCenter_UIKit_WTRequestCenter_h
 #import "UIButton+WTImageCache.h"
 #import "UIImageView+WTImageCache.h"
-
+#import "UIImage+animatedGIF.h"
 #endif
