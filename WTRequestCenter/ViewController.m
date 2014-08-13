@@ -35,7 +35,9 @@
     [self loadImage];
     
 //    gif
-    [self loadGif];
+//    [self loadGif];
+    
+    [self gifButton];
     
 //    存取数据
     [self saveAndWrite];
@@ -104,6 +106,24 @@
     [self.view addSubview:imageView];
     NSURL *url = [[NSBundle mainBundle] URLForResource:@"aaa" withExtension:@"gif"];
     imageView.image = [UIImage animatedImageWithAnimatedGIFURL:url];
+    
+    
+    
+}
+
+-(void)gifButton
+{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0, 480/2, 320, 480/2);
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"aaa" withExtension:@"gif"];
+    [button setImage:[UIImage animatedImageWithAnimatedGIFURL:url] forState:UIControlStateNormal];
+    [self.view addSubview:button];
+    [button addTarget:self action:@selector(button:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+-(void)button:(UIButton*)sender
+{
+    NSLog(@"pressed");
 }
 
 -(void)saveAndWrite
