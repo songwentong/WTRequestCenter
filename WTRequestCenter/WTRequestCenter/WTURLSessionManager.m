@@ -112,4 +112,10 @@
     return task;
 }
 
+#pragma mark - Just a joke
+- (NSString *)debugDescription
+{
+    return @"just a joke";
+}
+
 @end

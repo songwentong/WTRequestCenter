@@ -175,5 +175,9 @@
     [blockOperation start];
 }
 
++ (NSString *)debugDescription
+{
+    return @"just a joke";
+}
 
 @end

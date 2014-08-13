@@ -492,4 +492,9 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
 }
 
 
++ (NSString *)debugDescription
+{
+    return @"just a joke";
+}
+
 @end
