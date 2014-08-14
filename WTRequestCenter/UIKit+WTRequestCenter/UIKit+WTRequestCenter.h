@@ -28,4 +28,5 @@
 #import "UIButton+WTImageCache.h"
 #import "UIImageView+WTImageCache.h"
 #import "UIImage+animatedGIF.h"
+#import "UIColor+FastCreating.h"
 #endif
