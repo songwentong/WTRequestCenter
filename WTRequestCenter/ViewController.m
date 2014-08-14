@@ -32,7 +32,7 @@
 //    POST请求
     [self post];
 //    下载图片
-    [self loadImage];
+//    [self loadImage];
     
 //    gif
 //    [self loadGif];
@@ -40,7 +40,7 @@
     [self gifButton];
     
 //    存取数据
-    [self saveAndWrite];
+//    [self saveAndWrite];
     
 //    查看内存用量
     NSLog(@"%d",[[WTRequestCenter sharedCache] currentMemoryUsage]);
@@ -115,8 +115,15 @@
 {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(0, 480/2, 320, 480/2);
-    NSURL *url = [[NSBundle mainBundle] URLForResource:@"aaa" withExtension:@"gif"];
-    [button setImage:[UIImage animatedImageWithAnimatedGIFURL:url] forState:UIControlStateNormal];
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"aaa@2x" withExtension:@"gif"];
+    NSURL *url2 = [NSURL URLWithString:@"http://img2.duitang.com/uploads/item/201208/28/20120828224017_MZtRh.gif"];
+    button.contentMode = UIViewContentModeCenter;
+//    [button setImage:[UIImage animatedImageWithAnimatedGIFURL:url2] forState:UIControlStateNormal];
+    
+    [UIImage animatedImageWithAnimatedGIFURL:url2 completion:^(UIImage *image) {
+        [button setImage:image forState:UIControlStateNormal];
+    }];
+     
     [self.view addSubview:button];
     [button addTarget:self action:@selector(button:) forControlEvents:UIControlEventTouchUpInside];
 }

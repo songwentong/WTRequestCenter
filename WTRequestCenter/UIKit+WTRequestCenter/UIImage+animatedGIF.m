@@ -8,7 +8,7 @@
 #define toCF (CFTypeRef)
 #define fromCF (id)
 #endif
-
+#import "WTRequestCenter.h"
 @implementation UIImage (animatedGIF)
 
 static int delayCentisecondsForImageAtIndex(CGImageSourceRef const source, size_t const i) {
@@ -113,7 +113,34 @@ static UIImage *animatedImageWithAnimatedGIFReleasingImageSource(CGImageSourceRe
 }
 
 + (UIImage *)animatedImageWithAnimatedGIFURL:(NSURL *)url {
+    
     return animatedImageWithAnimatedGIFReleasingImageSource(CGImageSourceCreateWithURL(toCF url, NULL));
+}
+
++(void)animatedImageWithAnimatedGIFURL:(NSURL*)url completion:(void(^)(UIImage* image))completion
+{
+//    BOOL isLocal;
+    NSString *utlString = [url absoluteString];
+    if ([utlString rangeOfString:@"file:///"].length>0) {
+        //        是本地的
+        UIImage *resultImage = animatedImageWithAnimatedGIFReleasingImageSource(CGImageSourceCreateWithURL(toCF url, NULL));
+        if (completion) {
+            completion(resultImage);
+        }
+        
+    }else
+    {
+        //        网络的
+        [WTRequestCenter getWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+            UIImage *resultImage = [self animatedImageWithAnimatedGIFData:data];
+            if (completion) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                completion(resultImage);
+                });
+            }
+        }];
+    }
+    
 }
 
 @end

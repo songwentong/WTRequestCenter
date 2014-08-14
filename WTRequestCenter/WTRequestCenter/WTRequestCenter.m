@@ -164,17 +164,19 @@ static NSOperationQueue *sharedQueue = nil;
 {
     NSURLCache *cache = [WTRequestCenter sharedCache];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30.0];
-
-    NSMutableString *paramString = [[NSMutableString alloc] init];
-    for (NSString *key in [parameters allKeys]) {
-        NSString *value = [parameters valueForKey:key];
-        NSString *str = [NSString stringWithFormat:@"%@=%@",key,value];
-        [paramString appendString:str];
-        [paramString appendString:@"&"];
+    if (parameters) {
+        NSMutableString *paramString = [[NSMutableString alloc] init];
+        for (NSString *key in [parameters allKeys]) {
+            NSString *value = [parameters valueForKey:key];
+            NSString *str = [NSString stringWithFormat:@"%@=%@",key,value];
+            [paramString appendString:str];
+            [paramString appendString:@"&"];
+        }
+        NSMutableString *urlString = [[NSMutableString alloc] initWithFormat:@"%@?%@",url,paramString];
+        urlString = [[[urlString copy] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] mutableCopy];
+        request.URL = [NSURL URLWithString:urlString];
     }
-    NSMutableString *urlString = [[NSMutableString alloc] initWithFormat:@"%@?%@",url,paramString];
-    urlString = [[[urlString copy] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] mutableCopy];
-    request.URL = [NSURL URLWithString:urlString];
+   
     NSCachedURLResponse *response =[cache cachedResponseForRequest:request];
     
     if (!response) {
