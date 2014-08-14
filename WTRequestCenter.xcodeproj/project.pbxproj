@@ -11,6 +11,7 @@
 		A3B4A7C2199AF60C00A8BAF0 /* aaa@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = A3B4A7C1199AF60C00A8BAF0 /* aaa@2x.gif */; };
 		A3B4A7C5199AF88400A8BAF0 /* UIImage+animatedGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B4A7C4199AF88400A8BAF0 /* UIImage+animatedGIF.m */; };
 		A3B4A7C9199AF92000A8BAF0 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B4A7C8199AF92000A8BAF0 /* ImageIO.framework */; };
+		A3B4DD66199C9AA6009F2D24 /* UIColor+FastCreating.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B4DD65199C9AA6009F2D24 /* UIColor+FastCreating.m */; };
 		A3B70F591988BDFA002776F4 /* image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A3B70F581988BDFA002776F4 /* image.jpg */; };
 		A3B70F641988DC5B002776F4 /* UIButton+WTImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B70F611988DC5B002776F4 /* UIButton+WTImageCache.m */; };
 		A3B70F651988DC5B002776F4 /* UIImageView+WTImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B70F631988DC5B002776F4 /* UIImageView+WTImageCache.m */; };
@@ -51,6 +52,8 @@
 		A3B4A7C3199AF88400A8BAF0 /* UIImage+animatedGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+animatedGIF.h"; sourceTree = "<group>"; };
 		A3B4A7C4199AF88400A8BAF0 /* UIImage+animatedGIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+animatedGIF.m"; sourceTree = "<group>"; };
 		A3B4A7C8199AF92000A8BAF0 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		A3B4DD64199C9AA6009F2D24 /* UIColor+FastCreating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+FastCreating.h"; sourceTree = "<group>"; };
+		A3B4DD65199C9AA6009F2D24 /* UIColor+FastCreating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FastCreating.m"; sourceTree = "<group>"; };
 		A3B70F581988BDFA002776F4 /* image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpg; sourceTree = "<group>"; };
 		A3B70F601988DC5B002776F4 /* UIButton+WTImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+WTImageCache.h"; sourceTree = "<group>"; };
 		A3B70F611988DC5B002776F4 /* UIButton+WTImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+WTImageCache.m"; sourceTree = "<group>"; };
@@ -118,6 +121,8 @@
 				A3B70F631988DC5B002776F4 /* UIImageView+WTImageCache.m */,
 				A3B4A7C3199AF88400A8BAF0 /* UIImage+animatedGIF.h */,
 				A3B4A7C4199AF88400A8BAF0 /* UIImage+animatedGIF.m */,
+				A3B4DD64199C9AA6009F2D24 /* UIColor+FastCreating.h */,
+				A3B4DD65199C9AA6009F2D24 /* UIColor+FastCreating.m */,
 			);
 			name = "UIKit+WTRequestCenter";
 			path = "WTRequestCenter/UIKit+WTRequestCenter";
@@ -342,6 +347,7 @@
 				A3B70F651988DC5B002776F4 /* UIImageView+WTImageCache.m in Sources */,
 				E4440D87197A01B1001E6D88 /* ViewController.m in Sources */,
 				E4DBC944197D14F3004F9393 /* WTRequestCenter.m in Sources */,
+				A3B4DD66199C9AA6009F2D24 /* UIColor+FastCreating.m in Sources */,
 				A3B4A7C5199AF88400A8BAF0 /* UIImage+animatedGIF.m in Sources */,
 				E4FB6C38198BC0A000138FE0 /* WTURLSessionManager.m in Sources */,
 				E4FB6C3B198BC2A300138FE0 /* WTURLConnectionOperation.m in Sources */,
