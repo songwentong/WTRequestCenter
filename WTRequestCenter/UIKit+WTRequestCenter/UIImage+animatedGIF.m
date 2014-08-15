@@ -132,7 +132,15 @@ static UIImage *animatedImageWithAnimatedGIFReleasingImageSource(CGImageSourceRe
     {
         //        网络的
         [WTRequestCenter getWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+            if (!data) {
+                if (completion) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                    completion(nil);
+                    });
+                }
+            }
             UIImage *resultImage = [self animatedImageWithAnimatedGIFData:data];
+            
             if (completion) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                 completion(resultImage);
