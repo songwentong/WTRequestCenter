@@ -58,17 +58,19 @@
 
 
 #pragma mark - POST
-//post 请求  (不带缓存 Cache)
+//post request (without cache)
 +(NSURLRequest*)postWithURL:(NSURL*)url
                  parameters:(NSDictionary*)parameters
           completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 
 
 //不使用缓存的post请求  (Without Cache)
+/*
 +(NSURLRequest*)postWithoutCacheURL:(NSURL*)url
                          parameters:(NSDictionary*)parameters
                   completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
-
+*/
+ 
 #pragma mark - Image
 //图片上传  Upload
 +(void)upLoadImageWithURL:(NSURL*)url
