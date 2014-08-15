@@ -17,6 +17,9 @@
     if ([device.systemVersion floatValue]>=6.0) {
         NSUUID *uid = device.identifierForVendor;
         uuid = [uid UUIDString];
+    }else
+    {
+        uuid = @"sorry, this method is not Available before 6.0";
     }
     
     return uuid;
