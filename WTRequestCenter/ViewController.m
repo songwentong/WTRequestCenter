@@ -32,7 +32,7 @@
 //    POST请求
     [self post];
 //    下载图片
-//    [self loadImage];
+    [self loadImage];
     
 //    gif
 //    [self loadGif];
