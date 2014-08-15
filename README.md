@@ -61,3 +61,11 @@ Only need iOS 5.0 and later,no more import and Configuration!
 - 如果你**想做出贡献**，提交一个推（pull）的请求
 - 如果你**有功能需求**，打开问题
 
+## Communication  UIKit+WTRequestCenter
+这里面提供了许多方法
+UIImageView的图片缓存
+UIImage的播放gif+图片缓存
+UIButton的图片缓存
+UIColor的快速创建
+
+
