@@ -58,7 +58,7 @@
 
 
 #pragma mark - POST
-//post 请求  (Cache)
+//post 请求  (不带缓存 Cache)
 +(NSURLRequest*)postWithURL:(NSURL*)url
                  parameters:(NSDictionary*)parameters
           completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;

@@ -234,9 +234,8 @@ static NSOperationQueue *sharedQueue = nil;
 //parameters
 +(NSURLRequest*)postWithURL:(NSURL*)url parameters:(NSDictionary*)parameters completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
 {
-    NSURLCache *cache = [WTRequestCenter sharedCache];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url
-                cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30.0];
+                                                                cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30.0];
     [request setHTTPMethod:@"POST"];
     
     NSMutableString *paramString = [[NSMutableString alloc] init];
@@ -246,65 +245,21 @@ static NSOperationQueue *sharedQueue = nil;
         [paramString appendString:str];
         [paramString appendString:@"&"];
     }
-    NSLog(@"\nurl:\n%@  \nparameters:\n%@",url,parameters);
+    
     paramString = [[paramString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] mutableCopy];
     
     NSData *postData = [paramString dataUsingEncoding:NSUTF8StringEncoding];
     [request setHTTPBody:postData];
     
-    NSCachedURLResponse *response =[cache cachedResponseForRequest:request];
-
-    //        如果不存在，重新请求
-    if (YES) {
-
-        [NSURLConnection sendAsynchronousRequest:request
-                                           queue:[WTRequestCenter sharedQueue]
-                               completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-                                   
-                   dispatch_async(dispatch_get_main_queue(), ^{
-                       
-                       if (handler) {
-               handler(response,data,connectionError);
-                       }
-
-                       
-                       
-                   });//end main
- 
-        }];
-    }else
-    {
-        //NSDateFormatter 在iOS7.0以后是线程安全的，为了保证5.0可用，在这里用主线程括起来
-        
-            
-            if ([response.response isKindOfClass:[NSHTTPURLResponse class]]) {
-                
-                BOOL isExpired = [WTRequestCenter checkRequestIsExpired:(NSHTTPURLResponse*)response.response];
-                if (isExpired) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                    if (handler) {
-                        handler(response.response,response.data,nil);
-                    }
-                    });
-                    [WTRequestCenter removeRequestCache:request];
-                    [WTRequestCenter postWithURL:url parameters:parameters completionHandler:handler];
-                }else
-                {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                    if (handler) {
-                        handler(response.response,response.data,nil);
-                    }
-                     });
-                }
-                
-                
-                
+    [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (handler) {
+                handler(response,data,connectionError);
             }
-            
-            
-       
-    }
-
+        });
+        
+    }];
+    
     return request;
 }
 
