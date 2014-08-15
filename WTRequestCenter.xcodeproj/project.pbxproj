@@ -29,6 +29,7 @@
 		E4440D92197A01B1001E6D88 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4440D74197A01B1001E6D88 /* UIKit.framework */; };
 		E4440D9A197A01B1001E6D88 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E4440D98197A01B1001E6D88 /* InfoPlist.strings */; };
 		E4440D9C197A01B1001E6D88 /* WTRequestCenterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E4440D9B197A01B1001E6D88 /* WTRequestCenterTests.m */; };
+		E4BC81C5199E3415008ABB91 /* UIDevice+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BC81C4199E3415008ABB91 /* UIDevice+WTRequestCenter.m */; };
 		E4DBC944197D14F3004F9393 /* WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E4DBC943197D14F3004F9393 /* WTRequestCenter.m */; };
 		E4FB6C38198BC0A000138FE0 /* WTURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E4FB6C37198BC0A000138FE0 /* WTURLSessionManager.m */; };
 		E4FB6C3B198BC2A300138FE0 /* WTURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E4FB6C3A198BC2A300138FE0 /* WTURLConnectionOperation.m */; };
@@ -78,6 +79,8 @@
 		E4440D97197A01B1001E6D88 /* WTRequestCenterTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WTRequestCenterTests-Info.plist"; sourceTree = "<group>"; };
 		E4440D99197A01B1001E6D88 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E4440D9B197A01B1001E6D88 /* WTRequestCenterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WTRequestCenterTests.m; sourceTree = "<group>"; };
+		E4BC81C3199E3415008ABB91 /* UIDevice+WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+WTRequestCenter.h"; sourceTree = "<group>"; };
+		E4BC81C4199E3415008ABB91 /* UIDevice+WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+WTRequestCenter.m"; sourceTree = "<group>"; };
 		E4DBC942197D14F3004F9393 /* WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTRequestCenter.h; sourceTree = "<group>"; };
 		E4DBC943197D14F3004F9393 /* WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTRequestCenter.m; sourceTree = "<group>"; };
 		E4FB6C36198BC0A000138FE0 /* WTURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTURLSessionManager.h; sourceTree = "<group>"; };
@@ -123,6 +126,8 @@
 				A3B4A7C4199AF88400A8BAF0 /* UIImage+animatedGIF.m */,
 				A3B4DD64199C9AA6009F2D24 /* UIColor+FastCreating.h */,
 				A3B4DD65199C9AA6009F2D24 /* UIColor+FastCreating.m */,
+				E4BC81C3199E3415008ABB91 /* UIDevice+WTRequestCenter.h */,
+				E4BC81C4199E3415008ABB91 /* UIDevice+WTRequestCenter.m */,
 			);
 			name = "UIKit+WTRequestCenter";
 			path = "WTRequestCenter/UIKit+WTRequestCenter";
@@ -351,6 +356,7 @@
 				A3B4A7C5199AF88400A8BAF0 /* UIImage+animatedGIF.m in Sources */,
 				E4FB6C38198BC0A000138FE0 /* WTURLSessionManager.m in Sources */,
 				E4FB6C3B198BC2A300138FE0 /* WTURLConnectionOperation.m in Sources */,
+				E4BC81C5199E3415008ABB91 /* UIDevice+WTRequestCenter.m in Sources */,
 				E4440D81197A01B1001E6D88 /* AppDelegate.m in Sources */,
 				E4440D7D197A01B1001E6D88 /* main.m in Sources */,
 				A33099C21993131400BC3774 /* WTDataSaver.m in Sources */,

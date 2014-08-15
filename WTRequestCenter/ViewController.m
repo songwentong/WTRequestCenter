@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "WTRequestCenter.h"
 #import "UIImage+animatedGIF.h"
+#import "UIKit+WTRequestCenter.h"
 @interface ViewController ()
 
 @end
@@ -25,7 +26,7 @@
     [WTRequestCenter setExpireTimeInterval:1000000];
     NSLog(@"%@",NSHomeDirectory());
     
-    
+    NSLog(@"uuid:%@",[UIDevice WTUUID]);
     
 //    GET请求
     [self get];
