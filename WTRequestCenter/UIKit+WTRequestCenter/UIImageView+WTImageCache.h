@@ -25,5 +25,6 @@
 //下载图片
 - (void)setImageWithURL:(NSURL *)url;
 //下载图片＋placeholder
-- (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder;
+- (void)setImageWithURL:(NSURL *)url
+       placeholderImage:(UIImage *)placeholder;
 @end

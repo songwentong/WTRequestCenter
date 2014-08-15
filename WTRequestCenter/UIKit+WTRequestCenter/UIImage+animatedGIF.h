@@ -9,7 +9,8 @@
 
 #pragma mark - 建议的方法
 //可缓存的，自动区分本地和网络的方法，建议用这个
-+(void)animatedImageWithAnimatedGIFURL:(NSURL*)url completion:(void(^)(UIImage* image))completion;
++(void)animatedImageWithAnimatedGIFURL:(NSURL*)url
+                            completion:(void(^)(UIImage* image))completion;
 
 
 #pragma mark - 不建议的方法

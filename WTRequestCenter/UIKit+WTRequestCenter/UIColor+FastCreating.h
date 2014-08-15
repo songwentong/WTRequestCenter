@@ -14,8 +14,13 @@
 + (UIColor*)WTcolorWithFloat:(CGFloat)number;
 
 //用RGB创建颜色，分别设置RGB，无需除以255
-+ (UIColor *)WTcolorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue;
++ (UIColor *)WTcolorWithRed:(CGFloat)red
+                      green:(CGFloat)green
+                       blue:(CGFloat)blue;
 
 //用RGBA创建颜色，无需除以255.0
-+ (UIColor *)WTcolorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha;
++ (UIColor *)WTcolorWithRed:(CGFloat)red
+                      green:(CGFloat)green
+                       blue:(CGFloat)blue
+                      alpha:(CGFloat)alpha;
 @end
