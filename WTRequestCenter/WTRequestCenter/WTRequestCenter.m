@@ -255,7 +255,7 @@ static NSOperationQueue *sharedQueue = nil;
     NSCachedURLResponse *response =[cache cachedResponseForRequest:request];
 
     //        如果不存在，重新请求
-    if (!response) {
+    if (YES) {
 
         [NSURLConnection sendAsynchronousRequest:request
                                            queue:[WTRequestCenter sharedQueue]
