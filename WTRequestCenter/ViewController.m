@@ -24,9 +24,9 @@
 //  设置响应失效日期
 //    NSLog(@"%f",[WTRequestCenter expireTimeInterval]);
     [WTRequestCenter setExpireTimeInterval:1000000];
-    NSLog(@"%@",NSHomeDirectory());
+//    NSLog(@"%@",NSHomeDirectory());
     
-    NSLog(@"uuid:%@",[UIDevice WTUUID]);
+//    NSLog(@"uuid:%@",[UIDevice WTUUID]);
     
 //    GET请求
     [self get];
