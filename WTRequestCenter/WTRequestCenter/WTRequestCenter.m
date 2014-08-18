@@ -184,7 +184,9 @@ static NSOperationQueue *sharedQueue = nil;
                                            queue:[WTRequestCenter sharedQueue]
                                completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
          {
-             
+             if (!connectionError) {
+//                 [cache cachedResponseForRequest:request];
+             }
              dispatch_async(dispatch_get_main_queue(), ^{
                  if (handler) {
                      handler(response,data,connectionError);
