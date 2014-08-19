@@ -29,6 +29,7 @@
 
     
     NSData *result = nil;
+    #if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
     if ([WTDataSaver osVersion]>=7.0) {
         result = [data base64EncodedDataWithOptions:NSDataBase64Encoding64CharacterLineLength];
     }else
@@ -36,6 +37,15 @@
         NSString *string = [data base64Encoding];
         result = [string dataUsingEncoding:NSUTF8StringEncoding];
     }
+    #elif defined(__MAC_OS_X_VERSION_MIN_REQUIRED)
+    if ([WTDataSaver osVersion]>=10.9) {
+        result = [data base64EncodedDataWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    }else
+    {
+        NSString *string = [data base64Encoding];
+        result = [string dataUsingEncoding:NSUTF8StringEncoding];
+    }
+    #endif
     
     return result;
 }
