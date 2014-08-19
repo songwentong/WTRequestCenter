@@ -13,12 +13,20 @@
 #pragma mark - 工具
 +(CGFloat)osVersion
 {
+    CGFloat version = 0;
+#if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
     UIDevice *currentDevice = [UIDevice currentDevice];
-    return currentDevice.systemVersion.floatValue;
+    version = currentDevice.systemVersion.floatValue;
+#elif defined(__MAC_OS_X_VERSION_MIN_REQUIRED)
+    NSDictionary * sv = [NSDictionary dictionaryWithContentsOfFile:@"/System/Library/CoreServices/SystemVersion.plist"];
+    version = [[sv objectForKey:@"ProductVersion"] floatValue];
+#endif
+    
+    return version;
 }
 +(NSData*)base64EncodedData:(NSData*)data
 {
-//    NS_AVAILABLE(10_9, 7_0);
+
     
     NSData *result = nil;
     if ([WTDataSaver osVersion]>=7.0) {

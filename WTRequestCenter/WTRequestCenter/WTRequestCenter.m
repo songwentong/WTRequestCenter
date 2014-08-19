@@ -51,7 +51,7 @@ static NSOperationQueue *sharedQueue = nil;
     }
     return requesting;
 }
-
+#if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
 +(NSUserDefaults*)sharedUserDefaults
 {
     UIDevice *currentDevice = [UIDevice currentDevice];
@@ -87,7 +87,7 @@ static NSOperationQueue *sharedQueue = nil;
     }
     return time;
 }
-
+#endif
 +(BOOL)checkRequestIsExpired:(NSHTTPURLResponse*)request
 {
 //    NSHTTPURLResponse *res = (NSHTTPURLResponse*)response.response;
@@ -363,7 +363,7 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
 }
  
 
-
+#if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
 //下载图片  Download  (Cache)
 +(void)getImageWithURL:(NSURL*)url
      completionHandler:(void(^) (UIImage* image))handler
@@ -392,6 +392,7 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
     }
    
 }
+#endif
 
 
 

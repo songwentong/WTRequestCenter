@@ -86,9 +86,10 @@
 
 
 //下载图片  Download  (Cache)
+#if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
 +(void)getImageWithURL:(NSURL*)url
      completionHandler:(void(^) (UIImage* image))handler;
-
+#endif
 #pragma mark - 辅助  （JSON解析）
 //JSON解析
 +(id)JSONObjectWithData:(NSData*)data;
