@@ -62,7 +62,9 @@ static NSOperationQueue *sharedQueue = nil;
     }else
     {
 //    使用旧方法
+        #if __IPHONE_OS_VERSION_MAX_ALLOWED <__IPHONE_7_0
         myUserDefaults = [[NSUserDefaults alloc] initWithUser:@"WTRequestCenter"];
+        #endif
     }
     return myUserDefaults;
 }
