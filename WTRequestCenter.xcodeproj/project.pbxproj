@@ -32,7 +32,6 @@
 		E4BC81C5199E3415008ABB91 /* UIDevice+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BC81C4199E3415008ABB91 /* UIDevice+WTRequestCenter.m */; };
 		E4DBC944197D14F3004F9393 /* WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E4DBC943197D14F3004F9393 /* WTRequestCenter.m */; };
 		E4FB6C38198BC0A000138FE0 /* WTURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E4FB6C37198BC0A000138FE0 /* WTURLSessionManager.m */; };
-		E4FB6C3B198BC2A300138FE0 /* WTURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E4FB6C3A198BC2A300138FE0 /* WTURLConnectionOperation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,8 +84,6 @@
 		E4DBC943197D14F3004F9393 /* WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTRequestCenter.m; sourceTree = "<group>"; };
 		E4FB6C36198BC0A000138FE0 /* WTURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTURLSessionManager.h; sourceTree = "<group>"; };
 		E4FB6C37198BC0A000138FE0 /* WTURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTURLSessionManager.m; sourceTree = "<group>"; };
-		E4FB6C39198BC2A300138FE0 /* WTURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTURLConnectionOperation.h; sourceTree = "<group>"; };
-		E4FB6C3A198BC2A300138FE0 /* WTURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTURLConnectionOperation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,8 +225,6 @@
 				E4DBC943197D14F3004F9393 /* WTRequestCenter.m */,
 				A33099C01993131400BC3774 /* WTDataSaver.h */,
 				A33099C11993131400BC3774 /* WTDataSaver.m */,
-				E4FB6C39198BC2A300138FE0 /* WTURLConnectionOperation.h */,
-				E4FB6C3A198BC2A300138FE0 /* WTURLConnectionOperation.m */,
 			);
 			name = NSURLRequest;
 			sourceTree = "<group>";
@@ -355,7 +350,6 @@
 				A3B4DD66199C9AA6009F2D24 /* UIColor+FastCreating.m in Sources */,
 				A3B4A7C5199AF88400A8BAF0 /* UIImage+animatedGIF.m in Sources */,
 				E4FB6C38198BC0A000138FE0 /* WTURLSessionManager.m in Sources */,
-				E4FB6C3B198BC2A300138FE0 /* WTURLConnectionOperation.m in Sources */,
 				E4BC81C5199E3415008ABB91 /* UIDevice+WTRequestCenter.m in Sources */,
 				E4440D81197A01B1001E6D88 /* AppDelegate.m in Sources */,
 				E4440D7D197A01B1001E6D88 /* main.m in Sources */,
