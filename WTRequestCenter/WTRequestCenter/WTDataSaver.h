@@ -17,15 +17,6 @@
 #import <Foundation/Foundation.h>
 
 @interface WTDataSaver : NSObject
-#pragma mark - 对象转换
-
-//用于对象和Data的转换，类型可以是NSDictionary或者NSArray
-+(NSData*)dataWithJSONObject:(id)obj;
-+(id)JSONObjectWithData:(NSData*)data;
-
-
-//根据文件名返回文件路径，用于自定义储存NSDicitonary，NSString和NSArray
-+(NSString*)pathWithName:(NSString*)name;
 #pragma mark - 存数据 Save Data
 //存数据（都是异步）
 +(void)saveData:(NSData*)data withIndex:(NSInteger)index;
@@ -52,6 +43,22 @@
 
 +(void)dataWithName:(NSString*)name
          completion:(void(^)(NSData*data))completion;
+
+#pragma mark - 工具  
+//适用范围 2.0+
++(NSData*)base64EncodedData:(NSData*)data;
++(NSData*)decodeBase64Data:(NSData*)data;
+//Availability
+//Available in iOS 2.0 and later.
+
+#pragma mark - 对象转换
+//用于对象和Data的转换，类型可以是NSDictionary或者NSArray
++(NSData*)dataWithJSONObject:(id)obj;
++(id)JSONObjectWithData:(NSData*)data;
+
+
+//根据文件名返回文件路径，用于自定义储存NSDicitonary，NSString和NSArray
++(NSString*)pathWithName:(NSString*)name;
 
 #pragma mark - 清数据  RemoveAllData
 +(void)removeAllData;

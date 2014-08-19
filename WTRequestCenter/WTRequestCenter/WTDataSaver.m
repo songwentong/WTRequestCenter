@@ -10,6 +10,44 @@
 
 @implementation WTDataSaver
 
+#pragma mark - 工具
++(CGFloat)osVersion
+{
+    UIDevice *currentDevice = [UIDevice currentDevice];
+    return currentDevice.systemVersion.floatValue;
+}
++(NSData*)base64EncodedData:(NSData*)data
+{
+//    NS_AVAILABLE(10_9, 7_0);
+    
+    NSData *result = nil;
+    if ([WTDataSaver osVersion]>=7.0) {
+        result = [data base64EncodedDataWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    }else
+    {
+        NSString *string = [data base64Encoding];
+        result = [string dataUsingEncoding:NSUTF8StringEncoding];
+    }
+    
+    return result;
+}
+
++(NSData*)decodeBase64Data:(NSData*)data
+{
+//    NS_AVAILABLE(10_9, 7_0);
+    NSData *result = nil;
+    if ([WTDataSaver osVersion]>=7.0) {
+        result = [[NSData alloc] initWithBase64EncodedData:data options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    }else
+    {
+        NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        result = [[NSData alloc] initWithBase64Encoding:string];
+    }
+    
+    
+    return result;
+}
+
 
 #pragma mark - 对象转换
 +(NSData*)dataWithJSONObject:(id)obj
