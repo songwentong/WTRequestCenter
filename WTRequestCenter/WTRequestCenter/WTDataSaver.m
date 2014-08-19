@@ -28,23 +28,30 @@
 {
 
     NSData *result = nil;
+    
+//    如果是iOS
     #if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
     if ([WTDataSaver osVersion]>=7.0) {
         result = [data base64EncodedDataWithOptions:NSDataBase64Encoding64CharacterLineLength];
     }else
     {
+//        如果小于7.0
     #if __IPHONE_OS_VERSION_MIN_REQUIRED <__IPHONE_7_0
         NSString *string = [data base64Encoding];
         result = [string dataUsingEncoding:NSUTF8StringEncoding];
     #endif
     }
+//    如果是苹果电脑
     #elif defined(__MAC_OS_X_VERSION_MIN_REQUIRED)
     if ([WTDataSaver osVersion]>=10.9) {
         result = [data base64EncodedDataWithOptions:NSDataBase64Encoding64CharacterLineLength];
     }else
     {
+//        如果小于10.9
+        #if __MAC_OS_X_VERSION_MIN_REQUIRED < __MAC_10_9
         NSString *string = [data base64Encoding];
         result = [string dataUsingEncoding:NSUTF8StringEncoding];
+        #endif
     }
     #endif
     
@@ -55,17 +62,35 @@
 {
 //    NS_AVAILABLE(10_9, 7_0);
     NSData *result = nil;
+    
+//    如果是iOS
+    #if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
     if ([WTDataSaver osVersion]>=7.0) {
         result = [[NSData alloc] initWithBase64EncodedData:data options:NSDataBase64DecodingIgnoreUnknownCharacters];
     }else
     {
-        #if __IPHONE_OS_VERSION_MIN_REQUIRED <__IPHONE_7_0
+        
+//        如果iOS最小编译版本
+        #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_7_0
         NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         result = [[NSData alloc] initWithBase64Encoding:string];
-    #endif  
+        #endif
     }
     
+//    如果是苹果电脑
+    #elif defined(__MAC_OS_X_VERSION_MIN_REQUIRED)
     
+    if ([WTDataSaver osVersion]>=10.9) {
+        result = [[NSData alloc] initWithBase64EncodedData:data options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    }else
+    {
+//        小于10.9
+    #if __MAC_OS_X_VERSION_MIN_REQUIRED < __MAC_10_9
+        NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        result = [[NSData alloc] initWithBase64Encoding:string];
+    #endif
+    }
+    #endif
     return result;
 }
 
