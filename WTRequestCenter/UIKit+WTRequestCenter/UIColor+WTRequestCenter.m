@@ -6,9 +6,9 @@
 //  Copyright (c) 2014年 song. All rights reserved.
 //
 
-#import "UIColor+FastCreating.h"
+#import "UIColor+WTRequestCenter.h"
 
-@implementation UIColor (FastCreating)
+@implementation UIColor (WTRequestCenter)
 
 + (UIColor*)WTcolorWithFloat:(CGFloat)number
 {

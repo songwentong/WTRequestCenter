@@ -1,4 +1,9 @@
-#import "UIImage+animatedGIF.h"
+
+
+
+
+
+#import "UIImage+WTRequestCenter.h"
 #import <ImageIO/ImageIO.h>
 
 #if __has_feature(objc_arc)
@@ -9,7 +14,7 @@
 #define fromCF (id)
 #endif
 #import "WTRequestCenter.h"
-@implementation UIImage (animatedGIF)
+@implementation UIImage (WTRequestCenter)
 
 static int delayCentisecondsForImageAtIndex(CGImageSourceRef const source, size_t const i) {
     int delayCentiseconds = 1;

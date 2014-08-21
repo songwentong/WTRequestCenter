@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 song. All rights reserved.
 //
 
-#import "UIButton+WTImageCache.h"
+#import "UIButton+WTRequestCenter.h"
 #import "WTRequestCenter.h"
 @implementation UIButton (WTImageCache)
 

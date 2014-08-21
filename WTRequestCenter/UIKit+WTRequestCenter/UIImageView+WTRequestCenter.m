@@ -6,9 +6,9 @@
 //  Copyright (c) Mike song(mailto:275712575@qq.com). All rights reserved.
 //  site:https://github.com/swtlovewtt/WTRequestCenter
 
-#import "UIImageView+WTImageCache.h"
+#import "UIImageView+WTRequestCenter.h"
 #import "WTRequestCenter.h"
-@implementation UIImageView (WTImageCache)
+@implementation UIImageView (WTRequestCenter)
 - (void)setImageWithURL:(NSURL *)url
 {
     [self setImageWithURL:url placeholderImage:nil];

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIColor (FastCreating)
+@interface UIColor (WTRequestCenter)
 
 //用色值创建颜色 RGB都是number
 + (UIColor*)WTcolorWithFloat:(CGFloat)number;

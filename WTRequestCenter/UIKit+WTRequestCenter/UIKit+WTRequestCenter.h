@@ -25,9 +25,9 @@
  */
 #ifndef WTRequestCenter_UIKit_WTRequestCenter_h
 #define WTRequestCenter_UIKit_WTRequestCenter_h
-#import "UIButton+WTImageCache.h"
-#import "UIImageView+WTImageCache.h"
-#import "UIImage+animatedGIF.h"
-#import "UIColor+FastCreating.h"
+#import "UIButton+WTRequestCenter.h"
+#import "UIImageView+WTRequestCenter.h"
+#import "UIImage+WTRequestCenter.h"
+#import "UIColor+WTRequestCenter.h"
 #import "UIDevice+WTRequestCenter.h"
 #endif

@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 #import "WTRequestCenter.h"
-#import "UIImage+animatedGIF.h"
 #import "UIKit+WTRequestCenter.h"
 @interface ViewController ()
 

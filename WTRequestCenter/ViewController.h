@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIImageView+WTImageCache.h"
+#import "UIKit+WTRequestCenter.h"
 @interface ViewController : UIViewController
 
 @end
