@@ -17,7 +17,10 @@
 {
     self.image = placeholder;
     [WTRequestCenter getImageWithURL:url completionHandler:^(UIImage *image) {
+        
+//        已经是主线程
         self.image = image;
+        [self setNeedsLayout];
     }];
 }
 @end
