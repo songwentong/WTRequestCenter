@@ -158,6 +158,22 @@ static NSOperationQueue *sharedQueue = nil;
 }
 
 
+//这个方法用于类型不固定时候的一个过滤
+//传入一个NSNumber，NSString或者NSNull类型的数据即可
++(NSString*)stringWithData:(NSObject*)data
+{
+    if ([data isEqual:[NSNull null]]) {
+        return @"";
+    }
+    if ([data isKindOfClass:[NSString class]]) {
+        return (NSString*)data;
+    }
+    if ([data isKindOfClass:[NSNumber class]]) {
+        NSNumber *number = (NSNumber*)data;
+        return [number stringValue];
+    }
+    return @"";
+}
 
 #pragma mark - Get
 

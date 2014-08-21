@@ -90,10 +90,10 @@
 +(void)getImageWithURL:(NSURL*)url
      completionHandler:(void(^) (UIImage* image))handler;
 #endif
-#pragma mark - 辅助  （JSON解析）
+#pragma mark - 辅助
 //JSON解析
 +(id)JSONObjectWithData:(NSData*)data;
-
++(NSString*)stringWithData:(NSObject*)data;
 #pragma mark - URL
 //根路径
 +(BOOL)setBaseURL:(NSString*)url;
