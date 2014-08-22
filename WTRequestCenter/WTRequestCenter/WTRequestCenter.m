@@ -33,11 +33,6 @@ static NSOperationQueue *sharedQueue = nil;
     NSString *diskPath = [NSString stringWithFormat:@"WTRequestCenter"];
     NSURLCache *cache = [[NSURLCache alloc] initWithMemoryCapacity:1024*1024*20 diskCapacity:1024*1024*300 diskPath:diskPath];
     
-    
-    //    最大内存空间
-    [cache setMemoryCapacity:1024*1024*20];//20M
-    //    最大储存（硬盘）空间
-    [cache setDiskCapacity:1024*1024*300];//300M
     return cache;
 }
 
