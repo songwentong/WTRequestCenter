@@ -27,6 +27,8 @@
     
 //    NSLog(@"uuid:%@",[UIDevice WTUUID]);
     
+    NSLog(@"%@",[NSBundle mainBundle].executableArchitectures);
+    
 //    GET请求
     [self get];
     
@@ -41,16 +43,20 @@
 //    [self gifButton];
 //    [WTRequestCenter clearAllCache];
     
+    
+    
+    
+    
 //    存取数据
 //    [self saveAndWrite];
     
 //    查看内存用量 单位是byte
 //    Returns the current size of the receiver’s in-memory cache, in bytes.
-    NSLog(@"当前内存用量  %d KB",[[WTRequestCenter sharedCache] currentMemoryUsage]/1024);
+    NSLog(@"当前内存用量  %u KB",[[WTRequestCenter sharedCache] currentMemoryUsage]/1024);
     
 //    查看缓存（Cache）用量,单位是byte
 //    The current size of the receiver’s on-disk cache, in bytes.
-    NSLog(@"缓存用量  %d KB",[WTRequestCenter currentDiskUsage]/1024);
+    NSLog(@"缓存用量  %u KB",[WTRequestCenter currentDiskUsage]/1024);
 }
 
 
