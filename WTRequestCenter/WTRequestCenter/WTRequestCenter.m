@@ -32,7 +32,6 @@ static NSOperationQueue *sharedQueue = nil;
 {
     NSString *diskPath = [NSString stringWithFormat:@"WTRequestCenter"];
     NSURLCache *cache = [[NSURLCache alloc] initWithMemoryCapacity:1024*1024*20 diskCapacity:1024*1024*300 diskPath:diskPath];
-    
     return cache;
 }
 
@@ -181,12 +180,12 @@ static NSOperationQueue *sharedQueue = nil;
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     if (parameters) {
         NSMutableString *paramString = [[NSMutableString alloc] init];
-        for (NSString *key in [parameters allKeys]) {
-            NSString *value = [parameters valueForKey:key];
+        
+        [parameters enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
             NSString *str = [NSString stringWithFormat:@"%@=%@",key,value];
             [paramString appendString:str];
             [paramString appendString:@"&"];
-        }
+        }];
         NSMutableString *urlString = [[NSMutableString alloc] initWithFormat:@"%@?%@",url,paramString];
         urlString = [[[urlString copy] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] mutableCopy];
         request.URL = [NSURL URLWithString:urlString];

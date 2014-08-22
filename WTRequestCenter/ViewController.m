@@ -28,7 +28,7 @@
 //    NSLog(@"uuid:%@",[UIDevice WTUUID]);
     
 //    GET请求
-//    [self get];
+    [self get];
     
 //    POST请求
 //    [self post];
@@ -39,7 +39,7 @@
 //    [self loadGif];
     
 //    [self gifButton];
-    [WTRequestCenter clearAllCache];
+//    [WTRequestCenter clearAllCache];
     
 //    存取数据
 //    [self saveAndWrite];
