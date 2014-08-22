@@ -172,7 +172,7 @@ static NSOperationQueue *sharedQueue = nil;
     return @"";
 }
 #pragma mark - 请求的生成
-+(NSURLRequest*)getRequestWithURL:(NSURL*)url
++(NSURLRequest*)GETRequestWithURL:(NSURL*)url
                        parameters:(NSDictionary*)parameters
 {
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
@@ -192,7 +192,7 @@ static NSOperationQueue *sharedQueue = nil;
     return request;
 }
 
-+(NSURLRequest*)postRequestWithURL:(NSURL*)url
++(NSURLRequest*)POSTRequestWithURL:(NSURL*)url
                         parameters:(NSDictionary*)parameters
 {
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
@@ -221,7 +221,7 @@ static NSOperationQueue *sharedQueue = nil;
 +(NSURLRequest*)getWithURL:(NSURL*)url parameters:(NSDictionary*)parameters completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
 {
     NSURLCache *cache = [WTRequestCenter sharedCache];
-    NSURLRequest *request = [self getRequestWithURL:url parameters:parameters];
+    NSURLRequest *request = [self GETRequestWithURL:url parameters:parameters];
     
     NSCachedURLResponse *response =[cache cachedResponseForRequest:request];
     
@@ -289,7 +289,7 @@ static NSOperationQueue *sharedQueue = nil;
                  parameters:(NSDictionary*)parameters
           completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
 {
-    NSURLRequest *request = [self postRequestWithURL:url parameters:parameters];
+    NSURLRequest *request = [self POSTRequestWithURL:url parameters:parameters];
     
     [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -306,7 +306,7 @@ static NSOperationQueue *sharedQueue = nil;
 
 +(NSURLRequest*)postWithoutCacheURL:(NSURL*)url parameters:(NSDictionary*)parameters completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
 {
-   NSURLRequest *request = [self postRequestWithURL:url parameters:parameters];
+   NSURLRequest *request = [self POSTRequestWithURL:url parameters:parameters];
     
     [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         dispatch_async(dispatch_get_main_queue(), ^{
