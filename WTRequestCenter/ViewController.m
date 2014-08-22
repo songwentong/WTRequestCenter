@@ -33,12 +33,12 @@
 //    POST请求
 //    [self post];
 //    下载图片
-    [self loadImage];
+//    [self loadImage];
 //    [WTRequestCenter cancelAllRequest];
 //    gif
 //    [self loadGif];
     
-//    [self gifButton];
+    [self gifButton];
     
 //    存取数据
 //    [self saveAndWrite];

@@ -180,7 +180,7 @@ static NSOperationQueue *sharedQueue = nil;
 +(NSURLRequest*)getWithURL:(NSURL*)url parameters:(NSDictionary*)parameters completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
 {
     NSURLCache *cache = [WTRequestCenter sharedCache];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:60.0];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
     if (parameters) {
         NSMutableString *paramString = [[NSMutableString alloc] init];
         for (NSString *key in [parameters allKeys]) {
@@ -201,7 +201,7 @@ static NSOperationQueue *sharedQueue = nil;
                                            queue:[WTRequestCenter sharedQueue]
                                completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
          {
-             if (!connectionError) {
+             if (!connectionError && data) {
                  NSCachedURLResponse *res = [[NSCachedURLResponse alloc] initWithResponse:response data:data];
                  [cache storeCachedResponse:res forRequest:request];
              }
