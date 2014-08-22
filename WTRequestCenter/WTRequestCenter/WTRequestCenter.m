@@ -91,7 +91,7 @@ static NSOperationQueue *sharedQueue = nil;
 #endif
 +(BOOL)checkRequestIsExpired:(NSHTTPURLResponse*)request
 {
-//    NSHTTPURLResponse *res = (NSHTTPURLResponse*)response.response;
+
     NSDictionary *allHeaderFields = request.allHeaderFields;
     
     NSString *dateString = [allHeaderFields valueForKey:@"Date"];
@@ -222,7 +222,7 @@ static NSOperationQueue *sharedQueue = nil;
          }];
     }else
     {
-        //NSDateFormatter 在iOS7.0以后是线程安全的，为了保证5.0可用，在这里用主线程括起来
+
         
         if (handler) {
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -231,7 +231,12 @@ static NSOperationQueue *sharedQueue = nil;
         }
         
         if ([response.response isKindOfClass:[NSHTTPURLResponse class]]) {
-                BOOL isExpired = [WTRequestCenter checkRequestIsExpired:(NSHTTPURLResponse*)response.response];
+            
+
+            BOOL isExpired = [WTRequestCenter checkRequestIsExpired:(NSHTTPURLResponse*)response.response];
+
+            
+            
                 if (isExpired) {
                     [NSURLConnection sendAsynchronousRequest:request
                                                        queue:[WTRequestCenter sharedQueue]
