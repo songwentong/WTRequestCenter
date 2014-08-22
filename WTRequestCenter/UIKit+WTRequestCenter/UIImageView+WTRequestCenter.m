@@ -16,11 +16,12 @@
 - (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder
 {
     self.image = placeholder;
-    [WTRequestCenter getImageWithURL:url completionHandler:^(UIImage *image) {
-        
-//        已经是主线程
+    
+    [WTRequestCenter getWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        UIImage *image = [UIImage imageWithData:data];
         self.image = image;
-        [self setNeedsLayout];
+        [self setNeedsDisplay];
     }];
+    
 }
 @end
