@@ -285,7 +285,9 @@ static NSOperationQueue *sharedQueue = nil;
 
 
 #pragma mark - POST
-+(NSURLRequest*)postWithURL:(NSURL*)url parameters:(NSDictionary*)parameters completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
++(NSURLRequest*)postWithURL:(NSURL*)url
+                 parameters:(NSDictionary*)parameters
+          completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
 {
     NSURLRequest *request = [self postRequestWithURL:url parameters:parameters];
     
