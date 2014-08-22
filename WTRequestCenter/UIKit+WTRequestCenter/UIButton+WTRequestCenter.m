@@ -23,6 +23,7 @@
     
     [WTRequestCenter getImageWithURL:url completionHandler:^(UIImage *image) {
         [self setImage:image forState:state];
+        [self setNeedsDisplay];
     }];
 }
 
@@ -39,6 +40,7 @@
     [self setBackgroundImage:placeholderImage forState:state];
     [WTRequestCenter getImageWithURL:url completionHandler:^(UIImage *image) {
         [self setBackgroundImage:image forState:state];
+        [self setNeedsDisplay];
     }];
 }
 
