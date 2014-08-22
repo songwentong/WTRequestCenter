@@ -2,9 +2,9 @@
 //  UIDevice+WTRequestCenter.h
 //  WTRequestCenter
 //
-//  Created by song on 14-8-15.
-//  Copyright (c) 2014年 song. All rights reserved.
-//
+//  Created by songwt on 14-8-12.
+//  Copyright (c) Mike song(mailto:275712575@qq.com). All rights reserved.
+//  site:https://github.com/swtlovewtt/WTRequestCenter
 
 #import <UIKit/UIKit.h>
 
@@ -13,5 +13,5 @@
 
 //UUID  唯一标示符
 +(NSString*)WTUUID;
-//Available in iOS 6.0 and later.
+//Available in iOS 2.0 and later.
 @end

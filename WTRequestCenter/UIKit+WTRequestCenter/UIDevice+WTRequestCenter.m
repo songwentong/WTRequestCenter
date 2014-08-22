@@ -14,12 +14,16 @@
 {
     NSString *uuid = @"";
     UIDevice *device = [UIDevice currentDevice];
+    
+    
     if ([device.systemVersion floatValue]>=6.0) {
         NSUUID *uid = device.identifierForVendor;
         uuid = [uid UUIDString];
     }else
     {
-        uuid = @"sorry, this method is not Available before 6.0";
+        #if __IPHONE_OS_VERSION_MIN_REQUIRED <__IPHONE_6_0
+        uuid = [device uniqueIdentifier];
+        #endif
     }
     
     return uuid;
