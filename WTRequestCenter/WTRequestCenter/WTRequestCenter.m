@@ -175,12 +175,10 @@ static NSOperationQueue *sharedQueue = nil;
 
 #pragma mark - Get
 
-//get请求
-//Available in iOS 5.0 and later.
-+(NSURLRequest*)getWithURL:(NSURL*)url parameters:(NSDictionary*)parameters completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
++(NSURLRequest*)getRequestWithURL:(NSURL*)url
+                       parameters:(NSDictionary*)parameters
 {
-    NSURLCache *cache = [WTRequestCenter sharedCache];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     if (parameters) {
         NSMutableString *paramString = [[NSMutableString alloc] init];
         for (NSString *key in [parameters allKeys]) {
@@ -193,10 +191,21 @@ static NSOperationQueue *sharedQueue = nil;
         urlString = [[[urlString copy] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] mutableCopy];
         request.URL = [NSURL URLWithString:urlString];
     }
-   
+    
+    return request;
+}
+
+//get请求
+//Available in iOS 5.0 and later.
++(NSURLRequest*)getWithURL:(NSURL*)url parameters:(NSDictionary*)parameters completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
+{
+    NSURLCache *cache = [WTRequestCenter sharedCache];
+    NSURLRequest *request = [self getRequestWithURL:url parameters:parameters];
+    
     NSCachedURLResponse *response =[cache cachedResponseForRequest:request];
     
     if (!response) {
+//        如果没有保存，就去请求
         [NSURLConnection sendAsynchronousRequest:request
                                            queue:[WTRequestCenter sharedQueue]
                                completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
@@ -236,8 +245,13 @@ static NSOperationQueue *sharedQueue = nil;
                     });
                 }
                 
-                
-                
+            }else
+            {
+                if (handler) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        handler(response.response,response.data,nil);
+                    });
+                }
             }
             
         
