@@ -20,11 +20,12 @@
         placeholderImage:(UIImage *)placeholderImage
 {
     [self setImage:placeholderImage forState:state];
-    
-    [WTRequestCenter getImageWithURL:url completionHandler:^(UIImage *image) {
+    [WTRequestCenter getWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        UIImage *image = [UIImage imageWithData:data];
         [self setImage:image forState:state];
-        [self setNeedsDisplay];
+        [self setNeedsLayout];
     }];
+
 }
 
 - (void)setBackgroundImage:(UIControlState)state
@@ -38,9 +39,10 @@
         placeholderImage:(UIImage *)placeholderImage
 {
     [self setBackgroundImage:placeholderImage forState:state];
-    [WTRequestCenter getImageWithURL:url completionHandler:^(UIImage *image) {
+    [WTRequestCenter getWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        UIImage *image = [UIImage imageWithData:data];
         [self setBackgroundImage:image forState:state];
-        [self setNeedsDisplay];
+        [self setNeedsLayout];
     }];
 }
 
