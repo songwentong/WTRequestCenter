@@ -381,36 +381,6 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
 }
  
 
-#if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
-//下载图片  Download  (Cache)
-+(void)getImageWithURL:(NSURL*)url
-     completionHandler:(void(^) (UIImage* image))handler
-{
-    NSURLCache *cache = [WTRequestCenter sharedCache];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30.0];
-    NSCachedURLResponse *response =[cache cachedResponseForRequest:request];
-    if (response) {
-        if (handler) {
-            UIImage *image = [UIImage imageWithData:response.data];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                handler(image);
-            });
-            
-        }
-    }else
-    {
-        [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-            if (handler) {
-                UIImage *image = [UIImage imageWithData:data];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    handler(image);
-                });
-            }
-        }];
-    }
-   
-}
-#endif
 
 
 
