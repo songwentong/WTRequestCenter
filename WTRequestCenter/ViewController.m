@@ -38,7 +38,8 @@
 //    gif
 //    [self loadGif];
     
-    [self gifButton];
+//    [self gifButton];
+    [WTRequestCenter clearAllCache];
     
 //    存取数据
 //    [self saveAndWrite];

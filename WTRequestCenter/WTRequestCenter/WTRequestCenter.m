@@ -118,12 +118,12 @@ static NSOperationQueue *sharedQueue = nil;
 }
 
 
-//清除所有缓存
+//清除所有缓存(clearAllCache)
 +(void)clearAllCache
 {
     NSURLCache *cache = [WTRequestCenter sharedCache];
     [cache removeAllCachedResponses];
-
+    
 }
 
 //当前缓存大小
@@ -229,11 +229,24 @@ static NSOperationQueue *sharedQueue = nil;
                 handler(response.response,response.data,nil);
             });
         }
-            if ([response.response isKindOfClass:[NSHTTPURLResponse class]]) {
+        
+        if ([response.response isKindOfClass:[NSHTTPURLResponse class]]) {
                 BOOL isExpired = [WTRequestCenter checkRequestIsExpired:(NSHTTPURLResponse*)response.response];
                 if (isExpired) {
-                    [WTRequestCenter removeRequestCache:request];
-                    [WTRequestCenter getWithURL:url parameters:parameters completionHandler:handler];
+                    [NSURLConnection sendAsynchronousRequest:request
+                                                       queue:[WTRequestCenter sharedQueue]
+                                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
+                     {
+                         if (!connectionError && data) {
+                             NSCachedURLResponse *res = [[NSCachedURLResponse alloc] initWithResponse:response data:data];
+                             [cache storeCachedResponse:res forRequest:request];
+                         }
+                         dispatch_async(dispatch_get_main_queue(), ^{
+                             if (handler) {
+                                 handler(response,data,connectionError);
+                             }
+                         });
+                     }];
                 }
             }
             
