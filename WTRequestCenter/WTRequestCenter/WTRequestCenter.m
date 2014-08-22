@@ -224,33 +224,16 @@ static NSOperationQueue *sharedQueue = nil;
     {
         //NSDateFormatter 在iOS7.0以后是线程安全的，为了保证5.0可用，在这里用主线程括起来
         
-            
+        if (handler) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                handler(response.response,response.data,nil);
+            });
+        }
             if ([response.response isKindOfClass:[NSHTTPURLResponse class]]) {
-                
                 BOOL isExpired = [WTRequestCenter checkRequestIsExpired:(NSHTTPURLResponse*)response.response];
                 if (isExpired) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                    if (handler) {
-                        handler(response.response,response.data,nil);
-                    }
-                    });
                     [WTRequestCenter removeRequestCache:request];
                     [WTRequestCenter getWithURL:url parameters:parameters completionHandler:handler];
-                }else
-                {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                    if (handler) {
-                        handler(response.response,response.data,nil);
-                    }
-                    });
-                }
-                
-            }else
-            {
-                if (handler) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        handler(response.response,response.data,nil);
-                    });
                 }
             }
             
