@@ -171,9 +171,7 @@ static NSOperationQueue *sharedQueue = nil;
     }
     return @"";
 }
-
-#pragma mark - Get
-
+#pragma mark - 请求的生成
 +(NSURLRequest*)getRequestWithURL:(NSURL*)url
                        parameters:(NSDictionary*)parameters
 {
@@ -193,6 +191,30 @@ static NSOperationQueue *sharedQueue = nil;
     
     return request;
 }
+
++(NSURLRequest*)postRequestWithURL:(NSURL*)url
+                        parameters:(NSDictionary*)parameters
+{
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setHTTPMethod:@"POST"];
+    
+    if (parameters) {
+        NSMutableString *paramString = [[NSMutableString alloc] init];
+        
+        [parameters enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
+            NSString *str = [NSString stringWithFormat:@"%@=%@",key,value];
+            [paramString appendString:str];
+            [paramString appendString:@"&"];
+        }];
+        
+        NSData *postData = [paramString dataUsingEncoding:NSUTF8StringEncoding];
+        [request setHTTPBody:postData];
+    }
+    return request;
+}
+#pragma mark - Get
+
+
 
 //get请求
 //Available in iOS 5.0 and later.
@@ -263,26 +285,9 @@ static NSOperationQueue *sharedQueue = nil;
 
 
 #pragma mark - POST
-// post 请求
-//Available in iOS 5.0 and later.
-//parameters
 +(NSURLRequest*)postWithURL:(NSURL*)url parameters:(NSDictionary*)parameters completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
 {
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url
-                                                                cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
-    [request setHTTPMethod:@"POST"];
-    if (parameters) {
-        NSMutableString *paramString = [[NSMutableString alloc] init];
-        for (NSString *key in [parameters allKeys]) {
-            NSString *value = [parameters valueForKey:key];
-            NSString *str = [NSString stringWithFormat:@"%@=%@",key,value];
-            [paramString appendString:str];
-            [paramString appendString:@"&"];
-        }
-        
-        NSData *postData = [paramString dataUsingEncoding:NSUTF8StringEncoding];
-        [request setHTTPBody:postData];
-    }
+    NSURLRequest *request = [self postRequestWithURL:url parameters:parameters];
     
     [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -296,24 +301,10 @@ static NSOperationQueue *sharedQueue = nil;
     return request;
 }
 
+
 +(NSURLRequest*)postWithoutCacheURL:(NSURL*)url parameters:(NSDictionary*)parameters completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
 {
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url
-                                                                cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:30.0];
-    [request setHTTPMethod:@"POST"];
-    
-    NSMutableString *paramString = [[NSMutableString alloc] init];
-    for (NSString *key in [parameters allKeys]) {
-        NSString *value = [parameters valueForKey:key];
-        NSString *str = [NSString stringWithFormat:@"%@=%@",key,value];
-        [paramString appendString:str];
-        [paramString appendString:@"&"];
-    }
-    
-    paramString = [[paramString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] mutableCopy];
-    
-    NSData *postData = [paramString dataUsingEncoding:NSUTF8StringEncoding];
-    [request setHTTPBody:postData];
+   NSURLRequest *request = [self postRequestWithURL:url parameters:parameters];
     
     [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         dispatch_async(dispatch_get_main_queue(), ^{
