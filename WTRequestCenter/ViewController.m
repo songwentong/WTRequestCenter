@@ -23,22 +23,22 @@
 //  设置响应失效日期
 //    NSLog(@"%f",[WTRequestCenter expireTimeInterval]);
     [WTRequestCenter setExpireTimeInterval:1000000];
-//    NSLog(@"%@",NSHomeDirectory());
+    NSLog(@"%@",NSHomeDirectory());
     
 //    NSLog(@"uuid:%@",[UIDevice WTUUID]);
     
 //    GET请求
-    [self get];
+//    [self get];
     
 //    POST请求
-    [self post];
+//    [self post];
 //    下载图片
     [self loadImage];
-    [WTRequestCenter cancelAllRequest];
+//    [WTRequestCenter cancelAllRequest];
 //    gif
 //    [self loadGif];
     
-    [self gifButton];
+//    [self gifButton];
     
 //    存取数据
 //    [self saveAndWrite];

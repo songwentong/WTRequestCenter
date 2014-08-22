@@ -30,7 +30,10 @@ static NSOperationQueue *sharedQueue = nil;
 //缓存
 +(NSURLCache*)sharedCache
 {
-    NSURLCache *cache = [NSURLCache sharedURLCache];
+    NSString *diskPath = [NSString stringWithFormat:@"WTRequestCenter"];
+    NSURLCache *cache = [[NSURLCache alloc] initWithMemoryCapacity:1024*1024*20 diskCapacity:1024*1024*300 diskPath:diskPath];
+    
+    
     //    最大内存空间
     [cache setMemoryCapacity:1024*1024*20];//20M
     //    最大储存（硬盘）空间
@@ -204,7 +207,8 @@ static NSOperationQueue *sharedQueue = nil;
                                completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError)
          {
              if (!connectionError) {
-//                 [cache cachedResponseForRequest:request];
+                 NSCachedURLResponse *res = [[NSCachedURLResponse alloc] initWithResponse:response data:data];
+                 [cache storeCachedResponse:res forRequest:request];
              }
              dispatch_async(dispatch_get_main_queue(), ^{
                  if (handler) {
