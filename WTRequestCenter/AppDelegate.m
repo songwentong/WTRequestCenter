@@ -14,9 +14,9 @@
 {
     // Override point for customization after application launch.
     
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"eee, dd MMM yyyy HH:mm:ss VVVV"];
-    NSLog(@"%@",[formatter stringFromDate:[NSDate date]]);
+//    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+//    [formatter setDateFormat:@"eee, dd MMM yyyy HH:mm:ss VVVV"];
+//    NSLog(@"%@",[formatter stringFromDate:[NSDate date]]);
     return YES;
 }
 							

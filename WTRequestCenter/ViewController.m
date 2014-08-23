@@ -27,10 +27,10 @@
     
 //    NSLog(@"uuid:%@",[UIDevice WTUUID]);
     
-    NSLog(@"%@",[NSBundle mainBundle].executableArchitectures);
+//    NSLog(@"%@",[NSBundle mainBundle].executableArchitectures);
     
 //    GET请求
-    [self get];
+//    [self get];
     
 //    POST请求
 //    [self post];
@@ -42,9 +42,16 @@
     
 //    [self gifButton];
 //    [WTRequestCenter clearAllCache];
+
     
     
-    
+    NSLog(@"%@",[[NSBundle mainBundle] URLsForResourcesWithExtension:nil subdirectory:nil]);
+    NSURL *url = [[[NSBundle mainBundle] URLsForResourcesWithExtension:nil subdirectory:nil] lastObject];
+    [WTDataSaver dataWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        NSString *string = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+        
+        NSLog(@"%@",string);
+    }];
     
     
 //    存取数据
@@ -52,11 +59,11 @@
     
 //    查看内存用量 单位是byte
 //    Returns the current size of the receiver’s in-memory cache, in bytes.
-    NSLog(@"当前内存用量  %u KB",[[WTRequestCenter sharedCache] currentMemoryUsage]/1024);
+//    NSLog(@"当前内存用量  %u KB",[[WTRequestCenter sharedCache] currentMemoryUsage]/1024);
     
 //    查看缓存（Cache）用量,单位是byte
 //    The current size of the receiver’s on-disk cache, in bytes.
-    NSLog(@"缓存用量  %u KB",[WTRequestCenter currentDiskUsage]/1024);
+//    NSLog(@"缓存用量  %u KB",[WTRequestCenter currentDiskUsage]/1024);
 }
 
 
@@ -115,7 +122,9 @@
     imageView.contentMode = UIViewContentModeCenter;
     [self.view addSubview:imageView];
     NSURL *url = [[NSBundle mainBundle] URLForResource:@"aaa" withExtension:@"gif"];
-    imageView.image = [UIImage animatedImageWithAnimatedGIFURL:url];
+    [UIImage animatedImageWithAnimatedGIFURL:url completion:^(UIImage *image) {
+        imageView.image = image;
+    }];
     
     
     

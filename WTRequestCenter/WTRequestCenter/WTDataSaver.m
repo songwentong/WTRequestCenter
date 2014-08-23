@@ -7,7 +7,7 @@
 //  site:https://github.com/swtlovewtt/WTRequestCenter
 
 #import "WTDataSaver.h"
-
+#import "WTRequestCenter.h"
 @implementation WTDataSaver
 
 #pragma mark - 工具
@@ -209,19 +209,14 @@
 {
     
     [self configureDirectory];
-    __block NSData *data = nil;
     
-    NSBlockOperation *block = [NSBlockOperation blockOperationWithBlock:^{
-        data = [NSData dataWithContentsOfURL:url];
-    }];
-    block.completionBlock = ^{
+    [WTRequestCenter getWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         if (completion) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                completion(data,nil,nil);
-            });
+            completion(data,response,error);
         }
-    };
-    [block start];
+        
+    }];
+  
 }
 
 #pragma mark - 清数据

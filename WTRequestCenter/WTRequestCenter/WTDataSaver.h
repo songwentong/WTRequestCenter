@@ -43,6 +43,8 @@
 
 +(void)dataWithName:(NSString*)name
          completion:(void(^)(NSData*data))completion;
+
+
 +(void)dataWithURL:(NSURL*)url
  completionHandler:(void (^)(NSData *data, NSURLResponse *response, NSError *error))completion;
 #pragma mark - 工具
