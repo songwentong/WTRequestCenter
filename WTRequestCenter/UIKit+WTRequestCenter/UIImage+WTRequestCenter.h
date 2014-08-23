@@ -16,9 +16,9 @@
   comelectionHandler:(void(^)(UIImage* image))comelectionHandler;
 
 #pragma mark - 不建议的方法
-+ (UIImage *)animatedImageWithAnimatedGIFData:(NSData *)theData;
+//+ (UIImage *)animatedImageWithAnimatedGIFData:(NSData *)theData;
 
-+ (UIImage *)animatedImageWithAnimatedGIFURL:(NSURL *)theURL;
+//+ (UIImage *)animatedImageWithAnimatedGIFURL:(NSURL *)theURL;
 
 
 
