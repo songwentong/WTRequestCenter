@@ -122,10 +122,10 @@
     imageView.contentMode = UIViewContentModeCenter;
     [self.view addSubview:imageView];
     NSURL *url = [[NSBundle mainBundle] URLForResource:@"aaa" withExtension:@"gif"];
-    [UIImage animatedImageWithAnimatedGIFURL:url completion:^(UIImage *image) {
-        imageView.image = image;
-    }];
-    
+    [UIImage gifImageWithURL:url
+                  completion:^(UIImage *image) {
+                      imageView.image = image;
+                  }];
     
     
 }
@@ -139,10 +139,10 @@
     button.contentMode = UIViewContentModeCenter;
 //    [button setImage:[UIImage animatedImageWithAnimatedGIFURL:url2] forState:UIControlStateNormal];
     
-    [UIImage animatedImageWithAnimatedGIFURL:url2 completion:^(UIImage *image) {
-        [button setImage:image forState:UIControlStateNormal];
-    }];
-     
+    [UIImage gifImageWithURL:url2
+                  completion:^(UIImage *image) {
+                      [button setImage:image forState:UIControlStateNormal];
+                  }];
     [self.view addSubview:button];
     [button addTarget:self action:@selector(button:) forControlEvents:UIControlEventTouchUpInside];
 }

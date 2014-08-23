@@ -113,6 +113,19 @@ static UIImage *animatedImageWithAnimatedGIFReleasingImageSource(CGImageSourceRe
     }
 }
 
++(void) imageWithURL:(NSURL*)url
+  comelectionHandler:(void(^)(UIImage* image))comelectionHandler
+{
+    [WTRequestCenter getWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        UIImage *image = [UIImage imageWithData:data];
+        if (comelectionHandler) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+            comelectionHandler(image);
+            });
+        }
+    }];
+}
+
 + (UIImage *)animatedImageWithAnimatedGIFData:(NSData *)data {
     return animatedImageWithAnimatedGIFReleasingImageSource(CGImageSourceCreateWithData(toCF data, NULL));
 }
@@ -122,19 +135,10 @@ static UIImage *animatedImageWithAnimatedGIFReleasingImageSource(CGImageSourceRe
     return animatedImageWithAnimatedGIFReleasingImageSource(CGImageSourceCreateWithURL(toCF url, NULL));
 }
 
-+(void)animatedImageWithAnimatedGIFURL:(NSURL*)url completion:(void(^)(UIImage* image))completion
++(void)gifImageWithURL:(NSURL*)url completion:(void(^)(UIImage* image))completion
 {
 //    BOOL isLocal;
-    NSString *utlString = [url absoluteString];
-    if ([utlString rangeOfString:@"file:///"].length>0) {
-        //        是本地的
-        UIImage *resultImage = animatedImageWithAnimatedGIFReleasingImageSource(CGImageSourceCreateWithURL(toCF url, NULL));
-        if (completion) {
-            completion(resultImage);
-        }
-        
-    }else
-    {
+
         //        网络的
         [WTRequestCenter getWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
             if (!data) {
@@ -152,7 +156,7 @@ static UIImage *animatedImageWithAnimatedGIFReleasingImageSource(CGImageSourceRe
                 });
             }
         }];
-    }
+    
     
 }
 
