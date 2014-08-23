@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIKit+WTRequestCenter.h"
 @interface ViewController : UIViewController
 
 @end

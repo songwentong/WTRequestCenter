@@ -43,8 +43,9 @@
 
 +(void)dataWithName:(NSString*)name
          completion:(void(^)(NSData*data))completion;
-
-#pragma mark - 工具  
++(void)dataWithURL:(NSURL*)url
+ completionHandler:(void (^)(NSData *data, NSURLResponse *response, NSError *error))completion;
+#pragma mark - 工具
 //适用范围 2.0+
 +(NSData*)base64EncodedData:(NSData*)data;
 +(NSData*)decodeBase64Data:(NSData*)data;

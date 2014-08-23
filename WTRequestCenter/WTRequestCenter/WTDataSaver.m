@@ -195,21 +195,29 @@
 }
 +(void)dataWithName:(NSString*)name completion:(void(^)(NSData*data))completion
 {
+    
+    NSString *filePath = [NSString stringWithFormat:@"%@/%@",[self rootDir],name];
+    NSURL *url = [NSURL URLWithString:filePath];
+    [self dataWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        completion(data);
+    }];
+
+}
+
++(void)dataWithURL:(NSURL*)url
+     completionHandler:(void (^)(NSData *data, NSURLResponse *response, NSError *error))completion
+{
+    
     [self configureDirectory];
     __block NSData *data = nil;
-    NSString *filePath = [NSString stringWithFormat:@"%@/%@",[self rootDir],name];
-    NSBlockOperation *block = [NSBlockOperation blockOperationWithBlock:^{
-        data = [NSData dataWithContentsOfFile:filePath];
-    }];
-    /*
-    [block setCompletionBlock:^{
-        
-    }];*/
     
+    NSBlockOperation *block = [NSBlockOperation blockOperationWithBlock:^{
+        data = [NSData dataWithContentsOfURL:url];
+    }];
     block.completionBlock = ^{
         if (completion) {
             dispatch_async(dispatch_get_main_queue(), ^{
-            completion(data);
+                completion(data,nil,nil);
             });
         }
     };
