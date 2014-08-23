@@ -52,7 +52,8 @@
 
 
 #pragma mark - GET (Cache)
-//get请求
+//get请求+Cache
+//注意：可以请求本地的文件
 
 +(NSURLRequest*)getWithURL:(NSURL*)url
                 parameters:(NSDictionary*)parameters
