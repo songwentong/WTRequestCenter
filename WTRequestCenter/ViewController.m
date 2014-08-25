@@ -22,7 +22,7 @@
     
 //  设置响应失效日期
 //    NSLog(@"%f",[WTRequestCenter expireTimeInterval]);
-    [WTRequestCenter setExpireTimeInterval:1000000];
+//    [WTRequestCenter setExpireTimeInterval:0];
     NSLog(@"%@",NSHomeDirectory());
     
 //    NSLog(@"uuid:%@",[UIDevice WTUUID]);
@@ -70,20 +70,27 @@
 
 -(void)get
 {
-    NSURL *url = [NSURL URLWithString:[WTRequestCenter urlWithIndex:0]];
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters setValue:@"1" forKey:@"a"];
-    [parameters setValue:@"2" forKey:@"b"];
-    [parameters setValue:@"3" forKey:@"c"];
-//    article_id=46
+//    http://www.baidu.com/s?wd=aaa&rsv_spt=1&issp=1&rsv_bp=0&ie=utf-8&tn=baiduhome_pg&inputT=733
+    
+//    __block NSInteger index = 0;
+    for (int i=0; i<1; i++) {
 
-    [WTRequestCenter getWithURL:url
-                     parameters:parameters
-              completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-                  id obj = [WTRequestCenter JSONObjectWithData:data];
-                  NSLog(@"result is %@",obj);
-              }];
+        NSURL *url = [NSURL URLWithString:@"http://www.baidu.com/s?wd=aaa&rsv_spt=1&issp=1&rsv_bp=0&ie=utf-8&tn=baiduhome_pg&inputT=733"];
+        NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+   
+        
+        [WTRequestCenter getWithURL:url
+                         parameters:parameters
+                  completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+//                      index++;
+//                      NSLog(@"index:%d",index);
+//                      id obj = [WTRequestCenter JSONObjectWithData:data];
+//                      NSLog(@"result is %@",obj);
+                  }];
 
+    }
+    
+    
     
 }
 
