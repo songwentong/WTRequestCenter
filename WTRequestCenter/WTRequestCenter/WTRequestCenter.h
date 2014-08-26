@@ -21,7 +21,7 @@
  */
 #import <Foundation/Foundation.h>
 #import "WTDataSaver.h"
-
+#import <UIKit/UIKit.h>
 @interface WTRequestCenter : NSObject
 
 //请求队列
@@ -51,13 +51,20 @@
 +(void)removeRequestCache:(NSURLRequest*)request;
 
 
-#pragma mark - GET (Cache)
+#pragma mark - GET
+
+//无缓存
++(NSURLRequest*)getWithoutCacheURL:(NSURL *)url
+                        parameters:(NSDictionary *)parameters
+                 completionHandler:(void (^)(NSURLResponse *, NSData *, NSError *))handler;
+
 //get请求+Cache
 //注意：可以请求本地的文件
-
 +(NSURLRequest*)getWithURL:(NSURL*)url
                 parameters:(NSDictionary*)parameters
          completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
+
+
 
 
 #pragma mark - POST

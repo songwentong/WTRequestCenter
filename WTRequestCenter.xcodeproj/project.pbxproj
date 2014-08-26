@@ -127,7 +127,7 @@
 				E4BC81C4199E3415008ABB91 /* UIDevice+WTRequestCenter.m */,
 			);
 			name = "UIKit+WTRequestCenter";
-			path = "WTRequestCenter/UIKit+WTRequestCenter";
+			path = "../UIKit+WTRequestCenter";
 			sourceTree = "<group>";
 		};
 		E4440D64197A01B1001E6D88 = {
@@ -135,7 +135,6 @@
 			children = (
 				E4440D76197A01B1001E6D88 /* WTRequestCenter */,
 				E4DBC941197D14C9004F9393 /* WTRequestCenter */,
-				A3B70F5F1988DC5B002776F4 /* UIKit+WTRequestCenter */,
 				E4440D95197A01B1001E6D88 /* WTRequestCenterTests */,
 				E4440D6F197A01B1001E6D88 /* Frameworks */,
 				E4440D6E197A01B1001E6D88 /* Products */,
@@ -211,6 +210,7 @@
 		E4DBC941197D14C9004F9393 /* WTRequestCenter */ = {
 			isa = PBXGroup;
 			children = (
+				A3B70F5F1988DC5B002776F4 /* UIKit+WTRequestCenter */,
 				E4FB6C34198BC02700138FE0 /* NSURLRequest */,
 				E4FB6C35198BC06A00138FE0 /* NSURLSession */,
 			);
