@@ -171,7 +171,10 @@ static NSOperationQueue *sharedQueue = nil;
 +(NSURLRequest*)GETRequestWithURL:(NSURL*)url
                        parameters:(NSDictionary*)parameters
 {
+    
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    
+    
     if (parameters) {
         NSMutableString *paramString = [[NSMutableString alloc] init];
         

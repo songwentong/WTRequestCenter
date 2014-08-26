@@ -73,6 +73,8 @@
 //    http://www.baidu.com/s?wd=aaa&rsv_spt=1&issp=1&rsv_bp=0&ie=utf-8&tn=baiduhome_pg&inputT=733
     
 //    __block NSInteger index = 0;
+    
+    
     for (int i=0; i<1; i++) {
 
         NSURL *url = [NSURL URLWithString:@"http://www.baidu.com/s?wd=aaa&rsv_spt=1&issp=1&rsv_bp=0&ie=utf-8&tn=baiduhome_pg&inputT=733"];

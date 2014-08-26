@@ -1,10 +1,6 @@
 #import <UIKit/UIKit.h>
 
-/**
-        UIImage (animatedGIF)
-        
-    This category adds class methods to `UIImage` to create an animated `UIImage` from an animated GIF.
-*/
+
 @interface UIImage (WTRequestCenter)
 
 // 根据颜色获取图片
@@ -16,7 +12,7 @@
 +(void)gifImageWithURL:(NSURL*)url
             completion:(void(^)(UIImage* image))completion;
 
-+(void) imageWithURL:(NSURL*)url
++(void)imageWithURL:(NSURL*)url
   comelectionHandler:(void(^)(UIImage* image))comelectionHandler;
 
 
