@@ -27,7 +27,6 @@
 // 16 进制颜色转换
 + (UIColor *)colorWithHexString:(NSString *)str;
 
-// 根据颜色获取图片
-+ (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size;
+
 
 @end
