@@ -218,7 +218,9 @@ static NSOperationQueue *sharedQueue = nil;
 #pragma mark - Get
 
 
-+(NSURLRequest*)getWithoutCacheURL:(NSURL *)url parameters:(NSDictionary *)parameters completionHandler:(void (^)(NSURLResponse *, NSData *, NSError *))handler
++(NSURLRequest*)getWithoutCacheURL:(NSURL *)url
+                        parameters:(NSDictionary *)parameters
+                 completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
 {
     NSURLRequest *request = [self GETRequestWithURL:url parameters:parameters];
     [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
