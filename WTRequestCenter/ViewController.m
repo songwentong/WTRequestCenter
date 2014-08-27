@@ -30,33 +30,24 @@
 //    NSLog(@"%@",[NSBundle mainBundle].executableArchitectures);
     
 //    GET请求
-//    [self get];
+    [self get];
     
 //    POST请求
-//    [self post];
+    [self post];
 //    下载图片
-//    [self loadImage];
+    [self loadImage];
 //    [WTRequestCenter cancelAllRequest];
 //    gif
 //    [self loadGif];
     
-//    [self gifButton];
-//    [WTRequestCenter clearAllCache];
+    [self gifButton];
+
+//    存取数据
+    [self saveAndWrite];
 
     
     
-    NSLog(@"%@",[[NSBundle mainBundle] URLsForResourcesWithExtension:nil subdirectory:nil]);
-    NSURL *url = [[[NSBundle mainBundle] URLsForResourcesWithExtension:nil subdirectory:nil] lastObject];
-    [WTDataSaver dataWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        NSString *string = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-        
-        NSLog(@"%@",string);
-    }];
-    
-    
-//    存取数据
-//    [self saveAndWrite];
-    
+//    [WTRequestCenter clearAllCache];
 //    查看内存用量 单位是byte
 //    Returns the current size of the receiver’s in-memory cache, in bytes.
 //    NSLog(@"当前内存用量  %u KB",[[WTRequestCenter sharedCache] currentMemoryUsage]/1024);
@@ -70,20 +61,18 @@
 
 -(void)get
 {
-//    http://www.baidu.com/s?wd=aaa&rsv_spt=1&issp=1&rsv_bp=0&ie=utf-8&tn=baiduhome_pg&inputT=733
-    
-//    __block NSInteger index = 0;
-    
     
     for (int i=0; i<1; i++) {
 
-        NSURL *url = [NSURL URLWithString:@"http://www.baidu.com/s?wd=aaa&rsv_spt=1&issp=1&rsv_bp=0&ie=utf-8&tn=baiduhome_pg&inputT=733"];
+        NSURL *url = [NSURL URLWithString:@"http://www.baidu.com"];
         NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
    
         
         [WTRequestCenter getWithURL:url
                          parameters:parameters
                   completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                      NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                      NSLog(@"%@",string);
 //                      index++;
 //                      NSLog(@"index:%d",index);
 //                      id obj = [WTRequestCenter JSONObjectWithData:data];
@@ -99,14 +88,18 @@
 -(void)post
 {
     NSURL *url = [NSURL URLWithString:[WTRequestCenter urlWithIndex:0]];
+    
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setValue:@"1" forKey:@"a"];
     [parameters setValue:@"2" forKey:@"b"];
     [parameters setValue:@"3" forKey:@"c"];
     [WTRequestCenter postWithURL:url
                       parameters:parameters completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-                          id obj = [WTRequestCenter JSONObjectWithData:data];
-                          NSLog(@"result is %@",obj);
+                          if (!error) {
+                              id obj = [WTRequestCenter JSONObjectWithData:data];
+                              NSLog(@"result is %@",obj);
+                              
+                          }
                           
                       }];
 }
