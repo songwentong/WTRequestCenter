@@ -56,7 +56,7 @@
 //无缓存
 +(NSURLRequest*)getWithoutCacheURL:(NSURL *)url
                         parameters:(NSDictionary *)parameters
-                 completionHandler:(void (^)(NSURLResponse *, NSData *, NSError *))handler;
+                 completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 
 //get请求+Cache
 //注意：可以请求本地的文件
