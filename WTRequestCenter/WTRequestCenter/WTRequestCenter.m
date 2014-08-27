@@ -421,7 +421,7 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
 {
     NSUserDefaults *a = [self sharedUserDefaults];
     NSString *url = [a valueForKey:@"baseURL"];
-    if (url) {
+    if (!url) {
         return @"http://www.xxx.com";
     }
     return url;
