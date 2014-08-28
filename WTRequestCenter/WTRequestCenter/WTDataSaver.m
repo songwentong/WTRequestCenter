@@ -209,14 +209,19 @@
 {
     
     [self configureDirectory];
-    
+    if (!url) {
+        if (completion) {
+            completion(nil,nil,nil);
+        }
+    }else
+    {
     [WTRequestCenter getWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         if (completion) {
             completion(data,response,error);
         }
         
     }];
-  
+    }
 }
 
 #pragma mark - 清数据
