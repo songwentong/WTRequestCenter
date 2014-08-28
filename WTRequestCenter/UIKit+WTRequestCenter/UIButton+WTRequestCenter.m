@@ -20,6 +20,9 @@
         placeholderImage:(UIImage *)placeholderImage
 {
     [self setImage:placeholderImage forState:state];
+    if (!url) {
+        return;
+    }
     [WTRequestCenter getWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         UIImage *image = [UIImage imageWithData:data];
         [self setImage:image forState:state];
@@ -39,6 +42,11 @@
         placeholderImage:(UIImage *)placeholderImage
 {
     [self setBackgroundImage:placeholderImage forState:state];
+    
+    if (!url) {
+        return;
+    }
+    
     [WTRequestCenter getWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         UIImage *image = [UIImage imageWithData:data];
         [self setBackgroundImage:image forState:state];

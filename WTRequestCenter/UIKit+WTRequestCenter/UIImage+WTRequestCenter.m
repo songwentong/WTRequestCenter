@@ -140,6 +140,9 @@ static UIImage *animatedImageWithAnimatedGIFReleasingImageSource(CGImageSourceRe
 //    BOOL isLocal;
 
         //        网络的
+    if (!url) {
+        return;
+    }
         [WTRequestCenter getWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
             if (!data) {
                 if (completion) {
