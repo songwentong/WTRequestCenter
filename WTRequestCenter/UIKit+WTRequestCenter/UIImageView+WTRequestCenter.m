@@ -8,6 +8,13 @@
 
 #import "UIImageView+WTRequestCenter.h"
 #import "WTRequestCenter.h"
+
+#define dispatch_main_sync_safe(block)\
+if ([NSThread isMainThread]) {\
+block();\
+} else {\
+dispatch_sync(dispatch_get_main_queue(), block);\
+}
 @implementation UIImageView (WTRequestCenter)
 - (void)setImageWithURL:(NSURL *)url
 {
@@ -17,10 +24,17 @@
 {
     self.image = placeholder;
     if (url) {
+        __weak UIImageView      *wself    = self;
         [WTRequestCenter getWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+            if (!wself) return;
             UIImage *image = [UIImage imageWithData:data];
-            self.image = image;
-            [self setNeedsDisplay];
+            if (image) {
+                dispatch_main_sync_safe (^{
+                self.image = image;
+                [self setNeedsDisplay];
+                });
+            }
+            
         }];
     }else
     {
