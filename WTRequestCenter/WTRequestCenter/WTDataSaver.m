@@ -8,6 +8,7 @@
 
 #import "WTDataSaver.h"
 #import "WTRequestCenter.h"
+#import "WTDataWriteOpeation.h"
 @implementation WTDataSaver
 
 #pragma mark - 工具
@@ -156,17 +157,15 @@
 {
     [self configureDirectory];
     NSString *filePath = [NSString stringWithFormat:@"%@/%@",[self rootDir],name];
-    NSBlockOperation *block = [NSBlockOperation blockOperationWithBlock:^{
-        [data writeToFile:filePath atomically:YES];
-    }];
-    [block setCompletionBlock:^{
+    
+    WTDataWriteOpeation *operation = [[WTDataWriteOpeation alloc] initWithData:data andFilePath:filePath];
+    [operation setCompletionBlock:^{
         if (completion) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                completion();
-            });
+            completion();
         }
     }];
-    [block start];
+    
+    [[WTRequestCenter sharedQueue] addOperation:operation];
 }
 
 

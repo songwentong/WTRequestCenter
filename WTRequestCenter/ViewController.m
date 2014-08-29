@@ -43,10 +43,12 @@
     [self gifButton];
 
 //    存取数据
-    [self saveAndWrite];
+//    [self saveAndWrite];
 
     
-    
+    [WTDataSaver saveData:[@"dasdjas" dataUsingEncoding:NSUTF8StringEncoding] withIndex:2 completion:^{
+        
+    }];
 //    [WTRequestCenter clearAllCache];
 //    查看内存用量 单位是byte
 //    Returns the current size of the receiver’s in-memory cache, in bytes.
