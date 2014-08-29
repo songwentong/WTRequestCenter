@@ -45,6 +45,9 @@
          completion:(void(^)(NSData*data))completion;
 
 
+
+
+//根据url获取文件
 +(void)dataWithURL:(NSURL*)url
  completionHandler:(void (^)(NSData *data, NSURLResponse *response, NSError *error))completion;
 #pragma mark - 工具

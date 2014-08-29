@@ -113,6 +113,11 @@ static UIImage *animatedImageWithAnimatedGIFReleasingImageSource(CGImageSourceRe
     }
 }
 
++(void)imageWithURLString:(NSString*)string
+    comelectionHandler:(void(^)(UIImage* image))comelectionHandler
+{
+    [self imageWithURL:[NSURL URLWithString:string] comelectionHandler:comelectionHandler];
+}
 +(void) imageWithURL:(NSURL*)url
   comelectionHandler:(void(^)(UIImage* image))comelectionHandler
 {

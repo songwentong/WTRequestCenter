@@ -12,6 +12,9 @@
 +(void)gifImageWithURL:(NSURL*)url
             completion:(void(^)(UIImage* image))completion;
 
++(void)imageWithURLString:(NSString*)string
+       comelectionHandler:(void(^)(UIImage* image))comelectionHandler;
+
 +(void)imageWithURL:(NSURL*)url
   comelectionHandler:(void(^)(UIImage* image))comelectionHandler;
 
