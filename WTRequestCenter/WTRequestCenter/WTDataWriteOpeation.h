@@ -18,4 +18,6 @@
 - (instancetype)initWithData:(NSData*)data andFilePath:(NSString*)filePath;
 @property (nonatomic,readonly,retain)NSData *dataToWrite;
 @property (nonatomic,readonly,retain)NSString *filePath;
+
+
 @end

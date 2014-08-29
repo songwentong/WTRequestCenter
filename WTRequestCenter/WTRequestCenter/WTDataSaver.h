@@ -33,9 +33,7 @@
 
 
 #pragma mark - 读数据 Read Data
-//同步取数据（不推荐）
-+(NSData*)dataWithIndex:(NSInteger)index;
-+(NSData*)dataWithName:(NSString*)name;
+
 
 //异步取数据(推荐)
 +(void)dataWithIndex:(NSInteger)index
@@ -44,12 +42,17 @@
 +(void)dataWithName:(NSString*)name
          completion:(void(^)(NSData*data))completion;
 
-
-
-
 //根据url获取文件
 +(void)dataWithURL:(NSURL*)url
  completionHandler:(void (^)(NSData *data, NSURLResponse *response, NSError *error))completion;
+
+
+//同步取数据（不推荐）
++(NSData*)dataWithIndex:(NSInteger)index DEPRECATED_ATTRIBUTE;
++(NSData*)dataWithName:(NSString*)name DEPRECATED_ATTRIBUTE;
+
+
+
 #pragma mark - 工具
 //适用范围 2.0+
 +(NSData*)base64EncodedData:(NSData*)data;

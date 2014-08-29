@@ -196,7 +196,8 @@
 {
     
     NSString *filePath = [NSString stringWithFormat:@"%@/%@",[self rootDir],name];
-    NSURL *url = [NSURL URLWithString:filePath];
+//    NSURL *base = [[NSBundle mainBundle] bundleURL];
+    NSURL *url = [NSURL fileURLWithPath:filePath];
     [self dataWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         completion(data);
     }];
