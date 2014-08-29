@@ -165,6 +165,12 @@
         NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"%@",string);
     }];
+    /*
+    [WTDataSaver dataWithIndex:2 completion:^(NSData *data) {
+        NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"%@",string);
+    }];
+     */
 }
 
 - (void)didReceiveMemoryWarning

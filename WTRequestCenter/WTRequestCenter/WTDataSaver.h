@@ -17,6 +17,9 @@
 #import <Foundation/Foundation.h>
 
 @interface WTDataSaver : NSObject
+
++(dispatch_group_t)sharedCompletionGroup;
+
 #pragma mark - 存数据 Save Data
 //存数据（都是异步）
 +(void)saveData:(NSData*)data withIndex:(NSInteger)index;
