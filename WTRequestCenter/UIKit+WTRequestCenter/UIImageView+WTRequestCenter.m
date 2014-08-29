@@ -15,6 +15,14 @@ block();\
 } else {\
 dispatch_sync(dispatch_get_main_queue(), block);\
 }
+
+#define dispatch_main_async_safe(block)\
+if ([NSThread isMainThread]) {\
+block();\
+} else {\
+dispatch_async(dispatch_get_main_queue(), block);\
+}
+
 @implementation UIImageView (WTRequestCenter)
 - (void)setImageWithURL:(NSURL *)url
 {
@@ -30,8 +38,8 @@ dispatch_sync(dispatch_get_main_queue(), block);\
             UIImage *image = [UIImage imageWithData:data];
             if (image) {
                 dispatch_main_sync_safe (^{
-                self.image = image;
-                [self setNeedsDisplay];
+                wself.image = image;
+                [wself setNeedsDisplay];
                 });
             }
             
