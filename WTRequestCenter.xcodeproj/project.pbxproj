@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A33099C21993131400BC3774 /* WTDataSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = A33099C11993131400BC3774 /* WTDataSaver.m */; };
 		A3B40EAC19B028350060F158 /* WTDataWriteOpeation.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B40EAB19B028350060F158 /* WTDataWriteOpeation.m */; };
+		A3B40EAF19B033450060F158 /* WTURLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B40EAE19B033450060F158 /* WTURLRequestOperation.m */; };
 		A3B4A7C2199AF60C00A8BAF0 /* aaa@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = A3B4A7C1199AF60C00A8BAF0 /* aaa@2x.gif */; };
 		A3B4A7C5199AF88400A8BAF0 /* UIImage+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B4A7C4199AF88400A8BAF0 /* UIImage+WTRequestCenter.m */; };
 		A3B4A7C9199AF92000A8BAF0 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B4A7C8199AF92000A8BAF0 /* ImageIO.framework */; };
@@ -51,6 +52,8 @@
 		A33099C11993131400BC3774 /* WTDataSaver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTDataSaver.m; sourceTree = "<group>"; };
 		A3B40EAA19B028350060F158 /* WTDataWriteOpeation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTDataWriteOpeation.h; sourceTree = "<group>"; };
 		A3B40EAB19B028350060F158 /* WTDataWriteOpeation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTDataWriteOpeation.m; sourceTree = "<group>"; };
+		A3B40EAD19B033450060F158 /* WTURLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTURLRequestOperation.h; sourceTree = "<group>"; };
+		A3B40EAE19B033450060F158 /* WTURLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTURLRequestOperation.m; sourceTree = "<group>"; };
 		A3B4A7C1199AF60C00A8BAF0 /* aaa@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "aaa@2x.gif"; sourceTree = "<group>"; };
 		A3B4A7C3199AF88400A8BAF0 /* UIImage+WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+WTRequestCenter.h"; sourceTree = "<group>"; };
 		A3B4A7C4199AF88400A8BAF0 /* UIImage+WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WTRequestCenter.m"; sourceTree = "<group>"; };
@@ -230,6 +233,8 @@
 				A33099C11993131400BC3774 /* WTDataSaver.m */,
 				A3B40EAA19B028350060F158 /* WTDataWriteOpeation.h */,
 				A3B40EAB19B028350060F158 /* WTDataWriteOpeation.m */,
+				A3B40EAD19B033450060F158 /* WTURLRequestOperation.h */,
+				A3B40EAE19B033450060F158 /* WTURLRequestOperation.m */,
 			);
 			name = NSURLRequest;
 			sourceTree = "<group>";
@@ -361,6 +366,7 @@
 				A33099C21993131400BC3774 /* WTDataSaver.m in Sources */,
 				A3B40EAC19B028350060F158 /* WTDataWriteOpeation.m in Sources */,
 				A3B70F641988DC5B002776F4 /* UIButton+WTRequestCenter.m in Sources */,
+				A3B40EAF19B033450060F158 /* WTURLRequestOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

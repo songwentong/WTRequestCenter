@@ -40,20 +40,13 @@
 //    gif
 //    [self loadGif];
     
-    [self gifButton];
+//    [self gifButton];
 
 //    存取数据
-//    [self saveAndWrite];
+    [self saveAndWrite];
 
     
-    [WTDataSaver saveData:[@"dasdjas" dataUsingEncoding:NSUTF8StringEncoding] withIndex:2 completion:^{
-        
-    }];
     
-    [WTDataSaver dataWithIndex:2 completion:^(NSData *data) {
-        NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(@"%@",string);
-    }];
 //    [WTRequestCenter clearAllCache];
 //    查看内存用量 单位是byte
 //    Returns the current size of the receiver’s in-memory cache, in bytes.
@@ -164,18 +157,14 @@
 -(void)saveAndWrite
 {
     
-    NSLog(@"%@",NSHomeDirectory());
-    NSData *data = [@"狂拽酷眩叼炸天" dataUsingEncoding:NSUTF8StringEncoding];
-    [WTDataSaver saveData:data withName:@"data"];
-    [WTDataSaver dataWithName:@"data" completion:^(NSData *data) {
+    [WTDataSaver saveData:[@"hello world" dataUsingEncoding:NSUTF8StringEncoding] withIndex:2 completion:^{
+        NSLog(@"finished");
+    }];
+    
+    [WTDataSaver dataWithIndex:2 completion:^(NSData *data) {
         NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"%@",string);
     }];
-    
-    [WTDataSaver fileSizeComplection:^(NSInteger size) {
-        NSLog(@"%d",size);
-    }];
-    [WTDataSaver removeAllData];
 }
 
 - (void)didReceiveMemoryWarning
