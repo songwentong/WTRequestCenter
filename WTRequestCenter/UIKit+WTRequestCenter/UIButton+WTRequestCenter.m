@@ -32,9 +32,11 @@
     [WTRequestCenter getWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         UIImage *image = [UIImage imageWithData:data];
         dispatch_main_sync_safe(^{
-            if (weakSelf) {
-                [weakSelf setImage:image forState:state];
-                [weakSelf setNeedsLayout];
+            if (image) {
+                if (weakSelf) {
+                    [weakSelf setImage:image forState:state];
+                    [weakSelf setNeedsLayout];
+                }
             }
         });
     }];
