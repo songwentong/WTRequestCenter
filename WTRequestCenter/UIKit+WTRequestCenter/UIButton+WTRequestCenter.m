@@ -28,10 +28,15 @@
     if (!url) {
         return;
     }
+    __weak UIButton *weakSelf = self;
     [WTRequestCenter getWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         UIImage *image = [UIImage imageWithData:data];
-        [self setImage:image forState:state];
-        [self setNeedsLayout];
+        dispatch_main_sync_safe(^{
+            if (weakSelf) {
+                [weakSelf setImage:image forState:state];
+                [weakSelf setNeedsLayout];
+            }
+        });
     }];
 
 }
@@ -51,11 +56,17 @@
     if (!url) {
         return;
     }
-    
+    __weak UIButton *weakSelf = self;
     [WTRequestCenter getWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         UIImage *image = [UIImage imageWithData:data];
-        [self setBackgroundImage:image forState:state];
-        [self setNeedsLayout];
+        if (image) {
+            dispatch_main_sync_safe(^{
+            if (weakSelf) {
+                [weakSelf setBackgroundImage:image forState:state];
+                [weakSelf setNeedsLayout];
+            }
+            });
+        }
     }];
 }
 
