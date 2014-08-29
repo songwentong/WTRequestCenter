@@ -6,8 +6,13 @@
 //  Copyright (c) 2014年 song. All rights reserved.
 //
 
+
+
 #import "UIButton+WTRequestCenter.h"
 #import "WTRequestCenter.h"
+#import "WTRequestCenterMacro.h"
+
+
 @implementation UIButton (WTImageCache)
 
 - (void)setImageForState:(UIControlState)state
