@@ -22,7 +22,7 @@
     
 //  设置响应失效日期
 //    NSLog(@"%f",[WTRequestCenter expireTimeInterval]);
-    [WTRequestCenter setExpireTimeInterval:1000000];
+    [WTRequestCenter setExpireTimeInterval:0];
     NSLog(@"%@",NSHomeDirectory());
     
 //    NSLog(@"uuid:%@",[UIDevice WTUUID]);
@@ -40,11 +40,11 @@
 //    gif
 //    [self loadGif];
     
-//    [self gifButton];
+    [self gifButton];
 //    [WTRequestCenter clearAllCache];
 
     
-    
+    /*
     NSLog(@"%@",[[NSBundle mainBundle] URLsForResourcesWithExtension:nil subdirectory:nil]);
     NSURL *url = [[[NSBundle mainBundle] URLsForResourcesWithExtension:nil subdirectory:nil] lastObject];
     [WTDataSaver dataWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -52,7 +52,7 @@
         
         NSLog(@"%@",string);
     }];
-    
+    */
     
 //    存取数据
 //    [self saveAndWrite];

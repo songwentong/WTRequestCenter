@@ -12,8 +12,8 @@
 +(void)gifImageWithURL:(NSURL*)url
             completion:(void(^)(UIImage* image))completion;
 
-+(void) imageWithURL:(NSURL*)url
-  comelectionHandler:(void(^)(UIImage* image))comelectionHandler;
++(void)imageWithURL:(NSURL*)url
+ comelectionHandler:(void(^)(UIImage* image))comelectionHandler;
 
 #pragma mark - 不建议的方法
 //+ (UIImage *)animatedImageWithAnimatedGIFData:(NSData *)theData;
