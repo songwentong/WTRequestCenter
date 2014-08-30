@@ -35,12 +35,12 @@
 //    POST请求
 //    [self post];
 //    下载图片
-//    [self loadImage];
+    [self loadImage];
 //    [WTRequestCenter cancelAllRequest];
 //    gif
 //    [self loadGif];
     
-    [self gifButton];
+//    [self gifButton];
 //    [WTRequestCenter clearAllCache];
 
     
@@ -111,8 +111,8 @@
     imageView.frame = CGRectMake(0, 0, 320, 480/2);
     UIImage *placeHolderImage = [UIImage imageNamed:@"image.jpg"];
     [imageView setImageWithURL:url placeholderImage:placeHolderImage];
-    
     [self.view addSubview:imageView];
+
 }
 
 -(void)loadGif
