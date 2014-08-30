@@ -113,6 +113,11 @@ static UIImage *animatedImageWithAnimatedGIFReleasingImageSource(CGImageSourceRe
     }
 }
 
++(void)imageWithURLString:(NSString*)string
+    comelectionHandler:(void(^)(UIImage* image))comelectionHandler
+{
+    [self imageWithURL:[NSURL URLWithString:string] comelectionHandler:comelectionHandler];
+}
 +(void) imageWithURL:(NSURL*)url
   comelectionHandler:(void(^)(UIImage* image))comelectionHandler
 {
@@ -140,6 +145,9 @@ static UIImage *animatedImageWithAnimatedGIFReleasingImageSource(CGImageSourceRe
 //    BOOL isLocal;
 
         //        网络的
+    if (!url) {
+        return;
+    }
         [WTRequestCenter getWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
             if (!data) {
                 if (completion) {
@@ -158,6 +166,21 @@ static UIImage *animatedImageWithAnimatedGIFReleasingImageSource(CGImageSourceRe
         }];
     
     
+}
+
+
++ (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size
+{
+    CGRect rect = CGRectMake(0, 0, size.width, size.height);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
 }
 
 @end

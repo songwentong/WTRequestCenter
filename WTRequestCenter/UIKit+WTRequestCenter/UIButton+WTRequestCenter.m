@@ -6,8 +6,13 @@
 //  Copyright (c) 2014年 song. All rights reserved.
 //
 
+
+
 #import "UIButton+WTRequestCenter.h"
 #import "WTRequestCenter.h"
+#import "WTRequestCenterMacro.h"
+
+
 @implementation UIButton (WTImageCache)
 
 - (void)setImageForState:(UIControlState)state
@@ -20,10 +25,20 @@
         placeholderImage:(UIImage *)placeholderImage
 {
     [self setImage:placeholderImage forState:state];
+    if (!url) {
+        return;
+    }
+    __weak UIButton *weakSelf = self;
     [WTRequestCenter getWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         UIImage *image = [UIImage imageWithData:data];
-        [self setImage:image forState:state];
-        [self setNeedsLayout];
+        dispatch_main_sync_safe(^{
+            if (image) {
+                if (weakSelf) {
+                    [weakSelf setImage:image forState:state];
+                    [weakSelf setNeedsLayout];
+                }
+            }
+        });
     }];
 
 }
@@ -39,10 +54,21 @@
         placeholderImage:(UIImage *)placeholderImage
 {
     [self setBackgroundImage:placeholderImage forState:state];
+    
+    if (!url) {
+        return;
+    }
+    __weak UIButton *weakSelf = self;
     [WTRequestCenter getWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         UIImage *image = [UIImage imageWithData:data];
-        [self setBackgroundImage:image forState:state];
-        [self setNeedsLayout];
+        if (image) {
+            dispatch_main_sync_safe(^{
+            if (weakSelf) {
+                [weakSelf setBackgroundImage:image forState:state];
+                [weakSelf setNeedsLayout];
+            }
+            });
+        }
     }];
 }
 

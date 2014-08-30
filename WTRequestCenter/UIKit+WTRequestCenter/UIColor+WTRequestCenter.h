@@ -23,4 +23,10 @@
                       green:(CGFloat)green
                        blue:(CGFloat)blue
                       alpha:(CGFloat)alpha;
+
+// 16 进制颜色创建
++ (UIColor *)colorWithHexString:(NSString *)str;
+
+
+
 @end

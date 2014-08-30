@@ -81,10 +81,6 @@ static NSOperationQueue *sharedQueue = nil;
     
     NSUserDefaults *myUserDefaults = [WTRequestCenter sharedUserDefaults];
     CGFloat time = [myUserDefaults floatForKey:@"WTRequestCenterExpireTime"];
-    if (time==0) {
-//        默认时效日期一天
-        time = 3600*24;
-    }
     return time;
 }
 #endif
@@ -175,7 +171,10 @@ static NSOperationQueue *sharedQueue = nil;
 +(NSURLRequest*)GETRequestWithURL:(NSURL*)url
                        parameters:(NSDictionary*)parameters
 {
+    
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    
+    
     if (parameters) {
         NSMutableString *paramString = [[NSMutableString alloc] init];
         
@@ -212,9 +211,27 @@ static NSOperationQueue *sharedQueue = nil;
     }
     return request;
 }
+
+
+
+
 #pragma mark - Get
 
 
++(NSURLRequest*)getWithoutCacheURL:(NSURL *)url
+                        parameters:(NSDictionary *)parameters
+                 completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
+{
+    NSURLRequest *request = [self GETRequestWithURL:url parameters:parameters];
+    [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if (handler) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+            handler(response,data,connectionError);
+            });
+        }
+    }];
+    return request;
+}
 
 //get请求
 //Available in iOS 5.0 and later.
@@ -404,7 +421,7 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
 {
     NSUserDefaults *a = [self sharedUserDefaults];
     NSString *url = [a valueForKey:@"baseURL"];
-    if (url) {
+    if (!url) {
         return @"http://www.xxx.com";
     }
     return url;

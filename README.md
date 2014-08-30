@@ -33,19 +33,31 @@ any question please write at issues ,thank you
                }
 ```
 
-### 缓存图片  cache image
-```objective-c
-    NSURL *url = [NSURL URLWithString:@"http://www.xxx.com/eqdsa.jpg"];
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
-    [WTRequestCenter getImageWithURL:url imageComplectionHandler:^(UIImage *image) {
-        imageView.image = image;
-    }];
-```
 
 ### 取消所有请求   Cancel all request
 ```objective-c
 [WTRequestCenter cancelAllRequest];
 ```
+
+
+### WTDataSaver
+WTDataSaver 是个文件存取类，用于自定的方式把数据存取到本地
+
+#### 保存数据  name只需要传文件名就可以了，无需传路径
+```objective-c
++(void)saveData:(NSData*)data
+       withName:(NSString*)name
+     completion:(void(^)())completion;
+```
+
+#### 读取数据 name只需要传文件名就可以了，无需传路
+```objective-c
++(void)dataWithName:(NSString*)name
+         completion:(void(^)(NSData*data))completion;
+```
+
+还有一些更加便捷的方法，查看wiki吧
+
 
 Requirement   需要
 ===============

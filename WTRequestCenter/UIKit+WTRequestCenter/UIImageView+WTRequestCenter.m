@@ -8,6 +8,7 @@
 
 #import "UIImageView+WTRequestCenter.h"
 #import "WTRequestCenter.h"
+#import "WTRequestCenterMacro.h"
 @implementation UIImageView (WTRequestCenter)
 - (void)setImageWithURL:(NSURL *)url
 {
@@ -16,12 +17,24 @@
 - (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder
 {
     self.image = placeholder;
+    if (url) {
+        __weak UIImageView *wself    = self;
+        [WTRequestCenter getWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+            if (!wself) return;
+            UIImage *image = [UIImage imageWithData:data];
+            if (image) {
+                dispatch_main_sync_safe (^{
+                wself.image = image;
+                [wself setNeedsDisplay];
+                });
+            }
+            
+        }];
+    }else
+    {
+        
+    }
     
-    [WTRequestCenter getWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-        UIImage *image = [UIImage imageWithData:data];
-        self.image = image;
-        [self setNeedsDisplay];
-    }];
     
 }
 @end
