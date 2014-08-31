@@ -30,15 +30,15 @@
     }
     __weak UIButton *weakSelf = self;
     [WTRequestCenter getWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+//        //从这里开始已经是主线程了
         UIImage *image = [UIImage imageWithData:data];
-        dispatch_main_sync_safe(^{
             if (image) {
                 if (weakSelf) {
-                    [weakSelf setImage:image forState:state];
-                    [weakSelf setNeedsLayout];
+                    __strong UIButton *strongSelf = weakSelf;
+                    [strongSelf setImage:image forState:state];
+                    [strongSelf setNeedsLayout];
                 }
             }
-        });
     }];
 
 }
@@ -62,12 +62,12 @@
     [WTRequestCenter getWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         UIImage *image = [UIImage imageWithData:data];
         if (image) {
-            dispatch_main_sync_safe(^{
+
             if (weakSelf) {
-                [weakSelf setBackgroundImage:image forState:state];
-                [weakSelf setNeedsLayout];
+                __strong UIButton *strongSelf = weakSelf;
+                [strongSelf setBackgroundImage:image forState:state];
+                [strongSelf setNeedsLayout];
             }
-            });
         }
     }];
 }
