@@ -64,6 +64,10 @@
 //    查看缓存（Cache）用量,单位是byte
 //    The current size of the receiver’s on-disk cache, in bytes.
 //    NSLog(@"缓存用量  %u KB",[WTRequestCenter currentDiskUsage]/1024);
+    
+    
+    
+//    [self test1];
 }
 
 
@@ -167,6 +171,15 @@
         NSLog(@"%d",size);
     }];
     [WTDataSaver removeAllData];
+}
+
+-(void)test1
+{
+    NSURL *url = [NSURL URLWithString:@"http://www.baidu.com"];
+    [WTRequestCenter testGetWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"%@",string);
+    }];
 }
 
 - (void)didReceiveMemoryWarning

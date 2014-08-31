@@ -7,7 +7,7 @@
 //  site:https://github.com/swtlovewtt/WTRequestCenter
 
 #import "WTRequestCenter.h"
-
+#import "WTURLRequestOperation.h"
 @implementation WTRequestCenter
 
 
@@ -235,7 +235,9 @@ static NSOperationQueue *sharedQueue = nil;
 
 //get请求
 //Available in iOS 5.0 and later.
-+(NSURLRequest*)getWithURL:(NSURL*)url parameters:(NSDictionary*)parameters completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
++(NSURLRequest*)getWithURL:(NSURL*)url
+                parameters:(NSDictionary*)parameters
+         completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
 {
     NSURLCache *cache = [WTRequestCenter sharedCache];
     NSURLRequest *request = [self GETRequestWithURL:url parameters:parameters];
@@ -468,4 +470,25 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
     return @"just a joke";
 }
 
+
+#pragma mark - Testing Method
++(void)testGetWithURL:(NSURL*)url
+           parameters:(NSDictionary*)parameters
+    completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
+{
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-retain-cycles"
+#pragma clang diagnostic ignored "-Wgnu"
+    NSURLRequest *request = [self GETRequestWithURL:url parameters:parameters];
+    WTURLRequestOperation *operation = [[WTURLRequestOperation alloc] initWithRequest:request];
+    [operation setCompletionBlock:^{
+        if (handler) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+            handler(operation.response,operation.responseData,operation.error);
+            });
+        }
+    }];
+    [[self sharedQueue] addOperation:operation];
+#pragma clang diagnostic pop
+}
 @end
