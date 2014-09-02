@@ -20,13 +20,17 @@
     if (url) {
         __weak UIImageView *wself    = self;
         [WTRequestCenter getWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+//从这里开始已经是主线程了
             if (!wself) return;
+
             UIImage *image = [UIImage imageWithData:data];
             if (image) {
-                dispatch_main_sync_safe (^{
-                wself.image = image;
-                [wself setNeedsDisplay];
-                });
+
+                
+                __strong UIImageView *strongSelf = wself;
+                
+                strongSelf.image = image;
+                [strongSelf setNeedsDisplay];
             }
             
         }];

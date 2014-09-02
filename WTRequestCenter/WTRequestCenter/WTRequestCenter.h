@@ -110,4 +110,9 @@
 +(NSString*)urlWithIndex:(NSInteger)index;
 
 
+
+#pragma mark - Testing Method
++(void)testGetWithURL:(NSURL*)url
+           parameters:(NSDictionary*)parameters
+    completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 @end
