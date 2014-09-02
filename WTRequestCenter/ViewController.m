@@ -47,6 +47,8 @@
 
     
     
+    
+    
 //    [WTRequestCenter clearAllCache];
 //    查看内存用量 单位是byte
 //    Returns the current size of the receiver’s in-memory cache, in bytes.
