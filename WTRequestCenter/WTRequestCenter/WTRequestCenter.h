@@ -21,7 +21,7 @@
  */
 #import <Foundation/Foundation.h>
 #import "WTDataSaver.h"
-#import <UIKit/UIKit.h>
+
 @interface WTRequestCenter : NSObject
 
 //请求队列
