@@ -53,21 +53,20 @@
 
 #pragma mark - GET
 
-//get请求+Cache
-//注意：可以请求本地的文件
+//带缓存的GET
 +(NSURLRequest*)getWithURL:(NSURL*)url
                 parameters:(NSDictionary*)parameters
          completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 
 
-//无缓存
+//不带缓存的GET
 +(NSURLRequest*)getWithoutCacheURL:(NSURL *)url
                         parameters:(NSDictionary *)parameters
                  completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 
 
 #pragma mark - POST
-//post request (without cache)
+//不带缓存的POST
 +(NSURLRequest*)postWithURL:(NSURL*)url
                  parameters:(NSDictionary*)parameters
           completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
