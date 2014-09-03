@@ -332,9 +332,7 @@ static NSOperationQueue *sharedQueue = nil;
     if (response) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (handler) {
-                if (handler) {
-                    handler(response.response,response.data,nil);
-                }
+                handler(response.response,response.data,nil);
             }
         });
     }else
