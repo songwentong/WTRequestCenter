@@ -73,12 +73,11 @@
           completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 
 
-//不使用缓存的post请求  (Without Cache)
-/*
-+(NSURLRequest*)postWithoutCacheURL:(NSURL*)url
+//带缓存的post请求
++(NSURLRequest*)postWithCacheURL:(NSURL*)url
                          parameters:(NSDictionary*)parameters
                   completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
-*/
+
  
 #pragma mark - Image
 //图片上传  Upload

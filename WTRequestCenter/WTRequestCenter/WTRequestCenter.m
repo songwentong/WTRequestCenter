@@ -323,18 +323,36 @@ static NSOperationQueue *sharedQueue = nil;
 }
 
 
-+(NSURLRequest*)postWithoutCacheURL:(NSURL*)url parameters:(NSDictionary*)parameters completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
++(NSURLRequest*)postWithCacheURL:(NSURL*)url parameters:(NSDictionary*)parameters completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
 {
-   NSURLRequest *request = [self POSTRequestWithURL:url parameters:parameters];
+    NSURLRequest *request = [self POSTRequestWithURL:url parameters:parameters];
+    NSURLCache *cache = [WTRequestCenter sharedCache];
     
-    [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+    NSCachedURLResponse *response =[cache cachedResponseForRequest:request];
+    if (response) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (handler) {
-        handler(response,data,connectionError);
+                if (handler) {
+                    handler(response.response,response.data,nil);
+                }
             }
         });
-        
-    }];
+    }else
+    {
+        [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+            if (!connectionError && data) {
+                NSCachedURLResponse *res = [[NSCachedURLResponse alloc] initWithResponse:response data:data];
+                [cache storeCachedResponse:res forRequest:request];
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (handler) {
+                    handler(response,data,connectionError);
+                }
+            });
+            
+        }];
+    }
+    
                        
     return request;
 }
