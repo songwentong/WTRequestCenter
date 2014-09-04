@@ -7,6 +7,7 @@
 //  site:https://github.com/swtlovewtt/WTRequestCenter
 
 #import "WTURLSessionManager.h"
+#if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000) || (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= 1090)
 @interface WTURLSessionManager()
 @property (readwrite, nonatomic, strong) NSURLSessionConfiguration *sessionConfiguration;
 @property (nonatomic,retain) NSOperationQueue *operationQueue;
@@ -119,3 +120,4 @@
 }
 
 @end
+#endif
