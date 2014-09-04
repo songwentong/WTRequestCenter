@@ -81,6 +81,9 @@ static NSOperationQueue *sharedQueue = nil;
     
     NSUserDefaults *myUserDefaults = [WTRequestCenter sharedUserDefaults];
     CGFloat time = [myUserDefaults floatForKey:@"WTRequestCenterExpireTime"];
+    if (time==0) {
+        time=3600*24*30;
+    }
     return time;
 }
 #endif
