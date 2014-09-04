@@ -113,7 +113,8 @@
 
 
 #pragma mark - Testing Method
-+(void)testGetWithURL:(NSURL*)url
-           parameters:(NSDictionary*)parameters
-    completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
++(void)testGetWithCache:(BOOL)useCache
+                    URL:(NSURL*)url
+             parameters:(NSDictionary*)parameters
+      completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 @end
