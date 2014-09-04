@@ -491,8 +491,8 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
 #pragma mark - Testing Method
 +(void)testGetWithCache:(BOOL)useCache
                     URL:(NSURL*)url
-           parameters:(NSDictionary*)parameters
-    completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
+             parameters:(NSDictionary*)parameters
+      completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
 {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-retain-cycles"
