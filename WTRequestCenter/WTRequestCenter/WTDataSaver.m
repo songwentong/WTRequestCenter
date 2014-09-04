@@ -179,6 +179,15 @@ static dispatch_queue_t wtsharedCompletionProcessingQueue;
     [self configureDirectory];
     NSString *filePath = [NSString stringWithFormat:@"%@/%@",[self rootDir],name];
     
+    
+    /*
+     这种方法可以实现简易的operatio操作
+    [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
+//        NSLog(@"xxx");
+    }];
+     */
+    
+    
     WTDataWriteOpeation *operation = [[WTDataWriteOpeation alloc] initWithData:data andFilePath:filePath];
     [operation setCompletionBlock:^{
         
