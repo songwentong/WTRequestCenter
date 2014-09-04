@@ -131,6 +131,9 @@ static dispatch_queue_t wtsharedCompletionProcessingQueue;
 
 +(id)JSONObjectWithData:(NSData*)data
 {
+    if (!data) {
+        return nil;
+    }
     id obj = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
     return obj;
 }
