@@ -21,7 +21,10 @@
  */
 #import <Foundation/Foundation.h>
 #import "WTDataSaver.h"
-
+#if ( ( defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= 1090) || \
+( defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000 ) )
+#import "WTURLSessionManager.h"
+#endif
 @interface WTRequestCenter : NSObject
 
 //请求队列
