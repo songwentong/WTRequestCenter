@@ -36,12 +36,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WTRequestCenter/WTRequestCenter/WTRequestCenter.m"
-            timestampString = "431180123.341439"
+            timestampString = "431618674.330555"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "485"
-            endingLineNumber = "485"
-            landmarkName = "+testGetWithURL:parameters:completionHandler:"
+            startingLineNumber = "489"
+            endingLineNumber = "489"
+            landmarkName = "+debugDescription"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
