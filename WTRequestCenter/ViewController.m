@@ -22,7 +22,7 @@
     
 //  设置响应失效日期
 //    NSLog(@"%f",[WTRequestCenter expireTimeInterval]);
-    [WTRequestCenter setExpireTimeInterval:0];
+//    [WTRequestCenter setExpireTimeInterval:0];
     NSLog(@"%@",NSHomeDirectory());
     
 //    NSLog(@"uuid:%@",[UIDevice WTUUID]);
@@ -30,10 +30,10 @@
 //    NSLog(@"%@",[NSBundle mainBundle].executableArchitectures);
     
 //    GET请求
-//    [self get];
+    [self get];
     
 //    POST请求
-//    [self post];
+    [self post];
 //    下载图片
     [self loadImage];
 //    [WTRequestCenter cancelAllRequest];
@@ -41,22 +41,15 @@
 //    [self loadGif];
     
 //    [self gifButton];
-//    [WTRequestCenter clearAllCache];
+
+//    存取数据
+    [self saveAndWrite];
 
     
-    /*
-    NSLog(@"%@",[[NSBundle mainBundle] URLsForResourcesWithExtension:nil subdirectory:nil]);
-    NSURL *url = [[[NSBundle mainBundle] URLsForResourcesWithExtension:nil subdirectory:nil] lastObject];
-    [WTDataSaver dataWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        NSString *string = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-        
-        NSLog(@"%@",string);
-    }];
-    */
     
-//    存取数据
-//    [self saveAndWrite];
     
+    
+//    [WTRequestCenter clearAllCache];
 //    查看内存用量 单位是byte
 //    Returns the current size of the receiver’s in-memory cache, in bytes.
 //    NSLog(@"当前内存用量  %u KB",[[WTRequestCenter sharedCache] currentMemoryUsage]/1024);
@@ -64,44 +57,51 @@
 //    查看缓存（Cache）用量,单位是byte
 //    The current size of the receiver’s on-disk cache, in bytes.
 //    NSLog(@"缓存用量  %u KB",[WTRequestCenter currentDiskUsage]/1024);
-    
-    
-    
-//    [self test1];
 }
 
 
 
 -(void)get
 {
-    NSURL *url = [NSURL URLWithString:[WTRequestCenter urlWithIndex:0]];
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters setValue:@"1" forKey:@"a"];
-    [parameters setValue:@"2" forKey:@"b"];
-    [parameters setValue:@"3" forKey:@"c"];
-//    article_id=46
+    
+    for (int i=0; i<1; i++) {
 
-    [WTRequestCenter getWithURL:url
-                     parameters:parameters
-              completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-                  id obj = [WTRequestCenter JSONObjectWithData:data];
-                  NSLog(@"result is %@",obj);
-              }];
+        NSURL *url = [NSURL URLWithString:@"http://www.baidu.com"];
+        NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+   
+        
+        [WTRequestCenter getWithURL:url
+                         parameters:parameters
+                  completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                      NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                      NSLog(@"%@",string);
+//                      index++;
+//                      NSLog(@"index:%d",index);
+//                      id obj = [WTRequestCenter JSONObjectWithData:data];
+//                      NSLog(@"result is %@",obj);
+                  }];
 
+    }
+    
+    
     
 }
 
 -(void)post
 {
     NSURL *url = [NSURL URLWithString:[WTRequestCenter urlWithIndex:0]];
+    
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setValue:@"1" forKey:@"a"];
     [parameters setValue:@"2" forKey:@"b"];
     [parameters setValue:@"3" forKey:@"c"];
     [WTRequestCenter postWithURL:url
                       parameters:parameters completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-                          id obj = [WTRequestCenter JSONObjectWithData:data];
-                          NSLog(@"result is %@",obj);
+                          if (!error) {
+                              id obj = [WTRequestCenter JSONObjectWithData:data];
+                              NSLog(@"result is %@",obj);
+                              
+                          }
                           
                       }];
 }
@@ -115,8 +115,8 @@
     imageView.frame = CGRectMake(0, 0, 320, 480/2);
     UIImage *placeHolderImage = [UIImage imageNamed:@"image.jpg"];
     [imageView setImageWithURL:url placeholderImage:placeHolderImage];
+    
     [self.view addSubview:imageView];
-
 }
 
 -(void)loadGif
@@ -159,27 +159,20 @@
 -(void)saveAndWrite
 {
     
-    NSLog(@"%@",NSHomeDirectory());
-    NSData *data = [@"狂拽酷眩叼炸天" dataUsingEncoding:NSUTF8StringEncoding];
-    [WTDataSaver saveData:data withName:@"data"];
-    [WTDataSaver dataWithName:@"data" completion:^(NSData *data) {
-        NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(@"%@",string);
+    [WTDataSaver saveData:[@"hello world" dataUsingEncoding:NSUTF8StringEncoding] withIndex:2 completion:^{
+        NSLog(@"finished");
     }];
     
-    [WTDataSaver fileSizeComplection:^(NSInteger size) {
-        NSLog(@"%d",size);
-    }];
-    [WTDataSaver removeAllData];
-}
-
--(void)test1
-{
-    NSURL *url = [NSURL URLWithString:@"http://www.baidu.com"];
-    [WTRequestCenter testGetWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+    [WTDataSaver dataWithIndex:2 completion:^(NSData *data) {
         NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"%@",string);
     }];
+    /*
+    [WTDataSaver dataWithIndex:2 completion:^(NSData *data) {
+        NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"%@",string);
+    }];
+     */
 }
 
 - (void)didReceiveMemoryWarning

@@ -21,7 +21,10 @@
  */
 #import <Foundation/Foundation.h>
 #import "WTDataSaver.h"
-#import <UIKit/UIKit.h>
+#if ( ( defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= 1090) || \
+( defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000 ) )
+#import "WTURLSessionManager.h"
+#endif
 @interface WTRequestCenter : NSObject
 
 //请求队列
@@ -53,32 +56,30 @@
 
 #pragma mark - GET
 
-//get请求+Cache
-//注意：可以请求本地的文件
+//带缓存的GET
 +(NSURLRequest*)getWithURL:(NSURL*)url
                 parameters:(NSDictionary*)parameters
          completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 
 
-//无缓存
+//不带缓存的GET
 +(NSURLRequest*)getWithoutCacheURL:(NSURL *)url
                         parameters:(NSDictionary *)parameters
                  completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 
 
 #pragma mark - POST
-//post request (without cache)
+//不带缓存的POST
 +(NSURLRequest*)postWithURL:(NSURL*)url
                  parameters:(NSDictionary*)parameters
           completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 
 
-//不使用缓存的post请求  (Without Cache)
-/*
-+(NSURLRequest*)postWithoutCacheURL:(NSURL*)url
+//带缓存的post请求
++(NSURLRequest*)postWithCacheURL:(NSURL*)url
                          parameters:(NSDictionary*)parameters
                   completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
-*/
+
  
 #pragma mark - Image
 //图片上传  Upload
@@ -112,7 +113,8 @@
 
 
 #pragma mark - Testing Method
-+(void)testGetWithURL:(NSURL*)url
-           parameters:(NSDictionary*)parameters
-    completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
++(void)testGetWithCache:(BOOL)useCache
+                    URL:(NSURL*)url
+             parameters:(NSDictionary*)parameters
+      completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 @end

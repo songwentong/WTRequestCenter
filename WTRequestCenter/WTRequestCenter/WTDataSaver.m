@@ -131,8 +131,7 @@ static dispatch_queue_t wtsharedCompletionProcessingQueue;
 
 +(id)JSONObjectWithData:(NSData*)data
 {
-    id obj = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-    return obj;
+    return [WTRequestCenter JSONObjectWithData:data];
 }
 
 #pragma mark - 保存路径
@@ -179,6 +178,15 @@ static dispatch_queue_t wtsharedCompletionProcessingQueue;
 {
     [self configureDirectory];
     NSString *filePath = [NSString stringWithFormat:@"%@/%@",[self rootDir],name];
+    
+    
+    /*
+     这种方法可以实现简易的operatio操作
+    [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
+//        NSLog(@"xxx");
+    }];
+     */
+    
     
     WTDataWriteOpeation *operation = [[WTDataWriteOpeation alloc] initWithData:data andFilePath:filePath];
     [operation setCompletionBlock:^{

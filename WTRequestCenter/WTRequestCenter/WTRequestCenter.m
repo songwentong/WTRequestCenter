@@ -81,6 +81,9 @@ static NSOperationQueue *sharedQueue = nil;
     
     NSUserDefaults *myUserDefaults = [WTRequestCenter sharedUserDefaults];
     CGFloat time = [myUserDefaults floatForKey:@"WTRequestCenterExpireTime"];
+    if (time==0) {
+        time=3600*24*30;
+    }
     return time;
 }
 #endif
@@ -218,20 +221,7 @@ static NSOperationQueue *sharedQueue = nil;
 #pragma mark - Get
 
 
-+(NSURLRequest*)getWithoutCacheURL:(NSURL *)url
-                        parameters:(NSDictionary *)parameters
-                 completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
-{
-    NSURLRequest *request = [self GETRequestWithURL:url parameters:parameters];
-    [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        if (handler) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-            handler(response,data,connectionError);
-            });
-        }
-    }];
-    return request;
-}
+
 
 //get请求
 //Available in iOS 5.0 and later.
@@ -301,7 +291,21 @@ static NSOperationQueue *sharedQueue = nil;
     return request;
 }
 
-
+//不带缓存的Get
++(NSURLRequest*)getWithoutCacheURL:(NSURL *)url
+                        parameters:(NSDictionary *)parameters
+                 completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
+{
+    NSURLRequest *request = [self GETRequestWithURL:url parameters:parameters];
+    [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if (handler) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                handler(response,data,connectionError);
+            });
+        }
+    }];
+    return request;
+}
 
 #pragma mark - POST
 +(NSURLRequest*)postWithURL:(NSURL*)url
@@ -323,18 +327,34 @@ static NSOperationQueue *sharedQueue = nil;
 }
 
 
-+(NSURLRequest*)postWithoutCacheURL:(NSURL*)url parameters:(NSDictionary*)parameters completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
++(NSURLRequest*)postWithCacheURL:(NSURL*)url parameters:(NSDictionary*)parameters completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
 {
-   NSURLRequest *request = [self POSTRequestWithURL:url parameters:parameters];
+    NSURLRequest *request = [self POSTRequestWithURL:url parameters:parameters];
+    NSURLCache *cache = [WTRequestCenter sharedCache];
     
-    [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+    NSCachedURLResponse *response =[cache cachedResponseForRequest:request];
+    if (response) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (handler) {
-        handler(response,data,connectionError);
+                handler(response.response,response.data,nil);
             }
         });
-        
-    }];
+    }else
+    {
+        [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+            if (!connectionError && data) {
+                NSCachedURLResponse *res = [[NSCachedURLResponse alloc] initWithResponse:response data:data];
+                [cache storeCachedResponse:res forRequest:request];
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (handler) {
+                    handler(response,data,connectionError);
+                }
+            });
+            
+        }];
+    }
+    
                        
     return request;
 }
@@ -472,23 +492,64 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
 
 
 #pragma mark - Testing Method
-+(void)testGetWithURL:(NSURL*)url
-           parameters:(NSDictionary*)parameters
-    completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
++(void)testGetWithCache:(BOOL)useCache
+                    URL:(NSURL*)url
+             parameters:(NSDictionary*)parameters
+      completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
 {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-retain-cycles"
 #pragma clang diagnostic ignored "-Wgnu"
     NSURLRequest *request = [self GETRequestWithURL:url parameters:parameters];
-    WTURLRequestOperation *operation = [[WTURLRequestOperation alloc] initWithRequest:request];
-    [operation setCompletionBlock:^{
-        if (handler) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-            handler(operation.response,operation.responseData,operation.error);
-            });
+    
+    if (useCache) {
+        WTURLRequestOperation *operation = [[WTURLRequestOperation alloc] initWithRequest:request];
+        [operation setCompletionBlock:^{
+            
+            if (operation.error) {
+                //                如果请求无误
+                NSCachedURLResponse *res = [[NSCachedURLResponse alloc] initWithResponse:operation.response data:operation.responseData];
+                [[self sharedCache] storeCachedResponse:res forRequest:request];
+            }
+            if (handler) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    handler(operation.response,operation.responseData,operation.error);
+                });
+            }
+        }];
+        [[self sharedQueue] addOperation:operation];
+    }else
+    {
+        NSCachedURLResponse *response =[[self sharedCache] cachedResponseForRequest:request];
+        if (response) {
+            if (handler) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    handler(response.response,response.data,nil);
+                });
+            }
+        }else
+        {
+            WTURLRequestOperation *operation = [[WTURLRequestOperation alloc] initWithRequest:request];
+            [operation setCompletionBlock:^{
+                
+                if (operation.error) {
+                    //                如果请求无误
+                    NSCachedURLResponse *res = [[NSCachedURLResponse alloc] initWithResponse:operation.response data:operation.responseData];
+                    [[self sharedCache] storeCachedResponse:res forRequest:request];
+                }
+                if (handler) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        handler(operation.response,operation.responseData,operation.error);
+                    });
+                }
+            }];
+            [[self sharedQueue] addOperation:operation];
         }
-    }];
-    [[self sharedQueue] addOperation:operation];
+
+    }
+    
+    
+    
 #pragma clang diagnostic pop
 }
 @end

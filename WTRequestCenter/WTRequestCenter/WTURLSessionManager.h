@@ -21,6 +21,7 @@
  */
 
 #import <Foundation/Foundation.h>
+#if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000) || (defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= 1090)
 @interface WTURLSessionManager : NSObject
 
 @property (readonly,nonatomic,strong) NSURLSession *URLSession;
@@ -48,3 +49,4 @@
 
 - (NSURLSessionUploadTask *)uploadTaskWithRequest:(NSURLRequest *)request fromFile:(NSURL *)fileURL completionHandler:(void (^)(NSData *data, NSURLResponse *response, NSError *error))completionHandler;
 @end
+#endif
