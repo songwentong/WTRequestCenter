@@ -21,24 +21,28 @@
         __weak UIImageView *wself    = self;
         [WTRequestCenter getWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
 //从这里开始已经是主线程了
-            if (!wself) return;
-
-            UIImage *image = [UIImage imageWithData:data];
-            if (image) {
-
-                
-                __strong UIImageView *strongSelf = wself;
-                
-                strongSelf.image = image;
-                [strongSelf setNeedsDisplay];
-            }
             
+            if (data) {
+                [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
+                    UIImage *image = [UIImage imageWithData:data];
+                    
+                    if (image) {
+                        if (!wself) return;
+                        __strong UIImageView *strongSelf = wself;
+                        
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                        strongSelf.image = image;
+                        [strongSelf setNeedsDisplay];
+                        });
+                    }
+                }];
+                
+
+            }
         }];
     }else
     {
         
     }
-    
-    
 }
 @end
