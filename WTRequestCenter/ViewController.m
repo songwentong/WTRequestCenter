@@ -112,7 +112,7 @@
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     imageView.contentMode = UIViewContentModeCenter;
     imageView.frame = self.view.bounds;
-    imageView.frame = CGRectMake(0, 0, 320, 480/2);
+    imageView.frame = CGRectMake(0, 64, 320, 480/2);
     UIImage *placeHolderImage = [UIImage imageNamed:@"image.jpg"];
     [imageView setImageWithURL:url placeholderImage:placeHolderImage];
     
