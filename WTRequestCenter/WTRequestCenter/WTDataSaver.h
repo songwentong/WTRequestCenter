@@ -45,7 +45,7 @@
 +(void)dataWithName:(NSString*)name
          completion:(void(^)(NSData*data))completion;
 
-//根据url获取文件
+//根据url获取文件,分线程回调
 +(void)dataWithURL:(NSURL*)url
  completionHandler:(void (^)(NSData *data, NSURLResponse *response, NSError *error))completion;
 

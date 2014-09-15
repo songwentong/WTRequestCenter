@@ -243,7 +243,9 @@ static dispatch_queue_t wtsharedCompletionProcessingQueue;
     NSURL *url = [NSURL fileURLWithPath:filePath];
     [self dataWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (completion) {
+            dispatch_async(dispatch_get_main_queue(), ^{
             completion(data);
+            });
         }
     }];
 
@@ -260,12 +262,13 @@ static dispatch_queue_t wtsharedCompletionProcessingQueue;
         }
     }else
     {
-    [WTRequestCenter getWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-        if (completion) {
-            completion(data,response,error);
-        }
         
+    [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:url] queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if (completion) {
+            completion(data,response,connectionError);
+        }
     }];
+    
     }
 }
 
