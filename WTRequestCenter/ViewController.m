@@ -75,10 +75,7 @@
                   completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
                       NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
                       NSLog(@"%@",string);
-//                      index++;
-//                      NSLog(@"index:%d",index);
-//                      id obj = [WTRequestCenter JSONObjectWithData:data];
-//                      NSLog(@"result is %@",obj);
+
                   }];
 
     }
