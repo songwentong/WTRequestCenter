@@ -25,6 +25,13 @@
 ( defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000 ) )
 #import "WTURLSessionManager.h"
 #endif
+
+typedef enum : NSUInteger {
+    WTRequestCenterCachePolicyNormal,   //正常，无缓存
+    WTRequestCenterCachePolicyCache,    //缓存
+    WTRequestCenterCachePolicyCacheAndWeb  //本地和网络的
+} WTRequestCenterCachePolicy;
+
 @interface WTRequestCenter : NSObject
 
 //请求队列
@@ -56,29 +63,27 @@
 
 #pragma mark - GET
 
-//带缓存的GET
+//普通GET
 +(NSURLRequest*)getWithURL:(NSURL*)url
                 parameters:(NSDictionary*)parameters
          completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 
-
-//不带缓存的GET
-+(NSURLRequest*)getWithoutCacheURL:(NSURL *)url
-                        parameters:(NSDictionary *)parameters
-                 completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
-
-
+//GET
++(NSURLRequest*)getWithURL:(NSURL*)url
+                parameters:(NSDictionary *)parameters
+                    option:(WTRequestCenterCachePolicy)option
+         completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 #pragma mark - POST
-//不带缓存的POST
+//普通POST
 +(NSURLRequest*)postWithURL:(NSURL*)url
                  parameters:(NSDictionary*)parameters
           completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 
-
-//带缓存的post请求
-+(NSURLRequest*)postWithCacheURL:(NSURL*)url
-                         parameters:(NSDictionary*)parameters
-                  completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
+//POST
++(NSURLRequest*)postWithURL:(NSURL*)url
+                 parameters:(NSDictionary *)parameters
+                     option:(WTRequestCenterCachePolicy)option
+          completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 
  
 #pragma mark - Image
