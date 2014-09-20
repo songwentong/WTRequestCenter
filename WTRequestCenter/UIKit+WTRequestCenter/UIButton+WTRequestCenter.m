@@ -31,14 +31,19 @@
     __weak UIButton *weakSelf = self;
     [WTRequestCenter getCacheWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
 //        //从这里开始已经是主线程了
-        UIImage *image = [UIImage imageWithData:data];
+        [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
+            UIImage *image = [UIImage imageWithData:data];
             if (image) {
                 if (weakSelf) {
                     __strong UIButton *strongSelf = weakSelf;
-                    [strongSelf setImage:image forState:state];
-                    [strongSelf setNeedsLayout];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [strongSelf setImage:image forState:state];
+                        [strongSelf setNeedsLayout];
+                    });
                 }
             }
+        }];
+        
     }];
 
 }
@@ -60,15 +65,23 @@
     }
     __weak UIButton *weakSelf = self;
     [WTRequestCenter getCacheWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-        UIImage *image = [UIImage imageWithData:data];
-        if (image) {
-
-            if (weakSelf) {
-                __strong UIButton *strongSelf = weakSelf;
-                [strongSelf setBackgroundImage:image forState:state];
-                [strongSelf setNeedsLayout];
-            }
+        if (data) {
+            [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
+                UIImage *image = [UIImage imageWithData:data];
+                if (image) {
+                    
+                    if (weakSelf) {
+                        __strong UIButton *strongSelf = weakSelf;
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                        [strongSelf setBackgroundImage:image forState:state];
+                        [strongSelf setNeedsLayout];
+                        });
+                    }
+                }
+            }];
         }
+        
+        
     }];
 }
 
