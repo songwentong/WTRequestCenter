@@ -31,7 +31,8 @@ static NSOperationQueue *sharedQueue = nil;
 +(NSURLCache*)sharedCache
 {
     NSString *diskPath = [NSString stringWithFormat:@"WTRequestCenter"];
-    NSURLCache *cache = [[NSURLCache alloc] initWithMemoryCapacity:1024*1024*20 diskCapacity:1024*1024*300 diskPath:diskPath];
+    NSURLCache *cache = [[NSURLCache alloc] initWithMemoryCapacity:1024*1024*30 diskCapacity:1024*1024*300 diskPath:diskPath];
+//    30M内存  300M硬盘
     return cache;
 }
 
@@ -128,6 +129,7 @@ static NSOperationQueue *sharedQueue = nil;
 +(NSUInteger)currentDiskUsage
 {
     NSURLCache *cache = [WTRequestCenter sharedCache];
+    
     return [cache currentDiskUsage];
 }
 
