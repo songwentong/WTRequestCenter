@@ -232,6 +232,15 @@ static NSOperationQueue *sharedQueue = nil;
     return [self getWithURL:url parameters:parameters option:WTRequestCenterCachePolicyNormal completionHandler:handler];
 }
 
+
+//用缓存，没有缓存就网络请求
++(NSURLRequest*)getCacheWithURL:(NSURL*)url
+                parameters:(NSDictionary*)parameters
+         completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
+{
+    return [self getWithURL:url parameters:parameters option:WTRequestCenterCachePolicyCacheOrWeb completionHandler:handler];
+}
+
 +(NSURLRequest*)getWithURL:(NSURL*)url
                 parameters:(NSDictionary *)parameters
                     option:(WTRequestCenterCachePolicy)option
@@ -250,17 +259,13 @@ static NSOperationQueue *sharedQueue = nil;
 {
     NSURLRequest *request = [self POSTRequestWithURL:url parameters:parameters];
     
-    [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (handler) {
-                handler(response,data,connectionError);
-            }
-        });
-        
+    [self doWTRequest:request option:WTRequestCenterCachePolicyNormal completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        handler(response,data,error);
     }];
     
     return request;
 }
+
 
 +(NSURLRequest*)postWithURL:(NSURL*)url
                 parameters:(NSDictionary *)parameters

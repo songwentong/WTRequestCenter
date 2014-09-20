@@ -69,6 +69,11 @@ typedef enum : NSUInteger {
                 parameters:(NSDictionary*)parameters
          completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 
+//用缓存，没有缓存就网络请求
++(NSURLRequest*)getCacheWithURL:(NSURL*)url
+                     parameters:(NSDictionary*)parameters
+              completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
+
 //GET
 +(NSURLRequest*)getWithURL:(NSURL*)url
                 parameters:(NSDictionary *)parameters
