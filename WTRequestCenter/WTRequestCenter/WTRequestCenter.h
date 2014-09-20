@@ -28,9 +28,10 @@
 
 typedef enum : NSUInteger {
     WTRequestCenterCachePolicyNormal,   //正常网络访问，无缓存
+    WTRequestCenterCachePolicyCacheElseWeb,   //如果本地有就用本地，否则用网络的
     WTRequestCenterCachePolicyOnlyCache,    //仅使用缓存缓存，不请求
-    WTRequestCenterCachePolicyCacheAndWeb,  //本地和网络的
-    WTRequestCenterCachePolicyCacheOrWeb   //如果本地有就用本地，否则用网络的
+    WTRequestCenterCachePolicyCacheAndWeb  //本地和网络的
+    
 } WTRequestCenterCachePolicy;
 
 @interface WTRequestCenter : NSObject

@@ -238,7 +238,7 @@ static NSOperationQueue *sharedQueue = nil;
                 parameters:(NSDictionary*)parameters
          completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
 {
-    return [self getWithURL:url parameters:parameters option:WTRequestCenterCachePolicyCacheOrWeb completionHandler:handler];
+    return [self getWithURL:url parameters:parameters option:WTRequestCenterCachePolicyCacheElseWeb completionHandler:handler];
 }
 
 +(NSURLRequest*)getWithURL:(NSURL*)url
@@ -361,7 +361,7 @@ static NSOperationQueue *sharedQueue = nil;
             
         }
             break;
-        case WTRequestCenterCachePolicyCacheOrWeb:
+        case WTRequestCenterCachePolicyCacheElseWeb:
         {
             if (response) {
                 dispatch_async(dispatch_get_main_queue(), ^{
