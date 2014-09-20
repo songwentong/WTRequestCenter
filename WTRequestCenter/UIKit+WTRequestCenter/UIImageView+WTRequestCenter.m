@@ -19,7 +19,7 @@
     self.image = placeholder;
     if (url) {
         __weak UIImageView *wself    = self;
-        [WTRequestCenter getWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        [WTRequestCenter getCacheWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
 //从这里开始已经是主线程了
             
             if (data) {

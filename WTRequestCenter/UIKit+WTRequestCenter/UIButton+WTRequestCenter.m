@@ -29,7 +29,7 @@
         return;
     }
     __weak UIButton *weakSelf = self;
-    [WTRequestCenter getWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+    [WTRequestCenter getCacheWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
 //        //从这里开始已经是主线程了
         UIImage *image = [UIImage imageWithData:data];
             if (image) {
@@ -59,7 +59,7 @@
         return;
     }
     __weak UIButton *weakSelf = self;
-    [WTRequestCenter getWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+    [WTRequestCenter getCacheWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         UIImage *image = [UIImage imageWithData:data];
         if (image) {
 

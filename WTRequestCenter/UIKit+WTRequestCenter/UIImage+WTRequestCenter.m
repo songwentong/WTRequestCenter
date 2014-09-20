@@ -121,7 +121,7 @@ static UIImage *animatedImageWithAnimatedGIFReleasingImageSource(CGImageSourceRe
 +(void) imageWithURL:(NSURL*)url
   comelectionHandler:(void(^)(UIImage* image))comelectionHandler
 {
-    [WTRequestCenter getWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+    [WTRequestCenter getCacheWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         UIImage *image = [UIImage imageWithData:data];
         if (comelectionHandler) {
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -148,7 +148,7 @@ static UIImage *animatedImageWithAnimatedGIFReleasingImageSource(CGImageSourceRe
     if (!url) {
         return;
     }
-        [WTRequestCenter getWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        [WTRequestCenter getCacheWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
             if (!data) {
                 if (completion) {
                     dispatch_async(dispatch_get_main_queue(), ^{
