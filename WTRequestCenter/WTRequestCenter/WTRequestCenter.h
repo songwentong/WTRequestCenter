@@ -28,8 +28,8 @@
 
 typedef enum : NSUInteger {
     WTRequestCenterCachePolicyNormal,   //正常，无缓存
-    WTRequestCenterCachePolicyCache,    //缓存
-    WTRequestCenterCachePolicyCacheAndWeb  //本地和网络的
+    WTRequestCenterCachePolicyOnlyCache,    //仅使用缓存缓存，不请求
+    WTRequestCenterCachePolicyOnlyCacheAndWeb  //本地和网络的
 } WTRequestCenterCachePolicy;
 
 @interface WTRequestCenter : NSObject

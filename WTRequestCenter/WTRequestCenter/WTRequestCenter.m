@@ -246,6 +246,10 @@ static NSOperationQueue *sharedQueue = nil;
         {
 //            基本请求
             [NSURLConnection sendAsynchronousRequest:request queue:[self sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                if (!connectionError) {
+                    NSCachedURLResponse *tempURLResponse = [[NSCachedURLResponse alloc] initWithResponse:response data:data];
+                    [[self sharedCache] storeCachedResponse:tempURLResponse forRequest:request];
+                }
                 dispatch_async(dispatch_get_main_queue(), ^{
                     if (handler) {
                 handler(response,data,connectionError);
@@ -253,7 +257,7 @@ static NSOperationQueue *sharedQueue = nil;
                 });
             }];
         }break;
-        case WTRequestCenterCachePolicyCache:
+        case WTRequestCenterCachePolicyOnlyCache:
         {
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (handler) {
@@ -268,7 +272,7 @@ static NSOperationQueue *sharedQueue = nil;
             });
         
         }break;
-        case WTRequestCenterCachePolicyCacheAndWeb:
+        case WTRequestCenterCachePolicyOnlyCacheAndWeb:
         {
             
 //            本地的
@@ -286,6 +290,10 @@ static NSOperationQueue *sharedQueue = nil;
             
 //            网络的
             [NSURLConnection sendAsynchronousRequest:request queue:[self sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                if (!connectionError) {
+                    NSCachedURLResponse *tempURLResponse = [[NSCachedURLResponse alloc] initWithResponse:response data:data];
+                    [[self sharedCache] storeCachedResponse:tempURLResponse forRequest:request];
+                }
                 dispatch_async(dispatch_get_main_queue(), ^{
                     if (handler) {
                         handler(response,data,connectionError);
@@ -330,8 +338,8 @@ static NSOperationQueue *sharedQueue = nil;
     
     /*
      WTRequestCenterCachePolicyNormal,   //正常，无缓存
-     WTRequestCenterCachePolicyCache,    //缓存
-     WTRequestCenterCachePolicyCacheAndWeb  //本地和网络的
+     WTRequestCenterCachePolicyOnlyCache,    //缓存
+     WTRequestCenterCachePolicyOnlyCacheAndWeb  //本地和网络的
      */
     NSURLRequest *request = [self POSTRequestWithURL:url parameters:parameters];
     NSCachedURLResponse *response = [[self sharedCache] cachedResponseForRequest:request];
@@ -340,6 +348,12 @@ static NSOperationQueue *sharedQueue = nil;
         case WTRequestCenterCachePolicyNormal:
         {
             [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                
+                if (!connectionError) {
+                    NSCachedURLResponse *tempURLResponse = [[NSCachedURLResponse alloc] initWithResponse:response data:data];
+                    [[self sharedCache] storeCachedResponse:tempURLResponse forRequest:request];
+                }
+                
                 dispatch_async(dispatch_get_main_queue(), ^{
                     if (handler) {
                         handler(response,data,connectionError);
@@ -349,7 +363,7 @@ static NSOperationQueue *sharedQueue = nil;
             }];
         }
             break;
-        case WTRequestCenterCachePolicyCache:
+        case WTRequestCenterCachePolicyOnlyCache:
         {
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (handler) {
@@ -364,7 +378,7 @@ static NSOperationQueue *sharedQueue = nil;
             });
         }
             break;
-        case WTRequestCenterCachePolicyCacheAndWeb:
+        case WTRequestCenterCachePolicyOnlyCacheAndWeb:
         {
             
 //            本地的
@@ -382,6 +396,10 @@ static NSOperationQueue *sharedQueue = nil;
             
 //            网络的
             [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                if (!connectionError) {
+                    NSCachedURLResponse *tempURLResponse = [[NSCachedURLResponse alloc] initWithResponse:response data:data];
+                    [[self sharedCache] storeCachedResponse:tempURLResponse forRequest:request];
+                }
                 dispatch_async(dispatch_get_main_queue(), ^{
                     if (handler) {
                         handler(response,data,connectionError);
