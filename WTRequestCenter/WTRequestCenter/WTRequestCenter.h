@@ -21,6 +21,7 @@
  */
 #import <Foundation/Foundation.h>
 #import "WTDataSaver.h"
+#import "WTURLRequestOperation.h"
 #if ( ( defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= 1090) || \
 ( defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000 ) )
 #import "WTURLSessionManager.h"
@@ -140,9 +141,8 @@ typedef NS_ENUM(NSUInteger, WTRequestCenterCachePolicy) {
 
 
 #pragma mark - Testing Method
-
-+(void)testGetWithCache:(BOOL)useCache
-                    URL:(NSURL*)url
-             parameters:(NSDictionary*)parameters
-      completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
++(WTURLRequestOperation*)testGetWithURL:(NSURL*)url
+           parameters:(NSDictionary *)parameters
+               option:(WTRequestCenterCachePolicy)option
+    completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 @end

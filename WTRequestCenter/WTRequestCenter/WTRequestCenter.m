@@ -290,6 +290,27 @@ static NSOperationQueue *sharedQueue = nil;
 
 
 #pragma mark - Request
+
+
++(void)doWTRequest:(NSURLRequest*)request
+ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
+{
+    [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        
+        if (!connectionError) {
+            NSCachedURLResponse *tempURLResponse = [[NSCachedURLResponse alloc] initWithResponse:response data:data];
+            [[self sharedCache] storeCachedResponse:tempURLResponse forRequest:request];
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (handler) {
+                handler(response,data,connectionError);
+            }
+        });
+        
+    }];
+}
+
 +(void)doWTRequest:(NSURLRequest*)request
             option:(WTRequestCenterCachePolicy)option
  completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
@@ -299,20 +320,7 @@ static NSOperationQueue *sharedQueue = nil;
     switch (option) {
         case WTRequestCenterCachePolicyNormal:
         {
-            [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-                
-                if (!connectionError) {
-                    NSCachedURLResponse *tempURLResponse = [[NSCachedURLResponse alloc] initWithResponse:response data:data];
-                    [[self sharedCache] storeCachedResponse:tempURLResponse forRequest:request];
-                }
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (handler) {
-                        handler(response,data,connectionError);
-                    }
-                });
-                
-            }];
+            [self doWTRequest:request completionHandler:handler];
         }
             break;
         case WTRequestCenterCachePolicyOnlyCache:
@@ -347,18 +355,7 @@ static NSOperationQueue *sharedQueue = nil;
             });
             
             //            网络的
-            [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-                if (!connectionError) {
-                    NSCachedURLResponse *tempURLResponse = [[NSCachedURLResponse alloc] initWithResponse:response data:data];
-                    [[self sharedCache] storeCachedResponse:tempURLResponse forRequest:request];
-                }
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (handler) {
-                        handler(response,data,connectionError);
-                    }
-                });
-                
-            }];
+            [self doWTRequest:request completionHandler:handler];
             
             
         }
@@ -373,17 +370,7 @@ static NSOperationQueue *sharedQueue = nil;
                 });
             }else
             {
-                [NSURLConnection sendAsynchronousRequest:request queue:[self sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-                    if (!connectionError) {
-                        NSCachedURLResponse *tempURLResponse = [[NSCachedURLResponse alloc] initWithResponse:response data:data];
-                        [[self sharedCache] storeCachedResponse:tempURLResponse forRequest:request];
-                    }
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        if (handler) {
-                            handler(response,data,connectionError);
-                        }
-                    });
-                }];
+                [self doWTRequest:request completionHandler:handler];
             }
         }break;
             
@@ -392,6 +379,8 @@ static NSOperationQueue *sharedQueue = nil;
     }
 
 }
+
+
 
 #pragma mark - Image
 +(NSURLRequest *)uploadRequestWithURL: (NSURL *)url
@@ -525,47 +514,24 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
 
 
 #pragma mark - Testing Method
-+(void)testGetWithCache:(BOOL)useCache
-                    URL:(NSURL*)url
-             parameters:(NSDictionary*)parameters
-      completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
++(WTURLRequestOperation*)testGetWithURL:(NSURL*)url
+                parameters:(NSDictionary *)parameters
+                    option:(WTRequestCenterCachePolicy)option
+         completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
 {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-retain-cycles"
 #pragma clang diagnostic ignored "-Wgnu"
     NSURLRequest *request = [self GETRequestWithURL:url parameters:parameters];
-    
-    if (useCache) {
-        WTURLRequestOperation *operation = [[WTURLRequestOperation alloc] initWithRequest:request];
-        [operation setCompletionBlock:^{
-            
-            if (operation.error) {
-                //                如果请求无误
-                NSCachedURLResponse *res = [[NSCachedURLResponse alloc] initWithResponse:operation.response data:operation.responseData];
-                [[self sharedCache] storeCachedResponse:res forRequest:request];
-            }
-            if (handler) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    handler(operation.response,operation.responseData,operation.error);
-                });
-            }
-        }];
-        [[self sharedQueue] addOperation:operation];
-    }else
-    {
-        NSCachedURLResponse *response =[[self sharedCache] cachedResponseForRequest:request];
-        if (response) {
-            if (handler) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    handler(response.response,response.data,nil);
-                });
-            }
-        }else
+    WTURLRequestOperation *operation = nil;
+//    NSCachedURLResponse *response = [[self sharedCache] cachedResponseForRequest:request];
+    switch (option) {
+        case WTRequestCenterCachePolicyNormal:
         {
-            WTURLRequestOperation *operation = [[WTURLRequestOperation alloc] initWithRequest:request];
+            operation = [[WTURLRequestOperation alloc] initWithRequest:request];
             [operation setCompletionBlock:^{
                 
-                if (operation.error) {
+                if (!operation.error) {
                     //                如果请求无误
                     NSCachedURLResponse *res = [[NSCachedURLResponse alloc] initWithResponse:operation.response data:operation.responseData];
                     [[self sharedCache] storeCachedResponse:res forRequest:request];
@@ -578,11 +544,16 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
             }];
             [[self sharedQueue] addOperation:operation];
         }
-
+            break;
+            case WTRequestCenterCachePolicyCacheElseWeb:
+        {
+            
+        }break;
+            
+        default:
+            break;
     }
-    
-    
-    
+    return operation;
 #pragma clang diagnostic pop
 }
 @end
