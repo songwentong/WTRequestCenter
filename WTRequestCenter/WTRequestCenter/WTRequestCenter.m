@@ -323,6 +323,22 @@ static NSOperationQueue *sharedQueue = nil;
             [self doWTRequest:request completionHandler:handler];
         }
             break;
+            
+        case WTRequestCenterCachePolicyCacheElseWeb:
+        {
+            if (response) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (handler) {
+                        handler(response.response,response.data,nil);
+                    }
+                });
+            }else
+            {
+                [self doWTRequest:request completionHandler:handler];
+            }
+        }
+            break;
+            
         case WTRequestCenterCachePolicyOnlyCache:
         {
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -338,6 +354,7 @@ static NSOperationQueue *sharedQueue = nil;
             });
         }
             break;
+            
         case WTRequestCenterCachePolicyCacheAndWeb:
         {
             
@@ -360,19 +377,7 @@ static NSOperationQueue *sharedQueue = nil;
             
         }
             break;
-        case WTRequestCenterCachePolicyCacheElseWeb:
-        {
-            if (response) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (handler) {
-                        handler(response.response,response.data,nil);
-                    }
-                });
-            }else
-            {
-                [self doWTRequest:request completionHandler:handler];
-            }
-        }break;
+        
             
         default:
             break;
@@ -514,46 +519,102 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
 
 
 #pragma mark - Testing Method
++(WTURLRequestOperation*)testDoWTRequest:(NSURLRequest*)request
+     completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
+{
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-retain-cycles"
+#pragma clang diagnostic ignored "-Wgnu"
+    WTURLRequestOperation *operation = nil;
+    operation = [[WTURLRequestOperation alloc] initWithRequest:request];
+    [operation setCompletionBlock:^{
+        
+        if (!operation.error) {
+            //                如果请求无误
+            NSCachedURLResponse *res = [[NSCachedURLResponse alloc] initWithResponse:operation.response data:operation.responseData];
+            [[self sharedCache] storeCachedResponse:res forRequest:request];
+        }
+        if (handler) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                handler(operation.response,operation.responseData,operation.error);
+            });
+        }
+    }];
+    [[self sharedQueue] addOperation:operation];
+    return operation;
+    #pragma clang diagnostic pop
+
+}
 +(WTURLRequestOperation*)testGetWithURL:(NSURL*)url
                 parameters:(NSDictionary *)parameters
                     option:(WTRequestCenterCachePolicy)option
          completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
 {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-retain-cycles"
-#pragma clang diagnostic ignored "-Wgnu"
     NSURLRequest *request = [self GETRequestWithURL:url parameters:parameters];
     WTURLRequestOperation *operation = nil;
-//    NSCachedURLResponse *response = [[self sharedCache] cachedResponseForRequest:request];
+    NSCachedURLResponse *response = [[self sharedCache] cachedResponseForRequest:request];
     switch (option) {
         case WTRequestCenterCachePolicyNormal:
         {
-            operation = [[WTURLRequestOperation alloc] initWithRequest:request];
-            [operation setCompletionBlock:^{
-                
-                if (!operation.error) {
-                    //                如果请求无误
-                    NSCachedURLResponse *res = [[NSCachedURLResponse alloc] initWithResponse:operation.response data:operation.responseData];
-                    [[self sharedCache] storeCachedResponse:res forRequest:request];
-                }
-                if (handler) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        handler(operation.response,operation.responseData,operation.error);
-                    });
-                }
-            }];
-            [[self sharedQueue] addOperation:operation];
+            [self testDoWTRequest:request completionHandler:handler];
         }
             break;
-            case WTRequestCenterCachePolicyCacheElseWeb:
+        case WTRequestCenterCachePolicyCacheElseWeb:
         {
+            if (response) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (handler) {
+                        handler(response.response,response.data,nil);
+                    }
+                });
+            }else
+            {
+                [self testDoWTRequest:request completionHandler:handler];
+            }
+        }
+            break;
+        case WTRequestCenterCachePolicyOnlyCache:
+        {
+            if (response) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (handler) {
+                        handler(response.response,response.data,nil);
+                    }
+                });
+            }else
+            {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (handler) {
+                        handler(nil,nil,nil);
+                    }
+                });
+            }
+        }
+            break;
+        case WTRequestCenterCachePolicyCacheAndWeb:
+        {
+            if (response) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (handler) {
+                        handler(response.response,response.data,nil);
+                    }
+                });
+            }else
+            {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (handler) {
+                        handler(nil,nil,nil);
+                    }
+                });
+            }
             
-        }break;
+            [self testDoWTRequest:request completionHandler:handler];
+        }
+            break;
             
         default:
             break;
     }
     return operation;
-#pragma clang diagnostic pop
 }
 @end
