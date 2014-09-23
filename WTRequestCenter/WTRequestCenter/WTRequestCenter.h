@@ -41,13 +41,13 @@
  //本地和网络的,会返回两次
  
  */
-typedef enum : NSUInteger {
+
+typedef NS_ENUM(NSUInteger, WTRequestCenterCachePolicy) {
     WTRequestCenterCachePolicyNormal,
     WTRequestCenterCachePolicyCacheElseWeb,
     WTRequestCenterCachePolicyOnlyCache,
-    WTRequestCenterCachePolicyCacheAndWeb  
-    
-} WTRequestCenterCachePolicy;
+    WTRequestCenterCachePolicyCacheAndWeb
+};
 
 @interface WTRequestCenter : NSObject
 
