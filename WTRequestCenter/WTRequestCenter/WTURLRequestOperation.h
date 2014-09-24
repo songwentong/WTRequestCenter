@@ -18,6 +18,7 @@
     
 }
 - (instancetype)initWithRequest:(NSURLRequest*)request;
+-(void)setCompletionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 @property (nonatomic,retain) NSMutableData *responseData;
 @property (nonatomic,retain,readonly)NSURLRequest *request;
 @property (nonatomic,retain,readonly)NSURLResponse *response;

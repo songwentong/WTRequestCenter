@@ -7,6 +7,7 @@
 //
 
 #import "WTURLRequestOperation.h"
+#import "WTRequestCenter.h"
 @interface WTURLRequestOperation()
 @property (nonatomic,retain,readwrite)NSURLRequest *request;
 @property (nonatomic,retain,readwrite)NSURLResponse *response;
@@ -18,12 +19,30 @@
     self = [super init];
     if (self) {
         self.request = request;
-        wtURLConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
         
-        [wtURLConnection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
         isReady = YES;
     }
     return self;
+}
+
+-(void)setCompletionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
+{
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-retain-cycles"
+#pragma clang diagnostic ignored "-Wgnu"
+    [self setCompletionBlock:^{
+        if (!self.error) {
+            //                如果请求无误
+            NSCachedURLResponse *res = [[NSCachedURLResponse alloc] initWithResponse:self.response data:self.responseData];
+            [[WTRequestCenter sharedCache] storeCachedResponse:res forRequest:self.request];
+        }
+        if (handler) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                handler(self.response,self.responseData,self.error);
+            });
+        }
+    }];
+#pragma clang diagnostic pop
 }
 
 -(BOOL)isConcurrent
@@ -53,11 +72,17 @@
 -(void)start
 {
     if (!isCancelled) {
-        
-    }else if([self isReady])
-    {
-        [wtURLConnection start];
-        isExecuting = YES;
+        if(isReady)
+        {
+            
+            isExecuting = YES;
+            
+            wtURLConnection = [[NSURLConnection alloc] initWithRequest:self.request delegate:self startImmediately:NO];
+            
+            [wtURLConnection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
+            [wtURLConnection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+            [wtURLConnection start];
+        }
     }
     
 }
@@ -90,7 +115,6 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     isFinished = YES;
-    
 }
 
 #pragma mark - NSURLConnectionDelegate

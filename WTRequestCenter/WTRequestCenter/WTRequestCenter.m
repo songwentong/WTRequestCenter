@@ -642,19 +642,7 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
 #pragma clang diagnostic ignored "-Wgnu"
     WTURLRequestOperation *operation = nil;
     operation = [[WTURLRequestOperation alloc] initWithRequest:request];
-    [operation setCompletionBlock:^{
-        
-        if (!operation.error) {
-            //                如果请求无误
-            NSCachedURLResponse *res = [[NSCachedURLResponse alloc] initWithResponse:operation.response data:operation.responseData];
-            [[self sharedCache] storeCachedResponse:res forRequest:request];
-        }
-        if (handler) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                handler(operation.response,operation.responseData,operation.error);
-            });
-        }
-    }];
+    [operation setCompletionHandler:handler];
     [[self sharedQueue] addOperation:operation];
     return operation;
     #pragma clang diagnostic pop

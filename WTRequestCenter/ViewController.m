@@ -33,9 +33,9 @@
     [self get];
     
 //    POST请求
-    [self post];
+//    [self post];
 //    下载图片
-    [self loadImage];
+//    [self loadImage];
 //    [WTRequestCenter cancelAllRequest];
 //    gif
 //    [self loadGif];
@@ -43,7 +43,7 @@
 //    [self gifButton];
 
 //    存取数据
-    [self saveAndWrite];
+//    [self saveAndWrite];
 
     
     
@@ -64,7 +64,7 @@
 -(void)get
 {
     
-    for (int i=0; i<1000; i++) {
+    for (int i=0; i<1; i++) {
 
         NSURL *url = [NSURL URLWithString:@"http://www.baidu.com"];
         NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
@@ -84,7 +84,7 @@
     }
     NSOperationQueue *queue = [WTRequestCenter sharedQueue];
     NSLog(@"%@",queue.operations);
-    [WTRequestCenter cancelAllRequest];
+//    [WTRequestCenter cancelAllRequest];
     NSLog(@"%@",queue.operations);
     
     
