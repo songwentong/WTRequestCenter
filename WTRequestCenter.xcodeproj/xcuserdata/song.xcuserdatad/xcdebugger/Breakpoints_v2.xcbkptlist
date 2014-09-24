@@ -41,7 +41,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "489"
             endingLineNumber = "489"
-            landmarkName = "+urlWithIndex:"
+            landmarkName = "+doWTRequest:option:completionHandler:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

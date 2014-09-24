@@ -88,28 +88,28 @@ typedef NS_ENUM(NSUInteger, WTRequestCenterCachePolicy) {
 #pragma mark - GET
 
 //普通GET
-+(WTURLRequestOperation*)getWithURL:(NSURL*)url
++(NSURLRequest*)getWithURL:(NSURL*)url
                 parameters:(NSDictionary*)parameters
          completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 
 //用缓存，没有缓存就网络请求
-+(WTURLRequestOperation*)getCacheWithURL:(NSURL*)url
++(NSURLRequest*)getCacheWithURL:(NSURL*)url
                      parameters:(NSDictionary*)parameters
               completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 
 //GET
-+(WTURLRequestOperation*)getWithURL:(NSURL*)url
++(NSURLRequest*)getWithURL:(NSURL*)url
                          parameters:(NSDictionary *)parameters
                              option:(WTRequestCenterCachePolicy)option
                   completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 #pragma mark - POST
 //普通POST
-+(WTURLRequestOperation*)postWithURL:(NSURL*)url
++(NSURLRequest*)postWithURL:(NSURL*)url
                  parameters:(NSDictionary*)parameters
           completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 
 //POST
-+(WTURLRequestOperation*)postWithURL:(NSURL*)url
++(NSURLRequest*)postWithURL:(NSURL*)url
                  parameters:(NSDictionary *)parameters
                      option:(WTRequestCenterCachePolicy)option
           completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;

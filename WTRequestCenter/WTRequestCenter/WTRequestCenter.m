@@ -229,7 +229,7 @@ static NSOperationQueue *sharedQueue = nil;
 
 //get请求
 //Available in iOS 5.0 and later.
-+(WTURLRequestOperation*)getWithURL:(NSURL*)url
++(NSURLRequest*)getWithURL:(NSURL*)url
                 parameters:(NSDictionary*)parameters
          completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
 {
@@ -238,25 +238,26 @@ static NSOperationQueue *sharedQueue = nil;
 
 
 //用缓存，没有缓存就网络请求
-+(WTURLRequestOperation*)getCacheWithURL:(NSURL*)url
++(NSURLRequest*)getCacheWithURL:(NSURL*)url
                 parameters:(NSDictionary*)parameters
          completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
 {
     return [self getWithURL:url parameters:parameters option:WTRequestCenterCachePolicyCacheElseWeb completionHandler:handler];
 }
 
-+(WTURLRequestOperation*)getWithURL:(NSURL*)url
++(NSURLRequest*)getWithURL:(NSURL*)url
                 parameters:(NSDictionary *)parameters
                     option:(WTRequestCenterCachePolicy)option
          completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
 {
     NSURLRequest *request = [self GETRequestWithURL:url parameters:parameters];
-    WTURLRequestOperation *operation = nil;
+   
     NSCachedURLResponse *response = [[self sharedCache] cachedResponseForRequest:request];
     switch (option) {
         case WTRequestCenterCachePolicyNormal:
         {
-            [self testDoWTRequest:request completionHandler:handler];
+            [self doWTRequest:request completionHandler:handler];
+//            [self testDoWTRequest:request completionHandler:handler];
         }
             break;
         case WTRequestCenterCachePolicyCacheElseWeb:
@@ -269,7 +270,8 @@ static NSOperationQueue *sharedQueue = nil;
                 });
             }else
             {
-                [self testDoWTRequest:request completionHandler:handler];
+//                [self testDoWTRequest:request completionHandler:handler];
+                [self doWTRequest:request completionHandler:handler];
             }
         }
             break;
@@ -308,39 +310,40 @@ static NSOperationQueue *sharedQueue = nil;
                 });
             }
             
-            [self testDoWTRequest:request completionHandler:handler];
+//            [self testDoWTRequest:request completionHandler:handler];
+            [self doWTRequest:request completionHandler:handler];
         }
             break;
             
         default:
             break;
     }
-    return operation;
+    return request;
 }
 #pragma mark - POST
-+(WTURLRequestOperation*)postWithURL:(NSURL*)url
++(NSURLRequest*)postWithURL:(NSURL*)url
                  parameters:(NSDictionary*)parameters
           completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
 {
     
-    WTURLRequestOperation *operation = [self postWithURL:url parameters:parameters option:WTRequestCenterCachePolicyNormal completionHandler:handler];
-    return operation;
+    NSURLRequest *request = [self postWithURL:url parameters:parameters option:WTRequestCenterCachePolicyNormal completionHandler:handler];
+    return request;
 }
 
 
-+(WTURLRequestOperation*)postWithURL:(NSURL*)url
++(NSURLRequest*)postWithURL:(NSURL*)url
                 parameters:(NSDictionary *)parameters
                     option:(WTRequestCenterCachePolicy)option
          completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
 {
     
     NSURLRequest *request = [self POSTRequestWithURL:url parameters:parameters];
-    WTURLRequestOperation *operation = nil;
+
     NSCachedURLResponse *response = [[self sharedCache] cachedResponseForRequest:request];
     switch (option) {
         case WTRequestCenterCachePolicyNormal:
         {
-            [self testDoWTRequest:request completionHandler:handler];
+            [self doWTRequest:request completionHandler:handler];
         }
             break;
         case WTRequestCenterCachePolicyCacheElseWeb:
@@ -353,7 +356,7 @@ static NSOperationQueue *sharedQueue = nil;
                 });
             }else
             {
-                [self testDoWTRequest:request completionHandler:handler];
+                [self doWTRequest:request completionHandler:handler];
             }
         }
             break;
@@ -392,14 +395,15 @@ static NSOperationQueue *sharedQueue = nil;
                 });
             }
             
-            [self testDoWTRequest:request completionHandler:handler];
+            [self doWTRequest:request completionHandler:handler];
+//            [self testDoWTRequest:request completionHandler:handler];
         }
             break;
             
         default:
             break;
     }
-    return operation;
+    return request;
 
 }
 
