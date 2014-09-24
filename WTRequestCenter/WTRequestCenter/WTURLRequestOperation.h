@@ -10,17 +10,16 @@
 
 @interface WTURLRequestOperation : NSOperation <NSURLConnectionDataDelegate>
 {
-    BOOL isReady;
-    BOOL isExecuting;
-    BOOL isFinished;
-    BOOL isCancelled;
     NSURLConnection *wtURLConnection;
     
 //    (^)handler a;
 }
 
-- (instancetype)initWithRequest:(NSURLRequest*)request;
+-(instancetype)initWithRequest:(NSURLRequest*)request;
 -(void)setCompletionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
+
+@property (nonatomic, strong) NSSet *runLoopModes;
+
 @property (nonatomic,retain) NSMutableData *responseData;
 @property (nonatomic,retain,readonly)NSURLRequest *request;
 @property (nonatomic,retain,readonly)NSURLResponse *response;

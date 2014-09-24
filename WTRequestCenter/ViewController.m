@@ -93,10 +93,14 @@
 
 -(void)testGet
 {
-    NSURL *url = [NSURL URLWithString:@"http://www.baidu.com"];
+    NSURL *url = [NSURL URLWithString:@"http://www.sina.com.cn"];
     [WTRequestCenter testGetWithURL:url parameters:nil option:WTRequestCenterCachePolicyNormal completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         NSLog(@"ok");
     }];
+//    for (WTURLRequestOperation *operation in [WTRequestCenter sharedQueue].operations) {
+//        [operation cancel];
+//    }
+//    NSLog(@"%@",[WTRequestCenter sharedQueue].operations);
 }
 
 -(void)post

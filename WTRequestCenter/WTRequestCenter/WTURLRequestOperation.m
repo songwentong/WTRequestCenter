@@ -9,8 +9,10 @@
 #import "WTURLRequestOperation.h"
 #import "WTRequestCenter.h"
 
-
-
+#if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
+#import <UIKit/UIKit.h>
+#endif
+/*
 static dispatch_queue_t http_request_operation_processing_queue() {
     static dispatch_queue_t af_http_request_operation_processing_queue;
     static dispatch_once_t onceToken;
@@ -30,9 +32,56 @@ static dispatch_group_t http_request_operation_completion_group() {
     
     return af_http_request_operation_completion_group;
 }
+*/
+#if !__has_feature(objc_arc)
+#error WTRequestCenter must be built with ARC.
+// You can turn on ARC for only WTRequestCenter files by adding -fobjc-arc to the build phase for each of its files.
+#endif
+
+
+//operation 状态
+typedef NS_ENUM(NSInteger, WTOperationState){
+    WTOperationStatePause,
+    WTOperationStateReady,
+    WTOperationStateExecuting,
+    WTOperationStateFinished
+};
+
+
+static inline NSString * WTKeyPathFromOperationState(WTOperationState state) {
+    switch (state) {
+        case WTOperationStatePause:
+        {
+            return @"isPaused";
+        }
+            break;
+        case WTOperationStateReady:
+        {
+            return @"isReady";
+        }
+            break;
+        case WTOperationStateExecuting:
+        {
+            return @"isExecuting";
+        }
+            break;
+        case WTOperationStateFinished:
+        {
+            return @"isFinished";
+        }
+            break;
+        default:
+            return @"state";
+            break;
+    }
+    
+}
 
 
 @interface WTURLRequestOperation()
+
+//Operation状态
+@property (readwrite, nonatomic, assign) WTOperationState state;
 
 //锁
 @property (readwrite, nonatomic, strong) NSRecursiveLock *lock;
@@ -49,7 +98,11 @@ static dispatch_group_t http_request_operation_completion_group() {
         self.request = request;
         self.lock = [[NSRecursiveLock alloc] init];
         self.lock.name = @"WTRequestCenter.WTURLRequestOperation.lock";
-        isReady = YES;
+
+        _state = WTOperationStateReady;
+        
+        
+        self.runLoopModes = [NSSet setWithObject:NSRunLoopCommonModes];
     }
     return self;
 }
@@ -84,39 +137,49 @@ static dispatch_group_t http_request_operation_completion_group() {
 }
 -(BOOL)isReady
 {
-    return isReady;
+    return self.state == WTOperationStateReady;
 }
 
 -(BOOL)isExecuting
 {
-    return isExecuting;
+    return self.state == WTOperationStateExecuting;
 }
 
 -(BOOL)isFinished
 {
-    return isFinished;
+    return self.state == WTOperationStateFinished;
 }
 
--(BOOL)isCancelled
-{
-    return isCancelled;
-}
+
 
 -(void)start
 {
     [self.lock lock];
-    if (!isCancelled) {
-        if(isReady)
+    if (![self isCancelled]) {
+        if([self isReady])
         {
+            self.state = WTOperationStateExecuting;
             [self performSelector:@selector(operationDidStart) onThread:[[self class] networkRequestThread] withObject:nil waitUntilDone:NO modes:@[NSRunLoopCommonModes]];
             
             
         }
     }
     [self.lock unlock];
+}
+
+- (void)setState:(WTOperationState)state {
+    [self.lock lock];
+    NSString *oldStateKey = WTKeyPathFromOperationState(self.state);
+    NSString *newStateKey = WTKeyPathFromOperationState(state);
+    [self willChangeValueForKey:oldStateKey];
+    [self willChangeValueForKey:newStateKey];
+    
+    _state = state;
+    [self didChangeValueForKey:oldStateKey];
+    [self didChangeValueForKey:newStateKey];
     
     
-    
+    [self.lock unlock];
 }
 
 + (NSThread *)networkRequestThread {
@@ -144,8 +207,6 @@ static dispatch_group_t http_request_operation_completion_group() {
 - (void)operationDidStart
 {
     [self.lock lock];
-    isExecuting = YES;
-    
     wtURLConnection = [[NSURLConnection alloc] initWithRequest:self.request delegate:self startImmediately:NO];
     
     [wtURLConnection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
@@ -155,17 +216,42 @@ static dispatch_group_t http_request_operation_completion_group() {
 }
 - (void)cancel
 {
+    [self.lock lock];
     if (![self isFinished] && ![self isCancelled]) {
         [super cancel];
-        if (isExecuting) {
-            [wtURLConnection cancel];
+        if ([self isExecuting]) {
+            [self performSelector:@selector(cancelConnection) onThread:[[self class] networkRequestThread] withObject:nil waitUntilDone:NO modes:[self.runLoopModes allObjects]];
             
         }
     }
-    
+    [self.lock unlock];
 }
 
+- (void)cancelConnection {
+    NSDictionary *userInfo = nil;
+    if ([self.request URL]) {
+        userInfo = [NSDictionary dictionaryWithObject:[self.request URL] forKey:NSURLErrorFailingURLErrorKey];
+    }
+    NSError *error = [NSError errorWithDomain:NSURLErrorDomain code:NSURLErrorCancelled userInfo:userInfo];
+    
+    if (![self isFinished]) {
+        if (wtURLConnection) {
+            [wtURLConnection cancel];
+            [self performSelector:@selector(connection:didFailWithError:) withObject:wtURLConnection withObject:error];
+        }else
+        {
+            self.error = error;
+            [self finish];
+        }
+    }
+}
 
+- (void)finish {
+    [self.lock lock];
+    self.state = WTOperationStateFinished;
+    [self.lock unlock];
+
+}
 #pragma mark - NSURLConnectionDataDelegate
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
@@ -181,10 +267,9 @@ static dispatch_group_t http_request_operation_completion_group() {
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     [self.lock lock];
-    [self willChangeValueForKey:@"isFinished"];
-    isFinished = YES;
-    [self didChangeValueForKey:@"isFinished"];
-//    [self completionBlock];
+
+    self.state = WTOperationStateFinished;
+
     [self.lock unlock];
 }
 
@@ -192,7 +277,9 @@ static dispatch_group_t http_request_operation_completion_group() {
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
     self.error = error;
-    isFinished = YES;
+    [self.lock lock];
+    self.state = WTOperationStateFinished;
+    [self.lock unlock];
 }
 
 @end
