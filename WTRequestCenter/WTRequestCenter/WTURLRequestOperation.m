@@ -160,8 +160,6 @@ static inline NSString * WTKeyPathFromOperationState(WTOperationState state) {
         {
             self.state = WTOperationStateExecuting;
             [self performSelector:@selector(operationDidStart) onThread:[[self class] networkRequestThread] withObject:nil waitUntilDone:NO modes:@[NSRunLoopCommonModes]];
-            
-            
         }
     }
     [self.lock unlock];
@@ -209,8 +207,10 @@ static inline NSString * WTKeyPathFromOperationState(WTOperationState state) {
     [self.lock lock];
     wtURLConnection = [[NSURLConnection alloc] initWithRequest:self.request delegate:self startImmediately:NO];
     
-    [wtURLConnection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
-    [wtURLConnection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+    NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
+    [self.runLoopModes enumerateObjectsUsingBlock:^(NSString *runLoopMode, BOOL *stop) {
+        [wtURLConnection scheduleInRunLoop:runLoop forMode:runLoopMode];
+    }];
     [wtURLConnection start];
     [self.lock unlock];
 }
