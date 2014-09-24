@@ -16,7 +16,9 @@
     BOOL isCancelled;
     NSURLConnection *wtURLConnection;
     
+//    (^)handler a;
 }
+
 - (instancetype)initWithRequest:(NSURLRequest*)request;
 -(void)setCompletionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 @property (nonatomic,retain) NSMutableData *responseData;

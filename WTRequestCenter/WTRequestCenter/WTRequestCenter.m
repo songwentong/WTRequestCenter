@@ -11,6 +11,7 @@
 @implementation WTRequestCenter
 
 
+
 #pragma mark - 请求队列和缓存
 //请求队列
 static NSOperationQueue *sharedQueue = nil;
@@ -642,7 +643,10 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
 #pragma clang diagnostic ignored "-Wgnu"
     WTURLRequestOperation *operation = nil;
     operation = [[WTURLRequestOperation alloc] initWithRequest:request];
-    [operation setCompletionHandler:handler];
+//    [operation setCompletionHandler:handler];
+    [operation setCompletionBlock:^{
+        NSLog(@"xxx");
+    }];
     [[self sharedQueue] addOperation:operation];
     return operation;
     #pragma clang diagnostic pop

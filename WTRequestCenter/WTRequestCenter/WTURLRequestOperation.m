@@ -8,7 +8,35 @@
 
 #import "WTURLRequestOperation.h"
 #import "WTRequestCenter.h"
+
+
+
+static dispatch_queue_t http_request_operation_processing_queue() {
+    static dispatch_queue_t af_http_request_operation_processing_queue;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        af_http_request_operation_processing_queue = dispatch_queue_create("WTRequestCenter.processing", DISPATCH_QUEUE_CONCURRENT);
+    });
+    
+    return af_http_request_operation_processing_queue;
+}
+
+static dispatch_group_t http_request_operation_completion_group() {
+    static dispatch_group_t af_http_request_operation_completion_group;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        af_http_request_operation_completion_group = dispatch_group_create();
+    });
+    
+    return af_http_request_operation_completion_group;
+}
+
+
 @interface WTURLRequestOperation()
+
+//锁
+@property (readwrite, nonatomic, strong) NSRecursiveLock *lock;
+
 @property (nonatomic,retain,readwrite)NSURLRequest *request;
 @property (nonatomic,retain,readwrite)NSURLResponse *response;
 @end
@@ -19,7 +47,8 @@
     self = [super init];
     if (self) {
         self.request = request;
-        
+        self.lock = [[NSRecursiveLock alloc] init];
+        self.lock.name = @"WTRequestCenter.WTURLRequestOperation.lock";
         isReady = YES;
     }
     return self;
@@ -30,7 +59,10 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-retain-cycles"
 #pragma clang diagnostic ignored "-Wgnu"
+    [self.lock lock];
     [self setCompletionBlock:^{
+        
+        NSLog(@"%s",__func__);
         if (!self.error) {
             //                如果请求无误
             NSCachedURLResponse *res = [[NSCachedURLResponse alloc] initWithResponse:self.response data:self.responseData];
@@ -42,6 +74,7 @@
             });
         }
     }];
+    [self.lock unlock];
 #pragma clang diagnostic pop
 }
 
@@ -71,22 +104,55 @@
 
 -(void)start
 {
+    [self.lock lock];
     if (!isCancelled) {
         if(isReady)
         {
+            [self performSelector:@selector(operationDidStart) onThread:[[self class] networkRequestThread] withObject:nil waitUntilDone:NO modes:@[NSRunLoopCommonModes]];
             
-            isExecuting = YES;
             
-            wtURLConnection = [[NSURLConnection alloc] initWithRequest:self.request delegate:self startImmediately:NO];
-            
-            [wtURLConnection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
-            [wtURLConnection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
-            [wtURLConnection start];
         }
     }
+    [self.lock unlock];
+    
+    
     
 }
 
++ (NSThread *)networkRequestThread {
+    static NSThread *_networkRequestThread = nil;
+    static dispatch_once_t oncePredicate;
+    dispatch_once(&oncePredicate, ^{
+        _networkRequestThread = [[NSThread alloc] initWithTarget:self selector:@selector(networkRequestThreadEntryPoint:) object:nil];
+        [_networkRequestThread start];
+    });
+    
+    return _networkRequestThread;
+}
+
++ (void)networkRequestThreadEntryPoint:(id)__unused object {
+    @autoreleasepool {
+        [[NSThread currentThread] setName:@"WTRequestThread"];
+        
+        NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
+        [runLoop addPort:[NSMachPort port] forMode:NSDefaultRunLoopMode];
+        [runLoop run];
+    }
+}
+
+
+- (void)operationDidStart
+{
+    [self.lock lock];
+    isExecuting = YES;
+    
+    wtURLConnection = [[NSURLConnection alloc] initWithRequest:self.request delegate:self startImmediately:NO];
+    
+    [wtURLConnection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
+    [wtURLConnection scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+    [wtURLConnection start];
+    [self.lock unlock];
+}
 - (void)cancel
 {
     if (![self isFinished] && ![self isCancelled]) {
@@ -114,7 +180,9 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
+    [self.lock lock];
     isFinished = YES;
+    [self.lock unlock];
 }
 
 #pragma mark - NSURLConnectionDelegate
