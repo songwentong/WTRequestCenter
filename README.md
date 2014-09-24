@@ -8,7 +8,6 @@ WTRequestCenter
 
 使用方法 Usage
 ===============
-#### 注意：GET默认是缓存请求，POST不提供缓存请求，详情请看Wiki
 ### GET 请求 
 ```objective-c
 [WTRequestCenter getWithURL:url
