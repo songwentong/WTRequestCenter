@@ -181,7 +181,10 @@ static dispatch_group_t http_request_operation_completion_group() {
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     [self.lock lock];
+    [self willChangeValueForKey:@"isFinished"];
     isFinished = YES;
+    [self didChangeValueForKey:@"isFinished"];
+//    [self completionBlock];
     [self.lock unlock];
 }
 

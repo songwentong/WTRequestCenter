@@ -647,10 +647,11 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
 #pragma clang diagnostic ignored "-Wgnu"
     WTURLRequestOperation *operation = nil;
     operation = [[WTURLRequestOperation alloc] initWithRequest:request];
-//    [operation setCompletionHandler:handler];
-    [operation setCompletionBlock:^{
-        NSLog(@"xxx");
-    }];
+    [operation setCompletionHandler:handler];
+//    [operation setCompletionBlock:^{
+//        NSLog(@"xxx");
+//    }];
+    NSLog(@"%@",operation.completionBlock);
     [[self sharedQueue] addOperation:operation];
     return operation;
     #pragma clang diagnostic pop

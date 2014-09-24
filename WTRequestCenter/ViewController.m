@@ -31,6 +31,7 @@
     
 //    GET请求
     [self get];
+//    [self testGet];
     
 //    POST请求
 //    [self post];
@@ -88,6 +89,14 @@
 //    NSLog(@"%@",queue.operations);
     
     
+}
+
+-(void)testGet
+{
+    NSURL *url = [NSURL URLWithString:@"http://www.baidu.com"];
+    [WTRequestCenter testGetWithURL:url parameters:nil option:WTRequestCenterCachePolicyNormal completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        NSLog(@"ok");
+    }];
 }
 
 -(void)post
