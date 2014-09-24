@@ -68,6 +68,7 @@
         [super cancel];
         if (isExecuting) {
             [wtURLConnection cancel];
+            
         }
     }
     

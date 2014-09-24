@@ -64,7 +64,7 @@
 -(void)get
 {
     
-    for (int i=0; i<1; i++) {
+    for (int i=0; i<1000; i++) {
 
         NSURL *url = [NSURL URLWithString:@"http://www.baidu.com"];
         NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
@@ -73,13 +73,19 @@
         [WTRequestCenter getWithURL:url
                          parameters:parameters
                   completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                      if (error) {
+                          NSLog(@"%@",error);
+                      }
                       NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
                       NSLog(@"%@",string);
 
                   }];
 
     }
-    
+    NSOperationQueue *queue = [WTRequestCenter sharedQueue];
+    NSLog(@"%@",queue.operations);
+    [WTRequestCenter cancelAllRequest];
+    NSLog(@"%@",queue.operations);
     
     
 }

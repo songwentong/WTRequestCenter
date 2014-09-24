@@ -82,28 +82,28 @@ typedef NS_ENUM(NSUInteger, WTRequestCenterCachePolicy) {
 #pragma mark - GET
 
 //普通GET
-+(NSURLRequest*)getWithURL:(NSURL*)url
++(WTURLRequestOperation*)getWithURL:(NSURL*)url
                 parameters:(NSDictionary*)parameters
          completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 
 //用缓存，没有缓存就网络请求
-+(NSURLRequest*)getCacheWithURL:(NSURL*)url
++(WTURLRequestOperation*)getCacheWithURL:(NSURL*)url
                      parameters:(NSDictionary*)parameters
               completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 
 //GET
-+(NSURLRequest*)getWithURL:(NSURL*)url
-                parameters:(NSDictionary *)parameters
-                    option:(WTRequestCenterCachePolicy)option
-         completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
++(WTURLRequestOperation*)getWithURL:(NSURL*)url
+                         parameters:(NSDictionary *)parameters
+                             option:(WTRequestCenterCachePolicy)option
+                  completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 #pragma mark - POST
 //普通POST
-+(NSURLRequest*)postWithURL:(NSURL*)url
++(WTURLRequestOperation*)postWithURL:(NSURL*)url
                  parameters:(NSDictionary*)parameters
           completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 
 //POST
-+(NSURLRequest*)postWithURL:(NSURL*)url
++(WTURLRequestOperation*)postWithURL:(NSURL*)url
                  parameters:(NSDictionary *)parameters
                      option:(WTRequestCenterCachePolicy)option
           completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;

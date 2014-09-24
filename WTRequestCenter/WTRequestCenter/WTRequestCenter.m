@@ -136,6 +136,7 @@ static NSOperationQueue *sharedQueue = nil;
 +(void)cancelAllRequest
 {
     [[WTRequestCenter sharedQueue] cancelAllOperations];
+
 }
 
 
@@ -227,7 +228,7 @@ static NSOperationQueue *sharedQueue = nil;
 
 //get请求
 //Available in iOS 5.0 and later.
-+(NSURLRequest*)getWithURL:(NSURL*)url
++(WTURLRequestOperation*)getWithURL:(NSURL*)url
                 parameters:(NSDictionary*)parameters
          completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
 {
@@ -236,55 +237,169 @@ static NSOperationQueue *sharedQueue = nil;
 
 
 //用缓存，没有缓存就网络请求
-+(NSURLRequest*)getCacheWithURL:(NSURL*)url
++(WTURLRequestOperation*)getCacheWithURL:(NSURL*)url
                 parameters:(NSDictionary*)parameters
          completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
 {
     return [self getWithURL:url parameters:parameters option:WTRequestCenterCachePolicyCacheElseWeb completionHandler:handler];
 }
 
-+(NSURLRequest*)getWithURL:(NSURL*)url
++(WTURLRequestOperation*)getWithURL:(NSURL*)url
                 parameters:(NSDictionary *)parameters
                     option:(WTRequestCenterCachePolicy)option
          completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
 {
-    NSURLRequest *request = [self GETRequestWithURL:url parameters:nil];
-    [self doWTRequest:request option:option completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-        handler(response,data,error);
-    }];
-    return request;
+    NSURLRequest *request = [self GETRequestWithURL:url parameters:parameters];
+    WTURLRequestOperation *operation = nil;
+    NSCachedURLResponse *response = [[self sharedCache] cachedResponseForRequest:request];
+    switch (option) {
+        case WTRequestCenterCachePolicyNormal:
+        {
+            [self testDoWTRequest:request completionHandler:handler];
+        }
+            break;
+        case WTRequestCenterCachePolicyCacheElseWeb:
+        {
+            if (response) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (handler) {
+                        handler(response.response,response.data,nil);
+                    }
+                });
+            }else
+            {
+                [self testDoWTRequest:request completionHandler:handler];
+            }
+        }
+            break;
+        case WTRequestCenterCachePolicyOnlyCache:
+        {
+            if (response) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (handler) {
+                        handler(response.response,response.data,nil);
+                    }
+                });
+            }else
+            {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (handler) {
+                        handler(nil,nil,nil);
+                    }
+                });
+            }
+        }
+            break;
+        case WTRequestCenterCachePolicyCacheAndWeb:
+        {
+            if (response) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (handler) {
+                        handler(response.response,response.data,nil);
+                    }
+                });
+            }else
+            {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (handler) {
+                        handler(nil,nil,nil);
+                    }
+                });
+            }
+            
+            [self testDoWTRequest:request completionHandler:handler];
+        }
+            break;
+            
+        default:
+            break;
+    }
+    return operation;
 }
 #pragma mark - POST
-+(NSURLRequest*)postWithURL:(NSURL*)url
++(WTURLRequestOperation*)postWithURL:(NSURL*)url
                  parameters:(NSDictionary*)parameters
           completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
 {
-    NSURLRequest *request = [self POSTRequestWithURL:url parameters:parameters];
     
-    [self doWTRequest:request option:WTRequestCenterCachePolicyNormal completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-        handler(response,data,error);
-    }];
-    
-    return request;
+    WTURLRequestOperation *operation = [self postWithURL:url parameters:parameters option:WTRequestCenterCachePolicyNormal completionHandler:handler];
+    return operation;
 }
 
 
-+(NSURLRequest*)postWithURL:(NSURL*)url
++(WTURLRequestOperation*)postWithURL:(NSURL*)url
                 parameters:(NSDictionary *)parameters
                     option:(WTRequestCenterCachePolicy)option
          completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
 {
     
-    /*
-     WTRequestCenterCachePolicyNormal,   //正常，无缓存
-     WTRequestCenterCachePolicyOnlyCache,    //缓存
-     WTRequestCenterCachePolicyCacheAndWeb  //本地和网络的
-     */
     NSURLRequest *request = [self POSTRequestWithURL:url parameters:parameters];
-    [self doWTRequest:request option:option completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-        handler(response,data,error);
-    }];
-    return request;
+    WTURLRequestOperation *operation = nil;
+    NSCachedURLResponse *response = [[self sharedCache] cachedResponseForRequest:request];
+    switch (option) {
+        case WTRequestCenterCachePolicyNormal:
+        {
+            [self testDoWTRequest:request completionHandler:handler];
+        }
+            break;
+        case WTRequestCenterCachePolicyCacheElseWeb:
+        {
+            if (response) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (handler) {
+                        handler(response.response,response.data,nil);
+                    }
+                });
+            }else
+            {
+                [self testDoWTRequest:request completionHandler:handler];
+            }
+        }
+            break;
+        case WTRequestCenterCachePolicyOnlyCache:
+        {
+            if (response) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (handler) {
+                        handler(response.response,response.data,nil);
+                    }
+                });
+            }else
+            {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (handler) {
+                        handler(nil,nil,nil);
+                    }
+                });
+            }
+        }
+            break;
+        case WTRequestCenterCachePolicyCacheAndWeb:
+        {
+            if (response) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (handler) {
+                        handler(response.response,response.data,nil);
+                    }
+                });
+            }else
+            {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (handler) {
+                        handler(nil,nil,nil);
+                    }
+                });
+            }
+            
+            [self testDoWTRequest:request completionHandler:handler];
+        }
+            break;
+            
+        default:
+            break;
+    }
+    return operation;
+
 }
 
 
