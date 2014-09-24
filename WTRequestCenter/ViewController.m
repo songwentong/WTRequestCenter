@@ -82,10 +82,10 @@
                   }];
 
     }
-    NSOperationQueue *queue = [WTRequestCenter sharedQueue];
-    NSLog(@"%@",queue.operations);
+//    NSOperationQueue *queue = [WTRequestCenter sharedQueue];
+//    NSLog(@"%@",queue.operations);
 //    [WTRequestCenter cancelAllRequest];
-    NSLog(@"%@",queue.operations);
+//    NSLog(@"%@",queue.operations);
     
     
 }
