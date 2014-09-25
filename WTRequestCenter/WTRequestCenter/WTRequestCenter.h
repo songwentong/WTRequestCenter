@@ -152,8 +152,4 @@ typedef NS_ENUM(NSUInteger, WTRequestCenterCachePolicy) {
                option:(WTRequestCenterCachePolicy)option
     completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 
-
-+(NSOperation*)testRequest2:(NSURL*)url
-                 parameters:(NSDictionary *)parameters
-          completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 @end
