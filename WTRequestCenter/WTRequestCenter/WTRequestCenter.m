@@ -639,6 +639,22 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
 
 
 #pragma mark - Testing Method
+
++(NSOperation*)testRequest2:(NSURL*)url
+                parameters:(NSDictionary *)parameters
+completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
+{
+    NSOperation *operation = nil;
+    NSURLRequest *request = [self GETRequestWithURL:url parameters:parameters];
+        operation = [NSBlockOperation blockOperationWithBlock:^{
+        [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:handler];
+    }];
+    
+    [[self sharedQueue] addOperation:operation];
+    
+    return operation;
+}
+
 +(WTURLRequestOperation*)testDoWTRequest:(NSURLRequest*)request
      completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
 {
