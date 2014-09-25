@@ -20,29 +20,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WTRequestCenter/WTRequestCenter/WTURLRequestOperation.m"
-            timestampString = "433243899.755605"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
-            landmarkName = "-cancel"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WTRequestCenter/WTRequestCenter/WTURLRequestOperation.m"
             timestampString = "433243903.926857"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "73"
             endingLineNumber = "73"
-            landmarkName = "-setCompletionHandler:"
-            landmarkType = "5">
+            landmarkName = "WTKeyPathFromOperationState()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

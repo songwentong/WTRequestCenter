@@ -159,7 +159,7 @@ static inline NSString * WTKeyPathFromOperationState(WTOperationState state) {
         if([self isReady])
         {
             self.state = WTOperationStateExecuting;
-            [self performSelector:@selector(operationDidStart) onThread:[[self class] networkRequestThread] withObject:nil waitUntilDone:NO modes:@[NSRunLoopCommonModes]];
+            [self performSelector:@selector(operationDidStart) onThread:[[self class] networkRequestThread] withObject:nil waitUntilDone:NO modes:[self.runLoopModes allObjects]];
         }
     }
     [self.lock unlock];
@@ -180,6 +180,9 @@ static inline NSString * WTKeyPathFromOperationState(WTOperationState state) {
     [self.lock unlock];
 }
 
+
+
+//网络访问线程
 + (NSThread *)networkRequestThread {
     static NSThread *_networkRequestThread = nil;
     static dispatch_once_t oncePredicate;
