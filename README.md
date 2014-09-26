@@ -29,11 +29,6 @@ WTRequestCenter
 ```
 
 
-### 取消所有请求 
-```objective-c
-[WTRequestCenter cancelAllRequest];
-```
-
 
 ### WTDataSaver
 WTDataSaver 是个文件存取类，用于自定的方式把数据存取到本地
