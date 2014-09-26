@@ -32,7 +32,7 @@ WTRequestCenter
 
 ### 缓存策略
 
-缓存策略一共有5种
+缓存策略一共有5种，分别是：
 
     WTRequestCenterCachePolicyNormal,
     WTRequestCenterCachePolicyCacheElseWeb,
@@ -63,6 +63,17 @@ WTRequestCenter
                     option:(WTRequestCenterCachePolicy)option
          completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 ```
+比普通的方法多了一个策略的选项，你根据需要去选择自己的缓存策略就可以了
+
+### POST+缓存策略
+虽然POST不经常用缓存，但是每个人的需要不同，所以我同样实现了POST的缓存，有需要的可以用
+```objective-c
++(NSURLRequest*)postWithURL:(NSURL*)url
+                 parameters:(NSDictionary *)parameters
+                     option:(WTRequestCenterCachePolicy)option
+          completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
+```
+
 ### WTDataSaver
 WTDataSaver 是个文件存取类，用于自定的方式把数据存取到本地
 
@@ -83,11 +94,16 @@ WTDataSaver 是个文件存取类，用于自定的方式把数据存取到本�
 
 ###   接口路径辅助功能
 //根路径的设置和获取
+```objective-c
 +(BOOL)setBaseURL:(NSString*)url;
 +(NSString *)baseURL;
-
+```
 //接口的路径（根据索引）
+```objective-c
 +(NSString*)urlWithIndex:(NSInteger)index;
+```
+
+
 
 Requirement   需要
 ===============
@@ -108,3 +124,14 @@ Only need iOS 5.0 and later,no more import and Configuration!
 - UIColor的快速创建
 
 
+
+###  测试中方法
+
+
+这是仿照AFNetworking写的一个请求方法，待测试
+```objective-c
++(WTURLRequestOperation*)testGetWithURL:(NSURL*)url
+           parameters:(NSDictionary *)parameters
+               option:(WTRequestCenterCachePolicy)option
+    completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
+```
