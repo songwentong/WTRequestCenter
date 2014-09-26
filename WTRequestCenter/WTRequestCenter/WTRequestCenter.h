@@ -99,9 +99,9 @@ typedef NS_ENUM(NSUInteger, WTRequestCenterCachePolicy) {
 
 //GET
 +(NSURLRequest*)getWithURL:(NSURL*)url
-                         parameters:(NSDictionary *)parameters
-                             option:(WTRequestCenterCachePolicy)option
-                  completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
+                parameters:(NSDictionary *)parameters
+                    option:(WTRequestCenterCachePolicy)option
+         completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 #pragma mark - POST
 //普通POST
 +(NSURLRequest*)postWithURL:(NSURL*)url
