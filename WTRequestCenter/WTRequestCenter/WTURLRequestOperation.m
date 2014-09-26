@@ -196,7 +196,7 @@ static inline NSString * WTKeyPathFromOperationState(WTOperationState state) {
 
 + (void)networkRequestThreadEntryPoint:(id)__unused object {
     @autoreleasepool {
-        [[NSThread currentThread] setName:@"WTRequestThread"];
+        [[NSThread currentThread] setName:@"WTRequestCenter"];
         
         NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
         [runLoop addPort:[NSMachPort port] forMode:NSDefaultRunLoopMode];

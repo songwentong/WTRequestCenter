@@ -38,7 +38,7 @@
  WTRequestCenterCachePolicyOnlyCache
  //仅使用缓存缓存，不请求
  
- WTRequestCenterCachePolicyCacheAndWeb
+ WTRequestCenterCachePolicyCacheAndRefresh
  //本地和网络的,会返回两次
  
  */
@@ -47,7 +47,7 @@ typedef NS_ENUM(NSUInteger, WTRequestCenterCachePolicy) {
     WTRequestCenterCachePolicyNormal,
     WTRequestCenterCachePolicyCacheElseWeb,
     WTRequestCenterCachePolicyOnlyCache,
-    WTRequestCenterCachePolicyCacheAndWeb
+    WTRequestCenterCachePolicyCacheAndRefresh
 };
 
 @interface WTRequestCenter : NSObject

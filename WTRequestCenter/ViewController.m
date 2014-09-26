@@ -31,7 +31,7 @@
     
 //    GET请求
     [self get];
-//    [self testGet];
+    [self testGet];
     
 //    POST请求
 //    [self post];

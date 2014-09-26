@@ -293,7 +293,7 @@ static NSOperationQueue *sharedQueue = nil;
             }
         }
             break;
-        case WTRequestCenterCachePolicyCacheAndWeb:
+        case WTRequestCenterCachePolicyCacheAndRefresh:
         {
             if (response) {
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -378,7 +378,7 @@ static NSOperationQueue *sharedQueue = nil;
             }
         }
             break;
-        case WTRequestCenterCachePolicyCacheAndWeb:
+        case WTRequestCenterCachePolicyCacheAndRefresh:
         {
             if (response) {
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -475,24 +475,23 @@ static NSOperationQueue *sharedQueue = nil;
         }
             break;
             
-        case WTRequestCenterCachePolicyCacheAndWeb:
+        case WTRequestCenterCachePolicyCacheAndRefresh:
         {
             
-            //            本地的
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if (handler) {
-                    if (response) {
-                        handler(nil,nil,nil);
-                    }else
-                    {
+            //          如果有本地的，也去刷新，刷新后不回调，如果没有，则用网络的
+            
+            if (response) {
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (handler) {
                         handler(response.response,response.data,nil);
                     }
-                    
-                }
-            });
-            
-            //            网络的
-            [self doWTRequest:request completionHandler:handler];
+                });
+                [self doWTRequest:request completionHandler:nil];
+            }else
+            {
+                [self doWTRequest:request completionHandler:handler];
+            }
             
             
         }
@@ -701,7 +700,7 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
             }
         }
             break;
-        case WTRequestCenterCachePolicyCacheAndWeb:
+        case WTRequestCenterCachePolicyCacheAndRefresh:
         {
             if (response) {
                 dispatch_async(dispatch_get_main_queue(), ^{
