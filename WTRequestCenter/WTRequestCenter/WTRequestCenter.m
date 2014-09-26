@@ -301,17 +301,13 @@ static NSOperationQueue *sharedQueue = nil;
                         handler(response.response,response.data,nil);
                     }
                 });
+                [self doWTRequest:request completionHandler:nil];
             }else
             {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (handler) {
-                        handler(nil,nil,nil);
-                    }
-                });
-            }
+                [self doWTRequest:request completionHandler:handler];            }
             
 //            [self testDoWTRequest:request completionHandler:handler];
-            [self doWTRequest:request completionHandler:handler];
+            
         }
             break;
             
@@ -386,16 +382,14 @@ static NSOperationQueue *sharedQueue = nil;
                         handler(response.response,response.data,nil);
                     }
                 });
+                [self doWTRequest:request completionHandler:nil];
             }else
             {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (handler) {
-                        handler(nil,nil,nil);
-                    }
-                });
+
+                [self doWTRequest:request completionHandler:handler];
             }
             
-            [self doWTRequest:request completionHandler:handler];
+            
 //            [self testDoWTRequest:request completionHandler:handler];
         }
             break;
@@ -708,16 +702,14 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
                         handler(response.response,response.data,nil);
                     }
                 });
+                [self testDoWTRequest:request completionHandler:nil];
             }else
             {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (handler) {
-                        handler(nil,nil,nil);
-                    }
-                });
+
+                [self testDoWTRequest:request completionHandler:handler];
             }
             
-            [self testDoWTRequest:request completionHandler:handler];
+            
         }
             break;
             
