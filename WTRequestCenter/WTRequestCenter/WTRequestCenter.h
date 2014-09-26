@@ -39,7 +39,7 @@
  //仅使用缓存缓存，不请求
  
  WTRequestCenterCachePolicyCacheAndRefresh
- //本地和网络的,会返回两次
+ //本地和网络的，本地没有也会刷新,本地有也会刷新(刷新后不回调)
  
  */
 
