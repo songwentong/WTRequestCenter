@@ -122,6 +122,7 @@ Only need iOS 5.0 and later,no more import and Configuration!
 - UIImage的播放gif+图片缓存
 - UIButton的图片缓存
 - UIColor的快速创建
+- UIDecive的扩展（uuid调用）
 
 
 
