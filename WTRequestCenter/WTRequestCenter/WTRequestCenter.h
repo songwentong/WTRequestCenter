@@ -41,13 +41,18 @@
  WTRequestCenterCachePolicyCacheAndRefresh
  //本地和网络的，本地没有也会刷新,本地有也会刷新(刷新后不回调)
  
+ 
+ WTRequestCenterCachePolicyCacheAndWeb
+// 本地有，会用，也会刷新，也会回调，本地没有会刷新
+ 
  */
 
 typedef NS_ENUM(NSUInteger, WTRequestCenterCachePolicy) {
     WTRequestCenterCachePolicyNormal,
     WTRequestCenterCachePolicyCacheElseWeb,
     WTRequestCenterCachePolicyOnlyCache,
-    WTRequestCenterCachePolicyCacheAndRefresh
+    WTRequestCenterCachePolicyCacheAndRefresh,
+    WTRequestCenterCachePolicyCacheAndWeb
 };
 
 @interface WTRequestCenter : NSObject

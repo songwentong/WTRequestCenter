@@ -309,13 +309,28 @@ static NSURLCache* sharedCache = nil;
                 [self doWTRequest:request completionHandler:nil];
             }else
             {
-                [self doWTRequest:request completionHandler:handler];            }
+                [self doWTRequest:request completionHandler:handler];
+            }
             
 //            [self testDoWTRequest:request completionHandler:handler];
             
         }
             break;
-            
+        case WTRequestCenterCachePolicyCacheAndWeb:
+        {
+            if (response) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (handler) {
+                        handler(response.response,response.data,nil);
+                    }
+                });
+                [self doWTRequest:request completionHandler:handler];
+            }else
+            {
+                [self doWTRequest:request completionHandler:handler];
+            }
+        }
+            break;
         default:
             break;
     }
@@ -396,6 +411,22 @@ static NSURLCache* sharedCache = nil;
             
             
 //            [self testDoWTRequest:request completionHandler:handler];
+        }
+            break;
+            case WTRequestCenterCachePolicyCacheAndWeb:
+        {
+            if (response) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (handler) {
+                        handler(response.response,response.data,nil);
+                    }
+                });
+                [self doWTRequest:request completionHandler:handler];
+            }else
+            {
+                
+                [self doWTRequest:request completionHandler:handler];
+            }
         }
             break;
             
@@ -717,7 +748,22 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
             
         }
             break;
-            
+        case WTRequestCenterCachePolicyCacheAndWeb:
+        {
+            if (response) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (handler) {
+                        handler(response.response,response.data,nil);
+                    }
+                });
+                [self testDoWTRequest:request completionHandler:handler];
+            }else
+            {
+                
+                [self testDoWTRequest:request completionHandler:handler];
+            }
+        }
+            break;
         default:
             break;
     }
