@@ -29,6 +29,17 @@ WTRequestCenter
 ```
 
 
+###   接口路径辅助功能
+      根路径的设置和获取
+```objective-c
++(BOOL)setBaseURL:(NSString*)url;
++(NSString *)baseURL;
+```
+      接口的路径（根据索引）
+```objective-c
++(NSString*)urlWithIndex:(NSInteger)index;
+```
+
 
 ### 缓存策略
 
@@ -57,13 +68,15 @@ WTRequestCenter
     注意：这种情况非常少见，只有调用网页的时候可能会用得到
 
 ### GET+缓存策略
+
+比普通的方法多了一个策略的选项，你根据需要去选择自己的缓存策略就可以了
 ```objective-c
 +(NSURLRequest*)getWithURL:(NSURL*)url
                 parameters:(NSDictionary *)parameters
                     option:(WTRequestCenterCachePolicy)option
          completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 ```
-比普通的方法多了一个策略的选项，你根据需要去选择自己的缓存策略就可以了
+
 
 ### POST+缓存策略
 虽然POST不经常用缓存，但是每个人的需要不同，所以我同样实现了POST的缓存，有需要的可以用
@@ -91,17 +104,6 @@ WTDataSaver 是个文件存取类，用于自定的方式把数据存取到本�
 ```
 
 
-
-###   接口路径辅助功能
-//根路径的设置和获取
-```objective-c
-+(BOOL)setBaseURL:(NSString*)url;
-+(NSString *)baseURL;
-```
-//接口的路径（根据索引）
-```objective-c
-+(NSString*)urlWithIndex:(NSInteger)index;
-```
 
 
 
