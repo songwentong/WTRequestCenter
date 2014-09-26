@@ -30,6 +30,39 @@ WTRequestCenter
 
 
 
+### 缓存策略
+
+缓存策略一共有5种
+
+    WTRequestCenterCachePolicyNormal,
+    WTRequestCenterCachePolicyCacheElseWeb,
+    WTRequestCenterCachePolicyOnlyCache,
+    WTRequestCenterCachePolicyCacheAndRefresh,
+    WTRequestCenterCachePolicyCacheAndWeb
+    
+    WTRequestCenterCachePolicyNormal
+    普通请求，没什么特别的
+    
+    WTRequestCenterCachePolicyCacheElseWeb
+    如果本地有就用本地，否则用网络的
+ 
+    WTRequestCenterCachePolicyOnlyCache
+    仅使用缓存缓存，不请求
+ 
+    WTRequestCenterCachePolicyCacheAndRefresh
+    本地和网络的，本地没有也会刷新,本地有也会刷新(刷新后不回调)
+ 
+    WTRequestCenterCachePolicyCacheAndWeb
+    本地有，会用，也会刷新，也会回调，本地没有会刷新
+    注意：这种情况非常少见，只有调用网页的时候可能会用得到
+
+### GET+缓存策略
+```objective-c
++(NSURLRequest*)getWithURL:(NSURL*)url
+                parameters:(NSDictionary *)parameters
+                    option:(WTRequestCenterCachePolicy)option
+         completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
+```
 ### WTDataSaver
 WTDataSaver 是个文件存取类，用于自定的方式把数据存取到本地
 
@@ -46,8 +79,15 @@ WTDataSaver 是个文件存取类，用于自定的方式把数据存取到本�
          completion:(void(^)(NSData*data))completion;
 ```
 
-还有一些更加便捷的方法，查看wiki吧
 
+
+###   接口路径辅助功能
+//根路径的设置和获取
++(BOOL)setBaseURL:(NSString*)url;
++(NSString *)baseURL;
+
+//接口的路径（根据索引）
++(NSString*)urlWithIndex:(NSInteger)index;
 
 Requirement   需要
 ===============
