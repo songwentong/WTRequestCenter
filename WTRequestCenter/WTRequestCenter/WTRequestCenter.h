@@ -72,9 +72,9 @@ typedef NS_ENUM(NSUInteger, WTRequestCenterCachePolicy) {
 */
 +(void)clearAllCache;
 
-//停止所有的请求  建议在NavigationController pop之前调用，防止崩溃
-//注意:一定要深刻体会它的用法
-+(void)cancelAllRequest;
+
+//暂时不可用,目前不会出现请求结束崩溃的现象，所以不需要
+//+(void)cancelAllRequest;
 
 //当前缓存大小，目前有问题，不建议用
 +(NSUInteger)currentDiskUsage;
