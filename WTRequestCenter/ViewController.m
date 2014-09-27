@@ -77,12 +77,15 @@
 //        [parameters setValue:@"ae7d3f36dafbb69491aadf36862f7ff8" forKey:@"sign"];
         
         
-        [WTRequestCenter getWithURL:url parameters:parameters sucess:^(NSURLResponse *response, NSData *data) {
+        [WTRequestCenter getWithURL:url parameters:parameters finish:^(NSURLResponse *response, NSData *data) {
             NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             NSLog(@"%@",string);
         } failure:^(NSURLResponse *response, NSError *error) {
             
         }];
+        
+        
+        
 
     }
 //    NSOperationQueue *queue = [WTRequestCenter sharedQueue];
@@ -115,7 +118,7 @@
     [parameters setValue:@"3" forKey:@"c"];
     
     
-    [WTRequestCenter postWithURL:url parameters:parameters sucess:^(NSURLResponse *response, NSData *data) {
+    [WTRequestCenter postWithURL:url parameters:parameters finish:^(NSURLResponse *response, NSData *data) {
         
     } failure:^(NSURLResponse *response, NSError *error) {
         

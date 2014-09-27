@@ -123,7 +123,7 @@ static UIImage *animatedImageWithAnimatedGIFReleasingImageSource(CGImageSourceRe
 {
     
     
-    [WTRequestCenter getCacheWithURL:url parameters:nil sucess:^(NSURLResponse *response, NSData *data) {
+    [WTRequestCenter getCacheWithURL:url parameters:nil finish:^(NSURLResponse *response, NSData *data) {
         UIImage *image = [UIImage imageWithData:data];
         if (comelectionHandler) {
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -154,7 +154,7 @@ static UIImage *animatedImageWithAnimatedGIFReleasingImageSource(CGImageSourceRe
     }
     
     
-    [WTRequestCenter getCacheWithURL:url parameters:nil sucess:^(NSURLResponse *response, NSData *data) {
+    [WTRequestCenter getCacheWithURL:url parameters:nil finish:^(NSURLResponse *response, NSData *data) {
          if(!data) {
             if (completion) {
                 dispatch_async(dispatch_get_main_queue(), ^{

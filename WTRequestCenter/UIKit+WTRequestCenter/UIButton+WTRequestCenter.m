@@ -31,7 +31,7 @@
     __weak UIButton *weakSelf = self;
     
     
-    [WTRequestCenter getCacheWithURL:url parameters:nil sucess:^(NSURLResponse *response, NSData *data) {
+    [WTRequestCenter getCacheWithURL:url parameters:nil finish:^(NSURLResponse *response, NSData *data) {
         [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
             UIImage *image = [UIImage imageWithData:data];
             if (image) {
@@ -69,7 +69,7 @@
     __weak UIButton *weakSelf = self;
     
     
-    [WTRequestCenter getCacheWithURL:url parameters:nil sucess:^(NSURLResponse *response, NSData *data) {
+    [WTRequestCenter getCacheWithURL:url parameters:nil finish:^(NSURLResponse *response, NSData *data) {
         if (data) {
             [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
                 UIImage *image = [UIImage imageWithData:data];

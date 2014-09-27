@@ -18,16 +18,17 @@
 - (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder
 {
     
-    [self setImageWithURL:url placeholderImage:placeholder sucess:nil];
+    [self setImageWithURL:url placeholderImage:placeholder finish:nil];
 }
 
--(void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder sucess:(void (^)(NSURLResponse* response,NSData *data,UIImage *image))sucess
+-(void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder finish:(void (^)(NSURLResponse* response,NSData *data,UIImage *image))finish
 {
     self.image = placeholder;
     if (url) {
         __weak UIImageView *wself    = self;
-        [WTRequestCenter getCacheWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-            //从这里开始已经是主线程了
+        
+        
+        [WTRequestCenter getCacheWithURL:url parameters:nil finish:^(NSURLResponse *response, NSData *data) {
             
             if (data) {
                 
@@ -48,6 +49,8 @@
                 
                 
             }
+        } failure:^(NSURLResponse *response, NSError *error) {
+            
         }];
     }else
     {

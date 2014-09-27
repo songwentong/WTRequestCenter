@@ -99,7 +99,7 @@ typedef NS_ENUM(NSUInteger, WTRequestCenterCachePolicy) {
 
 +(NSURLRequest*)getWithURL:(NSURL*)url
                 parameters:(NSDictionary*)parameters
-                    sucess:(void (^)(NSURLResponse* response,NSData *data))sucess
+                    finish:(void (^)(NSURLResponse* response,NSData *data))finish
                    failure:(void (^)(NSURLResponse* response,NSError *error))failure;
 
 
@@ -107,7 +107,7 @@ typedef NS_ENUM(NSUInteger, WTRequestCenterCachePolicy) {
 
 +(NSURLRequest*)getCacheWithURL:(NSURL*)url
                      parameters:(NSDictionary*)parameters
-                         sucess:(void (^)(NSURLResponse* response,NSData *data))sucess
+                         finish:(void (^)(NSURLResponse* response,NSData *data))finish
                         failure:(void (^)(NSURLResponse* response,NSError *error))failure;
 
 //GET
@@ -115,20 +115,20 @@ typedef NS_ENUM(NSUInteger, WTRequestCenterCachePolicy) {
 +(NSURLRequest*)getWithURL:(NSURL*)url
                 parameters:(NSDictionary *)parameters
                     option:(WTRequestCenterCachePolicy)option
-                    sucess:(void (^)(NSURLResponse* response,NSData *data))sucess
+                    finish:(void (^)(NSURLResponse* response,NSData *data))finish
                    failure:(void (^)(NSURLResponse* response,NSError *error))failure;
 #pragma mark - POST
 //普通POST
 +(NSURLRequest*)postWithURL:(NSURL*)url
                  parameters:(NSDictionary*)parameters
-                     sucess:(void (^)(NSURLResponse* response,NSData *data))sucess
+                     finish:(void (^)(NSURLResponse* response,NSData *data))finish
                     failure:(void (^)(NSURLResponse* response,NSError *error))failure;
 
 //POST
 +(NSURLRequest*)postWithURL:(NSURL*)url
                  parameters:(NSDictionary *)parameters
                      option:(WTRequestCenterCachePolicy)option
-                     sucess:(void (^)(NSURLResponse* response,NSData *data))sucess
+                     finish:(void (^)(NSURLResponse* response,NSData *data))finish
                     failure:(void (^)(NSURLResponse* response,NSError *error))failure;
 
  
