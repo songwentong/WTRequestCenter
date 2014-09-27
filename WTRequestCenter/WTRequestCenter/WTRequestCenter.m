@@ -195,9 +195,17 @@ static NSURLCache* sharedCache = nil;
             [paramString appendString:str];
             [paramString appendString:@"&"];
         }];
-        NSMutableString *urlString = [[NSMutableString alloc] initWithFormat:@"%@?%@",url,paramString];
-        urlString = [[[urlString copy] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] mutableCopy];
-        request.URL = [NSURL URLWithString:urlString];
+        
+        if ([paramString hasSuffix:@"&"]) {
+            paramString =[[paramString substringToIndex:[paramString length]-1] mutableCopy];
+        }
+        if ([paramString length]>0) {
+            NSMutableString *urlString = [[NSMutableString alloc] initWithFormat:@"%@?%@",url,paramString];
+            urlString = [[[urlString copy] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] mutableCopy];
+            request.URL = [NSURL URLWithString:urlString];
+        }
+       
+        
     }
     
     return request;

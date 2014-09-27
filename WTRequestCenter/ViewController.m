@@ -64,14 +64,17 @@
 
 -(void)get
 {
-    NSInteger count = 100;
-    __block NSInteger finish = 0;
-    __block NSInteger size = 0;
+    NSInteger count = 1;
+//    __block NSInteger finish = 0;
+//    __block NSInteger size = 0;
     for (int i=0; i<count; i++) {
 
         NSURL *url = [NSURL URLWithString:@"http://www.sina.com.cn"];
+        url = [NSURL URLWithString:@"http://www.baidu.com"];
         NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-        
+//        [parameters setValue:@"1928845312" forKey:@"uid"];
+//        [parameters setValue:@"1" forKey:@"type"];
+//        [parameters setValue:@"ae7d3f36dafbb69491aadf36862f7ff8" forKey:@"sign"];
         
         [WTRequestCenter getWithURL:url
                          parameters:parameters
@@ -80,10 +83,13 @@
 //                          NSLog(@"%@",error);
                       }else
                       {
-                          finish ++;
-                          size += [data length];
-                          NSLog(@"size %d",[data length]);
-                          NSLog(@"finish count :%d",finish);
+//                          finish ++;
+//                          size += [data length];
+//                          NSLog(@"size %d",[data length]);
+//                          NSLog(@"finish count :%d",finish);
+//                          NSLog(@"%@",)
+                          NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                          NSLog(@"%@",string);
                       }
                       
 //                      NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
