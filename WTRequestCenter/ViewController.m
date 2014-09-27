@@ -81,17 +81,19 @@
             NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             NSLog(@"%@",string);
         } failure:^(NSURLResponse *response, NSError *error) {
-            
+            NSLog(@"%@",response);
         }];
         
-        
-        
+        /*
+        [WTRequestCenter getCacheWithURL:url parameters:parameters finish:^(NSURLResponse *response, NSData *data) {
+            NSLog(@"%@",response);
+        } failure:^(NSURLResponse *response, NSError *error) {
+            NSLog(@"%@",response);
+        }];
+         */
 
     }
-//    NSOperationQueue *queue = [WTRequestCenter sharedQueue];
-//    NSLog(@"%@",queue.operations);
-//    [WTRequestCenter cancelAllRequest];
-//    NSLog(@"%@",queue.operations);
+
     
     
 }

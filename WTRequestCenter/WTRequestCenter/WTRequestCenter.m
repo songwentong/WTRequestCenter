@@ -489,9 +489,6 @@ failure:(void (^)(NSURLResponse* response,NSError *error))failure
         {
             if (response) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-//                    if (handler) {
-//                        handler(response.response,response.data,nil);
-//                    }
                     if (finish) {
                         finish(response.response,response.data);
                     }
