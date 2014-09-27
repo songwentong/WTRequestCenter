@@ -64,21 +64,30 @@
 
 -(void)get
 {
-    
-    for (int i=0; i<1; i++) {
+    NSInteger count = 100;
+    __block NSInteger finish = 0;
+    __block NSInteger size = 0;
+    for (int i=0; i<count; i++) {
 
-        NSURL *url = [NSURL URLWithString:@"http://www.baidu.com"];
+        NSURL *url = [NSURL URLWithString:@"http://www.sina.com.cn"];
         NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-   
+        
         
         [WTRequestCenter getWithURL:url
                          parameters:parameters
                   completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
                       if (error) {
-                          NSLog(@"%@",error);
+//                          NSLog(@"%@",error);
+                      }else
+                      {
+                          finish ++;
+                          size += [data length];
+                          NSLog(@"size %d",[data length]);
+                          NSLog(@"finish count :%d",finish);
                       }
-                      NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                      NSLog(@"%@",string);
+                      
+//                      NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//                      NSLog(@"%@",string);
 
                   }];
 

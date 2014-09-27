@@ -59,8 +59,7 @@ typedef NS_ENUM(NSUInteger, WTRequestCenterCachePolicy) {
 @interface WTRequestCenter : NSObject
 
 
-//完成回调
-//typedef void (^handler)(NSURLResponse *,NSData *,NSError *);
+
 
 //请求队列
 +(NSOperationQueue*)sharedQueue;
@@ -90,7 +89,10 @@ typedef NS_ENUM(NSUInteger, WTRequestCenterCachePolicy) {
 
 
 
+//完成回调
 
+//BOOL (^handler)(NSURLResponse *,NSData *,NSError *);
+//BOOL (^test)(id obj, NSUInteger idx, BOOL *stop);
 #pragma mark - GET
 
 //普通GET
