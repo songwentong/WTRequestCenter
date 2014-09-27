@@ -96,9 +96,6 @@ typedef NS_ENUM(NSUInteger, WTRequestCenterCachePolicy) {
 #pragma mark - GET
 
 //普通GET
-+(NSURLRequest*)getWithURL:(NSURL*)url
-                parameters:(NSDictionary*)parameters
-         completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 
 +(NSURLRequest*)getWithURL:(NSURL*)url
                 parameters:(NSDictionary*)parameters
@@ -107,9 +104,6 @@ typedef NS_ENUM(NSUInteger, WTRequestCenterCachePolicy) {
 
 
 //用缓存，没有缓存就网络请求
-+(NSURLRequest*)getCacheWithURL:(NSURL*)url
-                     parameters:(NSDictionary*)parameters
-              completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 
 +(NSURLRequest*)getCacheWithURL:(NSURL*)url
                      parameters:(NSDictionary*)parameters
@@ -117,10 +111,6 @@ typedef NS_ENUM(NSUInteger, WTRequestCenterCachePolicy) {
                         failure:(void (^)(NSURLResponse* response,NSError *error))failure;
 
 //GET
-+(NSURLRequest*)getWithURL:(NSURL*)url
-                parameters:(NSDictionary *)parameters
-                    option:(WTRequestCenterCachePolicy)option
-         completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 
 +(NSURLRequest*)getWithURL:(NSURL*)url
                 parameters:(NSDictionary *)parameters
@@ -131,13 +121,15 @@ typedef NS_ENUM(NSUInteger, WTRequestCenterCachePolicy) {
 //普通POST
 +(NSURLRequest*)postWithURL:(NSURL*)url
                  parameters:(NSDictionary*)parameters
-          completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
+                     sucess:(void (^)(NSURLResponse* response,NSData *data))sucess
+                    failure:(void (^)(NSURLResponse* response,NSError *error))failure;
 
 //POST
 +(NSURLRequest*)postWithURL:(NSURL*)url
                  parameters:(NSDictionary *)parameters
                      option:(WTRequestCenterCachePolicy)option
-          completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
+                     sucess:(void (^)(NSURLResponse* response,NSData *data))sucess
+                    failure:(void (^)(NSURLResponse* response,NSError *error))failure;
 
  
 #pragma mark - Image

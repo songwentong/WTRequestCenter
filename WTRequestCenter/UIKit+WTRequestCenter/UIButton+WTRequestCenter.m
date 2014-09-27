@@ -29,8 +29,9 @@
         return;
     }
     __weak UIButton *weakSelf = self;
-    [WTRequestCenter getCacheWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-//        //从这里开始已经是主线程了
+    
+    
+    [WTRequestCenter getCacheWithURL:url parameters:nil sucess:^(NSURLResponse *response, NSData *data) {
         [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
             UIImage *image = [UIImage imageWithData:data];
             if (image) {
@@ -43,6 +44,8 @@
                 }
             }
         }];
+
+    } failure:^(NSURLResponse *response, NSError *error) {
         
     }];
 
@@ -64,7 +67,9 @@
         return;
     }
     __weak UIButton *weakSelf = self;
-    [WTRequestCenter getCacheWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+    
+    
+    [WTRequestCenter getCacheWithURL:url parameters:nil sucess:^(NSURLResponse *response, NSData *data) {
         if (data) {
             [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
                 UIImage *image = [UIImage imageWithData:data];
@@ -73,14 +78,14 @@
                     if (weakSelf) {
                         __strong UIButton *strongSelf = weakSelf;
                         dispatch_async(dispatch_get_main_queue(), ^{
-                        [strongSelf setBackgroundImage:image forState:state];
-                        [strongSelf setNeedsLayout];
+                            [strongSelf setBackgroundImage:image forState:state];
+                            [strongSelf setNeedsLayout];
                         });
                     }
                 }
             }];
         }
-        
+    } failure:^(NSURLResponse *response, NSError *error) {
         
     }];
 }

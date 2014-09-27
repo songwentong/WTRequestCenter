@@ -121,13 +121,17 @@ static UIImage *animatedImageWithAnimatedGIFReleasingImageSource(CGImageSourceRe
 +(void) imageWithURL:(NSURL*)url
   comelectionHandler:(void(^)(UIImage* image))comelectionHandler
 {
-    [WTRequestCenter getCacheWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+    
+    
+    [WTRequestCenter getCacheWithURL:url parameters:nil sucess:^(NSURLResponse *response, NSData *data) {
         UIImage *image = [UIImage imageWithData:data];
         if (comelectionHandler) {
             dispatch_async(dispatch_get_main_queue(), ^{
-            comelectionHandler(image);
+                comelectionHandler(image);
             });
         }
+    } failure:^(NSURLResponse *response, NSError *error) {
+        
     }];
 }
 
@@ -148,22 +152,26 @@ static UIImage *animatedImageWithAnimatedGIFReleasingImageSource(CGImageSourceRe
     if (!url) {
         return;
     }
-        [WTRequestCenter getCacheWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-            if (!data) {
-                if (completion) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                    completion(nil);
-                    });
-                }
-            }
-            UIImage *resultImage = [self animatedImageWithAnimatedGIFData:data];
-            
+    
+    
+    [WTRequestCenter getCacheWithURL:url parameters:nil sucess:^(NSURLResponse *response, NSData *data) {
+         if(!data) {
             if (completion) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                completion(resultImage);
+                    completion(nil);
                 });
             }
-        }];
+        }
+        UIImage *resultImage = [self animatedImageWithAnimatedGIFData:data];
+        
+        if (completion) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(resultImage);
+            });
+        }
+    } failure:^(NSURLResponse *response, NSError *error) {
+        
+    }];
     
     
 }

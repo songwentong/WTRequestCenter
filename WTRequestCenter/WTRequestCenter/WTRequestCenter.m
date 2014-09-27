@@ -281,83 +281,7 @@ static NSURLCache* sharedCache = nil;
 {
     NSURLRequest *request = [self GETRequestWithURL:url parameters:parameters];
    
-    NSCachedURLResponse *response = [[self sharedCache] cachedResponseForRequest:request];
-    switch (option) {
-        case WTRequestCenterCachePolicyNormal:
-        {
-            [self doWTRequest:request completionHandler:handler];
-//            [self testDoWTRequest:request completionHandler:handler];
-        }
-            break;
-        case WTRequestCenterCachePolicyCacheElseWeb:
-        {
-            if (response) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (handler) {
-                        handler(response.response,response.data,nil);
-                    }
-                });
-            }else
-            {
-//                [self testDoWTRequest:request completionHandler:handler];
-                [self doWTRequest:request completionHandler:handler];
-            }
-        }
-            break;
-        case WTRequestCenterCachePolicyOnlyCache:
-        {
-            if (response) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (handler) {
-                        handler(response.response,response.data,nil);
-                    }
-                });
-            }else
-            {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (handler) {
-                        handler(nil,nil,nil);
-                    }
-                });
-            }
-        }
-            break;
-        case WTRequestCenterCachePolicyCacheAndRefresh:
-        {
-            if (response) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (handler) {
-                        handler(response.response,response.data,nil);
-                    }
-                });
-                [self doWTRequest:request completionHandler:nil];
-            }else
-            {
-                [self doWTRequest:request completionHandler:handler];
-            }
-            
-//            [self testDoWTRequest:request completionHandler:handler];
-            
-        }
-            break;
-        case WTRequestCenterCachePolicyCacheAndWeb:
-        {
-            if (response) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (handler) {
-                        handler(response.response,response.data,nil);
-                    }
-                });
-                [self doWTRequest:request completionHandler:handler];
-            }else
-            {
-                [self doWTRequest:request completionHandler:handler];
-            }
-        }
-            break;
-        default:
-            break;
-    }
+    [self doWTRequest:request option:option completionHandler:handler];
     return request;
 }
 
@@ -369,83 +293,7 @@ static NSURLCache* sharedCache = nil;
 {
     NSURLRequest *request = [self GETRequestWithURL:url parameters:parameters];
     
-    NSCachedURLResponse *response = [[self sharedCache] cachedResponseForRequest:request];
-    switch (option) {
-        case WTRequestCenterCachePolicyNormal:
-        {
-            [self doWTRequest:request sucess:sucess failure:failure];
-
-        }
-            break;
-        case WTRequestCenterCachePolicyCacheElseWeb:
-        {
-            if (response) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (sucess) {
-                        sucess(response.response,response.data);
-                    }
-                });
-            }else
-            {
-                //                [self testDoWTRequest:request completionHandler:handler];
-                [self doWTRequest:request sucess:sucess failure:failure];
-            }
-        }
-            break;
-        case WTRequestCenterCachePolicyOnlyCache:
-        {
-            if (response) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (sucess) {
-                        sucess(response.response,response.data);
-                    }
-                });
-            }else
-            {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (sucess) {
-                        sucess(response.response,response.data);
-                    }
-                });
-            }
-        }
-            break;
-        case WTRequestCenterCachePolicyCacheAndRefresh:
-        {
-            if (response) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (sucess) {
-                        sucess(response.response,response.data);
-                    }
-                });
-                [self doWTRequest:request sucess:sucess failure:failure];
-            }else
-            {
-                [self doWTRequest:request sucess:sucess failure:failure];
-            }
-            
-            //            [self testDoWTRequest:request completionHandler:handler];
-            
-        }
-            break;
-        case WTRequestCenterCachePolicyCacheAndWeb:
-        {
-            if (response) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (sucess) {
-                        sucess(response.response,response.data);
-                    }
-                });
-                [self doWTRequest:request sucess:sucess failure:failure];
-            }else
-            {
-                [self doWTRequest:request sucess:sucess failure:failure];
-            }
-        }
-            break;
-        default:
-            break;
-    }
+    [self doWTRequest:request option:option sucess:sucess failure:failure];
     return request;
 }
 
@@ -459,6 +307,15 @@ static NSURLCache* sharedCache = nil;
     return request;
 }
 
+
++(NSURLRequest*)postWithURL:(NSURL*)url
+                 parameters:(NSDictionary*)parameters
+                     sucess:(void (^)(NSURLResponse* response,NSData *data))sucess
+                    failure:(void (^)(NSURLResponse* response,NSError *error))failure
+{
+    NSURLRequest *request = [self postWithURL:url parameters:parameters option:WTRequestCenterCachePolicyNormal sucess:sucess failure:failure];
+    return request;
+}
 
 +(NSURLRequest*)postWithURL:(NSURL*)url
                 parameters:(NSDictionary *)parameters
@@ -551,7 +408,20 @@ static NSURLCache* sharedCache = nil;
 }
 
 
++(NSURLRequest*)postWithURL:(NSURL*)url
+                 parameters:(NSDictionary *)parameters
+                     option:(WTRequestCenterCachePolicy)option
+                     sucess:(void (^)(NSURLResponse* response,NSData *data))sucess
+                    failure:(void (^)(NSURLResponse* response,NSError *error))failure
+{
+    
+    NSURLRequest *request = [self POSTRequestWithURL:url parameters:parameters];
+    
 
+    [self doWTRequest:request option:option sucess:sucess failure:failure];
+    return request;
+    
+}
 #pragma mark - Request
 +(void)doWTRequest:(NSURLRequest*)request
  sucess:(void (^)(NSURLResponse* response,NSData *data))sucess

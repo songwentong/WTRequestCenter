@@ -76,26 +76,13 @@
 //        [parameters setValue:@"1" forKey:@"type"];
 //        [parameters setValue:@"ae7d3f36dafbb69491aadf36862f7ff8" forKey:@"sign"];
         
-        [WTRequestCenter getWithURL:url
-                         parameters:parameters
-                  completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-                      if (error) {
-//                          NSLog(@"%@",error);
-                      }else
-                      {
-//                          finish ++;
-//                          size += [data length];
-//                          NSLog(@"size %d",[data length]);
-//                          NSLog(@"finish count :%d",finish);
-//                          NSLog(@"%@",)
-                          NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                          NSLog(@"%@",string);
-                      }
-                      
-//                      NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-//                      NSLog(@"%@",string);
-
-                  }];
+        
+        [WTRequestCenter getWithURL:url parameters:parameters sucess:^(NSURLResponse *response, NSData *data) {
+            NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            NSLog(@"%@",string);
+        } failure:^(NSURLResponse *response, NSError *error) {
+            
+        }];
 
     }
 //    NSOperationQueue *queue = [WTRequestCenter sharedQueue];
@@ -126,15 +113,13 @@
     [parameters setValue:@"1" forKey:@"a"];
     [parameters setValue:@"2" forKey:@"b"];
     [parameters setValue:@"3" forKey:@"c"];
-    [WTRequestCenter postWithURL:url
-                      parameters:parameters completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-                          if (!error) {
-                              id obj = [WTRequestCenter JSONObjectWithData:data];
-                              NSLog(@"result is %@",obj);
-                              
-                          }
-                          
-                      }];
+    
+    
+    [WTRequestCenter postWithURL:url parameters:parameters sucess:^(NSURLResponse *response, NSData *data) {
+        
+    } failure:^(NSURLResponse *response, NSError *error) {
+        
+    }];
 }
 
 -(void)loadImage
