@@ -19,52 +19,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WTRequestCenter/WTRequestCenter/WTRequestCenter.m"
-            timestampString = "433516049.349442"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "501"
-            endingLineNumber = "501"
-            landmarkName = "+doWTRequest:option:completionHandler:"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "+[WTRequestCenter doWTRequest:option:completionHandler:]"
-                  moduleName = "WTRequestCenter"
-                  urlString = "file:///Users/song/https:/github.com/rs/WTRequestCenter/WTRequestCenter/WTRequestCenter/WTRequestCenter.m"
-                  timestampString = "433516235.679228"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "502"
-                  endingLineNumber = "502"
-                  offsetFromSymbolStart = "628">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__56+[WTRequestCenter doWTRequest:option:completionHandler:]_block_invoke217"
-                  moduleName = "WTRequestCenter"
-                  urlString = "file:///Users/song/https:/github.com/rs/WTRequestCenter/WTRequestCenter/WTRequestCenter/WTRequestCenter.m"
-                  timestampString = "433516235.679431"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "502"
-                  endingLineNumber = "502"
-                  offsetFromSymbolStart = "21">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "WTRequestCenter/ViewController.m"
             timestampString = "433516193.240288"
             startingColumnNumber = "9223372036854775807"
