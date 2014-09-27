@@ -245,10 +245,10 @@ static NSURLCache* sharedCache = nil;
 
 +(NSURLRequest*)getWithURL:(NSURL*)url
                 parameters:(NSDictionary*)parameters
-                    finish:(void (^)(NSURLResponse* response,NSData *data))finish
-                   failure:(void (^)(NSURLResponse* response,NSError *error))failure
+                    finished:(WTRequestFinishedBlock)finish
+                   failed:(WTRequestFailedBlock)failure
 {
-    return [self getWithURL:url parameters:parameters option:WTRequestCenterCachePolicyNormal finish:finish failure:failure];
+    return [self getWithURL:url parameters:parameters option:WTRequestCenterCachePolicyNormal finished:finish failed:failure];
 }
 
 
@@ -256,22 +256,22 @@ static NSURLCache* sharedCache = nil;
 
 +(NSURLRequest*)getCacheWithURL:(NSURL*)url
                      parameters:(NSDictionary*)parameters
-                         finish:(void (^)(NSURLResponse* response,NSData *data))finish
-                        failure:(void (^)(NSURLResponse* response,NSError *error))failure
+                         finished:(WTRequestFinishedBlock)finish
+                        failed:(WTRequestFailedBlock)failure
 {
-    return [self getWithURL:url parameters:parameters option:WTRequestCenterCachePolicyCacheElseWeb finish:finish failure:failure];
+    return [self getWithURL:url parameters:parameters option:WTRequestCenterCachePolicyCacheElseWeb finished:finish failed:failure];
 }
 
 
 +(NSURLRequest*)getWithURL:(NSURL*)url
                 parameters:(NSDictionary *)parameters
                     option:(WTRequestCenterCachePolicy)option
-                    finish:(void (^)(NSURLResponse* response,NSData *data))finish
-                   failure:(void (^)(NSURLResponse* response,NSError *error))failure
+                    finished:(WTRequestFinishedBlock)finish
+                   failed:(WTRequestFailedBlock)failure
 {
     NSURLRequest *request = [self GETRequestWithURL:url parameters:parameters];
     
-    [self doWTRequest:request option:option finish:finish failure:failure];
+    [self doWTRequest:request option:option finished:finish failed:failure];
     return request;
 }
 
@@ -280,10 +280,10 @@ static NSURLCache* sharedCache = nil;
 
 +(NSURLRequest*)postWithURL:(NSURL*)url
                  parameters:(NSDictionary*)parameters
-                     finish:(void (^)(NSURLResponse* response,NSData *data))finish
-                    failure:(void (^)(NSURLResponse* response,NSError *error))failure
+                     finished:(WTRequestFinishedBlock)finish
+                    failed:(WTRequestFailedBlock)failure
 {
-    NSURLRequest *request = [self postWithURL:url parameters:parameters option:WTRequestCenterCachePolicyNormal finish:finish failure:failure];
+    NSURLRequest *request = [self postWithURL:url parameters:parameters option:WTRequestCenterCachePolicyNormal finished:finish failed:failure];
     return request;
 }
 
@@ -292,21 +292,21 @@ static NSURLCache* sharedCache = nil;
 +(NSURLRequest*)postWithURL:(NSURL*)url
                  parameters:(NSDictionary *)parameters
                      option:(WTRequestCenterCachePolicy)option
-                     finish:(void (^)(NSURLResponse* response,NSData *data))finish
-                    failure:(void (^)(NSURLResponse* response,NSError *error))failure
+                     finished:(WTRequestFinishedBlock)finish
+                    failed:(WTRequestFailedBlock)failure
 {
     
     NSURLRequest *request = [self POSTRequestWithURL:url parameters:parameters];
     
 
-    [self doWTRequest:request option:option finish:finish failure:failure];
+    [self doWTRequest:request option:option finished:finish failed:failure];
     return request;
     
 }
 #pragma mark - Request
 +(void)doWTRequest:(NSURLRequest*)request
- finish:(void (^)(NSURLResponse* response,NSData *data))finish
-failure:(void (^)(NSURLResponse* response,NSError *error))failure
+ finished:(WTRequestFinishedBlock)finish
+failed:(WTRequestFailedBlock)failure
 {
     
     
@@ -336,15 +336,15 @@ failure:(void (^)(NSURLResponse* response,NSError *error))failure
 
 +(void)doWTRequest:(NSURLRequest*)request
             option:(WTRequestCenterCachePolicy)option
-            finish:(void (^)(NSURLResponse* response,NSData *data))finish
-           failure:(void (^)(NSURLResponse* response,NSError *error))failure
+            finished:(WTRequestFinishedBlock)finish
+           failed:(WTRequestFailedBlock)failure
 {
     NSCachedURLResponse *response = [[self sharedCache] cachedResponseForRequest:request];
     
     switch (option) {
         case WTRequestCenterCachePolicyNormal:
         {
-            [self doWTRequest:request finish:finish failure:failure];
+            [self doWTRequest:request finished:finish failed:failure];
         }
             break;
             
@@ -358,7 +358,7 @@ failure:(void (^)(NSURLResponse* response,NSError *error))failure
                 });
             }else
             {
-                [self doWTRequest:request finish:finish failure:failure];
+                [self doWTRequest:request finished:finish failed:failure];
             }
         }
             break;
@@ -385,10 +385,10 @@ failure:(void (^)(NSURLResponse* response,NSError *error))failure
                         finish(response.response,response.data);
                     }
                 });
-                [self doWTRequest:request finish:finish failure:failure];
+                [self doWTRequest:request finished:finish failed:failure];
             }else
             {
-                [self doWTRequest:request finish:finish failure:failure];
+                [self doWTRequest:request finished:finish failed:failure];
             }
             
             

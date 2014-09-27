@@ -18,17 +18,17 @@
 - (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder
 {
     
-    [self setImageWithURL:url placeholderImage:placeholder finish:nil];
+    [self setImageWithURL:url placeholderImage:placeholder finished:nil];
 }
 
--(void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder finish:(void (^)(NSURLResponse* response,NSData *data,UIImage *image))finish
+-(void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder finished:(void (^)(NSURLResponse* response,NSData *data,UIImage *image))finish
 {
     self.image = placeholder;
     if (url) {
         __weak UIImageView *wself    = self;
         
         
-        [WTRequestCenter getCacheWithURL:url parameters:nil finish:^(NSURLResponse *response, NSData *data) {
+        [WTRequestCenter getCacheWithURL:url parameters:nil finished:^(NSURLResponse *response, NSData *data) {
             
             if (data) {
                 
@@ -49,7 +49,7 @@
                 
                 
             }
-        } failure:^(NSURLResponse *response, NSError *error) {
+        } failed:^(NSURLResponse *response, NSError *error) {
             
         }];
     }else

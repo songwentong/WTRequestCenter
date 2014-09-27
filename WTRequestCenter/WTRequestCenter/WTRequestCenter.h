@@ -91,45 +91,50 @@ typedef NS_ENUM(NSUInteger, WTRequestCenterCachePolicy) {
 
 //完成回调
 
-//typed void (^handler)(NSURLResponse *,NSData *,NSError *);
-//BOOL (^test)(id obj, NSUInteger idx, BOOL *stop);
+#pragma mark - 回调的声明
+typedef void (^WTRequestFinishedBlock)(NSURLResponse *,NSData *);
+typedef void (^WTRequestFailedBlock)(NSURLResponse *,NSError *);
+
+
+
+//requestFailed
 #pragma mark - GET
 
 //普通GET
 
 +(NSURLRequest*)getWithURL:(NSURL*)url
                 parameters:(NSDictionary*)parameters
-                    finish:(void (^)(NSURLResponse* response,NSData *data))finish
-                   failure:(void (^)(NSURLResponse* response,NSError *error))failure;
+                  finished:(WTRequestFinishedBlock)finish
+                    failed:(WTRequestFailedBlock)failure;
 
 
 //用缓存，没有缓存就网络请求
 
 +(NSURLRequest*)getCacheWithURL:(NSURL*)url
                      parameters:(NSDictionary*)parameters
-                         finish:(void (^)(NSURLResponse* response,NSData *data))finish
-                        failure:(void (^)(NSURLResponse* response,NSError *error))failure;
+                       finished:(WTRequestFinishedBlock)finish
+                         failed:(WTRequestFailedBlock)failure;
 
 //GET
 
 +(NSURLRequest*)getWithURL:(NSURL*)url
                 parameters:(NSDictionary *)parameters
                     option:(WTRequestCenterCachePolicy)option
-                    finish:(void (^)(NSURLResponse* response,NSData *data))finish
-                   failure:(void (^)(NSURLResponse* response,NSError *error))failure;
+                  finished:(WTRequestFinishedBlock)finish
+                   failed:(WTRequestFailedBlock)failure;
 #pragma mark - POST
 //普通POST
 +(NSURLRequest*)postWithURL:(NSURL*)url
                  parameters:(NSDictionary*)parameters
-                     finish:(void (^)(NSURLResponse* response,NSData *data))finish
-                    failure:(void (^)(NSURLResponse* response,NSError *error))failure;
+                   finished:(WTRequestFinishedBlock)finish
+                     failed:(WTRequestFailedBlock)failure;
 
 //POST
 +(NSURLRequest*)postWithURL:(NSURL*)url
                  parameters:(NSDictionary *)parameters
                      option:(WTRequestCenterCachePolicy)option
-                     finish:(void (^)(NSURLResponse* response,NSData *data))finish
-                    failure:(void (^)(NSURLResponse* response,NSError *error))failure;
+                   finished:(WTRequestFinishedBlock)finish
+                     failed:(WTRequestFailedBlock)failure;
 
  
 #pragma mark - Image

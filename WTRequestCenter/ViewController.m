@@ -77,17 +77,20 @@
 //        [parameters setValue:@"ae7d3f36dafbb69491aadf36862f7ff8" forKey:@"sign"];
         
         
-        [WTRequestCenter getWithURL:url parameters:parameters finish:^(NSURLResponse *response, NSData *data) {
+        [WTRequestCenter getWithURL:url parameters:parameters finished:^(NSURLResponse *response, NSData *data) {
             NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             NSLog(@"%@",string);
-        } failure:^(NSURLResponse *response, NSError *error) {
+        } failed:^(NSURLResponse *response, NSError *error) {
             NSLog(@"%@",response);
         }];
         
+        
+        
+        
         /*
-        [WTRequestCenter getCacheWithURL:url parameters:parameters finish:^(NSURLResponse *response, NSData *data) {
+        [WTRequestCenter getCacheWithURL:url parameters:parameters finished:^(NSURLResponse *response, NSData *data) {
             NSLog(@"%@",response);
-        } failure:^(NSURLResponse *response, NSError *error) {
+        } failed:^(NSURLResponse *response, NSError *error) {
             NSLog(@"%@",response);
         }];
          */
@@ -120,9 +123,9 @@
     [parameters setValue:@"3" forKey:@"c"];
     
     
-    [WTRequestCenter postWithURL:url parameters:parameters finish:^(NSURLResponse *response, NSData *data) {
+    [WTRequestCenter postWithURL:url parameters:parameters finished:^(NSURLResponse *response, NSData *data) {
         
-    } failure:^(NSURLResponse *response, NSError *error) {
+    } failed:^(NSURLResponse *response, NSError *error) {
         
     }];
 }

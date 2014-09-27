@@ -31,7 +31,7 @@
     __weak UIButton *weakSelf = self;
     
     
-    [WTRequestCenter getCacheWithURL:url parameters:nil finish:^(NSURLResponse *response, NSData *data) {
+    [WTRequestCenter getCacheWithURL:url parameters:nil finished:^(NSURLResponse *response, NSData *data) {
         [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
             UIImage *image = [UIImage imageWithData:data];
             if (image) {
@@ -45,7 +45,7 @@
             }
         }];
 
-    } failure:^(NSURLResponse *response, NSError *error) {
+    } failed:^(NSURLResponse *response, NSError *error) {
         
     }];
 
@@ -69,7 +69,7 @@
     __weak UIButton *weakSelf = self;
     
     
-    [WTRequestCenter getCacheWithURL:url parameters:nil finish:^(NSURLResponse *response, NSData *data) {
+    [WTRequestCenter getCacheWithURL:url parameters:nil finished:^(NSURLResponse *response, NSData *data) {
         if (data) {
             [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
                 UIImage *image = [UIImage imageWithData:data];
@@ -85,7 +85,7 @@
                 }
             }];
         }
-    } failure:^(NSURLResponse *response, NSError *error) {
+    } failed:^(NSURLResponse *response, NSError *error) {
         
     }];
 }

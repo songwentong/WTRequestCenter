@@ -28,5 +28,5 @@
 - (void)setImageWithURL:(NSURL *)url
        placeholderImage:(UIImage *)placeholder;
 
--(void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder finish:(void (^)(NSURLResponse* response,NSData *data,UIImage *image))finish;
+-(void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder finished:(void (^)(NSURLResponse* response,NSData *data,UIImage *image))finish;
 @end
