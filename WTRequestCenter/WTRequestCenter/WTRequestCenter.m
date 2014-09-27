@@ -427,20 +427,30 @@ static NSURLCache* sharedCache = nil;
  finish:(void (^)(NSURLResponse* response,NSData *data))finish
 failure:(void (^)(NSURLResponse* response,NSError *error))failure
 {
-    [self doWTRequest:request completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-        if (error) {
-            if (failure) {
-                failure(response,error);
-            }
-            
-        }else
-        {
-            if (finish) {
-                finish(response,data);
-            }
+    
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        
+        if (!connectionError) {
+            NSCachedURLResponse *tempURLResponse = [[NSCachedURLResponse alloc] initWithResponse:response data:data];
+            [[self sharedCache] storeCachedResponse:tempURLResponse forRequest:request];
         }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (connectionError) {
+                if (failure) {
+                    failure(response,connectionError);
+                }
+            }else
+            {
+                if (finish) {
+                    finish(response,data);
+                }
+            }
+        });
+        
     }];
-}
+    }
 
 +(void)doWTRequest:(NSURLRequest*)request
  completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
