@@ -187,7 +187,7 @@ static NSURLCache* sharedCache = nil;
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     
     
-    if (parameters) {
+    if (parameters && [[parameters allKeys] count]>0) {
         NSMutableString *paramString = [[NSMutableString alloc] init];
         
         [parameters enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
@@ -199,11 +199,11 @@ static NSURLCache* sharedCache = nil;
         if ([paramString hasSuffix:@"&"]) {
             paramString =[[paramString substringToIndex:[paramString length]-1] mutableCopy];
         }
-        if ([paramString length]>0) {
-            NSMutableString *urlString = [[NSMutableString alloc] initWithFormat:@"%@?%@",url,paramString];
-            urlString = [[[urlString copy] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] mutableCopy];
-            request.URL = [NSURL URLWithString:urlString];
-        }
+
+        NSMutableString *urlString = [[NSMutableString alloc] initWithFormat:@"%@?%@",url,paramString];
+        urlString = [[[urlString copy] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] mutableCopy];
+        request.URL = [NSURL URLWithString:urlString];
+        
        
         
     }
@@ -217,7 +217,7 @@ static NSURLCache* sharedCache = nil;
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"POST"];
     
-    if (parameters) {
+    if (parameters && [[parameters allKeys] count]>0) {
         NSMutableString *paramString = [[NSMutableString alloc] init];
         
         [parameters enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {

@@ -14,15 +14,23 @@
 {
     [self setImageWithURL:url placeholderImage:nil];
 }
+
 - (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder
+{
+    
+    [self setImageWithURL:url placeholderImage:placeholder sucess:nil];
+}
+
+-(void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder sucess:(void (^)(NSURLResponse* response,NSData *data,UIImage *image))sucess
 {
     self.image = placeholder;
     if (url) {
         __weak UIImageView *wself    = self;
         [WTRequestCenter getCacheWithURL:url parameters:nil completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-//从这里开始已经是主线程了
+            //从这里开始已经是主线程了
             
             if (data) {
+                
                 [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
                     UIImage *image = [UIImage imageWithData:data];
                     
@@ -31,13 +39,14 @@
                         __strong UIImageView *strongSelf = wself;
                         
                         dispatch_async(dispatch_get_main_queue(), ^{
-                        strongSelf.image = image;
-                        [strongSelf setNeedsDisplay];
+                            strongSelf.image = image;
+                            [strongSelf setNeedsDisplay];
                         });
+                        
                     }
                 }];
                 
-
+                
             }
         }];
     }else
@@ -45,4 +54,7 @@
         
     }
 }
+
+
+
 @end
