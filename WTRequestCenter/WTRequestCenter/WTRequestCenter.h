@@ -104,37 +104,37 @@ typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,N
 
 +(NSURLRequest*)getWithURL:(NSURL*)url
                 parameters:(NSDictionary*)parameters
-                  finished:(WTRequestFinishedBlock)finish
-                    failed:(WTRequestFailedBlock)failure;
+                  finished:(WTRequestFinishedBlock)finished
+                    failed:(WTRequestFailedBlock)failed;
 
 
 //用缓存，没有缓存就网络请求
 
 +(NSURLRequest*)getCacheWithURL:(NSURL*)url
                      parameters:(NSDictionary*)parameters
-                       finished:(WTRequestFinishedBlock)finish
-                         failed:(WTRequestFailedBlock)failure;
+                       finished:(WTRequestFinishedBlock)finished
+                         failed:(WTRequestFailedBlock)failed;
 
 //GET
 
 +(NSURLRequest*)getWithURL:(NSURL*)url
                 parameters:(NSDictionary *)parameters
                     option:(WTRequestCenterCachePolicy)option
-                  finished:(WTRequestFinishedBlock)finish
-                    failed:(WTRequestFailedBlock)failure;
+                  finished:(WTRequestFinishedBlock)finished
+                    failed:(WTRequestFailedBlock)failed;
 #pragma mark - POST
 //普通POST
 +(NSURLRequest*)postWithURL:(NSURL*)url
                  parameters:(NSDictionary*)parameters
-                   finished:(WTRequestFinishedBlock)finish
-                     failed:(WTRequestFailedBlock)failure;
+                   finished:(WTRequestFinishedBlock)finished
+                     failed:(WTRequestFailedBlock)failed;
 
 //POST
 +(NSURLRequest*)postWithURL:(NSURL*)url
                  parameters:(NSDictionary *)parameters
                      option:(WTRequestCenterCachePolicy)option
-                   finished:(WTRequestFinishedBlock)finish
-                     failed:(WTRequestFailedBlock)failure;
+                   finished:(WTRequestFinishedBlock)finished
+                     failed:(WTRequestFailedBlock)failed;
 
  
 #pragma mark - Image
@@ -172,6 +172,6 @@ typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,N
 +(WTURLRequestOperation*)testGetWithURL:(NSURL*)url
            parameters:(NSDictionary *)parameters
                option:(WTRequestCenterCachePolicy)option
-    completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
+    completionHandler:(WTRequestComplectionBlock)handler;
 
 @end

@@ -21,7 +21,7 @@
     [self setImageWithURL:url placeholderImage:placeholder finished:nil];
 }
 
--(void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder finished:(void (^)(NSURLResponse* response,NSData *data,UIImage *image))finish
+-(void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder finished:(void (^)(NSURLResponse* response,NSData *data,UIImage *image))finished
 {
     self.image = placeholder;
     if (url) {
