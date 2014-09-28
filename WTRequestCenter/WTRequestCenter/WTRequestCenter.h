@@ -81,7 +81,7 @@ typedef NS_ENUM(NSUInteger, WTRequestCenterCachePolicy) {
 //暂时不可用,目前不会出现请求结束崩溃的现象，所以不需要
 //+(void)cancelAllRequest;
 
-//当前缓存大小，目前有问题，不建议用
+//当前缓存大小
 +(NSUInteger)currentDiskUsage;
 
 //清除请求的缓存
