@@ -12,12 +12,16 @@
 -(void)loadWithURL:(NSURL*)url
     option:(WTRequestCenterCachePolicy)option
 {
-    [WTRequestCenter getWithURL:url parameters:nil option:option finish:^(NSURLResponse *response, NSData *data) {
+    [WTRequestCenter getWithURL:url parameters:nil option:option finished:^(NSURLResponse *response, NSData *data) {
         NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         [self loadHTMLString:string baseURL:nil];
-    } failure:^(NSURLResponse *response, NSError *error) {
+    } failed:^(NSURLResponse *response, NSError *error) {
         
     }];
+    
+    
+    
+    
 }
 
 
