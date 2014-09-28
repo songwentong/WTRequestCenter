@@ -12,16 +12,16 @@ WTRequestCenter
 ```objective-c
 +(NSURLRequest*)getWithURL:(NSURL*)url
                 parameters:(NSDictionary*)parameters
-                    finish:(void (^)(NSURLResponse* response,NSData *data))finish
-                   failure:(void (^)(NSURLResponse* response,NSError *error))failure;
+                  finished:(WTRequestFinishedBlock)finish
+                    failed:(WTRequestFailedBlock)failure;
 ```
               
 ### POST 请求
 ```objective-c
 +(NSURLRequest*)postWithURL:(NSURL*)url
                  parameters:(NSDictionary*)parameters
-                     finish:(void (^)(NSURLResponse* response,NSData *data))finish
-                    failure:(void (^)(NSURLResponse* response,NSError *error))failure;
+                   finished:(WTRequestFinishedBlock)finish
+                     failed:(WTRequestFailedBlock)failure;
 ```
 
 
@@ -70,8 +70,8 @@ WTRequestCenter
 +(NSURLRequest*)getWithURL:(NSURL*)url
                 parameters:(NSDictionary *)parameters
                     option:(WTRequestCenterCachePolicy)option
-                    finish:(void (^)(NSURLResponse* response,NSData *data))finish
-                   failure:(void (^)(NSURLResponse* response,NSError *error))failure;
+                  finished:(WTRequestFinishedBlock)finish
+                    failed:(WTRequestFailedBlock)failure;
 ```
 
 
@@ -81,8 +81,8 @@ WTRequestCenter
 +(NSURLRequest*)postWithURL:(NSURL*)url
                  parameters:(NSDictionary *)parameters
                      option:(WTRequestCenterCachePolicy)option
-                     finish:(void (^)(NSURLResponse* response,NSData *data))finish
-                    failure:(void (^)(NSURLResponse* response,NSError *error))failure;
+                   finished:(WTRequestFinishedBlock)finish
+                     failed:(WTRequestFailedBlock)failure;
 ```
 
 ### WTDataSaver
