@@ -121,7 +121,7 @@ typedef void (^WTRequestFailedBlock)(NSURLResponse *,NSError *);
                 parameters:(NSDictionary *)parameters
                     option:(WTRequestCenterCachePolicy)option
                   finished:(WTRequestFinishedBlock)finish
-                   failed:(WTRequestFailedBlock)failure;
+                    failed:(WTRequestFailedBlock)failure;
 #pragma mark - POST
 //普通POST
 +(NSURLRequest*)postWithURL:(NSURL*)url
