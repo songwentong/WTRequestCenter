@@ -17,6 +17,7 @@
 		A3B70F591988BDFA002776F4 /* image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A3B70F581988BDFA002776F4 /* image.jpg */; };
 		A3B70F641988DC5B002776F4 /* UIButton+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B70F611988DC5B002776F4 /* UIButton+WTRequestCenter.m */; };
 		A3B70F651988DC5B002776F4 /* UIImageView+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B70F631988DC5B002776F4 /* UIImageView+WTRequestCenter.m */; };
+		A3B7869F19D79B820093CC4E /* UIWebView+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B7869E19D79B820093CC4E /* UIWebView+WTRequestCenter.m */; };
 		E4440D71197A01B1001E6D88 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4440D70197A01B1001E6D88 /* Foundation.framework */; };
 		E4440D73197A01B1001E6D88 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4440D72197A01B1001E6D88 /* CoreGraphics.framework */; };
 		E4440D75197A01B1001E6D88 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4440D74197A01B1001E6D88 /* UIKit.framework */; };
@@ -66,6 +67,8 @@
 		A3B70F611988DC5B002776F4 /* UIButton+WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+WTRequestCenter.m"; sourceTree = "<group>"; };
 		A3B70F621988DC5B002776F4 /* UIImageView+WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+WTRequestCenter.h"; sourceTree = "<group>"; };
 		A3B70F631988DC5B002776F4 /* UIImageView+WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WTRequestCenter.m"; sourceTree = "<group>"; };
+		A3B7869D19D79B820093CC4E /* UIWebView+WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+WTRequestCenter.h"; sourceTree = "<group>"; };
+		A3B7869E19D79B820093CC4E /* UIWebView+WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+WTRequestCenter.m"; sourceTree = "<group>"; };
 		E4440D6D197A01B1001E6D88 /* WTRequestCenter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WTRequestCenter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4440D70197A01B1001E6D88 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E4440D72197A01B1001E6D88 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -143,6 +146,8 @@
 				A3B4DD65199C9AA6009F2D24 /* UIColor+WTRequestCenter.m */,
 				E4BC81C3199E3415008ABB91 /* UIDevice+WTRequestCenter.h */,
 				E4BC81C4199E3415008ABB91 /* UIDevice+WTRequestCenter.m */,
+				A3B7869D19D79B820093CC4E /* UIWebView+WTRequestCenter.h */,
+				A3B7869E19D79B820093CC4E /* UIWebView+WTRequestCenter.m */,
 			);
 			name = "UIKit+WTRequestCenter";
 			path = "WTRequestCenter/UIKit+WTRequestCenter";
@@ -365,6 +370,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3B70F651988DC5B002776F4 /* UIImageView+WTRequestCenter.m in Sources */,
+				A3B7869F19D79B820093CC4E /* UIWebView+WTRequestCenter.m in Sources */,
 				E4440D87197A01B1001E6D88 /* ViewController.m in Sources */,
 				E4DBC944197D14F3004F9393 /* WTRequestCenter.m in Sources */,
 				A3B4DD66199C9AA6009F2D24 /* UIColor+WTRequestCenter.m in Sources */,
