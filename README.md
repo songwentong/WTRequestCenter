@@ -10,22 +10,18 @@ WTRequestCenter
 ===============
 ### GET 请求 
 ```objective-c
-[WTRequestCenter getWithURL:url
-                 parameters:parameters
-          completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-              id obj = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonError];
-              NSLog(@"result:%@",obj);
-              }
++(NSURLRequest*)getWithURL:(NSURL*)url
+                parameters:(NSDictionary*)parameters
+                    finish:(void (^)(NSURLResponse* response,NSData *data))finish
+                   failure:(void (^)(NSURLResponse* response,NSError *error))failure;
 ```
               
 ### POST 请求
 ```objective-c
-[WTRequestCenter postWithURL:url
-                  parameters:parameters 
-           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-                     id obj = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonError];
-              NSLog(@"result:%@",obj);
-               }
++(NSURLRequest*)postWithURL:(NSURL*)url
+                 parameters:(NSDictionary*)parameters
+                     finish:(void (^)(NSURLResponse* response,NSData *data))finish
+                    failure:(void (^)(NSURLResponse* response,NSError *error))failure;
 ```
 
 
@@ -74,7 +70,8 @@ WTRequestCenter
 +(NSURLRequest*)getWithURL:(NSURL*)url
                 parameters:(NSDictionary *)parameters
                     option:(WTRequestCenterCachePolicy)option
-         completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
+                    finish:(void (^)(NSURLResponse* response,NSData *data))finish
+                   failure:(void (^)(NSURLResponse* response,NSError *error))failure;
 ```
 
 
@@ -84,7 +81,8 @@ WTRequestCenter
 +(NSURLRequest*)postWithURL:(NSURL*)url
                  parameters:(NSDictionary *)parameters
                      option:(WTRequestCenterCachePolicy)option
-          completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
+                     finish:(void (^)(NSURLResponse* response,NSData *data))finish
+                    failure:(void (^)(NSURLResponse* response,NSError *error))failure;
 ```
 
 ### WTDataSaver
