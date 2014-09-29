@@ -30,4 +30,5 @@
 #import "UIImage+WTRequestCenter.h"
 #import "UIColor+WTRequestCenter.h"
 #import "UIDevice+WTRequestCenter.h"
+#import "UIWebView+WTRequestCenter.h"
 #endif

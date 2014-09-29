@@ -47,6 +47,8 @@
 //    [self saveAndWrite];
 
     
+    [self testWebView];
+    
     
     
     
@@ -60,6 +62,13 @@
 //    NSLog(@"缓存用量  %u KB",[WTRequestCenter currentDiskUsage]/1024);
 }
 
+
+-(void)testWebView
+{
+    UIWebView *webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+    [webView loadWithURL:@"http://99.h5gwyx.sinaapp.com/game?gid=1" option:WTRequestCenterCachePolicyNormal];
+    [self.view addSubview:webView];
+}
 
 
 -(void)get
@@ -113,12 +122,12 @@
 -(void)post
 {
     NSString *url = [WTRequestCenter urlWithIndex:0];
-    url = @"http://s01.meiriq.com/gamesbox/public/index.php/user/del-fav";
+    url = @"http://s01.meiriq.com/gamesbox/public/index.php/user/add-fav";
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters setValue:@"5406906dcb02be7d279d26f9" forKey:@"gid"];
-    [parameters setValue:@"ae7d3f36dafbb69491aadf36862f7ff8" forKey:@"sign"];
+    [parameters setValue:@"5412eda20b0ab3427e0041df" forKey:@"gid"];
+    [parameters setValue:@"b5b0f78ddf5242aa7ef2328ad74d2ca9" forKey:@"sign"];
     [parameters setValue:@"1" forKey:@"type"];
-    [parameters setValue:@"1928845312" forKey:@"uid"];
+    [parameters setValue:@"1404376560" forKey:@"uid"];
     
     [WTRequestCenter postWithURL:url parameters:parameters finished:^(NSURLResponse *response, NSData *data) {
         NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
