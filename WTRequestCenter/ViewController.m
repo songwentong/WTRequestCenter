@@ -34,7 +34,7 @@
 //    [self testGet];
     
 //    POST请求
-//    [self post];
+    [self post];
 //    下载图片
 //    [self loadImage];
 //    [WTRequestCenter cancelAllRequest];
@@ -69,11 +69,14 @@
 //    __block NSInteger size = 0;
     for (int i=0; i<count; i++) {
 
-        NSURL *url = [NSURL URLWithString:@"http://www.sina.com.cn"];
-        url = [NSURL URLWithString:@"http://www.baidu.com"];
+        NSString  *url = @"http://www.sina.com.cn";
+        url = @"http://www.baidu.com";
+        url = @"http://www.blizzard.com";
+        url = @"http://www.apple.com";
+        
         NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-//        [parameters setValue:@"1928845312" forKey:@"uid"];
-//        [parameters setValue:@"1" forKey:@"type"];
+        [parameters setValue:@"1928845312" forKey:@"uid"];
+        [parameters setValue:@"1" forKey:@"type"];
 //        [parameters setValue:@"ae7d3f36dafbb69491aadf36862f7ff8" forKey:@"sign"];
         
         
@@ -87,13 +90,7 @@
         
         
         
-        /*
-        [WTRequestCenter getCacheWithURL:url parameters:parameters finished:^(NSURLResponse *response, NSData *data) {
-            NSLog(@"%@",response);
-        } failed:^(NSURLResponse *response, NSError *error) {
-            NSLog(@"%@",response);
-        }];
-         */
+        
 
     }
 
@@ -103,8 +100,8 @@
 
 -(void)testGet
 {
-    NSURL *url = [NSURL URLWithString:@"http://www.sina.com.cn"];
-    [WTRequestCenter testGetWithURL:url parameters:nil option:WTRequestCenterCachePolicyNormal completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+//    NSURL *url = [NSURL URLWithString:@"http://www.sina.com.cn"];
+    [WTRequestCenter testGetWithURL:@"http://www.baidu.com" parameters:nil option:WTRequestCenterCachePolicyNormal completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         NSLog(@"ok");
     }];
 //    for (WTURLRequestOperation *operation in [WTRequestCenter sharedQueue].operations) {
@@ -115,24 +112,25 @@
 
 -(void)post
 {
-    NSURL *url = [NSURL URLWithString:[WTRequestCenter urlWithIndex:0]];
-    
+    NSString *url = [WTRequestCenter urlWithIndex:0];
+    url = @"http://s01.meiriq.com/gamesbox/public/index.php/user/del-fav";
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters setValue:@"1" forKey:@"a"];
-    [parameters setValue:@"2" forKey:@"b"];
-    [parameters setValue:@"3" forKey:@"c"];
-    
+    [parameters setValue:@"5406906dcb02be7d279d26f9" forKey:@"gid"];
+    [parameters setValue:@"ae7d3f36dafbb69491aadf36862f7ff8" forKey:@"sign"];
+    [parameters setValue:@"1" forKey:@"type"];
+    [parameters setValue:@"1928845312" forKey:@"uid"];
     
     [WTRequestCenter postWithURL:url parameters:parameters finished:^(NSURLResponse *response, NSData *data) {
-        
+        NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"%@",string);
     } failed:^(NSURLResponse *response, NSError *error) {
-        
+        NSLog(@"xx");
     }];
 }
 
 -(void)loadImage
 {
-    NSURL *url = [NSURL URLWithString:@"http://img0.bdstatic.com/img/image/shouye/dengni47.jpg"];
+    NSString *url = @"http://img0.bdstatic.com/img/image/shouye/dengni47.jpg";
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
     imageView.contentMode = UIViewContentModeCenter;
     imageView.frame = self.view.bounds;
@@ -149,8 +147,9 @@
     imageView.frame = CGRectMake(0, 480/2, 320, 480/2);
     imageView.contentMode = UIViewContentModeCenter;
     [self.view addSubview:imageView];
-    NSURL *url = [[NSBundle mainBundle] URLForResource:@"aaa" withExtension:@"gif"];
-    [UIImage gifImageWithURL:url
+//    NSURL *url = [[NSBundle mainBundle] URLForResource:@"aaa" withExtension:@"gif"];
+    NSString *str = [[NSBundle mainBundle]pathForResource:@"aaa" ofType:@"gif"];
+    [UIImage gifImageWithURL:str
                   completion:^(UIImage *image) {
                       imageView.image = image;
                   }];
@@ -162,10 +161,10 @@
 {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(0, 480/2, 320, 480/2);
-//    NSURL *url = [[NSBundle mainBundle] URLForResource:@"aaa@2x" withExtension:@"gif"];
-    NSURL *url2 = [NSURL URLWithString:@"http://img2.duitang.com/uploads/item/201208/28/20120828224017_MZtRh.gif"];
+
+    NSString *url2 = @"http://img2.duitang.com/uploads/item/201208/28/20120828224017_MZtRh.gif";
     button.contentMode = UIViewContentModeCenter;
-//    [button setImage:[UIImage animatedImageWithAnimatedGIFURL:url2] forState:UIControlStateNormal];
+
     
     [UIImage gifImageWithURL:url2
                   completion:^(UIImage *image) {

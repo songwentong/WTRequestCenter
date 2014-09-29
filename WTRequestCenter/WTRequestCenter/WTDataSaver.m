@@ -240,8 +240,8 @@ static dispatch_queue_t wtsharedCompletionProcessingQueue;
     
     NSString *filePath = [NSString stringWithFormat:@"%@/%@",[self rootDir],name];
 //    NSURL *base = [[NSBundle mainBundle] bundleURL];
-    NSURL *url = [NSURL fileURLWithPath:filePath];
-    [self dataWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+//    NSURL *url = [NSURL fileURLWithPath:filePath];
+    [self dataWithURL:filePath completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (completion) {
             dispatch_async(dispatch_get_main_queue(), ^{
             completion(data);
@@ -251,7 +251,7 @@ static dispatch_queue_t wtsharedCompletionProcessingQueue;
 
 }
 
-+(void)dataWithURL:(NSURL*)url
++(void)dataWithURL:(NSString*)url
      completionHandler:(void (^)(NSData *data, NSURLResponse *response, NSError *error))completion
 {
     
@@ -263,7 +263,7 @@ static dispatch_queue_t wtsharedCompletionProcessingQueue;
     }else
     {
         
-    [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:url] queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+    [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]] queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         if (completion) {
             completion(data,response,connectionError);
         }

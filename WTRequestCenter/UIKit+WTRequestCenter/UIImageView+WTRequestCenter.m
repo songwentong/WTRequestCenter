@@ -10,18 +10,18 @@
 #import "WTRequestCenter.h"
 #import "WTRequestCenterMacro.h"
 @implementation UIImageView (WTRequestCenter)
-- (void)setImageWithURL:(NSURL *)url
+- (void)setImageWithURL:(NSString *)url
 {
     [self setImageWithURL:url placeholderImage:nil];
 }
 
-- (void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder
+- (void)setImageWithURL:(NSString *)url placeholderImage:(UIImage *)placeholder
 {
     
     [self setImageWithURL:url placeholderImage:placeholder finished:nil];
 }
 
--(void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder finished:(void (^)(NSURLResponse* response,NSData *data,UIImage *image))finished
+-(void)setImageWithURL:(NSString*)url placeholderImage:(UIImage *)placeholder finished:(void (^)(NSURLResponse* response,NSData *data,UIImage *image))finished
 {
     self.image = placeholder;
     if (url) {

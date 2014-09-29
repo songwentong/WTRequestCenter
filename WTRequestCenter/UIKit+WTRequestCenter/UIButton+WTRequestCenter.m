@@ -16,12 +16,12 @@
 @implementation UIButton (WTImageCache)
 
 - (void)setImageForState:(UIControlState)state
-                 withURL:(NSURL *)url
+                 withURL:(NSString *)url
 {
     [self setImageForState:state withURL:url placeholderImage:nil];
 }
 - (void)setImageForState:(UIControlState)state
-                 withURL:(NSURL *)url
+                 withURL:(NSString *)url
         placeholderImage:(UIImage *)placeholderImage
 {
     [self setImage:placeholderImage forState:state];
@@ -52,13 +52,13 @@
 }
 
 - (void)setBackgroundImage:(UIControlState)state
-                   withURL:(NSURL *)url
+                   withURL:(NSString *)url
 {
     [self setBackgroundImage:state withURL:url placeholderImage:nil];
 }
 
 - (void)setBackgroundImage:(UIControlState)state
-                 withURL:(NSURL *)url
+                 withURL:(NSString *)url
         placeholderImage:(UIImage *)placeholderImage
 {
     [self setBackgroundImage:placeholderImage forState:state];

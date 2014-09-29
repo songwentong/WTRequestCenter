@@ -96,7 +96,7 @@ typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,N
 
 //普通GET
 
-+(NSURLRequest*)getWithURL:(NSURL*)url
++(NSURLRequest*)getWithURL:(NSString*)url
                 parameters:(NSDictionary*)parameters
                   finished:(WTRequestFinishedBlock)finished
                     failed:(WTRequestFailedBlock)failed;
@@ -104,27 +104,27 @@ typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,N
 
 //用缓存，没有缓存就网络请求
 
-+(NSURLRequest*)getCacheWithURL:(NSURL*)url
++(NSURLRequest*)getCacheWithURL:(NSString*)url
                      parameters:(NSDictionary*)parameters
                        finished:(WTRequestFinishedBlock)finished
                          failed:(WTRequestFailedBlock)failed;
 
 //GET
 
-+(NSURLRequest*)getWithURL:(NSURL*)url
++(NSURLRequest*)getWithURL:(NSString*)url
                 parameters:(NSDictionary *)parameters
                     option:(WTRequestCenterCachePolicy)option
                   finished:(WTRequestFinishedBlock)finished
                     failed:(WTRequestFailedBlock)failed;
 #pragma mark - POST
 //普通POST
-+(NSURLRequest*)postWithURL:(NSURL*)url
++(NSURLRequest*)postWithURL:(NSString*)url
                  parameters:(NSDictionary*)parameters
                    finished:(WTRequestFinishedBlock)finished
                      failed:(WTRequestFailedBlock)failed;
 
 //POST
-+(NSURLRequest*)postWithURL:(NSURL*)url
++(NSURLRequest*)postWithURL:(NSString*)url
                  parameters:(NSDictionary *)parameters
                      option:(WTRequestCenterCachePolicy)option
                    finished:(WTRequestFinishedBlock)finished
@@ -133,13 +133,13 @@ typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,N
  
 #pragma mark - Image
 //图片上传  Upload
-+(void)upLoadImageWithURL:(NSURL*)url
++(void)upLoadImageWithURL:(NSString*)url
                      data:(NSData *)data
                  fileName:(NSString*)fileName
         completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 
 //多图片上传
-+(void)upLoadImageWithURL:(NSURL*)url
++(void)upLoadImageWithURL:(NSString*)url
                     datas:(NSArray*)datas
                 fileNames:(NSArray*)names
         completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
@@ -163,7 +163,7 @@ typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,N
 
 
 #pragma mark - Testing Method
-+(WTURLRequestOperation*)testGetWithURL:(NSURL*)url
++(WTURLRequestOperation*)testGetWithURL:(NSString*)url
            parameters:(NSDictionary *)parameters
                option:(WTRequestCenterCachePolicy)option
     completionHandler:(WTRequestComplectionBlock)handler;

@@ -25,16 +25,16 @@
 @interface UIButton (WTImageCache)
 
 - (void)setImageForState:(UIControlState)state
-                 withURL:(NSURL *)url;
+                 withURL:(NSString *)url;
 
 - (void)setImageForState:(UIControlState)state
-                 withURL:(NSURL *)url
+                 withURL:(NSString *)url
         placeholderImage:(UIImage *)placeholderImage;
 
 - (void)setBackgroundImage:(UIControlState)state
-                   withURL:(NSURL *)url;
+                   withURL:(NSString *)url;
 
 - (void)setBackgroundImage:(UIControlState)state
-                   withURL:(NSURL *)url
+                   withURL:(NSString *)url
           placeholderImage:(UIImage *)placeholderImage;
 @end

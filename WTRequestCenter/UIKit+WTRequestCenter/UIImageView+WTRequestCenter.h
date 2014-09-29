@@ -23,10 +23,10 @@
 
 @interface UIImageView (WTRequestCenter)
 //下载图片
-- (void)setImageWithURL:(NSURL *)url;
+- (void)setImageWithURL:(NSString*)url;
 //下载图片＋placeholder
-- (void)setImageWithURL:(NSURL *)url
+- (void)setImageWithURL:(NSString*)url
        placeholderImage:(UIImage *)placeholder;
 
--(void)setImageWithURL:(NSURL *)url placeholderImage:(UIImage *)placeholder finished:(void (^)(NSURLResponse* response,NSData *data,UIImage *image))finished;
+-(void)setImageWithURL:(NSString*)url placeholderImage:(UIImage *)placeholder finished:(void (^)(NSURLResponse* response,NSData *data,UIImage *image))finished;
 @end

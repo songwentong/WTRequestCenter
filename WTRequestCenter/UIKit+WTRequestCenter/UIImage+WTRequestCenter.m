@@ -116,9 +116,9 @@ static UIImage *animatedImageWithAnimatedGIFReleasingImageSource(CGImageSourceRe
 +(void)imageWithURLString:(NSString*)string
     comelectionHandler:(void(^)(UIImage* image))comelectionHandler
 {
-    [self imageWithURL:[NSURL URLWithString:string] comelectionHandler:comelectionHandler];
+    [self imageWithURL:string comelectionHandler:comelectionHandler];
 }
-+(void) imageWithURL:(NSURL*)url
++(void) imageWithURL:(NSString*)url
   comelectionHandler:(void(^)(UIImage* image))comelectionHandler
 {
     
@@ -144,7 +144,7 @@ static UIImage *animatedImageWithAnimatedGIFReleasingImageSource(CGImageSourceRe
     return animatedImageWithAnimatedGIFReleasingImageSource(CGImageSourceCreateWithURL(toCF url, NULL));
 }
 
-+(void)gifImageWithURL:(NSURL*)url completion:(void(^)(UIImage* image))completion
++(void)gifImageWithURL:(NSString*)url completion:(void(^)(UIImage* image))completion
 {
 //    BOOL isLocal;
 

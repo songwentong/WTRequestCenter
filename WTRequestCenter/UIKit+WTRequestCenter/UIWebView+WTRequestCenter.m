@@ -9,7 +9,7 @@
 #import "UIWebView+WTRequestCenter.h"
 
 @implementation UIWebView (WTRequestCenter)
--(void)loadWithURL:(NSURL*)url
+-(void)loadWithURL:(NSString*)url
     option:(WTRequestCenterCachePolicy)option
 {
     [WTRequestCenter getWithURL:url parameters:nil option:option finished:^(NSURLResponse *response, NSData *data) {

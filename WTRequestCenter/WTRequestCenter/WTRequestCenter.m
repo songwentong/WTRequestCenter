@@ -135,11 +135,12 @@ static NSURLCache* sharedCache = nil;
     return @"";
 }
 #pragma mark - 请求的生成
-+(NSURLRequest*)GETRequestWithURL:(NSURL*)url
++(NSURLRequest*)GETRequestWithURL:(NSString*)url
                        parameters:(NSDictionary*)parameters
 {
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
     
     
     if (parameters && [[parameters allKeys] count]>0) {
@@ -166,10 +167,10 @@ static NSURLCache* sharedCache = nil;
     return request;
 }
 
-+(NSURLRequest*)POSTRequestWithURL:(NSURL*)url
++(NSURLRequest*)POSTRequestWithURL:(NSString*)url
                         parameters:(NSDictionary*)parameters
 {
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
     [request setHTTPMethod:@"POST"];
     
     if (parameters && [[parameters allKeys] count]>0) {
@@ -180,7 +181,10 @@ static NSURLCache* sharedCache = nil;
             [paramString appendString:str];
             [paramString appendString:@"&"];
         }];
-        
+        if([paramString hasSuffix:@"&"]){
+            paramString = [[paramString substringToIndex:[paramString length]-1] mutableCopy];
+            
+        }
         NSData *postData = [paramString dataUsingEncoding:NSUTF8StringEncoding];
         [request setHTTPBody:postData];
     }
@@ -198,7 +202,7 @@ static NSURLCache* sharedCache = nil;
 //get请求
 //Available in iOS 5.0 and later.
 
-+(NSURLRequest*)getWithURL:(NSURL*)url
++(NSURLRequest*)getWithURL:(NSString*)url
                 parameters:(NSDictionary*)parameters
                     finished:(WTRequestFinishedBlock)finished
                    failed:(WTRequestFailedBlock)failed
@@ -209,7 +213,7 @@ static NSURLCache* sharedCache = nil;
 
 //用缓存，没有缓存就网络请求
 
-+(NSURLRequest*)getCacheWithURL:(NSURL*)url
++(NSURLRequest*)getCacheWithURL:(NSString*)url
                      parameters:(NSDictionary*)parameters
                          finished:(WTRequestFinishedBlock)finished
                         failed:(WTRequestFailedBlock)failed
@@ -218,7 +222,7 @@ static NSURLCache* sharedCache = nil;
 }
 
 
-+(NSURLRequest*)getWithURL:(NSURL*)url
++(NSURLRequest*)getWithURL:(NSString*)url
                 parameters:(NSDictionary *)parameters
                     option:(WTRequestCenterCachePolicy)option
                     finished:(WTRequestFinishedBlock)finished
@@ -233,9 +237,9 @@ static NSURLCache* sharedCache = nil;
 #pragma mark - POST
 
 
-+(NSURLRequest*)postWithURL:(NSURL*)url
++(NSURLRequest*)postWithURL:(NSString*)url
                  parameters:(NSDictionary*)parameters
-                     finished:(WTRequestFinishedBlock)finished
+                   finished:(WTRequestFinishedBlock)finished
                     failed:(WTRequestFailedBlock)failed
 {
     NSURLRequest *request = [self postWithURL:url parameters:parameters option:WTRequestCenterCachePolicyNormal finished:finished failed:failed];
@@ -244,10 +248,10 @@ static NSURLCache* sharedCache = nil;
 
 
 
-+(NSURLRequest*)postWithURL:(NSURL*)url
++(NSURLRequest*)postWithURL:(NSString*)url
                  parameters:(NSDictionary *)parameters
                      option:(WTRequestCenterCachePolicy)option
-                     finished:(WTRequestFinishedBlock)finished
+                   finished:(WTRequestFinishedBlock)finished
                     failed:(WTRequestFailedBlock)failed
 {
     
@@ -260,8 +264,8 @@ static NSURLCache* sharedCache = nil;
 }
 #pragma mark - Request
 +(void)doWTRequest:(NSURLRequest*)request
- finished:(WTRequestFinishedBlock)finished
-failed:(WTRequestFailedBlock)failed
+          finished:(WTRequestFinishedBlock)finished
+            failed:(WTRequestFailedBlock)failed
 {
     
     
@@ -416,7 +420,7 @@ failed:(WTRequestFailedBlock)failed
 
 
 //图片上传
-+(void)upLoadImageWithURL:(NSURL*)url
++(void)upLoadImageWithURL:(NSString*)url
                      data:(NSData *)data
                  fileName:(NSString*)fileName
 completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
@@ -434,7 +438,7 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
 
 
 //多图片上传
-+(void)upLoadImageWithURL:(NSURL*)url
++(void)upLoadImageWithURL:(NSString*)url
                     datas:(NSArray*)datas
                 fileNames:(NSArray*)names
         completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
@@ -563,7 +567,7 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
     
     return operation;
 }
-+(WTURLRequestOperation*)testGetWithURL:(NSURL*)url
++(WTURLRequestOperation*)testGetWithURL:(NSString*)url
                 parameters:(NSDictionary *)parameters
                     option:(WTRequestCenterCachePolicy)option
          completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
