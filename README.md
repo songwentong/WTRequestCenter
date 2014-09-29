@@ -6,37 +6,6 @@ WTRequestCenter
 如果有其他需要请在issue 上提出，谢谢！
 
 
-使用方法 Usage
-===============
-### GET 请求 
-```objective-c
-+(NSURLRequest*)getWithURL:(NSURL*)url
-                parameters:(NSDictionary*)parameters
-                  finished:(WTRequestFinishedBlock)finish
-                    failed:(WTRequestFailedBlock)failure;
-```
-              
-### POST 请求
-```objective-c
-+(NSURLRequest*)postWithURL:(NSURL*)url
-                 parameters:(NSDictionary*)parameters
-                   finished:(WTRequestFinishedBlock)finish
-                     failed:(WTRequestFailedBlock)failure;
-```
-
-
-###   接口路径辅助功能
-      根路径的设置和获取
-```objective-c
-+(BOOL)setBaseURL:(NSString*)url;
-+(NSString *)baseURL;
-```
-      接口的路径（根据索引）
-```objective-c
-+(NSString*)urlWithIndex:(NSInteger)index;
-```
-
-
 ### 缓存策略
 
 缓存策略一共有5种，分别是：
@@ -63,27 +32,64 @@ WTRequestCenter
     本地有，会用，也会刷新，也会回调，本地没有会刷新
     注意：这种情况非常少见，只有调用网页的时候可能会用得到
 
+
+
+使用方法 Usage
+===============
+### GET 请求 
+```objective-c
++(NSURLRequest*)getWithURL:(NSString*)url
+                parameters:(NSDictionary*)parameters
+                  finished:(WTRequestFinishedBlock)finished
+                    failed:(WTRequestFailedBlock)failed;
+```
+              
+### POST 请求
+```objective-c
++(NSURLRequest*)postWithURL:(NSString*)url
+                 parameters:(NSDictionary*)parameters
+                   finished:(WTRequestFinishedBlock)finished
+                     failed:(WTRequestFailedBlock)failed;
+```
+
 ### GET+缓存策略
 
 比普通的方法多了一个策略的选项，你根据需要去选择自己的缓存策略就可以了
 ```objective-c
-+(NSURLRequest*)getWithURL:(NSURL*)url
++(NSURLRequest*)getWithURL:(NSString*)url
                 parameters:(NSDictionary *)parameters
                     option:(WTRequestCenterCachePolicy)option
-                  finished:(WTRequestFinishedBlock)finish
-                    failed:(WTRequestFailedBlock)failure;
+                  finished:(WTRequestFinishedBlock)finished
+                    failed:(WTRequestFailedBlock)failed;
 ```
 
 
 ### POST+缓存策略
 虽然POST不经常用缓存，但是每个人的需要不同，所以我同样实现了POST的缓存，有需要的可以用
 ```objective-c
-+(NSURLRequest*)postWithURL:(NSURL*)url
++(NSURLRequest*)postWithURL:(NSString*)url
                  parameters:(NSDictionary *)parameters
                      option:(WTRequestCenterCachePolicy)option
-                   finished:(WTRequestFinishedBlock)finish
-                     failed:(WTRequestFailedBlock)failure;
+                   finished:(WTRequestFinishedBlock)finished
+                     failed:(WTRequestFailedBlock)failed;
 ```
+
+###   接口路径辅助功能
+      根路径的设置和获取
+```objective-c
++(BOOL)setBaseURL:(NSString*)url;
++(NSString *)baseURL;
+```
+      接口的路径（根据索引）
+```objective-c
++(NSString*)urlWithIndex:(NSInteger)index;
+```
+
+
+
+
+
+
 
 ### WTDataSaver
 WTDataSaver 是个文件存取类，用于自定的方式把数据存取到本地
