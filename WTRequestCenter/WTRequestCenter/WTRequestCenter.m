@@ -341,6 +341,24 @@ failed:(WTRequestFailedBlock)failed
                         finished(response.response,response.data);
                     }
                 });
+                [self doWTRequest:request finished:nil failed:nil];
+            }else
+            {
+                [self doWTRequest:request finished:finished failed:failed];
+            }
+            
+            
+        }
+            break;
+        case WTRequestCenterCachePolicyCacheAndWeb:
+        {
+            if (response) {
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (finished) {
+                        finished(response.response,response.data);
+                    }
+                });
                 [self doWTRequest:request finished:finished failed:failed];
             }else
             {
