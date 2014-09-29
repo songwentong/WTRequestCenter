@@ -36,9 +36,9 @@ static NSURLCache* sharedCache = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         NSString *diskPath = [NSString stringWithFormat:@"WTRequestCenter"];
-        sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:1024*1024*30 diskCapacity:1024*1024*300 diskPath:diskPath];
+        sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:1024*1024*10 diskCapacity:1024*1024*1024 diskPath:diskPath];
     });
-//    30M内存  300M硬盘
+//    10M内存  1G硬盘
     return sharedCache;
 }
 
@@ -74,53 +74,8 @@ static NSURLCache* sharedCache = nil;
     return myUserDefaults;
 }
 
-//设置失效日期
-+(void)setExpireTimeInterval:(NSTimeInterval)expireTime
-{
-    NSUserDefaults *myUserDefaults = [WTRequestCenter sharedUserDefaults];
-    [myUserDefaults setFloat:expireTime forKey:@"WTRequestCenterExpireTime"];
-    [myUserDefaults synchronize];
-}
 
-//失效日期
-+(NSTimeInterval)expireTimeInterval
-{
-    
-    NSUserDefaults *myUserDefaults = [WTRequestCenter sharedUserDefaults];
-    CGFloat time = [myUserDefaults floatForKey:@"WTRequestCenterExpireTime"];
-    if (time==0) {
-        time=3600*24*30;
-    }
-    return time;
-}
 #endif
-+(BOOL)checkRequestIsExpired:(NSHTTPURLResponse*)request
-{
-
-    NSDictionary *allHeaderFields = request.allHeaderFields;
-    
-    NSString *dateString = [allHeaderFields valueForKey:@"Date"];
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"eee, dd MMM yyyy HH:mm:ss VVVV"];
-    [formatter setLocale:[NSLocale currentLocale]];
-    NSDate *now = [NSDate date];
-    //            NSString *string = [formatter stringFromDate:now];
-    //            NSLog(@"%@",string);
-    NSDate *date = [formatter dateFromString:dateString];
-    //            NSLog(@"%@",date);
-    
-    NSTimeInterval delta = [now timeIntervalSince1970] - [date timeIntervalSince1970];
-    NSTimeInterval expireTimeInterval = [WTRequestCenter expireTimeInterval];
-    if (delta<expireTimeInterval) {
-//        没有失效
-        return NO;
-    }else
-    {
-//        失效了
-        return YES;
-    }
-    
-}
 
 
 //清除所有缓存(clearAllCache)
