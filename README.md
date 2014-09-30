@@ -129,7 +129,7 @@ Only need iOS 5.0 and later,no more import and Configuration!
 - UIButton的图片缓存
 - UIColor的快速创建
 - UIDecive的扩展（uuid调用）
-
+- UIWebViewd的缓存扩展（暂时不支持网页游戏的缓存）
 
 
 ###  测试中方法
