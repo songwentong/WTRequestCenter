@@ -410,10 +410,9 @@ static NSURLCache* sharedCache = nil;
 
 
 #pragma mark - Image
-+(NSURLRequest *)uploadRequestWithURL: (NSURL *)url
-
-                               data: (NSData *)data
-                           fileName: (NSString*)fileName
++(NSURLRequest *)uploadRequestWithURL: (NSString *)url
+                                 data: (NSData *)data
+                             fileName: (NSString*)fileName
 {
     
     // from http://www.cocoadev.com/index.pl?HTTPFileUpload
@@ -421,7 +420,7 @@ static NSURLCache* sharedCache = nil;
     //NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
     
     NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] init] ;
-    urlRequest.URL = url;
+    urlRequest.URL = [NSURL URLWithString:url];
     
     [urlRequest setHTTPMethod:@"POST"];
     
