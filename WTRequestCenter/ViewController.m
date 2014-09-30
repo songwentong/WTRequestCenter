@@ -124,11 +124,11 @@
     NSString *url = [WTRequestCenter urlWithIndex:0];
     url = @"http://s01.meiriq.com/gamesbox/public/index.php/user/add-fav";
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters setValue:@"5412eda20b0ab3427e0041df" forKey:@"gid"];
-    [parameters setValue:@"b5b0f78ddf5242aa7ef2328ad74d2ca9" forKey:@"sign"];
+    [parameters setValue:@"5406906dcb02be7d279d26f9" forKey:@"gid"];
+    [parameters setValue:@"ae7d3f36dafbb69491aadf36862f7ff8" forKey:@"sign"];
     [parameters setValue:@"1" forKey:@"type"];
-    [parameters setValue:@"1404376560" forKey:@"uid"];
-    
+    [parameters setValue:@"1928845312" forKey:@"uid"];
+//    username=xuefenjuan&device_id=C40DAED0-1153-4E79-BD87-D241CCA46DC1&password=111111
     [WTRequestCenter postWithURL:url parameters:parameters finished:^(NSURLResponse *response, NSData *data) {
         NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"%@",string);
