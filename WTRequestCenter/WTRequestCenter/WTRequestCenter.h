@@ -91,6 +91,15 @@ typedef void (^WTRequestFailedBlock)(NSURLResponse *response,NSError *error);
 typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,NSError *error);
 
 
++(void)doURLRequest:(NSURLRequest*)request
+           finished:(WTRequestFinishedBlock)finished
+             failed:(WTRequestFailedBlock)failed;
+
++(void)doURLRequest:(NSURLRequest*)request
+            option:(WTRequestCenterCachePolicy)option
+          finished:(WTRequestFinishedBlock)finished
+            failed:(WTRequestFailedBlock)failed;
+
 //requestFailed
 #pragma mark - GET
 

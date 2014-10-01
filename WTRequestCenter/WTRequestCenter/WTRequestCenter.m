@@ -140,17 +140,22 @@ static NSURLCache* sharedCache = nil;
     if (parameters && [[parameters allKeys] count]>0) {
         NSMutableString *paramString = [[NSMutableString alloc] init];
         
-        [parameters enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
-            NSString *str = [NSString stringWithFormat:@"%@=%@",key,value];
-            [paramString appendString:str];
-            [paramString appendString:@"&"];
+        /*
+         [parameters enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
+         NSString *str = [NSString stringWithFormat:@"%@=%@",key,value];
+         [paramString appendString:str];
+         [paramString appendString:@"&"];
+         }];
+         */
+        
+        [[parameters allKeys] enumerateObjectsUsingBlock:^(NSString *key, NSUInteger index, BOOL *stop) {
+            if (index!=0) {
+                [paramString appendFormat:@"&"];
+            }
+            [paramString appendFormat:@"%@=%@",key,[parameters valueForKey:key]];
+            
         }];
-        
-        if ([paramString hasSuffix:@"&"]) {
-            paramString =[[paramString substringToIndex:[paramString length]-1] mutableCopy];
-        }
-        
-        return paramString;
+        return [paramString copy];
     }
     else
     {
@@ -169,18 +174,7 @@ static NSURLCache* sharedCache = nil;
     
     
     if (parameters && [[parameters allKeys] count]>0) {
-        NSMutableString *paramString = [[NSMutableString alloc] init];
-        
-        [parameters enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
-            NSString *str = [NSString stringWithFormat:@"%@=%@",key,value];
-            [paramString appendString:str];
-            [paramString appendString:@"&"];
-        }];
-        
-        if ([paramString hasSuffix:@"&"]) {
-            paramString =[[paramString substringToIndex:[paramString length]-1] mutableCopy];
-        }
-
+        NSMutableString *paramString = [[self stringFromParameters:parameters] mutableCopy];
         NSMutableString *urlString = [[NSMutableString alloc] initWithFormat:@"%@?%@",url,paramString];
         urlString = [[[urlString copy] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] mutableCopy];
         request.URL = [NSURL URLWithString:urlString];
@@ -255,7 +249,7 @@ static NSURLCache* sharedCache = nil;
 {
     NSURLRequest *request = [self GETRequestWithURL:url parameters:parameters];
     
-    [self doWTRequest:request option:option finished:finished failed:failed];
+    [self doURLRequest:request option:option finished:finished failed:failed];
     return request;
 }
 
@@ -283,12 +277,12 @@ static NSURLCache* sharedCache = nil;
     NSURLRequest *request = [self POSTRequestWithURL:url parameters:parameters];
     
 
-    [self doWTRequest:request option:option finished:finished failed:failed];
+    [self doURLRequest:request option:option finished:finished failed:failed];
     return request;
     
 }
 #pragma mark - Request
-+(void)doWTRequest:(NSURLRequest*)request
++(void)doURLRequest:(NSURLRequest*)request
           finished:(WTRequestFinishedBlock)finished
             failed:(WTRequestFailedBlock)failed
 {
@@ -318,7 +312,7 @@ static NSURLCache* sharedCache = nil;
     }
 
 
-+(void)doWTRequest:(NSURLRequest*)request
++(void)doURLRequest:(NSURLRequest*)request
             option:(WTRequestCenterCachePolicy)option
           finished:(WTRequestFinishedBlock)finished
             failed:(WTRequestFailedBlock)failed
@@ -328,7 +322,7 @@ static NSURLCache* sharedCache = nil;
     switch (option) {
         case WTRequestCenterCachePolicyNormal:
         {
-            [self doWTRequest:request finished:finished failed:failed];
+            [self doURLRequest:request finished:finished failed:failed];
         }
             break;
             
@@ -343,7 +337,7 @@ static NSURLCache* sharedCache = nil;
                 });
             }else
             {
-                [self doWTRequest:request finished:finished failed:failed];
+                [self doURLRequest:request finished:finished failed:failed];
             }
         }
             break;
@@ -370,10 +364,10 @@ static NSURLCache* sharedCache = nil;
                         finished(response.response,response.data);
                     }
                 });
-                [self doWTRequest:request finished:nil failed:nil];
+                [self doURLRequest:request finished:nil failed:nil];
             }else
             {
-                [self doWTRequest:request finished:finished failed:failed];
+                [self doURLRequest:request finished:finished failed:failed];
             }
             
             
@@ -388,10 +382,10 @@ static NSURLCache* sharedCache = nil;
                         finished(response.response,response.data);
                     }
                 });
-                [self doWTRequest:request finished:finished failed:failed];
+                [self doURLRequest:request finished:finished failed:failed];
             }else
             {
-                [self doWTRequest:request finished:finished failed:failed];
+                [self doURLRequest:request finished:finished failed:failed];
             }
             
             
@@ -542,7 +536,7 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
 #pragma mark - Testing Method
 
 
-+(WTURLRequestOperation*)testDoWTRequest:(NSURLRequest*)request
++(WTURLRequestOperation*)testdoURLRequest:(NSURLRequest*)request
      completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
 {
 #pragma clang diagnostic push
@@ -557,7 +551,7 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
 
 }
 
-+(WTURLRequestOperation*)testDoWTRequest:(NSURLRequest*)request
++(WTURLRequestOperation*)testdoURLRequest:(NSURLRequest*)request
                                   option:(WTRequestCenterCachePolicy)option
                                 finished:(WTRequestFinishedBlock)finished
                                   failed:(WTRequestFailedBlock)failed
@@ -602,7 +596,7 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
     switch (option) {
         case WTRequestCenterCachePolicyNormal:
         {
-            [self testDoWTRequest:request completionHandler:handler];
+            [self testdoURLRequest:request completionHandler:handler];
         }
             break;
         case WTRequestCenterCachePolicyCacheElseWeb:
@@ -615,7 +609,7 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
                 });
             }else
             {
-                [self testDoWTRequest:request completionHandler:handler];
+                [self testdoURLRequest:request completionHandler:handler];
             }
         }
             break;
@@ -645,11 +639,11 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
                         handler(response.response,response.data,nil);
                     }
                 });
-                [self testDoWTRequest:request completionHandler:nil];
+                [self testdoURLRequest:request completionHandler:nil];
             }else
             {
 
-                [self testDoWTRequest:request completionHandler:handler];
+                [self testdoURLRequest:request completionHandler:handler];
             }
             
             
@@ -663,11 +657,11 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
                         handler(response.response,response.data,nil);
                     }
                 });
-                [self testDoWTRequest:request completionHandler:handler];
+                [self testdoURLRequest:request completionHandler:handler];
             }else
             {
                 
-                [self testDoWTRequest:request completionHandler:handler];
+                [self testdoURLRequest:request completionHandler:handler];
             }
         }
             break;
