@@ -26,25 +26,30 @@
 ( defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000 ) )
 #import "WTURLSessionManager.h"
 #endif
+
+
+
 /*!
  @enum NSURLRequestCachePolicy
  
- WTRequestCenterCachePolicyNormal
- //正常网络访问，无缓存
+ @constant WTRequestCenterCachePolicyNormal
+ 基本请求，直接访问url，取得数据
  
- WTRequestCenterCachePolicyCacheElseWeb
- //如果本地有就用本地，否则用网络的
+ @constant WTRequestCenterCachePolicyCacheElseWeb
+ 查看本地是否有缓存，如果有就使用，不管失效日期，
+ 如果缓存中没有，就访问url
  
- WTRequestCenterCachePolicyOnlyCache
- //仅使用缓存缓存，不请求
+ @constant WTRequestCenterCachePolicyOnlyCache
+ 只取本地的数据，如果本地数据为空也不访问网络
  
- WTRequestCenterCachePolicyCacheAndRefresh
- //本地和网络的，本地没有也会刷新,本地有也会刷新(刷新后不回调)
+ @constant WTRequestCenterCachePolicyCacheAndRefresh
+ 本地获取一次，网络获取一次。
+ 如果本地有数据，网络获取不回调，如果本地没有数据，网络获取会回调
  
  
- WTRequestCenterCachePolicyCacheAndWeb
- 本地有，会用，也会刷新，也会回调，本地没有会刷新
- 注意：这种情况非常少见，只有调用网页的时候可能会用得到
+ @constant WTRequestCenterCachePolicyCacheAndWeb
+ 本地获取一次，网络获取一次，都会回调。
+ 注意：这种情况非常少见，只有调用网页的时候可能会用得到。
  
  */
 
@@ -81,16 +86,13 @@ typedef NS_ENUM(NSUInteger, WTRequestCenterCachePolicy) {
 //清除请求的缓存
 +(void)removeRequestCache:(NSURLRequest*)request;
 
-
-
-//完成回调
-
 #pragma mark - 回调的声明
+//完成回调
 typedef void (^WTRequestFinishedBlock)(NSURLResponse *respnse,NSData *data);
 typedef void (^WTRequestFailedBlock)(NSURLResponse *response,NSError *error);
 typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,NSError *error);
 
-
+#pragma mark - DoURLRequest
 +(void)doURLRequest:(NSURLRequest*)request
            finished:(WTRequestFinishedBlock)finished
              failed:(WTRequestFailedBlock)failed;

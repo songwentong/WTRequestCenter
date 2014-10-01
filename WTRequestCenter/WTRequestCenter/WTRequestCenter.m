@@ -165,6 +165,15 @@ static NSURLCache* sharedCache = nil;
 #pragma mark - 请求的生成
 
 
++(NSURLRequest*)requestWithMethod:(NSString*)methodName
+                              URL:(NSString*)url
+                       parameters:(NSDictionary*)parameters
+{
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+    request.HTTPMethod = methodName;
+    
+    return request;
+}
 +(NSURLRequest*)GETRequestWithURL:(NSString*)url
                        parameters:(NSDictionary*)parameters
 {
