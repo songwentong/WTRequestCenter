@@ -179,7 +179,7 @@ static NSURLCache* sharedCache = nil;
 {
     
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     
     
     if (parameters && [[parameters allKeys] count]>0) {
@@ -592,55 +592,7 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
     switch (option) {
         case WTRequestCenterCachePolicyNormal:
         {
-            [[self sharedQueue] addOperation:operation];
-        }
-            break;
-        case WTRequestCenterCachePolicyCacheElseWeb:
-        {
-            if (response) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (finished) {
-                        finished(response.response,response.data);
-                    }
-                });
-            }else
-            {
-                [[self sharedQueue] addOperation:operation];
-            }
-        }
-            
-        default:
-            break;
-    }
-    
-    return operation;
-}
-+(WTURLRequestOperation*)testGetWithURL:(NSString*)url
-                             parameters:(NSDictionary *)parameters
-                                 option:(WTRequestCenterCachePolicy)option
-                               finished:(WTRequestFinishedBlock)finished
-                                 failed:(WTRequestFailedBlock)failed
-{
-    return [self testGetWithURL:url parameters:parameters option:option progress:nil finished:finished failed:failed];
-}
-
-+(WTURLRequestOperation*)testGetWithURL:(NSString*)url
-                             parameters:(NSDictionary *)parameters
-                                 option:(WTRequestCenterCachePolicy)option
-                               progress:(WTDownLoadProgressBlock)progress
-                               finished:(WTRequestFinishedBlock)finished
-                                 failed:(WTRequestFailedBlock)failed
-{
-    NSURLRequest *request = [self GETRequestWithURL:url parameters:parameters];
-    WTURLRequestOperation *operation = nil;
-    NSCachedURLResponse *response = [[self sharedCache] cachedResponseForRequest:request];
-    switch (option) {
-        case WTRequestCenterCachePolicyNormal:
-        {
-//            [self testdoURLRequest:request finished:finished failed:failed];
             [self testdoURLRequest:request progress:progress finished:finished failed:failed];
-            
-            
         }
             break;
         case WTRequestCenterCachePolicyCacheElseWeb:
@@ -683,11 +635,107 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
                         finished(response.response,response.data);
                     }
                 });
+                
+            }
+            
+            [self testdoURLRequest:request progress:progress finished:finished failed:failed];
+        }
+            break;
+        case WTRequestCenterCachePolicyCacheAndWeb:
+        {
+            
+            if (response) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (finished) {
+                        finished(response.response,response.data);
+                    }
+                });
+                [self testdoURLRequest:request progress:nil finished:nil failed:nil];
+            }else
+            {
                 [self testdoURLRequest:request progress:progress finished:finished failed:failed];
+            }
+        }
+            break;
+        
+        default:
+            break;
+    }
+    
+    return operation;
+}
++(WTURLRequestOperation*)testGetWithURL:(NSString*)url
+                             parameters:(NSDictionary *)parameters
+                                 option:(WTRequestCenterCachePolicy)option
+                               finished:(WTRequestFinishedBlock)finished
+                                 failed:(WTRequestFailedBlock)failed
+{
+    return [self testGetWithURL:url parameters:parameters option:option progress:nil finished:finished failed:failed];
+}
+
++(WTURLRequestOperation*)testGetWithURL:(NSString*)url
+                             parameters:(NSDictionary *)parameters
+                                 option:(WTRequestCenterCachePolicy)option
+                               progress:(WTDownLoadProgressBlock)progress
+                               finished:(WTRequestFinishedBlock)finished
+                                 failed:(WTRequestFailedBlock)failed
+{
+    NSURLRequest *request = [self GETRequestWithURL:url parameters:parameters];
+    WTURLRequestOperation *operation = nil;
+    NSCachedURLResponse *response = [[self sharedCache] cachedResponseForRequest:request];
+    switch (option) {
+        case WTRequestCenterCachePolicyNormal:
+        {
+
+            [self testdoURLRequest:request option:option progress:progress finished:finished failed:failed];
+            
+        }
+            break;
+        case WTRequestCenterCachePolicyCacheElseWeb:
+        {
+            if (response) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (finished) {
+                        finished(response.response,response.data);
+                    }
+                });
+            }else
+            {
+                [self testdoURLRequest:request option:option progress:progress finished:finished failed:failed];
+            }
+        }
+            break;
+        case WTRequestCenterCachePolicyOnlyCache:
+        {
+            if (response) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (finished) {
+                        finished(response.response,response.data);
+                    }
+                });
+            }else
+            {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (finished) {
+                        finished(nil,nil);
+                    }
+                });
+            }
+        }
+            break;
+        case WTRequestCenterCachePolicyCacheAndRefresh:
+        {
+            if (response) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (finished) {
+                        finished(response.response,response.data);
+                    }
+                });
+                [self testdoURLRequest:request option:option progress:progress finished:finished failed:failed];
             }else
             {
                 
-                [self testdoURLRequest:request progress:progress finished:finished failed:failed];
+                [self testdoURLRequest:request option:option progress:progress finished:finished failed:failed];
             }
             
             
@@ -701,11 +749,11 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
                         finished(response.response,response.data);
                     }
                 });
-                [self testdoURLRequest:request progress:progress finished:finished failed:failed];
+                [self testdoURLRequest:request option:option progress:progress finished:finished failed:failed];
             }else
             {
                 
-                [self testdoURLRequest:request progress:progress finished:finished failed:failed];
+                [self testdoURLRequest:request option:option progress:progress finished:finished failed:failed];
             }
         }
             break;

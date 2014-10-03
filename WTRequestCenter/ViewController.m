@@ -30,11 +30,11 @@
 //    NSLog(@"%@",[NSBundle mainBundle].executableArchitectures);
     
 //    GET请求
-    [self get];
-//    [self testGet];
+//    [self get];
+    [self testGet];
     
 //    POST请求
-    [self post];
+//    [self post];
 //    下载图片
 //    [self loadImage];
 //    [WTRequestCenter cancelAllRequest];
@@ -47,7 +47,7 @@
 //    [self saveAndWrite];
 
     
-    [self testWebView];
+//    [self testWebView];
     
     
     
@@ -109,8 +109,16 @@
 
 -(void)testGet
 {
-//    NSURL *url = [NSURL URLWithString:@"http://www.sina.com.cn"];
-    [WTRequestCenter testGetWithURL:@"http://www.baidu.com" parameters:nil option:WTRequestCenterCachePolicyNormal finished:^(NSURLResponse *respnse, NSData *data) {
+    NSString *url = @"http://b.hiphotos.baidu.com/image/pic/item/5bafa40f4bfbfbed42c3044e7bf0f736afc31f6c.jpg";
+    [WTRequestCenter testGetWithURL:url
+                         parameters:nil
+                             option:WTRequestCenterCachePolicyNormal
+                           progress:^(NSUInteger bytesRead, long long totalBytesRead,
+                                      long long totalBytesExpectedToRead)
+    {
+        NSString *string = [NSString stringWithFormat:@"本次数据接收量：%d,当前收到的总数据量：%lld,期望的总数据量：%lld",bytesRead,totalBytesRead,totalBytesExpectedToRead];
+        NSLog(@"%@",string);
+    } finished:^(NSURLResponse *respnse, NSData *data) {
         
     } failed:^(NSURLResponse *response, NSError *error) {
         
