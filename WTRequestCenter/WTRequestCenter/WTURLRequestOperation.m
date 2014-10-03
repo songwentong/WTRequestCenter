@@ -115,7 +115,6 @@ static inline NSString * WTKeyPathFromOperationState(WTOperationState state) {
     [self.lock lock];
     [self setCompletionBlock:^{
         
-        NSLog(@"%s",__func__);
         if (!self.error) {
             //                如果请求无误
             NSCachedURLResponse *res = [[NSCachedURLResponse alloc] initWithResponse:self.response data:self.responseData];
@@ -129,6 +128,11 @@ static inline NSString * WTKeyPathFromOperationState(WTOperationState state) {
     }];
     [self.lock unlock];
 #pragma clang diagnostic pop
+}
+
+-(void)setDownloadPregressBlock:(WTDownLoadProgressBlock)progress
+{
+    self.downloadProgress = progress;
 }
 
 -(BOOL)isConcurrent
@@ -265,6 +269,9 @@ static inline NSString * WTKeyPathFromOperationState(WTOperationState state) {
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
     [_responseData appendData:data];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _downloadProgress([data length],[_responseData length],_response.expectedContentLength);
+    });
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection

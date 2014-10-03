@@ -180,13 +180,7 @@ static dispatch_queue_t wtsharedCompletionProcessingQueue;
     NSString *filePath = [NSString stringWithFormat:@"%@/%@",[self rootDir],name];
     
     
-    /*
-     这种方法可以实现简易的operatio操作
-    [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
-//        NSLog(@"xxx");
-    }];
-     */
-    
+
     
     WTDataWriteOpeation *operation = [[WTDataWriteOpeation alloc] initWithData:data andFilePath:filePath];
     [operation setCompletionBlock:^{
@@ -301,7 +295,7 @@ static dispatch_queue_t wtsharedCompletionProcessingQueue;
 
         NSDirectoryEnumerator* directoryEnumerator =[manager enumeratorAtPath:[self rootDir]];
         while ([directoryEnumerator nextObject]) {
-//            NSLog(@"%@",[directoryEnumerator fileAttributes]);
+
             NSInteger fileSize = [[[directoryEnumerator fileAttributes] valueForKey:@"NSFileSize"] integerValue];
             totalSize += fileSize;
         }

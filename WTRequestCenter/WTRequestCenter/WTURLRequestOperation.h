@@ -15,8 +15,13 @@
 //    (^)handler a;
 }
 
+//typedef void (^WTRequestFinishedBlock)(NSURLResponse *respnse,NSData *data);
+typedef void(^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalBytesRead,long long totalBytesExpectedToRead);
+@property (readwrite, nonatomic, copy) WTDownLoadProgressBlock downloadProgress;
+
 -(instancetype)initWithRequest:(NSURLRequest*)request;
 -(void)setCompletionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
+-(void)setDownloadPregressBlock:(WTDownLoadProgressBlock)progress;
 
 
 
