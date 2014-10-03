@@ -140,13 +140,7 @@ static NSURLCache* sharedCache = nil;
     if (parameters && [[parameters allKeys] count]>0) {
         NSMutableString *paramString = [[NSMutableString alloc] init];
         
-        /*
-         [parameters enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
-         NSString *str = [NSString stringWithFormat:@"%@=%@",key,value];
-         [paramString appendString:str];
-         [paramString appendString:@"&"];
-         }];
-         */
+
         
         [[parameters allKeys] enumerateObjectsUsingBlock:^(NSString *key, NSUInteger index, BOOL *stop) {
             if (index!=0) {
@@ -592,7 +586,7 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
     switch (option) {
         case WTRequestCenterCachePolicyNormal:
         {
-            [self testdoURLRequest:request progress:progress finished:finished failed:failed];
+            operation = [self testdoURLRequest:request progress:progress finished:finished failed:failed];
         }
             break;
         case WTRequestCenterCachePolicyCacheElseWeb:
@@ -605,7 +599,7 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
                 });
             }else
             {
-                [self testdoURLRequest:request progress:progress finished:finished failed:failed];
+               operation =  [self testdoURLRequest:request progress:progress finished:finished failed:failed];
             }
         }
             break;
@@ -638,7 +632,7 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
                 
             }
             
-            [self testdoURLRequest:request progress:progress finished:finished failed:failed];
+            operation = [self testdoURLRequest:request progress:progress finished:finished failed:failed];
         }
             break;
         case WTRequestCenterCachePolicyCacheAndWeb:
@@ -650,10 +644,10 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
                         finished(response.response,response.data);
                     }
                 });
-                [self testdoURLRequest:request progress:nil finished:nil failed:nil];
+                operation = [self testdoURLRequest:request progress:nil finished:nil failed:nil];
             }else
             {
-                [self testdoURLRequest:request progress:progress finished:finished failed:failed];
+                operation = [self testdoURLRequest:request progress:progress finished:finished failed:failed];
             }
         }
             break;
@@ -687,7 +681,7 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
         case WTRequestCenterCachePolicyNormal:
         {
 
-            [self testdoURLRequest:request option:option progress:progress finished:finished failed:failed];
+            operation = [self testdoURLRequest:request option:option progress:progress finished:finished failed:failed];
             
         }
             break;
@@ -701,7 +695,7 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
                 });
             }else
             {
-                [self testdoURLRequest:request option:option progress:progress finished:finished failed:failed];
+                operation = [self testdoURLRequest:request option:option progress:progress finished:finished failed:failed];
             }
         }
             break;
@@ -731,11 +725,11 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
                         finished(response.response,response.data);
                     }
                 });
-                [self testdoURLRequest:request option:option progress:progress finished:finished failed:failed];
+                operation = [self testdoURLRequest:request option:option progress:progress finished:finished failed:failed];
             }else
             {
                 
-                [self testdoURLRequest:request option:option progress:progress finished:finished failed:failed];
+                operation = [self testdoURLRequest:request option:option progress:progress finished:finished failed:failed];
             }
             
             
@@ -749,11 +743,11 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
                         finished(response.response,response.data);
                     }
                 });
-                [self testdoURLRequest:request option:option progress:progress finished:finished failed:failed];
+                operation = [self testdoURLRequest:request option:option progress:progress finished:finished failed:failed];
             }else
             {
                 
-                [self testdoURLRequest:request option:option progress:progress finished:finished failed:failed];
+                operation = [self testdoURLRequest:request option:option progress:progress finished:finished failed:failed];
             }
         }
             break;
