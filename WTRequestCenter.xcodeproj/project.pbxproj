@@ -55,7 +55,7 @@
 		A3B40EAB19B028350060F158 /* WTDataWriteOpeation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTDataWriteOpeation.m; sourceTree = "<group>"; };
 		A3B40EAD19B033450060F158 /* WTURLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTURLRequestOperation.h; sourceTree = "<group>"; };
 		A3B40EAE19B033450060F158 /* WTURLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTURLRequestOperation.m; sourceTree = "<group>"; };
-		A3B40EB219B055310060F158 /* WTRequestCenterMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WTRequestCenterMacro.h; sourceTree = "<group>"; };
+		A3B40EB219B055310060F158 /* WTRequestCenterMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WTRequestCenterMacro.h; path = "../UIKit+WTRequestCenter/WTRequestCenterMacro.h"; sourceTree = "<group>"; };
 		A3B4A7C1199AF60C00A8BAF0 /* aaa@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = "aaa@2x.gif"; path = "WTRequestCenter/aaa@2x.gif"; sourceTree = "<group>"; };
 		A3B4A7C3199AF88400A8BAF0 /* UIImage+WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+WTRequestCenter.h"; sourceTree = "<group>"; };
 		A3B4A7C4199AF88400A8BAF0 /* UIImage+WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WTRequestCenter.m"; sourceTree = "<group>"; };
@@ -135,7 +135,6 @@
 			isa = PBXGroup;
 			children = (
 				A3244FC81999E83F00EDEF8D /* UIKit+WTRequestCenter.h */,
-				A3B40EB219B055310060F158 /* WTRequestCenterMacro.h */,
 				A3B70F601988DC5B002776F4 /* UIButton+WTRequestCenter.h */,
 				A3B70F611988DC5B002776F4 /* UIButton+WTRequestCenter.m */,
 				A3B70F621988DC5B002776F4 /* UIImageView+WTRequestCenter.h */,
@@ -242,6 +241,7 @@
 		E4FB6C34198BC02700138FE0 /* NSURLRequest */ = {
 			isa = PBXGroup;
 			children = (
+				A3B40EB219B055310060F158 /* WTRequestCenterMacro.h */,
 				E4DBC942197D14F3004F9393 /* WTRequestCenter.h */,
 				E4DBC943197D14F3004F9393 /* WTRequestCenter.m */,
 				A33099C01993131400BC3774 /* WTDataSaver.h */,
