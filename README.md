@@ -111,16 +111,11 @@ WTDataSaver 是个文件存取类，用于自定的方式把数据存取到本�
 
 
 
-Requirement   需要
+Requirement   
 ===============
 Only need iOS 5.0 and later,no more import and Configuration!
 仅仅需要iOS5 ！ 不需要其他任何import和配置
 
-
-## Communication  沟通
-- 如果你**发现bug**,打开右侧的问题
-- 如果你**想做出贡献**，提交一个推（pull）的请求
-- 如果你**有功能需求**，打开问题
 
 ##  UIKit+WTRequestCenter
 这里面提供了许多UIKit的扩展方法
@@ -130,6 +125,13 @@ Only need iOS 5.0 and later,no more import and Configuration!
 - UIColor的快速创建
 - UIDecive的扩展（uuid调用）
 - UIWebView的缓存扩展（暂时不支持网页游戏的缓存）
+
+## Communication  
+- 如果你**发现bug**,<a href="https://github.com/swtlovewtt/WTRequestCenter/issues">打开右侧的问题</a>
+- 如果你**想做出贡献**，<a href="https://github.com/swtlovewtt/WTRequestCenter/pulls">提交一个推（pull）的请求</a>
+- 如果你**有功能需求**，<a href="https://github.com/swtlovewtt/WTRequestCenter/issues">打开问题</a>
+
+
 
 
 ###  测试中方法
