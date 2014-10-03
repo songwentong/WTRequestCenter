@@ -7,20 +7,24 @@
 //  🚧施工中的类
 
 #import <Foundation/Foundation.h>
+typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,NSError *error);
+typedef void(^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalBytesRead,long long totalBytesExpectedToRead);
+
+
+
+
 
 @interface WTURLRequestOperation : NSOperation <NSURLConnectionDataDelegate>
 {
     NSURLConnection *wtURLConnection;
     
-//    (^)handler a;
+
 }
 
-//typedef void (^WTRequestFinishedBlock)(NSURLResponse *respnse,NSData *data);
-typedef void(^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalBytesRead,long long totalBytesExpectedToRead);
 @property (readwrite, nonatomic, copy) WTDownLoadProgressBlock downloadProgress;
 
 -(instancetype)initWithRequest:(NSURLRequest*)request;
--(void)setCompletionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
+-(void)setCompletionHandler:(WTRequestComplectionBlock)handler;
 -(void)setDownloadPregressBlock:(WTDownLoadProgressBlock)progress;
 
 
