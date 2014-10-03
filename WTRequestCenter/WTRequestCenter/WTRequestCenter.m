@@ -232,7 +232,7 @@ static NSURLCache* sharedCache = nil;
 
 +(NSURLRequest*)getWithURL:(NSString*)url
                 parameters:(NSDictionary*)parameters
-                    finished:(WTRequestFinishedBlock)finished
+                  finished:(WTRequestFinishedBlock)finished
                    failed:(WTRequestFailedBlock)failed
 {
     return [self getWithURL:url parameters:parameters option:WTRequestCenterCachePolicyNormal finished:finished failed:failed];
@@ -544,21 +544,33 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
 
 #pragma mark - Testing Method
 
-
 +(WTURLRequestOperation*)testdoURLRequest:(NSURLRequest*)request
-     completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
+                                 finished:(WTRequestFinishedBlock)finished
+                                   failed:(WTRequestFailedBlock)failed
 {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-retain-cycles"
 #pragma clang diagnostic ignored "-Wgnu"
     WTURLRequestOperation *operation = nil;
     operation = [[WTURLRequestOperation alloc] initWithRequest:request];
-    [operation setCompletionHandler:handler];
+    [operation setCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        if (error) {
+            if (failed) {
+                failed(response,error);
+            }
+        }else
+        {
+            if (finished) {
+                finished(response,data);
+            }
+        }
+    }];
     [[self sharedQueue] addOperation:operation];
     return operation;
-    #pragma clang diagnostic pop
-
+#pragma clang diagnostic pop
+    
 }
+
 
 +(WTURLRequestOperation*)testdoURLRequest:(NSURLRequest*)request
                                   option:(WTRequestCenterCachePolicy)option
@@ -595,9 +607,10 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
     return operation;
 }
 +(WTURLRequestOperation*)testGetWithURL:(NSString*)url
-                parameters:(NSDictionary *)parameters
-                    option:(WTRequestCenterCachePolicy)option
-         completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
+                             parameters:(NSDictionary *)parameters
+                                 option:(WTRequestCenterCachePolicy)option
+                               finished:(WTRequestFinishedBlock)finished
+                                 failed:(WTRequestFailedBlock)failed
 {
     NSURLRequest *request = [self GETRequestWithURL:url parameters:parameters];
     WTURLRequestOperation *operation = nil;
@@ -605,20 +618,20 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
     switch (option) {
         case WTRequestCenterCachePolicyNormal:
         {
-            [self testdoURLRequest:request completionHandler:handler];
+            [self testdoURLRequest:request finished:finished failed:failed];
         }
             break;
         case WTRequestCenterCachePolicyCacheElseWeb:
         {
             if (response) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    if (handler) {
-                        handler(response.response,response.data,nil);
+                    if (finished) {
+                        finished(response.response,response.data);
                     }
                 });
             }else
             {
-                [self testdoURLRequest:request completionHandler:handler];
+                [self testdoURLRequest:request finished:finished failed:failed];
             }
         }
             break;
@@ -626,15 +639,15 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
         {
             if (response) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    if (handler) {
-                        handler(response.response,response.data,nil);
+                    if (finished) {
+                        finished(response.response,response.data);
                     }
                 });
             }else
             {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    if (handler) {
-                        handler(nil,nil,nil);
+                    if (finished) {
+                        finished(nil,nil);
                     }
                 });
             }
@@ -644,15 +657,15 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
         {
             if (response) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    if (handler) {
-                        handler(response.response,response.data,nil);
+                    if (finished) {
+                        finished(response.response,response.data);
                     }
                 });
-                [self testdoURLRequest:request completionHandler:nil];
+                [self testdoURLRequest:request finished:nil failed:nil];
             }else
             {
 
-                [self testdoURLRequest:request completionHandler:handler];
+                [self testdoURLRequest:request finished:finished failed:failed];
             }
             
             
@@ -662,15 +675,15 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
         {
             if (response) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    if (handler) {
-                        handler(response.response,response.data,nil);
+                    if (finished) {
+                        finished(response.response,response.data);
                     }
                 });
-                [self testdoURLRequest:request completionHandler:handler];
+                [self testdoURLRequest:request finished:finished failed:failed];
             }else
             {
                 
-                [self testdoURLRequest:request completionHandler:handler];
+                [self testdoURLRequest:request finished:finished failed:failed];
             }
         }
             break;
@@ -679,4 +692,6 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
     }
     return operation;
 }
+
+
 @end

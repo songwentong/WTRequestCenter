@@ -18,6 +18,8 @@
 -(instancetype)initWithRequest:(NSURLRequest*)request;
 -(void)setCompletionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 
+
+
 @property (nonatomic, strong) NSSet *runLoopModes;
 
 @property (nonatomic,retain) NSMutableData *responseData;

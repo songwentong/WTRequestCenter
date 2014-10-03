@@ -110,10 +110,12 @@
 -(void)testGet
 {
 //    NSURL *url = [NSURL URLWithString:@"http://www.sina.com.cn"];
-    [WTRequestCenter testGetWithURL:@"http://www.baidu.com" parameters:nil option:WTRequestCenterCachePolicyNormal completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-        NSLog(@"ok");
+    [WTRequestCenter testGetWithURL:@"http://www.baidu.com" parameters:nil option:WTRequestCenterCachePolicyNormal finished:^(NSURLResponse *respnse, NSData *data) {
+        
+    } failed:^(NSURLResponse *response, NSError *error) {
+        
     }];
-//    for (WTURLRequestOperation *operation in [WTRequestCenter sharedQueue].operations) {
+     //    for (WTURLRequestOperation *operation in [WTRequestCenter sharedQueue].operations) {
 //        [operation cancel];
 //    }
 //    NSLog(@"%@",[WTRequestCenter sharedQueue].operations);

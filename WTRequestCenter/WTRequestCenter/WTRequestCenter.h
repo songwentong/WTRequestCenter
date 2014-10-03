@@ -175,8 +175,9 @@ typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,N
 
 #pragma mark - Testing Method
 +(WTURLRequestOperation*)testGetWithURL:(NSString*)url
-           parameters:(NSDictionary *)parameters
-               option:(WTRequestCenterCachePolicy)option
-    completionHandler:(WTRequestComplectionBlock)handler;
+                             parameters:(NSDictionary *)parameters
+                                 option:(WTRequestCenterCachePolicy)option
+                               finished:(WTRequestFinishedBlock)finished
+                                 failed:(WTRequestFailedBlock)failed;
 
 @end
