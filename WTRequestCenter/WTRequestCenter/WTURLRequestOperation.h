@@ -25,7 +25,6 @@ typedef void(^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalBytes
 
 -(instancetype)initWithRequest:(NSURLRequest*)request;
 -(void)setCompletionHandler:(WTRequestComplectionBlock)handler;
--(void)setDownloadPregressBlock:(WTDownLoadProgressBlock)progress;
 
 
 

@@ -130,10 +130,7 @@ static inline NSString * WTKeyPathFromOperationState(WTOperationState state) {
 #pragma clang diagnostic pop
 }
 
--(void)setDownloadPregressBlock:(WTDownLoadProgressBlock)progress
-{
-    self.downloadProgress = progress;
-}
+
 
 -(BOOL)isConcurrent
 {
