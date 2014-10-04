@@ -31,12 +31,12 @@
     
 //    GET请求
 //    [self get];
-    [self testGet];
+//    [self testGet];
     
 //    POST请求
 //    [self post];
 //    下载图片
-//    [self loadImage];
+    [self loadImage];
 //    [WTRequestCenter cancelAllRequest];
 //    gif
 //    [self loadGif];

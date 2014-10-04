@@ -35,13 +35,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WTRequestCenter/WTRequestCenter/WTRequestCenter.m"
-            timestampString = "433783259.32064"
+            filePath = "WTRequestCenter/ViewController.m"
+            timestampString = "434038873.590722"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
-            landmarkName = "+requestWithMethod:URL:parameters:"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
+            landmarkName = "-post"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -51,13 +51,59 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WTRequestCenter/ViewController.m"
-            timestampString = "434038873.590722"
+            filePath = "WTRequestCenter/UIKit+WTRequestCenter/UIImageView+WTRequestCenter.m"
+            timestampString = "434084319.770826"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
-            landmarkName = "-post"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "-setImageWithURL:placeholderImage:finished:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[UIImageView(WTRequestCenter) setImageWithURL:placeholderImage:finished:]"
+                  moduleName = "WTRequestCenter"
+                  urlString = "file:///Users/song/https:/github.com/rs/WTRequestCenter/WTRequestCenter/UIKit+WTRequestCenter/UIImageView+WTRequestCenter.m"
+                  timestampString = "434084348.5991"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "353">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__74-[UIImageView(WTRequestCenter) setImageWithURL:placeholderImage:finished:]_block_invoke"
+                  moduleName = "WTRequestCenter"
+                  urlString = "file:///Users/song/https:/github.com/rs/WTRequestCenter/WTRequestCenter/UIKit+WTRequestCenter/UIImageView+WTRequestCenter.m"
+                  timestampString = "434084348.59929"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "86">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WTRequestCenter/UIKit+WTRequestCenter/UIImageView+WTRequestCenter.m"
+            timestampString = "434084319.770826"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "-setImageWithURL:placeholderImage:finished:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

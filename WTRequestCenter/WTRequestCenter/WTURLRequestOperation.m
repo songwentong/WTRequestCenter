@@ -269,9 +269,12 @@ static inline NSString * WTKeyPathFromOperationState(WTOperationState state) {
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
     [_responseData appendData:data];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        _downloadProgress([data length],[_responseData length],_response.expectedContentLength);
-    });
+    if (_downloadProgress) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            _downloadProgress([data length],[_responseData length],_response.expectedContentLength);
+        });
+    }
+    
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
