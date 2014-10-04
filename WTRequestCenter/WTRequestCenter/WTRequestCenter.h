@@ -190,9 +190,9 @@ typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,N
 
 +(WTURLRequestOperation*)testPOSTWithURL:(NSString*)url
                               parameters:(NSDictionary *)parameters
-                                progress:(WTDownLoadProgressBlock)progress
                                 finished:(WTRequestFinishedBlock)finished
                                   failed:(WTRequestFailedBlock)failed;
+
 
 +(WTURLRequestOperation*)testPOSTWithURL:(NSString*)url
                               parameters:(NSDictionary *)parameters
