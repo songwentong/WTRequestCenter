@@ -90,12 +90,16 @@
                     dispatch_async(dispatch_get_main_queue(), ^{
                         strongSelf.image = image;
                         [strongSelf setNeedsDisplay];
+                        
                     });
-                    
+                    strongSelf.wtImageRequestOperation = nil;
                 }
             }];
-        } failed:^(NSURLResponse *response, NSError *error) {
             
+        } failed:^(NSURLResponse *response, NSError *error) {
+            if (!wself) return;
+            __strong UIImageView *strongSelf = wself;
+            strongSelf.wtImageRequestOperation = nil;
         }];
         
         self.wtImageRequestOperation = operation;
