@@ -680,5 +680,24 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
 }
 
 
++(WTURLRequestOperation*)testPOSTWithURL:(NSString*)url
+                              parameters:(NSDictionary *)parameters
+                                progress:(WTDownLoadProgressBlock)progress
+                                finished:(WTRequestFinishedBlock)finished
+                                  failed:(WTRequestFailedBlock)failed
+{
+    return [self testPOSTWithURL:url parameters:parameters option:WTRequestCenterCachePolicyNormal progress:progress finished:finished failed:failed];
+}
++(WTURLRequestOperation*)testPOSTWithURL:(NSString*)url
+                             parameters:(NSDictionary *)parameters
+                                 option:(WTRequestCenterCachePolicy)option
+                               progress:(WTDownLoadProgressBlock)progress
+                               finished:(WTRequestFinishedBlock)finished
+                                 failed:(WTRequestFailedBlock)failed
+{
+    NSURLRequest *request = [self POSTRequestWithURL:url parameters:parameters];
+    WTURLRequestOperation *operation = [self testdoURLRequest:request progress:progress finished:finished failed:failed];
+    return operation;
+}
 
 @end
