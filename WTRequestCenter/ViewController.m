@@ -34,9 +34,9 @@
 //    [self testGet];
     
 //    POST请求
-//    [self post];
+    [self post];
 //    下载图片
-    [self loadImage];
+//    [self loadImage];
 //    [WTRequestCenter cancelAllRequest];
 //    gif
 //    [self loadGif];
@@ -131,6 +131,7 @@
 
 -(void)post
 {
+    
     NSString *url = [WTRequestCenter urlWithIndex:0];
     url = @"http://s01.meiriq.com/gamesbox/public/index.php/user/add-fav";
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
@@ -139,12 +140,25 @@
     [parameters setValue:@"1" forKey:@"type"];
     [parameters setValue:@"1928845312" forKey:@"uid"];
 //    username=xuefenjuan&device_id=C40DAED0-1153-4E79-BD87-D241CCA46DC1&password=111111
+    /*
     [WTRequestCenter postWithURL:url parameters:parameters finished:^(NSURLResponse *response, NSData *data) {
         NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"%@",string);
     } failed:^(NSURLResponse *response, NSError *error) {
         NSLog(@"xx");
     }];
+     */
+    [WTRequestCenter postWithURL:url
+                      parameters:parameters
+                          option:WTRequestCenterCachePolicyCacheElseWeb
+                        finished:^(NSURLResponse *respnse, NSData *data) {
+        NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"%@",string);
+    }failed:^(NSURLResponse *response, NSError *error) {
+        NSLog(@"xx");
+    }];
+    
+
 }
 
 -(void)loadImage

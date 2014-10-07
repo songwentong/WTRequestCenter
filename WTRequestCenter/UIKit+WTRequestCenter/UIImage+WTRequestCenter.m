@@ -131,7 +131,11 @@ static UIImage *animatedImageWithAnimatedGIFReleasingImageSource(CGImageSourceRe
             });
         }
     } failed:^(NSURLResponse *response, NSError *error) {
-        
+        if (comelectionHandler) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                comelectionHandler(nil);
+            });
+        }
     }];
 }
 
@@ -170,7 +174,11 @@ static UIImage *animatedImageWithAnimatedGIFReleasingImageSource(CGImageSourceRe
             });
         }
     } failed:^(NSURLResponse *response, NSError *error) {
-        
+        if (completion) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completion(nil);
+            });
+        }
     }];
     
     
