@@ -30,11 +30,11 @@
 //    NSLog(@"%@",[NSBundle mainBundle].executableArchitectures);
     
 //    GET请求
-//    [self get];
+    [self get];
 //    [self testGet];
     
 //    POST请求
-    [self post];
+//    [self post];
 //    下载图片
 //    [self loadImage];
 //    [WTRequestCenter cancelAllRequest];

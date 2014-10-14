@@ -94,6 +94,14 @@ static NSURLCache* sharedCache = nil;
     return [cache currentDiskUsage];
 }
 
+
+//当前缓存用量，直接根据大小来调节单位的显示，KB，MB，GB，TB，PB，EB
++(NSString*)currentDiskUsageString
+{
+    NSUInteger usage = [self currentDiskUsage];
+    return [NSByteCountFormatter stringFromByteCount:usage countStyle:NSByteCountFormatterCountStyleBinary];
+}
+
 +(void)cancelAllRequest
 {
     [[WTRequestCenter sharedQueue] cancelAllOperations];

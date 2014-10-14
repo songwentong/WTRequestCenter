@@ -83,6 +83,9 @@ typedef NS_ENUM(NSUInteger, WTRequestCenterCachePolicy) {
 //当前缓存大小
 +(NSUInteger)currentDiskUsage;
 
+//当前缓存用量，直接根据大小来调节单位的显示，KB，MB，GB，TB，PB，EB
++(NSString*)currentDiskUsageString;
+
 //清除请求的缓存
 +(void)removeRequestCache:(NSURLRequest*)request;
 
