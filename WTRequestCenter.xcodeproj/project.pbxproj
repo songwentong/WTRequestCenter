@@ -18,6 +18,8 @@
 		A3B70F641988DC5B002776F4 /* UIButton+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B70F611988DC5B002776F4 /* UIButton+WTRequestCenter.m */; };
 		A3B70F651988DC5B002776F4 /* UIImageView+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B70F631988DC5B002776F4 /* UIImageView+WTRequestCenter.m */; };
 		A3B7869F19D79B820093CC4E /* UIWebView+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B7869E19D79B820093CC4E /* UIWebView+WTRequestCenter.m */; };
+		E1632C8C19EE02EB00089FFA /* WTRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1632C8A19EE02EB00089FFA /* WTRequestViewController.m */; };
+		E1632C8D19EE02EB00089FFA /* WTRequestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1632C8B19EE02EB00089FFA /* WTRequestViewController.xib */; };
 		E4440D71197A01B1001E6D88 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4440D70197A01B1001E6D88 /* Foundation.framework */; };
 		E4440D73197A01B1001E6D88 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4440D72197A01B1001E6D88 /* CoreGraphics.framework */; };
 		E4440D75197A01B1001E6D88 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4440D74197A01B1001E6D88 /* UIKit.framework */; };
@@ -69,6 +71,9 @@
 		A3B70F631988DC5B002776F4 /* UIImageView+WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WTRequestCenter.m"; sourceTree = "<group>"; };
 		A3B7869D19D79B820093CC4E /* UIWebView+WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+WTRequestCenter.h"; sourceTree = "<group>"; };
 		A3B7869E19D79B820093CC4E /* UIWebView+WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+WTRequestCenter.m"; sourceTree = "<group>"; };
+		E1632C8919EE02EB00089FFA /* WTRequestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTRequestViewController.h; sourceTree = "<group>"; };
+		E1632C8A19EE02EB00089FFA /* WTRequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTRequestViewController.m; sourceTree = "<group>"; };
+		E1632C8B19EE02EB00089FFA /* WTRequestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTRequestViewController.xib; sourceTree = "<group>"; };
 		E4440D6D197A01B1001E6D88 /* WTRequestCenter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WTRequestCenter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4440D70197A01B1001E6D88 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E4440D72197A01B1001E6D88 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -193,6 +198,9 @@
 				E4440D80197A01B1001E6D88 /* AppDelegate.m */,
 				E4440D85197A01B1001E6D88 /* ViewController.h */,
 				E4440D86197A01B1001E6D88 /* ViewController.m */,
+				E1632C8919EE02EB00089FFA /* WTRequestViewController.h */,
+				E1632C8A19EE02EB00089FFA /* WTRequestViewController.m */,
+				E1632C8B19EE02EB00089FFA /* WTRequestViewController.xib */,
 				E4440D88197A01B1001E6D88 /* Images.xcassets */,
 				E4440D77197A01B1001E6D88 /* Supporting Files */,
 			);
@@ -349,6 +357,7 @@
 				E4440D89197A01B1001E6D88 /* Images.xcassets in Resources */,
 				E4440D7B197A01B1001E6D88 /* InfoPlist.strings in Resources */,
 				E4440D84197A01B1001E6D88 /* Main.storyboard in Resources */,
+				E1632C8D19EE02EB00089FFA /* WTRequestViewController.xib in Resources */,
 				A3B70F591988BDFA002776F4 /* image.jpg in Resources */,
 				A3B4A7C2199AF60C00A8BAF0 /* aaa@2x.gif in Resources */,
 			);
@@ -375,6 +384,7 @@
 				E4DBC944197D14F3004F9393 /* WTRequestCenter.m in Sources */,
 				A3B4DD66199C9AA6009F2D24 /* UIColor+WTRequestCenter.m in Sources */,
 				A3B4A7C5199AF88400A8BAF0 /* UIImage+WTRequestCenter.m in Sources */,
+				E1632C8C19EE02EB00089FFA /* WTRequestViewController.m in Sources */,
 				E4FB6C38198BC0A000138FE0 /* WTURLSessionManager.m in Sources */,
 				E4BC81C5199E3415008ABB91 /* UIDevice+WTRequestCenter.m in Sources */,
 				E4440D81197A01B1001E6D88 /* AppDelegate.m in Sources */,

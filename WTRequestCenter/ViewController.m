@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "WTRequestCenter.h"
 #import "UIKit+WTRequestCenter.h"
+#import "WTRequestViewController.h"
 @interface ViewController ()
 
 @end
@@ -30,7 +31,7 @@
 //    NSLog(@"%@",[NSBundle mainBundle].executableArchitectures);
     
 //    GET请求
-    [self get];
+//    [self get];
 //    [self testGet];
     
 //    POST请求
@@ -59,7 +60,29 @@
     
 //    查看缓存（Cache）用量,单位是byte
 //    The current size of the receiver’s on-disk cache, in bytes.
-//    NSLog(@"缓存用量  %u KB",[WTRequestCenter currentDiskUsage]/1024);
+//    NSLog(@"缓存用量  %@",[WTRequestCenter currentDiskUsageString]);
+    [self configModel];
+    [self configView];
+}
+
+-(void)configModel
+{
+    requestTypesArray = [[NSMutableArray alloc] init];
+    [requestTypesArray addObject:@"GET 请求"];
+    [requestTypesArray addObject:@"POST 请求"];
+}
+
+-(void)configView
+{
+    
+    self.title = @"WTRequestCenter";
+    
+    
+    wtTableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    wtTableView.frame = CGRectMake(0, 64, 320, [UIDevice screenHeight]-64);
+    [self.view addSubview:wtTableView];
+    wtTableView.dataSource = self;
+    wtTableView.delegate = self;
 }
 
 
@@ -236,5 +259,71 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+#pragma mark - UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [requestTypesArray count];
+}
+
+// Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
+// Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [UITableViewCell new];
+    NSString *text = requestTypesArray[indexPath.row];
+    cell.textLabel.text = text;
+    return cell;
+}
+
+
+#pragma mark - UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSURLRequest *request;
+    switch (indexPath.row) {
+        case 0:
+        {
+//        GET
+            
+            NSString  *url = @"http://www.sina.com.cn";
+            url = @"http://www.baidu.com";
+            url = @"http://www.blizzard.com";
+//            url = @"http://www.apple.com";
+            
+            NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+            [parameters setValue:@"1928845312" forKey:@"uid"];
+            [parameters setValue:@"1" forKey:@"type"];
+            request = [WTRequestCenter GETRequestWithURL:url parameters:nil];
+            
+        }
+            break;
+            case 1:
+        {
+//            POST
+            NSString *url = [WTRequestCenter urlWithIndex:0];
+            url = @"http://s01.meiriq.com/gamesbox/public/index.php/user/add-fav";
+            NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+            [parameters setValue:@"5406906dcb02be7d279d26f9" forKey:@"gid"];
+            [parameters setValue:@"ae7d3f36dafbb69491aadf36862f7ff8" forKey:@"sign"];
+            [parameters setValue:@"1" forKey:@"type"];
+            [parameters setValue:@"1928845312" forKey:@"uid"];
+            request = [WTRequestCenter POSTRequestWithURL:url parameters:parameters];
+        
+        }
+            break;
+            
+        default:
+            break;
+    }
+    WTRequestViewController *vc = [[WTRequestViewController alloc] init];
+    vc.request = request;
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
+
+
 
 @end

@@ -144,7 +144,15 @@ typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,N
                    finished:(WTRequestFinishedBlock)finished
                      failed:(WTRequestFailedBlock)failed;
 
- 
+
+
+
+#pragma mark - 请求的生成（一般用不到）
++(NSURLRequest*)GETRequestWithURL:(NSString*)url
+                       parameters:(NSDictionary*)parameters;
+
++(NSURLRequest*)POSTRequestWithURL:(NSString*)url
+                        parameters:(NSDictionary*)parameters;
 #pragma mark - Image
 //图片上传  Upload
 +(void)upLoadImageWithURL:(NSString*)url

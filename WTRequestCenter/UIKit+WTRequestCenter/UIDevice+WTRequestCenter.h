@@ -15,4 +15,5 @@
 //UUID  唯一标示符
 +(NSString*)WTUUID;
 //Available in iOS 2.0 and later.
++(CGFloat)screenHeight;
 @end
