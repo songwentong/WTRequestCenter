@@ -99,7 +99,10 @@ static NSURLCache* sharedCache = nil;
 +(NSString*)currentDiskUsageString
 {
     NSUInteger usage = [self currentDiskUsage];
-    return [NSByteCountFormatter stringFromByteCount:usage countStyle:NSByteCountFormatterCountStyleBinary];
+    NSByteCountFormatter *formatter = [[NSByteCountFormatter alloc] init];
+//    formatter.includesActualByteCount = YES;
+//    formatter.countStyle = NSByteCountFormatterCountStyleFile;
+    return [NSByteCountFormatter stringFromByteCount:usage countStyle:NSByteCountFormatterCountStyleFile];
 }
 
 +(void)cancelAllRequest

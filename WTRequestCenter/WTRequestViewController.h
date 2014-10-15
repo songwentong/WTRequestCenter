@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface WTRequestViewController : UIViewController
-@property (nonatomic,strong) NSURLRequest *request;
+@property (nonatomic,copy) NSIndexPath *indexPath;
 @end

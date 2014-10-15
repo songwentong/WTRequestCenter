@@ -262,9 +262,31 @@
 
 
 #pragma mark - UITableViewDataSource
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [requestTypesArray count];
+    NSInteger numberOfRows = 0;
+    switch (section) {
+        case 0:
+        {
+            numberOfRows = [requestTypesArray count];
+        }
+            break;
+        case 1:
+        {
+            numberOfRows = 2;
+        }
+            break;
+            
+        default:
+            break;
+    }
+    return numberOfRows;
 }
 
 // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
@@ -273,8 +295,48 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [UITableViewCell new];
-    NSString *text = requestTypesArray[indexPath.row];
-    cell.textLabel.text = text;
+    switch (indexPath.section) {
+        case 0:
+        {
+            switch (indexPath.row) {
+                case 0:
+                case 1:
+                {
+//                POST
+                    NSString *text = requestTypesArray[indexPath.row];
+                    cell.textLabel.text = text;
+                }
+                    break;
+                    
+                default:
+                    break;
+            }
+        }
+            break;
+            case 1:
+        {
+            switch (indexPath.row) {
+                case 0:
+                {
+                    NSString *text = [WTRequestCenter currentDiskUsageString];
+                    cell.textLabel.text = text;
+                }
+                    break;
+                case 1:
+                {
+                    cell.textLabel.text = @"清空缓存";
+                }
+                    break;
+                default:
+                    break;
+            }
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
     return cell;
 }
 
@@ -282,45 +344,30 @@
 #pragma mark - UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSURLRequest *request;
-    switch (indexPath.row) {
+    
+    switch (indexPath.section) {
         case 0:
         {
-//        GET
-            
-            NSString  *url = @"http://www.sina.com.cn";
-            url = @"http://www.baidu.com";
-            url = @"http://www.blizzard.com";
-//            url = @"http://www.apple.com";
-            
-            NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-            [parameters setValue:@"1928845312" forKey:@"uid"];
-            [parameters setValue:@"1" forKey:@"type"];
-            request = [WTRequestCenter GETRequestWithURL:url parameters:nil];
+//        GET,POST
+
+
+            WTRequestViewController *vc = [[WTRequestViewController alloc] init];
+            vc.indexPath = indexPath;
+            [self.navigationController pushViewController:vc animated:YES];
             
         }
             break;
-            case 1:
+            
+        case 1:
         {
-//            POST
-            NSString *url = [WTRequestCenter urlWithIndex:0];
-            url = @"http://s01.meiriq.com/gamesbox/public/index.php/user/add-fav";
-            NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-            [parameters setValue:@"5406906dcb02be7d279d26f9" forKey:@"gid"];
-            [parameters setValue:@"ae7d3f36dafbb69491aadf36862f7ff8" forKey:@"sign"];
-            [parameters setValue:@"1" forKey:@"type"];
-            [parameters setValue:@"1928845312" forKey:@"uid"];
-            request = [WTRequestCenter POSTRequestWithURL:url parameters:parameters];
-        
+//        缓存
+            
         }
             break;
             
         default:
             break;
     }
-    WTRequestViewController *vc = [[WTRequestViewController alloc] init];
-    vc.request = request;
-    [self.navigationController pushViewController:vc animated:YES];
     
 }
 
