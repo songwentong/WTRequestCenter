@@ -86,6 +86,8 @@ static NSURLCache* sharedCache = nil;
     
 }
 
+
+
 //当前缓存大小
 +(NSUInteger)currentDiskUsage
 {
@@ -99,7 +101,7 @@ static NSURLCache* sharedCache = nil;
 +(NSString*)currentDiskUsageString
 {
     NSUInteger usage = [self currentDiskUsage];
-    NSByteCountFormatter *formatter = [[NSByteCountFormatter alloc] init];
+//    NSByteCountFormatter *formatter = [[NSByteCountFormatter alloc] init];
 //    formatter.includesActualByteCount = YES;
 //    formatter.countStyle = NSByteCountFormatterCountStyleFile;
     return [NSByteCountFormatter stringFromByteCount:usage countStyle:NSByteCountFormatterCountStyleFile];

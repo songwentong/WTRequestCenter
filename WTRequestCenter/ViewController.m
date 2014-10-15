@@ -64,7 +64,11 @@
     [self configModel];
     [self configView];
 }
-
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [wtTableView reloadData];
+}
 -(void)configModel
 {
     requestTypesArray = [[NSMutableArray alloc] init];
@@ -319,12 +323,17 @@
                 case 0:
                 {
                     NSString *text = [WTRequestCenter currentDiskUsageString];
+                    text = [NSString stringWithFormat:@"硬盘用量:%@",text];
                     cell.textLabel.text = text;
                 }
                     break;
                 case 1:
                 {
-                    cell.textLabel.text = @"清空缓存";
+                    NSURLCache *cache = [WTRequestCenter sharedCache];
+                    NSInteger bytes = cache.currentMemoryUsage;
+                    NSString *string = [NSByteCountFormatter stringFromByteCount:bytes countStyle:NSByteCountFormatterCountStyleMemory];
+                    string = [NSString stringWithFormat:@"内存用量:%@",string];
+                    cell.textLabel.text = string;
                 }
                     break;
                 default:
