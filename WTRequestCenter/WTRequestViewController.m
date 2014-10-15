@@ -47,35 +47,32 @@
 }
 -(void)get
 {
-    NSInteger count = 1;
-    //    __block NSInteger finish = 0;
-    //    __block NSInteger size = 0;
-    for (int i=0; i<count; i++) {
-        
-        NSString  *url = @"http://www.sina.com.cn";
-//        url = @"http://www.baidu.com";
-        url = @"http://www.blizzard.com";
-//        url = @"http://www.apple.com";
-        
-        NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-        [parameters setValue:@"1928845312" forKey:@"uid"];
-        [parameters setValue:@"1" forKey:@"type"];
-        //        [parameters setValue:@"ae7d3f36dafbb69491aadf36862f7ff8" forKey:@"sign"];
-        
-        
-        
-        
-        [WTRequestCenter getWithURL:url parameters:parameters option:WTRequestCenterCachePolicyCacheAndRefresh finished:^(NSURLResponse *respnse, NSData *data) {
-            NSLog(@"成功");
+
+
+    NSMutableArray *array = [NSMutableArray array];
+    [array addObject:@"http://www.sina.com.cn"];
+    [array addObject:@"http://www.blizzard.com"];
+    [array addObject:@"http://www.apple.cn"];
+    [array addObject:@"http://www.baidu.com"];
+    [array addObject:@"http://www.cocoachina.com"];
+    [array addObject:@"http://www.taobao.com"];
+    [array addObject:@"http://www.tmall.com"];
+    [array addObject:@"https://developer.apple.com/library/ios/navigation"];
+    [array addObject:@"https://github.com"];
+    [array addObject:@"http://www.w3school.com.cn"];
+    [array addObject:@"https://developer.apple.com"];
+    [array addObject:@"http://image.baidu.com"];
+    
+    
+    
+    [array enumerateObjectsUsingBlock:^(NSString *url, NSUInteger idx, BOOL *stop) {
+        [WTRequestCenter getWithURL:url parameters:nil option:WTRequestCenterCachePolicyNormal finished:^(NSURLResponse *respnse, NSData *data) {
+//            NSLog(@"%@",respnse.URL);
+            NSLog(@"finished:%@",respnse.URL);
         } failed:^(NSURLResponse *response, NSError *error) {
-            NSLog(@"失败");
+            NSLog(@"failed:%@",response.URL);
         }];
-        
-        
-        
-        
-        
-    }
+    }];
     
     
     
