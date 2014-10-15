@@ -62,8 +62,10 @@
     [array addObject:@"http://www.w3school.com.cn"];
     [array addObject:@"https://developer.apple.com"];
     [array addObject:@"http://image.baidu.com"];
-    
-    
+    [array addObject:@"http://image.baidu.com/channel/star/杨幂"];
+    [array addObject:@"http://image.baidu.com/channel/star/范冰冰"];
+    [array addObject:@"http://image.baidu.com/channel/star/林志玲"];
+    [array addObject:@"http://image.baidu.com/channel/star/柳岩"];
     
     [array enumerateObjectsUsingBlock:^(NSString *url, NSUInteger idx, BOOL *stop) {
         [WTRequestCenter getWithURL:url parameters:nil option:WTRequestCenterCachePolicyNormal finished:^(NSURLResponse *respnse, NSData *data) {

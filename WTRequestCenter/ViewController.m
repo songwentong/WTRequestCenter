@@ -10,6 +10,7 @@
 #import "WTRequestCenter.h"
 #import "UIKit+WTRequestCenter.h"
 #import "WTRequestViewController.h"
+#import "WTWebViewController.h"
 @interface ViewController ()
 
 @end
@@ -74,6 +75,7 @@
     requestTypesArray = [[NSMutableArray alloc] init];
     [requestTypesArray addObject:@"GET 请求"];
     [requestTypesArray addObject:@"POST 请求"];
+    [requestTypesArray addObject:@"WebView"];
 }
 
 -(void)configView
@@ -305,6 +307,7 @@
             switch (indexPath.row) {
                 case 0:
                 case 1:
+                case 2:
                 {
 //                POST
                     NSString *text = requestTypesArray[indexPath.row];
@@ -359,10 +362,26 @@
         {
 //        GET,POST
 
-
-            WTRequestViewController *vc = [[WTRequestViewController alloc] init];
-            vc.indexPath = indexPath;
-            [self.navigationController pushViewController:vc animated:YES];
+            switch (indexPath.row) {
+                case 0:
+                {
+                    WTRequestViewController *vc = [[WTRequestViewController alloc] init];
+                    vc.indexPath = indexPath;
+                    [self.navigationController pushViewController:vc animated:YES];
+                }
+                    break;
+                case 2:
+                {
+                    //            网页
+                    WTWebViewController *vc = [[WTWebViewController alloc] init];
+                    [self.navigationController pushViewController:vc animated:YES];
+                }
+                    break;
+                    
+                default:
+                    break;
+            }
+            
             
         }
             break;
@@ -373,6 +392,8 @@
             
         }
             break;
+
+
             
         default:
             break;
