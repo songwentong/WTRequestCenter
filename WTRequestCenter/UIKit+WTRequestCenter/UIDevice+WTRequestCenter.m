@@ -35,4 +35,9 @@
 {
     return CGRectGetHeight([UIScreen mainScreen].bounds);
 }
+
++(CGSize)screenSize
+{
+    return [UIScreen mainScreen].bounds.size;
+}
 @end

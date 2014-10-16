@@ -11,7 +11,7 @@
 @implementation UIAlertView (WTRequestCenter)
 +(void)showAlertWithMessage:(NSString*)message
 {
-    [self showAlertWithTitle:nil message:message duration:1.0]
+    [self showAlertWithTitle:nil message:message duration:1.0];
 }
 
 +(void)showAlertWithTitle:(NSString*)title message:(NSString*)message duration:(NSTimeInterval)time

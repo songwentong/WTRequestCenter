@@ -16,4 +16,6 @@
 +(NSString*)WTUUID;
 //Available in iOS 2.0 and later.
 +(CGFloat)screenHeight;
+
++(CGSize)screenSize;
 @end
