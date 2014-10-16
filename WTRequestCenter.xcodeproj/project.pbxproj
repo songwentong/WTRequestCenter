@@ -18,6 +18,7 @@
 		A3B70F641988DC5B002776F4 /* UIButton+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B70F611988DC5B002776F4 /* UIButton+WTRequestCenter.m */; };
 		A3B70F651988DC5B002776F4 /* UIImageView+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B70F631988DC5B002776F4 /* UIImageView+WTRequestCenter.m */; };
 		A3B7869F19D79B820093CC4E /* UIWebView+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B7869E19D79B820093CC4E /* UIWebView+WTRequestCenter.m */; };
+		E141B5D419EFDD8D005D25B6 /* UIAlertView+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E141B5D319EFDD8D005D25B6 /* UIAlertView+WTRequestCenter.m */; };
 		E1632C8C19EE02EB00089FFA /* WTRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1632C8A19EE02EB00089FFA /* WTRequestViewController.m */; };
 		E1632C8D19EE02EB00089FFA /* WTRequestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1632C8B19EE02EB00089FFA /* WTRequestViewController.xib */; };
 		E4440D71197A01B1001E6D88 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4440D70197A01B1001E6D88 /* Foundation.framework */; };
@@ -73,6 +74,8 @@
 		A3B70F631988DC5B002776F4 /* UIImageView+WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WTRequestCenter.m"; sourceTree = "<group>"; };
 		A3B7869D19D79B820093CC4E /* UIWebView+WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+WTRequestCenter.h"; sourceTree = "<group>"; };
 		A3B7869E19D79B820093CC4E /* UIWebView+WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+WTRequestCenter.m"; sourceTree = "<group>"; };
+		E141B5D219EFDD8D005D25B6 /* UIAlertView+WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+WTRequestCenter.h"; sourceTree = "<group>"; };
+		E141B5D319EFDD8D005D25B6 /* UIAlertView+WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+WTRequestCenter.m"; sourceTree = "<group>"; };
 		E1632C8919EE02EB00089FFA /* WTRequestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTRequestViewController.h; sourceTree = "<group>"; };
 		E1632C8A19EE02EB00089FFA /* WTRequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTRequestViewController.m; sourceTree = "<group>"; };
 		E1632C8B19EE02EB00089FFA /* WTRequestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTRequestViewController.xib; sourceTree = "<group>"; };
@@ -157,6 +160,8 @@
 				E4BC81C4199E3415008ABB91 /* UIDevice+WTRequestCenter.m */,
 				A3B7869D19D79B820093CC4E /* UIWebView+WTRequestCenter.h */,
 				A3B7869E19D79B820093CC4E /* UIWebView+WTRequestCenter.m */,
+				E141B5D219EFDD8D005D25B6 /* UIAlertView+WTRequestCenter.h */,
+				E141B5D319EFDD8D005D25B6 /* UIAlertView+WTRequestCenter.m */,
 			);
 			name = "UIKit+WTRequestCenter";
 			path = "WTRequestCenter/UIKit+WTRequestCenter";
@@ -401,6 +406,7 @@
 				E4440D7D197A01B1001E6D88 /* main.m in Sources */,
 				A33099C21993131400BC3774 /* WTDataSaver.m in Sources */,
 				A3B40EAC19B028350060F158 /* WTDataWriteOpeation.m in Sources */,
+				E141B5D419EFDD8D005D25B6 /* UIAlertView+WTRequestCenter.m in Sources */,
 				A3B70F641988DC5B002776F4 /* UIButton+WTRequestCenter.m in Sources */,
 				A3B40EAF19B033450060F158 /* WTURLRequestOperation.m in Sources */,
 			);
