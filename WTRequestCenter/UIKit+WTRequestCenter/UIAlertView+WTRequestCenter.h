@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface UIAlertView (WTRequestCenter)
-+(void)showMessage:(NSString*)message;
++(void)showAlertWithMessage:(NSString*)message;
++(void)showAlertWithTitle:(NSString*)title message:(NSString*)message duration:(NSTimeInterval)time;
 @end

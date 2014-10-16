@@ -9,10 +9,16 @@
 #import "UIAlertView+WTRequestCenter.h"
 
 @implementation UIAlertView (WTRequestCenter)
-+(void)showMessage:(NSString*)message
++(void)showAlertWithMessage:(NSString*)message
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:message delegate:nil cancelButtonTitle:nil otherButtonTitles: nil];
+    [self showAlertWithTitle:nil message:message duration:1.0]
+}
+
++(void)showAlertWithTitle:(NSString*)title message:(NSString*)message duration:(NSTimeInterval)time
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:nil otherButtonTitles: nil];
     [alert show];
     [alert performSelector:@selector(dismissAnimated:) withObject:@YES afterDelay:1.0];
+
 }
 @end
