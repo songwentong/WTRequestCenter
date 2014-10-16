@@ -64,11 +64,27 @@
 //    NSLog(@"缓存用量  %@",[WTRequestCenter currentDiskUsageString]);
     [self configModel];
     [self configView];
+    [self performSelector:@selector(takeSnapShot) withObject:nil afterDelay:1];
+}
+
+-(void)takeSnapShot
+{
+    UIGraphicsBeginImageContext(self.view.bounds.size);
+
+//    UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
+//    BOOL finish = [self.view drawViewHierarchyInRect:self.view.bounds afterScreenUpdates:NO];
+    [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+//    if (finish) {
+        UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+//    }
+    UIGraphicsEndImageContext();
 }
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     [wtTableView reloadData];
+    
 }
 -(void)configModel
 {

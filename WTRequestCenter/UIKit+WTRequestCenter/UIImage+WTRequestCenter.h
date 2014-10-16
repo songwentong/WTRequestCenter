@@ -15,10 +15,11 @@
 +(void)imageWithURL:(NSString*)url
  comelectionHandler:(void(^)(UIImage* image))comelectionHandler;
 
-#pragma mark - 不建议的方法
-//+ (UIImage *)animatedImageWithAnimatedGIFData:(NSData *)theData;
+//对UIView进行快照
++ (UIImage *)snapshot:(UIView *)view;
 
-//+ (UIImage *)animatedImageWithAnimatedGIFURL:(NSURL *)theURL;
+
+
 
 
 

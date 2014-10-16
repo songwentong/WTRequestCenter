@@ -19,6 +19,6 @@
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:nil otherButtonTitles: nil];
     [alert show];
     [alert performSelector:@selector(dismissAnimated:) withObject:@YES afterDelay:1.0];
-
+    
 }
 @end
