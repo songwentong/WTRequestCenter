@@ -101,7 +101,7 @@
     
     
     wtTableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
-    wtTableView.frame = CGRectMake(0, 64, 320, [UIDevice screenHeight]-64);
+    wtTableView.frame = CGRectMake(0, 0, 320, [UIDevice screenHeight]-64);
     [self.view addSubview:wtTableView];
     wtTableView.dataSource = self;
     wtTableView.delegate = self;
