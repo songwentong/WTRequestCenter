@@ -32,6 +32,6 @@
 #import "UIDevice+WTRequestCenter.h"
 #import "UIWebView+WTRequestCenter.h"
 #import "UIAlertView+WTRequestCenter.h"
-
+#import "WTImageScrollView.h"
 
 #endif

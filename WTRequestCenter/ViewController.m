@@ -11,6 +11,7 @@
 #import "UIKit+WTRequestCenter.h"
 #import "WTRequestViewController.h"
 #import "WTWebViewController.h"
+#import "WTImageViewController.h"
 @interface ViewController ()
 
 @end
@@ -92,6 +93,7 @@
     [requestTypesArray addObject:@"GET 请求"];
     [requestTypesArray addObject:@"POST 请求"];
     [requestTypesArray addObject:@"WebView"];
+    [requestTypesArray addObject:@"图片请求"];
 }
 
 -(void)configView
@@ -325,13 +327,17 @@
                 case 1:
                 case 2:
                 {
-//                POST
+
                     NSString *text = requestTypesArray[indexPath.row];
                     cell.textLabel.text = text;
                 }
                     break;
                     
                 default:
+                {
+                    NSString *text = requestTypesArray[indexPath.row];
+                    cell.textLabel.text = text;
+                }
                     break;
             }
         }
@@ -393,6 +399,21 @@
                     [self.navigationController pushViewController:vc animated:YES];
                 }
                     break;
+                    case 3:
+                {
+//                    图片
+                    WTImageViewController *vc = [[WTImageViewController alloc] init];
+//                    http://t12.baidu.com/it/u=2403332987,2157329891,395,216,1,95,1,13769865750573159671&fm=89
+//                    http://img0.bdstatic.com/img/image/shouye/sygjdl-9556401172.jpg
+                    NSMutableArray *urls = [[NSMutableArray alloc] init];
+                    [urls addObject:@"http://d.hiphotos.baidu.com/image/pic/item/d53f8794a4c27d1e01c0f3d919d5ad6edcc438cd.jpg"];
+                    [urls addObject:@"http://e.hiphotos.baidu.com/image/pic/item/0e2442a7d933c89555c6c97ad31373f082020072.jpg"];
+                    vc.imageUrls = urls;
+                    [self presentViewController:vc animated:YES completion:^{
+                        
+                    }];
+                    
+                }break;
                     
                 default:
                     break;
