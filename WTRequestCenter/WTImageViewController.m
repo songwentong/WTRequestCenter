@@ -8,6 +8,7 @@
 
 #import "WTImageViewController.h"
 #import "UIKit+WTRequestCenter.h"
+#import "WTImageViewer.h"
 @interface WTImageViewController ()
 
 @end

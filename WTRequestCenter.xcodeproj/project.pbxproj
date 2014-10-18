@@ -23,7 +23,6 @@
 		E1632C8D19EE02EB00089FFA /* WTRequestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1632C8B19EE02EB00089FFA /* WTRequestViewController.xib */; };
 		E43DC20319F29D82009FA132 /* WTImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E43DC20119F29D82009FA132 /* WTImageViewController.m */; };
 		E43DC20419F29D82009FA132 /* WTImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E43DC20219F29D82009FA132 /* WTImageViewController.xib */; };
-		E43DC20719F29F27009FA132 /* WTImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E43DC20619F29F27009FA132 /* WTImageScrollView.m */; };
 		E4440D71197A01B1001E6D88 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4440D70197A01B1001E6D88 /* Foundation.framework */; };
 		E4440D73197A01B1001E6D88 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4440D72197A01B1001E6D88 /* CoreGraphics.framework */; };
 		E4440D75197A01B1001E6D88 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4440D74197A01B1001E6D88 /* UIKit.framework */; };
@@ -40,6 +39,7 @@
 		E4440D9C197A01B1001E6D88 /* WTRequestCenterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E4440D9B197A01B1001E6D88 /* WTRequestCenterTests.m */; };
 		E49806CF19EEBC9F00705C19 /* WTWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E49806CD19EEBC9F00705C19 /* WTWebViewController.m */; };
 		E49806D019EEBC9F00705C19 /* WTWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E49806CE19EEBC9F00705C19 /* WTWebViewController.xib */; };
+		E4AE9C7219F325C200B22B30 /* WTImageViewer.m in Sources */ = {isa = PBXBuildFile; fileRef = E4AE9C7119F325C200B22B30 /* WTImageViewer.m */; };
 		E4BC81C5199E3415008ABB91 /* UIDevice+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BC81C4199E3415008ABB91 /* UIDevice+WTRequestCenter.m */; };
 		E4DBC944197D14F3004F9393 /* WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E4DBC943197D14F3004F9393 /* WTRequestCenter.m */; };
 		E4FB6C38198BC0A000138FE0 /* WTURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E4FB6C37198BC0A000138FE0 /* WTURLSessionManager.m */; };
@@ -85,8 +85,6 @@
 		E43DC20019F29D82009FA132 /* WTImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTImageViewController.h; sourceTree = "<group>"; };
 		E43DC20119F29D82009FA132 /* WTImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTImageViewController.m; sourceTree = "<group>"; };
 		E43DC20219F29D82009FA132 /* WTImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTImageViewController.xib; sourceTree = "<group>"; };
-		E43DC20519F29F27009FA132 /* WTImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTImageScrollView.h; sourceTree = "<group>"; };
-		E43DC20619F29F27009FA132 /* WTImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTImageScrollView.m; sourceTree = "<group>"; };
 		E4440D6D197A01B1001E6D88 /* WTRequestCenter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WTRequestCenter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4440D70197A01B1001E6D88 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E4440D72197A01B1001E6D88 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -109,6 +107,8 @@
 		E49806CC19EEBC9F00705C19 /* WTWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTWebViewController.h; sourceTree = "<group>"; };
 		E49806CD19EEBC9F00705C19 /* WTWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTWebViewController.m; sourceTree = "<group>"; };
 		E49806CE19EEBC9F00705C19 /* WTWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTWebViewController.xib; sourceTree = "<group>"; };
+		E4AE9C7019F325C200B22B30 /* WTImageViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTImageViewer.h; sourceTree = "<group>"; };
+		E4AE9C7119F325C200B22B30 /* WTImageViewer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTImageViewer.m; sourceTree = "<group>"; };
 		E4BC81C3199E3415008ABB91 /* UIDevice+WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+WTRequestCenter.h"; sourceTree = "<group>"; };
 		E4BC81C4199E3415008ABB91 /* UIDevice+WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+WTRequestCenter.m"; sourceTree = "<group>"; };
 		E4DBC942197D14F3004F9393 /* WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTRequestCenter.h; sourceTree = "<group>"; };
@@ -170,8 +170,8 @@
 				A3B7869E19D79B820093CC4E /* UIWebView+WTRequestCenter.m */,
 				E141B5D219EFDD8D005D25B6 /* UIAlertView+WTRequestCenter.h */,
 				E141B5D319EFDD8D005D25B6 /* UIAlertView+WTRequestCenter.m */,
-				E43DC20519F29F27009FA132 /* WTImageScrollView.h */,
-				E43DC20619F29F27009FA132 /* WTImageScrollView.m */,
+				E4AE9C7019F325C200B22B30 /* WTImageViewer.h */,
+				E4AE9C7119F325C200B22B30 /* WTImageViewer.m */,
 			);
 			name = "UIKit+WTRequestCenter";
 			path = "WTRequestCenter/UIKit+WTRequestCenter";
@@ -406,12 +406,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E43DC20719F29F27009FA132 /* WTImageScrollView.m in Sources */,
 				A3B70F651988DC5B002776F4 /* UIImageView+WTRequestCenter.m in Sources */,
 				A3B7869F19D79B820093CC4E /* UIWebView+WTRequestCenter.m in Sources */,
 				E4440D87197A01B1001E6D88 /* ViewController.m in Sources */,
 				E4DBC944197D14F3004F9393 /* WTRequestCenter.m in Sources */,
 				A3B4DD66199C9AA6009F2D24 /* UIColor+WTRequestCenter.m in Sources */,
+				E4AE9C7219F325C200B22B30 /* WTImageViewer.m in Sources */,
 				A3B4A7C5199AF88400A8BAF0 /* UIImage+WTRequestCenter.m in Sources */,
 				E1632C8C19EE02EB00089FFA /* WTRequestViewController.m in Sources */,
 				E4FB6C38198BC0A000138FE0 /* WTURLSessionManager.m in Sources */,
