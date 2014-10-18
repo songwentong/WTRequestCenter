@@ -7,13 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface WTImageViewController : UIViewController <UIScrollViewDelegate>
+#import "WTImageViewer.h"
+@interface WTImageViewController : UIViewController <UIScrollViewDelegate,WTImageViewerDelegate>
 {
-    UIScrollView *myScrollView;
-    
-    
-    NSMutableArray *imageViewArray;
+
 }
 @property (nonatomic,copy) NSArray *imageUrls;
 @end

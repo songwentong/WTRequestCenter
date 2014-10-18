@@ -21,8 +21,11 @@
  */
 
 #import <UIKit/UIKit.h>
-
+@class WTURLRequestOperation;
 @interface UIButton (WTImageCache)
+
+@property (nonatomic,strong) WTURLRequestOperation *wtImageRequestOperation;
+
 
 - (void)setImageForState:(UIControlState)state
                  withURL:(NSString *)url;

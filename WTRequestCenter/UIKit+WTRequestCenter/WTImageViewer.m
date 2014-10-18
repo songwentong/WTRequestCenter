@@ -18,15 +18,15 @@
 {
     self = [self initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor greenColor];
+//        self.backgroundColor = [UIColor greenColor];
         self.imageURL = url;
-        self.imageView = [[UIImageView alloc] initWithFrame:self.bounds];
-        _imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        _imageView.contentMode = UIViewContentModeScaleAspectFit;
-        [_imageView setImageWithURL:url placeholderImage:nil finished:^(NSURLResponse *response, NSData *data, UIImage *image) {
-            NSLog(@"xxx");
-        }];
-        [self addSubview:_imageView];
+        self.imageButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _imageButton.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        _imageButton.frame = self.bounds;
+        _imageButton.contentMode = UIViewContentModeScaleAspectFit;
+        
+        [_imageButton setImageForState:UIControlStateNormal withURL:url];
+        [self addSubview:_imageButton];
     }
     return self;
 }
@@ -58,28 +58,43 @@
         CGFloat height = CGRectGetHeight(frame);
         myScrollView = [[UIScrollView alloc] initWithFrame:frame];
         myScrollView.delegate = self;
-        myScrollView.contentSize = CGSizeMake(320*width, height);
+        myScrollView.contentSize = CGSizeMake(width*[urls count], height);
         myScrollView.pagingEnabled = YES;
         [self addSubview:myScrollView];
         
         self.imageUrls = urls;
         
-        [_imageUrls enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            [_imageUrls enumerateObjectsUsingBlock:^(NSString* url, NSUInteger idx, BOOL *stop)
-             {
-                 CGRect frame = CGRectMake(320*idx, 0, 320, height);
-                 WTImageScrollView *scrollView = [[WTImageScrollView alloc] initWithFrame:frame imageURL:url];
-                 scrollView.maximumZoomScale = 4;
-                 scrollView.minimumZoomScale = 1;
-                 scrollView.delegate = self;
-                 [imageViewArray addObject:scrollView];
-                 [myScrollView addSubview:scrollView];
-             }];
-            myScrollView.backgroundColor = [UIColor redColor];
-        }];
+        [_imageUrls enumerateObjectsUsingBlock:^(NSString* url, NSUInteger idx, BOOL *stop)
+         {
+             CGRect frame = CGRectMake(320*idx, 0, width, height);
+             WTImageScrollView *scrollView = [[WTImageScrollView alloc] initWithFrame:frame imageURL:url];
+             scrollView.maximumZoomScale = 4;
+             scrollView.minimumZoomScale = 1;
+             scrollView.delegate = self;
+             [scrollView.imageButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
+             [imageViewArray addObject:scrollView];
+             [myScrollView addSubview:scrollView];
+             
+             
+         }];
+        myScrollView.backgroundColor = [UIColor blackColor];
         
     }
     return self;
+}
+
+
+-(NSUInteger)currentPageIndex
+{
+    CGPoint p = myScrollView.contentOffset;
+    NSInteger page = p.x/CGRectGetWidth(self.frame);
+    return page;
+}
+
+-(void)buttonPressed:(UIButton*)sender
+{
+    NSLog(@"%s",__func__);
+    [_delegate WTImageViewer:self pressImageWithIndex:[self currentPageIndex]];
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -96,14 +111,19 @@
 {
     
     //    NSInteger page = scrollView.contentOffset.x/scrollView.frame.size.width;
-    
-    if ([scrollView isEqual:myScrollView]) {
-        return nil;
+    if (_zoomEnable) {
+        if ([scrollView isEqual:myScrollView]) {
+            return nil;
+        }else
+        {
+            WTImageScrollView *temp = (WTImageScrollView*)scrollView;
+            return temp.imageButton;
+        }
     }else
     {
-        WTImageScrollView *temp = (WTImageScrollView*)scrollView;
-        return temp.imageView;
+        return nil;
     }
+    
     
 }
 /*

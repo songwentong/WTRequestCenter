@@ -13,8 +13,14 @@
 }
 
 -(instancetype)initWithFrame:(CGRect)frame imageURL:(NSString*)url;
-@property (nonatomic,retain) UIImageView *imageView;
+@property (nonatomic,retain) UIButton *imageButton;
 @property (nonatomic,readonly,copy) NSString *imageURL;
+@end
+@class WTImageViewer;
+@protocol WTImageViewerDelegate <NSObject>
+
+-(void)WTImageViewer:(WTImageViewer*)viewer pressImageWithIndex:(NSInteger)index;
+
 @end
 @interface WTImageViewer : UIView <UIScrollViewDelegate>
 {
@@ -23,6 +29,16 @@
     
     NSMutableArray *imageViewArray;
     
+    
+    NSMutableArray *buttonArray;
+    
 }
+@property (nonatomic) BOOL zoomEnable;
+@property (nonatomic,weak) id<WTImageViewerDelegate> delegate;
+- (instancetype)initWithFrame:(CGRect)frame urls:(NSArray*)urls;
 @property (nonatomic,copy) NSArray *imageUrls;
+-(NSUInteger)currentPageIndex;
+
+
+
 @end

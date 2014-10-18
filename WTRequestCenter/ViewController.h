@@ -11,5 +11,8 @@
 {
     UITableView *wtTableView;
     NSMutableArray *requestTypesArray;
+    
+    UITableViewCell *imageCell;
 }
+
 @end

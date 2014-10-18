@@ -332,6 +332,21 @@
                     cell.textLabel.text = text;
                 }
                     break;
+                case 3:
+                {
+                    if (!imageCell)
+                    {
+                        imageCell = [[UITableViewCell alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
+                        NSMutableArray *urls = [[NSMutableArray alloc] init];
+                        [urls addObject:@"http://d.hiphotos.baidu.com/image/pic/item/d53f8794a4c27d1e01c0f3d919d5ad6edcc438cd.jpg"];
+                        [urls addObject:@"http://e.hiphotos.baidu.com/image/pic/item/0e2442a7d933c89555c6c97ad31373f082020072.jpg"];
+                        WTImageViewer *viewer = [[ WTImageViewer alloc] initWithFrame:CGRectMake(0, 0, 320, 100) urls:urls];
+                        viewer.userInteractionEnabled = NO;
+                        [imageCell.contentView addSubview:viewer];
+
+                    }
+                    return imageCell;
+                }
                     
                 default:
                 {
@@ -376,6 +391,15 @@
 
 
 #pragma mark - UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGFloat height = 44;
+    if (indexPath.section==0 && indexPath.row==3) {
+        height = 100;
+    }
+    return height;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     

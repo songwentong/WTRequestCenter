@@ -26,28 +26,14 @@
 
 -(void)configModel
 {
-    imageViewArray = [[NSMutableArray alloc] init];
 }
 
 -(void)configView
 {
-    myScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
-    myScrollView.delegate = self;
-    CGFloat height = 500;
-    myScrollView.contentSize = CGSizeMake(320*[_imageUrls count], height);
-    myScrollView.pagingEnabled = YES;
-    [_imageUrls enumerateObjectsUsingBlock:^(NSString* url, NSUInteger idx, BOOL *stop)
-    {
-        CGRect frame = CGRectMake(320*idx, 0, 320, height);
-        WTImageScrollView *scrollView = [[WTImageScrollView alloc] initWithFrame:frame imageURL:url];
-        scrollView.maximumZoomScale = 4;
-        scrollView.minimumZoomScale = 1;
-        scrollView.delegate = self;
-        [imageViewArray addObject:scrollView];
-        [myScrollView addSubview:scrollView];
-    }];
-    myScrollView.backgroundColor = [UIColor redColor];
-    [self.view addSubview:myScrollView];
+    WTImageViewer *viewer = [[WTImageViewer alloc] initWithFrame:CGRectMake(0, 0, 320, 568) urls:_imageUrls];
+    viewer.zoomEnable = YES;
+    [self.view addSubview:viewer];
+    viewer.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -56,30 +42,14 @@
 }
 
 
-#pragma mark - UIScrollViewDelegate
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+#pragma mark - WTImageViewerDelegate
+-(void)WTImageViewer:(WTImageViewer*)viewer pressImageWithIndex:(NSInteger)index
 {
-    if ([scrollView isEqual:myScrollView]) {
-        [imageViewArray enumerateObjectsUsingBlock:^(WTImageScrollView *tempScrollView, NSUInteger idx, BOOL *stop) {
-            tempScrollView.zoomScale = 1.0;
-        }];
-    }
-    
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
 }
-- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
-{
-    
-//    NSInteger page = scrollView.contentOffset.x/scrollView.frame.size.width;
-    
-    if ([scrollView isEqual:myScrollView]) {
-        return nil;
-    }else
-    {
-        WTImageScrollView *temp = (WTImageScrollView*)scrollView;
-        return temp.imageView;
-    }
-    
-}
+
 /*
 #pragma mark - Navigation
 
