@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@interface ViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
+@interface ViewController : UIViewController <UITableViewDataSource,UITableViewDelegate,UIViewControllerTransitioningDelegate,UIViewControllerAnimatedTransitioning>
 {
     UITableView *wtTableView;
     NSMutableArray *requestTypesArray;

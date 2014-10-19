@@ -429,6 +429,7 @@
                     WTImageViewController *vc = [[WTImageViewController alloc] init];
 //                    http://t12.baidu.com/it/u=2403332987,2157329891,395,216,1,95,1,13769865750573159671&fm=89
 //                    http://img0.bdstatic.com/img/image/shouye/sygjdl-9556401172.jpg
+                    vc.transitioningDelegate = self;
                     NSMutableArray *urls = [[NSMutableArray alloc] init];
                     [urls addObject:@"http://d.hiphotos.baidu.com/image/pic/item/d53f8794a4c27d1e01c0f3d919d5ad6edcc438cd.jpg"];
                     [urls addObject:@"http://e.hiphotos.baidu.com/image/pic/item/0e2442a7d933c89555c6c97ad31373f082020072.jpg"];
@@ -463,5 +464,74 @@
 }
 
 
+#pragma mark - UIViewControllerAnimatedTransitioning
+- (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext
+{
+    return 1.5;
+}
+// This method can only  be a nop if the transition is interactive and not a percentDriven interactive transition.
+- (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext
+{
+    UIView *containerView = [transitionContext containerView];
+    
+    UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+    UIView *fromView = fromVC.view;
+    [containerView addSubview:fromView];
+    
+    
+    
+    UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+    UIView *toView = toVC.view;
+    
+    if ([toVC isKindOfClass:[WTImageViewController class]]) {
+//    present
+        [containerView addSubview:toView];
+        CGRect frame = [wtTableView convertRect:imageCell.frame toView:containerView];
+//        frame = CGRectMake(100, 300, 100, 100);
+        toView.frame = frame;
+        toView.clipsToBounds = YES;
+        
+        [UIView animateWithDuration:1.5 delay:0 options:0 animations:^{
+            toView.frame = CGRectMake(0, 0, 320, 568);
+        } completion:^(BOOL finished) {
+            if (finished) {
+                [transitionContext completeTransition:finished];
+            }
+            
+        }];
+    }else
+    {
+//    dismiss
+        [containerView addSubview:toView];
+        [containerView addSubview:fromView];
+        CGRect frame = [wtTableView convertRect:imageCell.frame toView:containerView];
+        [UIView animateWithDuration:1.5 delay:0 options:0 animations:^{
+            fromView.frame = frame;
+        } completion:^(BOOL finished) {
+            
+            if (finished) {
+                fromView.hidden = YES;
+                [transitionContext completeTransition:finished];
+            }
+        }];
+        
+    }
+    
+    
+    
+}
+
+
+#pragma mark - UIViewControllerTransitioningDelegate
+
+- (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source
+{
+    return self;
+}
+
+- (id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed
+{
+    return self;
+}
 
 @end
