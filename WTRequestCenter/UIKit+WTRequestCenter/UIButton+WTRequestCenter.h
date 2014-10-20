@@ -25,7 +25,7 @@
 @interface UIButton (WTImageCache)
 
 @property (nonatomic,strong) WTURLRequestOperation *wtImageRequestOperation;
-
+@property (nonatomic,strong) WTURLRequestOperation *wtBackGroundImageRequestOperation;
 
 - (void)setImageForState:(UIControlState)state
                  withURL:(NSString *)url;

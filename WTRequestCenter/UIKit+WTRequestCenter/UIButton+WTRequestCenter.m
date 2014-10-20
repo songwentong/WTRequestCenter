@@ -26,6 +26,18 @@
     objc_setAssociatedObject(self, @"a", wtImageRequestOperation, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
+-(WTURLRequestOperation*)wtBackGroundImageRequestOperation
+{
+    WTURLRequestOperation *operation = (WTURLRequestOperation*)objc_getAssociatedObject(self, @"b");
+    return operation;
+}
+
+-(void)setWtBackGroundImageRequestOperation:(WTURLRequestOperation *)wtBackGroundImageRequestOperation
+{
+    objc_setAssociatedObject(self, @"b", wtBackGroundImageRequestOperation, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+
 
 - (void)setImageForState:(UIControlState)state
                  withURL:(NSString *)url
@@ -88,6 +100,11 @@
                  withURL:(NSString *)url
         placeholderImage:(UIImage *)placeholderImage
 {
+    
+    if (self.wtBackGroundImageRequestOperation) {
+        [self.wtBackGroundImageRequestOperation cancel];
+        self.wtBackGroundImageRequestOperation = nil;
+    }
     [self setBackgroundImage:placeholderImage forState:state];
     
     if (!url) {
@@ -95,19 +112,18 @@
     }
     __weak UIButton *weakSelf = self;
     
-    
-    [WTRequestCenter getCacheWithURL:url parameters:nil finished:^(NSURLResponse *response, NSData *data) {
+    self.wtBackGroundImageRequestOperation = [WTRequestCenter testGetWithURL:url parameters:nil option:WTRequestCenterCachePolicyCacheElseWeb finished:^(NSURLResponse *respnse, NSData *data) {
         if (data) {
             [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
                 UIImage *image = [UIImage imageWithData:data];
                 if (image) {
-                    
                     if (weakSelf) {
                         __strong UIButton *strongSelf = weakSelf;
                         dispatch_async(dispatch_get_main_queue(), ^{
                             [strongSelf setBackgroundImage:image forState:state];
                             [strongSelf setNeedsLayout];
                         });
+
                     }
                 }
             }];
@@ -115,6 +131,7 @@
     } failed:^(NSURLResponse *response, NSError *error) {
         
     }];
+             
 }
 
 
