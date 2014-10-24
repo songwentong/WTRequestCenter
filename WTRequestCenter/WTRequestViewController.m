@@ -82,6 +82,10 @@
 
 -(void)testGet
 {
+//    [WTRequestCenter clearAllCache];
+//    [WTRequestCenter currentDiskUsage]
+//    [WTRequestCenter get]
+    
     NSString *url = @"http://b.hiphotos.baidu.com/image/pic/item/5bafa40f4bfbfbed42c3044e7bf0f736afc31f6c.jpg";
     [WTRequestCenter testGetWithURL:url
                          parameters:nil

@@ -66,27 +66,37 @@ typedef NS_ENUM(NSUInteger, WTRequestCenterCachePolicy) {
 
 
 
-//请求队列
+/*!
+    shared Call Back Queue
+ */
 +(NSOperationQueue*)sharedQueue;
-//缓存
+/*!
+    shared Cache
+ */
 +(NSURLCache*)sharedCache;
 
-/*! 清除所有缓存
- 
+/*! 
+    Clears the receiver’s cache, removing all stored cached URL responses.
 */
 +(void)clearAllCache;
 
 
-//暂时不可用,目前不会出现请求结束崩溃的现象，所以不需要
-//+(void)cancelAllRequest;
+/*!
+ @method currentDiskUsage
+ current Disk Usage
+ */
 
-//当前缓存大小
 +(NSUInteger)currentDiskUsage;
 
 //当前缓存用量，直接根据大小来调节单位的显示，KB，MB，GB，TB，PB，EB
 +(NSString*)currentDiskUsageString;
 
-//清除请求的缓存
+
+/*!
+ 根据请求清除被保存的的缓存
+ Removes the NSCachedURLResponse from the cache that is
+ stored using the given request.
+ */
 +(void)removeRequestCache:(NSURLRequest*)request;
 
 #pragma mark - 回调的声明
@@ -96,10 +106,13 @@ typedef void (^WTRequestFailedBlock)(NSURLResponse *response,NSError *error);
 typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,NSError *error);
 
 #pragma mark - DoURLRequest
+/*!
+ */
 +(void)doURLRequest:(NSURLRequest*)request
            finished:(WTRequestFinishedBlock)finished
              failed:(WTRequestFailedBlock)failed;
-
+/*!
+ */
 +(void)doURLRequest:(NSURLRequest*)request
             option:(WTRequestCenterCachePolicy)option
           finished:(WTRequestFinishedBlock)finished
@@ -109,35 +122,63 @@ typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,N
 #pragma mark - GET
 
 //普通GET
-
+/*!
+ 根据给出的url和参数执行一个GET请求，当请求成功或者失败，对应的回调
+ 将会被执行.
+ Performs an asynchronous get request of the given
+ url,parameters. When the request has completed or failed,
+ corresponding block will be executed
+ */
 +(NSURLRequest*)getWithURL:(NSString*)url
                 parameters:(NSDictionary*)parameters
                   finished:(WTRequestFinishedBlock)finished
                     failed:(WTRequestFailedBlock)failed;
 
 
-//用缓存，没有缓存就网络请求
 
+/*!
+ 根据给出的url和参数执行一个GET请求，当请求成功或者失败，对应的回调
+ 将会被执行,如果本地有缓存，将会使用缓存
+ Performs an asynchronous get request of the given
+ url,parameters. When the request has completed or failed,
+ corresponding block will be executed，is there is a local
+ response,it will be used.
+ */
 +(NSURLRequest*)getCacheWithURL:(NSString*)url
                      parameters:(NSDictionary*)parameters
                        finished:(WTRequestFinishedBlock)finished
                          failed:(WTRequestFailedBlock)failed;
 
-//GET
 
+/*!
+ 根据给出的url,参数和缓存策略执行一个GET请求，当请求成功或者失败，对应的回调
+ 将会被执行
+ Performs an asynchronous get request of the given
+ url,parameters，cache pilicy. When the request has completed or failed,
+ corresponding block will be executed，is there is a local
+ response,it will be used.
+ */
 +(NSURLRequest*)getWithURL:(NSString*)url
                 parameters:(NSDictionary *)parameters
                     option:(WTRequestCenterCachePolicy)option
                   finished:(WTRequestFinishedBlock)finished
                     failed:(WTRequestFailedBlock)failed;
 #pragma mark - POST
-//普通POST
+/*!
+ 根据给出的url，参数，执行一个POST请求，
+ 当请求执行成功或者失败，对应的回调将会被执行
+ Performs an asynchronous post request of the given
+ url,parameters. When the request has completed or failed,
+ corresponding block will be executed，is there is a local
+ response,it will be used.
+ */
 +(NSURLRequest*)postWithURL:(NSString*)url
                  parameters:(NSDictionary*)parameters
                    finished:(WTRequestFinishedBlock)finished
                      failed:(WTRequestFailedBlock)failed;
 
-//POST
+/*!
+ */
 +(NSURLRequest*)postWithURL:(NSString*)url
                  parameters:(NSDictionary *)parameters
                      option:(WTRequestCenterCachePolicy)option
@@ -148,9 +189,14 @@ typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,N
 
 
 #pragma mark - 请求的生成（一般用不到）
+/*!
+    根据URL和参数生成一个GET的请求，你不会直接用到这个方法
+ */
 +(NSURLRequest*)GETRequestWithURL:(NSString*)url
                        parameters:(NSDictionary*)parameters;
-
+/*!
+    根据URL和参数生成一个POST的请求，你不会直接用到这个方法
+ */
 +(NSURLRequest*)POSTRequestWithURL:(NSString*)url
                         parameters:(NSDictionary*)parameters;
 #pragma mark - Image
