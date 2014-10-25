@@ -51,6 +51,32 @@
     return color;
 }
 
++ (UIColor *)colorWithHexString:(NSString *)hexString alpha:(CGFloat)alpha {
+    // #rgb = #rrggbb
+    
+    if ([hexString hasPrefix:@"#"]) {
+        hexString = [hexString substringFromIndex:1];
+    }
+    
+    if ([hexString length] == 3) {
+        NSString *oneR = [hexString substringWithRange:NSMakeRange(0, 1)];
+        NSString *oneG = [hexString substringWithRange:NSMakeRange(1, 1)];
+        NSString *oneB = [hexString substringWithRange:NSMakeRange(2, 1)];
+        
+        hexString = [NSString stringWithFormat:@"%@%@%@%@%@%@", oneR, oneR, oneG, oneG, oneB, oneB];
+    }
+    
+    if ([hexString length]!=6) {
+        return nil;
+    }
+    
+    CGFloat red = [self integerValueFromHexString:[hexString substringWithRange:NSMakeRange(0, 2)]];
+    CGFloat green = [self integerValueFromHexString:[hexString substringWithRange:NSMakeRange(2, 2)]];
+    CGFloat blue = [self integerValueFromHexString:[hexString substringWithRange:NSMakeRange(4, 2)]];
+    
+    return [self colorWithRed:red green:green blue:blue alpha:alpha];
+}
+
 
 
 @end

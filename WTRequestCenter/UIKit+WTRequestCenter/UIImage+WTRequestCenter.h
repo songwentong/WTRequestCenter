@@ -8,16 +8,25 @@
 @interface UIImage (WTRequestCenter)
 
 #pragma mark - 建议的方法
-//可缓存的，自动区分本地和网络的方法，建议用这个
+/*!
+ 可缓存的，自动区分本地和网络的方法，建议用这个
+ */
 +(void)gifImageWithURL:(NSString*)url
             completion:(void(^)(UIImage* image))completion;
 
+
+/*!
+    通常不会直接用到的方法
+ */
 +(void)imageWithURL:(NSString*)url
  comelectionHandler:(void(^)(UIImage* image))comelectionHandler;
 
 
-//从Data异步创建一个Image对象
+/*!
+ 通常不会直接用到的方法，作为UIImageView和UIButton的辅助方法
+ */
 +(void)imageWithData:(NSData *)data complectionHandler:(void(^)(UIImage *image))complection;
+
 //对UIView进行快照
 + (UIImage *)snapshot:(UIView *)view;
 
