@@ -148,6 +148,16 @@ static UIImage *animatedImageWithAnimatedGIFReleasingImageSource(CGImageSourceRe
     return animatedImageWithAnimatedGIFReleasingImageSource(CGImageSourceCreateWithURL(toCF url, NULL));
 }
 
++(void)imageWithData:(NSData *)data complectionHandler:(void(^)(UIImage *image))complection
+{
+    [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
+        UIImage *image = [UIImage imageWithData:data];
+        if (complection) {
+            complection(image);
+        }
+    }];
+}
+
 +(void)gifImageWithURL:(NSString*)url completion:(void(^)(UIImage* image))completion
 {
 //    BOOL isLocal;

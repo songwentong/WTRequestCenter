@@ -15,6 +15,9 @@
 +(void)imageWithURL:(NSString*)url
  comelectionHandler:(void(^)(UIImage* image))comelectionHandler;
 
+
+//从Data异步创建一个Image对象
++(void)imageWithData:(NSData *)data complectionHandler:(void(^)(UIImage *image))complection;
 //对UIView进行快照
 + (UIImage *)snapshot:(UIView *)view;
 

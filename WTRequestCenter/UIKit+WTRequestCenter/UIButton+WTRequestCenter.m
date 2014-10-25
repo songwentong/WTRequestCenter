@@ -62,21 +62,25 @@
     
 
     WTURLRequestOperation *operation = [WTRequestCenter testGetWithURL:url parameters:nil option:WTRequestCenterCachePolicyCacheElseWeb finished:^(NSURLResponse *respnse, NSData *data) {
-        [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
-            UIImage *image = [UIImage imageWithData:data];
+        
+        [UIImage imageWithData:data complectionHandler:^(UIImage *image) {
             
             if (image) {
                 if (!weakSelf) return;
                 __strong UIButton *strongSelf = weakSelf;
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
-//                    strongSelf.image = image;
+                    //                    strongSelf.image = image;
                     [strongSelf setImage:image forState:state];
                     [strongSelf setNeedsDisplay];
                     
                 });
                 strongSelf.wtImageRequestOperation = nil;
             }
+        }];
+        [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
+//            UIImage *image = [UIImage imageWithData:data];
+            
         }];
         
     } failed:^(NSURLResponse *response, NSError *error) {
@@ -113,21 +117,22 @@
     __weak UIButton *weakSelf = self;
     
     self.wtBackGroundImageRequestOperation = [WTRequestCenter testGetWithURL:url parameters:nil option:WTRequestCenterCachePolicyCacheElseWeb finished:^(NSURLResponse *respnse, NSData *data) {
-        if (data) {
-            [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
-                UIImage *image = [UIImage imageWithData:data];
-                if (image) {
-                    if (weakSelf) {
-                        __strong UIButton *strongSelf = weakSelf;
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            [strongSelf setBackgroundImage:image forState:state];
-                            [strongSelf setNeedsLayout];
-                        });
-
-                    }
+        
+        
+        [UIImage imageWithData:data complectionHandler:^(UIImage *image) {
+            if (image) {
+                if (weakSelf) {
+                    __strong UIButton *strongSelf = weakSelf;
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [strongSelf setBackgroundImage:image forState:state];
+                        [strongSelf setNeedsLayout];
+                    });
+                    
                 }
-            }];
-        }
+            }
+
+        }];
+
     } failed:^(NSURLResponse *response, NSError *error) {
         
     }];

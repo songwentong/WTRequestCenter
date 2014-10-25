@@ -9,6 +9,7 @@
 #import "UIImageView+WTRequestCenter.h"
 #import <objc/runtime.h>
 #import "WTRequestCenterMacro.h"
+#import "UIImage+WTRequestCenter.h"
 @interface UIImageView()
 //@property (nonatomic,strong,readwrite) WTURLRequestOperation *wtImageRequestOperation;
 @end
@@ -53,8 +54,8 @@
         
         
         WTURLRequestOperation *operation = [WTRequestCenter testGetWithURL:url parameters:nil option:WTRequestCenterCachePolicyCacheElseWeb finished:^(NSURLResponse *respnse, NSData *data) {
-            [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
-                UIImage *image = [UIImage imageWithData:data];
+            
+            [UIImage imageWithData:data complectionHandler:^(UIImage *image) {
                 
                 if (image) {
                     if (!wself) return;
@@ -67,7 +68,11 @@
                     });
                     strongSelf.wtImageRequestOperation = nil;
                 }
+
             }];
+//            [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
+//                UIImage *image = [UIImage imageWithData:data];
+//                            }];
             
         } failed:^(NSURLResponse *response, NSError *error) {
             if (!wself) return;

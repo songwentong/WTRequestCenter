@@ -51,7 +51,7 @@
                   symbolName = "__25-[ViewController testGet]_block_invoke"
                   moduleName = "WTRequestCenter"
                   urlString = "file:///Users/song/https:/github.com/rs/WTRequestCenter/WTRequestCenter/ViewController.m"
-                  timestampString = "435891797.619705"
+                  timestampString = "435893045.137753"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "172"
@@ -65,7 +65,7 @@
                   symbolName = "__25-[ViewController testGet]_block_invoke"
                   moduleName = "WTRequestCenter"
                   urlString = "file:///Users/song/https:/github.com/rs/WTRequestCenter/WTRequestCenter/ViewController.m"
-                  timestampString = "435891797.620054"
+                  timestampString = "435893045.138242"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "172"
@@ -89,6 +89,52 @@
             endingLineNumber = "25"
             landmarkName = "-initWithFrame:imageURL:"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WTRequestCenter/UIKit+WTRequestCenter/UIImageView+WTRequestCenter.m"
+            timestampString = "435892849.750806"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "-setImageWithURL:placeholderImage:finished:failed:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__81-[UIImageView(WTRequestCenter) setImageWithURL:placeholderImage:finished:failed:]_block_invoke"
+                  moduleName = "WTRequestCenter"
+                  urlString = "file:///Users/song/https:/github.com/rs/WTRequestCenter/WTRequestCenter/UIKit+WTRequestCenter/UIImageView+WTRequestCenter.m"
+                  timestampString = "435893045.140654"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__81-[UIImageView(WTRequestCenter) setImageWithURL:placeholderImage:finished:failed:]_block_invoke_2"
+                  moduleName = "WTRequestCenter"
+                  urlString = "file:///Users/song/https:/github.com/rs/WTRequestCenter/WTRequestCenter/UIKit+WTRequestCenter/UIImageView+WTRequestCenter.m"
+                  timestampString = "435893045.140902"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "39">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
