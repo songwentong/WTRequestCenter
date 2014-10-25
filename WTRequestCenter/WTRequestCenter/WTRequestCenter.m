@@ -8,6 +8,14 @@
 
 #import "WTRequestCenter.h"
 #import "WTURLRequestOperation.h"
+
+
+
+//请求开始的消息
+NSString * const WTNetworkingOperationDidStartNotification = @"WTNetworkingOperationDidStartNotification";
+//请求结束的消息
+NSString * const WTNetworkingOperationDidFinishNotification = @"WTNetworkingOperationDidFinishNotification";
+
 @implementation WTRequestCenter
 
 
@@ -303,8 +311,19 @@ static NSURLCache* sharedCache = nil;
             failed:(WTRequestFailedBlock)failed
 {
     
-    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSDictionary *userInfo = @{@"request": request};
+        [[NSNotificationCenter defaultCenter] postNotificationName:WTNetworkingOperationDidStartNotification object:request userInfo:userInfo];
+    });
     [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSDictionary *userInfo = @{@"request": request};
+            [[NSNotificationCenter defaultCenter] postNotificationName:WTNetworkingOperationDidFinishNotification object:request userInfo:userInfo];
+        });
+        
+        
+        
         
         if (!connectionError) {
             NSCachedURLResponse *tempURLResponse = [[NSCachedURLResponse alloc] initWithResponse:response data:data];
@@ -338,7 +357,9 @@ static NSURLCache* sharedCache = nil;
     switch (option) {
         case WTRequestCenterCachePolicyNormal:
         {
+//            [self doURLRequest:request finished: failed:failed];
             [self doURLRequest:request finished:finished failed:failed];
+            
         }
             break;
             
@@ -348,7 +369,6 @@ static NSURLCache* sharedCache = nil;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     if (finished) {
                         finished(response.response,response.data);
-
                     }
                 });
             }else
@@ -363,6 +383,7 @@ static NSURLCache* sharedCache = nil;
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (finished) {
                 finished(response.response,response.data);
+                    
                 }
             });
         }
@@ -372,7 +393,7 @@ static NSURLCache* sharedCache = nil;
         {
             
             //          如果有本地的，也去刷新，刷新后不回调，如果没有，则用网络的
-            
+
             if (response) {
                 
                 dispatch_async(dispatch_get_main_queue(), ^{

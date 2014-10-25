@@ -70,9 +70,9 @@
     [array enumerateObjectsUsingBlock:^(NSString *url, NSUInteger idx, BOOL *stop) {
         [WTRequestCenter getWithURL:url parameters:nil option:WTRequestCenterCachePolicyNormal finished:^(NSURLResponse *respnse, NSData *data) {
 //            NSLog(@"%@",respnse.URL);
-            NSLog(@"finished:%@",respnse.URL);
+//            NSLog(@"finished:%@",respnse.URL);
         } failed:^(NSURLResponse *response, NSError *error) {
-            NSLog(@"failed:%@",response.URL);
+//            NSLog(@"failed:%@",response.URL);
         }];
     }];
     

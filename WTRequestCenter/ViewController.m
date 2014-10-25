@@ -63,9 +63,13 @@
 //    查看缓存（Cache）用量,单位是byte
 //    The current size of the receiver’s on-disk cache, in bytes.
 //    NSLog(@"缓存用量  %@",[WTRequestCenter currentDiskUsageString]);
+    
+    
+    
     [self configModel];
     [self configView];
     [self performSelector:@selector(takeSnapShot) withObject:nil afterDelay:1];
+    [[WTNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
 }
 
 -(void)takeSnapShot

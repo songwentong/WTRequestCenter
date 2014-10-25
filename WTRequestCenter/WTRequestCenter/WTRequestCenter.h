@@ -61,6 +61,8 @@ typedef NS_ENUM(NSUInteger, WTRequestCenterCachePolicy) {
     WTRequestCenterCachePolicyCacheAndWeb
 };
 
+
+
 @interface WTRequestCenter : NSObject
 
 
@@ -107,11 +109,13 @@ typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,N
 
 #pragma mark - DoURLRequest
 /*!
+ 执行一个请求，一般不会直接用到这个方法
  */
 +(void)doURLRequest:(NSURLRequest*)request
            finished:(WTRequestFinishedBlock)finished
              failed:(WTRequestFailedBlock)failed;
 /*!
+ 执行一个请求，一般不会直接用到这个方法
  */
 +(void)doURLRequest:(NSURLRequest*)request
             option:(WTRequestCenterCachePolicy)option
@@ -258,3 +262,18 @@ typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,N
                                 finished:(WTRequestFinishedBlock)finished
                                   failed:(WTRequestFailedBlock)failed;
 @end
+
+///--------------------
+/// @name Notifications
+///--------------------
+
+
+/**
+ Posted when an operation begins executing.
+ */
+extern NSString * const WTNetworkingOperationDidStartNotification;
+
+/**
+ Posted when an operation finishes.
+ */
+extern NSString * const WTNetworkingOperationDidFinishNotification;

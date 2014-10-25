@@ -33,5 +33,6 @@
 #import "UIWebView+WTRequestCenter.h"
 #import "UIAlertView+WTRequestCenter.h"
 #import "WTImageViewer.h"
+#import "WTNetworkActivityIndicatorManager.h"
 
 #endif

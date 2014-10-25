@@ -40,9 +40,10 @@
 		E49806CF19EEBC9F00705C19 /* WTWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E49806CD19EEBC9F00705C19 /* WTWebViewController.m */; };
 		E49806D019EEBC9F00705C19 /* WTWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E49806CE19EEBC9F00705C19 /* WTWebViewController.xib */; };
 		E4AE9C7219F325C200B22B30 /* WTImageViewer.m in Sources */ = {isa = PBXBuildFile; fileRef = E4AE9C7119F325C200B22B30 /* WTImageViewer.m */; };
+		E4B2251A19FAAB8A008DC532 /* WTNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E4B2251919FAAB8A008DC532 /* WTNetworkActivityIndicatorManager.m */; };
 		E4BC81C5199E3415008ABB91 /* UIDevice+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BC81C4199E3415008ABB91 /* UIDevice+WTRequestCenter.m */; };
 		E4DBC944197D14F3004F9393 /* WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E4DBC943197D14F3004F9393 /* WTRequestCenter.m */; };
-		E4FB6C38198BC0A000138FE0 /* WTURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E4FB6C37198BC0A000138FE0 /* WTURLSessionManager.m */; };
+		E4DE7B3619FB23E900EBDC89 /* WTURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E4DE7B3419FB23E900EBDC89 /* WTURLSessionManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,12 +110,14 @@
 		E49806CE19EEBC9F00705C19 /* WTWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTWebViewController.xib; sourceTree = "<group>"; };
 		E4AE9C7019F325C200B22B30 /* WTImageViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTImageViewer.h; sourceTree = "<group>"; };
 		E4AE9C7119F325C200B22B30 /* WTImageViewer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTImageViewer.m; sourceTree = "<group>"; };
+		E4B2251819FAAB8A008DC532 /* WTNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
+		E4B2251919FAAB8A008DC532 /* WTNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
 		E4BC81C3199E3415008ABB91 /* UIDevice+WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+WTRequestCenter.h"; sourceTree = "<group>"; };
 		E4BC81C4199E3415008ABB91 /* UIDevice+WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+WTRequestCenter.m"; sourceTree = "<group>"; };
 		E4DBC942197D14F3004F9393 /* WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTRequestCenter.h; sourceTree = "<group>"; };
 		E4DBC943197D14F3004F9393 /* WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTRequestCenter.m; sourceTree = "<group>"; };
-		E4FB6C36198BC0A000138FE0 /* WTURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTURLSessionManager.h; sourceTree = "<group>"; };
-		E4FB6C37198BC0A000138FE0 /* WTURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTURLSessionManager.m; sourceTree = "<group>"; };
+		E4DE7B3419FB23E900EBDC89 /* WTURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTURLSessionManager.m; sourceTree = "<group>"; };
+		E4DE7B3519FB23E900EBDC89 /* WTURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTURLSessionManager.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +173,8 @@
 				A3B7869E19D79B820093CC4E /* UIWebView+WTRequestCenter.m */,
 				E141B5D219EFDD8D005D25B6 /* UIAlertView+WTRequestCenter.h */,
 				E141B5D319EFDD8D005D25B6 /* UIAlertView+WTRequestCenter.m */,
+				E4B2251819FAAB8A008DC532 /* WTNetworkActivityIndicatorManager.h */,
+				E4B2251919FAAB8A008DC532 /* WTNetworkActivityIndicatorManager.m */,
 				E4AE9C7019F325C200B22B30 /* WTImageViewer.h */,
 				E4AE9C7119F325C200B22B30 /* WTImageViewer.m */,
 			);
@@ -266,7 +271,6 @@
 			isa = PBXGroup;
 			children = (
 				E4FB6C34198BC02700138FE0 /* NSURLRequest */,
-				E4FB6C35198BC06A00138FE0 /* NSURLSession */,
 			);
 			name = WTRequestCenter;
 			path = WTRequestCenter/WTRequestCenter;
@@ -275,6 +279,8 @@
 		E4FB6C34198BC02700138FE0 /* NSURLRequest */ = {
 			isa = PBXGroup;
 			children = (
+				E4DE7B3419FB23E900EBDC89 /* WTURLSessionManager.m */,
+				E4DE7B3519FB23E900EBDC89 /* WTURLSessionManager.h */,
 				A3B40EB219B055310060F158 /* WTRequestCenterMacro.h */,
 				E4DBC942197D14F3004F9393 /* WTRequestCenter.h */,
 				E4DBC943197D14F3004F9393 /* WTRequestCenter.m */,
@@ -286,15 +292,6 @@
 				A3B40EAE19B033450060F158 /* WTURLRequestOperation.m */,
 			);
 			name = NSURLRequest;
-			sourceTree = "<group>";
-		};
-		E4FB6C35198BC06A00138FE0 /* NSURLSession */ = {
-			isa = PBXGroup;
-			children = (
-				E4FB6C36198BC0A000138FE0 /* WTURLSessionManager.h */,
-				E4FB6C37198BC0A000138FE0 /* WTURLSessionManager.m */,
-			);
-			name = NSURLSession;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -411,10 +408,10 @@
 				E4440D87197A01B1001E6D88 /* ViewController.m in Sources */,
 				E4DBC944197D14F3004F9393 /* WTRequestCenter.m in Sources */,
 				A3B4DD66199C9AA6009F2D24 /* UIColor+WTRequestCenter.m in Sources */,
+				E4DE7B3619FB23E900EBDC89 /* WTURLSessionManager.m in Sources */,
 				E4AE9C7219F325C200B22B30 /* WTImageViewer.m in Sources */,
 				A3B4A7C5199AF88400A8BAF0 /* UIImage+WTRequestCenter.m in Sources */,
 				E1632C8C19EE02EB00089FFA /* WTRequestViewController.m in Sources */,
-				E4FB6C38198BC0A000138FE0 /* WTURLSessionManager.m in Sources */,
 				E49806CF19EEBC9F00705C19 /* WTWebViewController.m in Sources */,
 				E4BC81C5199E3415008ABB91 /* UIDevice+WTRequestCenter.m in Sources */,
 				E4440D81197A01B1001E6D88 /* AppDelegate.m in Sources */,
@@ -422,6 +419,7 @@
 				E4440D7D197A01B1001E6D88 /* main.m in Sources */,
 				A33099C21993131400BC3774 /* WTDataSaver.m in Sources */,
 				A3B40EAC19B028350060F158 /* WTDataWriteOpeation.m in Sources */,
+				E4B2251A19FAAB8A008DC532 /* WTNetworkActivityIndicatorManager.m in Sources */,
 				E141B5D419EFDD8D005D25B6 /* UIAlertView+WTRequestCenter.m in Sources */,
 				A3B70F641988DC5B002776F4 /* UIButton+WTRequestCenter.m in Sources */,
 				A3B40EAF19B033450060F158 /* WTURLRequestOperation.m in Sources */,
