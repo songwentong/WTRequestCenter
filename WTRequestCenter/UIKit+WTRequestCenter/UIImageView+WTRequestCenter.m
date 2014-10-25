@@ -39,7 +39,7 @@
 - (void)setImageWithURL:(NSString *)url placeholderImage:(UIImage *)placeholder
 {
     
-    [self setImageWithURL:url placeholderImage:placeholder finished:nil];
+    [self setImageWithURL:url placeholderImage:placeholder finished:nil failed:nil];
 }
 -(void)setImageWithURL:(NSString *)url placeholderImage:(UIImage *)placeholder finished:(WTRequestFinishedBlock)finished failed:(WTRequestFailedBlock)failed
 {
@@ -72,6 +72,9 @@
         } failed:^(NSURLResponse *response, NSError *error) {
             if (!wself) return;
             __strong UIImageView *strongSelf = wself;
+            if (failed) {
+                failed(self.wtImageRequestOperation.response,self.wtImageRequestOperation.error);
+            }
             strongSelf.wtImageRequestOperation = nil;
         }];
         
@@ -81,47 +84,7 @@
         
     }
 }
--(void)setImageWithURL:(NSString*)url placeholderImage:(UIImage *)placeholder finished:(void (^)(NSURLResponse* response,NSData *data,UIImage *image))finished
-{
 
-    if (self.wtImageRequestOperation) {
-        [self.wtImageRequestOperation cancel];
-        self.wtImageRequestOperation = nil;
-    }
-    self.image = placeholder;
-    if (url) {
-        __weak UIImageView *wself    = self;
-        
-
-        WTURLRequestOperation *operation = [WTRequestCenter testGetWithURL:url parameters:nil option:WTRequestCenterCachePolicyCacheElseWeb finished:^(NSURLResponse *respnse, NSData *data) {
-            [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
-                UIImage *image = [UIImage imageWithData:data];
-                
-                if (image) {
-                    if (!wself) return;
-                    __strong UIImageView *strongSelf = wself;
-                    
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        strongSelf.image = image;
-                        [strongSelf setNeedsDisplay];
-                        
-                    });
-                    strongSelf.wtImageRequestOperation = nil;
-                }
-            }];
-            
-        } failed:^(NSURLResponse *response, NSError *error) {
-            if (!wself) return;
-            __strong UIImageView *strongSelf = wself;
-            strongSelf.wtImageRequestOperation = nil;
-        }];
-        
-        self.wtImageRequestOperation = operation;
-    }else
-    {
-        
-    }
-}
 
 
 

@@ -28,6 +28,6 @@
 //下载图片＋placeholder
 - (void)setImageWithURL:(NSString*)url
        placeholderImage:(UIImage *)placeholder;
+-(void)setImageWithURL:(NSString *)url placeholderImage:(UIImage *)placeholder finished:(WTRequestFinishedBlock)finished failed:(WTRequestFailedBlock)failed;
 
--(void)setImageWithURL:(NSString*)url placeholderImage:(UIImage *)placeholder finished:(void (^)(NSURLResponse* response,NSData *data,UIImage *image))finished;
 @end
