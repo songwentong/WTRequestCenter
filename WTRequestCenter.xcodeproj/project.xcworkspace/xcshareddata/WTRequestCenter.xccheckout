@@ -14,7 +14,7 @@
 		<string>https://github.com/swtlovewtt/WTRequestCenter.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>WTRequestCenter.xcodeproj/project.xcworkspace</string>
+	<string>WTRequestCenter.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>A15136FB1874570C8EFAB67292BBBB8F333A64C0</key>

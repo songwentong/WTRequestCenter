@@ -70,6 +70,9 @@
     [self configView];
     [self performSelector:@selector(takeSnapShot) withObject:nil afterDelay:1];
     [[WTNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
+    
+    
+    
 }
 
 -(void)takeSnapShot
