@@ -103,7 +103,7 @@ typedef NS_ENUM(NSUInteger, WTRequestCenterCachePolicy) {
 
 #pragma mark - 回调的声明
 //完成回调
-typedef void (^WTRequestFinishedBlock)(NSURLResponse *respnse,NSData *data);
+typedef void (^WTRequestFinishedBlock)(NSURLResponse *response,NSData *data);
 typedef void (^WTRequestFailedBlock)(NSURLResponse *response,NSError *error);
 typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,NSError *error);
 
