@@ -61,7 +61,7 @@
     __weak UIButton *weakSelf = self;
     
 
-    WTURLRequestOperation *operation = [WTRequestCenter testGetWithURL:url parameters:nil option:WTRequestCenterCachePolicyCacheElseWeb finished:^(NSURLResponse *respnse, NSData *data) {
+    WTURLRequestOperation *operation = [WTRequestCenter testGetWithURL:url parameters:nil option:WTRequestCenterCachePolicyCacheElseWeb finished:^(NSURLResponse *response, NSData *data) {
         
         [UIImage imageWithData:data complectionHandler:^(UIImage *image) {
             
@@ -116,7 +116,7 @@
     }
     __weak UIButton *weakSelf = self;
     
-    self.wtBackGroundImageRequestOperation = [WTRequestCenter testGetWithURL:url parameters:nil option:WTRequestCenterCachePolicyCacheElseWeb finished:^(NSURLResponse *respnse, NSData *data) {
+    self.wtBackGroundImageRequestOperation = [WTRequestCenter testGetWithURL:url parameters:nil option:WTRequestCenterCachePolicyCacheElseWeb finished:^(NSURLResponse *response, NSData *data) {
         
         
         [UIImage imageWithData:data complectionHandler:^(UIImage *image) {

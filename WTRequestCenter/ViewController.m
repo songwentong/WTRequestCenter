@@ -172,7 +172,7 @@
     {
         NSString *string = [NSString stringWithFormat:@"本次数据接收量：%d,当前收到的总数据量：%lld,期望的总数据量：%lld",bytesRead,totalBytesRead,totalBytesExpectedToRead];
         NSLog(@"%@",string);
-    } finished:^(NSURLResponse *respnse, NSData *data) {
+    } finished:^(NSURLResponse *response, NSData *data) {
         
     } failed:^(NSURLResponse *response, NSError *error) {
         
@@ -205,7 +205,7 @@
     [WTRequestCenter postWithURL:url
                       parameters:parameters
                           option:WTRequestCenterCachePolicyCacheElseWeb
-                        finished:^(NSURLResponse *respnse, NSData *data) {
+                        finished:^(NSURLResponse *response, NSData *data) {
         NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"%@",string);
     }failed:^(NSURLResponse *response, NSError *error) {

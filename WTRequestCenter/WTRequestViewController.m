@@ -68,9 +68,9 @@
     [array addObject:@"http://image.baidu.com/channel/star/柳岩"];
     
     [array enumerateObjectsUsingBlock:^(NSString *url, NSUInteger idx, BOOL *stop) {
-        [WTRequestCenter getWithURL:url parameters:nil option:WTRequestCenterCachePolicyNormal finished:^(NSURLResponse *respnse, NSData *data) {
-//            NSLog(@"%@",respnse.URL);
-//            NSLog(@"finished:%@",respnse.URL);
+        [WTRequestCenter getWithURL:url parameters:nil option:WTRequestCenterCachePolicyNormal finished:^(NSURLResponse *response, NSData *data) {
+//            NSLog(@"%@",response.URL);
+//            NSLog(@"finished:%@",response.URL);
         } failed:^(NSURLResponse *response, NSError *error) {
 //            NSLog(@"failed:%@",response.URL);
         }];
@@ -95,7 +95,7 @@
      {
          NSString *string = [NSString stringWithFormat:@"本次数据接收量：%d,当前收到的总数据量：%lld,期望的总数据量：%lld",bytesRead,totalBytesRead,totalBytesExpectedToRead];
          NSLog(@"%@",string);
-     } finished:^(NSURLResponse *respnse, NSData *data) {
+     } finished:^(NSURLResponse *response, NSData *data) {
          
      } failed:^(NSURLResponse *response, NSError *error) {
          
@@ -128,7 +128,7 @@
     [WTRequestCenter postWithURL:url
                       parameters:parameters
                           option:WTRequestCenterCachePolicyCacheElseWeb
-                        finished:^(NSURLResponse *respnse, NSData *data) {
+                        finished:^(NSURLResponse *response, NSData *data) {
                             NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
                             NSLog(@"%@",string);
                         }failed:^(NSURLResponse *response, NSError *error) {
