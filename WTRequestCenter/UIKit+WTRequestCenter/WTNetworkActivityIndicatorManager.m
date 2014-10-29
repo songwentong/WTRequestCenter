@@ -39,7 +39,7 @@
     [[NSNotificationCenter defaultCenter] addObserverForName:WTNetworkingOperationDidStartNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
 //        if ([[[self class] requestFromNotification:note] URL]) {
         
-                NSLog(@"%ld,+1",_activityCount);
+
             [self incrementActivityCount];
 
 //        }
@@ -50,7 +50,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserverForName:WTNetworkingOperationDidFinishNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
 //        if ([[[self class] requestFromNotification:note] URL]) {
-        NSLog(@"%ld,-1",_activityCount);
+
             [self decrementActivityCount];
 //        }
     }];
@@ -95,7 +95,7 @@
 }
 
 - (BOOL)isNetworkActivityIndicatorVisible {
-    NSLog(@"request count:%d",_activityCount);
+
     return self.activityCount > 0;
 }
 - (void)updateNetworkActivityIndicatorVisibilityDelayed {
