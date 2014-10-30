@@ -107,20 +107,6 @@ typedef void (^WTRequestFinishedBlock)(NSURLResponse *response,NSData *data);
 typedef void (^WTRequestFailedBlock)(NSURLResponse *response,NSError *error);
 typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,NSError *error);
 
-#pragma mark - DoURLRequest
-/*!
- 执行一个请求，一般不会直接用到这个方法
- */
-+(void)doURLRequest:(NSURLRequest*)request
-           finished:(WTRequestFinishedBlock)finished
-             failed:(WTRequestFailedBlock)failed;
-/*!
- 执行一个请求，一般不会直接用到这个方法
- */
-+(void)doURLRequest:(NSURLRequest*)request
-            option:(WTRequestCenterCachePolicy)option
-          finished:(WTRequestFinishedBlock)finished
-            failed:(WTRequestFailedBlock)failed;
 
 //requestFailed
 #pragma mark - GET
