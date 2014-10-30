@@ -59,6 +59,8 @@
     NSString *str = [self yArray][animationIndex];
     frame.origin.y = [str floatValue];
 
+    
+    /*
     [UIView animateWithDuration:1.2 delay:0.1 options:UIViewAnimationOptionCurveEaseInOut|UIViewAnimationOptionBeginFromCurrentState animations:^{
         
         animateView.frame = frame;
@@ -67,11 +69,22 @@
 
         [self startAnimation];
     }];
+     */
     
-//    CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"frame"];
+
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"frame"];
+    animation.timingFunction = [CAMediaTimingFunction functionWithControlPoints:1 :0 :1 :0];
+    animation.duration = 1.0;
+    animation.fromValue = [NSValue valueWithCGRect:animateView.frame];
+    animation.toValue = [NSValue valueWithCGRect:frame];
+    [animateView.layer addAnimation:animation forKey:@"aa"];
+    animation.delegate = self;
     
     
-    
+}
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+    [self startAnimation];
 }
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
