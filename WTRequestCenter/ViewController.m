@@ -12,6 +12,7 @@
 #import "WTRequestViewController.h"
 #import "WTWebViewController.h"
 #import "WTImageViewController.h"
+#import "RulerView.h"
 @interface ViewController ()
 
 @end
@@ -28,41 +29,6 @@
 //    [WTRequestCenter setExpireTimeInterval:0];
     NSLog(@"%@",NSHomeDirectory());
     
-//    NSLog(@"uuid:%@",[UIDevice WTUUID]);
-    
-//    NSLog(@"%@",[NSBundle mainBundle].executableArchitectures);
-    
-//    GET请求
-//    [self get];
-//    [self testGet];
-    
-//    POST请求
-//    [self post];
-//    下载图片
-//    [self loadImage];
-//    [WTRequestCenter cancelAllRequest];
-//    gif
-//    [self loadGif];
-    
-//    [self gifButton];
-
-//    存取数据
-//    [self saveAndWrite];
-
-    
-//    [self testWebView];
-    
-    
-    
-    
-//    [WTRequestCenter clearAllCache];
-//    查看内存用量 单位是byte
-//    Returns the current size of the receiver’s in-memory cache, in bytes.
-//    NSLog(@"当前内存用量  %u KB",[[WTRequestCenter sharedCache] currentMemoryUsage]/1024);
-    
-//    查看缓存（Cache）用量,单位是byte
-//    The current size of the receiver’s on-disk cache, in bytes.
-//    NSLog(@"缓存用量  %@",[WTRequestCenter currentDiskUsageString]);
     
     
     
@@ -71,6 +37,9 @@
     [self performSelector:@selector(takeSnapShot) withObject:nil afterDelay:1];
     [[WTNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     
+    RulerView *view = [[RulerView alloc] initWithFrame:self.view.bounds];
+    view.userInteractionEnabled = NO;
+    [self.view addSubview:view];
     
     
 }
@@ -110,7 +79,7 @@
     
     
     wtTableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
-    wtTableView.frame = CGRectMake(0, 0, 320, [UIDevice screenHeight]-64);
+    wtTableView.frame = CGRectMake(40, 0, 320-40, [UIDevice screenHeight]-64);
     [self.view addSubview:wtTableView];
     wtTableView.dataSource = self;
     wtTableView.delegate = self;
