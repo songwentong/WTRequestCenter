@@ -178,17 +178,7 @@ typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,N
 
 
 
-#pragma mark - 请求的生成（一般用不到）
-/*!
-    根据URL和参数生成一个GET的请求，你不会直接用到这个方法
- */
-+(NSURLRequest*)GETRequestWithURL:(NSString*)url
-                       parameters:(NSDictionary*)parameters;
-/*!
-    根据URL和参数生成一个POST的请求，你不会直接用到这个方法
- */
-+(NSURLRequest*)POSTRequestWithURL:(NSString*)url
-                        parameters:(NSDictionary*)parameters;
+
 #pragma mark - Image
 //图片上传  Upload
 +(void)upLoadImageWithURL:(NSString*)url
