@@ -73,11 +73,12 @@
     
 
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position"];
-    animation.timingFunction = [CAMediaTimingFunction functionWithControlPoints:1 :0 :1 :0];
+    animation.timingFunction = [CAMediaTimingFunction functionWithControlPoints:0.5 :0.15 :0.85 :0.5];
     animation.duration = 1.0;
     animation.fromValue = [NSValue valueWithCGPoint:animateView.center];
     animation.toValue = [NSValue valueWithCGPoint:CGPointMake(20, frame.origin.y)];
-    
+    animation.removedOnCompletion = NO;
+    animation.fillMode = kCAFillModeBoth;
     animation.delegate = self;
     [animateView.layer addAnimation:animation forKey:@"aa"];
     
