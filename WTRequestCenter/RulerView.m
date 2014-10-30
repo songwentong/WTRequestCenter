@@ -17,6 +17,7 @@
 //        self.backgroundColor = [UIColor redColor];
         self.backgroundColor = [UIColor clearColor];
         
+        [self configModel];
         
         [self configView];
         
@@ -25,6 +26,11 @@
     return self;
 }
 
+
+-(void)configModel
+{
+    animationIndex = 0;
+}
 
 -(void)configView
 {
@@ -35,34 +41,25 @@
     
 }
 
+-(NSArray*)yArray
+{
+    return @[@"100",@"300",@"100",@"120",@"200",@"80",@"305",@"50",@"250",@"100",];
+}
+
 -(void)startAnimation
 {
 
-    NSTimeInterval duration = (random()%100)/100.0*1.0 + 0.3;
-    
-    
-    CGFloat randomNumber = (random()%100)/100.0;
 
-//    NSLog(@"duration:%f",duration);
     CGRect frame = animateView.frame;
-    CGFloat height = CGRectGetHeight(self.frame);
-    
-    
-    
-    if (frame.origin.y<height/2) {
-        frame.origin.y = height * (randomNumber*0.3+0.6);
-    }else
-    {
-        frame.origin.y = height * (randomNumber*0.2+0.2);
+    CGFloat speed = 100;
+    animationIndex = animationIndex +1;
+    if (animationIndex == [[self yArray] count]-1) {
+        animationIndex = 0;
     }
-    
-//    frame.origin.y = height*0.5 + randomNumber*randomNumber*randomNumber * height*0.5;
-    
-    randomNumber = (random()%100)/100.0;
-    CGFloat speed = 240.0 * (randomNumber*0.5+0.9);
-    
-    duration = abs(frame.origin.y - animateView.frame.origin.y)/speed;
-    [UIView animateWithDuration:duration delay:0.05 options:UIViewAnimationOptionCurveEaseInOut|UIViewAnimationOptionBeginFromCurrentState animations:^{
+    NSString *str = [self yArray][animationIndex];
+    frame.origin.y = [str floatValue];
+
+    [UIView animateWithDuration:1.2 delay:0.1 options:UIViewAnimationOptionCurveEaseInOut|UIViewAnimationOptionBeginFromCurrentState animations:^{
         
         animateView.frame = frame;
     } completion:^(BOOL finished) {
@@ -70,6 +67,11 @@
 
         [self startAnimation];
     }];
+    
+//    CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"frame"];
+    
+    
+    
 }
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

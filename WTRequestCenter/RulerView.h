@@ -10,6 +10,8 @@
 
 @interface RulerView : UIView
 {
+    
+    NSInteger animationIndex;
     UIView *animateView;
 }
 @end
