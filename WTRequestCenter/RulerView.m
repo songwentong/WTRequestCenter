@@ -72,14 +72,14 @@
      */
     
 
-    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"frame"];
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position"];
     animation.timingFunction = [CAMediaTimingFunction functionWithControlPoints:1 :0 :1 :0];
     animation.duration = 1.0;
-    animation.fromValue = [NSValue valueWithCGRect:animateView.frame];
-    animation.toValue = [NSValue valueWithCGRect:frame];
-    [animateView.layer addAnimation:animation forKey:@"aa"];
-    animation.delegate = self;
+    animation.fromValue = [NSValue valueWithCGPoint:animateView.center];
+    animation.toValue = [NSValue valueWithCGPoint:CGPointMake(20, frame.origin.y)];
     
+    animation.delegate = self;
+    [animateView.layer addAnimation:animation forKey:@"aa"];
     
 }
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
