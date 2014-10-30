@@ -62,53 +62,14 @@ typedef NS_ENUM(NSUInteger, WTRequestCenterCachePolicy) {
 };
 
 
-
-@interface WTRequestCenter : NSObject
-
-
-
-
-/*!
-    shared Call Back Queue
- */
-+(NSOperationQueue*)sharedQueue;
-/*!
-    shared Cache
- */
-+(NSURLCache*)sharedCache;
-
-/*! 
-    Clears the receiver’s cache, removing all stored cached URL responses.
-*/
-+(void)clearAllCache;
-
-
-/*!
- @method currentDiskUsage
- current Disk Usage
- */
-
-+(NSUInteger)currentDiskUsage;
-
-//当前缓存用量，直接根据大小来调节单位的显示，KB，MB，GB，TB，PB，EB
-+(NSString*)currentDiskUsageString;
-
-
-/*!
- 根据请求清除被保存的的缓存
- Removes the NSCachedURLResponse from the cache that is
- stored using the given request.
- */
-+(void)removeRequestCache:(NSURLRequest*)request;
-
-#pragma mark - 回调的声明
-//完成回调
+//回调声明
 typedef void (^WTRequestFinishedBlock)(NSURLResponse *response,NSData *data);
 typedef void (^WTRequestFailedBlock)(NSURLResponse *response,NSError *error);
 typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,NSError *error);
 
+@interface WTRequestCenter : NSObject
 
-//requestFailed
+
 #pragma mark - GET
 
 //普通GET
@@ -177,7 +138,38 @@ typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,N
 
 
 
+/*!
+ shared Call Back Queue
+ */
++(NSOperationQueue*)sharedQueue;
+/*!
+ shared Cache
+ */
++(NSURLCache*)sharedCache;
 
+/*!
+ Clears the receiver’s cache, removing all stored cached URL responses.
+ */
++(void)clearAllCache;
+
+
+/*!
+ @method currentDiskUsage
+ current Disk Usage
+ */
+
++(NSUInteger)currentDiskUsage;
+
+//当前缓存用量，直接根据大小来调节单位的显示，KB，MB，GB，TB，PB，EB
++(NSString*)currentDiskUsageString;
+
+
+/*!
+ 根据请求清除被保存的的缓存
+ Removes the NSCachedURLResponse from the cache that is
+ stored using the given request.
+ */
++(void)removeRequestCache:(NSURLRequest*)request;
 
 #pragma mark - Image
 //图片上传  Upload
