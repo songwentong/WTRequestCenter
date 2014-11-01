@@ -34,18 +34,41 @@
 
 -(void)configView
 {
-    animateView = [[UIView alloc] initWithFrame:CGRectMake(leftMargin+7, 120, 2, 15)];
-    animateView.backgroundColor = [UIColor WTcolorWithRed:58 green:181 blue:243 alpha:1];
+    
+//    33 202 206
+    
+    UIColor *blueColor = [UIColor WTcolorWithRed:81 green:200 blue:236];
+    
+    animateView = [[UIView alloc] initWithFrame:CGRectMake(leftMargin+7, 120, 4, 15)];
+    animateView.backgroundColor = blueColor;
     [self addSubview:animateView];
     
+    
+    animateView2 = [[UIView alloc] initWithFrame:CGRectMake(leftMargin+1, 150, 4, 4)];
+    [self addSubview:animateView2];
+    animateView2.backgroundColor = blueColor;
+    
+    animateView3 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 4, 4)];
+    [self addSubview:animateView3];
+    animateView3.backgroundColor = blueColor;
     
 }
 
 -(NSArray*)yArray
 {
-    return @[@"100",@"300",@"100",@"120",@"200",@"80",@"305",@"50",@"250",@"100",];
+    return @[@"100",@"300",@"100",@"120",@"200",@"80",@"305",@"150",@"250",@"100",];
 }
 
+-(NSArray*)yArray2
+{
+    return @[@"240",@"100",@"350",@"100",@"140",@"400",@"80",@"380",@"80",@"240",];
+}
+
+
+-(NSArray*)yArray3
+{
+    return @[@"150",@"360",@"100",@"80",@"460",@"90",@"70",@"280",@"350",@"150",];
+}
 -(void)startAnimation
 {
 
@@ -57,45 +80,72 @@
     }
     NSString *str = [self yArray][animationIndex];
     frame.origin.y = [str floatValue];
-
-    
-
-/*
-    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position"];
-    animation.timingFunction = [CAMediaTimingFunction functionWithControlPoints:0.5 :0.5 :0.5 :0.5];
-    animation.duration = 1.0;
-    animation.fromValue = [NSValue valueWithCGPoint:animateView.center];
-    animation.toValue = [NSValue valueWithCGPoint:CGPointMake(20, frame.origin.y)];
-
-    animation.fillMode = kCAFillModeBoth;
-    animation.removedOnCompletion = NO;
-    animation.delegate = self;
-    [animateView.layer addAnimation:animation forKey:nil];
-    */
     
     CAKeyframeAnimation *keyFrameAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     NSMutableArray *values = [[NSMutableArray alloc] init];
     [[self yArray] enumerateObjectsUsingBlock:^(NSString *string, NSUInteger idx, BOOL *stop) {
-        CGPoint p = CGPointMake(20, [string floatValue]);
+        CGPoint p = CGPointMake(leftMargin+6, [string floatValue]);
         NSValue *value = [NSValue valueWithCGPoint:p];
         [values addObject:value];
     }];
     
+    
+    
     NSMutableArray *timingFunctions = [NSMutableArray new];
     [[self yArray] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-//        CAMediaTimingFunction* timingFunction = [CAMediaTimingFunction functionWithControlPoints:0.2 :0.1 :0.8 :0.9];
-        CAMediaTimingFunction *timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        CAMediaTimingFunction* timingFunction = [CAMediaTimingFunction functionWithControlPoints:0.4 :0.3 :0.6 :0.7];
+        timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
         [timingFunctions addObject:timingFunction];
     }];
     keyFrameAnimation.timingFunctions = timingFunctions;
     
-    keyFrameAnimation.duration = 8;
+    keyFrameAnimation.duration = 12;
     keyFrameAnimation.values = values;
     keyFrameAnimation.fillMode = kCAFillModeBoth;
     keyFrameAnimation.removedOnCompletion = NO;
     keyFrameAnimation.delegate = self;
     [animateView.layer addAnimation:keyFrameAnimation forKey:nil];
+    
+    
+    
+    
+    
+    
+    CAKeyframeAnimation *keyFrameAnimation2 = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    [values removeAllObjects];
+    [[self yArray2] enumerateObjectsUsingBlock:^(NSString *string, NSUInteger idx, BOOL *stop) {
+        CGPoint p = CGPointMake(leftMargin+2, [string floatValue]);
+        NSValue *value = [NSValue valueWithCGPoint:p];
+        [values addObject:value];
+    }];
+    keyFrameAnimation2.timingFunctions = timingFunctions;
+    
+    keyFrameAnimation2.duration = 12;
+    keyFrameAnimation2.values = values;
+    keyFrameAnimation2.fillMode = kCAFillModeBoth;
+    keyFrameAnimation2.removedOnCompletion = NO;
+    [animateView2.layer addAnimation:keyFrameAnimation2 forKey:nil];
+
+    
+    
+    
+    CAKeyframeAnimation *keyFrameAnimation3 = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    [values removeAllObjects];
+    [[self yArray3] enumerateObjectsUsingBlock:^(NSString *string, NSUInteger idx, BOOL *stop) {
+        CGPoint p = CGPointMake(leftMargin+10, [string floatValue]);
+        NSValue *value = [NSValue valueWithCGPoint:p];
+        [values addObject:value];
+    }];
+    keyFrameAnimation3.timingFunctions = timingFunctions;
+    
+    keyFrameAnimation3.duration = 12;
+    keyFrameAnimation3.values = values;
+    keyFrameAnimation3.fillMode = kCAFillModeBoth;
+    keyFrameAnimation3.removedOnCompletion = NO;
+    [animateView3.layer addAnimation:keyFrameAnimation3 forKey:nil];
+    
 }
+
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
     if (flag) {

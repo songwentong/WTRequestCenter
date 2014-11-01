@@ -43,36 +43,6 @@
             endingLineNumber = "172"
             landmarkName = "-testGet"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__25-[ViewController testGet]_block_invoke"
-                  moduleName = "WTRequestCenter"
-                  urlString = "file:///Users/song/https:/github.com/rs/WTRequestCenter/WTRequestCenter/ViewController.m"
-                  timestampString = "435893045.137753"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "172"
-                  endingLineNumber = "172"
-                  offsetFromSymbolStart = "129">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__25-[ViewController testGet]_block_invoke"
-                  moduleName = "WTRequestCenter"
-                  urlString = "file:///Users/song/https:/github.com/rs/WTRequestCenter/WTRequestCenter/ViewController.m"
-                  timestampString = "435893045.138242"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "172"
-                  endingLineNumber = "172"
-                  offsetFromSymbolStart = "137">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

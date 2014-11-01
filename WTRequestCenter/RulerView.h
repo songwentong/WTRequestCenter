@@ -13,5 +13,9 @@
     
     NSInteger animationIndex;
     UIView *animateView;
+    
+    UIView *animateView2;
+    
+    UIView *animateView3;
 }
 @end
