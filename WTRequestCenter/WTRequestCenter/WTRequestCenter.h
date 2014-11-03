@@ -221,14 +221,6 @@ typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,N
                               parameters:(NSDictionary *)parameters
                                 finished:(WTRequestFinishedBlock)finished
                                   failed:(WTRequestFailedBlock)failed;
-
-
-+(WTURLRequestOperation*)testPOSTWithURL:(NSString*)url
-                              parameters:(NSDictionary *)parameters
-                                  option:(WTRequestCenterCachePolicy)option
-                                progress:(WTDownLoadProgressBlock)progress
-                                finished:(WTRequestFinishedBlock)finished
-                                  failed:(WTRequestFailedBlock)failed;
 @end
 
 ///--------------------
