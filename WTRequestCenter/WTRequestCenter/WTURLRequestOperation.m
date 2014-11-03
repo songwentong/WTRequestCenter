@@ -163,6 +163,7 @@ static inline NSString * WTKeyPathFromOperationState(WTOperationState state) {
             [self performSelector:@selector(operationDidStart) onThread:[[self class] networkRequestThread] withObject:nil waitUntilDone:NO modes:[self.runLoopModes allObjects]];
         }
     }
+    
     [self.lock unlock];
 }
 
@@ -216,6 +217,11 @@ static inline NSString * WTKeyPathFromOperationState(WTOperationState state) {
         [wtURLConnection scheduleInRunLoop:runLoop forMode:runLoopMode];
     }];
     [wtURLConnection start];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSDictionary *userInfo = @{@"request": _request};
+        [[NSNotificationCenter defaultCenter] postNotificationName:WTNetworkingOperationDidStartNotification object:_request userInfo:userInfo];
+    });
     [self.lock unlock];
 }
 - (void)cancel
@@ -253,6 +259,12 @@ static inline NSString * WTKeyPathFromOperationState(WTOperationState state) {
 - (void)finish {
     [self.lock lock];
     self.state = WTOperationStateFinished;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSDictionary *userInfo = @{@"request": _request};
+        [[NSNotificationCenter defaultCenter] postNotificationName:WTNetworkingOperationDidFinishNotification object:_request userInfo:userInfo];
+    });
+
     [self.lock unlock];
 
 }
