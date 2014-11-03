@@ -203,12 +203,20 @@ typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,N
 
 
 #pragma mark - Testing Method
+
+//GET
++(WTURLRequestOperation*)testGetWithURL:(NSString *)url
+                             parameters:(NSDictionary *)parameters
+                               finished:(WTRequestFinishedBlock)finished
+                                 failed:(WTRequestFailedBlock)failed;
+
 +(WTURLRequestOperation*)testGetWithURL:(NSString*)url
                              parameters:(NSDictionary *)parameters
                                  option:(WTRequestCenterCachePolicy)option
                                finished:(WTRequestFinishedBlock)finished
                                  failed:(WTRequestFailedBlock)failed;
 
+//加上进度
 +(WTURLRequestOperation*)testGetWithURL:(NSString*)url
                              parameters:(NSDictionary *)parameters
                                  option:(WTRequestCenterCachePolicy)option
@@ -216,7 +224,7 @@ typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,N
                                finished:(WTRequestFinishedBlock)finished
                                  failed:(WTRequestFailedBlock)failed;
 
-
+//POST
 +(WTURLRequestOperation*)testPOSTWithURL:(NSString*)url
                               parameters:(NSDictionary *)parameters
                                 finished:(WTRequestFinishedBlock)finished

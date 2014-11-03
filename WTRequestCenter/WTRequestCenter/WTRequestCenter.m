@@ -692,6 +692,13 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
     
     return operation;
 }
+
+
+
++(WTURLRequestOperation*)testGetWithURL:(NSString *)url parameters:(NSDictionary *)parameters finished:(WTRequestFinishedBlock)finished failed:(WTRequestFailedBlock)failed
+{
+    return [self testGetWithURL:url parameters:parameters option:WTRequestCenterCachePolicyNormal finished:finished failed:failed];
+}
 +(WTURLRequestOperation*)testGetWithURL:(NSString*)url
                              parameters:(NSDictionary *)parameters
                                  option:(WTRequestCenterCachePolicy)option
