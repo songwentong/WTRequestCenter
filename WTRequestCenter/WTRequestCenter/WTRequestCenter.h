@@ -70,6 +70,13 @@ typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,N
 @interface WTRequestCenter : NSObject
 
 
+
+/*!
+ 执行一个NSURLRequest请求
+ */
++(void)doURLRequest:(NSURLRequest*)request
+           finished:(WTRequestFinishedBlock)finished
+             failed:(WTRequestFailedBlock)failed;
 #pragma mark - GET
 
 //普通GET
