@@ -183,5 +183,13 @@
     
 }
 
+-(void)layoutSubviews
+{
+    [super layoutSubviews];
+    NSArray *animationKeys = [animateView.layer animationKeys];
+    NSLog(@"%@",animationKeys);
+
+}
+
 
 @end

@@ -136,6 +136,7 @@ typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,N
                      failed:(WTRequestFailedBlock)failed;
 
 /*!
+    不推荐用这个方法。
  */
 +(NSURLRequest*)postWithURL:(NSString*)url
                  parameters:(NSDictionary *)parameters
