@@ -94,8 +94,8 @@
                            progress:^(NSUInteger bytesRead, long long totalBytesRead,
                                       long long totalBytesExpectedToRead)
      {
-         NSString *string = [NSString stringWithFormat:@"本次数据接收量：%d,当前收到的总数据量：%lld,期望的总数据量：%lld",bytesRead,totalBytesRead,totalBytesExpectedToRead];
-         NSLog(@"%@",string);
+//         NSString *string = [NSString stringWithFormat:@"本次数据接收量：%d,当前收到的总数据量：%lld,期望的总数据量：%lld",bytesRead,totalBytesRead,totalBytesExpectedToRead];
+//         NSLog(@"%@",string);
      } finished:^(NSURLResponse *response, NSData *data) {
          
      } failed:^(NSURLResponse *response, NSError *error) {
