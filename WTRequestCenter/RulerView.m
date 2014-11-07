@@ -8,7 +8,7 @@
 
 #import "RulerView.h"
 #import "UIKit+WTRequestCenter.h"
-#define leftMargin 10
+const CGFloat leftMargin = 10;
 @implementation RulerView
 - (instancetype)initWithFrame:(CGRect)frame
 {
