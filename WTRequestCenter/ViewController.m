@@ -13,6 +13,9 @@
 #import "WTWebViewController.h"
 #import "WTImageViewController.h"
 #import "RulerView.h"
+
+
+//static const NSTimeInterval kAnimationTime = 0.3f;
 @interface ViewController ()
 
 @end
