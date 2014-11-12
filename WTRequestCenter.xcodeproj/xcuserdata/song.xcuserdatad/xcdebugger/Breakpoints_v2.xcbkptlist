@@ -25,8 +25,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "115"
             endingLineNumber = "115"
-            landmarkName = "@implementation ViewController"
-            landmarkType = "3">
+            landmarkName = "-get"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -41,7 +41,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "172"
             endingLineNumber = "172"
-            landmarkName = "-testGet"
+            landmarkName = "-post"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
