@@ -84,7 +84,7 @@
         }];
         
     } failed:^(NSURLResponse *response, NSError *error) {
-        NSLog(@"%@",error);
+
 //        if (!weakSelf) return;
 //        __strong UIImageView *strongSelf = weakSelf;
 //        strongSelf.wtImageRequestOperation = nil;

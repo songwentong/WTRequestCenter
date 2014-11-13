@@ -93,7 +93,7 @@
 
 -(void)buttonPressed:(UIButton*)sender
 {
-    NSLog(@"%s",__func__);
+//    NSLog(@"%s",__func__);
     [_delegate WTImageViewer:self pressImageWithIndex:[self currentPageIndex]];
 }
 
