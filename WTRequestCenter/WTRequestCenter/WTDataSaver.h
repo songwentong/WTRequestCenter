@@ -15,7 +15,7 @@
                                         Mike
  */
 #import <Foundation/Foundation.h>
-
+#import <UIKit/UIKit.h>
 @interface WTDataSaver : NSObject
 
 +(dispatch_group_t)sharedCompletionGroup;
