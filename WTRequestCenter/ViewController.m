@@ -13,7 +13,7 @@
 #import "WTWebViewController.h"
 #import "WTImageViewController.h"
 #import "RulerView.h"
-
+#import "WTURLSessionManager.h"
 
 //static const NSTimeInterval kAnimationTime = 0.3f;
 @interface ViewController ()
@@ -43,6 +43,11 @@
     RulerView *view = [[RulerView alloc] initWithFrame:self.view.bounds];
     view.userInteractionEnabled = NO;
     [self.view addSubview:view];
+    
+    
+//    http://domain/pub/upload/upload_pic
+    
+    
     
     
 }
