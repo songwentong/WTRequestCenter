@@ -9,7 +9,7 @@
 #import "WTImageViewController.h"
 #import "UIKit+WTRequestCenter.h"
 #import "WTImageViewer.h"
-@interface WTImageViewController ()
+@interface WTImageViewController () <UIScrollViewDelegate,WTImageViewerDelegate>
 
 @end
 

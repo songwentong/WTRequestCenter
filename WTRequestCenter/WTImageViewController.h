@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WTImageViewer.h"
-@interface WTImageViewController : UIViewController <UIScrollViewDelegate,WTImageViewerDelegate>
+
+@interface WTImageViewController : UIViewController 
 {
 
 }
