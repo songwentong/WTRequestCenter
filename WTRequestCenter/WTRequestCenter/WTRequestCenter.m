@@ -189,12 +189,15 @@ static NSURLCache* sharedCache = nil;
     
     return request;
 }
+
+
+static const NSTimeInterval timeOutInterval = 30;
 +(NSURLRequest*)GETRequestWithURL:(NSString*)url
                        parameters:(NSDictionary*)parameters
 {
     
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:30];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:timeOutInterval];
     
     
     if (parameters && [[parameters allKeys] count]>0) {
