@@ -14,8 +14,13 @@
 
 //UUID  唯一标示符
 +(NSString*)WTUUID;
-//Available in iOS 2.0 and later.
+
+//屏幕宽度
++(CGFloat)screenWidth;
+
+//屏幕高度
 +(CGFloat)screenHeight;
 
+//屏幕大小
 +(CGSize)screenSize;
 @end

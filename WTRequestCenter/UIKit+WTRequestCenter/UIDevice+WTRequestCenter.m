@@ -30,6 +30,11 @@
     return uuid;
 }
 
++(CGFloat)screenWidth
+{
+    return CGRectGetWidth([UIScreen mainScreen].bounds);
+}
+
 +(CGFloat)screenHeight
 {
     return CGRectGetHeight([UIScreen mainScreen].bounds);
