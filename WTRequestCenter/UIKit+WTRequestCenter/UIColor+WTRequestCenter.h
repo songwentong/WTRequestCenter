@@ -25,8 +25,8 @@
                       alpha:(CGFloat)alpha;
 
 // 16 进制颜色创建
-+ (UIColor *)colorWithHexString:(NSString *)str;
++ (UIColor *)WTcolorWithHexString:(NSString *)str;
 // 根据hex字符串和alpha创建颜色
-+ (UIColor *)colorWithHexString:(NSString *)hexString alpha:(CGFloat)alpha;
++ (UIColor *)WTcolorWithHexString:(NSString *)hexString alpha:(CGFloat)alpha;
 
 @end

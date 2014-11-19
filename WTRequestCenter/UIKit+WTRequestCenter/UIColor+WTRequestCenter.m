@@ -33,7 +33,7 @@
     return result;
 }
 
-+ (UIColor *)colorWithHexString:(NSString *)str
++ (UIColor *)WTcolorWithHexString:(NSString *)str
 {
     if (!str || [str isEqualToString:@""]) {
         return nil;
@@ -51,7 +51,7 @@
     return color;
 }
 
-+ (UIColor *)colorWithHexString:(NSString *)hexString alpha:(CGFloat)alpha {
++ (UIColor *)WTcolorWithHexString:(NSString *)hexString alpha:(CGFloat)alpha {
     // #rgb = #rrggbb
     
     if ([hexString hasPrefix:@"#"]) {
