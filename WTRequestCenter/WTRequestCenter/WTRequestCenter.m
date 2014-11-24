@@ -195,9 +195,16 @@ static const NSTimeInterval timeOutInterval = 30;
 +(NSURLRequest*)GETRequestWithURL:(NSString*)url
                        parameters:(NSDictionary*)parameters
 {
+//    判断有效性
+    assert(url != nil);
     
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:timeOutInterval];
+    NSURL *theURL = [NSURL URLWithString:[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+//    判断有效性
+    assert(theURL != nil);
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:theURL
+     cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:timeOutInterval];
     
     
     if (parameters && [[parameters allKeys] count]>0) {
@@ -216,7 +223,18 @@ static const NSTimeInterval timeOutInterval = 30;
 +(NSURLRequest*)POSTRequestWithURL:(NSString*)url
                         parameters:(NSDictionary*)parameters
 {
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+    
+    
+    //    判断有效性
+    assert(url != nil);
+    
+    
+    NSURL *theURL = [NSURL URLWithString:url];
+    
+//    判断有效性
+    assert(theURL != nil);
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:theURL];
     [request setHTTPMethod:@"POST"];
     
     if (parameters && [[parameters allKeys] count]>0) {
@@ -313,11 +331,14 @@ static const NSTimeInterval timeOutInterval = 30;
           finished:(WTRequestFinishedBlock)finished
             failed:(WTRequestFailedBlock)failed
 {
+//    有效性判断
+    assert(request != nil);
     
     dispatch_async(dispatch_get_main_queue(), ^{
         NSDictionary *userInfo = @{@"request": request};
         [[NSNotificationCenter defaultCenter] postNotificationName:WTNetworkingOperationDidStartNotification object:request userInfo:userInfo];
     });
+    
     [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -516,6 +537,7 @@ completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error)
 
 +(BOOL)setBaseURL:(NSString*)url
 {
+    assert(url != nil);
     NSUserDefaults *a = [self sharedUserDefaults];
     [a setValue:url forKey:@"baseURL"];
     return [a synchronize];

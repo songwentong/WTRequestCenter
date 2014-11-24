@@ -29,6 +29,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    
+    [WTRequestCenter getWithURL:nil parameters:nil finished:^(NSURLResponse *response, NSData *data) {
+        
+    } failed:^(NSURLResponse *response, NSError *error) {
+        
+    }];
+    
     switch (_indexPath.row) {
         case 0:
         {

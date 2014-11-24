@@ -25,7 +25,6 @@
 		E1632C8C19EE02EB00089FFA /* WTRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1632C8A19EE02EB00089FFA /* WTRequestViewController.m */; };
 		E1632C8D19EE02EB00089FFA /* WTRequestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1632C8B19EE02EB00089FFA /* WTRequestViewController.xib */; };
 		E19F0C2A1A0201460049C1A2 /* RulerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E19F0C291A0201460049C1A2 /* RulerView.m */; };
-		E1DBFCBE1A1D8C510023B311 /* WTURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = E1DBFCBD1A1D8C510023B311 /* WTURLRequestSerialization.m */; };
 		E43DC20319F29D82009FA132 /* WTImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E43DC20119F29D82009FA132 /* WTImageViewController.m */; };
 		E43DC20419F29D82009FA132 /* WTImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E43DC20219F29D82009FA132 /* WTImageViewController.xib */; };
 		E4440D71197A01B1001E6D88 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4440D70197A01B1001E6D88 /* Foundation.framework */; };
@@ -92,8 +91,6 @@
 		E1632C8B19EE02EB00089FFA /* WTRequestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTRequestViewController.xib; sourceTree = "<group>"; };
 		E19F0C281A0201460049C1A2 /* RulerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RulerView.h; sourceTree = "<group>"; };
 		E19F0C291A0201460049C1A2 /* RulerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RulerView.m; sourceTree = "<group>"; };
-		E1DBFCBC1A1D8C510023B311 /* WTURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTURLRequestSerialization.h; sourceTree = "<group>"; };
-		E1DBFCBD1A1D8C510023B311 /* WTURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTURLRequestSerialization.m; sourceTree = "<group>"; };
 		E43DC20019F29D82009FA132 /* WTImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTImageViewController.h; sourceTree = "<group>"; };
 		E43DC20119F29D82009FA132 /* WTImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTImageViewController.m; sourceTree = "<group>"; };
 		E43DC20219F29D82009FA132 /* WTImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTImageViewController.xib; sourceTree = "<group>"; };
@@ -283,8 +280,6 @@
 			children = (
 				E160B1F419FDDF23007E8CFD /* WTRequestCenter.h */,
 				E160B1F519FDDF23007E8CFD /* WTRequestCenter.m */,
-				E1DBFCBC1A1D8C510023B311 /* WTURLRequestSerialization.h */,
-				E1DBFCBD1A1D8C510023B311 /* WTURLRequestSerialization.m */,
 				E160B1F019FDDF23007E8CFD /* WTDataSaver.h */,
 				E160B1F119FDDF23007E8CFD /* WTDataSaver.m */,
 				E160B1F219FDDF23007E8CFD /* WTDataWriteOpeation.h */,
@@ -426,7 +421,6 @@
 				E4440D7D197A01B1001E6D88 /* main.m in Sources */,
 				E4B2251A19FAAB8A008DC532 /* WTNetworkActivityIndicatorManager.m in Sources */,
 				E141B5D419EFDD8D005D25B6 /* UIAlertView+WTRequestCenter.m in Sources */,
-				E1DBFCBE1A1D8C510023B311 /* WTURLRequestSerialization.m in Sources */,
 				E160B1FA19FDDF23007E8CFD /* WTDataSaver.m in Sources */,
 				A3B70F641988DC5B002776F4 /* UIButton+WTRequestCenter.m in Sources */,
 			);
