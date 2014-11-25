@@ -35,7 +35,7 @@
         
         NSTimeInterval length = endTimeInterval - startTimeInterval;
     
-        NSLog(@"下载时长%f",length);
+        NSLog(@"下载/缓存时长:%f秒",length);
         XCTAssert(YES, @"Pass");
     } failed:^(NSURLResponse *response, NSError *error) {
         XCTAssert(NO,@"请求失败");
