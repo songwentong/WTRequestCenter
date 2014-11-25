@@ -118,7 +118,6 @@ static NSURLCache* sharedCache = nil;
 +(void)cancelAllRequest
 {
     [[WTRequestCenter sharedQueue] cancelAllOperations];
-
 }
 
 

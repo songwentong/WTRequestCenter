@@ -14,7 +14,7 @@
 #import "WTImageViewController.h"
 #import "RulerView.h"
 #import "WTURLSessionManager.h"
-
+#import "WTURLRequestSerialization.h"
 //static const NSTimeInterval kAnimationTime = 0.3f;
 @interface ViewController ()
 
@@ -32,7 +32,20 @@
 //    [WTRequestCenter setExpireTimeInterval:0];
     NSLog(@"%@",NSHomeDirectory());
     
-    
+    NSMutableURLRequest *request = [WTURLRequestSerialization POSTRequestWithURL:@"http://mapi.baobeigezi.com/pub/upload/upload_pic" parameters:nil constructingBodyWithBlock:^(id<WTMultipartFormData> formData) {
+        
+        UIImage *image = [UIImage imageNamed:@"aaa"];
+        NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
+        [formData appendPartWithData:imageData name:@"pic"];
+    }];
+    [WTRequestCenter doURLRequest:request finished:^(NSURLResponse *response, NSData *data) {
+        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+
+        NSString *msg = [dict valueForKey:@"msg"];
+        NSLog(@"%@",msg);
+    } failed:^(NSURLResponse *response, NSError *error) {
+        
+    }];
     
     
     [self configModel];
