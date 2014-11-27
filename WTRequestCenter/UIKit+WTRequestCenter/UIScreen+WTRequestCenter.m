@@ -25,29 +25,29 @@
 }
 
 
-+(CGFloat)convertWidthTo320Standard:(CGFloat)width
++(CGFloat)convert320ToCurrentWidth:(CGFloat)width
 {
     CGFloat result = 0;
     CGFloat multiple = [self screenWidth]/320.0;
-    result = width/multiple;
+    result = width * multiple;
     return result;
 }
 
-+(CGPoint)converPointTo320Standard:(CGPoint)point
++(CGPoint)convert320ToCurrentPoint:(CGPoint)point
 {
     CGPoint result;
     CGFloat multiple = [self screenWidth]/320.0;
-    result = CGPointMake(point.x/multiple, point.y/multiple);
+    result = CGPointMake(point.x*multiple, point.y*multiple);
     
     return result;
 }
 
 
-+(CGRect)converRectTo320Standard:(CGRect)rect
++(CGRect)convert320ToCurrentRect:(CGRect)rect
 {
     CGRect result;
     CGFloat multiple = [self screenWidth]/320.0;
-    result = CGRectMake(rect.origin.x/multiple, rect.origin.y/multiple, rect.size.width/multiple, rect.size.height/multiple);
+    result = CGRectMake(rect.origin.x*multiple, rect.origin.y*multiple, rect.size.width*multiple, rect.size.height*multiple);
     
     return result;
 }

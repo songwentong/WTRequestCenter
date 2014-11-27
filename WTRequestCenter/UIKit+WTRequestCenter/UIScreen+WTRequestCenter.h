@@ -21,17 +21,17 @@
 /*!
  把长度换算成320的标准
  */
-+(CGFloat)convertWidthTo320Standard:(CGFloat)width;
++(CGFloat)convert320ToCurrent:(CGFloat)width;
 
 
 /*!
  把点换算成320的标准
  */
-+(CGPoint)converPointTo320Standard:(CGPoint)point;
++(CGPoint)convert320ToCurrentPoint:(CGPoint)point;
 
 
 /*!
  把Rect换算成320的标准
  */
-+(CGRect)converRectTo320Standard:(CGRect)rect;
++(CGRect)convert320ToCurrentRect:(CGRect)rect;
 @end
