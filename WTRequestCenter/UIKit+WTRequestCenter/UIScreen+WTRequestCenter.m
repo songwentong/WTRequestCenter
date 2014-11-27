@@ -33,4 +33,22 @@
     return result;
 }
 
++(CGPoint)converPointTo320Standard:(CGPoint)point
+{
+    CGPoint result;
+    CGFloat multiple = [self screenWidth]/320.0;
+    result = CGPointMake(point.x/multiple, point.y/multiple);
+    
+    return result;
+}
+
+
++(CGRect)converRectTo320Standard:(CGRect)rect
+{
+    CGRect result;
+    CGFloat multiple = [self screenWidth]/320.0;
+    result = CGRectMake(rect.origin.x/multiple, rect.origin.y/multiple, rect.size.width/multiple, rect.size.height/multiple);
+    
+    return result;
+}
 @end
