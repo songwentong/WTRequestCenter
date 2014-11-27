@@ -64,15 +64,11 @@
                     dispatch_async(dispatch_get_main_queue(), ^{
                         strongSelf.image = image;
                         [strongSelf setNeedsDisplay];
-                        
                     });
                     strongSelf.wtImageRequestOperation = nil;
                 }
-
+                        finished(response,data);
             }];
-//            [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
-//                UIImage *image = [UIImage imageWithData:data];
-//                            }];
             
         } failed:^(NSURLResponse *response, NSError *error) {
             if (!wself) return;

@@ -23,4 +23,10 @@
 
 //屏幕大小
 +(CGSize)screenSize;
+
+/*!
+    把长度换算成320的标准
+ */
++(CGFloat)convertWidthTo320Standard:(CGFloat)width;
+
 @end

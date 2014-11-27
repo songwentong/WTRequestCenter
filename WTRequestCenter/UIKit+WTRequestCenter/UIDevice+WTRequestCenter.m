@@ -44,4 +44,14 @@
 {
     return [UIScreen mainScreen].bounds.size;
 }
+
+
++(CGFloat)convertWidthTo320Standard:(CGFloat)width
+{
+    CGFloat result = 0;
+    CGFloat multiple = [self screenWidth]/320.0;
+    result = width/multiple;
+    
+    return result;
+}
 @end
