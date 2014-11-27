@@ -21,7 +21,7 @@
 /*!
  把320标准换算成当前屏幕标准
  */
-+(CGFloat)convert320ToCurrent:(CGFloat)width;
++(CGFloat)convert320ToCurrentWidth:(CGFloat)width;
 
 
 /*!
