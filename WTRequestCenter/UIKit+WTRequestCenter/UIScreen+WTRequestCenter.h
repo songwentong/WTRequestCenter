@@ -19,19 +19,19 @@
 +(CGSize)screenSize;
 
 /*!
- 把长度换算成320的标准
+ 把320标准换算成当前屏幕标准
  */
 +(CGFloat)convert320ToCurrent:(CGFloat)width;
 
 
 /*!
- 把点换算成320的标准
+ 把320标准的点换算成当前屏幕标准
  */
 +(CGPoint)convert320ToCurrentPoint:(CGPoint)point;
 
 
 /*!
- 把Rect换算成320的标准
+ 把320标准换算成当前屏幕标准
  */
 +(CGRect)convert320ToCurrentRect:(CGRect)rect;
 @end
