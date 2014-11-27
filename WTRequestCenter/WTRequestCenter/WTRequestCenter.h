@@ -212,19 +212,29 @@ typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,N
 
 #pragma mark - Testing Method
 
-//GET
+/*!
+ 普通的GET方法
+ */
 +(WTURLRequestOperation*)testGetWithURL:(NSString *)url
                              parameters:(NSDictionary *)parameters
                                finished:(WTRequestFinishedBlock)finished
                                  failed:(WTRequestFailedBlock)failed;
 
+/*!
+ 带缓存策略的GET请求
+ */
 +(WTURLRequestOperation*)testGetWithURL:(NSString*)url
                              parameters:(NSDictionary *)parameters
                                  option:(WTRequestCenterCachePolicy)option
                                finished:(WTRequestFinishedBlock)finished
                                  failed:(WTRequestFailedBlock)failed;
 
-//加上进度
+/*!
+ 测试中的GET方法，传入URL和参数以后
+ 给出option，可以得知下载的进程，
+ 还有成功和失败的回调
+ 
+ */
 +(WTURLRequestOperation*)testGetWithURL:(NSString*)url
                              parameters:(NSDictionary *)parameters
                                  option:(WTRequestCenterCachePolicy)option
@@ -232,7 +242,9 @@ typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,N
                                finished:(WTRequestFinishedBlock)finished
                                  failed:(WTRequestFailedBlock)failed;
 
-//POST
+/*!
+ POST方法，加入runloop中
+ */
 +(WTURLRequestOperation*)testPOSTWithURL:(NSString*)url
                               parameters:(NSDictionary *)parameters
                                 finished:(WTRequestFinishedBlock)finished

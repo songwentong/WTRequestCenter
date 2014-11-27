@@ -23,7 +23,6 @@
  */
 +(CGFloat)convert320ToCurrentWidth:(CGFloat)width;
 
-
 /*!
  把320标准的点换算成当前屏幕标准
  */
