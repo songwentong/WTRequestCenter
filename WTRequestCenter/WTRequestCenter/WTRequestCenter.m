@@ -485,37 +485,9 @@ static const NSTimeInterval timeOutInterval = 30;
 }
 
 
-//图片上传
-+(void)upLoadImageWithURL:(NSString*)url
-                     data:(NSData *)data
-                 fileName:(NSString*)fileName
-completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
-{
-    NSURLRequest *request = [WTRequestCenter uploadRequestWithURL:url data:data fileName:fileName];
-    [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (handler) {
-                handler(response,data,connectionError);
-            }
-        });
-    }];
-}
 
 
 
-//多图片上传
-+(void)upLoadImageWithURL:(NSString*)url
-                    datas:(NSArray*)datas
-                fileNames:(NSArray*)names
-        completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
-{
-    for (int i=0; i<[datas count]; i++) {
-        NSData *data = datas[i];
-        NSString *name = names[i];
-        [WTRequestCenter upLoadImageWithURL:url data:data fileName:name completionHandler:handler];
-    }
-}
- 
 
 
 
