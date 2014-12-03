@@ -305,7 +305,7 @@ static const NSTimeInterval timeOutInterval = 30;
                    finished:(WTRequestFinishedBlock)finished
                     failed:(WTRequestFailedBlock)failed
 {
-    NSURLRequest *request = [self postWithURL:url parameters:parameters option:WTRequestCenterCachePolicyNormal finished:finished failed:failed];
+    NSURLRequest *request = [self POSTRequestWithURL:url parameters:parameters];
     [self doURLRequest:request finished:finished failed:failed];
     return request;
 }

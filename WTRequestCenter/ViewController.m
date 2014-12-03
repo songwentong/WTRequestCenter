@@ -173,7 +173,6 @@
      */
     [WTRequestCenter postWithURL:url
                       parameters:parameters
-                          option:WTRequestCenterCachePolicyCacheElseWeb
                         finished:^(NSURLResponse *response, NSData *data) {
         NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         NSLog(@"%@",string);

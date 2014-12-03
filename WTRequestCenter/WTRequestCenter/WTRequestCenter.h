@@ -171,18 +171,7 @@ typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,N
  */
 +(void)removeRequestCache:(NSURLRequest*)request;
 
-#pragma mark - Image
-//图片上传  Upload
-+(void)upLoadImageWithURL:(NSString*)url
-                     data:(NSData *)data
-                 fileName:(NSString*)fileName
-        completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 
-//多图片上传
-+(void)upLoadImageWithURL:(NSString*)url
-                    datas:(NSArray*)datas
-                fileNames:(NSArray*)names
-        completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
 
 
 //下载图片  Download  (Cache)
