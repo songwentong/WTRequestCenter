@@ -135,14 +135,6 @@ typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,N
                    finished:(WTRequestFinishedBlock)finished
                      failed:(WTRequestFailedBlock)failed;
 
-/*!
-    不推荐用这个方法。
- */
-+(NSURLRequest*)postWithURL:(NSString*)url
-                 parameters:(NSDictionary *)parameters
-                     option:(WTRequestCenterCachePolicy)option
-                   finished:(WTRequestFinishedBlock)finished
-                     failed:(WTRequestFailedBlock)failed;
 
 
 
