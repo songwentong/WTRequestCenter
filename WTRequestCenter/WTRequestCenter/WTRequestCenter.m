@@ -310,7 +310,16 @@ static const NSTimeInterval timeOutInterval = 30;
     return request;
 }
 
-
++(NSURLRequest*)postWithURL:(NSString*)url
+                 parameters:(NSDictionary*)parameters
+  constructingBodyWithBlock:(void (^)(id <WTMultipartFormData> formData))block
+                   finished:(WTRequestFinishedBlock)finished
+                     failed:(WTRequestFailedBlock)failed
+{
+    NSURLRequest *request = [WTURLRequestSerialization POSTRequestWithURL:url parameters:parameters constructingBodyWithBlock:block];
+    [self doURLRequest:request finished:finished failed:failed];
+    return request;
+}
 
 
 #pragma mark - Request

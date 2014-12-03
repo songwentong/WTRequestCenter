@@ -40,7 +40,25 @@
     
 
     
+    NSURLRequest *request = [WTURLRequestSerialization POSTRequestWithURL:@"a"
+                                                               parameters:@{@"abc": @"123"}
+                                                constructingBodyWithBlock:^(id<WTMultipartFormData> formData)
+    {
+        NSData *data = [@"123" dataUsingEncoding:NSUTF8StringEncoding];
+        [formData appendPartWithData:data name:@"pic"];
+        NSData *data2 = [@"456" dataUsingEncoding:NSUTF8StringEncoding];
+        [formData appendPartWithData:data2 name:@"pic2"];
+//        ...
+    }];
     
+    [WTRequestCenter doURLRequest:request
+                         finished:^(NSURLResponse *response, NSData *data)
+    {
+        NSLog(@"finished");
+    } failed:^(NSURLResponse *response, NSError *error)
+    {
+        NSLog(@"failed");
+    }];
     
 }
 

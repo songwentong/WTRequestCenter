@@ -21,6 +21,7 @@
  */
 #import <Foundation/Foundation.h>
 #import "WTDataSaver.h"
+#import "WTURLRequestSerialization.h"
 #import "WTURLRequestOperation.h"
 #if ( ( defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= 1090) || \
 ( defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000 ) )
@@ -135,6 +136,14 @@ typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,N
                    finished:(WTRequestFinishedBlock)finished
                      failed:(WTRequestFailedBlock)failed;
 
+/*!
+    图片上传
+ */
++(NSURLRequest*)postWithURL:(NSString*)url
+                 parameters:(NSDictionary*)parameters
+  constructingBodyWithBlock:(void (^)(id <WTMultipartFormData> formData))block
+                   finished:(WTRequestFinishedBlock)finished
+                     failed:(WTRequestFailedBlock)failed;
 
 
 
