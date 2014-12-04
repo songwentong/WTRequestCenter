@@ -18,17 +18,34 @@
 //static const NSTimeInterval kAnimationTime = 0.3f;
 
 @interface ViewController ()
-
+{
+    UIImageView *imageView;
+}
 @end
 
 @implementation ViewController
 
+
+-(void)loadimage
+{
+    [imageView setImageWithURL:@"http://i2.sinaimg.cn/home/2014/1204/U6604P30DT20141204094533.jpg" placeholderImage:[UIImage imageNamed:@"aaa"] finished:^(NSURLResponse *response, NSData *data) {
+        
+    } failed:^(NSURLResponse *response, NSError *error) {
+        
+    }];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 
+    imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+    [self.view addSubview:imageView];
+    imageView.backgroundColor = [UIColor redColor];
+    [self performSelector:@selector(loadimage) withObject:nil afterDelay:3];
+   
     
+    return;
     [self configModel];
     [self configView];
     [self performSelector:@selector(takeSnapShot) withObject:nil afterDelay:1];
@@ -61,6 +78,8 @@
     }];
     
 }
+
+
 
 -(void)takeSnapShot
 {
@@ -200,7 +219,7 @@
     
 
 }
-
+/*
 -(void)loadImage
 {
     NSString *url = @"http://img0.bdstatic.com/img/image/shouye/dengni47.jpg";
@@ -213,6 +232,7 @@
     
     [self.view addSubview:imageView];
 }
+ */
 
 -(void)loadGif
 {

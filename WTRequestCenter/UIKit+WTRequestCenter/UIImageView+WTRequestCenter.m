@@ -49,6 +49,7 @@
         self.wtImageRequestOperation = nil;
     }
     self.image = placeholder;
+    [self setNeedsDisplay];
     if (url) {
         __weak UIImageView *wself    = self;
         
@@ -67,7 +68,10 @@
                     });
                     strongSelf.wtImageRequestOperation = nil;
                 }
-                        finished(response,data);
+                if (finished) {
+                    finished(response,data);
+                }
+                
             }];
             
         } failed:^(NSURLResponse *response, NSError *error) {

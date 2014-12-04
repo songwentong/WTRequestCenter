@@ -24,6 +24,7 @@
 - (BOOL)appendPartWithFileURL:(NSURL *)fileURL
                          name:(NSString *)name
                         error:(NSError * __autoreleasing *)error;
+
 - (BOOL)appendPartWithData:(NSData*)data
                       name:(NSString*)name;
 @end
