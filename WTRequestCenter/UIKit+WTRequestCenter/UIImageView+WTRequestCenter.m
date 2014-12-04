@@ -49,7 +49,6 @@
         self.wtImageRequestOperation = nil;
     }
     self.image = placeholder;
-    [self setNeedsDisplay];
     if (url) {
         __weak UIImageView *wself    = self;
         
