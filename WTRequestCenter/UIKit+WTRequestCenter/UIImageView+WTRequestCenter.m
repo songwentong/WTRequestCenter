@@ -61,9 +61,9 @@
                     if (!wself) return;
                     __strong UIImageView *strongSelf = wself;
                     
-                    dispatch_async(dispatch_get_main_queue(), ^{
+                    dispatch_sync(dispatch_get_main_queue(), ^{
                         strongSelf.image = image;
-//                        [strongSelf setNeedsDisplay];
+                        [strongSelf setNeedsDisplay];
                     });
                     strongSelf.wtImageRequestOperation = nil;
                 }

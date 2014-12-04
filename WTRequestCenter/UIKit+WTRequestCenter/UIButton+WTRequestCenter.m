@@ -69,7 +69,7 @@
                 if (!weakSelf) return;
                 __strong UIButton *strongSelf = weakSelf;
                 
-                dispatch_async(dispatch_get_main_queue(), ^{
+                dispatch_sync(dispatch_get_main_queue(), ^{
                     //                    strongSelf.image = image;
                     [strongSelf setImage:image forState:state];
                     [strongSelf setNeedsDisplay];
@@ -123,7 +123,7 @@
             if (image) {
                 if (weakSelf) {
                     __strong UIButton *strongSelf = weakSelf;
-                    dispatch_async(dispatch_get_main_queue(), ^{
+                    dispatch_sync(dispatch_get_main_queue(), ^{
                         [strongSelf setBackgroundImage:image forState:state];
                         [strongSelf setNeedsLayout];
                     });
