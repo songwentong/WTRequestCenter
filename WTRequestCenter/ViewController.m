@@ -38,13 +38,13 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    
+    /*
     imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
     [self.view addSubview:imageView];
     imageView.backgroundColor = [UIColor redColor];
     [self performSelector:@selector(loadimage) withObject:nil afterDelay:3];
-   
-    return;
+   */
+
 
     [self configModel];
     [self configView];
