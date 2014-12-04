@@ -26,8 +26,15 @@
 
 
 
-
+/*!
+    to do PUT请求
+ */
 +(NSMutableURLRequest*)PUTRequestWithURL:(NSString*)url
+                              parameters:(NSDictionary*)parameters;
+/*!
+    To Do head请求
+ */
++(NSMutableURLRequest*)HEADRequestWithURL:(NSString*)url
                               parameters:(NSDictionary*)parameters;
 
 @end

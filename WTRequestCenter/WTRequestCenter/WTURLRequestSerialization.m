@@ -216,4 +216,15 @@ constructingBodyWithBlock:(void (^)(id <WTMultipartFormData> formData))block
     return request;
 }
 
+
++(NSMutableURLRequest*)HEADRequestWithURL:(NSString*)url
+                               parameters:(NSDictionary*)parameters
+{
+    NSMutableURLRequest *request = nil;
+    
+    
+    
+    return request;
+}
+
 @end

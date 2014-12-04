@@ -63,6 +63,7 @@ static NSURLCache* sharedCache = nil;
     }
     return requesting;
 }
+
 #if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
 +(NSUserDefaults*)sharedUserDefaults
 {
