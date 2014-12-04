@@ -24,6 +24,12 @@
                                parameters:(NSDictionary*)parameters
                 constructingBodyWithBlock:(void (^)(id <WTMultipartFormData> formData))block;
 
+
+
+
++(NSMutableURLRequest*)PUTRequestWithURL:(NSString*)url
+                              parameters:(NSDictionary*)parameters;
+
 @end
 @protocol WTMultipartFormData
 

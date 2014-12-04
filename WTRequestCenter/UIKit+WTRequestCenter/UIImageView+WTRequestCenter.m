@@ -63,7 +63,7 @@
                     
                     dispatch_async(dispatch_get_main_queue(), ^{
                         strongSelf.image = image;
-                        [strongSelf setNeedsDisplay];
+//                        [strongSelf setNeedsDisplay];
                     });
                     strongSelf.wtImageRequestOperation = nil;
                 }
