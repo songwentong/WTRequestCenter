@@ -42,6 +42,7 @@
     
     [self setImageWithURL:url placeholderImage:placeholder finished:nil failed:nil];
 }
+
 -(void)setImageWithURL:(NSString *)url placeholderImage:(UIImage *)placeholder finished:(WTRequestFinishedBlock)finished failed:(WTRequestFailedBlock)failed
 {
     if (self.wtImageRequestOperation) {

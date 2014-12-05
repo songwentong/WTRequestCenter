@@ -23,7 +23,7 @@
 
 
 /*!
- 通常不会直接用到的方法，作为UIImageView和UIButton的辅助方法
+    通常不会直接用到的方法，作为UIImageView和UIButton的辅助方法
  */
 +(void)imageWithData:(NSData *)data complectionHandler:(void(^)(UIImage *image))complection;
 
