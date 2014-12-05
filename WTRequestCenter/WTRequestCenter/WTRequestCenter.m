@@ -16,6 +16,9 @@ NSString * const WTNetworkingOperationDidStartNotification = @"WTNetworkingOpera
 //请求结束的消息
 NSString * const WTNetworkingOperationDidFinishNotification = @"WTNetworkingOperationDidFinishNotification";
 
+
+BOOL const WTRequestCenterDebugMode = YES;
+
 @implementation WTRequestCenter
 
 

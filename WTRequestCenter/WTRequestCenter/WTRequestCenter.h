@@ -255,3 +255,9 @@ extern NSString * const WTNetworkingOperationDidStartNotification;
  Posted when an operation finishes.
  */
 extern NSString * const WTNetworkingOperationDidFinishNotification;
+
+
+/*!
+    Debug模式
+ */
+extern BOOL const WTRequestCenterDebugMode;
