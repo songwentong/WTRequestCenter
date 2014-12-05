@@ -137,7 +137,7 @@ typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,N
                      failed:(WTRequestFailedBlock)failed;
 
 /*!
-    图片上传
+    数据上传
  */
 +(NSURLRequest*)postWithURL:(NSString*)url
                  parameters:(NSDictionary*)parameters
@@ -146,7 +146,9 @@ typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,N
                      failed:(WTRequestFailedBlock)failed;
 
 
-
+/*!
+    PUT请求
+ */
 +(NSURLRequest*)putWithURL:(NSString*)url
                  parameters:(NSDictionary*)parameters
                    finished:(WTRequestFinishedBlock)finished
