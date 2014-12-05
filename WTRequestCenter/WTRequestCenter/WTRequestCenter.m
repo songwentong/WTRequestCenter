@@ -180,91 +180,8 @@ static NSURLCache* sharedCache = nil;
         return @"";
     }
 }
-#pragma mark - 请求的生成
-
-
-+(NSURLRequest*)requestWithMethod:(NSString*)methodName
-                              URL:(NSString*)url
-                       parameters:(NSDictionary*)parameters
-{
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
-    request.HTTPMethod = methodName;
-    
-    return request;
-}
-
-
-static const NSTimeInterval timeOutInterval = 30;
-+(NSURLRequest*)GETRequestWithURL:(NSString*)url
-                       parameters:(NSDictionary*)parameters
-{
-//    判断有效性
-    assert(url != nil);
-    
-    
-    NSURL *theURL = [NSURL URLWithString:[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-//    判断有效性
-    assert(theURL != nil);
-    
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:theURL
-     cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:timeOutInterval];
-    
-    
-    if (parameters && [[parameters allKeys] count]>0) {
-        NSMutableString *paramString = [[self stringFromParameters:parameters] mutableCopy];
-        NSMutableString *urlString = [[NSMutableString alloc] initWithFormat:@"%@?%@",url,paramString];
-        urlString = [[[urlString copy] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] mutableCopy];
-        request.URL = [NSURL URLWithString:urlString];
-        
-       
-        
-    }
-    
-    return request;
-}
-
-+(NSURLRequest*)POSTRequestWithURL:(NSString*)url
-                        parameters:(NSDictionary*)parameters
-{
-    
-    
-    //    判断有效性
-    assert(url != nil);
-    
-    
-    NSURL *theURL = [NSURL URLWithString:url];
-    
-//    判断有效性
-    assert(theURL != nil);
-    
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:theURL];
-    [request setHTTPMethod:@"POST"];
-    
-    if (parameters && [[parameters allKeys] count]>0) {
-        NSMutableString *paramString = [[NSMutableString alloc] init];
-        
-        [parameters enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
-            NSString *str = [NSString stringWithFormat:@"%@=%@",key,value];
-            [paramString appendString:str];
-            [paramString appendString:@"&"];
-        }];
-        if([paramString hasSuffix:@"&"]){
-            paramString = [[paramString substringToIndex:[paramString length]-1] mutableCopy];
-            
-        }
-        NSData *postData = [paramString dataUsingEncoding:NSUTF8StringEncoding];
-        [request setHTTPBody:postData];
-    }
-    return request;
-}
-
-
-
 
 #pragma mark - Get
-
-
-
 
 //get请求
 //Available in iOS 5.0 and later.
@@ -295,8 +212,7 @@ static const NSTimeInterval timeOutInterval = 30;
                     finished:(WTRequestFinishedBlock)finished
                    failed:(WTRequestFailedBlock)failed
 {
-    NSURLRequest *request = [self GETRequestWithURL:url parameters:parameters];
-    
+    NSURLRequest *request = [WTURLRequestSerialization GETRequestWithURL:url parameters:parameters];
     [self doURLRequest:request option:option finished:finished failed:failed];
     return request;
 }
@@ -309,7 +225,7 @@ static const NSTimeInterval timeOutInterval = 30;
                    finished:(WTRequestFinishedBlock)finished
                     failed:(WTRequestFailedBlock)failed
 {
-    NSURLRequest *request = [self POSTRequestWithURL:url parameters:parameters];
+    NSURLRequest *request = [WTURLRequestSerialization POSTRequestWithURL:url parameters:parameters];
     [self doURLRequest:request finished:finished failed:failed];
     return request;
 }
@@ -712,7 +628,7 @@ static const NSTimeInterval timeOutInterval = 30;
                                finished:(WTRequestFinishedBlock)finished
                                  failed:(WTRequestFailedBlock)failed
 {
-    NSURLRequest *request = [self GETRequestWithURL:url parameters:parameters];
+    NSURLRequest *request = [WTURLRequestSerialization GETRequestWithURL:url parameters:parameters];
     WTURLRequestOperation *operation = [self testdoURLRequest:request option:option progress:progress finished:finished failed:failed];
     return operation;
 }
@@ -724,7 +640,7 @@ static const NSTimeInterval timeOutInterval = 30;
                                finished:(WTRequestFinishedBlock)finished
                                  failed:(WTRequestFailedBlock)failed
 {
-    NSURLRequest *request = [self POSTRequestWithURL:url parameters:parameters];
+    NSURLRequest *request = [WTURLRequestSerialization POSTRequestWithURL:url parameters:parameters];
     WTURLRequestOperation *operation = [self testdoURLRequest:request progress:nil finished:finished failed:failed];
     return operation;
 }

@@ -9,9 +9,10 @@
 #import "WTURLRequestSerialization.h"
 
 
-//[mutableHeaders setValue:[NSString stringWithFormat:@"form-data; name=\"%@\"", name] forKey:@"Content-Disposition"];
 
+NSTimeInterval const WTURLRequestSerializationTimeoutTimeInterval = 30;;
 static NSString const *kboundary = @"Boundary+1F52B974B3E5F39D";
+
 @interface WTMultiFormData : NSObject <WTMultipartFormData>
 
 - (NSMutableURLRequest *)requestByFinalizingMultipartFormData;
@@ -109,8 +110,47 @@ static NSString const *kboundary = @"Boundary+1F52B974B3E5F39D";
 @end
 
 @implementation WTURLRequestSerialization
+
+
++(NSString*)stringFromParameters:(NSDictionary*)parameters
+{
+    NSMutableString *paramString = [[NSMutableString alloc] init];
+    [parameters enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString* value, BOOL *stop) {
+        NSString *str = [NSString stringWithFormat:@"%@=%@",key,value];
+        [paramString appendString:str];
+        [paramString appendString:@"&"];
+        
+    }];
+    if([paramString hasSuffix:@"&"]){
+        paramString = [[paramString substringToIndex:[paramString length]-1] mutableCopy];
+    }
+    return paramString;
+}
+
+
+
++(NSURLRequest*)GETRequestWithURL:(NSString*)url
+                              parameters:(NSDictionary*)parameters
+{
+    NSURLRequest *request = nil;
+    assert(url!=nil);
+    NSString *string = [NSString stringWithFormat:@"%@?%@",url,[self stringFromParameters:parameters]];
+//    处理中文
+    string = [string stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    
+    NSURL *requestURL = [NSURL URLWithString:string];
+    
+    assert(requestURL != nil);
+    
+    request = [NSURLRequest requestWithURL:requestURL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:WTURLRequestSerializationTimeoutTimeInterval];
+    
+    return request;
+}
+
+
 +(NSMutableURLRequest*)POSTRequestWithURL:(NSString*)url
-                        parameters:(NSDictionary*)parameters
+                               parameters:(NSDictionary*)parameters
 {
     
     
@@ -123,24 +163,10 @@ static NSString const *kboundary = @"Boundary+1F52B974B3E5F39D";
     //    判断有效性
     assert(theURL != nil);
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:theURL];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:theURL ];
     [request setHTTPMethod:@"POST"];
     
-    if (parameters && [[parameters allKeys] count]>0) {
-        NSMutableString *paramString = [[NSMutableString alloc] init];
-        
-        [parameters enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
-            NSString *str = [NSString stringWithFormat:@"%@=%@",key,value];
-            [paramString appendString:str];
-            [paramString appendString:@"&"];
-        }];
-        if([paramString hasSuffix:@"&"]){
-            paramString = [[paramString substringToIndex:[paramString length]-1] mutableCopy];
-            
-        }
-        NSData *postData = [paramString dataUsingEncoding:NSUTF8StringEncoding];
-        [request setHTTPBody:postData];
-    }
+    [request setHTTPBody:[[self stringFromParameters:parameters] dataUsingEncoding:NSUTF8StringEncoding]];
     return request;
 }
 
@@ -211,7 +237,9 @@ constructingBodyWithBlock:(void (^)(id <WTMultipartFormData> formData))block
 {
     NSMutableURLRequest *request = nil;
     
-    
+    request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:WTURLRequestSerializationTimeoutTimeInterval];
+    [request setHTTPBody:[[self stringFromParameters:parameters] dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setHTTPMethod:@"PUT"];
     
     return request;
 }

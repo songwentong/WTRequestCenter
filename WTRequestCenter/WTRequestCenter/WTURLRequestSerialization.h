@@ -8,8 +8,20 @@
 
 #import <Foundation/Foundation.h>
 @protocol WTMultipartFormData;
+extern NSTimeInterval const WTURLRequestSerializationTimeoutTimeInterval;
 @interface WTURLRequestSerialization : NSObject
+
+
+
 /*!
+
+ GET请求
+ */
++(NSMutableURLRequest*)GETRequestWithURL:(NSString*)url
+                              parameters:(NSDictionary*)parameters;
+
+/*!
+ 
  POST请求
  */
 +(NSMutableURLRequest*)POSTRequestWithURL:(NSString*)url
@@ -18,6 +30,7 @@
 
 
 /*!
+ 
  支持数据上传的POST请求
  */
 +(NSMutableURLRequest*)POSTRequestWithURL:(NSString*)url
@@ -27,7 +40,7 @@
 
 
 /*!
-    to do PUT请求
+    PUT请求
  */
 +(NSMutableURLRequest*)PUTRequestWithURL:(NSString*)url
                               parameters:(NSDictionary*)parameters;
