@@ -242,6 +242,17 @@ static NSURLCache* sharedCache = nil;
 }
 
 
++(NSURLRequest*)putWithURL:(NSString*)url
+                parameters:(NSDictionary*)parameters
+                  finished:(WTRequestFinishedBlock)finished
+                    failed:(WTRequestFailedBlock)failed
+{
+    NSURLRequest *request = [WTURLRequestSerialization PUTRequestWithURL:url parameters:parameters];
+    [self doURLRequest:request finished:finished failed:failed];
+    return request;
+}
+
+
 #pragma mark - Request
 +(void)doURLRequest:(NSURLRequest*)request
           finished:(WTRequestFinishedBlock)finished
