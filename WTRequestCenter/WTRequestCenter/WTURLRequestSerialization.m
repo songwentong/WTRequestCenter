@@ -9,9 +9,11 @@
 #import "WTURLRequestSerialization.h"
 
 
-
+//超时时间
 NSTimeInterval WTURLRequestSerializationTimeoutTimeInterval = 30;
+//边界
 static NSString *const kboundary = @"Boundary+1F52B974B3E5F39D";
+//User-Agent
 static NSString *const WTReuqestCenterUserAgent = @"WTURLRequestUserAgent";
 
 @interface WTMultiFormData : NSObject <WTMultipartFormData>
