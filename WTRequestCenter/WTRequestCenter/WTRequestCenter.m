@@ -398,38 +398,7 @@ static NSURLCache* sharedCache = nil;
 
 
 
-#pragma mark - Image
-+(NSURLRequest *)uploadRequestWithURL: (NSString *)url
-                                 data: (NSData *)data
-                             fileName: (NSString*)fileName
-{
-    
-    // from http://www.cocoadev.com/index.pl?HTTPFileUpload
-    
-    //NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
-    
-    NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] init] ;
-    urlRequest.URL = [NSURL URLWithString:url];
-    
-    [urlRequest setHTTPMethod:@"POST"];
-    
-    NSString *myboundary = @"---------------------------14737809831466499882746641449";
-    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",myboundary];
-    [urlRequest addValue:contentType forHTTPHeaderField: @"Content-Type"];
-    
-    
-    //[urlRequest addValue: [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundry] forHTTPHeaderField:@"Content-Type"];
-    
-    NSMutableData *postData = [NSMutableData data]; //[NSMutableData dataWithCapacity:[data length] + 512];
-    [postData appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", myboundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    [postData appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"userfile\"; filename=\"%@\"\r\n", fileName]dataUsingEncoding:NSUTF8StringEncoding]];
-    [postData appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-    [postData appendData:[NSData dataWithData:data]];
-    [postData appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n", myboundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    [urlRequest setHTTPBody:postData];
-    return urlRequest;
-}
+
 
 
 
