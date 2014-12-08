@@ -51,6 +51,9 @@
     [self performSelector:@selector(takeSnapShot) withObject:nil afterDelay:1];
     [[WTNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     
+    
+    
+
     RulerView *view = [[RulerView alloc] initWithFrame:self.view.bounds];
     view.userInteractionEnabled = NO;
     [self.view addSubview:view];

@@ -288,6 +288,11 @@ static NSURLCache* sharedCache = nil;
                 if (failed) {
                     failed(response,connectionError);
                 }
+                if (WTRequestCenterDebugMode) {
+//                    访问出错
+                    
+                    NSLog(@"\n访问出错\n\n请求:%@\n\n响应：%@\n\n错误：%@",request,response,connectionError);
+                }
             }else
             {
                 if (finished) {
