@@ -274,7 +274,7 @@ extern NSString * const WTNetworkingOperationDidStartNotification;
 extern NSString * const WTNetworkingOperationDidFinishNotification;
 
 
-/*!
+/**
     Debug模式,为YES情况下可能会产生一些输出，发布的时候建议改为NO
  */
 extern BOOL const WTRequestCenterDebugMode;
