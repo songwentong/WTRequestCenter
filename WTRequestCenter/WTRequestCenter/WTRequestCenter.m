@@ -213,9 +213,9 @@ static NSURLCache* sharedCache = nil;
                    failed:(WTRequestFailedBlock)failed
 {
     NSURLRequest *request = [WTURLRequestSerialization GETRequestWithURL:url parameters:parameters];
-    [[self sharedQueue] addOperationWithBlock:^{
-        [self doURLRequest:request option:option finished:finished failed:failed];
-    }];
+
+    [self doURLRequest:request option:option finished:finished failed:failed];
+    
     return request;
 }
 
