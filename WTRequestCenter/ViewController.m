@@ -59,7 +59,7 @@
     [self.view addSubview:view];
     
 
-    
+    /*
     NSURLRequest *request = [WTURLRequestSerialization POSTRequestWithURL:@"a"
                                                                parameters:@{@"abc": @"123"}
                                                 constructingBodyWithBlock:^(id<WTMultipartFormData> formData)
@@ -70,7 +70,8 @@
         [formData appendPartWithData:data2 name:@"pic2"];
 //        ...
     }];
-    
+    */
+    /*
     [WTRequestCenter doURLRequest:request
                          finished:^(NSURLResponse *response, NSData *data)
     {
@@ -79,6 +80,7 @@
     {
         NSLog(@"failed");
     }];
+     */
     
 }
 

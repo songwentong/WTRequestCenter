@@ -10,8 +10,9 @@
 
 
 
-NSTimeInterval const WTURLRequestSerializationTimeoutTimeInterval = 30;;
-static NSString const *kboundary = @"Boundary+1F52B974B3E5F39D";
+NSTimeInterval WTURLRequestSerializationTimeoutTimeInterval = 30;
+static NSString *const kboundary = @"Boundary+1F52B974B3E5F39D";
+static NSString *const WTReuqestCenterUserAgent = @"WTURLRequestUserAgent";
 
 @interface WTMultiFormData : NSObject <WTMultipartFormData>
 
@@ -131,10 +132,10 @@ static NSString const *kboundary = @"Boundary+1F52B974B3E5F39D";
 
 
 
-+(NSURLRequest*)GETRequestWithURL:(NSString*)url
++(NSMutableURLRequest*)GETRequestWithURL:(NSString*)url
                               parameters:(NSDictionary*)parameters
 {
-    NSURLRequest *request = nil;
+    NSMutableURLRequest *request = nil;
     assert(url!=nil);
     NSString *string = [NSString stringWithFormat:@"%@?%@",url,[self stringFromParameters:parameters]];
 //    处理中文
@@ -145,7 +146,8 @@ static NSString const *kboundary = @"Boundary+1F52B974B3E5F39D";
     
     assert(requestURL != nil);
     
-    request = [NSURLRequest requestWithURL:requestURL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:WTURLRequestSerializationTimeoutTimeInterval];
+    request = [NSMutableURLRequest requestWithURL:requestURL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:WTURLRequestSerializationTimeoutTimeInterval];
+    [request addValue:WTReuqestCenterUserAgent forHTTPHeaderField:@"User-Agent"];
     
     return request;
 }
@@ -169,6 +171,7 @@ static NSString const *kboundary = @"Boundary+1F52B974B3E5F39D";
     [request setHTTPMethod:@"POST"];
     
     [request setHTTPBody:[[self stringFromParameters:parameters] dataUsingEncoding:NSUTF8StringEncoding]];
+    [request addValue:WTReuqestCenterUserAgent forHTTPHeaderField:@"User-Agent"];
     return request;
 }
 

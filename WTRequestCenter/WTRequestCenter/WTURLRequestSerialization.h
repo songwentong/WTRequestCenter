@@ -8,7 +8,11 @@
 
 #import <Foundation/Foundation.h>
 @protocol WTMultipartFormData;
-extern NSTimeInterval const WTURLRequestSerializationTimeoutTimeInterval;
+
+/**
+    请求超时时间
+ */
+extern NSTimeInterval WTURLRequestSerializationTimeoutTimeInterval;
 @interface WTURLRequestSerialization : NSObject
 
 
