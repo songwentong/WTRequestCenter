@@ -280,13 +280,12 @@ static NSURLCache* sharedCache = nil;
 //                    访问出错
                 NSLog(@"\n访问出错\n\n请求:%@\n\n响应：%@\n\n错误：%@",request,response,connectionError);
             }
-        }
-        
-        
-        if (!connectionError) {
+        }else
+        {
             NSCachedURLResponse *tempURLResponse = [[NSCachedURLResponse alloc] initWithResponse:response data:data];
             [[self sharedCache] storeCachedResponse:tempURLResponse forRequest:request];
         }
+
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if (connectionError) {
