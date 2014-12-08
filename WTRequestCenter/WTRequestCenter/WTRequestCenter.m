@@ -268,7 +268,7 @@ static NSURLCache* sharedCache = nil;
         [[NSNotificationCenter defaultCenter] postNotificationName:WTNetworkingOperationDidStartNotification object:request userInfo:userInfo];
     });
     
-    UIDevice *currentDevice = [UIDevice currentDevice];
+
     
     void (^complection)(NSURLResponse *response,NSData *data,NSError *error);
     
@@ -310,24 +310,28 @@ static NSURLCache* sharedCache = nil;
 
     };
     
+#if __IPHONE_OS_VERSION_MIN_REQUIRED
+    UIDevice *currentDevice = [UIDevice currentDevice];
     if ([currentDevice.systemVersion floatValue]>=7.0) {
-        
         NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *connectionError)
-        {
-            complection(response,data,connectionError);
-        }];
+                                      {
+                                          complection(response,data,connectionError);
+                                      }];
         [task resume];
+        
     }else
     {
         [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
             complection(response,data,connectionError);
         }];
     }
-    
-   
-    
 
-
+#else
+    [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        complection(response,data,connectionError);
+    }];
+#endif
+    
 }
 
 
