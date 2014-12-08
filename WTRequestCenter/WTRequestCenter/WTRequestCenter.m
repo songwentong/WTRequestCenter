@@ -268,41 +268,87 @@ static NSURLCache* sharedCache = nil;
         [[NSNotificationCenter defaultCenter] postNotificationName:WTNetworkingOperationDidStartNotification object:request userInfo:userInfo];
     });
     
-    [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+    UIDevice *currentDevice = [UIDevice currentDevice];
+    if ([currentDevice.systemVersion floatValue]>=7.0) {
         
-        dispatch_async(dispatch_get_main_queue(), ^{
-            NSDictionary *userInfo = @{@"request": request};
-            [[NSNotificationCenter defaultCenter] postNotificationName:WTNetworkingOperationDidFinishNotification object:request userInfo:userInfo];
-        });
-        
-        if (connectionError) {
-            if (WTRequestCenterDebugMode) {
-//                    访问出错
-                NSLog(@"\n访问出错\n\n请求:%@\n\n响应：%@\n\n错误：%@",request,response,connectionError);
-            }
-        }else
+        NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *connectionError)
         {
-            NSCachedURLResponse *tempURLResponse = [[NSCachedURLResponse alloc] initWithResponse:response data:data];
-            [[self sharedCache] storeCachedResponse:tempURLResponse forRequest:request];
-        }
-
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSDictionary *userInfo = @{@"request": request};
+                [[NSNotificationCenter defaultCenter] postNotificationName:WTNetworkingOperationDidFinishNotification object:request userInfo:userInfo];
+            });
+            
             if (connectionError) {
-                if (failed) {
-                    failed(response,connectionError);
+                if (WTRequestCenterDebugMode) {
+                    //                    访问出错
+                    NSLog(@"\n访问出错\n\n请求:%@\n\n响应：%@\n\n错误：%@",request,response,connectionError);
                 }
-
             }else
             {
-                if (finished) {
-                    finished(response,data);
-                }
+                NSCachedURLResponse *tempURLResponse = [[NSCachedURLResponse alloc] initWithResponse:response data:data];
+                [[self sharedCache] storeCachedResponse:tempURLResponse forRequest:request];
             }
-        });
-        
-    }];
+            
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (connectionError) {
+                    if (failed) {
+                        failed(response,connectionError);
+                    }
+                    
+                }else
+                {
+                    if (finished) {
+                        finished(response,data);
+                    }
+                }
+            });
+        }];
+        [task resume];
+    }else
+    {
+        [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSDictionary *userInfo = @{@"request": request};
+                [[NSNotificationCenter defaultCenter] postNotificationName:WTNetworkingOperationDidFinishNotification object:request userInfo:userInfo];
+            });
+            
+            if (connectionError) {
+                if (WTRequestCenterDebugMode) {
+                    //                    访问出错
+                    NSLog(@"\n访问出错\n\n请求:%@\n\n响应：%@\n\n错误：%@",request,response,connectionError);
+                }
+            }else
+            {
+                NSCachedURLResponse *tempURLResponse = [[NSCachedURLResponse alloc] initWithResponse:response data:data];
+                [[self sharedCache] storeCachedResponse:tempURLResponse forRequest:request];
+            }
+            
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (connectionError) {
+                    if (failed) {
+                        failed(response,connectionError);
+                    }
+                    
+                }else
+                {
+                    if (finished) {
+                        finished(response,data);
+                    }
+                }
+            });
+            
+        }];
     }
+    
+   
+    
+
+
+}
 
 
 +(void)doURLRequest:(NSURLRequest*)request
