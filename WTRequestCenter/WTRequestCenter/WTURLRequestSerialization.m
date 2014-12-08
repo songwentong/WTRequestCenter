@@ -40,11 +40,10 @@ static NSString const *kboundary = @"Boundary+1F52B974B3E5F39D";
                         error:(NSError * __autoreleasing *)error
 {
     BOOL result = YES;
-    assert(!name);
     assert(!fileURL);
     
     NSData *data = [[NSData alloc] initWithContentsOfURL:fileURL];
-    assert(!data);
+    
     [self appendPartWithData:data name:name];
     
     return result;
@@ -54,6 +53,9 @@ static NSString const *kboundary = @"Boundary+1F52B974B3E5F39D";
 - (BOOL)appendPartWithData:(NSData*)data
                       name:(NSString*)name
 {
+    assert(!data);
+    assert(!name);
+    
     NSDictionary *dict= @{name: data};
     [_HTTPBodyParts addObject:dict];
     return YES;
