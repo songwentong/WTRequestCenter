@@ -123,6 +123,7 @@ static NSOperationQueue *dataQueue = nil;
     return [WTRequestCenter JSONObjectWithData:data];
 }
 
+
 #pragma mark - 保存路径
 //跟目录
 +(NSString*)rootDir
@@ -183,7 +184,6 @@ static NSOperationQueue *dataQueue = nil;
     
    
 }
-
 
 #pragma mark - 取数据
 
@@ -278,5 +278,8 @@ static NSOperationQueue *dataQueue = nil;
 {
     return @"just a joke";
 }
+
+
+
 
 @end

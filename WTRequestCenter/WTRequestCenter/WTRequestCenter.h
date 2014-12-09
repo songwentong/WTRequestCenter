@@ -23,7 +23,7 @@
 #import "WTDataSaver.h"
 #import "WTURLRequestSerialization.h"
 #import "WTURLRequestOperation.h"
-#if __IPHONE_OS_VERSION_MIN_REQUIRED
+#if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
 #import <UIKit/UIKit.h>
 #else
 
