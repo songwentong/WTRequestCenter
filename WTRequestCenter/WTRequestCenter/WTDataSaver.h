@@ -48,9 +48,7 @@
  completionHandler:(void (^)(NSData *data, NSURLResponse *response, NSError *error))completion;
 
 
-//同步取数据（不推荐）
-+(NSData*)dataWithIndex:(NSInteger)index DEPRECATED_ATTRIBUTE;
-+(NSData*)dataWithName:(NSString*)name DEPRECATED_ATTRIBUTE;
+
 
 
 
