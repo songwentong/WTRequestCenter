@@ -176,23 +176,7 @@
 
 
 #pragma mark - 取数据
-+(NSData*)dataWithIndex:(NSInteger)index
-{
-    NSData *data = nil;
-    data = [self dataWithName:[NSString stringWithFormat:@"%d",index]];
-    return data;
-}
 
-
-+(NSData*)dataWithName:(NSString*)name
-{
-    
-    [self configureDirectory];
-    NSData *data = nil;
-    NSString *filePath = [NSString stringWithFormat:@"%@/%@",[self rootDir],name];
-    data = [NSData dataWithContentsOfFile:filePath];
-    return data;
-}
 +(void)dataWithIndex:(NSInteger)index completion:(void(^)(NSData*data))completion
 {
     NSString *name = [NSString stringWithFormat:@"%d",index];
