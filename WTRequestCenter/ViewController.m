@@ -61,6 +61,10 @@
     [WTDataSaver saveData:[@"aaa" dataUsingEncoding:NSUTF8StringEncoding] withIndex:1 completion:^{
         NSLog(@"asdsa");
     }];
+    
+    [WTDataSaver dataWithIndex:1 completion:^(NSData *data) {
+       NSLog(@"%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+    }];
     /*
     NSURLRequest *request = [WTURLRequestSerialization POSTRequestWithURL:@"a"
                                                                parameters:@{@"abc": @"123"}

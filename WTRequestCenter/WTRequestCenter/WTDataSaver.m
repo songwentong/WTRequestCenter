@@ -10,7 +10,17 @@
 #import "WTRequestCenter.h"
 
 @implementation WTDataSaver
-
+static NSOperationQueue *dataQueue = nil;
++(NSOperationQueue*)sharedDataQueue
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        dataQueue = [[NSOperationQueue alloc] init];
+        [dataQueue setMaxConcurrentOperationCount:10];
+        [dataQueue setSuspended:NO];
+    });
+    return dataQueue;
+}
 
 #pragma mark - 工具
 +(CGFloat)osVersion
@@ -169,7 +179,7 @@
             }];
         }
     }];
-    [[WTRequestCenter sharedQueue] addOperation:temp];
+    [[self sharedDataQueue] addOperation:temp];
     
    
 }
@@ -186,35 +196,36 @@
 {
     
     NSString *filePath = [NSString stringWithFormat:@"%@/%@",[self rootDir],name];
-//    NSURL *base = [[NSBundle mainBundle] bundleURL];
-//    NSURL *url = [NSURL fileURLWithPath:filePath];
-    [self dataWithURL:filePath completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+
+    [self dataWithURL:filePath completionHandler:^(NSData *data) {
         if (completion) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                completion(data);
-            });
+            completion(data);
         }
     }];
 
 }
 
 +(void)dataWithURL:(NSString*)url
-     completionHandler:(void (^)(NSData *data, NSURLResponse *response, NSError *error))completion
+     completionHandler:(void (^)(NSData *data))completion
 {
     
     [self configureDirectory];
     if (!url) {
         if (completion) {
-            completion(nil,nil,nil);
+            completion(nil);
         }
     }else
     {
+    [[self sharedDataQueue] addOperationWithBlock:^{
         
-    [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]] queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        NSData *data = [NSData dataWithContentsOfFile:url];
         if (completion) {
-            completion(data,response,connectionError);
+            completion(data);
         }
+        
+
     }];
+    
     
     }
 }
