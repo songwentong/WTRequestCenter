@@ -325,12 +325,7 @@ static NSURLCache* sharedCache = nil;
         }];
     }
 #elif defined(__MAC_OS_X_VERSION_MIN_REQUIRED)
-    if ([WTDataSaver osVersion]>10.9) {
-        
-    }else
-    {
-        
-    }
+
     [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         complection(response,data,connectionError);
     }];
