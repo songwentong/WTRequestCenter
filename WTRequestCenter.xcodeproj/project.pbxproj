@@ -19,7 +19,6 @@
 		E15118011A1D9E410060AAB1 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E15118001A1D9E410060AAB1 /* MobileCoreServices.framework */; };
 		E15119091A23243C0060AAB1 /* WTURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = E15119081A23243C0060AAB1 /* WTURLRequestSerialization.m */; };
 		E160B1FA19FDDF23007E8CFD /* WTDataSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = E160B1F119FDDF23007E8CFD /* WTDataSaver.m */; };
-		E160B1FB19FDDF23007E8CFD /* WTDataWriteOpeation.m in Sources */ = {isa = PBXBuildFile; fileRef = E160B1F319FDDF23007E8CFD /* WTDataWriteOpeation.m */; };
 		E160B1FC19FDDF23007E8CFD /* WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E160B1F519FDDF23007E8CFD /* WTRequestCenter.m */; };
 		E160B1FD19FDDF23007E8CFD /* WTURLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E160B1F719FDDF23007E8CFD /* WTURLRequestOperation.m */; };
 		E160B1FE19FDDF23007E8CFD /* WTURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E160B1F919FDDF23007E8CFD /* WTURLSessionManager.m */; };
@@ -83,8 +82,6 @@
 		E15119081A23243C0060AAB1 /* WTURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTURLRequestSerialization.m; sourceTree = "<group>"; };
 		E160B1F019FDDF23007E8CFD /* WTDataSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTDataSaver.h; sourceTree = "<group>"; };
 		E160B1F119FDDF23007E8CFD /* WTDataSaver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTDataSaver.m; sourceTree = "<group>"; };
-		E160B1F219FDDF23007E8CFD /* WTDataWriteOpeation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTDataWriteOpeation.h; sourceTree = "<group>"; };
-		E160B1F319FDDF23007E8CFD /* WTDataWriteOpeation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTDataWriteOpeation.m; sourceTree = "<group>"; };
 		E160B1F419FDDF23007E8CFD /* WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTRequestCenter.h; sourceTree = "<group>"; };
 		E160B1F519FDDF23007E8CFD /* WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTRequestCenter.m; sourceTree = "<group>"; };
 		E160B1F619FDDF23007E8CFD /* WTURLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTURLRequestOperation.h; sourceTree = "<group>"; };
@@ -295,8 +292,6 @@
 				E15119081A23243C0060AAB1 /* WTURLRequestSerialization.m */,
 				E160B1F019FDDF23007E8CFD /* WTDataSaver.h */,
 				E160B1F119FDDF23007E8CFD /* WTDataSaver.m */,
-				E160B1F219FDDF23007E8CFD /* WTDataWriteOpeation.h */,
-				E160B1F319FDDF23007E8CFD /* WTDataWriteOpeation.m */,
 				E160B1F619FDDF23007E8CFD /* WTURLRequestOperation.h */,
 				E160B1F719FDDF23007E8CFD /* WTURLRequestOperation.m */,
 				E160B1F819FDDF23007E8CFD /* WTURLSessionManager.h */,
@@ -424,7 +419,6 @@
 				E160B1FE19FDDF23007E8CFD /* WTURLSessionManager.m in Sources */,
 				E4AE9C7219F325C200B22B30 /* WTImageViewer.m in Sources */,
 				A3B4A7C5199AF88400A8BAF0 /* UIImage+WTRequestCenter.m in Sources */,
-				E160B1FB19FDDF23007E8CFD /* WTDataWriteOpeation.m in Sources */,
 				E1632C8C19EE02EB00089FFA /* WTRequestViewController.m in Sources */,
 				E49806CF19EEBC9F00705C19 /* WTWebViewController.m in Sources */,
 				E4BC81C5199E3415008ABB91 /* UIDevice+WTRequestCenter.m in Sources */,

@@ -58,7 +58,9 @@
     view.userInteractionEnabled = NO;
     [self.view addSubview:view];
     
-
+    [WTDataSaver saveData:[@"aaa" dataUsingEncoding:NSUTF8StringEncoding] withIndex:1 completion:^{
+        NSLog(@"asdsa");
+    }];
     /*
     NSURLRequest *request = [WTURLRequestSerialization POSTRequestWithURL:@"a"
                                                                parameters:@{@"abc": @"123"}

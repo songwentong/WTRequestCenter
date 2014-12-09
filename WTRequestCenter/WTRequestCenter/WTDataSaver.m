@@ -8,30 +8,9 @@
 
 #import "WTDataSaver.h"
 #import "WTRequestCenter.h"
-#import "WTDataWriteOpeation.h"
+
 @implementation WTDataSaver
 
-#pragma mark - 工具
-static dispatch_group_t sharedCompletionGroup;
-+(dispatch_group_t)sharedCompletionGroup
-{
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        sharedCompletionGroup = dispatch_group_create();
-    });
-    
-    return sharedCompletionGroup;
-}
-
-static dispatch_queue_t wtsharedCompletionProcessingQueue;
-+(dispatch_queue_t)sharedCompletionProcessingQueue
-{
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        wtsharedCompletionProcessingQueue = dispatch_queue_create("wtsharedCompletionProcessingQueue", DISPATCH_QUEUE_CONCURRENT);
-    });
-    return wtsharedCompletionProcessingQueue;
-}
 
 #pragma mark - 工具
 +(CGFloat)osVersion
@@ -174,6 +153,7 @@ static dispatch_queue_t wtsharedCompletionProcessingQueue;
     NSString *name = [NSString stringWithFormat:@"%d",index];
     [self saveData:data withName:name completion:completion];
 }
+
 +(void)saveData:(NSData*)data withName:(NSString*)name completion:(void(^)())completion
 {
     [self configureDirectory];
@@ -181,28 +161,17 @@ static dispatch_queue_t wtsharedCompletionProcessingQueue;
     
     
 
-    
-    WTDataWriteOpeation *operation = [[WTDataWriteOpeation alloc] initWithData:data andFilePath:filePath];
-    [operation setCompletionBlock:^{
-        
-        dispatch_group_t group = [WTDataSaver sharedCompletionGroup];
-        dispatch_group_enter(group);
-        
-        dispatch_queue_t queue = [self sharedCompletionProcessingQueue];
-        
-        dispatch_async(queue, ^{
-           dispatch_group_async(group, queue, ^{
-               if (completion) {
-                   completion();
-               }
-           });
-            
-        });
-        
-        dispatch_group_leave(group);
+    NSBlockOperation *temp = [NSBlockOperation blockOperationWithBlock:^{
+        [data writeToFile:filePath atomically:YES];
+        if (completion) {
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                completion();
+            }];
+        }
     }];
+    [[WTRequestCenter sharedQueue] addOperation:temp];
     
-    [[WTRequestCenter sharedQueue] addOperation:operation];
+   
 }
 
 
@@ -238,7 +207,7 @@ static dispatch_queue_t wtsharedCompletionProcessingQueue;
     [self dataWithURL:filePath completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (completion) {
             dispatch_async(dispatch_get_main_queue(), ^{
-            completion(data);
+                completion(data);
             });
         }
     }];
