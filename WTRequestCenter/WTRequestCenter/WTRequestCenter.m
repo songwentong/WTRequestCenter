@@ -189,7 +189,7 @@ static NSURLCache* sharedCache = nil;
 +(NSURLRequest*)getWithURL:(NSString*)url
                 parameters:(NSDictionary*)parameters
                   finished:(WTRequestFinishedBlock)finished
-                   failed:(WTRequestFailedBlock)failed
+                    failed:(WTRequestFailedBlock)failed
 {
     return [self getWithURL:url parameters:parameters option:WTRequestCenterCachePolicyNormal finished:finished failed:failed];
 }
@@ -199,8 +199,8 @@ static NSURLCache* sharedCache = nil;
 
 +(NSURLRequest*)getCacheWithURL:(NSString*)url
                      parameters:(NSDictionary*)parameters
-                         finished:(WTRequestFinishedBlock)finished
-                        failed:(WTRequestFailedBlock)failed
+                       finished:(WTRequestFinishedBlock)finished
+                         failed:(WTRequestFailedBlock)failed
 {
     return [self getWithURL:url parameters:parameters option:WTRequestCenterCachePolicyCacheElseWeb finished:finished failed:failed];
 }
@@ -209,8 +209,8 @@ static NSURLCache* sharedCache = nil;
 +(NSURLRequest*)getWithURL:(NSString*)url
                 parameters:(NSDictionary *)parameters
                     option:(WTRequestCenterCachePolicy)option
-                    finished:(WTRequestFinishedBlock)finished
-                   failed:(WTRequestFailedBlock)failed
+                  finished:(WTRequestFinishedBlock)finished
+                    failed:(WTRequestFailedBlock)failed
 {
     NSURLRequest *request = [WTURLRequestSerialization GETRequestWithURL:url parameters:parameters];
 
@@ -257,8 +257,8 @@ static NSURLCache* sharedCache = nil;
 
 #pragma mark - Request
 +(void)doURLRequest:(NSURLRequest*)request
-          finished:(WTRequestFinishedBlock)finished
-            failed:(WTRequestFailedBlock)failed
+           finished:(WTRequestFinishedBlock)finished
+             failed:(WTRequestFailedBlock)failed
 {
 //    有效性判断
     assert(request != nil);
