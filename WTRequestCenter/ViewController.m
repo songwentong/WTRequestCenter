@@ -242,15 +242,15 @@
 
 -(void)loadGif
 {
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
-    imageView.frame = CGRectMake(0, 480/2, 320, 480/2);
-    imageView.contentMode = UIViewContentModeCenter;
-    [self.view addSubview:imageView];
+    UIImageView *image1 = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    image1.frame = CGRectMake(0, 480/2, 320, 480/2);
+    image1.contentMode = UIViewContentModeCenter;
+    [self.view addSubview:image1];
 //    NSURL *url = [[NSBundle mainBundle] URLForResource:@"aaa" withExtension:@"gif"];
     NSString *str = [[NSBundle mainBundle]pathForResource:@"aaa" ofType:@"gif"];
     [UIImage gifImageWithURL:str
                   completion:^(UIImage *image) {
-                      imageView.image = image;
+                    image1.image = image;
                   }];
     
     

@@ -26,8 +26,8 @@ static NSString *const WTReuqestCenterUserAgent = @"WTURLRequestUserAgent";
 //
 @property (readwrite, nonatomic, strong) NSMutableArray *HTTPBodyParts;
 
-
 @end
+
 @implementation WTMultiFormData
 - (id)initWithURLRequest:(NSMutableURLRequest *)urlRequest
 {
@@ -169,7 +169,7 @@ static NSString *const WTReuqestCenterUserAgent = @"WTURLRequestUserAgent";
     //    判断有效性
     assert(theURL != nil);
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:theURL ];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:theURL];
     [request setHTTPMethod:@"POST"];
     
     [request setHTTPBody:[[self stringFromParameters:parameters] dataUsingEncoding:NSUTF8StringEncoding]];

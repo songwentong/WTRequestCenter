@@ -12,6 +12,7 @@
 #import "UIImage+WTRequestCenter.h"
 @interface UIImageView()
 //@property (nonatomic,strong,readwrite) WTURLRequestOperation *wtImageRequestOperation;
+@property (nonatomic,strong ,readwrite) WTURLRequestOperation *myOperation;
 @end
 @implementation UIImageView (WTRequestCenter)
 
