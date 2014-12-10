@@ -225,7 +225,7 @@ constructingBodyWithBlock:(void (^)(id <WTMultipartFormData> formData))block
     [request setValue:value forHTTPHeaderField:@"Content-Type"];
     
     
-    [request setValue:@"WTNetworkCenter iOS" forHTTPHeaderField:@"User-Agent"];
+    [request setValue:WTReuqestCenterUserAgent forHTTPHeaderField:@"User-Agent"];
     /*
      "Accept-Language" = "en;q=1";
      "Content-Length" = 29039;
@@ -260,6 +260,20 @@ constructingBodyWithBlock:(void (^)(id <WTMultipartFormData> formData))block
     
     
     return request;
+}
+
+
+
++(NSString*)stringFromDate:(NSDate*)date
+{
+    NSString *result = @"";
+//    NSDate *nowDate = [NSDate date];
+//    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+//    [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+//    NSTimeInterval nowInterval = [nowDate timeIntervalSince1970];
+//    NSTimeInterval timeInterval = [date timeIntervalSince1970];
+    
+    return result;
 }
 
 @end
