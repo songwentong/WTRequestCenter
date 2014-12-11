@@ -27,6 +27,10 @@
 
 +(CGFloat)convert320ToCurrentWidth:(CGFloat)width
 {
+    if (width==[self screenHeight]) {
+//        在宽度等于屏幕宽度时防止出现误差
+        return width;
+    }
     CGFloat result = 0;
     CGFloat multiple = [self screenWidth]/320.0;
     result = width * multiple;
