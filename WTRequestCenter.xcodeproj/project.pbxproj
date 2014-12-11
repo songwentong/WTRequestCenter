@@ -188,12 +188,12 @@
 				A3B7869E19D79B820093CC4E /* UIWebView+WTRequestCenter.m */,
 				E141B5D219EFDD8D005D25B6 /* UIAlertView+WTRequestCenter.h */,
 				E141B5D319EFDD8D005D25B6 /* UIAlertView+WTRequestCenter.m */,
+				E12F81F01A396E34002D193B /* UIApplication+WTRequestCenter.h */,
+				E12F81F11A396E34002D193B /* UIApplication+WTRequestCenter.m */,
 				E4B2251819FAAB8A008DC532 /* WTNetworkActivityIndicatorManager.h */,
 				E4B2251919FAAB8A008DC532 /* WTNetworkActivityIndicatorManager.m */,
 				E4AE9C7019F325C200B22B30 /* WTImageViewer.h */,
 				E4AE9C7119F325C200B22B30 /* WTImageViewer.m */,
-				E12F81F01A396E34002D193B /* UIApplication+WTRequestCenter.h */,
-				E12F81F11A396E34002D193B /* UIApplication+WTRequestCenter.m */,
 			);
 			name = "UIKit+WTRequestCenter";
 			path = "WTRequestCenter/UIKit+WTRequestCenter";

@@ -18,12 +18,14 @@
 //版本号
 +(NSString*)WTAppVersion
 {
-    return @"";
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleInfoDictionaryVersionKey];
+    return version;
 }
 
 //build 号
 +(NSString*)WTAppBuild
 {
-    return @"";
+    NSString *build = [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleVersionKey];
+    return build;
 }
 @end

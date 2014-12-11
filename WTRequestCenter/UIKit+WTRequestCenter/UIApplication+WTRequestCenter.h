@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface UIApplication (WTRequestCenter)
+//程序版本号
++(NSString*)WTAppVersion;
 
+//build 号
++(NSString*)WTAppBuild;
 @end
