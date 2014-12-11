@@ -15,6 +15,7 @@
 		A3B70F641988DC5B002776F4 /* UIButton+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B70F611988DC5B002776F4 /* UIButton+WTRequestCenter.m */; };
 		A3B70F651988DC5B002776F4 /* UIImageView+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B70F631988DC5B002776F4 /* UIImageView+WTRequestCenter.m */; };
 		A3B7869F19D79B820093CC4E /* UIWebView+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B7869E19D79B820093CC4E /* UIWebView+WTRequestCenter.m */; };
+		E12F81F21A396E34002D193B /* UIApplication+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E12F81F11A396E34002D193B /* UIApplication+WTRequestCenter.m */; };
 		E141B5D419EFDD8D005D25B6 /* UIAlertView+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E141B5D319EFDD8D005D25B6 /* UIAlertView+WTRequestCenter.m */; };
 		E15118011A1D9E410060AAB1 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E15118001A1D9E410060AAB1 /* MobileCoreServices.framework */; };
 		E15119091A23243C0060AAB1 /* WTURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = E15119081A23243C0060AAB1 /* WTURLRequestSerialization.m */; };
@@ -75,6 +76,8 @@
 		A3B70F631988DC5B002776F4 /* UIImageView+WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WTRequestCenter.m"; sourceTree = "<group>"; };
 		A3B7869D19D79B820093CC4E /* UIWebView+WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+WTRequestCenter.h"; sourceTree = "<group>"; };
 		A3B7869E19D79B820093CC4E /* UIWebView+WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+WTRequestCenter.m"; sourceTree = "<group>"; };
+		E12F81F01A396E34002D193B /* UIApplication+WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+WTRequestCenter.h"; sourceTree = "<group>"; };
+		E12F81F11A396E34002D193B /* UIApplication+WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+WTRequestCenter.m"; sourceTree = "<group>"; };
 		E141B5D219EFDD8D005D25B6 /* UIAlertView+WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+WTRequestCenter.h"; sourceTree = "<group>"; };
 		E141B5D319EFDD8D005D25B6 /* UIAlertView+WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+WTRequestCenter.m"; sourceTree = "<group>"; };
 		E15118001A1D9E410060AAB1 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -189,6 +192,8 @@
 				E4B2251919FAAB8A008DC532 /* WTNetworkActivityIndicatorManager.m */,
 				E4AE9C7019F325C200B22B30 /* WTImageViewer.h */,
 				E4AE9C7119F325C200B22B30 /* WTImageViewer.m */,
+				E12F81F01A396E34002D193B /* UIApplication+WTRequestCenter.h */,
+				E12F81F11A396E34002D193B /* UIApplication+WTRequestCenter.m */,
 			);
 			name = "UIKit+WTRequestCenter";
 			path = "WTRequestCenter/UIKit+WTRequestCenter";
@@ -425,6 +430,7 @@
 				E4440D81197A01B1001E6D88 /* AppDelegate.m in Sources */,
 				E160B1FC19FDDF23007E8CFD /* WTRequestCenter.m in Sources */,
 				E43DC20319F29D82009FA132 /* WTImageViewController.m in Sources */,
+				E12F81F21A396E34002D193B /* UIApplication+WTRequestCenter.m in Sources */,
 				E4440D7D197A01B1001E6D88 /* main.m in Sources */,
 				E4B2251A19FAAB8A008DC532 /* WTNetworkActivityIndicatorManager.m in Sources */,
 				E1F34B861A26C59600B603BE /* UIScreen+WTRequestCenter.m in Sources */,
