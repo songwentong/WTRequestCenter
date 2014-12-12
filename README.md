@@ -45,6 +45,27 @@ UIKit扩展提供了许多不错的方法，快速缓存图片，图片查看，
                   finished:(WTRequestFinishedBlock)finished
                     failed:(WTRequestFailedBlock)failed;
 ```
+
+
+用例：
+```objective-c
+         NSString  *url = @"http://www.baidu.com";
+
+        
+        NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+        [parameters setValue:@"1928845312" forKey:@"uid"];
+        [parameters setValue:@"1" forKey:@"type"];
+//        [parameters setValue:@"ae7d3f36dafbb69491aadf36862f7ff8" forKey:@"sign"];
+        
+        
+        [WTRequestCenter getWithURL:url parameters:parameters finished:^(NSURLResponse *response, NSData *data) {
+            NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            NSLog(@"%@",string);
+        } failed:^(NSURLResponse *response, NSError *error) {
+            NSLog(@"%@",response);
+        }];
+```
+
               
 ### POST 请求
 ```objective-c
@@ -52,6 +73,24 @@ UIKit扩展提供了许多不错的方法，快速缓存图片，图片查看，
                  parameters:(NSDictionary*)parameters
                    finished:(WTRequestFinishedBlock)finished
                      failed:(WTRequestFailedBlock)failed;
+```
+
+用例：
+```objective-c
+         NSString  *url = @"http://www.baidu.com";
+
+        
+        NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+        [parameters setValue:@"aaa" forKey:@"uid"];
+        [parameters setValue:@"1" forKey:@"type"];
+        
+        
+        [WTRequestCenter postWithURL:url parameters:parameters finished:^(NSURLResponse *response, NSData *data) {
+            NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            NSLog(@"%@",string);
+        } failed:^(NSURLResponse *response, NSError *error) {
+            NSLog(@"%@",response);
+        }];
 ```
 
 ### GET+缓存策略
@@ -86,6 +125,14 @@ UIKit扩展提供了许多不错的方法，快速缓存图片，图片查看，
 ```objective-c
 +(NSString*)urlWithIndex:(NSInteger)index;
 ```
+
+
+###安装
+点击右侧download或者终端git clone https://github.com/swtlovewtt/WTRequestCenter
+下载后找到里面的WTRequestCenter，把文件夹里面的文件粘到工程里面就可以使用了。
+UIKit扩展是一个非常好的UI扩展工具，提供了图片下载方法，颜色快速创建等cagegory。
+
+目前不提供cocoaPod安装
 
 
 
