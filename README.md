@@ -49,14 +49,11 @@ UIKit扩展提供了许多不错的方法，快速缓存图片，图片查看，
 
 用例：
 ```objective-c
-         NSString  *url = @"http://www.baidu.com";
+        NSString  *url = @"http://www.baidu.com";
 
-        
         NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-        [parameters setValue:@"1928845312" forKey:@"uid"];
-        [parameters setValue:@"1" forKey:@"type"];
-//        [parameters setValue:@"ae7d3f36dafbb69491aadf36862f7ff8" forKey:@"sign"];
-        
+        [parameters setValue:@"value" forKey:@"key"];
+        [parameters setValue:@"v2" forKey:@"key2"];
         
         [WTRequestCenter getWithURL:url parameters:parameters finished:^(NSURLResponse *response, NSData *data) {
             NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
@@ -78,12 +75,9 @@ UIKit扩展提供了许多不错的方法，快速缓存图片，图片查看，
 用例：
 ```objective-c
          NSString  *url = @"http://www.baidu.com";
-
-        
         NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
         [parameters setValue:@"aaa" forKey:@"uid"];
         [parameters setValue:@"1" forKey:@"type"];
-        
         
         [WTRequestCenter postWithURL:url parameters:parameters finished:^(NSURLResponse *response, NSData *data) {
             NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
