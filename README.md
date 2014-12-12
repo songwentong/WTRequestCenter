@@ -55,10 +55,15 @@ UIKit扩展提供了许多不错的方法，快速缓存图片，图片查看，
         [parameters setValue:@"value" forKey:@"key"];
         [parameters setValue:@"v2" forKey:@"key2"];
         
-        [WTRequestCenter getWithURL:url parameters:parameters finished:^(NSURLResponse *response, NSData *data) {
+        [WTRequestCenter getWithURL:url
+                         parameters:parameters 
+                           finished:^(NSURLResponse *response, NSData *data) 
+        {
             NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             NSLog(@"%@",string);
-        } failed:^(NSURLResponse *response, NSError *error) {
+        } 
+                             failed:^(NSURLResponse *response, NSError *error) 
+        {
             NSLog(@"%@",response);
         }];
 ```
@@ -79,10 +84,15 @@ UIKit扩展提供了许多不错的方法，快速缓存图片，图片查看，
         [parameters setValue:@"aaa" forKey:@"uid"];
         [parameters setValue:@"1" forKey:@"type"];
         
-        [WTRequestCenter postWithURL:url parameters:parameters finished:^(NSURLResponse *response, NSData *data) {
+        [WTRequestCenter postWithURL:url 
+                          parameters:parameters 
+                            finished:^(NSURLResponse *response, NSData *data) 
+        {
             NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             NSLog(@"%@",string);
-        } failed:^(NSURLResponse *response, NSError *error) {
+        } 
+                              failed:^(NSURLResponse *response, NSError *error)
+        {
             NSLog(@"%@",response);
         }];
 ```
