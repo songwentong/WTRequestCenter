@@ -127,6 +127,7 @@ Only need iOS 5.0 and later,no more import and Configuration!
 - UIColor的快速创建
 - UIDecive的扩展（uuid调用）
 - UIWebView的缓存扩展（暂时不支持网页游戏的缓存）
+- UIScreen 提供了一些适配屏幕的好方法，具体看注释
 
 ## Communication  
 - 如果你**发现bug**,<a href="https://github.com/swtlovewtt/WTRequestCenter/issues">打开右侧的问题</a>
@@ -139,10 +140,16 @@ Only need iOS 5.0 and later,no more import and Configuration!
 ###  测试中方法
 
 
-这是仿照AFNetworking写的一个请求方法，待测试
+这是仿照AFNetworking写的一个请求方法，待测试。
+这是一个比较强大的方法。有缓存策略和下载进度，
+希望大家测试一下，给我一个反馈。
 ```objective-c
-+(WTURLRequestOperation*)testGetWithURL:(NSURL*)url
-           parameters:(NSDictionary *)parameters
-               option:(WTRequestCenterCachePolicy)option
-    completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
++(WTURLRequestOperation*)testGetWithURL:(NSString*)url
+                             parameters:(NSDictionary *)parameters
+                                 option:(WTRequestCenterCachePolicy)option
+                               progress:(WTDownLoadProgressBlock)progress
+                               finished:(WTRequestFinishedBlock)finished
+                                 failed:(WTRequestFailedBlock)failed;
 ```
+
+
