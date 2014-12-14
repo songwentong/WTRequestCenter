@@ -204,3 +204,6 @@ Only need iOS 5.0 and later,no more import and Configuration!
 ```
 
 
+##作者
+- <a href = "https://github.com/swtlovewtt">宋文通</a>
+- 
