@@ -39,6 +39,8 @@ extern NSTimeInterval WTURLRequestSerializationTimeoutTimeInterval;
 +(instancetype)sharedRequestSerialization;
 
 
+@property (nonatomic, assign) NSTimeInterval timeoutInterval;
+
 /*!
     设置请求头
  */

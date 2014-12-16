@@ -143,6 +143,7 @@ static WTURLRequestSerialization *sharedSerialization = nil;
     self = [super init];
     if (self) {
         self.HTTPRequestHeaders = [[NSMutableDictionary alloc] init];
+        self.timeoutInterval = WTURLRequestSerializationTimeoutTimeInterval;
     }
     return self;
 }
@@ -200,7 +201,7 @@ static WTURLRequestSerialization *sharedSerialization = nil;
     
     assert(requestURL != nil);
     
-    request = [NSMutableURLRequest requestWithURL:requestURL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:WTURLRequestSerializationTimeoutTimeInterval];
+    request = [NSMutableURLRequest requestWithURL:requestURL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:_timeoutInterval];
     [_HTTPRequestHeaders enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
         [request setValue:value forHTTPHeaderField:key];
     }];
@@ -230,7 +231,7 @@ static WTURLRequestSerialization *sharedSerialization = nil;
     //    判断有效性
     assert(theURL != nil);
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:theURL];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:theURL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:_timeoutInterval];
     [request setHTTPMethod:@"POST"];
     
     [request setHTTPBody:[[self stringFromParameters:parameters] dataUsingEncoding:NSUTF8StringEncoding]];
@@ -266,7 +267,8 @@ constructingBodyWithBlock:(void (^)(id <WTMultipartFormData> formData))block
     //    判断有效性
     assert(theURL != nil);
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:theURL];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:theURL cachePolicy:NSURLRequestReloadIgnoringCacheData
+                                                       timeoutInterval:_timeoutInterval];
     [request setHTTPMethod:@"POST"];
     
     
@@ -318,7 +320,7 @@ constructingBodyWithBlock:(void (^)(id <WTMultipartFormData> formData))block
 {
     NSMutableURLRequest *request = nil;
     
-    request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:WTURLRequestSerializationTimeoutTimeInterval];
+    request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:_timeoutInterval];
     [request setHTTPBody:[[self stringFromParameters:parameters] dataUsingEncoding:NSUTF8StringEncoding]];
     [request setHTTPMethod:@"PUT"];
     [_HTTPRequestHeaders enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
