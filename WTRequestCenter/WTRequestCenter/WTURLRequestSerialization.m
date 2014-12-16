@@ -121,6 +121,7 @@ static NSString *const WTReuqestCenterUserAgent = @"WTURLRequestUserAgent";
 }
 @property (readwrite, nonatomic, strong) NSMutableDictionary *HTTPRequestHeaders;
 @end
+
 @implementation WTURLRequestSerialization
 static WTURLRequestSerialization *sharedSerialization = nil;
 

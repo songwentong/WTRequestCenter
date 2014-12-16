@@ -57,9 +57,21 @@
     RulerView *view = [[RulerView alloc] initWithFrame:self.view.bounds];
     view.userInteractionEnabled = NO;
     [self.view addSubview:view];
-    
-
-    
+    /*
+    [WTRequestCenter getCacheWithURL:@"http://www.baidu.com"
+                          parameters:nil
+                            finished:^(NSURLResponse *response, NSData *data)
+    {
+        NSString *string = [[NSString alloc] initWithData:data
+                                                 encoding:NSUTF8StringEncoding];
+        NSLog(@"%@",string);
+        
+    }
+                              failed:^(NSURLResponse *response, NSError *error)
+    {
+        
+    }];
+    */
     /*
     NSURLRequest *request = [WTURLRequestSerialization POSTRequestWithURL:@"a"
                                                                parameters:@{@"abc": @"123"}
