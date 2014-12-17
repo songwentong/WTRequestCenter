@@ -174,16 +174,15 @@ static NSOperationQueue *dataQueue = nil;
     NSString *filePath = [NSString stringWithFormat:@"%@/%@",[self rootDir],name];
     
     
-
-    NSBlockOperation *temp = [NSBlockOperation blockOperationWithBlock:^{
-        [data writeToFile:filePath atomically:YES];
-        if (completion) {
-            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                completion();
-            }];
-        }
+    [[self sharedDataQueue] addOperationWithBlock:^{
+    [data writeToFile:filePath atomically:YES];
+    if (completion) {
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            completion();
+        }];
+    }
     }];
-    [[self sharedDataQueue] addOperation:temp];
+
     
    
 }
