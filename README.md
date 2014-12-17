@@ -109,16 +109,6 @@ UIKit扩展提供了许多不错的方法，快速缓存图片，图片查看，
 ```
 
 
-### POST+缓存策略
-虽然POST不经常用缓存，但是每个人的需要不同，所以我同样实现了POST的缓存，有需要的可以用
-```objective-c
-+(NSURLRequest*)postWithURL:(NSString*)url
-                 parameters:(NSDictionary *)parameters
-                     option:(WTRequestCenterCachePolicy)option
-                   finished:(WTRequestFinishedBlock)finished
-                     failed:(WTRequestFailedBlock)failed;
-```
-
 ###   接口路径辅助功能
       根路径的设置和获取
 ```objective-c
