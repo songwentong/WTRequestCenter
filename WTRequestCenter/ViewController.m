@@ -210,7 +210,7 @@
 -(void)post
 {
     
-    NSString *url = [WTRequestCenter urlWithIndex:0];
+    NSString *url = [WTRequestCenter URLWithIndex:0];
     url = @"http://s01.meiriq.com/gamesbox/public/index.php/user/add-fav";
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setValue:@"5406906dcb02be7d279d26f9" forKey:@"gid"];

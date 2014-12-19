@@ -206,7 +206,7 @@ static NSURLCache* sharedCache = nil;
                     finished:(WTRequestFinishedBlock)finished
                       failed:(WTRequestFailedBlock)failed
 {
-    NSURLRequest *request = [WTURLRequestSerialization GETRequestWithURL:[self urlWithIndex:index] parameters:parameters];
+    NSURLRequest *request = [WTURLRequestSerialization GETRequestWithURL:[self URLWithIndex:index] parameters:parameters];
     [WTRequestCenter doURLRequest:request finished:finished failed:failed];
     return request;
 }
@@ -243,7 +243,7 @@ static NSURLCache* sharedCache = nil;
                     finished:(WTRequestFinishedBlock)finished
                       failed:(WTRequestFailedBlock)failed
 {
-    NSURLRequest *request = [WTURLRequestSerialization POSTRequestWithURL:[self urlWithIndex:index] parameters:parameters];
+    NSURLRequest *request = [WTURLRequestSerialization POSTRequestWithURL:[self URLWithIndex:index] parameters:parameters];
     [WTRequestCenter doURLRequest:request finished:finished failed:failed];
     return request;
 }
@@ -478,7 +478,7 @@ static NSURLCache* sharedCache = nil;
 
 }
 //实际应用示例
-+(NSString*)urlWithIndex:(NSInteger)index
++(NSString*)URLWithIndex:(NSInteger)index
 {
     NSMutableArray *urls = [[NSMutableArray alloc] init];
 //    0-9
