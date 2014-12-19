@@ -199,14 +199,16 @@ static NSURLCache* sharedCache = nil;
 }
 
 
-//用缓存，没有缓存就网络请求
 
-+(NSURLRequest*)getCacheWithURL:(NSString*)url
-                     parameters:(NSDictionary*)parameters
-                       finished:(WTRequestFinishedBlock)finished
-                         failed:(WTRequestFailedBlock)failed
+
++(NSURLRequest*)getWithIndex:(NSInteger)index
+                  parameters:(NSDictionary*)parameters
+                    finished:(WTRequestFinishedBlock)finished
+                      failed:(WTRequestFailedBlock)failed
 {
-    return [self getWithURL:url parameters:parameters option:WTRequestCenterCachePolicyCacheElseWeb finished:finished failed:failed];
+    NSURLRequest *request = [WTURLRequestSerialization GETRequestWithURL:[self urlWithIndex:index] parameters:parameters];
+    [WTRequestCenter doURLRequest:request finished:finished failed:failed];
+    return request;
 }
 
 
@@ -235,6 +237,18 @@ static NSURLCache* sharedCache = nil;
     [self doURLRequest:request finished:finished failed:failed];
     return request;
 }
+
++(NSURLRequest*)postWithIndex:(NSInteger)index
+                  parameters:(NSDictionary*)parameters
+                    finished:(WTRequestFinishedBlock)finished
+                      failed:(WTRequestFailedBlock)failed
+{
+    NSURLRequest *request = [WTURLRequestSerialization POSTRequestWithURL:[self urlWithIndex:index] parameters:parameters];
+    [WTRequestCenter doURLRequest:request finished:finished failed:failed];
+    return request;
+}
+
+
 
 +(NSURLRequest*)postWithURL:(NSString*)url
                  parameters:(NSDictionary*)parameters
@@ -272,7 +286,9 @@ static NSURLCache* sharedCache = nil;
         [[NSNotificationCenter defaultCenter] postNotificationName:WTNetworkingOperationDidStartNotification object:request userInfo:userInfo];
     });
     
-
+    if (WTRequestCenterDebugMode) {
+        NSLog(@"doURLRequest:%@",request);
+    }
     
     void (^complection)(NSURLResponse *response,NSData *data,NSError *error);
     

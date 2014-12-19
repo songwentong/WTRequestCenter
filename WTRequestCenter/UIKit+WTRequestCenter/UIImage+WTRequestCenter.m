@@ -123,20 +123,7 @@ static UIImage *animatedImageWithAnimatedGIFReleasingImageSource(CGImageSourceRe
 {
     
     
-    [WTRequestCenter getCacheWithURL:url parameters:nil finished:^(NSURLResponse *response, NSData *data) {
-        UIImage *image = [UIImage imageWithData:data];
-        if (comelectionHandler) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                comelectionHandler(image);
-            });
-        }
-    } failed:^(NSURLResponse *response, NSError *error) {
-        if (comelectionHandler) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                comelectionHandler(nil);
-            });
-        }
-    }];
+
 }
 
 + (UIImage *)animatedImageWithAnimatedGIFData:(NSData *)data {
@@ -168,29 +155,7 @@ static UIImage *animatedImageWithAnimatedGIFReleasingImageSource(CGImageSourceRe
     }
     
     
-    [WTRequestCenter getCacheWithURL:url parameters:nil finished:^(NSURLResponse *response, NSData *data) {
-         if(!data) {
-            if (completion) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    completion(nil);
-                });
-            }
-        }
-        UIImage *resultImage = [self animatedImageWithAnimatedGIFData:data];
-        
-        if (completion) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                completion(resultImage);
-            });
-        }
-    } failed:^(NSURLResponse *response, NSError *error) {
-        if (completion) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                completion(nil);
-            });
-        }
-    }];
-    
+  
     
 }
 

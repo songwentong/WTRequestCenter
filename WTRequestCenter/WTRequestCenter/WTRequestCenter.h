@@ -99,21 +99,13 @@ typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,N
                   finished:(WTRequestFinishedBlock)finished
                     failed:(WTRequestFailedBlock)failed;
 
-
-
 /*!
- 根据给出的url和参数执行一个GET请求，当请求成功或者失败，对应的回调
- 将会被执行,如果本地有缓存，将会使用缓存
- Performs an asynchronous get request of the given
- url,parameters. When the request has completed or failed,
- corresponding block will be executed，is there is a local
- response,it will be used.
+    根据索引来GET
  */
-+(NSURLRequest*)getCacheWithURL:(NSString*)url
-                     parameters:(NSDictionary*)parameters
-                       finished:(WTRequestFinishedBlock)finished
-                         failed:(WTRequestFailedBlock)failed;
-
++(NSURLRequest*)getWithIndex:(NSInteger)index
+                  parameters:(NSDictionary*)parameters
+                    finished:(WTRequestFinishedBlock)finished
+                      failed:(WTRequestFailedBlock)failed;
 
 /*!
  根据给出的url,参数和缓存策略执行一个GET请求，当请求成功或者失败，对应的回调
@@ -141,6 +133,14 @@ typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,N
                  parameters:(NSDictionary*)parameters
                    finished:(WTRequestFinishedBlock)finished
                      failed:(WTRequestFailedBlock)failed;
+
+/*!
+    根据索引来POST
+ */
++(NSURLRequest*)postWithIndex:(NSInteger)index
+                   parameters:(NSDictionary*)parameters
+                     finished:(WTRequestFinishedBlock)finished
+                       failed:(WTRequestFailedBlock)failed;
 
 /*!
     数据上传
