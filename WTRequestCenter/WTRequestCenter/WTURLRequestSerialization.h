@@ -50,6 +50,13 @@ extern NSTimeInterval const WTURLRequestSerializationTimeoutTimeInterval;
 +(NSMutableURLRequest*)HEADRequestWithURL:(NSString*)url
                               parameters:(NSDictionary*)parameters;
 
+
+
+
+
+
+
+
 @end
 @protocol WTMultipartFormData
 

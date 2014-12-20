@@ -150,9 +150,9 @@ typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,N
     PUT请求
  */
 +(NSURLRequest*)putWithURL:(NSString*)url
-                 parameters:(NSDictionary*)parameters
-                   finished:(WTRequestFinishedBlock)finished
-                     failed:(WTRequestFailedBlock)failed;
+                parameters:(NSDictionary*)parameters
+                  finished:(WTRequestFinishedBlock)finished
+                    failed:(WTRequestFailedBlock)failed;
 
 #pragma mark - 其他
 /*!
