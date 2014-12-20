@@ -117,7 +117,7 @@ UIKit扩展提供了许多不错的方法，快速缓存图片，图片查看，
 ```
       接口的路径（根据索引）
 ```objective-c
-+(NSString*)urlWithIndex:(NSInteger)index;
++(NSString*)URLWithIndex:(NSInteger)index;
 ```
 
 
