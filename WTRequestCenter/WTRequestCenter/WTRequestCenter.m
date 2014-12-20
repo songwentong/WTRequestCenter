@@ -138,7 +138,11 @@ static NSURLCache* sharedCache = nil;
         return nil;
     }
 //    容器解析成可变的，string解析成可变的，并且允许顶对象不是dict或者array
-    return [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers|NSJSONReadingMutableLeaves|NSJSONReadingAllowFragments error:nil];
+    NSJSONReadingOptions option = NSJSONReadingMutableContainers|NSJSONReadingMutableLeaves|NSJSONReadingAllowFragments;
+    
+    return [NSJSONSerialization JSONObjectWithData:data
+                                           options:option
+                                             error:nil];
 }
 
 
@@ -189,31 +193,35 @@ static NSURLCache* sharedCache = nil;
 +(NSURLRequest*)getWithURL:(NSString*)url
                 parameters:(NSDictionary*)parameters
                   finished:(WTRequestFinishedBlock)finished
-                   failed:(WTRequestFailedBlock)failed
+                    failed:(WTRequestFailedBlock)failed
 {
     return [self getWithURL:url parameters:parameters option:WTRequestCenterCachePolicyNormal finished:finished failed:failed];
 }
 
 
-//用缓存，没有缓存就网络请求
 
-+(NSURLRequest*)getCacheWithURL:(NSString*)url
-                     parameters:(NSDictionary*)parameters
-                         finished:(WTRequestFinishedBlock)finished
-                        failed:(WTRequestFailedBlock)failed
+
++(NSURLRequest*)getWithIndex:(NSInteger)index
+                  parameters:(NSDictionary*)parameters
+                    finished:(WTRequestFinishedBlock)finished
+                      failed:(WTRequestFailedBlock)failed
 {
-    return [self getWithURL:url parameters:parameters option:WTRequestCenterCachePolicyCacheElseWeb finished:finished failed:failed];
+    NSURLRequest *request = [WTURLRequestSerialization GETRequestWithURL:[self URLWithIndex:index] parameters:parameters];
+    [WTRequestCenter doURLRequest:request finished:finished failed:failed];
+    return request;
 }
 
 
 +(NSURLRequest*)getWithURL:(NSString*)url
                 parameters:(NSDictionary *)parameters
                     option:(WTRequestCenterCachePolicy)option
-                    finished:(WTRequestFinishedBlock)finished
-                   failed:(WTRequestFailedBlock)failed
+                  finished:(WTRequestFinishedBlock)finished
+                    failed:(WTRequestFailedBlock)failed
 {
     NSURLRequest *request = [WTURLRequestSerialization GETRequestWithURL:url parameters:parameters];
+
     [self doURLRequest:request option:option finished:finished failed:failed];
+    
     return request;
 }
 
@@ -223,12 +231,24 @@ static NSURLCache* sharedCache = nil;
 +(NSURLRequest*)postWithURL:(NSString*)url
                  parameters:(NSDictionary*)parameters
                    finished:(WTRequestFinishedBlock)finished
-                    failed:(WTRequestFailedBlock)failed
+                     failed:(WTRequestFailedBlock)failed
 {
     NSURLRequest *request = [WTURLRequestSerialization POSTRequestWithURL:url parameters:parameters];
     [self doURLRequest:request finished:finished failed:failed];
     return request;
 }
+
++(NSURLRequest*)postWithIndex:(NSInteger)index
+                  parameters:(NSDictionary*)parameters
+                    finished:(WTRequestFinishedBlock)finished
+                      failed:(WTRequestFailedBlock)failed
+{
+    NSURLRequest *request = [WTURLRequestSerialization POSTRequestWithURL:[self URLWithIndex:index] parameters:parameters];
+    [WTRequestCenter doURLRequest:request finished:finished failed:failed];
+    return request;
+}
+
+
 
 +(NSURLRequest*)postWithURL:(NSString*)url
                  parameters:(NSDictionary*)parameters
@@ -255,8 +275,8 @@ static NSURLCache* sharedCache = nil;
 
 #pragma mark - Request
 +(void)doURLRequest:(NSURLRequest*)request
-          finished:(WTRequestFinishedBlock)finished
-            failed:(WTRequestFailedBlock)failed
+           finished:(WTRequestFinishedBlock)finished
+             failed:(WTRequestFailedBlock)failed
 {
 //    有效性判断
     assert(request != nil);
@@ -266,26 +286,40 @@ static NSURLCache* sharedCache = nil;
         [[NSNotificationCenter defaultCenter] postNotificationName:WTNetworkingOperationDidStartNotification object:request userInfo:userInfo];
     });
     
-    [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        
+    if (WTRequestCenterDebugMode) {
+        NSLog(@"doURLRequest:%@",request);
+    }
+    
+    void (^complection)(NSURLResponse *response,NSData *data,NSError *error);
+    
+    complection = ^(NSURLResponse *response,NSData *data,NSError *connectionError)
+    {
         dispatch_async(dispatch_get_main_queue(), ^{
             NSDictionary *userInfo = @{@"request": request};
             [[NSNotificationCenter defaultCenter] postNotificationName:WTNetworkingOperationDidFinishNotification object:request userInfo:userInfo];
         });
         
-
-        
-        
-        if (!connectionError) {
+        if (connectionError) {
+            if (WTRequestCenterDebugMode) {
+                //                    访问出错
+                NSLog(@"\n访问出错\n\n请求:%@\n\n响应：%@\n\n错误：%@",request,response,connectionError);
+            }
+        }else
+        {
             NSCachedURLResponse *tempURLResponse = [[NSCachedURLResponse alloc] initWithResponse:response data:data];
             [[self sharedCache] storeCachedResponse:tempURLResponse forRequest:request];
+            if (WTRequestCenterDebugMode) {
+                NSLog(@"请求成功");
+            }
         }
+        
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if (connectionError) {
                 if (failed) {
                     failed(response,connectionError);
                 }
+                
             }else
             {
                 if (finished) {
@@ -293,9 +327,31 @@ static NSURLCache* sharedCache = nil;
                 }
             }
         });
+
+    };
+    
+#if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
+    UIDevice *currentDevice = [UIDevice currentDevice];
+    if ([currentDevice.systemVersion floatValue]>=7.0) {
+        NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *connectionError){
+          complection(response,data,connectionError);
+          }];
+        [task resume];
         
-    }];
+    }else
+    {
+        [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+            complection(response,data,connectionError);
+        }];
     }
+#elif defined(__MAC_OS_X_VERSION_MIN_REQUIRED)
+
+    [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        complection(response,data,connectionError);
+    }];
+#endif
+    
+}
 
 
 +(void)doURLRequest:(NSURLRequest*)request
@@ -391,38 +447,7 @@ static NSURLCache* sharedCache = nil;
 
 
 
-#pragma mark - Image
-+(NSURLRequest *)uploadRequestWithURL: (NSString *)url
-                                 data: (NSData *)data
-                             fileName: (NSString*)fileName
-{
-    
-    // from http://www.cocoadev.com/index.pl?HTTPFileUpload
-    
-    //NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
-    
-    NSMutableURLRequest *urlRequest = [[NSMutableURLRequest alloc] init] ;
-    urlRequest.URL = [NSURL URLWithString:url];
-    
-    [urlRequest setHTTPMethod:@"POST"];
-    
-    NSString *myboundary = @"---------------------------14737809831466499882746641449";
-    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",myboundary];
-    [urlRequest addValue:contentType forHTTPHeaderField: @"Content-Type"];
-    
-    
-    //[urlRequest addValue: [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundry] forHTTPHeaderField:@"Content-Type"];
-    
-    NSMutableData *postData = [NSMutableData data]; //[NSMutableData dataWithCapacity:[data length] + 512];
-    [postData appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n", myboundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    [postData appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"userfile\"; filename=\"%@\"\r\n", fileName]dataUsingEncoding:NSUTF8StringEncoding]];
-    [postData appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-    [postData appendData:[NSData dataWithData:data]];
-    [postData appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n", myboundary] dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    [urlRequest setHTTPBody:postData];
-    return urlRequest;
-}
+
 
 
 
@@ -453,7 +478,7 @@ static NSURLCache* sharedCache = nil;
 
 }
 //实际应用示例
-+(NSString*)urlWithIndex:(NSInteger)index
++(NSString*)URLWithIndex:(NSInteger)index
 {
     NSMutableArray *urls = [[NSMutableArray alloc] init];
 //    0-9
@@ -495,6 +520,7 @@ static NSURLCache* sharedCache = nil;
 
 
 #pragma mark - Testing Method
+
 
 
 +(WTURLRequestOperation*)testdoURLRequest:(NSURLRequest*)request

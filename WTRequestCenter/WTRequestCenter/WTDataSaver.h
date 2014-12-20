@@ -18,8 +18,6 @@
 #import <UIKit/UIKit.h>
 @interface WTDataSaver : NSObject
 
-+(dispatch_group_t)sharedCompletionGroup;
-
 #pragma mark - 存数据 Save Data
 //存数据（都是异步）
 +(void)saveData:(NSData*)data withIndex:(NSInteger)index;
@@ -47,12 +45,10 @@
 
 //根据url获取文件,分线程回调
 +(void)dataWithURL:(NSString*)url
- completionHandler:(void (^)(NSData *data, NSURLResponse *response, NSError *error))completion;
+ completionHandler:(void (^)(NSData *data))completion;
 
 
-//同步取数据（不推荐）
-+(NSData*)dataWithIndex:(NSInteger)index DEPRECATED_ATTRIBUTE;
-+(NSData*)dataWithName:(NSString*)name DEPRECATED_ATTRIBUTE;
+
 
 
 

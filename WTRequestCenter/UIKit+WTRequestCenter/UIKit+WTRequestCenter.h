@@ -37,4 +37,5 @@
 #import "WTImageViewer.h"
 #import "WTNetworkActivityIndicatorManager.h"
 #import "UIScreen+WTRequestCenter.h"
+#import "UIApplication+WTRequestCenter.h"
 #endif

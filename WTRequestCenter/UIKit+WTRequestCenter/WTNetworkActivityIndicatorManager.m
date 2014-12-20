@@ -33,7 +33,10 @@
     }
     return self;
 }
-
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 -(void)handleNotifications
 {
     [[NSNotificationCenter defaultCenter] addObserverForName:WTNetworkingOperationDidStartNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {

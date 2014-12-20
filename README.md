@@ -45,6 +45,29 @@ UIKit扩展提供了许多不错的方法，快速缓存图片，图片查看，
                   finished:(WTRequestFinishedBlock)finished
                     failed:(WTRequestFailedBlock)failed;
 ```
+
+
+用例：
+```objective-c
+        NSString  *url = @"http://www.baidu.com";
+
+        NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+        [parameters setValue:@"value" forKey:@"key"];
+        [parameters setValue:@"v2" forKey:@"key2"];
+        
+        [WTRequestCenter getWithURL:url
+                         parameters:parameters 
+                           finished:^(NSURLResponse *response, NSData *data) 
+        {
+            NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            NSLog(@"%@",string);
+        } 
+                             failed:^(NSURLResponse *response, NSError *error) 
+        {
+            NSLog(@"%@",response);
+        }];
+```
+
               
 ### POST 请求
 ```objective-c
@@ -52,6 +75,26 @@ UIKit扩展提供了许多不错的方法，快速缓存图片，图片查看，
                  parameters:(NSDictionary*)parameters
                    finished:(WTRequestFinishedBlock)finished
                      failed:(WTRequestFailedBlock)failed;
+```
+
+用例：
+```objective-c
+        NSString  *url = @"http://www.baidu.com";
+        NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+        [parameters setValue:@"aaa" forKey:@"uid"];
+        [parameters setValue:@"1" forKey:@"type"];
+        
+        [WTRequestCenter postWithURL:url 
+                          parameters:parameters 
+                            finished:^(NSURLResponse *response, NSData *data) 
+        {
+            NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            NSLog(@"%@",string);
+        } 
+                              failed:^(NSURLResponse *response, NSError *error)
+        {
+            NSLog(@"%@",response);
+        }];
 ```
 
 ### GET+缓存策略
@@ -66,16 +109,6 @@ UIKit扩展提供了许多不错的方法，快速缓存图片，图片查看，
 ```
 
 
-### POST+缓存策略
-虽然POST不经常用缓存，但是每个人的需要不同，所以我同样实现了POST的缓存，有需要的可以用
-```objective-c
-+(NSURLRequest*)postWithURL:(NSString*)url
-                 parameters:(NSDictionary *)parameters
-                     option:(WTRequestCenterCachePolicy)option
-                   finished:(WTRequestFinishedBlock)finished
-                     failed:(WTRequestFailedBlock)failed;
-```
-
 ###   接口路径辅助功能
       根路径的设置和获取
 ```objective-c
@@ -86,6 +119,14 @@ UIKit扩展提供了许多不错的方法，快速缓存图片，图片查看，
 ```objective-c
 +(NSString*)urlWithIndex:(NSInteger)index;
 ```
+
+
+###安装
+点击右侧download或者终端git clone https://github.com/swtlovewtt/WTRequestCenter
+下载后找到里面的WTRequestCenter，把文件夹里面的文件粘到工程里面就可以使用了。
+UIKit扩展是一个非常好的UI扩展工具，提供了图片下载方法，颜色快速创建等cagegory。
+
+目前不提供cocoaPod安装
 
 
 
@@ -127,6 +168,7 @@ Only need iOS 5.0 and later,no more import and Configuration!
 - UIColor的快速创建
 - UIDecive的扩展（uuid调用）
 - UIWebView的缓存扩展（暂时不支持网页游戏的缓存）
+- UIScreen 提供了一些适配屏幕的好方法，具体看注释
 
 ## Communication  
 - 如果你**发现bug**,<a href="https://github.com/swtlovewtt/WTRequestCenter/issues">打开右侧的问题</a>
@@ -139,10 +181,19 @@ Only need iOS 5.0 and later,no more import and Configuration!
 ###  测试中方法
 
 
-这是仿照AFNetworking写的一个请求方法，待测试
+这是仿照AFNetworking写的一个请求方法，待测试。
+这是一个比较强大的方法。有缓存策略和下载进度，
+希望大家测试一下，给我一个反馈。
 ```objective-c
-+(WTURLRequestOperation*)testGetWithURL:(NSURL*)url
-           parameters:(NSDictionary *)parameters
-               option:(WTRequestCenterCachePolicy)option
-    completionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler;
++(WTURLRequestOperation*)testGetWithURL:(NSString*)url
+                             parameters:(NSDictionary *)parameters
+                                 option:(WTRequestCenterCachePolicy)option
+                               progress:(WTDownLoadProgressBlock)progress
+                               finished:(WTRequestFinishedBlock)finished
+                                 failed:(WTRequestFailedBlock)failed;
 ```
+
+
+##作者
+- <a href = "https://github.com/swtlovewtt">宋文通</a>
+- 

@@ -8,29 +8,18 @@
 
 #import "WTDataSaver.h"
 #import "WTRequestCenter.h"
-#import "WTDataWriteOpeation.h"
+
 @implementation WTDataSaver
-
-#pragma mark - 工具
-static dispatch_group_t sharedCompletionGroup;
-+(dispatch_group_t)sharedCompletionGroup
+static NSOperationQueue *dataQueue = nil;
++(NSOperationQueue*)sharedDataQueue
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedCompletionGroup = dispatch_group_create();
+        dataQueue = [[NSOperationQueue alloc] init];
+        [dataQueue setMaxConcurrentOperationCount:10];
+        [dataQueue setSuspended:NO];
     });
-    
-    return sharedCompletionGroup;
-}
-
-static dispatch_queue_t wtsharedCompletionProcessingQueue;
-+(dispatch_queue_t)sharedCompletionProcessingQueue
-{
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        wtsharedCompletionProcessingQueue = dispatch_queue_create("wtsharedCompletionProcessingQueue", DISPATCH_QUEUE_CONCURRENT);
-    });
-    return wtsharedCompletionProcessingQueue;
+    return dataQueue;
 }
 
 #pragma mark - 工具
@@ -134,6 +123,7 @@ static dispatch_queue_t wtsharedCompletionProcessingQueue;
     return [WTRequestCenter JSONObjectWithData:data];
 }
 
+
 #pragma mark - 保存路径
 //跟目录
 +(NSString*)rootDir
@@ -162,7 +152,9 @@ static dispatch_queue_t wtsharedCompletionProcessingQueue;
 #pragma mark - 存数据
 +(void)saveData:(NSData*)data withIndex:(NSInteger)index
 {
-    [self saveData:data withName:[NSString stringWithFormat:@"%d",index]];
+    NSNumber *number = [NSNumber numberWithInteger:index];
+    
+    [self saveData:data withName:[NSString stringWithFormat:@"%@",number]];
 }
 
 +(void)saveData:(NSData*)data withName:(NSString*)name
@@ -171,97 +163,72 @@ static dispatch_queue_t wtsharedCompletionProcessingQueue;
 }
 +(void)saveData:(NSData *)data withIndex:(NSInteger)index completion:(void (^)())completion
 {
-    NSString *name = [NSString stringWithFormat:@"%d",index];
+    NSNumber *number = [NSNumber numberWithInteger:index];
+    NSString *name = [NSString stringWithFormat:@"%@",number];
     [self saveData:data withName:name completion:completion];
 }
+
 +(void)saveData:(NSData*)data withName:(NSString*)name completion:(void(^)())completion
 {
     [self configureDirectory];
     NSString *filePath = [NSString stringWithFormat:@"%@/%@",[self rootDir],name];
     
     
-
-    
-    WTDataWriteOpeation *operation = [[WTDataWriteOpeation alloc] initWithData:data andFilePath:filePath];
-    [operation setCompletionBlock:^{
-        
-        dispatch_group_t group = [WTDataSaver sharedCompletionGroup];
-        dispatch_group_enter(group);
-        
-        dispatch_queue_t queue = [self sharedCompletionProcessingQueue];
-        
-        dispatch_async(queue, ^{
-           dispatch_group_async(group, queue, ^{
-               if (completion) {
-                   completion();
-               }
-           });
-            
-        });
-        
-        dispatch_group_leave(group);
+    [[self sharedDataQueue] addOperationWithBlock:^{
+    [data writeToFile:filePath atomically:YES];
+    if (completion) {
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            completion();
+        }];
+    }
     }];
-    
-    [[WTRequestCenter sharedQueue] addOperation:operation];
-}
 
+    
+   
+}
 
 #pragma mark - 取数据
-+(NSData*)dataWithIndex:(NSInteger)index
-{
-    NSData *data = nil;
-    data = [self dataWithName:[NSString stringWithFormat:@"%d",index]];
-    return data;
-}
 
-
-+(NSData*)dataWithName:(NSString*)name
-{
-    
-    [self configureDirectory];
-    NSData *data = nil;
-    NSString *filePath = [NSString stringWithFormat:@"%@/%@",[self rootDir],name];
-    data = [NSData dataWithContentsOfFile:filePath];
-    return data;
-}
 +(void)dataWithIndex:(NSInteger)index completion:(void(^)(NSData*data))completion
 {
-    NSString *name = [NSString stringWithFormat:@"%d",index];
+    NSNumber *number = [NSNumber numberWithInteger:index];
+    NSString *name = [NSString stringWithFormat:@"%@",number];
     [self dataWithName:name completion:completion];
 }
 +(void)dataWithName:(NSString*)name completion:(void(^)(NSData*data))completion
 {
     
     NSString *filePath = [NSString stringWithFormat:@"%@/%@",[self rootDir],name];
-//    NSURL *base = [[NSBundle mainBundle] bundleURL];
-//    NSURL *url = [NSURL fileURLWithPath:filePath];
-    [self dataWithURL:filePath completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+
+    [self dataWithURL:filePath completionHandler:^(NSData *data) {
         if (completion) {
-            dispatch_async(dispatch_get_main_queue(), ^{
             completion(data);
-            });
         }
     }];
 
 }
 
 +(void)dataWithURL:(NSString*)url
-     completionHandler:(void (^)(NSData *data, NSURLResponse *response, NSError *error))completion
+     completionHandler:(void (^)(NSData *data))completion
 {
     
     [self configureDirectory];
     if (!url) {
         if (completion) {
-            completion(nil,nil,nil);
+            completion(nil);
         }
     }else
     {
+    [[self sharedDataQueue] addOperationWithBlock:^{
         
-    [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]] queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        NSData *data = [NSData dataWithContentsOfFile:url];
         if (completion) {
-            completion(data,response,connectionError);
+            completion(data);
         }
+        
+
     }];
+    
     
     }
 }
@@ -314,5 +281,8 @@ static dispatch_queue_t wtsharedCompletionProcessingQueue;
 {
     return @"just a joke";
 }
+
+
+
 
 @end

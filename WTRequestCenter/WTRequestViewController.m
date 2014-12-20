@@ -30,11 +30,6 @@
     // Do any additional setup after loading the view from its nib.
     
     
-    [WTRequestCenter getWithURL:nil parameters:nil finished:^(NSURLResponse *response, NSData *data) {
-        
-    } failed:^(NSURLResponse *response, NSError *error) {
-        
-    }];
     
     switch (_indexPath.row) {
         case 0:
@@ -77,8 +72,12 @@
     
     [array enumerateObjectsUsingBlock:^(NSString *url, NSUInteger idx, BOOL *stop) {
         [WTRequestCenter getWithURL:url parameters:nil option:WTRequestCenterCachePolicyNormal finished:^(NSURLResponse *response, NSData *data) {
-//            NSLog(@"%@",response.URL);
-//            NSLog(@"finished:%@",response.URL);
+            if (WTRequestCenterDebugMode) {
+                NSLog(@"%@",response.URL);
+                NSLog(@"finished:%@",response.URL);
+                NSLog(@"string :%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+            }
+
         } failed:^(NSURLResponse *response, NSError *error) {
 //            NSLog(@"failed:%@",response.URL);
         }];

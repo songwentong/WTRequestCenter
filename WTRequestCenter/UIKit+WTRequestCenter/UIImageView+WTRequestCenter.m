@@ -12,6 +12,7 @@
 #import "UIImage+WTRequestCenter.h"
 @interface UIImageView()
 //@property (nonatomic,strong,readwrite) WTURLRequestOperation *wtImageRequestOperation;
+@property (nonatomic,strong ,readwrite) WTURLRequestOperation *myOperation;
 @end
 @implementation UIImageView (WTRequestCenter)
 
@@ -64,15 +65,18 @@
                     
                     dispatch_sync(dispatch_get_main_queue(), ^{
                         strongSelf.image = image;
-                        [strongSelf setNeedsDisplay];
+                        [strongSelf setNeedsLayout];
                     });
                     strongSelf.wtImageRequestOperation = nil;
                 }
-                if (finished) {
-                    finished(response,data);
-                }
+                
                 
             }];
+            if (finished) {
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                    finished(response,data);
+            });
+            }
             
         } failed:^(NSURLResponse *response, NSError *error) {
             if (!wself) return;

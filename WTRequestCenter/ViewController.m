@@ -51,12 +51,28 @@
     [self performSelector:@selector(takeSnapShot) withObject:nil afterDelay:1];
     [[WTNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     
+    
+
+
     RulerView *view = [[RulerView alloc] initWithFrame:self.view.bounds];
     view.userInteractionEnabled = NO;
     [self.view addSubview:view];
-    
-
-    
+    /*
+    [WTRequestCenter getCacheWithURL:@"http://www.baidu.com"
+                          parameters:nil
+                            finished:^(NSURLResponse *response, NSData *data)
+    {
+        NSString *string = [[NSString alloc] initWithData:data
+                                                 encoding:NSUTF8StringEncoding];
+        NSLog(@"%@",string);
+        
+    }
+                              failed:^(NSURLResponse *response, NSError *error)
+    {
+        
+    }];
+    */
+    /*
     NSURLRequest *request = [WTURLRequestSerialization POSTRequestWithURL:@"a"
                                                                parameters:@{@"abc": @"123"}
                                                 constructingBodyWithBlock:^(id<WTMultipartFormData> formData)
@@ -67,7 +83,8 @@
         [formData appendPartWithData:data2 name:@"pic2"];
 //        ...
     }];
-    
+    */
+    /*
     [WTRequestCenter doURLRequest:request
                          finished:^(NSURLResponse *response, NSData *data)
     {
@@ -76,6 +93,7 @@
     {
         NSLog(@"failed");
     }];
+     */
     
 }
 
@@ -192,7 +210,7 @@
 -(void)post
 {
     
-    NSString *url = [WTRequestCenter urlWithIndex:0];
+    NSString *url = [WTRequestCenter URLWithIndex:0];
     url = @"http://s01.meiriq.com/gamesbox/public/index.php/user/add-fav";
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setValue:@"5406906dcb02be7d279d26f9" forKey:@"gid"];
@@ -236,15 +254,15 @@
 
 -(void)loadGif
 {
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
-    imageView.frame = CGRectMake(0, 480/2, 320, 480/2);
-    imageView.contentMode = UIViewContentModeCenter;
-    [self.view addSubview:imageView];
+    UIImageView *image1 = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    image1.frame = CGRectMake(0, 480/2, 320, 480/2);
+    image1.contentMode = UIViewContentModeCenter;
+    [self.view addSubview:image1];
 //    NSURL *url = [[NSBundle mainBundle] URLForResource:@"aaa" withExtension:@"gif"];
     NSString *str = [[NSBundle mainBundle]pathForResource:@"aaa" ofType:@"gif"];
     [UIImage gifImageWithURL:str
                   completion:^(UIImage *image) {
-                      imageView.image = image;
+                    image1.image = image;
                   }];
     
     

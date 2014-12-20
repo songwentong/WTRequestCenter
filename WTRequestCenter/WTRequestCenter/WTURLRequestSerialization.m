@@ -9,9 +9,12 @@
 #import "WTURLRequestSerialization.h"
 
 
-
-NSTimeInterval const WTURLRequestSerializationTimeoutTimeInterval = 30;;
-static NSString const *kboundary = @"Boundary+1F52B974B3E5F39D";
+//超时时间
+NSTimeInterval WTURLRequestSerializationTimeoutTimeInterval = 30;
+//边界
+static NSString *const kboundary = @"Boundary+1F52B974B3E5F39D";
+//User-Agent
+static NSString *const WTReuqestCenterUserAgent = @"WTURLRequestUserAgent";
 
 @interface WTMultiFormData : NSObject <WTMultipartFormData>
 
@@ -23,8 +26,8 @@ static NSString const *kboundary = @"Boundary+1F52B974B3E5F39D";
 //
 @property (readwrite, nonatomic, strong) NSMutableArray *HTTPBodyParts;
 
-
 @end
+
 @implementation WTMultiFormData
 - (id)initWithURLRequest:(NSMutableURLRequest *)urlRequest
 {
@@ -32,6 +35,8 @@ static NSString const *kboundary = @"Boundary+1F52B974B3E5F39D";
     if (self) {
         self.request = urlRequest;
         self.HTTPBodyParts = [[NSMutableArray alloc] init];
+
+        [_HTTPBodyParts setValue:WTReuqestCenterUserAgent forKey:@"User-Agent"];
     }
     return self;
 }
@@ -40,11 +45,10 @@ static NSString const *kboundary = @"Boundary+1F52B974B3E5F39D";
                         error:(NSError * __autoreleasing *)error
 {
     BOOL result = YES;
-    assert(!name);
     assert(!fileURL);
     
     NSData *data = [[NSData alloc] initWithContentsOfURL:fileURL];
-    assert(!data);
+    
     [self appendPartWithData:data name:name];
     
     return result;
@@ -54,6 +58,9 @@ static NSString const *kboundary = @"Boundary+1F52B974B3E5F39D";
 - (BOOL)appendPartWithData:(NSData*)data
                       name:(NSString*)name
 {
+    assert(!data);
+    assert(!name);
+    
     NSDictionary *dict= @{name: data};
     [_HTTPBodyParts addObject:dict];
     return YES;
@@ -108,10 +115,41 @@ static NSString const *kboundary = @"Boundary+1F52B974B3E5F39D";
     return _request;
 }
 @end
+@interface WTURLRequestSerialization()
+{
+    
+}
+@property (readwrite, nonatomic, strong) NSMutableDictionary *HTTPRequestHeaders;
+@end
 
 @implementation WTURLRequestSerialization
+static WTURLRequestSerialization *sharedSerialization = nil;
 
++(instancetype)sharedRequestSerialization
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedSerialization = [self instance];
+    });
+    return sharedSerialization;
+}
 
++(instancetype)instance
+{
+    return [[WTURLRequestSerialization alloc] init];
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.HTTPRequestHeaders = [[NSMutableDictionary alloc] init];
+        self.timeoutInterval = WTURLRequestSerializationTimeoutTimeInterval;
+    }
+    return self;
+}
+
+#pragma mark - 请求串
 +(NSString*)stringFromParameters:(NSDictionary*)parameters
 {
     NSMutableString *paramString = [[NSMutableString alloc] init];
@@ -127,12 +165,33 @@ static NSString const *kboundary = @"Boundary+1F52B974B3E5F39D";
     return paramString;
 }
 
+-(NSString*)stringFromParameters:(NSDictionary*)parameters
+{
+    NSMutableString *paramString = [[NSMutableString alloc] init];
+    [parameters enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString* value, BOOL *stop) {
+        NSString *str = [NSString stringWithFormat:@"%@=%@",key,value];
+        [paramString appendString:str];
+        [paramString appendString:@"&"];
+        
+    }];
+    if([paramString hasSuffix:@"&"]){
+        paramString = [[paramString substringToIndex:[paramString length]-1] mutableCopy];
+    }
+    
+    return paramString;
+}
 
-
-+(NSURLRequest*)GETRequestWithURL:(NSString*)url
+#pragma mark - 请求的生成
++(NSMutableURLRequest*)GETRequestWithURL:(NSString*)url
                               parameters:(NSDictionary*)parameters
 {
-    NSURLRequest *request = nil;
+    return [[self sharedRequestSerialization] GETRequestWithURL:url
+                                                     parameters:parameters];
+}
+-(NSMutableURLRequest*)GETRequestWithURL:(NSString*)url
+                              parameters:(NSDictionary*)parameters
+{
+    NSMutableURLRequest *request = nil;
     assert(url!=nil);
     NSString *string = [NSString stringWithFormat:@"%@?%@",url,[self stringFromParameters:parameters]];
 //    处理中文
@@ -143,13 +202,23 @@ static NSString const *kboundary = @"Boundary+1F52B974B3E5F39D";
     
     assert(requestURL != nil);
     
-    request = [NSURLRequest requestWithURL:requestURL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:WTURLRequestSerializationTimeoutTimeInterval];
-    
+    request = [NSMutableURLRequest requestWithURL:requestURL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:_timeoutInterval];
+    [_HTTPRequestHeaders enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
+        [request setValue:value forHTTPHeaderField:key];
+    }];
+
     return request;
 }
 
-
 +(NSMutableURLRequest*)POSTRequestWithURL:(NSString*)url
+                               parameters:(NSDictionary*)parameters
+{
+    
+    
+    return [[self sharedRequestSerialization] POSTRequestWithURL:url
+                                                      parameters:parameters];
+}
+-(NSMutableURLRequest*)POSTRequestWithURL:(NSString*)url
                                parameters:(NSDictionary*)parameters
 {
     
@@ -163,14 +232,28 @@ static NSString const *kboundary = @"Boundary+1F52B974B3E5F39D";
     //    判断有效性
     assert(theURL != nil);
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:theURL ];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:theURL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:_timeoutInterval];
     [request setHTTPMethod:@"POST"];
     
     [request setHTTPBody:[[self stringFromParameters:parameters] dataUsingEncoding:NSUTF8StringEncoding]];
+    [_HTTPRequestHeaders enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
+        [request setValue:value forHTTPHeaderField:key];
+    }];
     return request;
 }
 
 +(NSMutableURLRequest*)POSTRequestWithURL:(NSString*)url
+                               parameters:(NSDictionary*)parameters
+                constructingBodyWithBlock:(void (^)(id <WTMultipartFormData> formData))block
+{
+    
+    
+    return [[self sharedRequestSerialization] POSTRequestWithURL:url
+                                                      parameters:parameters
+                                       constructingBodyWithBlock:block];
+}
+
+-(NSMutableURLRequest*)POSTRequestWithURL:(NSString*)url
                                parameters:(NSDictionary*)parameters
 constructingBodyWithBlock:(void (^)(id <WTMultipartFormData> formData))block
 {
@@ -185,7 +268,8 @@ constructingBodyWithBlock:(void (^)(id <WTMultipartFormData> formData))block
     //    判断有效性
     assert(theURL != nil);
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:theURL];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:theURL cachePolicy:NSURLRequestReloadIgnoringCacheData
+                                                       timeoutInterval:_timeoutInterval];
     [request setHTTPMethod:@"POST"];
     
     
@@ -217,30 +301,32 @@ constructingBodyWithBlock:(void (^)(id <WTMultipartFormData> formData))block
     NSString *value = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",kboundary];
     [request setValue:value forHTTPHeaderField:@"Content-Type"];
     
-    
-    [request setValue:@"WTNetworkCenter iOS" forHTTPHeaderField:@"User-Agent"];
-    /*
-     "Accept-Language" = "en;q=1";
-     "Content-Length" = 29039;
-     "Content-Type" = "multipart/form-data; boundary=Boundary+D2BFF93D090F9B93";
-     "User-Agent" = "AFNetworking iOS Example/1.0 (iPhone Simulator; iOS 8.1; Scale/2.00)";
-     */
+    [_HTTPRequestHeaders enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
+        [request setValue:value forHTTPHeaderField:key];
+    }];
     if (block) {
         block(formData);
     }
     return [formData requestByFinalizingMultipartFormData];
 }
 
-
 +(NSMutableURLRequest*)PUTRequestWithURL:(NSString*)url
+                              parameters:(NSDictionary*)parameters
+{
+    return [[self sharedRequestSerialization] PUTRequestWithURL:url
+                                                     parameters:parameters];
+}
+-(NSMutableURLRequest*)PUTRequestWithURL:(NSString*)url
                               parameters:(NSDictionary*)parameters
 {
     NSMutableURLRequest *request = nil;
     
-    request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:WTURLRequestSerializationTimeoutTimeInterval];
+    request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:_timeoutInterval];
     [request setHTTPBody:[[self stringFromParameters:parameters] dataUsingEncoding:NSUTF8StringEncoding]];
     [request setHTTPMethod:@"PUT"];
-    
+    [_HTTPRequestHeaders enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
+        [request setValue:value forHTTPHeaderField:key];
+    }];
     return request;
 }
 
@@ -255,4 +341,27 @@ constructingBodyWithBlock:(void (^)(id <WTMultipartFormData> formData))block
     return request;
 }
 
+
+
++(NSString*)stringFromDate:(NSDate*)date
+{
+    NSString *result = @"";
+//    NSDate *nowDate = [NSDate date];
+//    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+//    [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+//    NSTimeInterval nowInterval = [nowDate timeIntervalSince1970];
+//    NSTimeInterval timeInterval = [date timeIntervalSince1970];
+    
+    return result;
+}
+
+
+#pragma mark - 实例方法
+- (void)setValue:(NSString *)value forHTTPHeaderField:(NSString *)field
+{
+    [self.HTTPRequestHeaders setValue:value forKey:field];
+}
+- (NSString *)valueForHTTPHeaderField:(NSString *)field {
+    return [self.HTTPRequestHeaders valueForKey:field];
+}
 @end
