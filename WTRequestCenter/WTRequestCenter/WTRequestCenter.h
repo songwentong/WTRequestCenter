@@ -204,7 +204,7 @@ typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,N
 +(BOOL)setBaseURL:(NSString*)url;
 +(NSString *)baseURL;
 //实际应用示例
-+(NSString*)urlWithIndex:(NSInteger)index;
++(NSString*)URLWithIndex:(NSInteger)index;
 
 
 
