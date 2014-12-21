@@ -10,7 +10,7 @@
 
 
 //超时时间
-NSTimeInterval WTURLRequestSerializationTimeoutTimeInterval = 30;
+NSTimeInterval const WTURLRequestSerializationTimeoutTimeInterval = 30;
 //边界
 static NSString *const kboundary = @"Boundary+1F52B974B3E5F39D";
 //User-Agent

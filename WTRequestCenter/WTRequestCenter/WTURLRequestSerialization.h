@@ -11,7 +11,7 @@
 extern NSTimeInterval const WTURLRequestSerializationTimeoutTimeInterval;
 @interface WTURLRequestSerialization : NSObject
 
-
+@property (nonatomic) NSTimeInterval timeoutInterval;
 
 /*!
 
