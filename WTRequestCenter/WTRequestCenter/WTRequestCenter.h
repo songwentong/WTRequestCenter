@@ -95,18 +95,7 @@ typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,N
 
 
 
-/*!
- 根据给出的url和参数执行一个GET请求，当请求成功或者失败，对应的回调
- 将会被执行,如果本地有缓存，将会使用缓存
- Performs an asynchronous get request of the given
- url,parameters. When the request has completed or failed,
- corresponding block will be executed，is there is a local
- response,it will be used.
- */
-+(NSURLRequest*)getCacheWithURL:(NSString*)url
-                     parameters:(NSDictionary*)parameters
-                       finished:(WTRequestFinishedBlock)finished
-                         failed:(WTRequestFailedBlock)failed;
+
 
 
 /*!
