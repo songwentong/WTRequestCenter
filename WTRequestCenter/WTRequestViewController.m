@@ -116,7 +116,7 @@
 -(void)post
 {
     
-    NSString *url = [WTRequestCenter urlWithIndex:0];
+    NSString *url = [WTRequestCenter URLWithIndex:0];
     url = @"http://xxx.com";
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
 
