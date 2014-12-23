@@ -28,6 +28,9 @@ extern NSTimeInterval const WTURLRequestSerializationTimeoutTimeInterval;
  */
 +(NSMutableURLRequest*)GETRequestWithURL:(NSString*)url
                               parameters:(NSDictionary*)parameters;
+//实例的GET方法
+-(NSMutableURLRequest*)GETRequestWithURL:(NSString*)url
+                              parameters:(NSDictionary*)parameters;
 
 /*!
  
@@ -35,8 +38,9 @@ extern NSTimeInterval const WTURLRequestSerializationTimeoutTimeInterval;
  */
 +(NSMutableURLRequest*)POSTRequestWithURL:(NSString*)url
                                parameters:(NSDictionary*)parameters;
-
-
+//实例的POST方法
+-(NSMutableURLRequest*)POSTRequestWithURL:(NSString*)url
+                               parameters:(NSDictionary*)parameters;
 
 /*!
  
