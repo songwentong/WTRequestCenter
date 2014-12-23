@@ -333,21 +333,29 @@ static NSURLCache* sharedCache = nil;
 #if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
     UIDevice *currentDevice = [UIDevice currentDevice];
     if ([currentDevice.systemVersion floatValue]>=7.0) {
-        NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *connectionError){
-          complection(response,data,connectionError);
-          }];
-        [task resume];
+        [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
+
+            NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *connectionError){
+                complection(response,data,connectionError);
+            }];
+            [task resume];
+        }];
+        
         
     }else
     {
-        [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-            complection(response,data,connectionError);
+        [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
+            [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                complection(response,data,connectionError);
+            }];
+  
         }];
     }
 #elif defined(__MAC_OS_X_VERSION_MIN_REQUIRED)
-
+    [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
     [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         complection(response,data,connectionError);
+    }];
     }];
 #endif
     

@@ -118,11 +118,36 @@ static UIImage *animatedImageWithAnimatedGIFReleasingImageSource(CGImageSourceRe
 {
     [self imageWithURL:string comelectionHandler:comelectionHandler];
 }
-+(void) imageWithURL:(NSString*)url
+
++ (void)imageWithURL:(NSString*)url
   comelectionHandler:(void(^)(UIImage* image))comelectionHandler
 {
+    NSURL *tempURL = [NSURL URLWithString:url];
+    NSURLRequest *request = [NSURLRequest requestWithURL:tempURL];
     
     
+    
+    [WTRequestCenter doURLRequest:request finished:^(NSURLResponse *response, NSData *data) {
+        
+            [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
+                if (comelectionHandler) {
+                if (data) {
+                    
+                    UIImage *image = [UIImage imageWithData:data];
+               
+                    comelectionHandler(image);
+                
+                    
+                }
+                }
+            }];
+        
+
+    } failed:^(NSURLResponse *response, NSError *error) {
+        if (comelectionHandler) {
+            comelectionHandler(nil);
+        }
+    }];
 
 }
 
