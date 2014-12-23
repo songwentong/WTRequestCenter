@@ -119,6 +119,8 @@ static NSString *const WTReuqestCenterUserAgent = @"WTURLRequestUserAgent";
 {
     
 }
+
+//请求头
 @property (readwrite, nonatomic, strong) NSMutableDictionary *HTTPRequestHeaders;
 @end
 
