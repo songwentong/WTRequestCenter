@@ -287,7 +287,7 @@ static NSURLCache* sharedCache = nil;
     });
     
     if (WTRequestCenterDebugMode) {
-        NSLog(@"doURLRequest:%@",request);
+        NSLog(@"WTRequestCenter log :doURLRequest:%@",request);
     }
     
     void (^complection)(NSURLResponse *response,NSData *data,NSError *error);
@@ -302,14 +302,14 @@ static NSURLCache* sharedCache = nil;
         if (connectionError) {
             if (WTRequestCenterDebugMode) {
                 //                    访问出错
-                NSLog(@"\n访问出错\n\n请求:%@\n\n响应：%@\n\n错误：%@",request,response,connectionError);
+                NSLog(@"WTRequestCenter log : \n访问出错\n\n请求:%@\n\n响应：%@\n\n错误：%@",request,response,connectionError);
             }
         }else
         {
             NSCachedURLResponse *tempURLResponse = [[NSCachedURLResponse alloc] initWithResponse:response data:data];
             [[self sharedCache] storeCachedResponse:tempURLResponse forRequest:request];
             if (WTRequestCenterDebugMode) {
-                NSLog(@"请求成功");
+                NSLog(@"WTRequestCenter log : 请求成功 %@",request);
             }
         }
         
