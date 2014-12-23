@@ -3,8 +3,8 @@
 //  WTRequestCenter
 //
 //  Created by songwt on 14-8-29.
-//  Copyright (c) 2014年 song. All rights reserved.
-//
+//  Copyright (c) Mike song(mailto:275712575@qq.com). All rights reserved.
+//  site:https://github.com/swtlovewtt/WTRequestCenter
 /*
  这是一个方便的缓存式网络请求的缓存库，在网络不好
  或者没有网络的情况下方便读取缓存来看。
