@@ -286,14 +286,19 @@ static NSURLCache* sharedCache = nil;
         [[NSNotificationCenter defaultCenter] postNotificationName:WTNetworkingOperationDidStartNotification object:request userInfo:userInfo];
     });
     
+    
+    NSTimeInterval startTimeInterval = [[NSDate date] timeIntervalSince1970];
     if (WTRequestCenterDebugMode) {
-        NSLog(@"WTRequestCenter log :doURLRequest:%@",request);
+        NSLog(@"WTRequestCenter request start:%@",request);
+        
     }
     
     void (^complection)(NSURLResponse *response,NSData *data,NSError *error);
     
     complection = ^(NSURLResponse *response,NSData *data,NSError *connectionError)
     {
+        NSTimeInterval endTimeInterval = [[NSDate date] timeIntervalSince1970];
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             NSDictionary *userInfo = @{@"request": request};
             [[NSNotificationCenter defaultCenter] postNotificationName:WTNetworkingOperationDidFinishNotification object:request userInfo:userInfo];
@@ -302,14 +307,14 @@ static NSURLCache* sharedCache = nil;
         if (connectionError) {
             if (WTRequestCenterDebugMode) {
                 //                    访问出错
-                NSLog(@"WTRequestCenter log : \n访问出错\n\n请求:%@\n\n响应：%@\n\n错误：%@",request,response,connectionError);
+                NSLog(@"WTRequestCenter request failed:\n\nrequest:%@\n\nresponse：%@\n\nerror：%@  time:%f",request,response,connectionError,endTimeInterval-startTimeInterval);
             }
         }else
         {
             NSCachedURLResponse *tempURLResponse = [[NSCachedURLResponse alloc] initWithResponse:response data:data];
             [[self sharedCache] storeCachedResponse:tempURLResponse forRequest:request];
             if (WTRequestCenterDebugMode) {
-                NSLog(@"WTRequestCenter log : 请求成功 %@",request);
+                NSLog(@"WTRequestCenter request finished:%@  time:%f",request,endTimeInterval-startTimeInterval);
             }
         }
         

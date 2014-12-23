@@ -54,8 +54,22 @@
 
     NSMutableArray *array = [NSMutableArray array];
     [array addObject:@"http://www.sina.com.cn"];
+    [array addObject:@"http://www.sina.com.cn"];
+    [array addObject:@"http://www.sina.com.cn"];
+    [array addObject:@"http://www.sina.com.cn"];
+    [array addObject:@"http://www.sina.com.cn"];
+    [array addObject:@"http://www.sina.com.cn"];
+    [array addObject:@"http://www.sina.com.cn"];
+    [array addObject:@"http://www.sina.com.cn"];
+    [array addObject:@"http://www.sina.com.cn"];
+    [array addObject:@"http://www.sina.com.cn"];
+    [array addObject:@"http://www.sina.com.cn"];
+    [array addObject:@"http://www.sina.com.cn"];
+    [array addObject:@"http://www.sina.com.cn"];
+    [array addObject:@"http://www.sina.com.cn"];
+    [array addObject:@"http://www.sina.com.cn"];
     [array addObject:@"http://www.blizzard.com"];
-    [array addObject:@"http://www.apple.cn"];
+    [array addObject:@"http://www.apple.com/cn"];
     [array addObject:@"http://www.baidu.com"];
     [array addObject:@"http://www.cocoachina.com"];
     [array addObject:@"http://www.taobao.com"];
@@ -70,12 +84,13 @@
     [array addObject:@"http://image.baidu.com/channel/star/林志玲"];
     [array addObject:@"http://image.baidu.com/channel/star/柳岩"];
     
+    
     [array enumerateObjectsUsingBlock:^(NSString *url, NSUInteger idx, BOOL *stop) {
         [WTRequestCenter getWithURL:url parameters:nil option:WTRequestCenterCachePolicyNormal finished:^(NSURLResponse *response, NSData *data) {
             if (WTRequestCenterDebugMode) {
-                NSLog(@"%@",response.URL);
-                NSLog(@"finished:%@",response.URL);
-                NSLog(@"string :%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+//                NSLog(@"%@",response.URL);
+//                NSLog(@"finished:%@",response.URL);
+//                NSLog(@"string :%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
             }
 
         } failed:^(NSURLResponse *response, NSError *error) {
