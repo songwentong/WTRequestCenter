@@ -195,7 +195,16 @@ static WTURLRequestSerialization *sharedSerialization = nil;
 {
     NSMutableURLRequest *request = nil;
     assert(url!=nil);
-    NSString *string = [NSString stringWithFormat:@"%@?%@",url,[self stringFromParameters:parameters]];
+    
+    NSString *parameterString = [self stringFromParameters:parameters];
+    
+    NSString *string;
+    if ([parameterString length]>0) {
+        string = [NSString stringWithFormat:@"%@?%@",url,parameterString];
+    }else
+    {
+        string = url;
+    }
 //    处理中文
     string = [string stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
