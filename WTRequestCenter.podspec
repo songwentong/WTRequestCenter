@@ -78,7 +78,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "http://github.com/swtlovewtt/WTRequestCenter.git", :tag => "0.5.1" }
+  s.source       = { :git => "https://github.com/swtlovewtt/WTRequestCenter.git", :tag => "0.5.1" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -93,7 +93,8 @@ Pod::Spec.new do |s|
   s.exclude_files = "Classes/Exclude"
 
     s.subspec 'UIKit+WTRequestCenter' do |ss|
-    ss.source_files = 'WTRequestCenter/UIKit+WTRequestCenter/*.{h,m}'
+    ss.ios.source_files = 'WTRequestCenter/UIKit+WTRequestCenter/*.{h,m}'
+    ss.osx.source_files = ''
     end
   # s.public_header_files = "Classes/**/*.h"
 
