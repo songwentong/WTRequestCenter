@@ -16,8 +16,8 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "WTRequestCenter"
-  s.version      = "0.4"
-  s.summary      = "优秀的缓存请求库，快速请求接口和图片"
+  s.version      = "0.5.1"
+  s.summary      = "A short description of WTRequestCenter."
 
   s.description  = <<-DESC
                    A longer description of WTRequestCenter in Markdown format.
@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
                    * Finally, don't worry about the indent, CocoaPods strips it!
                    DESC
 
-  s.homepage     = "https://github.com/swtlovewtt/WTRequestCenter"
+  s.homepage     = "http://EXAMPLE/WTRequestCenter"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -39,7 +39,7 @@ Pod::Spec.new do |s|
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  s.license      = "MIT (example)"
+  s.license      = "MIT"
   # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
 
 
@@ -78,7 +78,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/swtlovewtt/WTRequestCenter.git", :tag => "0.4" }
+  s.source       = { :git => "http://github.com/swtlovewtt/WTRequestCenter.git", :tag => "0.5.1" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -89,9 +89,12 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "WTRequestCenter/WTRequestCenter.{h,m}", "Classes/**/*.{h,m}"
+  s.source_files  = "WTRequestCenter/WTRequestCenter", "WTRequestCenter/WTRequestCenter/*.{h,m}"
   s.exclude_files = "Classes/Exclude"
 
+    s.subspec 'UIKit+WTRequestCenter' do |ss|
+    ss.source_files = 'WTRequestCenter/UIKit+WTRequestCenter/*.{h,m}'
+    end
   # s.public_header_files = "Classes/**/*.h"
 
 
