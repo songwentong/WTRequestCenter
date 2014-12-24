@@ -198,20 +198,6 @@ static NSURLCache* sharedCache = nil;
     return [self getWithURL:url parameters:parameters option:WTRequestCenterCachePolicyNormal finished:finished failed:failed];
 }
 
-
-
-
-+(NSURLRequest*)getWithIndex:(NSInteger)index
-                  parameters:(NSDictionary*)parameters
-                    finished:(WTRequestFinishedBlock)finished
-                      failed:(WTRequestFailedBlock)failed
-{
-    NSURLRequest *request = [WTURLRequestSerialization GETRequestWithURL:[self URLWithIndex:index] parameters:parameters];
-    [WTRequestCenter doURLRequest:request finished:finished failed:failed];
-    return request;
-}
-
-
 +(NSURLRequest*)getWithURL:(NSString*)url
                 parameters:(NSDictionary *)parameters
                     option:(WTRequestCenterCachePolicy)option
@@ -222,6 +208,24 @@ static NSURLCache* sharedCache = nil;
 
     [self doURLRequest:request option:option finished:finished failed:failed];
     
+    return request;
+}
+
++(NSURLRequest*)getWithIndex:(NSInteger)index
+                  parameters:(NSDictionary *)parameters
+                    finished:(WTRequestFinishedBlock)finished
+                      failed:(WTRequestFailedBlock)failed
+{
+    return [self getWithIndex:index parameters:parameters option:WTRequestCenterCachePolicyNormal finished:finished failed:failed];
+}
++(NSURLRequest*)getWithIndex:(NSInteger)index
+                  parameters:(NSDictionary *)parameters
+                      option:(WTRequestCenterCachePolicy)option
+                    finished:(WTRequestFinishedBlock)finished
+                      failed:(WTRequestFailedBlock)failed
+{
+    NSURLRequest *request = [WTURLRequestSerialization GETRequestWithURL:[self URLWithIndex:index] parameters:parameters];
+    [self doURLRequest:request option:option finished:finished failed:failed];
     return request;
 }
 

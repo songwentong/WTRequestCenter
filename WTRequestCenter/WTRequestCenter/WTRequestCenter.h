@@ -93,11 +93,6 @@ typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,N
                   finished:(WTRequestFinishedBlock)finished
                     failed:(WTRequestFailedBlock)failed;
 
-
-
-
-
-
 /*!
  根据给出的url,参数和缓存策略执行一个GET请求，当请求成功或者失败，对应的回调
  将会被执行
@@ -111,7 +106,35 @@ typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,N
                     option:(WTRequestCenterCachePolicy)option
                   finished:(WTRequestFinishedBlock)finished
                     failed:(WTRequestFailedBlock)failed;
+
+/*!
+ 根据接口索引去执行请求.
+ */
++(NSURLRequest*)getWithIndex:(NSInteger)index
+                  parameters:(NSDictionary *)parameters
+                    finished:(WTRequestFinishedBlock)finished
+                      failed:(WTRequestFailedBlock)failed;
+
+/*!
+    根据接口索引去执行请求.
+ */
++(NSURLRequest*)getWithIndex:(NSInteger)index
+                  parameters:(NSDictionary *)parameters
+                      option:(WTRequestCenterCachePolicy)option
+                    finished:(WTRequestFinishedBlock)finished
+                      failed:(WTRequestFailedBlock)failed;
+
+
 #pragma mark - POST
+
+/*!
+    根据索引和参数去POST
+ */
++(NSURLRequest*)postWithIndex:(NSInteger)index
+                   parameters:(NSDictionary*)parameters
+                     finished:(WTRequestFinishedBlock)finished
+                       failed:(WTRequestFailedBlock)failed;
+
 /*!
  根据给出的url，参数，执行一个POST请求，
  当请求执行成功或者失败，对应的回调将会被执行

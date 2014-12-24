@@ -53,7 +53,6 @@
     
     
 
-
     RulerView *view = [[RulerView alloc] initWithFrame:self.view.bounds];
     view.userInteractionEnabled = NO;
     [self.view addSubview:view];
