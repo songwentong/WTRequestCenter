@@ -72,15 +72,18 @@ UIKit扩展提供了许多不错的方法，快速缓存图片，图片查看，
 ```objective-c
 [WTRequestCenter getWithIndex:1
                        parameters:nil
-                         finished:^(NSURLResponse *response, NSData *data) {
-                            NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                         finished:^(NSURLResponse *response, NSData *data) 
+            {
+            NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             NSLog(@"%@",string);
-                       } failed:^(NSURLResponse *response, NSError *error) {
+            } failed:^(NSURLResponse *response, NSError *error) 
+            {
                            
-                       }];
+            }];
 ```
 注意，使用index来请求的时候需要重写两个方法
-设置一下baseURL和接口号对应的URL设置上就可以用了
+设置一下baseURL和接口号对应的URL设置上就可以用了。
+POST方法也含带索引的请求。
 ```objective-c
 +(NSString *)baseURL
 {
