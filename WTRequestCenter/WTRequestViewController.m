@@ -98,7 +98,13 @@
         }];
     }];
     
-    
+    [WTRequestCenter getWithIndex:1
+                       parameters:nil
+                         finished:^(NSURLResponse *response, NSData *data) {
+                           
+                       } failed:^(NSURLResponse *response, NSError *error) {
+                           
+                       }];
     
 }
 

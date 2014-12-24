@@ -353,6 +353,7 @@ static NSURLCache* sharedCache = nil;
         
     }else
     {
+        
         [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
             [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
                 complection(response,data,connectionError);
@@ -494,6 +495,7 @@ static NSURLCache* sharedCache = nil;
     return url;
 
 }
+
 //实际应用示例
 +(NSString*)URLWithIndex:(NSInteger)index
 {
@@ -503,25 +505,6 @@ static NSURLCache* sharedCache = nil;
     [urls addObject:@"interface1"];
     [urls addObject:@"interface2"];
     [urls addObject:@"interface3"];
-    [urls addObject:@"interface0"];
-    [urls addObject:@"interface0"];
-    [urls addObject:@"interface0"];
-    [urls addObject:@"interface0"];
-    [urls addObject:@"interface0"];
-    [urls addObject:@"interface0"];
-    
-//  10-19
-    [urls addObject:@"interface0"];
-    [urls addObject:@"interface0"];
-    [urls addObject:@"interface0"];
-    [urls addObject:@"interface0"];
-    [urls addObject:@"interface0"];
-    [urls addObject:@"interface0"];
-    [urls addObject:@"interface0"];
-    [urls addObject:@"interface0"];
-    [urls addObject:@"interface0"];
-    [urls addObject:@"interface0"];
-    
     
     
     NSString *url = urls[index];
