@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
 
   s.name         = "WTRequestCenter"
   s.version      = "0.5.1"
-  s.summary      = "A short description of WTRequestCenter."
+  s.summary      = "Http request Kit"
 
   s.description  = <<-DESC
                    A longer description of WTRequestCenter in Markdown format.
@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
                    * Finally, don't worry about the indent, CocoaPods strips it!
                    DESC
 
-  s.homepage     = "http://EXAMPLE/WTRequestCenter"
+  s.homepage     = "https://github.com/swtlovewtt/WTRequestCenter"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -64,12 +64,12 @@ Pod::Spec.new do |s|
   #  the deployment target. You can optionally include the target after the platform.
   #
 
-  # s.platform     = :ios
-  # s.platform     = :ios, "5.0"
+#   s.platform     = :ios
+    s.platform     = :ios, "6.0"
 
   #  When using multiple platforms
-  # s.ios.deployment_target = "5.0"
-  # s.osx.deployment_target = "10.7"
+#   s.ios.deployment_target = "6.0"
+#   s.osx.deployment_target = "10.7"
 
 
   # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -89,13 +89,16 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "WTRequestCenter/WTRequestCenter", "WTRequestCenter/WTRequestCenter/*.{h,m}"
-  s.exclude_files = "Classes/Exclude"
+  s.source_files  = "WTRequestCenter/WTRequestCenter/*.{h,m}"
+#  s.exclude_files = "Classes/Exclude"
 
-    s.subspec 'UIKit+WTRequestCenter' do |ss|
-    ss.ios.source_files = 'WTRequestCenter/UIKit+WTRequestCenter/*.{h,m}'
-    ss.osx.source_files = ''
-    end
+#s.subspec 'UIKit' do |ss|
+#   ss.ios.deployment_target = '6.0'
+#   ss.ios.public_header_files = 'UIKit+WTRequestCenter/*.h'
+#   ss.dependency 'WTRequestCenter'
+#   ss.ios.source_files = 'WTRequestCenter/UIKit+WTRequestCenter/*.{h,m}'
+#   ss.osx.source_files = ''
+#   end
   # s.public_header_files = "Classes/**/*.h"
 
 
