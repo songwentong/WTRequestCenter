@@ -211,8 +211,8 @@ Only need iOS 5.0 and later,no more import and Configuration!
 
 ## Communication  
 - 如果你**发现bug**,<a href="https://github.com/swtlovewtt/WTRequestCenter/issues">打开右侧的问题</a>
-- 如果你**想做出贡献**，<a href="https://github.com/swtlovewtt/WTRequestCenter/pulls">提交一个推（pull）的请求</a>
-- 如果你**有功能需求**，<a href="https://github.com/swtlovewtt/WTRequestCenter/issues">打开问题</a>
+- 如果你**想做出贡献**,<a href="https://github.com/swtlovewtt/WTRequestCenter/pulls">提交一个推（pull）的请求</a>
+- 如果你**有功能需求**,<a href="https://github.com/swtlovewtt/WTRequestCenter/issues">打开问题</a>
 
 
 
