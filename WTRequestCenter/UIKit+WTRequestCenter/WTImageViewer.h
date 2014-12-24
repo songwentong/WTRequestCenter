@@ -37,7 +37,7 @@
 @property (nonatomic,weak) id<WTImageViewerDelegate> delegate;
 - (instancetype)initWithFrame:(CGRect)frame urls:(NSArray*)urls;
 @property (nonatomic,copy) NSArray *imageUrls;
--(NSUInteger)currentPageIndex;
+@property (NS_NONATOMIC_IOSONLY, readonly) NSUInteger currentPageIndex;
 
 
 

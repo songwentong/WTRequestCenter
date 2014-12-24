@@ -152,7 +152,7 @@ static NSOperationQueue *dataQueue = nil;
 #pragma mark - 存数据
 +(void)saveData:(NSData*)data withIndex:(NSInteger)index
 {
-    NSNumber *number = [NSNumber numberWithInteger:index];
+    NSNumber *number = @(index);
     
     [self saveData:data withName:[NSString stringWithFormat:@"%@",number]];
 }
@@ -163,7 +163,7 @@ static NSOperationQueue *dataQueue = nil;
 }
 +(void)saveData:(NSData *)data withIndex:(NSInteger)index completion:(void (^)())completion
 {
-    NSNumber *number = [NSNumber numberWithInteger:index];
+    NSNumber *number = @(index);
     NSString *name = [NSString stringWithFormat:@"%@",number];
     [self saveData:data withName:name completion:completion];
 }
@@ -191,7 +191,7 @@ static NSOperationQueue *dataQueue = nil;
 
 +(void)dataWithIndex:(NSInteger)index completion:(void(^)(NSData*data))completion
 {
-    NSNumber *number = [NSNumber numberWithInteger:index];
+    NSNumber *number = @(index);
     NSString *name = [NSString stringWithFormat:@"%@",number];
     [self dataWithName:name completion:completion];
 }

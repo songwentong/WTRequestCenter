@@ -18,7 +18,7 @@ static NSString *const WTReuqestCenterUserAgent = @"WTURLRequestUserAgent";
 
 @interface WTMultiFormData : NSObject <WTMultipartFormData>
 
-- (NSMutableURLRequest *)requestByFinalizingMultipartFormData;
+@property (NS_NONATOMIC_IOSONLY, readonly, copy) NSMutableURLRequest *requestByFinalizingMultipartFormData;
 
 //请求
 @property (readwrite, nonatomic, copy) NSMutableURLRequest *request;
@@ -29,7 +29,7 @@ static NSString *const WTReuqestCenterUserAgent = @"WTURLRequestUserAgent";
 @end
 
 @implementation WTMultiFormData
-- (id)initWithURLRequest:(NSMutableURLRequest *)urlRequest
+- (instancetype)initWithURLRequest:(NSMutableURLRequest *)urlRequest
 {
     self = [super init];
     if (self) {

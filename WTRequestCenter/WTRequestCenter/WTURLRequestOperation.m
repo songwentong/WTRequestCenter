@@ -240,7 +240,7 @@ static inline NSString * WTKeyPathFromOperationState(WTOperationState state) {
 - (void)cancelConnection {
     NSDictionary *userInfo = nil;
     if ([self.request URL]) {
-        userInfo = [NSDictionary dictionaryWithObject:[self.request URL] forKey:NSURLErrorFailingURLErrorKey];
+        userInfo = @{NSURLErrorFailingURLErrorKey: [self.request URL]};
     }
     NSError *error = [NSError errorWithDomain:NSURLErrorDomain code:NSURLErrorCancelled userInfo:userInfo];
     
