@@ -38,13 +38,7 @@ UIKit扩展提供了许多不错的方法，快速缓存图片，图片查看，
 
 使用方法 Usage
 ===============
-### GET 请求 
-```objective-c
-+(NSURLRequest*)getWithURL:(NSString*)url
-                parameters:(NSDictionary*)parameters
-                  finished:(WTRequestFinishedBlock)finished
-                    failed:(WTRequestFailedBlock)failed;
-```
+### GET 请求，根据URL和参数去请求
 
 
 用例：
@@ -67,15 +61,55 @@ UIKit扩展提供了许多不错的方法，快速缓存图片，图片查看，
             NSLog(@"%@",response);
         }];
 ```
+###根据索引和参数去请求
 
-              
-### POST 请求
 ```objective-c
-+(NSURLRequest*)postWithURL:(NSString*)url
-                 parameters:(NSDictionary*)parameters
-                   finished:(WTRequestFinishedBlock)finished
-                     failed:(WTRequestFailedBlock)failed;
++(NSURLRequest*)getWithIndex:(NSInteger)index
+                  parameters:(NSDictionary *)parameters
+                    finished:(WTRequestFinishedBlock)finished
+                      failed:(WTRequestFailedBlock)failed;
 ```
+```objective-c
+[WTRequestCenter getWithIndex:1
+                       parameters:nil
+                         finished:^(NSURLResponse *response, NSData *data) {
+                            NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            NSLog(@"%@",string);
+                       } failed:^(NSURLResponse *response, NSError *error) {
+                           
+                       }];
+```
+注意，使用index来请求的时候需要重写两个方法
+设置一下baseURL和接口号对应的URL设置上就可以用了
+```objective-c
++(NSString *)baseURL
+{
+    NSUserDefaults *a = [self sharedUserDefaults];
+    NSString *url = [a valueForKey:@"baseURL"];
+    if (!url) {
+        return @"http://www.xxx.com";
+    }
+    return url;
+}
+
++(NSString*)URLWithIndex:(NSInteger)index
+{
+    NSMutableArray *urls = [[NSMutableArray alloc] init];
+//    0-9
+    [urls addObject:@"article/detail"];
+    [urls addObject:@"interface1"];
+    [urls addObject:@"interface2"];
+    [urls addObject:@"interface3"];
+    
+    
+    NSString *url = urls[index];
+    NSString *urlString = [NSString stringWithFormat:@"%@/%@",[WTRequestCenter baseURL],url];
+    return urlString;
+}
+
+```
+
+### POST 请求
 
 用例：
 ```objective-c
