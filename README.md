@@ -53,7 +53,8 @@ UIKit扩展提供了许多不错的方法，快速缓存图片，图片查看，
                          parameters:parameters 
                            finished:^(NSURLResponse *response, NSData *data) 
         {
-            NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            NSString *string = [[NSString alloc] initWithData:data 
+                                                     encoding:NSUTF8StringEncoding];
             NSLog(@"%@",string);
         } 
                              failed:^(NSURLResponse *response, NSError *error) 
@@ -74,7 +75,8 @@ UIKit扩展提供了许多不错的方法，快速缓存图片，图片查看，
                    parameters:nil
                      finished:^(NSURLResponse *response, NSData *data) 
             {
-            NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            NSString *string = [[NSString alloc] initWithData:data
+                                                     encoding:NSUTF8StringEncoding];
             NSLog(@"%@",string);
             }
             failed:^(NSURLResponse *response, NSError *error) 
