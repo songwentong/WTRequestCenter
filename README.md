@@ -206,6 +206,8 @@ Only need iOS 5.0 and later,no more import and Configuration!
 - UIDecive的扩展（uuid调用）
 - UIWebView的缓存扩展（暂时不支持网页游戏的缓存）
 - UIScreen 提供了一些适配屏幕的好方法，具体看注释
+- UIApplication 提供了版本号和build号的获取
+- WTNetworkActivityIndicatorManager提供了网络指示器
 
 ## Communication  
 - 如果你**发现bug**,<a href="https://github.com/swtlovewtt/WTRequestCenter/issues">打开右侧的问题</a>
