@@ -375,4 +375,19 @@ constructingBodyWithBlock:(void (^)(id <WTMultipartFormData> formData))block
 - (NSString *)valueForHTTPHeaderField:(NSString *)field {
     return [self.HTTPRequestHeaders valueForKey:field];
 }
+
+
+#pragma mark - 其他
+
+//获得响应时间
++(NSDate*)dateFromHTTPURLResponse:(NSHTTPURLResponse*)response
+{
+    NSHTTPURLResponse *httpRes = (NSHTTPURLResponse*)response;
+    NSDictionary *dict = httpRes.allHeaderFields;
+    NSString *dateString = [dict valueForKey:@"Date"];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"E, dd MMM yyyy hh:mm:ss VVVV";
+    NSDate *date = [formatter dateFromString:dateString];
+    return date;
+}
 @end
