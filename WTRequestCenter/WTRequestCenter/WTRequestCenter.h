@@ -78,6 +78,14 @@ typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,N
 +(void)doURLRequest:(NSURLRequest*)request
            finished:(WTRequestFinishedBlock)finished
              failed:(WTRequestFailedBlock)failed;
+
+/*
+  执行一个NSURLRequest请求,缓存策略只适用于Get情况
+ */
++(void)doURLRequest:(NSURLRequest*)request
+             option:(WTRequestCenterCachePolicy)option
+           finished:(WTRequestFinishedBlock)finished
+             failed:(WTRequestFailedBlock)failed;
 #pragma mark - GET
 
 //普通GET
