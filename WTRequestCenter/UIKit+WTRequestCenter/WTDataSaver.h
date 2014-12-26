@@ -47,8 +47,10 @@
 +(void)dataWithURL:(NSString*)url
  completionHandler:(void (^)(NSData *data))completion;
 
-
-
+/*!
+    删除所有本地数据
+ */
++(void)clearAllData;
 
 
 
