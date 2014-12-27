@@ -23,7 +23,8 @@
 
 @class WTURLRequestSerialization;
 @protocol WTMultipartFormData;
-#import "WTURLRequestOperation.h"
+@class WTURLRequestOperation;
+
 #if ( ( defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= 1090) || \
 ( defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000 ) )
 
@@ -68,6 +69,7 @@ typedef NS_ENUM(NSUInteger, WTRequestCenterCachePolicy) {
 typedef void (^WTRequestFinishedBlock)(NSURLResponse *response,NSData *data);
 typedef void (^WTRequestFailedBlock)(NSURLResponse *response,NSError *error);
 typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,NSError *error);
+typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalBytesRead,long long totalBytesExpectedToRead);
 
 @interface WTRequestCenter : NSObject
 
