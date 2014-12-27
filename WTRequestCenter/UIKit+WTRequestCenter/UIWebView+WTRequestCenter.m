@@ -12,24 +12,18 @@
 -(void)loadWithURL:(NSString*)url
             option:(WTRequestCenterCachePolicy)option
 {
-    [WTRequestCenter getWithURL:url
-                     parameters:nil
-                         option:option
-                       finished:^(NSURLResponse *response, NSData *data) {
-        NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        [self loadHTMLString:string baseURL:nil];
-    } failed:^(NSURLResponse *response, NSError *error) {
-        
-    }];
-    
-    
-    
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+    [self loadRequest:request option:option];
     
 }
 
 - (void)loadRequest:(NSURLRequest *)request
              option:(WTRequestCenterCachePolicy)option
 {
+    
+    if ([self isLoading]) {
+        [self stopLoading];
+    }
     [WTRequestCenter doURLRequest:request
                            option:option
                          finished:^(NSURLResponse *response, NSData *data) {
