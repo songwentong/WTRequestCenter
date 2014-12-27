@@ -10,9 +10,12 @@
 
 @implementation UIWebView (WTRequestCenter)
 -(void)loadWithURL:(NSString*)url
-    option:(WTRequestCenterCachePolicy)option
+            option:(WTRequestCenterCachePolicy)option
 {
-    [WTRequestCenter getWithURL:url parameters:nil option:option finished:^(NSURLResponse *response, NSData *data) {
+    [WTRequestCenter getWithURL:url
+                     parameters:nil
+                         option:option
+                       finished:^(NSURLResponse *response, NSData *data) {
         NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         [self loadHTMLString:string baseURL:nil];
     } failed:^(NSURLResponse *response, NSError *error) {
@@ -24,5 +27,18 @@
     
 }
 
-
+- (void)loadRequest:(NSURLRequest *)request
+             option:(WTRequestCenterCachePolicy)option
+{
+    [WTRequestCenter doURLRequest:request
+                           option:option
+                         finished:^(NSURLResponse *response, NSData *data) {
+                             [self loadData:data
+                                   MIMEType:@"text/html"
+                           textEncodingName:@"utf-8"
+                                    baseURL:nil];
+                         } failed:^(NSURLResponse *response, NSError *error) {
+                             
+                         }];
+}
 @end

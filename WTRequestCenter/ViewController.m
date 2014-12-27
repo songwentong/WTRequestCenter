@@ -48,7 +48,7 @@
 
     [self configModel];
     [self configView];
-    [self performSelector:@selector(takeSnapShot) withObject:nil afterDelay:1];
+//    [self performSelector:@selector(takeSnapShot) withObject:nil afterDelay:1];
     [[WTNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     
     [WTDataSaver dataWithName:@"pqwoewqpe" completion:^(NSData *data) {

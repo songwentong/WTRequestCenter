@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "WTRequestCenter.h"
 @interface UIWebView (WTRequestCenter)
+
 -(void)loadWithURL:(NSString*)url
             option:(WTRequestCenterCachePolicy)option;
+
+
+
+- (void)loadRequest:(NSURLRequest *)request
+             option:(WTRequestCenterCachePolicy)option;
 @end

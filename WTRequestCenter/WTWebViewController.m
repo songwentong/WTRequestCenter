@@ -28,7 +28,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     UIWebView *webView=  [[UIWebView alloc] initWithFrame:self.view.bounds];
-    [webView loadWithURL:@"http://image.baidu.com/channel/star/林志玲" option:WTRequestCenterCachePolicyCacheAndWeb];
+    
+//    [webView loadWithURL:@"http://image.baidu.com/channel/star/林志玲" option:WTRequestCenterCachePolicyCacheAndWeb];
+    NSURL *url = [NSURL URLWithString:@"http://image.baidu.com"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [webView loadRequest:request option:WTRequestCenterCachePolicyNormal];
     [self.view addSubview:webView];
 
     

@@ -25,7 +25,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "152"
             endingLineNumber = "152"
-            landmarkName = "-get"
+            landmarkName = "-testWebView"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -43,6 +43,52 @@
             endingLineNumber = "25"
             landmarkName = "-initWithFrame:imageURL:"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WTRequestCenter/WTRequestCenter/WTRequestCenter.m"
+            timestampString = "441338345.938607"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "347"
+            endingLineNumber = "347"
+            landmarkName = "+doURLRequest:finished:failed:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__48+[WTRequestCenter doURLRequest:finished:failed:]_block_invoke152"
+                  moduleName = "WTRequestCenter"
+                  urlString = "file:///Users/song/https:/github.com/rs/WTRequestCenter/WTRequestCenter/WTRequestCenter/WTRequestCenter.m"
+                  timestampString = "441338345.940262"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "347"
+                  endingLineNumber = "347"
+                  offsetFromSymbolStart = "23">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__48+[WTRequestCenter doURLRequest:finished:failed:]_block_invoke_2156"
+                  moduleName = "WTRequestCenter"
+                  urlString = "file:///Users/song/https:/github.com/rs/WTRequestCenter/WTRequestCenter/WTRequestCenter/WTRequestCenter.m"
+                  timestampString = "441338345.940438"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "347"
+                  endingLineNumber = "347"
+                  offsetFromSymbolStart = "112">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
