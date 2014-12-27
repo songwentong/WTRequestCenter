@@ -38,7 +38,7 @@ static NSOperationQueue *dataQueue = nil;
 }
 
 #pragma mark - 工具
-+(CGFloat)osVersion
++(float)osVersion
 {
     CGFloat version = 0;
 #if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
