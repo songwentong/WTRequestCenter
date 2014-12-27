@@ -20,8 +20,9 @@
  
  */
 #import <Foundation/Foundation.h>
-#import "WTDataSaver.h"
-#import "WTURLRequestSerialization.h"
+
+@class WTURLRequestSerialization;
+@protocol WTMultipartFormData;
 #import "WTURLRequestOperation.h"
 #if ( ( defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= 1090) || \
 ( defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000 ) )
@@ -221,7 +222,6 @@ typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,N
 +(NSString*)stringWithData:(NSObject*)data;
 #pragma mark - URL
 //根路径
-+(BOOL)setBaseURL:(NSString*)url;
 +(NSString *)baseURL;
 //实际应用示例
 +(NSString*)URLWithIndex:(NSInteger)index;

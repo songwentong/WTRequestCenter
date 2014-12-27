@@ -8,9 +8,11 @@
 
 #import "WTRequestCenter.h"
 #import "WTURLRequestOperation.h"
+#import "WTURLRequestSerialization.h"
 
-
-
+#if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
+#import <UIKit/UIKit.h>
+#endif
 //请求开始的消息
 NSString * const WTNetworkingOperationDidStartNotification = @"WTNetworkingOperationDidStartNotification";
 //请求结束的消息
@@ -66,29 +68,6 @@ static NSURLCache* sharedCache = nil;
     }
     return requesting;
 }
-
-#if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
-+(NSUserDefaults*)sharedUserDefaults
-{
-    UIDevice *currentDevice = [UIDevice currentDevice];
-    NSUserDefaults *myUserDefaults = nil;
-    if (currentDevice.systemVersion.floatValue>=7.0) {
-//        使用新方法
-       myUserDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"WTRequestCenter"];
-    }else
-    {
-//    使用旧方法
-//        __IPHONE_OS_VERSION_MIN_REQUIRED
-        #if __IPHONE_OS_VERSION_MIN_REQUIRED <__IPHONE_7_0
-        myUserDefaults = [[NSUserDefaults alloc] initWithUser:@"WTRequestCenter"];
-        #endif
-    }
-    return myUserDefaults;
-}
-
-
-#endif
-
 
 //清除所有缓存(clearAllCache)
 +(void)clearAllCache
@@ -477,23 +456,10 @@ static NSURLCache* sharedCache = nil;
 
 #pragma mark - URL
 
-+(BOOL)setBaseURL:(NSString*)url
-{
-    assert(url != nil);
-    NSUserDefaults *a = [self sharedUserDefaults];
-    [a setValue:url forKey:@"baseURL"];
-    return [a synchronize];
-}
-
+static NSString * const baseURL = @"http://www.baidu.com";
 +(NSString *)baseURL
 {
-    NSUserDefaults *a = [self sharedUserDefaults];
-    NSString *url = [a valueForKey:@"baseURL"];
-    if (!url) {
-        return @"http://www.xxx.com";
-    }
-    return url;
-
+    return baseURL;
 }
 
 //实际应用示例

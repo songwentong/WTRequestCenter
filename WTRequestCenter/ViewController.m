@@ -15,6 +15,7 @@
 #import "RulerView.h"
 #import "WTURLSessionManager.h"
 #import "WTURLRequestSerialization.h"
+#import "UIKit+WTRequestCenter.h"
 //static const NSTimeInterval kAnimationTime = 0.3f;
 
 @interface ViewController ()
