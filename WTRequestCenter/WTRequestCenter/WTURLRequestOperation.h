@@ -36,7 +36,7 @@ typedef void(^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalBytes
 
 @property (readwrite, nonatomic, copy) WTDownLoadProgressBlock downloadProgress;
 
--(instancetype)initWithRequest:(NSURLRequest*)request NS_DESIGNATED_INITIALIZER;
+-(instancetype)initWithRequest:(NSURLRequest*)request;
 -(void)setCompletionHandler:(WTRequestComplectionBlock)handler;
 
 
