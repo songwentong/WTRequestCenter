@@ -21,7 +21,6 @@
         NSString *path = [NSString stringWithFormat:@"%@/%@",rootDir,subpath];
         [manager removeItemAtPath:path error:nil];
     }];
-//    NSLog(@"%@",array);
 }
 
 
@@ -274,7 +273,7 @@ static NSOperationQueue *dataQueue = nil;
 
     NSBlockOperation *blockOperation = [NSBlockOperation blockOperationWithBlock:^{
         NSFileManager *manager = [NSFileManager defaultManager];
-
+        
         NSDirectoryEnumerator* directoryEnumerator =[manager enumeratorAtPath:[self rootDir]];
         while ([directoryEnumerator nextObject]) {
 
