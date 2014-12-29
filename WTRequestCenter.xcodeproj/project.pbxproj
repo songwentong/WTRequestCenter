@@ -94,6 +94,7 @@
 		E1632C8919EE02EB00089FFA /* WTRequestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTRequestViewController.h; sourceTree = "<group>"; };
 		E1632C8A19EE02EB00089FFA /* WTRequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTRequestViewController.m; sourceTree = "<group>"; };
 		E1632C8B19EE02EB00089FFA /* WTRequestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTRequestViewController.xib; sourceTree = "<group>"; };
+		E176C22F1A51341D00BEB042 /* WTNetWork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WTNetWork.h; sourceTree = "<group>"; };
 		E19B62C01A2469BA004713F2 /* UIImageViewCacheTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageViewCacheTests.m; sourceTree = "<group>"; };
 		E19F0C281A0201460049C1A2 /* RulerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RulerView.h; sourceTree = "<group>"; };
 		E19F0C291A0201460049C1A2 /* RulerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RulerView.m; sourceTree = "<group>"; };
@@ -293,6 +294,7 @@
 		E4DBC941197D14C9004F9393 /* WTRequestCenter */ = {
 			isa = PBXGroup;
 			children = (
+				E176C22F1A51341D00BEB042 /* WTNetWork.h */,
 				E160B1F419FDDF23007E8CFD /* WTRequestCenter.h */,
 				E160B1F519FDDF23007E8CFD /* WTRequestCenter.m */,
 				E15119071A23243C0060AAB1 /* WTURLRequestSerialization.h */,

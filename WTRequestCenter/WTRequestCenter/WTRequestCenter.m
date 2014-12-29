@@ -9,7 +9,7 @@
 #import "WTRequestCenter.h"
 #import "WTURLRequestOperation.h"
 #import "WTURLRequestSerialization.h"
-#import "WTURLRequestOperation.h"
+
 #if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
 #import <UIKit/UIKit.h>
 #endif
