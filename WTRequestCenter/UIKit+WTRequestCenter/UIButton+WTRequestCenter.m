@@ -13,6 +13,8 @@
 #import "WTRequestCenterMacro.h"
 #import "UIKit+WTRequestCenter.h"
 #import <objc/runtime.h>
+#import "WTURLRequestOperation.h"
+
 @implementation UIButton (WTImageCache)
 
 -(WTURLRequestOperation*)wtImageRequestOperation

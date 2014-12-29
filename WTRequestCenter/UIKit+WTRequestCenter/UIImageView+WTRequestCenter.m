@@ -10,6 +10,8 @@
 #import <objc/runtime.h>
 #import "WTRequestCenterMacro.h"
 #import "UIImage+WTRequestCenter.h"
+#import "WTURLRequestOperation.h"
+
 @interface UIImageView()
 //@property (nonatomic,strong,readwrite) WTURLRequestOperation *wtImageRequestOperation;
 @property (nonatomic,strong ,readwrite) WTURLRequestOperation *myOperation;
