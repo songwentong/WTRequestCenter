@@ -14,7 +14,7 @@
 
 @interface UIImageView()
 //@property (nonatomic,strong,readwrite) WTURLRequestOperation *wtImageRequestOperation;
-@property (nonatomic,strong ,readwrite) WTURLRequestOperation *myOperation;
+
 @end
 @implementation UIImageView (WTRequestCenter)
 
@@ -52,7 +52,12 @@
         [self.wtImageRequestOperation cancel];
         self.wtImageRequestOperation = nil;
     }
-    self.image = placeholder;
+    
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^
+    {
+            self.image = placeholder;
+    }];
+
     if (url) {
         __weak UIImageView *wself    = self;
         
