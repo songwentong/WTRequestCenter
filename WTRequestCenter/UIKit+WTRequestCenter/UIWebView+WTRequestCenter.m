@@ -21,12 +21,15 @@
              option:(WTRequestCenterCachePolicy)option
 {
     
-    if ([self isLoading]) {
-        [self stopLoading];
-    }
+
     [WTRequestCenter doURLRequest:request
                            option:option
                          finished:^(NSURLResponse *response, NSData *data) {
+                             
+                             if ([self isLoading]) {
+                                 [self stopLoading];
+                             }
+                             
                              [self loadData:data
                                    MIMEType:@"text/html"
                            textEncodingName:@"utf-8"
