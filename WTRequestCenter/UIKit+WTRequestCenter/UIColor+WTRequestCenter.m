@@ -60,8 +60,10 @@
     CGFloat red = [self integerValueFromHexString:[hexString substringWithRange:NSMakeRange(0, 2)]];
     CGFloat green = [self integerValueFromHexString:[hexString substringWithRange:NSMakeRange(2, 2)]];
     CGFloat blue = [self integerValueFromHexString:[hexString substringWithRange:NSMakeRange(4, 2)]];
-    
-    return [self colorWithRed:red green:green blue:blue alpha:alpha];
+    return [self WTcolorWithRed:red
+                          green:green
+                           blue:blue
+                          alpha:alpha];
 }
 
 
