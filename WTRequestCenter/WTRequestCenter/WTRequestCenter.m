@@ -264,10 +264,11 @@ static NSURLCache* sharedCache = nil;
 //    有效性判断
     assert(request != nil);
     
-    dispatch_async(dispatch_get_main_queue(), ^{
+    
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         NSDictionary *userInfo = @{@"request": request};
         [[NSNotificationCenter defaultCenter] postNotificationName:WTNetworkingOperationDidStartNotification object:request userInfo:userInfo];
-    });
+    }];
     
     
     NSTimeInterval startTimeInterval = [[NSDate date] timeIntervalSince1970];
@@ -282,10 +283,11 @@ static NSURLCache* sharedCache = nil;
     {
         NSTimeInterval endTimeInterval = [[NSDate date] timeIntervalSince1970];
         
-        dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             NSDictionary *userInfo = @{@"request": request};
             [[NSNotificationCenter defaultCenter] postNotificationName:WTNetworkingOperationDidFinishNotification object:request userInfo:userInfo];
-        });
+        }];
+        
         
         if (connectionError) {
             if (WTRequestCenterDebugMode) {
@@ -302,7 +304,8 @@ static NSURLCache* sharedCache = nil;
         }
         
         
-        dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             if (connectionError) {
                 if (failed) {
                     failed(response,connectionError);
@@ -314,8 +317,7 @@ static NSURLCache* sharedCache = nil;
                     finished(response,data);
                 }
             }
-        });
-
+        }];
     };
     
 #if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)

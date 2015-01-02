@@ -70,10 +70,10 @@
                     if (!wself) return;
                     __strong UIImageView *strongSelf = wself;
                     
-                    dispatch_sync(dispatch_get_main_queue(), ^{
+                    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                         strongSelf.image = image;
                         [strongSelf setNeedsLayout];
-                    });
+                    }];
                     strongSelf.wtImageRequestOperation = nil;
                 }
                 
