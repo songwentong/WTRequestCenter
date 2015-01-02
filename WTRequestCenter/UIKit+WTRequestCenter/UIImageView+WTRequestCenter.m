@@ -55,7 +55,7 @@
     
     [[NSOperationQueue mainQueue] addOperationWithBlock:^
     {
-            self.image = placeholder;
+        self.image = placeholder;
     }];
 
     if (url) {
