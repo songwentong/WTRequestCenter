@@ -303,9 +303,8 @@ static inline NSString * WTKeyPathFromOperationState(WTOperationState state) {
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
     self.error = error;
-    [self.lock lock];
-    self.state = WTOperationStateFinished;
-    [self.lock unlock];
+    
+    [self finish];
 }
 
 @end
