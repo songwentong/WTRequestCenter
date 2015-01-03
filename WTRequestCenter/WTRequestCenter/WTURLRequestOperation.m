@@ -248,10 +248,7 @@ static inline NSString * WTKeyPathFromOperationState(WTOperationState state) {
         if (wtURLConnection) {
             [wtURLConnection cancel];
             [self performSelector:@selector(connection:didFailWithError:) withObject:wtURLConnection withObject:error];
-            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                NSDictionary *userInfo = @{@"request": _request};
-                [[NSNotificationCenter defaultCenter] postNotificationName:WTNetworkingOperationDidFinishNotification object:_request userInfo:userInfo];
-            }];
+
         }else
         {
             self.error = error;
