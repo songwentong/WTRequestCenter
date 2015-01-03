@@ -292,18 +292,15 @@ static inline NSString * WTKeyPathFromOperationState(WTOperationState state) {
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    [self.lock lock];
-
-    self.state = WTOperationStateFinished;
-
-    [self.lock unlock];
+    wtURLConnection = nil;
+    [self finish];
 }
 
 #pragma mark - NSURLConnectionDelegate
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
     self.error = error;
-    
+    wtURLConnection = nil;    
     [self finish];
 }
 
