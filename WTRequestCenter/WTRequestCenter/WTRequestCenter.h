@@ -219,9 +219,12 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
 
 #endif
 #pragma mark - 辅助
-//JSON解析
+//JSON转对象
 +(id)JSONObjectWithData:(NSData*)data;
 +(NSString*)stringWithData:(NSObject*)data;
+
+//JSON对象转data
++(NSData*)dataFromJSONObject:(id)object;
 #pragma mark - URL
 //根路径
 +(NSString *)baseURL;

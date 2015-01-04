@@ -124,6 +124,15 @@ static NSURLCache* sharedCache = nil;
                                              error:nil];
 }
 
++(NSData*)dataFromJSONObject:(id)object
+{
+    if ([NSJSONSerialization isValidJSONObject:object]) {
+        NSData *data = [NSJSONSerialization dataWithJSONObject:object options:0 error:nil];
+        return data;
+    }
+    return nil;
+}
+
 
 //这个方法用于类型不固定时候的一个过滤
 //传入一个NSNumber，NSString或者NSNull类型的数据即可
