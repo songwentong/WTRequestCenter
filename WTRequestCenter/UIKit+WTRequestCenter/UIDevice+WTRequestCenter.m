@@ -30,5 +30,17 @@
     return uuid;
 }
 
-
++(CGFloat)systemVersion
+{
+    CGFloat version = 0;
+#if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
+    UIDevice *currentDevice = [UIDevice currentDevice];
+    version = currentDevice.systemVersion.floatValue;
+#elif defined(__MAC_OS_X_VERSION_MIN_REQUIRED)
+    NSDictionary * sv = [NSDictionary dictionaryWithContentsOfFile:@"/System/Library/CoreServices/SystemVersion.plist"];
+    version = [[sv objectForKey:@"ProductVersion"] floatValue];
+#endif
+    
+    return version;
+}
 @end

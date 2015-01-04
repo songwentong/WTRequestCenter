@@ -15,5 +15,5 @@
 //UUID  唯一标示符
 +(NSString*)WTUUID;
 
-
++(CGFloat)systemVersion;
 @end
