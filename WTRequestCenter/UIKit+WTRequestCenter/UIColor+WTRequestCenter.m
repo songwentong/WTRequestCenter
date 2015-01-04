@@ -27,9 +27,9 @@
 + (UIColor *)WTcolorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha
 {
     UIColor *color = nil;
-    color = [UIColor colorWithRed:red/255.0
-                            green:green/255.0
-                             blue:blue/255.0
+    color = [UIColor colorWithRed:red/255.00
+                            green:green/255.00
+                             blue:blue/255.00
                             alpha:alpha];
     return color;
 }
