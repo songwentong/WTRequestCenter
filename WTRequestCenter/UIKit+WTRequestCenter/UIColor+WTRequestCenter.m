@@ -53,8 +53,14 @@
 + (UIColor *)WTcolorWithHexString:(NSString *)hexString alpha:(CGFloat)alpha {
     // #rgb = #rrggbb
     
+    NSString *tempString;
+    
     if ([hexString hasPrefix:@"#"]) {
-        hexString = [hexString substringFromIndex:1];
+        tempString = [hexString substringFromIndex:1];
+    }
+    
+    if ([hexString length]==2) {
+        tempString = [NSString stringWithFormat:@"%@%@%@",hexString,hexString,hexString];
     }
     
     if ([hexString length] == 3) {
@@ -62,8 +68,10 @@
         NSString *oneG = [hexString substringWithRange:NSMakeRange(1, 1)];
         NSString *oneB = [hexString substringWithRange:NSMakeRange(2, 1)];
         
-        hexString = [NSString stringWithFormat:@"%@%@%@%@%@%@", oneR, oneR, oneG, oneG, oneB, oneB];
+        tempString = [NSString stringWithFormat:@"%@%@%@%@%@%@", oneR, oneR, oneG, oneG, oneB, oneB];
     }
+    
+    
     
     if ([hexString length]!=6) {
         return nil;
