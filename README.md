@@ -8,34 +8,6 @@ UIKit扩展提供了许多不错的方法，快速缓存图片，图片查看，
 如果有其他需要请在issue 上提出，谢谢！
 
 
-### 缓存策略
-
-缓存策略一共有5种，分别是：
-
-    WTRequestCenterCachePolicyNormal,
-    WTRequestCenterCachePolicyCacheElseWeb,
-    WTRequestCenterCachePolicyOnlyCache,
-    WTRequestCenterCachePolicyCacheAndRefresh,
-    WTRequestCenterCachePolicyCacheAndWeb
-    
-    WTRequestCenterCachePolicyNormal
-    普通请求，没什么特别的
-    
-    WTRequestCenterCachePolicyCacheElseWeb
-    如果本地有就用本地，否则用网络的
- 
-    WTRequestCenterCachePolicyOnlyCache
-    仅使用缓存缓存，不请求
- 
-    WTRequestCenterCachePolicyCacheAndRefresh
-    本地和网络的，本地没有也会刷新,本地有也会刷新(刷新后不回调)
- 
-    WTRequestCenterCachePolicyCacheAndWeb
-    本地有，会用，也会刷新，也会回调，本地没有会刷新
-    注意：这种情况非常少见，只有调用网页的时候可能会用得到
-
-
-
 使用方法 Usage
 ===============
 ### GET 请求，根据URL和参数去请求
@@ -62,57 +34,16 @@ UIKit扩展提供了许多不错的方法，快速缓存图片，图片查看，
             NSLog(@"%@",response);
         }];
 ```
-###根据索引和参数去请求
+
+
+### 给出时效时间来请求
 
 ```objective-c
-+(NSURLRequest*)getWithIndex:(NSInteger)index
-                  parameters:(NSDictionary *)parameters
-                    finished:(WTRequestFinishedBlock)finished
-                      failed:(WTRequestFailedBlock)failed;
-```
-```objective-c
-[WTRequestCenter getWithIndex:1
-                   parameters:nil
-                     finished:^(NSURLResponse *response, NSData *data) 
-            {
-            NSString *string = [[NSString alloc] initWithData:data
-                                                     encoding:NSUTF8StringEncoding];
-            NSLog(@"%@",string);
-            }
-            failed:^(NSURLResponse *response, NSError *error) 
-            {
-                           
-            }];
-```
-注意，使用index来请求的时候需要重写两个方法
-设置一下baseURL和接口号对应的URL设置上就可以用了。
-POST方法也含带索引的请求。
-```objective-c
-+(NSString *)baseURL
-{
-    NSUserDefaults *a = [self sharedUserDefaults];
-    NSString *url = [a valueForKey:@"baseURL"];
-    if (!url) {
-        return @"http://www.xxx.com";
-    }
-    return url;
-}
-
-+(NSString*)URLWithIndex:(NSInteger)index
-{
-    NSMutableArray *urls = [[NSMutableArray alloc] init];
-//    0-9
-    [urls addObject:@"article/detail"];
-    [urls addObject:@"interface1"];
-    [urls addObject:@"interface2"];
-    [urls addObject:@"interface3"];
-    
-    
-    NSString *url = urls[index];
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@",[WTRequestCenter baseURL],url];
-    return urlString;
-}
-
++(NSURLRequest*)getWithURL:(NSString*)url
+                parameters:(NSDictionary *)parameters
+                expireTime:(NSTimeInterval)time
+                  finished:(WTRequestFinishedBlock)finished
+                    failed:(WTRequestFailedBlock)failed;
 ```
 
 ### POST 请求
@@ -138,6 +69,34 @@ POST方法也含带索引的请求。
 ```
 
 ### GET+缓存策略
+
+### 缓存策略
+
+缓存策略一共有5种，分别是：
+
+    WTRequestCenterCachePolicyNormal,
+    WTRequestCenterCachePolicyCacheElseWeb,
+    WTRequestCenterCachePolicyOnlyCache,
+    WTRequestCenterCachePolicyCacheAndRefresh,in
+    WTRequestCenterCachePolicyCacheAndWeb
+    
+    WTRequestCenterCachePolicyNormal
+    普通请求，没什么特别的
+    
+    WTRequestCenterCachePolicyCacheElseWeb
+    如果本地有就用本地，否则用网络的
+ 
+    WTRequestCenterCachePolicyOnlyCache
+    仅使用缓存缓存，不请求
+ 
+    WTRequestCenterCachePolicyCacheAndRefresh
+    本地和网络的，本地没有也会刷新,本地有也会刷新(刷新后不回调)
+ 
+    WTRequestCenterCachePolicyCacheAndWeb
+    本地有，会用，也会刷新，也会回调，本地没有会刷新
+    注意：这种情况非常少见，只有调用网页的时候可能会用得到
+
+
 
 比普通的方法多了一个策略的选项，你根据需要去选择自己的缓存策略就可以了
 ```objective-c
