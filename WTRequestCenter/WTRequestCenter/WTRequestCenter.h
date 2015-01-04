@@ -136,6 +136,14 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
                       failed:(WTRequestFailedBlock)failed;
 
 
+/*!
+    给出实效时间来请求
+ */
++(NSURLRequest*)getWithURL:(NSString*)url
+                parameters:(NSDictionary *)parameters
+                expireTime:(NSTimeInterval)time
+                  finished:(WTRequestFinishedBlock)finished
+                    failed:(WTRequestFailedBlock)failed;
 #pragma mark - POST
 
 /*!
