@@ -36,7 +36,7 @@ UIKit扩展提供了许多不错的方法，快速缓存图片，图片查看，
 ```
 
 
-### 给出时效时间来请求
+### 给出失效时间来请求
 
 ```objective-c
 +(NSURLRequest*)getWithURL:(NSString*)url
