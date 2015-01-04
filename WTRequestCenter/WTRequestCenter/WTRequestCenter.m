@@ -199,64 +199,6 @@ static NSURLCache* sharedCache = nil;
     return request;
 }
 
-+(NSURLRequest*)getWithIndex:(NSInteger)index
-                  parameters:(NSDictionary *)parameters
-                    finished:(WTRequestFinishedBlock)finished
-                      failed:(WTRequestFailedBlock)failed
-{
-    return [self getWithIndex:index parameters:parameters option:WTRequestCenterCachePolicyNormal finished:finished failed:failed];
-}
-+(NSURLRequest*)getWithIndex:(NSInteger)index
-                  parameters:(NSDictionary *)parameters
-                      option:(WTRequestCenterCachePolicy)option
-                    finished:(WTRequestFinishedBlock)finished
-                      failed:(WTRequestFailedBlock)failed
-{
-    NSURLRequest *request = [WTURLRequestSerialization GETRequestWithURL:[self URLWithIndex:index] parameters:parameters];
-    [self doURLRequest:request option:option finished:finished failed:failed];
-    return request;
-}
-
-
-+(NSURLRequest*)getWithIndex:(NSInteger)index
-                  parameters:(NSDictionary *)parameters
-                  expireTime:(NSTimeInterval)time
-                    finished:(WTRequestFinishedBlock)finished
-                      failed:(WTRequestFailedBlock)failed
-{
-    NSURLRequest *request = [WTURLRequestSerialization GETRequestWithURL:[self URLWithIndex:index] parameters:parameters];
-    
-    NSCachedURLResponse *cacheURLResponse = [[WTRequestCenter sharedCache] cachedResponseForRequest:request];
-    BOOL needRequest = YES;
-    if (cacheURLResponse) {
-        if ([cacheURLResponse.response isKindOfClass:[NSHTTPURLResponse class]])
-        {
-            NSHTTPURLResponse *tempResponse = (NSHTTPURLResponse*)cacheURLResponse.response;
-            NSDate *date = [WTURLRequestSerialization dateFromHTTPURLResponse:tempResponse];
-            NSTimeInterval responseTime = [date timeIntervalSince1970];
-            NSTimeInterval now = [[NSDate date] timeIntervalSince1970];
-            if (now-responseTime < time) {
-                needRequest = NO;
-            }
-            
-        }
-    }
-    
-    if (needRequest) {
-        [self getWithIndex:index parameters:parameters finished:finished failed:failed];
-    }else
-    {
-        if (finished) {
-            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                finished(cacheURLResponse.response,cacheURLResponse.data);
-            }];
-            
-        }
-    }
-    
-    return request;
-}
-
 +(NSURLRequest*)getWithURL:(NSString*)url
                 parameters:(NSDictionary *)parameters
                 expireTime:(NSTimeInterval)time
@@ -314,15 +256,6 @@ static NSURLCache* sharedCache = nil;
     return request;
 }
 
-+(NSURLRequest*)postWithIndex:(NSInteger)index
-                  parameters:(NSDictionary*)parameters
-                    finished:(WTRequestFinishedBlock)finished
-                      failed:(WTRequestFailedBlock)failed
-{
-    NSURLRequest *request = [WTURLRequestSerialization POSTRequestWithURL:[self URLWithIndex:index] parameters:parameters];
-    [WTRequestCenter doURLRequest:request finished:finished failed:failed];
-    return request;
-}
 
 
 

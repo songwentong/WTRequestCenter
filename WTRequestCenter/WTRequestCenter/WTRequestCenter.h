@@ -118,22 +118,7 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
                   finished:(WTRequestFinishedBlock)finished
                     failed:(WTRequestFailedBlock)failed;
 
-/*!
- 根据接口索引去执行请求.
- */
-+(NSURLRequest*)getWithIndex:(NSInteger)index
-                  parameters:(NSDictionary *)parameters
-                    finished:(WTRequestFinishedBlock)finished
-                      failed:(WTRequestFailedBlock)failed;
 
-/*!
-    根据接口索引去执行请求.
- */
-+(NSURLRequest*)getWithIndex:(NSInteger)index
-                  parameters:(NSDictionary *)parameters
-                      option:(WTRequestCenterCachePolicy)option
-                    finished:(WTRequestFinishedBlock)finished
-                      failed:(WTRequestFailedBlock)failed;
 
 
 /*!
@@ -145,14 +130,6 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
                   finished:(WTRequestFinishedBlock)finished
                     failed:(WTRequestFailedBlock)failed;
 #pragma mark - POST
-
-/*!
-    根据索引和参数去POST
- */
-+(NSURLRequest*)postWithIndex:(NSInteger)index
-                   parameters:(NSDictionary*)parameters
-                     finished:(WTRequestFinishedBlock)finished
-                       failed:(WTRequestFailedBlock)failed;
 
 /*!
  根据给出的url，参数，执行一个POST请求，
