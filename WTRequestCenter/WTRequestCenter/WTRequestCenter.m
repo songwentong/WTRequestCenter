@@ -151,27 +151,6 @@ static NSURLCache* sharedCache = nil;
     return @"";
 }
 
-+(NSString*)stringFromParameters:(NSDictionary*)parameters
-{
-    if (parameters && [[parameters allKeys] count]>0) {
-        NSMutableString *paramString = [[NSMutableString alloc] init];
-        
-
-        
-        [[parameters allKeys] enumerateObjectsUsingBlock:^(NSString *key, NSUInteger index, BOOL *stop) {
-            if (index!=0) {
-                [paramString appendFormat:@"&"];
-            }
-            [paramString appendFormat:@"%@=%@",key,[parameters valueForKey:key]];
-            
-        }];
-        return [paramString copy];
-    }
-    else
-    {
-        return @"";
-    }
-}
 
 #pragma mark - Get
 
