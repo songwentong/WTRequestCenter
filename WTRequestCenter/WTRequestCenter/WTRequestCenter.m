@@ -178,49 +178,6 @@ static NSURLCache* sharedCache = nil;
     return request;
 }
 
-+(NSURLRequest*)getWithURL:(NSString*)url
-                parameters:(NSDictionary *)parameters
-                expireTime:(NSTimeInterval)time
-                  finished:(WTRequestFinishedBlock)finished
-                    failed:(WTRequestFailedBlock)failed
-{
-    NSURLRequest *request = [WTURLRequestSerialization GETRequestWithURL:url parameters:parameters];
-    
-    NSCachedURLResponse *cacheURLResponse = [[WTRequestCenter sharedCache] cachedResponseForRequest:request];
-    BOOL needRequest = YES;
-    if (cacheURLResponse) {
-        if ([cacheURLResponse.response isKindOfClass:[NSHTTPURLResponse class]])
-        {
-            NSHTTPURLResponse *tempResponse = (NSHTTPURLResponse*)cacheURLResponse.response;
-            NSDate *date = [WTURLRequestSerialization dateFromHTTPURLResponse:tempResponse];
-            NSTimeInterval responseTime = [date timeIntervalSince1970];
-            NSTimeInterval now = [[NSDate date] timeIntervalSince1970];
-            if (now-responseTime < time) {
-                needRequest = NO;
-            }
-            
-        }
-    }
-    
-    if (needRequest) {
-
-        [self getWithURL:url
-              parameters:parameters
-                finished:finished
-                  failed:failed];
-    }else
-    {
-        if (finished) {
-            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                finished(cacheURLResponse.response,cacheURLResponse.data);
-            }];
-            
-        }
-    }
-    
-    return request;
-}
-
 
 #pragma mark - POST
 
