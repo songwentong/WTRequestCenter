@@ -10,15 +10,21 @@
 
 @interface UIColor (WTRequestCenter)
 
-//用色值创建颜色 RGB都是number
+/*!
+    RGB一样的情况下，生成的颜色
+ */
 + (UIColor*)WTcolorWithFloat:(CGFloat)number;
 
-//用RGB创建颜色，分别设置RGB，无需除以255
+/*!
+    根据RGB生成颜色，颜色为0-255
+ */
 + (UIColor *)WTcolorWithRed:(CGFloat)red
                       green:(CGFloat)green
                        blue:(CGFloat)blue;
 
-//用RGBA创建颜色，无需除以255.0
+/*!
+    根据RGBA生成颜色，颜色为0-255
+ */
 + (UIColor *)WTcolorWithRed:(CGFloat)red
                       green:(CGFloat)green
                        blue:(CGFloat)blue
