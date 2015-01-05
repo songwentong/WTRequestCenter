@@ -66,7 +66,7 @@
         
         [_imageUrls enumerateObjectsUsingBlock:^(NSString* url, NSUInteger idx, BOOL *stop)
          {
-             CGRect frame = CGRectMake(320*idx, 0, width, height);
+             CGRect frame = CGRectMake(width*idx, 0, width, height);
              WTImageScrollView *scrollView = [[WTImageScrollView alloc] initWithFrame:frame imageURL:url];
              scrollView.maximumZoomScale = 4;
              scrollView.minimumZoomScale = 1;
