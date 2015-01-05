@@ -59,6 +59,10 @@
         tempString = [hexString substringFromIndex:1];
     }
     
+    if ([hexString length]==1) {
+        tempString = [NSString stringWithFormat:@"%@%@%@%@%@%@",hexString,hexString,hexString,hexString,hexString,hexString];
+    }
+    
     if ([hexString length]==2) {
         tempString = [NSString stringWithFormat:@"%@%@%@",hexString,hexString,hexString];
     }
