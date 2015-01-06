@@ -25,7 +25,22 @@ const CGFloat leftMargin = 10;
     }
     return self;
 }
+-(void)pauseLayer:(CALayer*)layer
+{
+    CFTimeInterval pausedTime = [layer convertTime:CACurrentMediaTime() fromLayer:nil];
+    layer.speed = 0.0;
+    layer.timeOffset = pausedTime;
+}
 
+-(void)resumeLayer:(CALayer*)layer
+{
+    CFTimeInterval pausedTime = [layer timeOffset];
+    layer.speed = 1.0;
+    layer.timeOffset = 0.0;
+    layer.beginTime = 0.0;
+    CFTimeInterval timeSincePause = [layer convertTime:CACurrentMediaTime() fromLayer:nil] - pausedTime;
+    layer.beginTime = timeSincePause;
+}
 
 -(void)configModel
 {
@@ -104,6 +119,10 @@ const CGFloat leftMargin = 10;
     keyFrameAnimation.fillMode = kCAFillModeBoth;
     keyFrameAnimation.removedOnCompletion = NO;
     keyFrameAnimation.delegate = self;
+    
+//    [animateView.layer removeAllAnimations];
+//    [animateView2.layer removeAllAnimations];
+//    [animateView3.layer removeAllAnimations];
     [animateView.layer addAnimation:keyFrameAnimation forKey:nil];
     
     
@@ -186,8 +205,9 @@ const CGFloat leftMargin = 10;
 -(void)layoutSubviews
 {
     [super layoutSubviews];
-    NSArray *animationKeys = [animateView.layer animationKeys];
-    NSLog(@"%@",animationKeys);
+    [self startAnimation];
+//    NSArray *animationKeys = [animateView.layer animationKeys];
+//    NSLog(@"%@",animationKeys);
 
 }
 

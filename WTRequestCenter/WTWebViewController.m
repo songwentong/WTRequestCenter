@@ -30,7 +30,7 @@
     UIWebView *webView=  [[UIWebView alloc] initWithFrame:self.view.bounds];
     
 //    [webView loadWithURL:@"http://image.baidu.com/channel/star/林志玲" option:WTRequestCenterCachePolicyCacheAndWeb];
-    NSURL *url = [NSURL URLWithString:@"http://image.baidu.com"];
+    NSURL *url = [NSURL URLWithString:@"http://www.jd.com"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [webView loadRequest:request option:WTRequestCenterCachePolicyNormal];
     [self.view addSubview:webView];

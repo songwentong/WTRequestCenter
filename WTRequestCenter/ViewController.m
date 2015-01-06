@@ -20,6 +20,7 @@
 @interface ViewController ()
 {
     UIImageView *imageView;
+    RulerView *_relerView;
 }
 @end
 
@@ -57,9 +58,9 @@
     
 //    [WTDataSaver clearAllData];
     
-    RulerView *view = [[RulerView alloc] initWithFrame:self.view.bounds];
-    view.userInteractionEnabled = NO;
-    [self.view addSubview:view];
+    _relerView = [[RulerView alloc] initWithFrame:self.view.bounds];
+    _relerView.userInteractionEnabled = NO;
+    [self.view addSubview:_relerView];
     /*
     [WTRequestCenter getCacheWithURL:@"http://www.baidu.com"
                           parameters:nil
@@ -101,7 +102,6 @@
 }
 
 
-
 -(void)takeSnapShot
 {
     UIGraphicsBeginImageContext(self.view.bounds.size);
@@ -119,8 +119,18 @@
 {
     [super viewDidAppear:animated];
     [wtTableView reloadData];
+    [_relerView setNeedsLayout];
+
     
 }
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+
+}
+
+
+
 -(void)configModel
 {
     requestTypesArray = [[NSMutableArray alloc] init];

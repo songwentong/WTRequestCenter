@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WTRequestCenter/ViewController.m"
-            timestampString = "439353219.245269"
+            timestampString = "442238967.760967"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
             landmarkName = "-testWebView"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,6 +42,22 @@
             startingLineNumber = "25"
             endingLineNumber = "25"
             landmarkName = "-initWithFrame:imageURL:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WTRequestCenter/RulerView.m"
+            timestampString = "442239424.325701"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "-startAnimation"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
