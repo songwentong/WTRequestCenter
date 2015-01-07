@@ -10,7 +10,7 @@
 #import "WTURLRequestOperation.h"
 #import "WTURLRequestSerialization.h"
 
-#if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
+#if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
 #endif
 //请求开始的消息
@@ -282,7 +282,7 @@ static NSURLCache* sharedCache = nil;
         }];
     };
     
-#if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
+#if TARGET_OS_IPHONE
     UIDevice *currentDevice = [UIDevice currentDevice];
     if ([currentDevice.systemVersion floatValue]>=7.0) {
         [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
@@ -301,10 +301,9 @@ static NSURLCache* sharedCache = nil;
             [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
                 complection(response,data,connectionError);
             }];
-  
         }];
     }
-#elif defined(__MAC_OS_X_VERSION_MIN_REQUIRED)
+#elif TARGET_OS_MAC
     [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
     [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         complection(response,data,connectionError);
