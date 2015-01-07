@@ -32,7 +32,7 @@
                              
                              [self loadData:data
                                    MIMEType:@"text/html"
-                           textEncodingName:@"utf-8"
+                           textEncodingName:@"gbk"
                                     baseURL:nil];
                          } failed:^(NSURLResponse *response, NSError *error) {
                              

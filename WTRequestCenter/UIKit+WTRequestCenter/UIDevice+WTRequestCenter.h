@@ -15,5 +15,10 @@
 //UUID  唯一标示符
 +(NSString*)WTUUID;
 
+
+//系统版本
 +(CGFloat)systemVersion;
+
+//设备类型
++(NSString *)getDeviceType;
 @end
