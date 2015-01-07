@@ -22,6 +22,11 @@
 #ifndef WTRequestCenter_WTNetWork_h
 #define WTRequestCenter_WTNetWork_h
 
+#if !__has_feature(objc_arc)
+#error WTRequestCenter must be built with ARC.
+// You can turn on ARC for only WTRequestCenter files by adding -fobjc-arc to the build phase for each of its files.
+#endif
+
 #import "WTRequestCenter.h"
 #import "WTURLRequestOperation.h"
 #import "WTURLRequestSerialization.h"
