@@ -151,6 +151,11 @@
     [self.view addSubview:wtTableView];
     wtTableView.dataSource = self;
     wtTableView.delegate = self;
+    
+    
+    UIImageView *temp = [[UIImageView alloc] initWithFrame:CGRectMake([UIScreen screenWidth]-100, [UIScreen screenHeight]-100, 100, 100)];
+    [self.view addSubview:temp];
+    [temp setImageWithURL:@"http://d.hiphotos.baidu.com/image/pic/item/d53f8794a4c27d1e01c0f3d919d5ad6edcc438cd.jpg"];
 }
 
 

@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WTRequestCenter/ViewController.m"
-            timestampString = "442238967.760967"
+            timestampString = "442336720.812081"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
             landmarkName = "-testWebView"
             landmarkType = "5">
          </BreakpointContent>
@@ -51,13 +51,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WTRequestCenter/RulerView.m"
-            timestampString = "442239424.325701"
+            filePath = "WTRequestCenter/UIKit+WTRequestCenter/UIImageView+WTRequestCenter.m"
+            timestampString = "442336605.136375"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
-            landmarkName = "-startAnimation"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "-setImageWithURL:placeholderImage:finished:failed:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

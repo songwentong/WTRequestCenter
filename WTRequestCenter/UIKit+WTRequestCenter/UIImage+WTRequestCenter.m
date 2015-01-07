@@ -135,6 +135,28 @@ static UIImage *animatedImageWithAnimatedGIFReleasingImageSource(CGImageSourceRe
     }];
 }
 
+
++(void)imageWithURL:(NSString*)url complection:(void(^)(UIImage *image))complection
+{
+    [WTRequestCenter getWithURL:url
+                     parameters:nil
+                         option:WTRequestCenterCachePolicyCacheElseWeb
+                       finished:^(NSURLResponse *response, NSData *data) {
+                          [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
+                              UIImage *temp = [UIImage imageWithData:data];
+                              if (complection) {
+                                  complection(temp);
+                              }
+                          }];
+                       } failed:^(NSURLResponse *response, NSError *error) {
+                           if (complection) {
+                               complection(nil);
+                           }
+                       }];
+}
+
+
+
 +(void)gifImageWithURL:(NSString*)url completion:(void(^)(UIImage* image))completion
 {
 //    BOOL isLocal;

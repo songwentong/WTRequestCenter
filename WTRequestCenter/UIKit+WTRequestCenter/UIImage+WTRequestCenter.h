@@ -17,6 +17,14 @@
  */
 +(void)imageWithData:(NSData *)data complectionHandler:(void(^)(UIImage *image))complection;
 
+
+/*!
+     根据URL得到图片
+ */
++(void)imageWithURL:(NSString*)url complection:(void(^)(UIImage *image))complection;
+
+
+
 //对UIView进行快照
 + (UIImage *)snapshot:(UIView *)view;
 
