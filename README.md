@@ -12,8 +12,8 @@ UIKit扩展提供了许多不错的方法，快速缓存图片，图片查看，
 ===============
 ### GET 请求，根据URL和参数去请求
 
-
 用例：
+
 ```objective-c
         NSString  *url = @"http://www.baidu.com";
 
@@ -174,6 +174,7 @@ iOS 5.0
 这是仿照AFNetworking写的一个请求方法，待测试。
 这是一个比较强大的方法。有缓存策略和下载进度，
 希望大家测试一下，给我一个反馈。
+
 ```objective-c
 +(WTURLRequestOperation*)testGetWithURL:(NSString*)url
                              parameters:(NSDictionary *)parameters
@@ -182,6 +183,7 @@ iOS 5.0
                                finished:(WTRequestFinishedBlock)finished
                                  failed:(WTRequestFailedBlock)failed;
 ```
+
 
 
 ##作者
