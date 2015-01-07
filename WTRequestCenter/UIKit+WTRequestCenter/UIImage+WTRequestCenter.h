@@ -1,10 +1,6 @@
 #import <UIKit/UIKit.h>
 
-/**
-        UIImage (animatedGIF)
-        
-    This category adds class methods to `UIImage` to create an animated `UIImage` from an animated GIF.
-*/
+
 @interface UIImage (WTRequestCenter)
 
 #pragma mark - 建议的方法
@@ -16,14 +12,8 @@
 
 
 /*!
-    通常不会直接用到的方法
- */
-+(void)imageWithURL:(NSString*)url
- comelectionHandler:(void(^)(UIImage* image))comelectionHandler;
-
-
-/*!
-    通常不会直接用到的方法，作为UIImageView和UIButton的辅助方法
+    通常不会直接用到的方法，作为UIImageView和UIButton的辅助方法，
+    分线程回调
  */
 +(void)imageWithData:(NSData *)data complectionHandler:(void(^)(UIImage *image))complection;
 
