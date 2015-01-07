@@ -31,7 +31,7 @@
 @property (readonly,nonatomic,strong) NSURLSession *URLSession;
 @property (readonly,nonatomic,strong) NSURLSessionConfiguration *sessionConfiguration;
 
-- (instancetype)initWithSessionConfiguration:(NSURLSessionConfiguration *)configuration NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithSessionConfiguration:(NSURLSessionConfiguration *)configuration;
 
 #pragma mark - Adding Data Tasks to a Session
 - (NSURLSessionDataTask *)dataTaskWithURL:(NSURL *)url
