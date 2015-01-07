@@ -36,16 +36,6 @@ UIKit扩展提供了许多不错的方法，快速缓存图片，图片查看，
 ```
 
 
-### 给出失效时间来请求
-
-```objective-c
-+(NSURLRequest*)getWithURL:(NSString*)url
-                parameters:(NSDictionary *)parameters
-                expireTime:(NSTimeInterval)time
-                  finished:(WTRequestFinishedBlock)finished
-                    failed:(WTRequestFailedBlock)failed;
-```
-
 ### POST 请求
 
 用例：
@@ -153,10 +143,9 @@ WTDataSaver 是个文件存取类，用于自定的方式把数据存取到本�
 
 
 
-Requirement   
+需要版本  
 ===============
-Only need iOS 5.0 and later,no more import and Configuration!
-仅仅需要iOS5 ！ 不需要其他任何import和配置
+iOS 5.0 
 
 
 ##  UIKit+WTRequestCenter
