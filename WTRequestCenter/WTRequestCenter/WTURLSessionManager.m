@@ -15,11 +15,24 @@
 @property (nonatomic,strong) NSURLSession *URLSession;
 @end
 @implementation WTURLSessionManager
+
+
+static WTURLSessionManager *sharedSessionManager;
++(WTURLSessionManager*)sharedManager
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedSessionManager = [[WTURLSessionManager alloc] initWithSessionConfiguration:nil];
+            
+    });
+    
+    return sharedSessionManager;
+}
 - (instancetype)initWithSessionConfiguration:(NSURLSessionConfiguration *)configuration {
     self = [super init];
     if (self) {
         
-        if (configuration) {
+        if (!configuration) {
             configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
         }
         self.sessionConfiguration = configuration;
