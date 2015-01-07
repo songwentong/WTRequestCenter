@@ -29,10 +29,13 @@
                              if ([self isLoading]) {
                                  [self stopLoading];
                              }
-                             
+                             NSHTTPURLResponse *temp = (NSHTTPURLResponse*)response;
+                             NSString *contentType = [temp.allHeaderFields valueForKey:@"Content-Type"];
+                             NSRange range = [contentType rangeOfString:@"charset="];
+                             NSString *encoding = [contentType substringFromIndex:range.location+range.length];
                              [self loadData:data
                                    MIMEType:@"text/html"
-                           textEncodingName:@"gbk"
+                           textEncodingName:encoding
                                     baseURL:nil];
                          } failed:^(NSURLResponse *response, NSError *error) {
                              
