@@ -79,11 +79,13 @@
                 
                 
             }];
-            if (finished) {
-            dispatch_sync(dispatch_get_main_queue(), ^{
+            
+                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                    if (finished) {
                     finished(response,data);
-            });
-            }
+                    }
+                }];
+            
             
         } failed:^(NSURLResponse *response, NSError *error) {
             if (!wself) return;

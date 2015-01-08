@@ -71,12 +71,10 @@
                 if (!weakSelf) return;
                 __strong UIButton *strongSelf = weakSelf;
                 
-                dispatch_sync(dispatch_get_main_queue(), ^{
-                    //                    strongSelf.image = image;
+                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                     [strongSelf setImage:image forState:state];
                     [strongSelf setNeedsLayout];
-                    
-                });
+                }];
                 strongSelf.wtImageRequestOperation = nil;
             }
         }];
@@ -125,10 +123,11 @@
             if (image) {
                 if (weakSelf) {
                     __strong UIButton *strongSelf = weakSelf;
-                    dispatch_sync(dispatch_get_main_queue(), ^{
+                    
+                    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                         [strongSelf setBackgroundImage:image forState:state];
                         [strongSelf setNeedsLayout];
-                    });
+                    }];
                     
                 }
             }
