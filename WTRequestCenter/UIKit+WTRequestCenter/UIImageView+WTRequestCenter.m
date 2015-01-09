@@ -19,18 +19,18 @@
 @implementation UIImageView (WTRequestCenter)
 
 
-
-
+//设置图片的Operation
+static const void * const WTImageViewOperationKey = @"WT ImageView Operation Key";
 
 -(WTURLRequestOperation*)wtImageRequestOperation
 {
-    WTURLRequestOperation *operation = (WTURLRequestOperation*)objc_getAssociatedObject(self, @"a");
+    WTURLRequestOperation *operation = (WTURLRequestOperation*)objc_getAssociatedObject(self, WTImageViewOperationKey);
     return operation;
 }
 
 -(void)setWtImageRequestOperation:(WTURLRequestOperation *)wtImageRequestOperation
 {
-    objc_setAssociatedObject(self, @"a", wtImageRequestOperation, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, WTImageViewOperationKey, wtImageRequestOperation, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 

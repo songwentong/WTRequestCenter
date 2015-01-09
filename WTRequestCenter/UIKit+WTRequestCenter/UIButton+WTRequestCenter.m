@@ -17,26 +17,31 @@
 
 @implementation UIButton (WTImageCache)
 
+//设置图片的Operation
+static const void * const WTButtonImageOperationKey = @"WT Button Image Operation Key";
+//设置背景图的Operation
+static const void * const WTButtonBackGroundImageOperationKey = @"WT Button Back Ground Image Operation Key";
 -(WTURLRequestOperation*)wtImageRequestOperation
 {
-    WTURLRequestOperation *operation = (WTURLRequestOperation*)objc_getAssociatedObject(self, @"a");
+
+    WTURLRequestOperation *operation = (WTURLRequestOperation*)objc_getAssociatedObject(self, WTButtonImageOperationKey);
     return operation;
 }
 
 -(void)setWtImageRequestOperation:(WTURLRequestOperation *)wtImageRequestOperation
 {
-    objc_setAssociatedObject(self, @"a", wtImageRequestOperation, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, WTButtonImageOperationKey, wtImageRequestOperation, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 -(WTURLRequestOperation*)wtBackGroundImageRequestOperation
 {
-    WTURLRequestOperation *operation = (WTURLRequestOperation*)objc_getAssociatedObject(self, @"b");
+    WTURLRequestOperation *operation = (WTURLRequestOperation*)objc_getAssociatedObject(self, WTButtonBackGroundImageOperationKey);
     return operation;
 }
 
 -(void)setWtBackGroundImageRequestOperation:(WTURLRequestOperation *)wtBackGroundImageRequestOperation
 {
-    objc_setAssociatedObject(self, @"b", wtBackGroundImageRequestOperation, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, WTButtonBackGroundImageOperationKey, wtBackGroundImageRequestOperation, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 
