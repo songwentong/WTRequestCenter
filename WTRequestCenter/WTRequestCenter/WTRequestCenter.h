@@ -65,7 +65,7 @@ typedef NS_ENUM(NSUInteger, WTRequestCenterCachePolicy) {
 };
 
 
-//回调声明
+//call back block
 typedef void (^WTRequestFinishedBlock)(NSURLResponse *response,NSData *data);
 typedef void (^WTRequestFailedBlock)(NSURLResponse *response,NSError *error);
 typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,NSError *error);
@@ -76,14 +76,14 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
 
 
 /*!
- 执行一个NSURLRequest请求
+ just do a request
  */
 +(void)doURLRequest:(NSURLRequest*)request
            finished:(WTRequestFinishedBlock)finished
              failed:(WTRequestFailedBlock)failed;
 
 /*
-  执行一个NSURLRequest请求,缓存策略只适用于Get情况
+  do a request with cachePolicy
  */
 +(void)doURLRequest:(NSURLRequest*)request
              option:(WTRequestCenterCachePolicy)option
@@ -91,10 +91,8 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
              failed:(WTRequestFailedBlock)failed;
 #pragma mark - GET
 
-//普通GET
+//GET
 /*!
- 根据给出的url和参数执行一个GET请求，当请求成功或者失败，对应的回调
- 将会被执行.
  Performs an asynchronous get request of the given
  url,parameters. When the request has completed or failed,
  corresponding block will be executed
@@ -105,8 +103,6 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
                     failed:(WTRequestFailedBlock)failed;
 
 /*!
- 根据给出的url,参数和缓存策略执行一个GET请求，当请求成功或者失败，对应的回调
- 将会被执行
  Performs an asynchronous get request of the given
  url,parameters，cache pilicy. When the request has completed or failed,
  corresponding block will be executed，is there is a local
@@ -125,8 +121,6 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
 #pragma mark - POST
 
 /*!
- 根据给出的url，参数，执行一个POST请求，
- 当请求执行成功或者失败，对应的回调将会被执行
  Performs an asynchronous post request of the given
  url,parameters. When the request has completed or failed,
  corresponding block will be executed，is there is a local
@@ -138,7 +132,7 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
                      failed:(WTRequestFailedBlock)failed;
 
 /*!
-    数据上传
+    POST request
  */
 +(NSURLRequest*)postWithURL:(NSString*)url
                  parameters:(NSDictionary*)parameters
@@ -148,7 +142,7 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
 
 
 /*!
-    PUT请求
+    PUT reqeust
  */
 +(NSURLRequest*)putWithURL:(NSString*)url
                 parameters:(NSDictionary*)parameters
