@@ -281,35 +281,14 @@ static NSURLCache* sharedCache = nil;
             }
         }];
     };
-    
-#if TARGET_OS_IPHONE
-    UIDevice *currentDevice = [UIDevice currentDevice];
-    if ([currentDevice.systemVersion floatValue]>=7.0) {
-        [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
 
-            NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *connectionError){
-                complection(response,data,connectionError);
-            }];
-            [task resume];
-        }];
-        
-        
-    }else
-    {
         
         [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
             [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
                 complection(response,data,connectionError);
             }];
         }];
-    }
-#elif TARGET_OS_MAC
-    [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
-    [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        complection(response,data,connectionError);
-    }];
-    }];
-#endif
+
     
 }
 
