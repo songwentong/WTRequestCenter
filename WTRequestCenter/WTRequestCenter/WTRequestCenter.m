@@ -246,7 +246,7 @@ static NSURLCache* sharedCache = nil;
         NSTimeInterval endTimeInterval = [[NSDate date] timeIntervalSince1970];
         
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            NSDictionary *userInfo = @{@"request": request,@"response": response};
+            NSDictionary *userInfo = @{@"request": request,@"response": response, @"data":data};
             [[NSNotificationCenter defaultCenter] postNotificationName:WTNetworkingOperationDidFinishNotification object:request userInfo:userInfo];
         }];
         

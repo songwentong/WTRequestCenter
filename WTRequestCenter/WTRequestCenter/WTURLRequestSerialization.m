@@ -383,8 +383,16 @@ constructingBodyWithBlock:(void (^)(id <WTMultipartFormData> formData))block
 
 
 @implementation WTJSONRequestSerialization
-//+ (instancetype)serializerWithWritingOptions:(NSJSONWritingOptions)writingOptions
-//{}
+static WTJSONRequestSerialization *sharedWTJSONRequestSerialization = nil;
++(instancetype)sharedRequestSerialization
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedWTJSONRequestSerialization = [[WTJSONRequestSerialization alloc] init];
+    });
+    return sharedWTJSONRequestSerialization;
+}
+
 - (NSURLRequest *)requestBySerializingRequest:(NSURLRequest *)request
                                withParameters:(id)parameters
                                         error:(NSError *__autoreleasing *)error
