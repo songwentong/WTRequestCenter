@@ -105,7 +105,12 @@ extern NSTimeInterval const WTURLRequestSerializationTimeoutTimeInterval;
                       name:(NSString*)name;
 @end
 
-
+@interface WTJSONRequestSerialization : WTURLRequestSerialization
+//加上JSON请求
+- (NSURLRequest *)requestBySerializingRequest:(NSURLRequest *)request
+                               withParameters:(id)parameters
+                                        error:(NSError *__autoreleasing *)error;
+@end
 
 
 

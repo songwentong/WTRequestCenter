@@ -92,13 +92,13 @@ Pod::Spec.new do |s|
   s.source_files  = "WTRequestCenter/WTRequestCenter/*.{h,m}"
 #  s.exclude_files = "Classes/Exclude"
 
-#s.subspec 'UIKit' do |ss|
-#   ss.ios.deployment_target = '6.0'
-#   ss.ios.public_header_files = 'UIKit+WTRequestCenter/*.h'
-#   ss.dependency 'WTRequestCenter'
-#   ss.ios.source_files = 'WTRequestCenter/UIKit+WTRequestCenter/*.{h,m}'
-#   ss.osx.source_files = ''
-#   end
+    s.subspec 'UIKit' do |ss|
+    ss.ios.deployment_target = '6.0'
+    ss.ios.public_header_files = 'UIKit+WTRequestCenter/*.h'
+    ss.dependency 'WTRequestCenter'
+    ss.ios.source_files = 'WTRequestCenter/UIKit+WTRequestCenter/*.{h,m}'
+    ss.osx.source_files = ''
+    end
   # s.public_header_files = "Classes/**/*.h"
 
 

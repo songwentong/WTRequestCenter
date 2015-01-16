@@ -380,3 +380,38 @@ constructingBodyWithBlock:(void (^)(id <WTMultipartFormData> formData))block
     return date;
 }
 @end
+
+
+@implementation WTJSONRequestSerialization
+//+ (instancetype)serializerWithWritingOptions:(NSJSONWritingOptions)writingOptions
+//{}
+- (NSURLRequest *)requestBySerializingRequest:(NSURLRequest *)request
+                               withParameters:(id)parameters
+                                        error:(NSError *__autoreleasing *)error
+{
+//    (request);
+    assert(!request);
+   
+    
+    NSMutableURLRequest *mutableRequest = [request mutableCopy];
+    
+    [self.HTTPRequestHeaders enumerateKeysAndObjectsUsingBlock:^(id field, id value, BOOL * __unused stop) {
+        if (![request valueForHTTPHeaderField:field]) {
+            [mutableRequest setValue:value forHTTPHeaderField:field];
+        }
+    }];
+    
+    if (parameters) {
+        if (![mutableRequest valueForHTTPHeaderField:@"Content-Type"]) {
+            [mutableRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        }
+        
+        [mutableRequest setHTTPBody:[NSJSONSerialization dataWithJSONObject:parameters
+                                                                    options:NSJSONWritingPrettyPrinted
+                                                                      error:error]];
+    }
+    
+    return mutableRequest;
+}
+
+@end
