@@ -152,24 +152,21 @@ static WTURLRequestSerialization *sharedSerialization = nil;
 }
 
 #pragma mark - 请求串
-+(NSString*)stringFromParameters:(NSDictionary*)parameters
++(NSString*)WTQueryStringFromParameters:(NSDictionary*)parameters
 {
-    NSMutableString *paramString = [[NSMutableString alloc] init];
+    NSMutableArray *paraArray = [[NSMutableArray alloc] init];
     [parameters enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString* value, BOOL *stop) {
         NSString *str = [NSString stringWithFormat:@"%@=%@",key,value];
-        [paramString appendString:str];
-        [paramString appendString:@"&"];
+        [paraArray addObject:str];
         
     }];
-    if([paramString hasSuffix:@"&"]){
-        paramString = [[paramString substringToIndex:[paramString length]-1] mutableCopy];
-    }
-    return paramString;
+    NSString *result = [paraArray componentsJoinedByString:@"&"];
+    return result;
 }
 
--(NSString*)stringFromParameters:(NSDictionary*)parameters
+-(NSString*)WTQueryStringFromParameters:(NSDictionary*)parameters
 {
-    return [[self class] stringFromParameters:parameters];
+    return [[self class] WTQueryStringFromParameters:parameters];
 }
 
 #pragma mark - 请求的生成
@@ -179,7 +176,7 @@ static WTURLRequestSerialization *sharedSerialization = nil;
     NSMutableURLRequest *request = nil;
     assert(url!=nil);
     
-    NSString *parameterString = [self stringFromParameters:parameters];
+    NSString *parameterString = [self WTQueryStringFromParameters:parameters];
     
     NSString *string;
     if ([parameterString length]>0) {
@@ -221,7 +218,7 @@ static WTURLRequestSerialization *sharedSerialization = nil;
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:theURL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:_timeoutInterval];
     [request setHTTPMethod:@"POST"];
     
-    [request setHTTPBody:[[self stringFromParameters:parameters] dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setHTTPBody:[[self WTQueryStringFromParameters:parameters] dataUsingEncoding:NSUTF8StringEncoding]];
     [_HTTPRequestHeaders enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
         [request setValue:value forHTTPHeaderField:key];
     }];
@@ -292,7 +289,7 @@ constructingBodyWithBlock:(void (^)(id <WTMultipartFormData> formData))block
     NSMutableURLRequest *request = nil;
     
     request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:_timeoutInterval];
-    [request setHTTPBody:[[self stringFromParameters:parameters] dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setHTTPBody:[[self WTQueryStringFromParameters:parameters] dataUsingEncoding:NSUTF8StringEncoding]];
     [request setHTTPMethod:@"PUT"];
     [_HTTPRequestHeaders enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
         [request setValue:value forHTTPHeaderField:key];
