@@ -109,6 +109,9 @@ UIKit扩展提供了许多不错的方法，快速缓存图片，图片查看，
 +(NSString*)URLWithIndex:(NSInteger)index;
 ```
 
+Debug模式
+默认开启，会输出请求的对象，响应时间或者错误信息，
+可以再WTRequestCenter.h里面关闭。
 
 ###安装
 点击右侧download或者终端git clone https://github.com/swtlovewtt/WTRequestCenter
