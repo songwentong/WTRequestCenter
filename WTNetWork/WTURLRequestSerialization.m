@@ -163,11 +163,6 @@ static WTURLRequestSerialization *sharedSerialization = nil;
         NSString *str = [NSString stringWithFormat:@"%@=%@",obj,value];
         [paraArray addObject:str];
     }];
-    [parameters enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString* value, BOOL *stop) {
-//        NSString *str = [NSString stringWithFormat:@"%@=%@",key,value];
-//        [paraArray addObject:str];
-        
-    }];
     NSString *result = [paraArray componentsJoinedByString:@"&"];
     return result;
 }
