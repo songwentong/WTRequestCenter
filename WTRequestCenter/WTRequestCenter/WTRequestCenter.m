@@ -171,7 +171,7 @@ static NSURLCache* sharedCache = nil;
                   finished:(WTRequestFinishedBlock)finished
                     failed:(WTRequestFailedBlock)failed
 {
-    NSURLRequest *request = [WTURLRequestSerialization GETRequestWithURL:url parameters:parameters];
+    NSURLRequest *request = [[WTURLRequestSerialization sharedRequestSerialization] GETRequestWithURL:url parameters:parameters];
 
     [self doURLRequest:request option:option finished:finished failed:failed];
     
@@ -187,7 +187,7 @@ static NSURLCache* sharedCache = nil;
                    finished:(WTRequestFinishedBlock)finished
                      failed:(WTRequestFailedBlock)failed
 {
-    NSURLRequest *request = [WTURLRequestSerialization POSTRequestWithURL:url parameters:parameters];
+    NSURLRequest *request = [[WTURLRequestSerialization sharedRequestSerialization] POSTRequestWithURL:url parameters:parameters];
     [self doURLRequest:request finished:finished failed:failed];
     return request;
 }
@@ -201,7 +201,7 @@ static NSURLCache* sharedCache = nil;
                    finished:(WTRequestFinishedBlock)finished
                      failed:(WTRequestFailedBlock)failed
 {
-    NSURLRequest *request = [WTURLRequestSerialization POSTRequestWithURL:url parameters:parameters constructingBodyWithBlock:block];
+    NSURLRequest *request = [[WTURLRequestSerialization sharedRequestSerialization] POSTRequestWithURL:url parameters:parameters constructingBodyWithBlock:block];
     [self doURLRequest:request finished:finished failed:failed];
     return request;
 }
@@ -212,7 +212,7 @@ static NSURLCache* sharedCache = nil;
                   finished:(WTRequestFinishedBlock)finished
                     failed:(WTRequestFailedBlock)failed
 {
-    NSURLRequest *request = [WTURLRequestSerialization PUTRequestWithURL:url parameters:parameters];
+    NSURLRequest *request = [[WTURLRequestSerialization sharedRequestSerialization] PUTRequestWithURL:url parameters:parameters];
     [self doURLRequest:request finished:finished failed:failed];
     return request;
 }
@@ -436,9 +436,9 @@ static NSString * const baseURL = @"http://www.baidu.com";
                                  finished:(WTRequestFinishedBlock)finished
                                    failed:(WTRequestFailedBlock)failed
 {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-retain-cycles"
-#pragma clang diagnostic ignored "-Wgnu"
+//#pragma clang diagnostic push
+//#pragma clang diagnostic ignored "-Warc-retain-cycles"
+//#pragma clang diagnostic ignored "-Wgnu"
     WTURLRequestOperation *operation = nil;
     operation = [[WTURLRequestOperation alloc] initWithRequest:request];
     if (progress) {
@@ -458,7 +458,7 @@ static NSString * const baseURL = @"http://www.baidu.com";
     }];
     [[self sharedQueue] addOperation:operation];
     return operation;
-#pragma clang diagnostic pop
+//#pragma clang diagnostic pop
     
 }
 
@@ -573,7 +573,7 @@ static NSString * const baseURL = @"http://www.baidu.com";
                                finished:(WTRequestFinishedBlock)finished
                                  failed:(WTRequestFailedBlock)failed
 {
-    NSURLRequest *request = [WTURLRequestSerialization GETRequestWithURL:url parameters:parameters];
+    NSURLRequest *request = [[WTURLRequestSerialization sharedRequestSerialization]GETRequestWithURL:url parameters:parameters];
     WTURLRequestOperation *operation = [self testdoURLRequest:request option:option progress:progress finished:finished failed:failed];
     return operation;
 }
@@ -585,7 +585,7 @@ static NSString * const baseURL = @"http://www.baidu.com";
                                finished:(WTRequestFinishedBlock)finished
                                  failed:(WTRequestFailedBlock)failed
 {
-    NSURLRequest *request = [WTURLRequestSerialization POSTRequestWithURL:url parameters:parameters];
+    NSURLRequest *request = [[WTURLRequestSerialization sharedRequestSerialization] POSTRequestWithURL:url parameters:parameters];
     WTURLRequestOperation *operation = [self testdoURLRequest:request progress:nil finished:finished failed:failed];
     return operation;
 }

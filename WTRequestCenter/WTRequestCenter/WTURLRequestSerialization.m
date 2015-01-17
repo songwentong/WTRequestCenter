@@ -173,12 +173,6 @@ static WTURLRequestSerialization *sharedSerialization = nil;
 }
 
 #pragma mark - 请求的生成
-+(NSMutableURLRequest*)GETRequestWithURL:(NSString*)url
-                              parameters:(NSDictionary*)parameters
-{
-    return [[self sharedRequestSerialization] GETRequestWithURL:url
-                                                     parameters:parameters];
-}
 -(NSMutableURLRequest*)GETRequestWithURL:(NSString*)url
                               parameters:(NSDictionary*)parameters
 {
@@ -210,14 +204,6 @@ static WTURLRequestSerialization *sharedSerialization = nil;
     return request;
 }
 
-+(NSMutableURLRequest*)POSTRequestWithURL:(NSString*)url
-                               parameters:(NSDictionary*)parameters
-{
-    
-    
-    return [[self sharedRequestSerialization] POSTRequestWithURL:url
-                                                      parameters:parameters];
-}
 -(NSMutableURLRequest*)POSTRequestWithURL:(NSString*)url
                                parameters:(NSDictionary*)parameters
 {
@@ -242,16 +228,6 @@ static WTURLRequestSerialization *sharedSerialization = nil;
     return request;
 }
 
-+(NSMutableURLRequest*)POSTRequestWithURL:(NSString*)url
-                               parameters:(NSDictionary*)parameters
-                constructingBodyWithBlock:(void (^)(id <WTMultipartFormData> formData))block
-{
-    
-    
-    return [[self sharedRequestSerialization] POSTRequestWithURL:url
-                                                      parameters:parameters
-                                       constructingBodyWithBlock:block];
-}
 
 -(NSMutableURLRequest*)POSTRequestWithURL:(NSString*)url
                                parameters:(NSDictionary*)parameters
@@ -310,12 +286,6 @@ constructingBodyWithBlock:(void (^)(id <WTMultipartFormData> formData))block
     return [formData requestByFinalizingMultipartFormData];
 }
 
-+(NSMutableURLRequest*)PUTRequestWithURL:(NSString*)url
-                              parameters:(NSDictionary*)parameters
-{
-    return [[self sharedRequestSerialization] PUTRequestWithURL:url
-                                                     parameters:parameters];
-}
 -(NSMutableURLRequest*)PUTRequestWithURL:(NSString*)url
                               parameters:(NSDictionary*)parameters
 {
@@ -330,16 +300,6 @@ constructingBodyWithBlock:(void (^)(id <WTMultipartFormData> formData))block
     return request;
 }
 
-
-+(NSMutableURLRequest*)HEADRequestWithURL:(NSString*)url
-                               parameters:(NSDictionary*)parameters
-{
-    NSMutableURLRequest *request = nil;
-    
-    
-    
-    return request;
-}
 
 
 
