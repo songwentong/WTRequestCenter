@@ -50,12 +50,7 @@
     [self configModel];
     [self configView];
     
-    
-    [WTRequestCenter getWithURL:@"aaa" parameters:@{@"a": @"1",@"b":@"2"} finished:^(NSURLResponse *response, NSData *data) {
-        
-    } failed:^(NSURLResponse *response, NSError *error) {
-        
-    }];
+
 //    [self performSelector:@selector(takeSnapShot) withObject:nil afterDelay:1];
     [[WTNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     

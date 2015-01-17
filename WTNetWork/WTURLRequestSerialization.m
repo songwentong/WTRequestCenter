@@ -154,10 +154,18 @@ static WTURLRequestSerialization *sharedSerialization = nil;
 #pragma mark - 请求串
 +(NSString*)WTQueryStringFromParameters:(NSDictionary*)parameters
 {
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"description" ascending:YES selector:@selector(compare:)];
+    
     NSMutableArray *paraArray = [[NSMutableArray alloc] init];
-    [parameters enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString* value, BOOL *stop) {
-        NSString *str = [NSString stringWithFormat:@"%@=%@",key,value];
+    NSArray *sortedDict = [parameters.allKeys sortedArrayUsingDescriptors:@[sortDescriptor]];
+    [sortedDict enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSString *value = [parameters valueForKey:obj];
+        NSString *str = [NSString stringWithFormat:@"%@=%@",obj,value];
         [paraArray addObject:str];
+    }];
+    [parameters enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString* value, BOOL *stop) {
+//        NSString *str = [NSString stringWithFormat:@"%@=%@",key,value];
+//        [paraArray addObject:str];
         
     }];
     NSString *result = [paraArray componentsJoinedByString:@"&"];
