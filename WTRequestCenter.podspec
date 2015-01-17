@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "WTRequestCenter"
-  s.version      = "0.5.1"
+  s.version      = "0.5.2"
   s.summary      = "Http request Kit"
 
   s.description  = <<-DESC
@@ -94,7 +94,7 @@ Pod::Spec.new do |s|
 
     s.subspec 'UIKit' do |ss|
     ss.ios.deployment_target = '6.0'
-    ss.ios.public_header_files = 'UIKit+WTRequestCenter/*.h'
+    ss.ios.public_header_files = 'WTRequestCenter/UIKit+WTRequestCenter/*.h'
     ss.dependency 'WTRequestCenter'
     ss.ios.source_files = 'WTRequestCenter/UIKit+WTRequestCenter/*.{h,m}'
     ss.osx.source_files = ''
