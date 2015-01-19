@@ -289,6 +289,8 @@ constructingBodyWithBlock:(void (^)(id <WTMultipartFormData> formData))block
 -(NSMutableURLRequest*)PUTRequestWithURL:(NSString*)url
                               parameters:(NSDictionary*)parameters
 {
+    assert(url!=nil);
+    
     NSMutableURLRequest *request = nil;
     
     request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:_timeoutInterval];
@@ -425,7 +427,7 @@ static WTJSONRequestSerialization *sharedWTJSONRequestSerialization = nil;
 {
 //    (request);
     assert(!request);
-   
+    
     
     NSMutableURLRequest *mutableRequest = [request mutableCopy];
     

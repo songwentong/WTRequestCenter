@@ -225,6 +225,11 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
 
 #pragma mark - Testing Method
 
++(WTURLRequestOperation*)testdoURLRequest:(NSURLRequest*)request
+                                 progress:(WTDownLoadProgressBlock)progress
+                                 finished:(WTRequestFinishedBlock)finished
+                                   failed:(WTRequestFailedBlock)failed;
+
 /*!
  普通的GET方法
  */
