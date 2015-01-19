@@ -202,12 +202,6 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
 +(void)removeRequestCache:(NSURLRequest*)request;
 
 
-
-
-//下载图片  Download  (Cache)
-#if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
-
-#endif
 #pragma mark - 辅助
 //JSON转对象
 +(id)JSONObjectWithData:(NSData*)data;
