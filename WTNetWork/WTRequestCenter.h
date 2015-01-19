@@ -149,6 +149,24 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
                   finished:(WTRequestFinishedBlock)finished
                     failed:(WTRequestFailedBlock)failed;
 
+
+/*!
+    Delete request
+ */
++(NSURLRequest*)deleteWithURL:(NSString*)url
+                   parameters:(NSDictionary*)parameters
+                     finished:(WTRequestFinishedBlock)finished
+                       failed:(WTRequestFailedBlock)failed;
+
+
+/*!
+    HEAD   请求
+ */
++(NSURLRequest*)headWithURL:(NSString*)url
+                 parameters:(NSDictionary*)parameters
+                   finished:(WTRequestFinishedBlock)finished
+                     failed:(WTRequestFailedBlock)failed;
+
 #pragma mark - 其他
 /*!
  shared Call Back Queue

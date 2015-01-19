@@ -217,6 +217,31 @@ static NSURLCache* sharedCache = nil;
     return request;
 }
 
++(NSURLRequest*)deleteWithURL:(NSString*)url
+                   parameters:(NSDictionary*)parameters
+                     finished:(WTRequestFinishedBlock)finished
+                       failed:(WTRequestFailedBlock)failed
+{
+    NSURLRequest *request = [[WTURLRequestSerialization sharedRequestSerialization] DELETERequestWithURL:url parameters:parameters];
+    [self doURLRequest:request
+              finished:finished
+                failed:failed];
+    return request;
+}
+
+
++(NSURLRequest*)headWithURL:(NSString*)url
+                 parameters:(NSDictionary*)parameters
+                   finished:(WTRequestFinishedBlock)finished
+                     failed:(WTRequestFailedBlock)failed
+{
+    NSURLRequest *request = [[WTURLRequestSerialization sharedRequestSerialization] HEADRequestWithURL:url parameters:parameters];
+    [self doURLRequest:request
+              finished:finished
+                failed:failed];
+    return request;
+}
+
 
 #pragma mark - Request
 +(void)doURLRequest:(NSURLRequest*)request

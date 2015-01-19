@@ -71,6 +71,20 @@ extern NSTimeInterval const WTURLRequestSerializationTimeoutTimeInterval;
                               parameters:(NSDictionary*)parameters;
 
 
+/*!
+    DELETE 请求
+ */
+-(NSMutableURLRequest*)DELETERequestWithURL:(NSString*)url
+                                 parameters:(NSDictionary*)parameters;
+
+/*!
+    HEAD 请求
+ */
+-(NSMutableURLRequest*)HEADRequestWithURL:(NSString*)url
+                               parameters:(NSDictionary*)parameters;
+
+
+
 
 
 #pragma mark - 其他

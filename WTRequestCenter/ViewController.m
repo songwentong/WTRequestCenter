@@ -21,6 +21,7 @@
 {
     UIImageView *imageView;
     RulerView *_relerView;
+    NSInteger requestCount;
 }
 @end
 
@@ -46,6 +47,9 @@
     [self performSelector:@selector(loadimage) withObject:nil afterDelay:3];
    */
 
+    
+    
+    
 
     [self configModel];
     [self configView];

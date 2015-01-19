@@ -302,6 +302,72 @@ constructingBodyWithBlock:(void (^)(id <WTMultipartFormData> formData))block
 
 
 
+-(NSMutableURLRequest*)DELETERequestWithURL:(NSString*)url
+                                 parameters:(NSDictionary*)parameters
+{
+    NSMutableURLRequest *request = nil;
+    assert(url!=nil);
+    request.HTTPMethod = @"DELETE";
+    NSString *parameterString = [self WTQueryStringFromParameters:parameters];
+    
+    NSString *string;
+    if ([parameterString length]>0) {
+        string = [NSString stringWithFormat:@"%@?%@",url,parameterString];
+    }else
+    {
+        string = url;
+    }
+    //    处理中文
+    string = [string stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    
+    NSURL *requestURL = [NSURL URLWithString:string];
+    
+    assert(requestURL != nil);
+    
+    request = [NSMutableURLRequest requestWithURL:requestURL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:_timeoutInterval];
+    [_HTTPRequestHeaders enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
+        [request setValue:value forHTTPHeaderField:key];
+    }];
+    
+    return request;
+
+    
+}
+
+-(NSMutableURLRequest*)HEADRequestWithURL:(NSString*)url
+                               parameters:(NSDictionary*)parameters
+{
+    NSMutableURLRequest *request = nil;
+    assert(url!=nil);
+    request.HTTPMethod = @"HEAD";
+    NSString *parameterString = [self WTQueryStringFromParameters:parameters];
+    
+    NSString *string;
+    if ([parameterString length]>0) {
+        string = [NSString stringWithFormat:@"%@?%@",url,parameterString];
+    }else
+    {
+        string = url;
+    }
+    //    处理中文
+    string = [string stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    
+    NSURL *requestURL = [NSURL URLWithString:string];
+    
+    assert(requestURL != nil);
+    
+    request = [NSMutableURLRequest requestWithURL:requestURL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:_timeoutInterval];
+    [_HTTPRequestHeaders enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
+        [request setValue:value forHTTPHeaderField:key];
+    }];
+    
+    return request;
+    
+    
+}
+
 
 +(NSString*)stringFromDate:(NSDate*)date
 {
