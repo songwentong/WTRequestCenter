@@ -340,7 +340,7 @@ static NSURLCache* sharedCache = nil;
         case WTRequestCenterCachePolicyNormal:
         {
 //            [self doURLRequest:request finished: failed:failed];
-            [self doURLRequest:request finished:finished failed:failed shouldCache:NO];
+            [self doURLRequest:request finished:finished failed:failed];
             
         }
             break;
