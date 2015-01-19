@@ -173,6 +173,7 @@
 		A3B70F5F1988DC5B002776F4 /* UIKit+WTRequestCenter */ = {
 			isa = PBXGroup;
 			children = (
+				E162A4891A6A168900CBC2C5 /* UIKit+WTRequestCenter.h */,
 				E162A47B1A6A168900CBC2C5 /* UIAlertView+WTRequestCenter.h */,
 				E162A47C1A6A168900CBC2C5 /* UIAlertView+WTRequestCenter.m */,
 				E162A47D1A6A168900CBC2C5 /* UIApplication+WTRequestCenter.h */,
@@ -187,7 +188,6 @@
 				E162A4861A6A168900CBC2C5 /* UIImage+WTRequestCenter.m */,
 				E162A4871A6A168900CBC2C5 /* UIImageView+WTRequestCenter.h */,
 				E162A4881A6A168900CBC2C5 /* UIImageView+WTRequestCenter.m */,
-				E162A4891A6A168900CBC2C5 /* UIKit+WTRequestCenter.h */,
 				E162A48A1A6A168900CBC2C5 /* UIScreen+WTRequestCenter.h */,
 				E162A48B1A6A168900CBC2C5 /* UIScreen+WTRequestCenter.m */,
 				E162A48C1A6A168900CBC2C5 /* UIWebView+WTRequestCenter.h */,

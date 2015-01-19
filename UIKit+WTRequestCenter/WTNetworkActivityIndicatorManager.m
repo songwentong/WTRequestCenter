@@ -39,23 +39,24 @@
 }
 -(void)handleNotifications
 {
-    [[NSNotificationCenter defaultCenter] addObserverForName:WTNetworkingOperationDidStartNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
-//        if ([[[self class] requestFromNotification:note] URL]) {
-        
+    [[NSNotificationCenter defaultCenter] addObserverForName:WTNetworkingOperationDidStartNotification
+                                                      object:nil
+                                                       queue:[NSOperationQueue mainQueue]
+                                                  usingBlock:^(NSNotification *note)
+    {
 
             [self incrementActivityCount];
-
-//        }
         
     }];
     
 
     
-    [[NSNotificationCenter defaultCenter] addObserverForName:WTNetworkingOperationDidFinishNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
-//        if ([[[self class] requestFromNotification:note] URL]) {
-
+    [[NSNotificationCenter defaultCenter] addObserverForName:WTNetworkingOperationDidFinishNotification
+                                                      object:nil
+                                                       queue:[NSOperationQueue mainQueue]
+                                                  usingBlock:^(NSNotification *note)
+    {
             [self decrementActivityCount];
-//        }
     }];
 }
 
@@ -106,11 +107,23 @@
         // Delay hiding of activity indicator for a short interval, to avoid flickering
         
         if (![self isNetworkActivityIndicatorVisible]) {
+            
             [self.activityIndicatorVisibilityTimer invalidate];
-            self.activityIndicatorVisibilityTimer = [NSTimer timerWithTimeInterval:0.17 target:self selector:@selector(updateNetworkActivityIndicatorVisibility) userInfo:nil repeats:NO];
-            [[NSRunLoop mainRunLoop] addTimer:self.activityIndicatorVisibilityTimer forMode:NSRunLoopCommonModes];
+            
+            self.activityIndicatorVisibilityTimer = [NSTimer timerWithTimeInterval:0.17
+                                                                            target:self
+                                                                          selector:@selector(updateNetworkActivityIndicatorVisibility)
+                                                                          userInfo:nil
+                                                                           repeats:NO];
+            
+            [[NSRunLoop mainRunLoop] addTimer:self.activityIndicatorVisibilityTimer
+                                      forMode:NSRunLoopCommonModes];
+            
         } else {
-            [self performSelectorOnMainThread:@selector(updateNetworkActivityIndicatorVisibility) withObject:nil waitUntilDone:NO modes:@[NSRunLoopCommonModes]];
+            [self performSelectorOnMainThread:@selector(updateNetworkActivityIndicatorVisibility)
+                                   withObject:nil
+                                waitUntilDone:NO
+                                        modes:@[NSRunLoopCommonModes]];
         }
     }
 }
