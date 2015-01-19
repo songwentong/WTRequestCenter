@@ -248,7 +248,15 @@ static NSURLCache* sharedCache = nil;
            finished:(WTRequestFinishedBlock)finished
              failed:(WTRequestFailedBlock)failed
 {
-//    有效性判断
+    [self doURLRequest:request finished:finished failed:failed shouldCache:NO];
+}
+
++(void)doURLRequest:(NSURLRequest*)request
+           finished:(WTRequestFinishedBlock)finished
+             failed:(WTRequestFailedBlock)failed
+        shouldCache:(BOOL)shouldCache
+{
+    //    有效性判断
     assert(request != nil);
     
     
@@ -283,8 +291,11 @@ static NSURLCache* sharedCache = nil;
             }
         }else
         {
-            NSCachedURLResponse *tempURLResponse = [[NSCachedURLResponse alloc] initWithResponse:response data:data];
-            [[self sharedCache] storeCachedResponse:tempURLResponse forRequest:request];
+            if (shouldCache) {
+                NSCachedURLResponse *tempURLResponse = [[NSCachedURLResponse alloc] initWithResponse:response data:data];
+                [[self sharedCache] storeCachedResponse:tempURLResponse forRequest:request];
+            }
+
             if (WTRequestCenterDebugMode) {
                 NSLog(@"WTRequestCenter request finished:%@  time:%f",request,endTimeInterval-startTimeInterval);
             }
@@ -306,14 +317,14 @@ static NSURLCache* sharedCache = nil;
             }
         }];
     };
-
-        
-        [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
-            [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-                complection(response,data,connectionError);
-            }];
+    
+    
+    [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
+        [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+            complection(response,data,connectionError);
         }];
-
+    }];
+    
     
 }
 
@@ -329,7 +340,7 @@ static NSURLCache* sharedCache = nil;
         case WTRequestCenterCachePolicyNormal:
         {
 //            [self doURLRequest:request finished: failed:failed];
-            [self doURLRequest:request finished:finished failed:failed];
+            [self doURLRequest:request finished:finished failed:failed shouldCache:NO];
             
         }
             break;
@@ -344,7 +355,7 @@ static NSURLCache* sharedCache = nil;
                 });
             }else
             {
-                [self doURLRequest:request finished:finished failed:failed];
+                [self doURLRequest:request finished:finished failed:failed shouldCache:YES];
             }
         }
             break;
@@ -375,7 +386,7 @@ static NSURLCache* sharedCache = nil;
                 [self doURLRequest:request finished:nil failed:nil];
             }else
             {
-                [self doURLRequest:request finished:finished failed:failed];
+                [self doURLRequest:request finished:finished failed:failed shouldCache:YES];
             }
             
             
@@ -390,10 +401,10 @@ static NSURLCache* sharedCache = nil;
                         finished(response.response,response.data);
                     }
                 });
-                [self doURLRequest:request finished:finished failed:failed];
+                [self doURLRequest:request finished:finished failed:failed shouldCache:YES];
             }else
             {
-                [self doURLRequest:request finished:finished failed:failed];
+                [self doURLRequest:request finished:finished failed:failed shouldCache:YES];
             }
             
             
