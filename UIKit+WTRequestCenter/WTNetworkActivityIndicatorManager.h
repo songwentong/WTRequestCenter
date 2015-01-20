@@ -18,6 +18,9 @@
 @property (readonly, nonatomic, assign) BOOL isNetworkActivityIndicatorVisible;
 
 + (instancetype)sharedManager;
+
+
 - (void)incrementActivityCount;
+
 - (void)decrementActivityCount;
 @end

@@ -95,4 +95,14 @@
 
 
 
++(UIColor*)WTRandomColor
+{
+    long red = random()%256;
+    long green = random()%256;
+    long blue = random()%256;
+    return [self WTcolorWithRed:red
+                          green:green
+                           blue:blue];
+}
+
 @end

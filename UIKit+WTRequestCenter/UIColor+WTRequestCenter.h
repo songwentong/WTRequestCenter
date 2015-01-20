@@ -47,4 +47,9 @@
 + (UIColor *)WTcolorWithHexString:(NSString *)hexString
                             alpha:(CGFloat)alpha;
 
+/*!
+    随机得到一个颜色
+ */
++(UIColor*)WTRandomColor;
+
 @end
