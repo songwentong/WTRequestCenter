@@ -97,9 +97,16 @@
 
 +(UIColor*)WTRandomColor
 {
-    long red = random()%256;
-    long green = random()%256;
-    long blue = random()%256;
+    uint8_t red = random()%256;
+    uint8_t green = random()%256;
+    uint8_t blue = random()%256;
+    SecRandomCopyBytes(kSecRandomDefault, 1, &red);
+    red = red%256;
+    SecRandomCopyBytes(kSecRandomDefault, 1, &green);
+    green = green%256;
+    SecRandomCopyBytes(kSecRandomDefault, 1, &blue);
+    blue = blue%256;
+    
     return [self WTcolorWithRed:red
                           green:green
                            blue:blue];
