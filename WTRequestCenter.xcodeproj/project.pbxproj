@@ -101,7 +101,6 @@
 		E162A4911A6A168900CBC2C5 /* WTImageViewer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WTImageViewer.m; path = "UIKit+WTRequestCenter/WTImageViewer.m"; sourceTree = SOURCE_ROOT; };
 		E162A4921A6A168900CBC2C5 /* WTNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WTNetworkActivityIndicatorManager.h; path = "UIKit+WTRequestCenter/WTNetworkActivityIndicatorManager.h"; sourceTree = SOURCE_ROOT; };
 		E162A4931A6A168900CBC2C5 /* WTNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WTNetworkActivityIndicatorManager.m; path = "UIKit+WTRequestCenter/WTNetworkActivityIndicatorManager.m"; sourceTree = SOURCE_ROOT; };
-		E162A4941A6A168900CBC2C5 /* WTRequestCenterMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WTRequestCenterMacro.h; path = "UIKit+WTRequestCenter/WTRequestCenterMacro.h"; sourceTree = SOURCE_ROOT; };
 		E1632C8919EE02EB00089FFA /* WTRequestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTRequestViewController.h; sourceTree = "<group>"; };
 		E1632C8A19EE02EB00089FFA /* WTRequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTRequestViewController.m; sourceTree = "<group>"; };
 		E1632C8B19EE02EB00089FFA /* WTRequestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTRequestViewController.xib; sourceTree = "<group>"; };
@@ -201,7 +200,6 @@
 				E162A4911A6A168900CBC2C5 /* WTImageViewer.m */,
 				E162A4921A6A168900CBC2C5 /* WTNetworkActivityIndicatorManager.h */,
 				E162A4931A6A168900CBC2C5 /* WTNetworkActivityIndicatorManager.m */,
-				E162A4941A6A168900CBC2C5 /* WTRequestCenterMacro.h */,
 				E1779F5E1A6F9803008F3550 /* UIViewController+WTRequestCenter.h */,
 				E1779F5F1A6F9803008F3550 /* UIViewController+WTRequestCenter.m */,
 			);
