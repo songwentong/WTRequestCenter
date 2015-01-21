@@ -9,19 +9,32 @@
 #import "WTNetworkHUD.h"
 @interface WTNetworkHUD()
 {
+    
+//    8个圆弧的贝塞尔曲线
     NSMutableArray *circleArray;
+    
+//    hud的背景图
     UIView *hudView;
+    
+//    是否在动画
     BOOL animating;
+//    当前索引
     NSInteger selectIndex;
+    
+//    hud图片  ，如果没有未来考虑drawRect绘制一个
     UIImageView *hudImageView;
+    
+//    timer
     NSTimer *animateTimer;
 }
 
 @end
 
-
+//hud宽度
 static CGFloat hudWidth = 150;
+//角半径
 static CGFloat cornerRedius = 5;
+//圆弧的数量
 static NSInteger numberOfArc = 8;
 
 @implementation WTNetworkHUD
@@ -47,12 +60,12 @@ static NSInteger numberOfArc = 8;
 
 -(void)initHud
 {
-    self.backgroundColor = [UIColor clearColor];
+    self.backgroundColor = [UIColor redColor];
     circleArray = [[NSMutableArray alloc] init];
     hudView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, hudWidth, hudWidth)];
     hudView.layer.cornerRadius = cornerRedius;
     animating = NO;
-    
+    hudView.backgroundColor = [UIColor blackColor];
     hudView.center = self.center;
     [self addSubview:hudView];
     
@@ -60,6 +73,7 @@ static NSInteger numberOfArc = 8;
     
     
     hudImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 60, 60)];
+    hudImageView.hidden = YES;
     [self addSubview:hudView];
     
     animateTimer = [NSTimer timerWithTimeInterval:.12
@@ -70,7 +84,8 @@ static NSInteger numberOfArc = 8;
     
     CGFloat angle = 2*M_PI / numberOfArc;
     for (int i=0; i<numberOfArc; i++) {
-        UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:self.center
+        CGPoint center = CGPointMake(320/2, 480/2);
+        UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:center
                                                             radius:50
                                                         startAngle:angle * i endAngle:angle*(i+0.8)
                                                          clockwise:YES];
@@ -79,6 +94,13 @@ static NSInteger numberOfArc = 8;
         [circleArray addObject:path];
     }
     
+}
+
+-(void)layoutSubviews
+{
+    [super layoutSubviews];
+    hudView.center = CGPointMake(320/2, 480/2);
+    hudView.hidden = YES;
 }
 
 - (void)drawRect:(CGRect)rect
@@ -94,7 +116,7 @@ static NSInteger numberOfArc = 8;
         [stokeColor setStroke];
         [path stroke];
     }];
-    
+
 
 }
 

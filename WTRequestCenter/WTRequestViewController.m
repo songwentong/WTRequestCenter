@@ -8,7 +8,7 @@
 
 #import "WTRequestViewController.h"
 #import "WTRequestCenter.h"
-
+#import "UIKit+WTRequestCenter.h"
 @interface WTRequestViewController ()
 
 @end
@@ -29,7 +29,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    
+    [self initHUD];
+    [self.wtActiveIndicatorView startAnimating];
     
     switch (_indexPath.row) {
         case 0:
@@ -85,12 +86,12 @@
     [array addObject:@"http://image.baidu.com/channel/star/柳岩"];
     
     
+    __block NSInteger finishCount = 0;
     [array enumerateObjectsUsingBlock:^(NSString *url, NSUInteger idx, BOOL *stop) {
         [WTRequestCenter getWithURL:url parameters:nil option:WTRequestCenterCachePolicyNormal finished:^(NSURLResponse *response, NSData *data) {
-            if (WTRequestCenterDebugMode) {
-//                NSLog(@"%@",response.URL);
-//                NSLog(@"finished:%@",response.URL);
-//                NSLog(@"string :%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+            finishCount = finishCount + 1;
+            if (finishCount == [array count]) {
+                [self stopLoadWTHud];
             }
 
         } failed:^(NSURLResponse *response, NSError *error) {
