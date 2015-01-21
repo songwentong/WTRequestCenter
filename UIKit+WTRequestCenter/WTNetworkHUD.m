@@ -87,10 +87,6 @@ static NSInteger numberOfArc = 8;
         UIColor *stokeColor = nil;
         if (selectIndex==idx) {
             stokeColor = [self colorWithIndex:0];
-            [[UIColor colorWithRed:0.5
-                             green:0.5
-                              blue:0.5
-                             alpha:1.0] setStroke];
         }else
         {
             stokeColor = [self colorWithIndex:3];
