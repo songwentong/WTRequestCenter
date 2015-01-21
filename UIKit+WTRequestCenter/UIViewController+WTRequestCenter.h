@@ -10,9 +10,9 @@
 
 @interface UIViewController (WTRequestCenter)
 
-//显示HUB
+//显示HUD
 -(void)startLoadWTHud;
-//隐藏HUB
+//隐藏HUD
 -(void)stopLoadWTHud;
 
 @end
