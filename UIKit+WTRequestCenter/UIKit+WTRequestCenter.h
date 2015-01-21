@@ -39,7 +39,8 @@
 #import "UIScreen+WTRequestCenter.h"
 #import "UIApplication+WTRequestCenter.h"
 #import "WTDataSaver.h"
-
+#import "UIViewController+WTRequestCenter.h"
+#import "WTNetworkHUD.h"
 
 
 #endif
