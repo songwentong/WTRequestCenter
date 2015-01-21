@@ -7,7 +7,9 @@
 //
 
 #import "WTURLRequestSerialization.h"
-
+#if TARGET_OS_IPHONE
+#import <UIKit/UIKit.h>
+#endif
 
 //超时时间
 NSTimeInterval const WTURLRequestSerializationTimeoutTimeInterval = 30;
@@ -126,7 +128,7 @@ static NSString *const WTReuqestCenterUserAgent = @"WTURLRequestUserAgent";
 
 @implementation WTURLRequestSerialization
 static WTURLRequestSerialization *sharedSerialization = nil;
-
+static NSString *defaultUserAgentString = nil;
 +(instancetype)sharedRequestSerialization
 {
     static dispatch_once_t onceToken;
@@ -146,9 +148,77 @@ static WTURLRequestSerialization *sharedSerialization = nil;
     self = [super init];
     if (self) {
         self.HTTPRequestHeaders = [[NSMutableDictionary alloc] init];
+        defaultUserAgentString = [[self class] defaultUserAgentString];
+        [_HTTPRequestHeaders setValue:defaultUserAgentString forKey:@"User-Agent"];
         self.timeoutInterval = WTURLRequestSerializationTimeoutTimeInterval;
+
     }
     return self;
+}
+
+
+
++(NSString*)defaultUserAgentString
+{
+    NSString *result = @"";
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    
+    // Attempt to find a name for this application
+    NSString *appName = [bundle objectForInfoDictionaryKey:@"CFBundleDisplayName"];
+    if (!appName) {
+        appName = [bundle objectForInfoDictionaryKey:@"CFBundleName"];
+    }
+    
+    NSData *latin1Data = [appName dataUsingEncoding:NSUTF8StringEncoding];
+    appName = [[NSString alloc] initWithData:latin1Data encoding:NSISOLatin1StringEncoding] ;
+    
+    // If we couldn't find one, we'll give up (and ASIHTTPRequest will use the standard CFNetwork user agent)
+    if (!appName) {
+        return nil;
+    }
+    
+    NSString *appVersion = nil;
+    NSString *marketingVersionNumber = [bundle objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+    NSString *developmentVersionNumber = [bundle objectForInfoDictionaryKey:@"CFBundleVersion"];
+    if (marketingVersionNumber && developmentVersionNumber) {
+        if ([marketingVersionNumber isEqualToString:developmentVersionNumber]) {
+            appVersion = marketingVersionNumber;
+        } else {
+            appVersion = [NSString stringWithFormat:@"%@ rv:%@",marketingVersionNumber,developmentVersionNumber];
+        }
+    } else {
+        appVersion = (marketingVersionNumber ? marketingVersionNumber : developmentVersionNumber);
+    }
+    
+    NSString *deviceName;
+    NSString *OSName;
+    NSString *OSVersion;
+    NSString *locale = [[NSLocale currentLocale] localeIdentifier];
+
+    #if TARGET_OS_IPHONE
+    UIDevice *device = [UIDevice currentDevice];
+				deviceName = [device model];
+				OSName = [device systemName];
+				OSVersion = [device systemVersion];
+    #else
+    deviceName = @"Macintosh";
+				OSName = @"Mac OS X";
+    
+				// From http://www.cocoadev.com/index.pl?DeterminingOSVersion
+				// We won't bother to check for systems prior to 10.4, since ASIHTTPRequest only works on 10.5+
+				OSErr err;
+				SInt32 versionMajor, versionMinor, versionBugFix;
+				err = Gestalt(gestaltSystemVersionMajor, &versionMajor);
+				if (err != noErr) return nil;
+				err = Gestalt(gestaltSystemVersionMinor, &versionMinor);
+				if (err != noErr) return nil;
+				err = Gestalt(gestaltSystemVersionBugFix, &versionBugFix);
+				if (err != noErr) return nil;
+				OSVersion = [NSString stringWithFormat:@"%u.%u.%u", versionMajor, versionMinor, versionBugFix];
+
+    #endif
+    result = [NSString stringWithFormat:@"%@ %@ (%@; %@ %@; %@)", appName, appVersion, deviceName, OSName, OSVersion, locale];
+    return result;
 }
 
 #pragma mark - 请求串
@@ -200,7 +270,7 @@ static WTURLRequestSerialization *sharedSerialization = nil;
     [_HTTPRequestHeaders enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
         [request setValue:value forHTTPHeaderField:key];
     }];
-
+    
     return request;
 }
 
@@ -225,6 +295,7 @@ static WTURLRequestSerialization *sharedSerialization = nil;
     [_HTTPRequestHeaders enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
         [request setValue:value forHTTPHeaderField:key];
     }];
+    
     return request;
 }
 
