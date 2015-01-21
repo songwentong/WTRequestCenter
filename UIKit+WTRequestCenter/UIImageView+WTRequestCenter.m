@@ -8,7 +8,6 @@
 
 #import "UIImageView+WTRequestCenter.h"
 #import <objc/runtime.h>
-#import "WTRequestCenterMacro.h"
 #import "UIImage+WTRequestCenter.h"
 #import "WTURLRequestOperation.h"
 
