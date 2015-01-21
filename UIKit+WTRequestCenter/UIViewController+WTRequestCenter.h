@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class WTNetworkHUD;
 @interface UIViewController (WTRequestCenter)
+
+//初始化
+-(void)initHUD;
+
+-(WTNetworkHUD*)wtActiveIndicatorView;
 
 //显示HUD
 -(void)startLoadWTHud;

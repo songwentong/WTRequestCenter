@@ -13,7 +13,7 @@
     UIView *hudView;
     BOOL animating;
     NSInteger selectIndex;
-    
+    UIImageView *hudImageView;
     NSTimer *animateTimer;
 }
 
@@ -57,6 +57,10 @@ static NSInteger numberOfArc = 8;
     [self addSubview:hudView];
     
     selectIndex = 0;
+    
+    
+    hudImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 60, 60)];
+    [self addSubview:hudView];
     
     animateTimer = [NSTimer timerWithTimeInterval:.12
                                            target:self
@@ -113,7 +117,7 @@ static NSInteger numberOfArc = 8;
     [self setNeedsDisplay];
 }
 
--(void)startAnimate
+-(void)startAnimating
 {
     if (!animating) {
         animating = YES;
@@ -124,9 +128,19 @@ static NSInteger numberOfArc = 8;
     }
 }
 
--(void)stopAnimate
+-(void)stopAnimating
 {
     animating = NO;
     [animateTimer invalidate];
 }
+
+-(void)reloadData
+{
+    if ([self.delegate respondsToSelector:@selector(wtNetWorkHUDImage:)]) {
+        UIImage *image = [self.delegate wtNetWorkHUDImage:self];
+        hudImageView.image = image;
+    }
+
+}
+
 @end

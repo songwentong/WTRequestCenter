@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+@class WTNetworkHUD;
+@protocol WTNetworkHUDDelegate <NSObject>
 
+@optional
+-(UIImage*)wtNetWorkHUDImage:(WTNetworkHUD*)hud;
+
+
+@end
 @interface WTNetworkHUD : UIView
--(void)startAnimate;
+@property (nonatomic,weak) id<WTNetworkHUDDelegate> delegate;
+-(void)reloadData;
+-(void)startAnimating;
+-(void)stopAnimating;
 @end
