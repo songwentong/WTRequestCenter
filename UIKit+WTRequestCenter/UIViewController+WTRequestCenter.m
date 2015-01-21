@@ -25,7 +25,7 @@ static const void * const WTImageViewOperationKey = @"WT UIActivity Indicator Vi
     objc_setAssociatedObject(self, WTImageViewOperationKey, view, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
--(void)startLoadWTHub
+-(void)startLoadWTHud
 {
     if (![self wtActiveIndicatorView]) {
         UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithFrame:self.view.bounds];
@@ -36,7 +36,7 @@ static const void * const WTImageViewOperationKey = @"WT UIActivity Indicator Vi
     [[self wtActiveIndicatorView] startAnimating];
 }
 
--(void)stopLoadWTHub
+-(void)stopLoadWTHud
 {
     [[self wtActiveIndicatorView] stopAnimating];
     

@@ -11,8 +11,8 @@
 @interface UIViewController (WTRequestCenter)
 
 //显示HUB
--(void)startLoadWTHub;
+-(void)startLoadWTHud;
 //隐藏HUB
--(void)stopLoadWTHub;
+-(void)stopLoadWTHud;
 
 @end
