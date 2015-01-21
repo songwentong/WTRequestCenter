@@ -204,7 +204,6 @@ static NSString *defaultUserAgentString = nil;
     deviceName = @"Macintosh";
 				OSName = @"Mac OS X";
     
-				// From http://www.cocoadev.com/index.pl?DeterminingOSVersion
 				OSErr err;
 				SInt32 versionMajor, versionMinor, versionBugFix;
 				err = Gestalt(gestaltSystemVersionMajor, &versionMajor);
