@@ -205,7 +205,6 @@ static NSString *defaultUserAgentString = nil;
 				OSName = @"Mac OS X";
     
 				// From http://www.cocoadev.com/index.pl?DeterminingOSVersion
-				// We won't bother to check for systems prior to 10.4, since ASIHTTPRequest only works on 10.5+
 				OSErr err;
 				SInt32 versionMajor, versionMinor, versionBugFix;
 				err = Gestalt(gestaltSystemVersionMajor, &versionMajor);
