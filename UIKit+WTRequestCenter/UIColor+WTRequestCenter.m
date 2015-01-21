@@ -97,6 +97,7 @@
 {
     uint8_t color;
     SecRandomCopyBytes(kSecRandomDefault, 1, &color);
+    color = color%256;
     return color;
 }
 
