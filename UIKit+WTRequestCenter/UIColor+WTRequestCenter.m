@@ -93,20 +93,19 @@
                           alpha:alpha];
 }
 
-
++(uint8_t)randomColorValue
+{
+    uint8_t color;
+    SecRandomCopyBytes(kSecRandomDefault, 1, &color);
+    return color;
+}
 
 +(UIColor*)WTRandomColor
 {
-    uint8_t red = random()%256;
-    uint8_t green = random()%256;
-    uint8_t blue = random()%256;
-    SecRandomCopyBytes(kSecRandomDefault, 1, &red);
-    red = red%256;
-    SecRandomCopyBytes(kSecRandomDefault, 1, &green);
-    green = green%256;
-    SecRandomCopyBytes(kSecRandomDefault, 1, &blue);
-    blue = blue%256;
-    
+    uint8_t red = [self randomColorValue];
+    uint8_t green = [self randomColorValue];
+    uint8_t blue = [self randomColorValue];
+
     return [self WTcolorWithRed:red
                           green:green
                            blue:blue];
