@@ -31,6 +31,7 @@ static const void * const WTImageViewOperationKey = @"WT UIActivity Indicator Vi
         UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         indicator.frame = self.view.frame;
         indicator.hidesWhenStopped = YES;
+        indicator.center = self.view.center;
         [self.view addSubview:indicator];
         [self setwtActiveIndicatorView:indicator];
     }
