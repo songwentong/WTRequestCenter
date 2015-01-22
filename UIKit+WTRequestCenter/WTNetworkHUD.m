@@ -60,12 +60,12 @@ static NSInteger numberOfArc = 8;
 
 -(void)initHud
 {
-    self.backgroundColor = [UIColor redColor];
+    self.backgroundColor = [UIColor clearColor];
     circleArray = [[NSMutableArray alloc] init];
     hudView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, hudWidth, hudWidth)];
     hudView.layer.cornerRadius = cornerRedius;
     animating = NO;
-    hudView.backgroundColor = [UIColor blackColor];
+    hudView.backgroundColor = [UIColor clearColor];
     hudView.center = self.center;
     [self addSubview:hudView];
     
