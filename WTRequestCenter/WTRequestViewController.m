@@ -10,7 +10,9 @@
 #import "WTRequestCenter.h"
 #import "UIKit+WTRequestCenter.h"
 @interface WTRequestViewController ()
+@property (weak, nonatomic) IBOutlet UIScrollView *logScrollView;
 
+@property (weak, nonatomic) IBOutlet UILabel *logLabel;
 @end
 
 @implementation WTRequestViewController
@@ -73,13 +75,16 @@
     
     
     __block NSInteger finishCount = 0;
-
+    
     [array enumerateObjectsUsingBlock:^(NSString *url, NSUInteger idx, BOOL *stop) {
+        
+//        [self appendLogString:[NSString stringWithFormat:@"request start :%@",url]];
         [WTRequestCenter getWithURL:url parameters:nil option:WTRequestCenterCachePolicyNormal finished:^(NSURLResponse *response, NSData *data) {
             finishCount = finishCount + 1;
             if (finishCount == [array count]) {
                 [self stopLoadWTHud];
             }
+        [self appendLogString:[NSString stringWithFormat:@"request end :%@",url]];
         } failed:^(NSURLResponse *response, NSError *error) {
 //            NSLog(@"failed:%@",response.URL);
         }];
@@ -93,6 +98,14 @@
     
 
     
+}
+
+-(void)appendLogString:(NSString*)string
+{
+    NSString *string2 = [NSString stringWithFormat:@"%@\n%@",_logLabel.text,string];
+    _logLabel.text = string2;
+    
+//    NSLog(@"%@",string2);
 }
 
 -(void)testGet
