@@ -36,20 +36,7 @@ static NSOperationQueue *dataQueue = nil;
     return dataQueue;
 }
 
-#pragma mark - 工具
-+(float)osVersion
-{
-    CGFloat version = 0;
-#if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
-    UIDevice *currentDevice = [UIDevice currentDevice];
-    version = currentDevice.systemVersion.floatValue;
-#elif defined(__MAC_OS_X_VERSION_MIN_REQUIRED)
-    NSDictionary * sv = [NSDictionary dictionaryWithContentsOfFile:@"/System/Library/CoreServices/SystemVersion.plist"];
-    version = [[sv objectForKey:@"ProductVersion"] floatValue];
-#endif
-    
-    return version;
-}
+
 
 +(NSData*)base64EncodedData:(NSData*)data
 {
@@ -58,7 +45,7 @@ static NSOperationQueue *dataQueue = nil;
     
 //    如果是iOS
     #if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
-    if ([WTDataSaver osVersion]>=7.0) {
+    if ([[[UIDevice currentDevice] systemVersion] floatValue]>=7.0) {
         result = [data base64EncodedDataWithOptions:NSDataBase64Encoding64CharacterLineLength];
     }else
     {
@@ -89,10 +76,10 @@ static NSOperationQueue *dataQueue = nil;
 {
 //    NS_AVAILABLE(10_9, 7_0);
     NSData *result = nil;
-    
+
 //    如果是iOS
     #if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
-    if ([WTDataSaver osVersion]>=7.0) {
+    if ([[[UIDevice currentDevice] systemVersion] floatValue]>=7.0) {
         result = [[NSData alloc] initWithBase64EncodedData:data options:NSDataBase64DecodingIgnoreUnknownCharacters];
     }else
     {

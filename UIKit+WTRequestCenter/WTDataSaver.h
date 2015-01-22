@@ -62,8 +62,6 @@
 //Available in iOS 2.0 and later.
 
 
-+(float)osVersion;
-
 #pragma mark - 对象转换
 //用于对象和Data的转换，类型可以是NSDictionary或者NSArray
 +(NSData*)dataWithJSONObject:(id)obj;
