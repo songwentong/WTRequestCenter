@@ -621,9 +621,9 @@ static NSString * const baseURL = @"http://www.baidu.com";
 
 
 +(WTURLRequestOperation*)testPOSTWithURL:(NSString*)url
-                             parameters:(NSDictionary *)parameters
-                               finished:(WTRequestFinishedBlock)finished
-                                 failed:(WTRequestFailedBlock)failed
+                              parameters:(NSDictionary *)parameters
+                                finished:(WTRequestFinishedBlock)finished
+                                  failed:(WTRequestFailedBlock)failed
 {
     NSURLRequest *request = [[WTURLRequestSerialization sharedRequestSerialization] POSTRequestWithURL:url parameters:parameters];
     WTURLRequestOperation *operation = [self testdoURLRequest:request progress:nil finished:finished failed:failed];
