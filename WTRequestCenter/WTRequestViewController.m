@@ -73,8 +73,9 @@
     
     
     __block NSInteger finishCount = 0;
+
     [array enumerateObjectsUsingBlock:^(NSString *url, NSUInteger idx, BOOL *stop) {
-        [WTRequestCenter getWithURL:url parameters:nil option:WTRequestCenterCachePolicyCacheAndWeb finished:^(NSURLResponse *response, NSData *data) {
+        [WTRequestCenter getWithURL:url parameters:nil option:WTRequestCenterCachePolicyNormal finished:^(NSURLResponse *response, NSData *data) {
             finishCount = finishCount + 1;
             if (finishCount == [array count]) {
                 [self stopLoadWTHud];
