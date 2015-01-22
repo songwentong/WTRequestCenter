@@ -162,6 +162,22 @@
     UIImageView *temp = [[UIImageView alloc] initWithFrame:CGRectMake([UIScreen screenWidth]-100, [UIScreen screenHeight]-100, 100, 100)];
     [self.view addSubview:temp];
     [temp setImageWithURL:@"http://d.hiphotos.baidu.com/image/pic/item/d53f8794a4c27d1e01c0f3d919d5ad6edcc438cd.jpg"];
+    
+    
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"clear"
+                                                                              style:UIBarButtonItemStylePlain target:self
+                                                                             action:@selector(clearAll:)];
+}
+
+-(void)clearAll:(id)sender
+{
+    [[WTRequestCenter sharedCache] removeAllCachedResponses];
+    [wtTableView reloadData];
+    
+    [UIAlertView showAlertWithTitle:@"alert"
+                            message:@"cache removed"
+                           duration:2];
 }
 
 
