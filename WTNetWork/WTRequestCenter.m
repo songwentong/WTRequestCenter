@@ -19,7 +19,7 @@ NSString * const WTNetworkingOperationDidStartNotification = @"WTNetworkingOpera
 NSString * const WTNetworkingOperationDidFinishNotification = @"WTNetworkingOperationDidFinishNotification";
 
 
-BOOL const WTRequestCenterDebugMode = YES;
+BOOL const WTRequestCenterDebugMode = NO;
 
 @implementation WTRequestCenter
 
@@ -292,7 +292,10 @@ static NSURLCache* sharedCache = nil;
         }else
         {
             if (shouldCache) {
-                NSCachedURLResponse *tempURLResponse = [[NSCachedURLResponse alloc] initWithResponse:response data:data];
+                NSTimeInterval time = [[NSDate date] timeIntervalSince1970];
+                NSNumber *date = [NSNumber numberWithFloat:time];
+                NSDictionary *userInfo = @{@"responseTime": date};
+                NSCachedURLResponse *tempURLResponse = [[NSCachedURLResponse alloc] initWithResponse:response data:data userInfo:userInfo storagePolicy:NSURLCacheStorageAllowed];
                 [[self sharedCache] storeCachedResponse:tempURLResponse forRequest:request];
             }
 
@@ -340,7 +343,7 @@ static NSURLCache* sharedCache = nil;
         case WTRequestCenterCachePolicyNormal:
         {
 //            [self doURLRequest:request finished: failed:failed];
-            [self doURLRequest:request finished:finished failed:failed];
+            [self doURLRequest:request finished:finished failed:failed shouldCache:YES];
             
         }
             break;

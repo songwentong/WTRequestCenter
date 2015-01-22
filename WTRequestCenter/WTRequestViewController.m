@@ -55,20 +55,6 @@
 
     NSMutableArray *array = [NSMutableArray array];
     [array addObject:@"http://www.sina.com.cn"];
-    [array addObject:@"http://www.sina.com.cn"];
-    [array addObject:@"http://www.sina.com.cn"];
-    [array addObject:@"http://www.sina.com.cn"];
-    [array addObject:@"http://www.sina.com.cn"];
-    [array addObject:@"http://www.sina.com.cn"];
-    [array addObject:@"http://www.sina.com.cn"];
-    [array addObject:@"http://www.sina.com.cn"];
-    [array addObject:@"http://www.sina.com.cn"];
-    [array addObject:@"http://www.sina.com.cn"];
-    [array addObject:@"http://www.sina.com.cn"];
-    [array addObject:@"http://www.sina.com.cn"];
-    [array addObject:@"http://www.sina.com.cn"];
-    [array addObject:@"http://www.sina.com.cn"];
-    [array addObject:@"http://www.sina.com.cn"];
     [array addObject:@"http://www.blizzard.com"];
     [array addObject:@"http://www.apple.com/cn"];
     [array addObject:@"http://www.baidu.com"];
@@ -88,15 +74,19 @@
     
     __block NSInteger finishCount = 0;
     [array enumerateObjectsUsingBlock:^(NSString *url, NSUInteger idx, BOOL *stop) {
-        [WTRequestCenter getWithURL:url parameters:nil option:WTRequestCenterCachePolicyNormal finished:^(NSURLResponse *response, NSData *data) {
+        NSURLRequest *request = [WTRequestCenter getWithURL:url parameters:nil option:WTRequestCenterCachePolicyCacheAndWeb finished:^(NSURLResponse *response, NSData *data) {
             finishCount = finishCount + 1;
             if (finishCount == [array count]) {
                 [self stopLoadWTHud];
             }
-
         } failed:^(NSURLResponse *response, NSError *error) {
 //            NSLog(@"failed:%@",response.URL);
         }];
+        
+        NSCachedURLResponse *res = [[WTRequestCenter sharedCache] cachedResponseForRequest:request];
+        NSTimeInterval time = [[res.userInfo valueForKey:@"responseTime"] floatValue];
+        NSDate *date = [[NSDate alloc] initWithTimeIntervalSince1970:time];
+        NSLog(@"responseTime:%@",date);
     }];
     
 
