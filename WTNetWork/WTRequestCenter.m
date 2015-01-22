@@ -333,9 +333,9 @@ static NSURLCache* sharedCache = nil;
 
 
 +(void)doURLRequest:(NSURLRequest*)request
-            option:(WTRequestCenterCachePolicy)option
-          finished:(WTRequestFinishedBlock)finished
-            failed:(WTRequestFailedBlock)failed
+             option:(WTRequestCenterCachePolicy)option
+           finished:(WTRequestFinishedBlock)finished
+             failed:(WTRequestFailedBlock)failed
 {
     NSCachedURLResponse *response = [[self sharedCache] cachedResponseForRequest:request];
     
