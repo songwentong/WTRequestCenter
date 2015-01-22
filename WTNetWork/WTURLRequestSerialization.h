@@ -90,9 +90,9 @@ extern NSTimeInterval const WTURLRequestSerializationTimeoutTimeInterval;
 #pragma mark - 其他
 
 /*!
-    根据给出的HTTP响应取到响应时间
+    根据给出的响应取到响应时间
  */
-+(NSDate*)dateFromHTTPURLResponse:(NSHTTPURLResponse*)response;
++(NSDate*)dateFromCachedURLResponse:(NSCachedURLResponse*)response;
 
 
 @end

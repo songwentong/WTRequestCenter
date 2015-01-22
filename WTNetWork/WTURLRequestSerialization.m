@@ -466,14 +466,10 @@ constructingBodyWithBlock:(void (^)(id <WTMultipartFormData> formData))block
 #pragma mark - 其他
 
 //获得响应时间
-+(NSDate*)dateFromHTTPURLResponse:(NSHTTPURLResponse*)response
++(NSDate*)dateFromCachedURLResponse:(NSCachedURLResponse*)response
 {
-    NSHTTPURLResponse *httpRes = (NSHTTPURLResponse*)response;
-    NSDictionary *dict = httpRes.allHeaderFields;
-    NSString *dateString = [dict valueForKey:@"Date"];
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"E, dd MMM yyyy hh:mm:ss VVVV";
-    NSDate *date = [formatter dateFromString:dateString];
+    NSTimeInterval time = [[response.userInfo valueForKey:@"responseTime"] floatValue];
+    NSDate *date = [[NSDate alloc] initWithTimeIntervalSince1970:time];
     return date;
 }
 @end
