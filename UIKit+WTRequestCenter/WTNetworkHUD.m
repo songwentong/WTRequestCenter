@@ -116,9 +116,24 @@ static NSInteger numberOfArc = 8;
         [stokeColor setStroke];
         [path stroke];
     }];
-
-
 }
+
+
+// 循环获取数组中的数据，不会越界
+-(NSInteger)indexForIndex:(NSInteger)index Stride:(NSInteger)stride
+{
+    NSInteger result = index + stride;
+    
+    if (result>=numberOfArc) {
+        result = result % numberOfArc;
+    }
+    if (result<0) {
+        result = result + numberOfArc;
+    }
+    
+    return result;
+}
+
 
 -(UIColor*)colorWithIndex:(NSInteger)index
 {
