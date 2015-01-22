@@ -166,7 +166,8 @@
     
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"clear"
-                                                                              style:UIBarButtonItemStylePlain target:self
+                                                                              style:UIBarButtonItemStylePlain
+                                                                             target:self
                                                                              action:@selector(clearAll:)];
 }
 

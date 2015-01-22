@@ -92,9 +92,11 @@ static NSURLCache* sharedCache = nil;
 +(NSString*)currentDiskUsageString
 {
     NSUInteger usage = [self currentDiskUsage];
-//    NSByteCountFormatter *formatter = [[NSByteCountFormatter alloc] init];
-//    formatter.includesActualByteCount = YES;
-//    formatter.countStyle = NSByteCountFormatterCountStyleFile;
+    
+//    如果小于1M，就显示为0，因为cache数据库本身在没有数据的情况下是123KB或者218KB
+    if (usage<1024*1024) {
+        usage = 0;
+    }
     return [NSByteCountFormatter stringFromByteCount:usage countStyle:NSByteCountFormatterCountStyleFile];
 }
 
