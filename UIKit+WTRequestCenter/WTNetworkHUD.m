@@ -165,6 +165,7 @@ static NSInteger numberOfArc = 8;
 {
     animating = NO;
     [animateTimer invalidate];
+    self.hidden = YES;
 }
 
 -(void)reloadData
