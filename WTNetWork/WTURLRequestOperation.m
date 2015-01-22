@@ -191,10 +191,8 @@ static inline NSString * WTKeyPathFromOperationState(WTOperationState state) {
     }];
     [wtURLConnection start];
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        NSDictionary *userInfo = @{@"request": _request};
-        [[NSNotificationCenter defaultCenter] postNotificationName:WTNetworkingOperationDidStartNotification object:_request userInfo:userInfo];
-    });
+    [WTRequestCenter sendRequestStartNotificationWithRequest:_request];
+    
     [self.lock unlock];
 }
 - (void)cancel
@@ -234,14 +232,15 @@ static inline NSString * WTKeyPathFromOperationState(WTOperationState state) {
     [self.lock lock];
     self.state = WTOperationStateFinished;
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        NSDictionary *userInfo = @{@"request": _request};
-        [[NSNotificationCenter defaultCenter] postNotificationName:WTNetworkingOperationDidFinishNotification object:_request userInfo:userInfo];
-    });
+
+    [WTRequestCenter sendRequestCompleteNotificationWithRequest:_request
+                                                       response:self.response
+                                                           data:self.responseData];
 
     [self.lock unlock];
 
 }
+
 #pragma mark - NSURLConnectionDataDelegate
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {

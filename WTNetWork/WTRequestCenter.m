@@ -260,11 +260,7 @@ static NSURLCache* sharedCache = nil;
     assert(request != nil);
     
     
-    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-        NSDictionary *userInfo = @{@"request": request};
-        [[NSNotificationCenter defaultCenter] postNotificationName:WTNetworkingOperationDidStartNotification object:request userInfo:userInfo];
-    }];
-    
+    [self sendRequestStartNotificationWithRequest:request];
     
     NSTimeInterval startTimeInterval = [[NSDate date] timeIntervalSince1970];
     if (WTRequestCenterDebugMode) {
@@ -278,19 +274,9 @@ static NSURLCache* sharedCache = nil;
     {
         NSTimeInterval endTimeInterval = [[NSDate date] timeIntervalSince1970];
         
-        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
-            if (request) {
-                [userInfo setValue:request forKey:@"request"];
-            }
-            if (response) {
-                [userInfo setValue:response forKey:@"response"];
-            }
-            if (data) {
-                [userInfo setValue:data forKey:@"data"];
-            }
-            [[NSNotificationCenter defaultCenter] postNotificationName:WTNetworkingOperationDidFinishNotification object:request userInfo:userInfo];
-        }];
+        [self sendRequestCompleteNotificationWithRequest:request
+                                                response:response
+                                                    data:data];
         
         
         if (connectionError) {
@@ -438,7 +424,43 @@ static NSURLCache* sharedCache = nil;
 
 
 
+#pragma mark - request Notification
+//请求成功的消息
++(void)sendRequestStartNotificationWithRequest:(NSURLRequest *)request
+{
+    
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
+    if (request) {
+        [userInfo setValue:request forKey:@"request"];
+    }
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:WTNetworkingOperationDidStartNotification
+                                                            object:nil
+                                                          userInfo:userInfo];
+    }];
+}
 
+//请求失败的消息
++(void)sendRequestCompleteNotificationWithRequest:(NSURLRequest*)request
+                                         response:(NSURLResponse*)response
+                                             data:(NSData*)data
+{
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
+    if (request) {
+        [userInfo setValue:request forKey:@"request"];
+    }
+    if (response) {
+        [userInfo setValue:response forKey:@"response"];
+    }
+    if (data) {
+        [userInfo setValue:data forKey:@"data"];
+    }
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+    [[NSNotificationCenter defaultCenter] postNotificationName:WTNetworkingOperationDidFinishNotification object:request userInfo:userInfo];
+    }];
+
+}
 
 
 

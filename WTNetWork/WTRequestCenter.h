@@ -202,6 +202,13 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
 +(void)removeRequestCache:(NSURLRequest*)request;
 
 
+#pragma mark - 请求开始和结束的消息
+//请求成功的消息
++(void)sendRequestStartNotificationWithRequest:(NSURLRequest *)request;
+//请求失败的消息
++(void)sendRequestCompleteNotificationWithRequest:(NSURLRequest*)request
+                                         response:(NSURLResponse*)response
+                                             data:(NSData*)data;
 #pragma mark - 辅助
 //JSON转对象
 +(id)JSONObjectWithData:(NSData*)data;
