@@ -292,9 +292,10 @@ static NSURLCache* sharedCache = nil;
         }else
         {
             if (shouldCache) {
-                NSTimeInterval time = [[NSDate date] timeIntervalSince1970];
-                NSNumber *date = [NSNumber numberWithFloat:time];
-                NSDictionary *userInfo = @{@"responseTime": date};
+                NSNumber *endTime = [NSNumber numberWithFloat:endTimeInterval];
+                NSNumber *startTime = [NSNumber numberWithFloat:startTimeInterval];
+                
+                NSDictionary *userInfo = @{@"requestTIme":startTime,@"responseTime": endTime};
                 NSCachedURLResponse *tempURLResponse = [[NSCachedURLResponse alloc] initWithResponse:response data:data userInfo:userInfo storagePolicy:NSURLCacheStorageAllowed];
                 [[self sharedCache] storeCachedResponse:tempURLResponse forRequest:request];
             }

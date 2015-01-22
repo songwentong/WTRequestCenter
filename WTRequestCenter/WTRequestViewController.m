@@ -74,7 +74,7 @@
     
     __block NSInteger finishCount = 0;
     [array enumerateObjectsUsingBlock:^(NSString *url, NSUInteger idx, BOOL *stop) {
-        NSURLRequest *request = [WTRequestCenter getWithURL:url parameters:nil option:WTRequestCenterCachePolicyCacheAndWeb finished:^(NSURLResponse *response, NSData *data) {
+        [WTRequestCenter getWithURL:url parameters:nil option:WTRequestCenterCachePolicyCacheAndWeb finished:^(NSURLResponse *response, NSData *data) {
             finishCount = finishCount + 1;
             if (finishCount == [array count]) {
                 [self stopLoadWTHud];
@@ -83,10 +83,11 @@
 //            NSLog(@"failed:%@",response.URL);
         }];
         
-        NSCachedURLResponse *res = [[WTRequestCenter sharedCache] cachedResponseForRequest:request];
-        NSTimeInterval time = [[res.userInfo valueForKey:@"responseTime"] floatValue];
-        NSDate *date = [[NSDate alloc] initWithTimeIntervalSince1970:time];
-        NSLog(@"responseTime:%@",date);
+//        NSCachedURLResponse *res = [[WTRequestCenter sharedCache] cachedResponseForRequest:request];
+//        NSTimeInterval time = [[res.userInfo valueForKey:@"responseTime"] floatValue];
+//        NSDate *date = [[NSDate alloc] initWithTimeIntervalSince1970:time];
+//        NSLog(@"responseTime:%@",date);
+//        NSLog(@"userInfo :%@",res.userInfo);
     }];
     
 
