@@ -49,7 +49,12 @@ static NSURLCache* sharedCache = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         NSString *diskPath = [NSString stringWithFormat:@"WTRequestCenter"];
-        sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:1024*1024*10 diskCapacity:1024*1024*1024 diskPath:diskPath];
+        
+        
+        
+        sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:1024*1024*10
+                                                    diskCapacity:1024*1024*1024
+                                                        diskPath:diskPath];
     });
 //    10M内存  1G硬盘
     return sharedCache;
