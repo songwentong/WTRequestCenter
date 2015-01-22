@@ -304,7 +304,7 @@ static NSURLCache* sharedCache = nil;
                 NSNumber *endTime = [NSNumber numberWithFloat:endTimeInterval];
                 NSNumber *startTime = [NSNumber numberWithFloat:startTimeInterval];
                 
-                NSDictionary *userInfo = @{@"requestTIme":startTime,@"responseTime": endTime};
+                NSDictionary *userInfo = @{@"requestTime":startTime,@"responseTime": endTime};
                 NSCachedURLResponse *tempURLResponse = [[NSCachedURLResponse alloc] initWithResponse:response data:data userInfo:userInfo storagePolicy:NSURLCacheStorageAllowed];
                 [[self sharedCache] storeCachedResponse:tempURLResponse forRequest:request];
             }
