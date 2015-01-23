@@ -104,6 +104,7 @@ const CGFloat leftMargin = 10;
         [values addObject:value];
     }];
     
+    NSTimeInterval animateDuration = 10;
     
     
     NSMutableArray *timingFunctions = [NSMutableArray new];
@@ -114,7 +115,7 @@ const CGFloat leftMargin = 10;
     }];
     keyFrameAnimation.timingFunctions = timingFunctions;
     
-    keyFrameAnimation.duration = 12;
+    keyFrameAnimation.duration = animateDuration;
     keyFrameAnimation.values = values;
     keyFrameAnimation.fillMode = kCAFillModeBoth;
     keyFrameAnimation.removedOnCompletion = NO;
@@ -139,7 +140,7 @@ const CGFloat leftMargin = 10;
     }];
     keyFrameAnimation2.timingFunctions = timingFunctions;
     
-    keyFrameAnimation2.duration = 12;
+    keyFrameAnimation2.duration = animateDuration;
     keyFrameAnimation2.values = values;
     keyFrameAnimation2.fillMode = kCAFillModeBoth;
     keyFrameAnimation2.removedOnCompletion = NO;
@@ -157,7 +158,7 @@ const CGFloat leftMargin = 10;
     }];
     keyFrameAnimation3.timingFunctions = timingFunctions;
     
-    keyFrameAnimation3.duration = 12;
+    keyFrameAnimation3.duration = animateDuration;
     keyFrameAnimation3.values = values;
     keyFrameAnimation3.fillMode = kCAFillModeBoth;
     keyFrameAnimation3.removedOnCompletion = NO;
