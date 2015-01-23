@@ -59,7 +59,7 @@
     [[WTNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     
     [WTDataSaver dataWithName:@"pqwoewqpe" completion:^(NSData *data) {
-        NSLog(@"xxx");
+//        NSLog(@"xxx");
     }];
     
 //    [WTDataSaver clearAllData];
