@@ -7,6 +7,7 @@
 //
 
 #import "WTNetworkHUD.h"
+#import "UIScreen+WTRequestCenter.h"
 @interface WTNetworkHUD()
 {
     
@@ -36,6 +37,8 @@ static CGFloat hudWidth = 150;
 static CGFloat cornerRedius = 5;
 //圆弧的数量
 static NSInteger numberOfArc = 8;
+
+
 
 @implementation WTNetworkHUD
 
@@ -84,7 +87,7 @@ static NSInteger numberOfArc = 8;
     
     CGFloat angle = 2*M_PI / numberOfArc;
     for (int i=0; i<numberOfArc; i++) {
-        CGPoint center = CGPointMake(320/2, 480/2);
+        CGPoint center = CGPointMake([UIScreen screenWidth]/2, [UIScreen screenHeight]/2);
         UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:center
                                                             radius:50
                                                         startAngle:angle * i endAngle:angle*(i+0.8)
@@ -99,7 +102,7 @@ static NSInteger numberOfArc = 8;
 -(void)layoutSubviews
 {
     [super layoutSubviews];
-    hudView.center = CGPointMake(320/2, 480/2);
+    hudView.center = CGPointMake([UIScreen screenWidth]/2, [UIScreen screenHeight]/2);
     hudView.hidden = YES;
 }
 

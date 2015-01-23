@@ -108,6 +108,13 @@
 {
     NSString *string2 = [NSString stringWithFormat:@"%@\n%@",_logLabel.text,string];
     _logLabel.text = string2;
+//    _logLabel.userInteractionEnabled = NO;
+    /*
+    _logScrollView.contentSize = [_logLabel.attributedText boundingRectWithSize:_logLabel.frame.size
+                                                                       options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading
+                                                                       context:nil].size;
+     */
+//    _logScrollView.scrollEnabled = YES;
     
 //    NSLog(@"%@",string2);
 }
