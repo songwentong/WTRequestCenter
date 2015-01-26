@@ -241,6 +241,60 @@ static NSString *defaultUserAgentString = nil;
 }
 
 #pragma mark - 请求的生成
+
+
+- (NSMutableURLRequest *)requestWithMethod:(NSString *)method
+                                 URLString:(NSString *)URLString
+                                parameters:(id)parameters
+                                     error:(NSError *__autoreleasing *)error
+{
+    assert(method!=nil);
+    assert(URLString!=nil);
+    NSURL *url = [NSURL URLWithString:URLString];
+    
+    NSParameterAssert(url!=nil);
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    request.HTTPMethod = method;
+    
+    request = [[self requestBySerializingRequest:request
+                                 withParameters:parameters
+                                          error:error] mutableCopy];
+    return request;
+}
+
+- (NSURLRequest *)requestBySerializingRequest:(NSURLRequest *)request
+                               withParameters:(id)parameters
+                                        error:(NSError *__autoreleasing *)error
+{
+    
+    assert(request!=nil);
+    NSMutableURLRequest *mutableRequest = [request mutableCopy];
+    
+    [_HTTPRequestHeaders enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
+        [mutableRequest setValue:value forHTTPHeaderField:key];
+    }];
+    
+    
+    NSString *query = [self WTQueryStringFromParameters:parameters];
+    if ([self methodNeedQuery:request.HTTPMethod]) {
+        NSString *urlString = [NSString stringWithFormat:@"%@?%@",request.URL,query];
+        mutableRequest.URL = [NSURL URLWithString:urlString];
+    }else
+    {
+        NSData *httpBodyData = [query dataUsingEncoding:NSUTF8StringEncoding];
+        [mutableRequest setHTTPBody:httpBodyData];
+    }
+    
+    return mutableRequest;
+}
+
+-(BOOL)methodNeedQuery:(NSString*)httpMethod
+{
+    NSSet *set = [NSSet setWithArray:@[@"GET",@"HEAD",@"DELETE"]];
+    BOOL contain = [set containsObject:httpMethod];
+    return contain;
+}
+
 -(NSMutableURLRequest*)GETRequestWithURL:(NSString*)url
                               parameters:(NSDictionary*)parameters
 {

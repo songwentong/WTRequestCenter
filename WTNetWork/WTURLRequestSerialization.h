@@ -35,6 +35,16 @@ extern NSTimeInterval const WTURLRequestSerializationTimeoutTimeInterval;
 //设置请求头
 - (void)setValue:(NSString *)value forHTTPHeaderField:(NSString *)field;
 
+
+
+/*!
+    根据给出的方法，URL，参数返回一个请求
+ */
+- (NSMutableURLRequest *)requestWithMethod:(NSString *)method
+                                 URLString:(NSString *)URLString
+                                parameters:(id)parameters
+                                     error:(NSError *__autoreleasing *)error;
+
 /*!
 
  GET请求
