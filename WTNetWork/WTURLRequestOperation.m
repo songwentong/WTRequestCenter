@@ -71,7 +71,7 @@ static inline NSString * WTKeyPathFromOperationState(WTOperationState state) {
         self.request = request;
         self.lock = [[NSRecursiveLock alloc] init];
         self.lock.name = @"WTRequestCenter.WTURLRequestOperation.lock";
-
+        
         _state = WTOperationStateReady;
         
         
@@ -219,7 +219,7 @@ static inline NSString * WTKeyPathFromOperationState(WTOperationState state) {
         if (wtURLConnection) {
             [wtURLConnection cancel];
             [self performSelector:@selector(connection:didFailWithError:) withObject:wtURLConnection withObject:error];
-
+            
         }else
         {
             self.error = error;
@@ -232,13 +232,13 @@ static inline NSString * WTKeyPathFromOperationState(WTOperationState state) {
     [self.lock lock];
     self.state = WTOperationStateFinished;
     
-
+    
     [WTRequestCenter sendRequestCompleteNotificationWithRequest:_request
                                                        response:self.response
                                                            data:self.responseData];
-
+    
     [self.lock unlock];
-
+    
 }
 
 #pragma mark - NSURLConnectionDataDelegate

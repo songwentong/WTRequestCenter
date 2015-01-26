@@ -56,7 +56,7 @@ static NSURLCache* sharedCache = nil;
                                                     diskCapacity:1024*1024*1024
                                                         diskPath:diskPath];
     });
-//    10M内存  1G硬盘
+    //    10M内存  1G硬盘
     return sharedCache;
 }
 
@@ -98,7 +98,7 @@ static NSURLCache* sharedCache = nil;
 {
     NSUInteger usage = [self currentDiskUsage];
     
-//    如果小于1M，就显示为0，因为cache数据库本身在没有数据的情况下是123KB或者218KB
+    //    如果小于1M，就显示为0，因为cache数据库本身在没有数据的情况下是123KB或者218KB
     if (usage<1024*1024) {
         usage = 0;
     }
@@ -123,7 +123,7 @@ static NSURLCache* sharedCache = nil;
     if (!data) {
         return nil;
     }
-//    容器解析成可变的，string解析成可变的，并且允许顶对象不是dict或者array
+    //    容器解析成可变的，string解析成可变的，并且允许顶对象不是dict或者array
     NSJSONReadingOptions option = NSJSONReadingMutableContainers|NSJSONReadingMutableLeaves|NSJSONReadingAllowFragments;
     
     return [NSJSONSerialization JSONObjectWithData:data
@@ -179,7 +179,7 @@ static NSURLCache* sharedCache = nil;
                     failed:(WTRequestFailedBlock)failed
 {
     NSURLRequest *request = [[WTURLRequestSerialization sharedRequestSerialization] GETRequestWithURL:url parameters:parameters];
-
+    
     [self doURLRequest:request option:option finished:finished failed:failed];
     
     return request;
@@ -303,7 +303,7 @@ static NSURLCache* sharedCache = nil;
                 
                 [[self sharedCache] storeCachedResponse:tempURLResponse forRequest:request];
             }
-
+            
             if (WTRequestCenterDebugMode) {
                 NSLog(@"WTRequestCenter request finished:%@  time:%f",request,endTimeInterval-startTimeInterval);
             }
@@ -347,7 +347,7 @@ static NSURLCache* sharedCache = nil;
     switch (option) {
         case WTRequestCenterCachePolicyNormal:
         {
-//            [self doURLRequest:request finished: failed:failed];
+            //            [self doURLRequest:request finished: failed:failed];
             [self doURLRequest:request finished:finished failed:failed shouldCache:YES];
             
         }
@@ -372,7 +372,7 @@ static NSURLCache* sharedCache = nil;
         {
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (finished) {
-                finished(response.response,response.data);
+                    finished(response.response,response.data);
                     
                 }
             });
@@ -383,7 +383,7 @@ static NSURLCache* sharedCache = nil;
         {
             
             //          如果有本地的，也去刷新，刷新后不回调，如果没有，则用网络的
-
+            
             if (response) {
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -418,12 +418,12 @@ static NSURLCache* sharedCache = nil;
             
         }
             break;
-        
+            
             
         default:
             break;
     }
-
+    
 }
 
 
@@ -466,9 +466,9 @@ static NSURLCache* sharedCache = nil;
         [userInfo setValue:data forKey:@"data"];
     }
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-    [[NSNotificationCenter defaultCenter] postNotificationName:WTNetworkingOperationDidFinishNotification object:request userInfo:userInfo];
+        [[NSNotificationCenter defaultCenter] postNotificationName:WTNetworkingOperationDidFinishNotification object:request userInfo:userInfo];
     }];
-
+    
 }
 
 
@@ -488,7 +488,7 @@ static NSString * const baseURL = @"http://www.baidu.com";
 +(NSString*)URLWithIndex:(NSInteger)index
 {
     NSMutableArray *urls = [[NSMutableArray alloc] init];
-//    0-9
+    //    0-9
     [urls addObject:@"article/detail"];
     [urls addObject:@"interface1"];
     [urls addObject:@"interface2"];
@@ -516,9 +516,9 @@ static NSString * const baseURL = @"http://www.baidu.com";
                                  finished:(WTRequestFinishedBlock)finished
                                    failed:(WTRequestFailedBlock)failed
 {
-//#pragma clang diagnostic push
-//#pragma clang diagnostic ignored "-Warc-retain-cycles"
-//#pragma clang diagnostic ignored "-Wgnu"
+    //#pragma clang diagnostic push
+    //#pragma clang diagnostic ignored "-Warc-retain-cycles"
+    //#pragma clang diagnostic ignored "-Wgnu"
     WTURLRequestOperation *operation = nil;
     operation = [[WTURLRequestOperation alloc] initWithRequest:request];
     if (progress) {
@@ -538,7 +538,7 @@ static NSString * const baseURL = @"http://www.baidu.com";
     }];
     [[self sharedQueue] addOperation:operation];
     return operation;
-//#pragma clang diagnostic pop
+    //#pragma clang diagnostic pop
     
 }
 
@@ -571,7 +571,7 @@ static NSString * const baseURL = @"http://www.baidu.com";
                 });
             }else
             {
-               operation =  [self testdoURLRequest:request progress:progress finished:finished failed:failed];
+                operation =  [self testdoURLRequest:request progress:progress finished:finished failed:failed];
             }
         }
             break;
@@ -623,7 +623,7 @@ static NSString * const baseURL = @"http://www.baidu.com";
             }
         }
             break;
-        
+            
         default:
             break;
     }

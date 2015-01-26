@@ -37,7 +37,7 @@ static NSString *const WTReuqestCenterUserAgent = @"WTURLRequestUserAgent";
     if (self) {
         self.request = urlRequest;
         self.HTTPBodyParts = [[NSMutableArray alloc] init];
-
+        
         [_HTTPBodyParts setValue:WTReuqestCenterUserAgent forKey:@"User-Agent"];
     }
     return self;
@@ -76,7 +76,7 @@ static NSString *const WTReuqestCenterUserAgent = @"WTURLRequestUserAgent";
         if (!HTTPBody) {
             HTTPBody = [[NSMutableData alloc] init];
         }
-//        分割线
+        //        分割线
         
         [_request setHTTPMethod:@"POST"];
         NSInteger count = [_HTTPBodyParts count];
@@ -85,19 +85,19 @@ static NSString *const WTReuqestCenterUserAgent = @"WTURLRequestUserAgent";
             NSString *keyString = [[dict allKeys] lastObject];
             
             
-//            1.边界
+            //            1.边界
             [HTTPBody appendData:[@"--" dataUsingEncoding:NSUTF8StringEncoding]];
             [HTTPBody appendData:[kboundary
                                   dataUsingEncoding:NSUTF8StringEncoding]];
-//          2.Content-Disposition
+            //          2.Content-Disposition
             [HTTPBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\";  \n\n",keyString] dataUsingEncoding:NSUTF8StringEncoding]];
-//          3.Content-Type
+            //          3.Content-Type
             [HTTPBody appendData:[@"Content-Type:image/jpeg\n\n" dataUsingEncoding:NSUTF8StringEncoding]];
-
+            
             NSData *data = [[dict allValues] lastObject];
             
             
-//            4.图片数据
+            //            4.图片数据
             [HTTPBody appendData:data];
             
             
@@ -107,9 +107,9 @@ static NSString *const WTReuqestCenterUserAgent = @"WTURLRequestUserAgent";
             if (count == idx+1) {
                 [HTTPBody appendData:[@"--" dataUsingEncoding:NSUTF8StringEncoding]];
             }
-           
+            
         }];
-       
+        
         _request.HTTPBody = HTTPBody;
         
     }
@@ -151,7 +151,7 @@ static NSString *defaultUserAgentString = nil;
         defaultUserAgentString = [[self class] defaultUserAgentString];
         [_HTTPRequestHeaders setValue:defaultUserAgentString forKey:@"User-Agent"];
         self.timeoutInterval = WTURLRequestSerializationTimeoutTimeInterval;
-
+        
     }
     return self;
 }
@@ -194,13 +194,13 @@ static NSString *defaultUserAgentString = nil;
     NSString *OSName;
     NSString *OSVersion;
     NSString *locale = [[NSLocale currentLocale] localeIdentifier];
-
-    #if TARGET_OS_IPHONE
+    
+#if TARGET_OS_IPHONE
     UIDevice *device = [UIDevice currentDevice];
 				deviceName = [device model];
 				OSName = [device systemName];
 				OSVersion = [device systemVersion];
-    #else
+#else
     deviceName = @"Macintosh";
 				OSName = @"Mac OS X";
     
@@ -213,8 +213,8 @@ static NSString *defaultUserAgentString = nil;
 				err = Gestalt(gestaltSystemVersionBugFix, &versionBugFix);
 				if (err != noErr) return nil;
 				OSVersion = [NSString stringWithFormat:@"%u.%u.%u", versionMajor, versionMinor, versionBugFix];
-
-    #endif
+    
+#endif
     result = [NSString stringWithFormat:@"%@ %@ (%@; %@ %@; %@)", appName, appVersion, deviceName, OSName, OSVersion, locale];
     return result;
 }
@@ -256,7 +256,7 @@ static NSString *defaultUserAgentString = nil;
     {
         string = url;
     }
-//    处理中文
+    //    处理中文
     string = [string stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     
@@ -300,7 +300,7 @@ static NSString *defaultUserAgentString = nil;
 
 -(NSMutableURLRequest*)POSTRequestWithURL:(NSString*)url
                                parameters:(NSDictionary*)parameters
-constructingBodyWithBlock:(void (^)(id <WTMultipartFormData> formData))block
+                constructingBodyWithBlock:(void (^)(id <WTMultipartFormData> formData))block
 {
     
     
@@ -326,12 +326,12 @@ constructingBodyWithBlock:(void (^)(id <WTMultipartFormData> formData))block
         [myData appendData:[@"--" dataUsingEncoding:NSUTF8StringEncoding]];
         [myData appendData:[kboundary dataUsingEncoding:NSUTF8StringEncoding]];
         [parameters enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
-//            Content-Disposition: form-data; name="abc"
+            //            Content-Disposition: form-data; name="abc"
             NSString *keyString = [NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"",key];
             [myData appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
             
             [myData appendData:[keyString dataUsingEncoding:NSUTF8StringEncoding]];
-                        [myData appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
+            [myData appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
             [myData appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
             [myData appendData:[value dataUsingEncoding:NSUTF8StringEncoding]];
             [myData appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
@@ -402,7 +402,7 @@ constructingBodyWithBlock:(void (^)(id <WTMultipartFormData> formData))block
     }];
     
     return request;
-
+    
     
 }
 
@@ -443,11 +443,11 @@ constructingBodyWithBlock:(void (^)(id <WTMultipartFormData> formData))block
 +(NSString*)stringFromDate:(NSDate*)date
 {
     NSString *result = @"";
-//    NSDate *nowDate = [NSDate date];
-//    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-//    [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
-//    NSTimeInterval nowInterval = [nowDate timeIntervalSince1970];
-//    NSTimeInterval timeInterval = [date timeIntervalSince1970];
+    //    NSDate *nowDate = [NSDate date];
+    //    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    //    [formatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+    //    NSTimeInterval nowInterval = [nowDate timeIntervalSince1970];
+    //    NSTimeInterval timeInterval = [date timeIntervalSince1970];
     
     return result;
 }
@@ -490,7 +490,7 @@ static WTJSONRequestSerialization *sharedWTJSONRequestSerialization = nil;
                                withParameters:(id)parameters
                                         error:(NSError *__autoreleasing *)error
 {
-//    (request);
+    //    (request);
     assert(!request);
     
     
