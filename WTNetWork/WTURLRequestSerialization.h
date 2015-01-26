@@ -119,7 +119,9 @@ extern NSTimeInterval const WTURLRequestSerializationTimeoutTimeInterval;
                                         error:(NSError *__autoreleasing *)error;
 @end
 
-
+/*
+ GET`, `HEAD`, 和 `DELETE` 方法将会把参数加入url中的query中
+ */
 
 
 
