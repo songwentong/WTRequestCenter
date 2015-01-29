@@ -371,10 +371,20 @@ static NSURLCache* sharedCache = nil;
         case WTRequestCenterCachePolicyOnlyCache:
         {
             dispatch_async(dispatch_get_main_queue(), ^{
-                if (finished) {
-                    finished(response.response,response.data);
-                    
+                if (response) {
+                    if (finished) {
+                        finished(response.response,response.data);
+                    }
+                }else
+                {
+                    NSError *error = [NSError errorWithDomain:NSCocoaErrorDomain
+                                                         code:NSURLErrorBadURL
+                                                     userInfo:nil];
+                    if (failed) {
+                        failed(nil,error);
+                    }
                 }
+                
             });
         }
             break;

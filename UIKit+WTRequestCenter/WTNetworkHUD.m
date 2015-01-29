@@ -150,6 +150,9 @@ static NSInteger numberOfArc = 8;
     if (selectIndex == numberOfArc) {
         selectIndex = 0;
     }
+    CGRect rect = [UIScreen mainScreen].bounds;
+    hudImageView.center = CGPointMake(CGRectGetWidth(rect)/2, CGRectGetHeight(rect)/2);
+    NSLog(@"%@",hudImageView);
     [self setNeedsDisplay];
 }
 
@@ -161,6 +164,13 @@ static NSInteger numberOfArc = 8;
                                      forMode:NSRunLoopCommonModes];
         [animateTimer fire];
         
+        
+        if ([self.delegate respondsToSelector:@selector(wtNetWorkHUDImage:)]) {
+            UIImage *image = [self.delegate wtNetWorkHUDImage:self];
+            hudImageView.image = image;
+            
+            hudImageView.backgroundColor = [UIColor redColor];
+        }
     }
 }
 
@@ -173,10 +183,7 @@ static NSInteger numberOfArc = 8;
 
 -(void)reloadData
 {
-    if ([self.delegate respondsToSelector:@selector(wtNetWorkHUDImage:)]) {
-        UIImage *image = [self.delegate wtNetWorkHUDImage:self];
-        hudImageView.image = image;
-    }
+    
 
 }
 

@@ -9,7 +9,7 @@
 #import "WTRequestViewController.h"
 #import "WTRequestCenter.h"
 #import "UIKit+WTRequestCenter.h"
-@interface WTRequestViewController ()
+@interface WTRequestViewController () <WTNetworkHUDDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *logScrollView;
 
 @property (weak, nonatomic) IBOutlet UILabel *logLabel;
@@ -32,6 +32,7 @@
     // Do any additional setup after loading the view from its nib.
     
     [self initHUD];
+    [self wtActiveIndicatorView].delegate = self;
     [self.wtActiveIndicatorView startAnimating];
     
     switch (_indexPath.row) {
@@ -186,5 +187,12 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - WTNetworkHUDDelegate
+-(UIImage*)wtNetWorkHUDImage:(WTNetworkHUD*)hud
+{
+    return [UIImage imageNamed:@"SampleImage"];
+}
+
 
 @end
