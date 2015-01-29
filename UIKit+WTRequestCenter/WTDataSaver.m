@@ -215,18 +215,22 @@ static NSOperationQueue *dataQueue = nil;
     
     [self configureDirectory];
     if (!url) {
-        if (completion) {
-            completion(nil);
-        }
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            if (completion) {
+                completion(nil);
+            }
+        }];
+
     }else
     {
     [[self sharedDataQueue] addOperationWithBlock:^{
         
         NSData *data = [NSData dataWithContentsOfFile:url];
-        if (completion) {
-            completion(data);
-        }
-        
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+            if (completion) {
+                completion(data);
+            }
+        }];
 
     }];
     
