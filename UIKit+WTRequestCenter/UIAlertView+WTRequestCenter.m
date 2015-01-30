@@ -18,7 +18,7 @@
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:nil otherButtonTitles: nil];
     [alert show];
-    [UIView animateKeyframesWithDuration:0 delay:2 options:0 animations:^{
+    [UIView animateKeyframesWithDuration:0 delay:time options:0 animations:^{
         
     } completion:^(BOOL finished) {
         [alert dismissWithClickedButtonIndex:0 animated:YES];
