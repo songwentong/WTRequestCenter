@@ -14,13 +14,16 @@
 +(void)clearAllData
 {
     NSString *rootDir = [self rootDir];
-    NSFileManager *manager = [NSFileManager defaultManager];
-    NSArray *array = [[NSFileManager defaultManager] subpathsAtPath:rootDir];
-    [array enumerateObjectsUsingBlock:^(NSString *subpath, NSUInteger idx, BOOL *stop)
-    {
-        NSString *path = [NSString stringWithFormat:@"%@/%@",rootDir,subpath];
-        [manager removeItemAtPath:path error:nil];
+    [[self sharedDataQueue] addOperationWithBlock:^{
+        NSFileManager *manager = [NSFileManager defaultManager];
+        NSArray *array = [[NSFileManager defaultManager] subpathsAtPath:rootDir];
+        [array enumerateObjectsUsingBlock:^(NSString *subpath, NSUInteger idx, BOOL *stop)
+         {
+             NSString *path = [NSString stringWithFormat:@"%@/%@",rootDir,subpath];
+             [manager removeItemAtPath:path error:nil];
+         }];
     }];
+
 }
 
 
