@@ -52,4 +52,13 @@ static const void * const WTImageViewOperationKey = @"WT UIActivity Indicator Vi
     
 }
 
+
+/**
+ *  摇晃动画
+ */
+-(void)wtAnimationShake
+{
+    
+}
+
 @end
