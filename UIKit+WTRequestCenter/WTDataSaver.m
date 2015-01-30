@@ -242,8 +242,7 @@ static NSOperationQueue *dataQueue = nil;
 +(void)removeAllData
 {
     [self configureDirectory];
-    NSBlockOperation *blockOperation = [NSBlockOperation blockOperationWithBlock:^{
-        
+    [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
         NSFileManager *manager = [NSFileManager defaultManager];
         NSArray *array = [manager contentsOfDirectoryAtPath:[WTDataSaver rootDir] error:nil];
         for (NSString *string  in array) {
@@ -251,8 +250,6 @@ static NSOperationQueue *dataQueue = nil;
             [manager removeItemAtPath:filePath error:nil];
         }
     }];
-   
-    [blockOperation start];
 }
 
 #pragma mark - 其他
@@ -262,24 +259,22 @@ static NSOperationQueue *dataQueue = nil;
 //  总大小，单位是字节（Byte）
     __block NSInteger totalSize = 0;
 
-    NSBlockOperation *blockOperation = [NSBlockOperation blockOperationWithBlock:^{
+    
+    [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
         NSFileManager *manager = [NSFileManager defaultManager];
         
         NSDirectoryEnumerator* directoryEnumerator =[manager enumeratorAtPath:[self rootDir]];
         while ([directoryEnumerator nextObject]) {
-
+            
             NSInteger fileSize = [[[directoryEnumerator fileAttributes] valueForKey:@"NSFileSize"] integerValue];
             totalSize += fileSize;
         }
-    }];
-    [blockOperation setCompletionBlock:^{
         if (complection) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-            complection(totalSize);
-            });
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                complection(totalSize);
+            }];
         }
     }];
-    [blockOperation start];
 }
 
 + (NSString *)debugDescription
