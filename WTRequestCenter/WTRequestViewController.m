@@ -85,9 +85,13 @@
             if (finishCount == [array count]) {
                 [self stopLoadWTHud];
             }
+            NSLog(@"------finished %@",response.URL);
         [self appendLogString:[NSString stringWithFormat:@"request finished :%@",url]];
         } failed:^(NSURLResponse *response, NSError *error) {
 //            NSLog(@"failed:%@",response.URL);
+            
+            NSLog(@"------failed %@",response.URL);
+            
             finishCount = finishCount + 1;
             if (finishCount == [array count]) {
                 [self stopLoadWTHud];
@@ -153,22 +157,12 @@
     url = @"http://xxx.com";
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
 
-    //    username=xuefenjuan&device_id=C40DAED0-1153-4E79-BD87-D241CCA46DC1&password=111111
-    /*
-     [WTRequestCenter postWithURL:url parameters:parameters finished:^(NSURLResponse *response, NSData *data) {
-     NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-     NSLog(@"%@",string);
-     } failed:^(NSURLResponse *response, NSError *error) {
-     NSLog(@"xx");
-     }];
-     */
+
     [WTRequestCenter postWithURL:url
                       parameters:parameters
                         finished:^(NSURLResponse *response, NSData *data) {
-                            NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                            NSLog(@"%@",string);
                         }failed:^(NSURLResponse *response, NSError *error) {
-                            NSLog(@"xx");
+//                            NSLog(@"xx");
                         }];
     
     

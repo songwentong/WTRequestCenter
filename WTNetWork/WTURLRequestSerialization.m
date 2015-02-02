@@ -250,9 +250,8 @@ static NSString *defaultUserAgentString = nil;
 {
     assert(method!=nil);
     assert(URLString!=nil);
-    NSURL *url = [NSURL URLWithString:URLString];
+    NSURL *url = [NSURL URLWithString:[URLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     
-    NSParameterAssert(url!=nil);
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     request.HTTPMethod = method;
     
@@ -277,7 +276,7 @@ static NSString *defaultUserAgentString = nil;
     
     NSString *query = [self WTQueryStringFromParameters:parameters];
     if ([self methodNeedQuery:request.HTTPMethod]) {
-        NSString *urlString = [NSString stringWithFormat:@"%@?%@",request.URL,query];
+        NSString *urlString = [[NSString stringWithFormat:@"%@?%@",request.URL,query] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         mutableRequest.URL = [NSURL URLWithString:urlString];
     }else
     {
