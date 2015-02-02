@@ -297,57 +297,19 @@ static NSString *defaultUserAgentString = nil;
 -(NSMutableURLRequest*)GETRequestWithURL:(NSString*)url
                               parameters:(NSDictionary*)parameters
 {
-    NSMutableURLRequest *request = nil;
-    assert(url!=nil);
-    
-    NSString *parameterString = [self WTQueryStringFromParameters:parameters];
-    
-    NSString *string;
-    if ([parameterString length]>0) {
-        string = [NSString stringWithFormat:@"%@?%@",url,parameterString];
-    }else
-    {
-        string = url;
-    }
-    //    处理中文
-    string = [string stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
-    
-    NSURL *requestURL = [NSURL URLWithString:string];
-    
-    assert(requestURL != nil);
-    
-    request = [NSMutableURLRequest requestWithURL:requestURL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:_timeoutInterval];
-    [_HTTPRequestHeaders enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
-        [request setValue:value forHTTPHeaderField:key];
-    }];
-    
-    return request;
+    return [self requestWithMethod:@"GET"
+                         URLString:url
+                        parameters:parameters
+                             error:nil];
 }
 
 -(NSMutableURLRequest*)POSTRequestWithURL:(NSString*)url
                                parameters:(NSDictionary*)parameters
 {
-    
-    
-    //    判断有效性
-    assert(url != nil);
-    
-    
-    NSURL *theURL = [NSURL URLWithString:url];
-    
-    //    判断有效性
-    assert(theURL != nil);
-    
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:theURL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:_timeoutInterval];
-    [request setHTTPMethod:@"POST"];
-    
-    [request setHTTPBody:[[self WTQueryStringFromParameters:parameters] dataUsingEncoding:NSUTF8StringEncoding]];
-    [_HTTPRequestHeaders enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
-        [request setValue:value forHTTPHeaderField:key];
-    }];
-    
-    return request;
+    return [self requestWithMethod:@"POST"
+                         URLString:url
+                        parameters:parameters
+                             error:nil];
 }
 
 
