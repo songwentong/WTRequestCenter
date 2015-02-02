@@ -257,8 +257,8 @@ static NSString *defaultUserAgentString = nil;
     request.HTTPMethod = method;
     
     request = [[self requestBySerializingRequest:request
-                                 withParameters:parameters
-                                          error:error] mutableCopy];
+                                  withParameters:parameters
+                                           error:error] mutableCopy];
     return request;
 }
 
