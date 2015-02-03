@@ -100,7 +100,7 @@ CGPoint PointOnCubicBezier( CGPoint* cp, float t )
     self.text = [NSString stringWithFormat:@"%.2f",currentValue];
     
     [_pointsArray removeAllObjects];
-    CGPoint points[4] = {CGPointZero,CGPointMake(0.75, 0.95),CGPointMake(0.75, 0.95),CGPointMake(1, 1)};
+    CGPoint points[4] = {CGPointZero,CGPointMake(0.5, 0.9),CGPointMake(0.7, 0.95),CGPointMake(1, 1)};
     CGFloat dt = 1.0/(textNumber+1);
     
     _timerTimeInterval = animationTime / textNumber;
