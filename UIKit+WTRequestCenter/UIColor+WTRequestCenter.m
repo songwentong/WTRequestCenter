@@ -77,15 +77,15 @@
     
     
     
-    if ([hexString length]!=6) {
+    if ([tempString length]!=6) {
         return nil;
     }
     
-    CGFloat red = [self integerValueFromHexString:[hexString substringWithRange:NSMakeRange(0, 2)]];
+    CGFloat red = [self integerValueFromHexString:[tempString substringWithRange:NSMakeRange(0, 2)]];
     
-    CGFloat green = [self integerValueFromHexString:[hexString substringWithRange:NSMakeRange(2, 2)]];
+    CGFloat green = [self integerValueFromHexString:[tempString substringWithRange:NSMakeRange(2, 2)]];
     
-    CGFloat blue = [self integerValueFromHexString:[hexString substringWithRange:NSMakeRange(4, 2)]];
+    CGFloat blue = [self integerValueFromHexString:[tempString substringWithRange:NSMakeRange(4, 2)]];
     
     return [self WTcolorWithRed:red
                           green:green

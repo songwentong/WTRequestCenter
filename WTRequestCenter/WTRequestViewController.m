@@ -153,7 +153,7 @@
 -(void)post
 {
     
-    NSString *url = [WTRequestCenter URLWithIndex:0];
+    NSString *url = nil;
     url = @"http://xxx.com";
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
 

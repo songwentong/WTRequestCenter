@@ -109,7 +109,7 @@ const CGFloat leftMargin = 10;
     
     NSMutableArray *timingFunctions = [NSMutableArray new];
     [[self yArray] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        CAMediaTimingFunction* timingFunction = [CAMediaTimingFunction functionWithControlPoints:0.4 :0.3 :0.6 :0.7];
+        CAMediaTimingFunction* timingFunction = nil;
         timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
         [timingFunctions addObject:timingFunction];
     }];
