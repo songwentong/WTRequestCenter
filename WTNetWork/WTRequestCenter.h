@@ -226,6 +226,13 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
 
 #pragma mark - Testing Method
 
+/*
+    注意:test 方法里面要注意保证不要循环引用，非test方法不会出现循环引用
+        而且不需要取消，所以也不会出现忘了取消请求而导致的崩溃。
+        具体原因参见block原理
+ 
+ */
+
 +(WTURLRequestOperation*)testdoURLRequest:(NSURLRequest*)request
                                  progress:(WTDownLoadProgressBlock)progress
                                  finished:(WTRequestFinishedBlock)finished
