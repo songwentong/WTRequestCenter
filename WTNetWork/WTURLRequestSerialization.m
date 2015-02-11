@@ -60,8 +60,8 @@ static NSString *const WTReuqestCenterUserAgent = @"WTURLRequestUserAgent";
 - (BOOL)appendPartWithData:(NSData*)data
                       name:(NSString*)name
 {
-    assert(!data);
-    assert(!name);
+    assert(data!=nil);
+    assert(name!=nil);
     
     NSDictionary *dict= @{name: data};
     [_HTTPBodyParts addObject:dict];

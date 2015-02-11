@@ -34,6 +34,9 @@
 
 
 #pragma mark - 读数据 Read Data
++(NSData*)dataWithName:(NSString*)name;
+
+
 
 
 //异步取数据(推荐)
@@ -46,6 +49,14 @@
 //根据url获取文件,分线程回调
 +(void)dataWithURL:(NSString*)url
  completionHandler:(void (^)(NSData *data))completion;
+
+
+
+#pragma mark - 删除数据
+
+
++(void)removeDataWithName:(NSString*)name;
+
 
 /*!
     删除所有本地数据

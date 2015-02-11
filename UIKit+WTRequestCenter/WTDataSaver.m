@@ -191,7 +191,17 @@ static NSOperationQueue *dataQueue = nil;
    
 }
 
+
+
+
 #pragma mark - 取数据
++(NSData*)dataWithName:(NSString*)name
+{
+    NSString *filePath = [NSString stringWithFormat:@"%@/%@",[self rootDir],name];
+    NSData *data = [NSData dataWithContentsOfFile:filePath];
+    return data;
+}
+
 
 +(void)dataWithIndex:(NSInteger)index completion:(void(^)(NSData*data))completion
 {
@@ -242,6 +252,21 @@ static NSOperationQueue *dataQueue = nil;
 }
 
 #pragma mark - 清数据
+
++(void)removeDataWithName:(NSString*)name
+{
+    [self configureDirectory];
+    NSString *filePath = [NSString stringWithFormat:@"%@/%@",[self rootDir],name];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if ([fileManager fileExistsAtPath:filePath]) {
+        [fileManager removeItemAtPath:filePath
+                                error:nil];
+    }
+    
+    
+}
+
+
 +(void)removeAllData
 {
     [self configureDirectory];

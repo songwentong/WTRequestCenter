@@ -55,13 +55,30 @@
     [self configView];
     
 
-//    [self performSelector:@selector(takeSnapShot) withObject:nil afterDelay:1];
+    NSURLRequest *request = [WTRequestCenter postWithURL:@"url"
+                      parameters:nil
+       constructingBodyWithBlock:^(id<WTMultipartFormData> formData) {
+           NSData *data = [@"data" dataUsingEncoding:NSUTF8StringEncoding];
+           [formData appendPartWithData:data name:@"a"];
+       } finished:^(NSURLResponse *response, NSData *data) {
+           
+       } failed:^(NSURLResponse *response, NSError *error) {
+           
+       }];
+//    NSData *data = request.HTTPBody;
+//    NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//    NSLog(@"%@",str);
+    /*
     [[WTNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
+    NSData *data = [@"dsajlkfjlsd" dataUsingEncoding:NSUTF8StringEncoding];
+    [WTDataSaver saveData:data withName:@"aaa"];
     
-    [WTDataSaver dataWithName:@"pqwoewqpe" completion:^(NSData *data) {
+    [WTDataSaver dataWithName:@"aaa" completion:^(NSData *data) {
 //        NSLog(@"xxx");
     }];
     
+    [WTDataSaver removeDataWithName:@"aaa"];
+    */
 //    [WTDataSaver clearAllData];
     
     _relerView = [[RulerView alloc] initWithFrame:self.view.bounds];
