@@ -12,6 +12,8 @@
 		A3B70F591988BDFA002776F4 /* image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A3B70F581988BDFA002776F4 /* image.jpg */; };
 		E10C0A021A6FFE7F0064F51F /* WTNetworkHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E10C0A011A6FFE7F0064F51F /* WTNetworkHUD.m */; };
 		E15118011A1D9E410060AAB1 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E15118001A1D9E410060AAB1 /* MobileCoreServices.framework */; };
+		E161B2881A8DA37A00A69C09 /* SingleRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E161B2861A8DA37A00A69C09 /* SingleRequestViewController.m */; };
+		E161B2891A8DA37A00A69C09 /* SingleRequestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E161B2871A8DA37A00A69C09 /* SingleRequestViewController.xib */; };
 		E162A4771A6A167300CBC2C5 /* WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E162A4701A6A167300CBC2C5 /* WTRequestCenter.m */; };
 		E162A4781A6A167300CBC2C5 /* WTURLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E162A4721A6A167300CBC2C5 /* WTURLRequestOperation.m */; };
 		E162A4791A6A167300CBC2C5 /* WTURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = E162A4741A6A167300CBC2C5 /* WTURLRequestSerialization.m */; };
@@ -71,6 +73,9 @@
 		E10C0A001A6FFE7F0064F51F /* WTNetworkHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WTNetworkHUD.h; path = "UIKit+WTRequestCenter/WTNetworkHUD.h"; sourceTree = SOURCE_ROOT; };
 		E10C0A011A6FFE7F0064F51F /* WTNetworkHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WTNetworkHUD.m; path = "UIKit+WTRequestCenter/WTNetworkHUD.m"; sourceTree = SOURCE_ROOT; };
 		E15118001A1D9E410060AAB1 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		E161B2851A8DA37A00A69C09 /* SingleRequestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleRequestViewController.h; sourceTree = "<group>"; };
+		E161B2861A8DA37A00A69C09 /* SingleRequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleRequestViewController.m; sourceTree = "<group>"; };
+		E161B2871A8DA37A00A69C09 /* SingleRequestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SingleRequestViewController.xib; sourceTree = "<group>"; };
 		E162A46E1A6A167300CBC2C5 /* WTNetWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WTNetWork.h; path = WTNetWork/WTNetWork.h; sourceTree = SOURCE_ROOT; };
 		E162A46F1A6A167300CBC2C5 /* WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WTRequestCenter.h; path = WTNetWork/WTRequestCenter.h; sourceTree = SOURCE_ROOT; };
 		E162A4701A6A167300CBC2C5 /* WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WTRequestCenter.m; path = WTNetWork/WTRequestCenter.m; sourceTree = SOURCE_ROOT; };
@@ -268,6 +273,9 @@
 				E43DC20019F29D82009FA132 /* WTImageViewController.h */,
 				E43DC20119F29D82009FA132 /* WTImageViewController.m */,
 				E43DC20219F29D82009FA132 /* WTImageViewController.xib */,
+				E161B2851A8DA37A00A69C09 /* SingleRequestViewController.h */,
+				E161B2861A8DA37A00A69C09 /* SingleRequestViewController.m */,
+				E161B2871A8DA37A00A69C09 /* SingleRequestViewController.xib */,
 				E19F0C281A0201460049C1A2 /* RulerView.h */,
 				E19F0C291A0201460049C1A2 /* RulerView.m */,
 				E4440D88197A01B1001E6D88 /* Images.xcassets */,
@@ -411,6 +419,7 @@
 				E4440D7B197A01B1001E6D88 /* InfoPlist.strings in Resources */,
 				E4440D84197A01B1001E6D88 /* Main.storyboard in Resources */,
 				E1632C8D19EE02EB00089FFA /* WTRequestViewController.xib in Resources */,
+				E161B2891A8DA37A00A69C09 /* SingleRequestViewController.xib in Resources */,
 				A3B70F591988BDFA002776F4 /* image.jpg in Resources */,
 				A3B4A7C2199AF60C00A8BAF0 /* aaa@2x.gif in Resources */,
 				E43DC20419F29D82009FA132 /* WTImageViewController.xib in Resources */,
@@ -433,6 +442,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E162A49F1A6A168900CBC2C5 /* WTImageViewer.m in Sources */,
+				E161B2881A8DA37A00A69C09 /* SingleRequestViewController.m in Sources */,
 				E19F0C2A1A0201460049C1A2 /* RulerView.m in Sources */,
 				E1779F601A6F9803008F3550 /* UIViewController+WTRequestCenter.m in Sources */,
 				E181F7761A81138700832D0B /* NumberLabel.m in Sources */,

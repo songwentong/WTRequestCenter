@@ -11,7 +11,7 @@
 #import "UIKit+WTRequestCenter.h"
 #import "RulerView.h"
 
-
+#import "SingleRequestViewController.h"
 #import "WTRequestViewController.h"
 #import "WTWebViewController.h"
 #import "WTImageViewController.h"
@@ -149,7 +149,7 @@
 {
     requestTypesArray = [[NSMutableArray alloc] init];
     [requestTypesArray addObject:@"GET 请求"];
-    [requestTypesArray addObject:@"POST 请求"];
+    [requestTypesArray addObject:@"单发请求"];
     [requestTypesArray addObject:@"WebView"];
     [requestTypesArray addObject:@"图片请求"];
 }
@@ -495,6 +495,14 @@
                     vc.indexPath = indexPath;
                     [self.navigationController pushViewController:vc animated:YES];
                 }
+                    break;
+                    case 1:
+                {
+                    SingleRequestViewController *vc = [[SingleRequestViewController alloc] init];
+                    [self.navigationController pushViewController:vc
+                                                         animated:YES];
+                }
+                    break;
                     break;
                 case 2:
                 {
