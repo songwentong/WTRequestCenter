@@ -275,14 +275,17 @@ static NSString *defaultUserAgentString = nil;
     
     
     NSString *query = [self WTQueryStringFromParameters:parameters];
-    if ([self methodNeedQuery:request.HTTPMethod]) {
-        NSString *urlString = [[NSString stringWithFormat:@"%@?%@",request.URL,query] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        mutableRequest.URL = [NSURL URLWithString:urlString];
-    }else
-    {
-        NSData *httpBodyData = [query dataUsingEncoding:NSUTF8StringEncoding];
-        [mutableRequest setHTTPBody:httpBodyData];
+    if ([query length]>0) {
+        if ([self methodNeedQuery:request.HTTPMethod]) {
+            NSString *urlString = [[NSString stringWithFormat:@"%@?%@",request.URL,query] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            mutableRequest.URL = [NSURL URLWithString:urlString];
+        }else
+        {
+            NSData *httpBodyData = [query dataUsingEncoding:NSUTF8StringEncoding];
+            [mutableRequest setHTTPBody:httpBodyData];
+        }
     }
+
     
     return mutableRequest;
 }
