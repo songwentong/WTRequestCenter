@@ -112,7 +112,7 @@ static NSURLCache* sharedCache = nil;
 
 
 //清除请求的缓存
-+(void)removeRequestCache:(NSURLRequest*)request
++(void)removeCachedResponseForRequest:(NSURLRequest*)request
 {
     NSURLCache *cache = [WTRequestCenter sharedCache];
     [cache removeCachedResponseForRequest:request];

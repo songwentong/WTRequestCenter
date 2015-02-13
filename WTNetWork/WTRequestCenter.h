@@ -199,7 +199,7 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
  Removes the NSCachedURLResponse from the cache that is
  stored using the given request.
  */
-+(void)removeRequestCache:(NSURLRequest*)request;
++(void)removeCachedResponseForRequest:(NSURLRequest*)request;
 
 
 #pragma mark - 请求开始和结束的消息
