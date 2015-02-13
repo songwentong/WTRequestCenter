@@ -220,7 +220,7 @@ static NSURLCache* sharedCache = nil;
                   finished:(WTRequestFinishedBlock)finished
                     failed:(WTRequestFailedBlock)failed
 {
-    NSURLRequest *request = [[WTURLRequestSerialization sharedRequestSerialization] PUTRequestWithURL:url parameters:parameters];
+    NSURLRequest *request = [[WTURLRequestSerialization sharedRequestSerialization] requestWithMethod:@"PUT" URLString:url parameters:parameters error:nil];
     [self doURLRequest:request finished:finished failed:failed];
     return request;
 }
@@ -230,7 +230,7 @@ static NSURLCache* sharedCache = nil;
                      finished:(WTRequestFinishedBlock)finished
                        failed:(WTRequestFailedBlock)failed
 {
-    NSURLRequest *request = [[WTURLRequestSerialization sharedRequestSerialization] DELETERequestWithURL:url parameters:parameters];
+    NSURLRequest *request = [[WTURLRequestSerialization sharedRequestSerialization] requestWithMethod:@"DELETE" URLString:url parameters:parameters error:nil];
     [self doURLRequest:request
               finished:finished
                 failed:failed];
@@ -243,7 +243,7 @@ static NSURLCache* sharedCache = nil;
                    finished:(WTRequestFinishedBlock)finished
                      failed:(WTRequestFailedBlock)failed
 {
-    NSURLRequest *request = [[WTURLRequestSerialization sharedRequestSerialization] HEADRequestWithURL:url parameters:parameters];
+    NSURLRequest *request = [[WTURLRequestSerialization sharedRequestSerialization] requestWithMethod:@"HEAD" URLString:url parameters:parameters error:nil];
     [self doURLRequest:request
               finished:finished
                 failed:failed];
