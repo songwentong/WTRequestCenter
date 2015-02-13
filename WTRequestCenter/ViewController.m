@@ -55,16 +55,7 @@
     [self configView];
     
 
-    NSURLRequest *request = [WTRequestCenter postWithURL:@"url"
-                      parameters:nil
-       constructingBodyWithBlock:^(id<WTMultipartFormData> formData) {
-           NSData *data = [@"data" dataUsingEncoding:NSUTF8StringEncoding];
-           [formData appendPartWithData:data name:@"a"];
-       } finished:^(NSURLResponse *response, NSData *data) {
-           
-       } failed:^(NSURLResponse *response, NSError *error) {
-           
-       }];
+
 //    NSData *data = request.HTTPBody;
 //    NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 //    NSLog(@"%@",str);
