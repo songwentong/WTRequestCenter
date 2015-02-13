@@ -297,23 +297,7 @@ static NSString *defaultUserAgentString = nil;
     return contain;
 }
 
--(NSMutableURLRequest*)GETRequestWithURL:(NSString*)url
-                              parameters:(NSDictionary*)parameters
-{
-    return [self requestWithMethod:@"GET"
-                         URLString:url
-                        parameters:parameters
-                             error:nil];
-}
 
--(NSMutableURLRequest*)POSTRequestWithURL:(NSString*)url
-                               parameters:(NSDictionary*)parameters
-{
-    return [self requestWithMethod:@"POST"
-                         URLString:url
-                        parameters:parameters
-                             error:nil];
-}
 
 
 -(NSMutableURLRequest*)POSTRequestWithURL:(NSString*)url

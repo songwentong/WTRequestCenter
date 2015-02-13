@@ -664,7 +664,7 @@ static NSString * const baseURL = @"http://www.baidu.com";
                                finished:(WTRequestFinishedBlock)finished
                                  failed:(WTRequestFailedBlock)failed
 {
-    NSURLRequest *request = [[WTURLRequestSerialization sharedRequestSerialization]GETRequestWithURL:url parameters:parameters];
+    NSURLRequest *request = [[WTURLRequestSerialization sharedRequestSerialization] requestWithMethod:@"GET" URLString:url parameters:parameters error:nil];
     WTURLRequestOperation *operation = [self testdoURLRequest:request option:option progress:progress finished:finished failed:failed];
     return operation;
 }
@@ -676,7 +676,7 @@ static NSString * const baseURL = @"http://www.baidu.com";
                                 finished:(WTRequestFinishedBlock)finished
                                   failed:(WTRequestFailedBlock)failed
 {
-    NSURLRequest *request = [[WTURLRequestSerialization sharedRequestSerialization] POSTRequestWithURL:url parameters:parameters];
+    NSURLRequest *request = [[WTURLRequestSerialization sharedRequestSerialization] requestWithMethod:@"POST" URLString:url parameters:parameters error:nil];
     WTURLRequestOperation *operation = [self testdoURLRequest:request progress:nil finished:finished failed:failed];
     return operation;
 }
