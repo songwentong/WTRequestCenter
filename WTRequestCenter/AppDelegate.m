@@ -7,13 +7,13 @@
 //
 
 #import "AppDelegate.h"
-
+#import "UIKit+WTRequestCenter.h"
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    
+    [WTNetworkActivityIndicatorManager sharedManager].enabled = YES;
     return YES;
 }
 							
