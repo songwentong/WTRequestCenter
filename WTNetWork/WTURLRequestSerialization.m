@@ -254,7 +254,7 @@ static NSString *defaultUserAgentString = nil;
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     request.HTTPMethod = method;
-    
+    request.timeoutInterval = _timeoutInterval;
     request = [[self requestBySerializingRequest:request
                                   withParameters:parameters
                                            error:error] mutableCopy];
