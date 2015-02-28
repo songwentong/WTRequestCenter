@@ -9,24 +9,24 @@
 #import <UIKit/UIKit.h>
 
 //像余额宝一样的数字增长的label
-@class NumberLabel;
+@class WTNumberLabel;
 @protocol NumberLabelDataSource <NSObject>
 
 //当前数字
--(CGFloat)currentValueOfNumberLabel:(NumberLabel*)label;
+-(CGFloat)currentValueOfNumberLabel:(WTNumberLabel*)label;
 //目标数字
--(CGFloat)targetValueOfNumberLabel:(NumberLabel*)label;
+-(CGFloat)targetValueOfNumberLabel:(WTNumberLabel*)label;
 
 @optional
 //动画时间，默认3秒
--(NSTimeInterval)animationTimeForNumberLabel:(NumberLabel*)label;
+-(NSTimeInterval)animationTimeForNumberLabel:(WTNumberLabel*)label;
 //显示的文字个数，默认100
--(NSUInteger)numberOfTextForNumberLabel:(NumberLabel*)label;
+-(NSUInteger)numberOfTextForNumberLabel:(WTNumberLabel*)label;
 
 @end
 
 //显示数字
-@interface NumberLabel : UILabel
+@interface WTNumberLabel : UILabel
 
 -(void)startAnimation;
 @property(nonatomic,weak) id<NumberLabelDataSource> dataSource;

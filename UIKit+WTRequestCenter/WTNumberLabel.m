@@ -6,9 +6,9 @@
 //  Copyright (c) 2015年 song. All rights reserved.
 //
 
-#import "NumberLabel.h"
+#import "WTNumberLabel.h"
 #import <CoreGraphics/CoreGraphics.h>
-@interface NumberLabel()
+@interface WTNumberLabel()
 {
     NSTimer *_myTimer;
     NSInteger _currintIndex;
@@ -50,7 +50,7 @@ CGPoint PointOnCubicBezier( CGPoint* cp, float t )
     return result;
 }
 
-@implementation NumberLabel
+@implementation WTNumberLabel
 
 
 - (instancetype)init

@@ -41,7 +41,7 @@
 #import "WTDataSaver.h"
 #import "UIViewController+WTRequestCenter.h"
 #import "WTNetworkHUD.h"
-
+#import "WTNumberLabel.h"
 
 #endif
 

@@ -33,7 +33,7 @@
 		E1632C8C19EE02EB00089FFA /* WTRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1632C8A19EE02EB00089FFA /* WTRequestViewController.m */; };
 		E1632C8D19EE02EB00089FFA /* WTRequestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1632C8B19EE02EB00089FFA /* WTRequestViewController.xib */; };
 		E1779F601A6F9803008F3550 /* UIViewController+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E1779F5F1A6F9803008F3550 /* UIViewController+WTRequestCenter.m */; };
-		E181F7761A81138700832D0B /* NumberLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E181F7751A81138700832D0B /* NumberLabel.m */; };
+		E181F7761A81138700832D0B /* WTNumberLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E181F7751A81138700832D0B /* WTNumberLabel.m */; };
 		E19B62C11A2469BA004713F2 /* UIImageViewCacheTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E19B62C01A2469BA004713F2 /* UIImageViewCacheTests.m */; };
 		E19F0C2A1A0201460049C1A2 /* RulerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E19F0C291A0201460049C1A2 /* RulerView.m */; };
 		E43DC20319F29D82009FA132 /* WTImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E43DC20119F29D82009FA132 /* WTImageViewController.m */; };
@@ -115,8 +115,8 @@
 		E1632C8B19EE02EB00089FFA /* WTRequestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTRequestViewController.xib; sourceTree = "<group>"; };
 		E1779F5E1A6F9803008F3550 /* UIViewController+WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+WTRequestCenter.h"; path = "UIKit+WTRequestCenter/UIViewController+WTRequestCenter.h"; sourceTree = SOURCE_ROOT; };
 		E1779F5F1A6F9803008F3550 /* UIViewController+WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+WTRequestCenter.m"; path = "UIKit+WTRequestCenter/UIViewController+WTRequestCenter.m"; sourceTree = SOURCE_ROOT; };
-		E181F7741A81138700832D0B /* NumberLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NumberLabel.h; path = "UIKit+WTRequestCenter/NumberLabel.h"; sourceTree = SOURCE_ROOT; };
-		E181F7751A81138700832D0B /* NumberLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NumberLabel.m; path = "UIKit+WTRequestCenter/NumberLabel.m"; sourceTree = SOURCE_ROOT; };
+		E181F7741A81138700832D0B /* WTNumberLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WTNumberLabel.h; path = "UIKit+WTRequestCenter/WTNumberLabel.h"; sourceTree = SOURCE_ROOT; };
+		E181F7751A81138700832D0B /* WTNumberLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WTNumberLabel.m; path = "UIKit+WTRequestCenter/WTNumberLabel.m"; sourceTree = SOURCE_ROOT; };
 		E19B62C01A2469BA004713F2 /* UIImageViewCacheTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageViewCacheTests.m; sourceTree = "<group>"; };
 		E19F0C281A0201460049C1A2 /* RulerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RulerView.h; sourceTree = "<group>"; };
 		E19F0C291A0201460049C1A2 /* RulerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RulerView.m; sourceTree = "<group>"; };
@@ -186,8 +186,6 @@
 		A3B70F5F1988DC5B002776F4 /* UIKit+WTRequestCenter */ = {
 			isa = PBXGroup;
 			children = (
-				E181F7741A81138700832D0B /* NumberLabel.h */,
-				E181F7751A81138700832D0B /* NumberLabel.m */,
 				E162A4891A6A168900CBC2C5 /* UIKit+WTRequestCenter.h */,
 				E162A47B1A6A168900CBC2C5 /* UIAlertView+WTRequestCenter.h */,
 				E162A47C1A6A168900CBC2C5 /* UIAlertView+WTRequestCenter.m */,
@@ -217,6 +215,8 @@
 				E1779F5F1A6F9803008F3550 /* UIViewController+WTRequestCenter.m */,
 				E10C0A001A6FFE7F0064F51F /* WTNetworkHUD.h */,
 				E10C0A011A6FFE7F0064F51F /* WTNetworkHUD.m */,
+				E181F7741A81138700832D0B /* WTNumberLabel.h */,
+				E181F7751A81138700832D0B /* WTNumberLabel.m */,
 			);
 			name = "UIKit+WTRequestCenter";
 			path = "WTRequestCenter/UIKit+WTRequestCenter";
@@ -445,7 +445,7 @@
 				E161B2881A8DA37A00A69C09 /* SingleRequestViewController.m in Sources */,
 				E19F0C2A1A0201460049C1A2 /* RulerView.m in Sources */,
 				E1779F601A6F9803008F3550 /* UIViewController+WTRequestCenter.m in Sources */,
-				E181F7761A81138700832D0B /* NumberLabel.m in Sources */,
+				E181F7761A81138700832D0B /* WTNumberLabel.m in Sources */,
 				E162A4961A6A168900CBC2C5 /* UIApplication+WTRequestCenter.m in Sources */,
 				E162A47A1A6A167300CBC2C5 /* WTURLSessionManager.m in Sources */,
 				E162A4991A6A168900CBC2C5 /* UIDevice+WTRequestCenter.m in Sources */,
