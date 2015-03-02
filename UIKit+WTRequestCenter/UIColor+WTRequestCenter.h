@@ -52,4 +52,14 @@
  */
 +(UIColor*)WTRandomColor;
 
+
+/*!
+    取反色
+ */
++(UIColor*)WTAntiColor:(UIColor*)color withStride:(CGFloat)stride;
+
+/*!
+ 取反色
+ */
+-(UIColor*)WTAntiColorWithStride:(CGFloat)stride;
 @end

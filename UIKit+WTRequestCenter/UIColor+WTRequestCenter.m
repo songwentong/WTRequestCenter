@@ -10,6 +10,36 @@
 
 @implementation UIColor (WTRequestCenter)
 
++(UIColor*)WTAntiColor:(UIColor*)color withStride:(CGFloat)stride
+{
+
+    CGFloat r,g,b,a;
+    [color getRed:&r green:&g blue:&b alpha:&a];
+    r = [self WTAntiValueWithValue:r stride:stride];
+    g = [self WTAntiValueWithValue:g stride:stride];
+    b = [self WTAntiValueWithValue:b stride:stride];
+    UIColor *result = [UIColor colorWithRed:r green:g blue:b alpha:a];
+    return result;
+}
+
+-(UIColor*)WTAntiColorWithStride:(CGFloat)stride
+{
+    return [UIColor WTAntiColor:self withStride:stride];
+}
+
++(CGFloat)WTAntiValueWithValue:(CGFloat)value stride:(CGFloat)stride
+{
+    CGFloat result = 0;
+    if (value>0.5) {
+        result = value+stride;
+    }else
+    {
+        result = value-stride;
+    }
+    
+    return result;
+}
+
 + (UIColor*)WTcolorWithFloat:(CGFloat)number
 {
     return [self WTcolorWithRed:number
