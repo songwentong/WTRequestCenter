@@ -83,7 +83,7 @@
 + (UIColor *)WTcolorWithHexString:(NSString *)hexString alpha:(CGFloat)alpha {
     // #rgb = #rrggbb
     
-    NSString *tempString;
+    NSString *tempString = hexString;
     
     if ([hexString hasPrefix:@"#"]) {
         tempString = [hexString substringFromIndex:1];
