@@ -83,7 +83,7 @@
 + (UIColor *)WTcolorWithHexString:(NSString *)hexString alpha:(CGFloat)alpha {
     // #rgb = #rrggbb
     
-    NSString *tempString = hexString;
+    NSString *tempString = @"";
     
     if ([hexString hasPrefix:@"#"]) {
         tempString = [hexString substringFromIndex:1];
@@ -105,7 +105,9 @@
         tempString = [NSString stringWithFormat:@"%@%@%@%@%@%@", oneR, oneR, oneG, oneG, oneB, oneB];
     }
     
-    
+    if ([hexString length]==6) {
+        tempString = hexString;
+    }
     
     if ([tempString length]!=6) {
         return nil;
