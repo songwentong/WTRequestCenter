@@ -152,7 +152,7 @@ static NSInteger numberOfArc = 8;
     }
     CGRect rect = [UIScreen mainScreen].bounds;
     hudImageView.center = CGPointMake(CGRectGetWidth(rect)/2, CGRectGetHeight(rect)/2);
-    NSLog(@"%@",hudImageView);
+//    NSLog(@"%@",hudImageView);
     [self setNeedsDisplay];
 }
 

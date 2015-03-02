@@ -85,12 +85,12 @@
             if (finishCount == [array count]) {
                 [self stopLoadWTHud];
             }
-            NSLog(@"------finished %@",response.URL);
+//            NSLog(@"------finished %@",response.URL);
         [self appendLogString:[NSString stringWithFormat:@"request finished :%@",url]];
         } failed:^(NSURLResponse *response, NSError *error) {
 //            NSLog(@"failed:%@",response.URL);
             
-            NSLog(@"------failed %@",response.URL);
+//            NSLog(@"------failed %@",response.URL);
             
             finishCount = finishCount + 1;
             if (finishCount == [array count]) {

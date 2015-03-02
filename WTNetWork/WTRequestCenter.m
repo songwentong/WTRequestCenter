@@ -19,7 +19,7 @@ NSString * const WTNetworkingOperationDidStartNotification = @"WTNetworkingOpera
 NSString * const WTNetworkingOperationDidFinishNotification = @"WTNetworkingOperationDidFinishNotification";
 
 
-BOOL const WTRequestCenterDebugMode = NO;
+BOOL const WTRequestCenterDebugMode = YES;
 
 @implementation WTRequestCenter
 
@@ -328,11 +328,11 @@ static NSURLCache* sharedCache = nil;
     };
     
     
-    [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
+//    [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
         [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
             complection(response,data,connectionError);
         }];
-    }];
+//    }];
     
     
 }
