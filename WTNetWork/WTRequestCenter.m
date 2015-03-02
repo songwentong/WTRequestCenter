@@ -681,4 +681,22 @@ static NSString * const baseURL = @"http://www.baidu.com";
     return operation;
 }
 
+#pragma mark - 延时的方法
+void perform(dispatch_block_t block , double delay)
+{
+    dispatch_time_t t = dispatch_time(DISPATCH_TIME_NOW, delay*1000*1000*1000);
+    dispatch_after(t, dispatch_get_main_queue(), ^{
+        block();
+    });
+}
+
++(void)performBlock:(dispatch_block_t)block afterDelay:(NSTimeInterval)delay
+{
+    
+    dispatch_time_t t = dispatch_time(DISPATCH_TIME_NOW, delay*1000*1000*1000);
+    dispatch_after(t, dispatch_get_main_queue(), ^{
+        block();
+    });
+}
+
 @end
