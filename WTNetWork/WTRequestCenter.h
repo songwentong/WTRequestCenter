@@ -224,7 +224,9 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
 
 
 #pragma mark - 延时的方法
-void perform(dispatch_block_t block , double delay);
+//void perform(dispatch_block_t block , double delay);
+
++(void)performBlock:(dispatch_block_t)block afterDelay:(NSTimeInterval)delay;
 #pragma mark - Testing Method
 
 /*

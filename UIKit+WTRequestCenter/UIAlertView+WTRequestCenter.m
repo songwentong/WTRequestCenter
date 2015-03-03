@@ -18,11 +18,9 @@
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:nil otherButtonTitles: nil];
     [alert show];
-    
-    perform(^{
+    [WTRequestCenter performBlock:^{
         [alert dismissWithClickedButtonIndex:0 animated:YES];
-    }, time);
-    
+    } afterDelay:time];
 }
 
 
