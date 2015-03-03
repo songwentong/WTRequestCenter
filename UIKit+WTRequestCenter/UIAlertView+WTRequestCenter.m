@@ -7,7 +7,7 @@
 //
 
 #import "UIAlertView+WTRequestCenter.h"
-
+#import "WTRequestCenter.h"
 @implementation UIAlertView (WTRequestCenter)
 +(void)showAlertWithMessage:(NSString*)message
 {
@@ -18,11 +18,13 @@
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:nil otherButtonTitles: nil];
     [alert show];
-    [UIView animateKeyframesWithDuration:0 delay:time options:0 animations:^{
-        
-    } completion:^(BOOL finished) {
+    
+    perform(^{
         [alert dismissWithClickedButtonIndex:0 animated:YES];
-    }];
+    }, time);
     
 }
+
+
+
 @end

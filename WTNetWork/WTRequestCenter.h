@@ -223,7 +223,8 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
 +(NSString*)URLWithIndex:(NSInteger)index;
 
 
-
+#pragma mark - 延时的方法
+void perform(dispatch_block_t block , double delay);
 #pragma mark - Testing Method
 
 /*
