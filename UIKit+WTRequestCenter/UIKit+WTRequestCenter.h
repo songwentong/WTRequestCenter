@@ -42,7 +42,7 @@
 #import "UIViewController+WTRequestCenter.h"
 #import "WTNetworkHUD.h"
 #import "WTNumberLabel.h"
-
+#import "WTCycleScrollView.h"
 #endif
 
 
