@@ -695,7 +695,9 @@ void perform(dispatch_block_t block , double delay)
     
     dispatch_time_t t = dispatch_time(DISPATCH_TIME_NOW, delay*1000*1000*1000);
     dispatch_after(t, dispatch_get_main_queue(), ^{
-        block();
+        if (block) {
+            block();
+        }
     });
 }
 

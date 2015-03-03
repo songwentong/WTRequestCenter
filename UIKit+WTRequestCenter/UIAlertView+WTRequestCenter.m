@@ -16,13 +16,19 @@
 
 +(void)showAlertWithTitle:(NSString*)title message:(NSString*)message duration:(NSTimeInterval)time
 {
+    [self showAlertWithTitle:title message:message duration:time complectionHandler:nil];
+}
+
++(void)showAlertWithTitle:(NSString*)title message:(NSString*)message duration:(NSTimeInterval)time complectionHandler:(dispatch_block_t)block
+{
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:nil cancelButtonTitle:nil otherButtonTitles: nil];
     [alert show];
     [WTRequestCenter performBlock:^{
         [alert dismissWithClickedButtonIndex:0 animated:YES];
+        if (block) {
+            block();
+        }
     } afterDelay:time];
 }
-
-
 
 @end
