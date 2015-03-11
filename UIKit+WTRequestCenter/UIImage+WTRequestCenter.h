@@ -19,7 +19,7 @@
 
 
 /*!
-     根据URL得到图片
+     根据URL得到图片，分线程回调
  */
 +(void)imageWithURL:(NSString*)url complection:(void(^)(UIImage *image))complection;
 
