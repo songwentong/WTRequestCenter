@@ -19,6 +19,8 @@
     NSMutableArray *viewToShow;
     
     
+    
+    
     UIScrollView *myScrollView;
     
 }
@@ -144,6 +146,17 @@
             [viewToShow addObject:view];
             view.frame = frame;
             [myScrollView addSubview:view];
+            
+            
+            
+            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+            button.frame = view.bounds;
+            [view addSubview:button];
+            view.userInteractionEnabled = YES;
+            button.userInteractionEnabled = YES;
+            [button addTarget:self
+                       action:@selector(buttonPressed:)
+             forControlEvents:UIControlEventTouchUpInside];
         }
         UIView *first = [self.dataSource cycleScrollView:self
                                             viewForIndex:0];
@@ -163,6 +176,19 @@
     }
 }
 
+
+-(void)buttonPressed:(UIButton*)sender
+{
+    UIView *view = sender.superview;
+    NSInteger index = [viewToShow indexOfObject:view];
+    if (index!=NSNotFound) {
+        if ([self.delegate respondsToSelector:@selector(wtCycleScrollView:didPressWithIndex:)]) {
+            [self.delegate wtCycleScrollView:self
+                           didPressWithIndex:index];
+        }
+    }
+    
+}
 
 -(void)startTimer
 {

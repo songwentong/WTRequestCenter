@@ -20,8 +20,17 @@
 -(UIView*)cycleScrollView:(WTCycleScrollView*)view viewForIndex:(NSInteger)index;
 
 @end
+
+
+@protocol WTCycleScrollViewDelegate <NSObject>
+@optional
+-(void)wtCycleScrollView:(WTCycleScrollView*)view didPressWithIndex:(NSInteger)index;
+
+
+@end
 @interface WTCycleScrollView : UIView
-@property (weak ,nonatomic) id <WTCycleScrollViewDataSource> dataSource;
+@property (weak, nonatomic) id <WTCycleScrollViewDataSource> dataSource;
+@property (weak, nonatomic) id <WTCycleScrollViewDelegate> delegate;
 -(void)reloadData;
 
 

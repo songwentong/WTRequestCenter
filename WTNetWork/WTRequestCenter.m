@@ -701,4 +701,9 @@ void perform(dispatch_block_t block , double delay)
     });
 }
 
+//执行block
++(void)performBlock:(void(^)())block
+{
+    
+}
 @end
