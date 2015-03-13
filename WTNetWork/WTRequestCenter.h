@@ -97,7 +97,7 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
              failed:(WTRequestFailedBlock)failed;
 #pragma mark - GET
 
-//GET
+
 /*!
  Performs an asynchronous get request of the given
  url,parameters. When the request has completed or failed,
