@@ -25,7 +25,7 @@
 
 @end
 
-//显示数字
+//一个数字变化的label
 @interface WTNumberLabel : UILabel
 
 -(void)startAnimation;

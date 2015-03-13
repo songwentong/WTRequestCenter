@@ -24,8 +24,10 @@
 #import <UIKit/UIKit.h>
 #import "WTRequestCenter.h"
 @interface UIImageView (WTRequestCenter)
-//@property (nonatomic,strong,readonly) WTURLRequestOperation *wtImageRequestOperation;
-//下载图片
+
+/*
+    下载图片
+ */
 - (void)setImageWithURL:(NSString*)url;
 //下载图片＋placeholder
 - (void)setImageWithURL:(NSString*)url

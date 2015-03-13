@@ -27,6 +27,10 @@
 @property (nonatomic,strong) WTURLRequestOperation *wtImageRequestOperation;
 @property (nonatomic,strong) WTURLRequestOperation *wtBackGroundImageRequestOperation;
 
+
+/*
+    设置图片
+ */
 - (void)setImageForState:(UIControlState)state
                  withURL:(NSString *)url;
 
@@ -34,6 +38,11 @@
                  withURL:(NSString *)url
         placeholderImage:(UIImage *)placeholderImage;
 
+
+
+/*!
+    设置背景图
+ */
 - (void)setBackgroundImage:(UIControlState)state
                    withURL:(NSString *)url;
 

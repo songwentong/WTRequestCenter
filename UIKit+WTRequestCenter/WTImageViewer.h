@@ -22,6 +22,10 @@
 -(void)WTImageViewer:(WTImageViewer*)viewer pressImageWithIndex:(NSInteger)index;
 
 @end
+
+
+
+//图片查看类
 @interface WTImageViewer : UIView <UIScrollViewDelegate>
 {
     UIScrollView *myScrollView;
