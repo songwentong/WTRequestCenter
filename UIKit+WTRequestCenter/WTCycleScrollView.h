@@ -5,13 +5,6 @@
 //  Created by SongWentong on 15/2/3.
 //  Copyright (c) 2015年 Spritekit. All rights reserved.
 //
-
-/*
- 
- 循环的ScrollView
- */
-
-
 #import <UIKit/UIKit.h>
 @class WTCycleScrollView;
 //数据源
