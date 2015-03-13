@@ -76,14 +76,20 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
 
 
 /*!
- just do a request
+ Performs an asynchronous load of the given
+ request. When the request has completed or failed,
+ the block will be executed from the context of the
+ main NSOperationQueue.
  */
 +(void)doURLRequest:(NSURLRequest*)request
            finished:(WTRequestFinishedBlock)finished
              failed:(WTRequestFailedBlock)failed;
 
 /*
-  do a request with cachePolicy
+ Performs an asynchronous load of the given
+ request. When the request has completed or failed,
+ the block will be executed from the context of the
+ main NSOperationQueue.
  */
 +(void)doURLRequest:(NSURLRequest*)request
              option:(WTRequestCenterCachePolicy)option
@@ -210,16 +216,16 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
                                          response:(NSURLResponse*)response
                                              data:(NSData*)data;
 #pragma mark - 辅助
-//JSON转对象
+// convert json data to object
 +(id)JSONObjectWithData:(NSData*)data;
 +(NSString*)stringWithData:(NSObject*)data;
 
-//JSON对象转data
+// convert object to json data
 +(NSData*)dataFromJSONObject:(id)object;
 #pragma mark - URL
-//根路径
+// base URL
 +(NSString *)baseURL;
-//实际应用示例
+// url with index
 +(NSString*)URLWithIndex:(NSInteger)index;
 
 
