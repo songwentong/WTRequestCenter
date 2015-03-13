@@ -252,9 +252,8 @@ static NSString *defaultUserAgentString = nil;
     assert(URLString!=nil);
     NSURL *url = [NSURL URLWithString:[URLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:_timeoutInterval];
     request.HTTPMethod = method;
-    request.timeoutInterval = _timeoutInterval;
     request = [[self requestBySerializingRequest:request
                                   withParameters:parameters
                                            error:error] mutableCopy];

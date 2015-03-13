@@ -24,21 +24,30 @@
 extern NSTimeInterval const WTURLRequestSerializationTimeoutTimeInterval;
 
 @interface WTURLRequestSerialization : NSObject
-//单例
+/*!
+    get the shared request serialization
+ */
 +(instancetype)sharedRequestSerialization;
-//超时时长
+
+/*
+ The timeout interval, in seconds, for created requests. The default timeout interval is 60 seconds.
+ */
 @property (nonatomic) NSTimeInterval timeoutInterval;
 
-//获得请求头
+/*!
+ Returns the value for the HTTP headers set in the request serializer.
+ */
 - (NSString *)valueForHTTPHeaderField:(NSString *)field;
 
-//设置请求头
+/*!
+ Sets the value for the HTTP headers set in request objects made by the HTTP client. If `nil`, removes the existing value for that header.
+ */
 - (void)setValue:(NSString *)value forHTTPHeaderField:(NSString *)field;
 
 
 
 /*!
-    根据给出的方法，URL，参数返回一个请求
+    Creates and returns an initialized URL request with specified values.
  */
 - (NSMutableURLRequest *)requestWithMethod:(NSString *)method
                                  URLString:(NSString *)URLString
@@ -46,7 +55,7 @@ extern NSTimeInterval const WTURLRequestSerializationTimeoutTimeInterval;
                                      error:(NSError *__autoreleasing *)error;
 /*!
  
- 支持数据上传的POST请求
+    Creates and returns an initialized URL request with specified values.
  */
 
 -(NSMutableURLRequest*)POSTRequestWithURL:(NSString*)url
@@ -62,33 +71,48 @@ extern NSTimeInterval const WTURLRequestSerializationTimeoutTimeInterval;
 #pragma mark - 其他
 
 /*!
-    根据给出的响应取到响应时间
+    get responseTime for respnse
  */
 +(NSDate*)dateFromCachedURLResponse:(NSCachedURLResponse*)response;
 
+
+/*
+    Returns a request with the specified parameters encoded into a copy of the original request.
+ */
+- (NSURLRequest *)requestBySerializingRequest:(NSURLRequest *)request
+                               withParameters:(id)parameters
+                                        error:(NSError *__autoreleasing *)error;
 
 @end
 @protocol WTMultipartFormData
 
 /*!
-    暂未完成
+ Appends the HTTP header `Content-Disposition: file; filename=#{generated filename}; name=#{name}"` and `Content-Type: #{generated mimeType}`, followed by the encoded file data and the multipart form boundary.
+ 
+ The filename and MIME type for this data in the form will be automatically generated, using the last path component of the `fileURL` and system associated MIME type for the `fileURL` extension, respectively.
+ 
+ @param fileURL The URL corresponding to the file whose content will be appended to the form. This parameter must not be `nil`.
+ @param name The name to be associated with the specified data. This parameter must not be `nil`.
+ @param error If an error occurs, upon return contains an `NSError` object that describes the problem.
+
+ 
  */
 - (BOOL)appendPartWithFileURL:(NSURL *)fileURL
                          name:(NSString *)name
                         error:(NSError * __autoreleasing *)error;
 
 /*!
-    数据上传协议
+ Appends the HTTP headers `Content-Disposition: form-data; name=#{name}"`, followed by the encoded data and the multipart form boundary.
+ 
+ @param data The data to be encoded and appended to the form data.
+ @param name The name to be associated with the specified data. This parameter must not be `nil`.
  */
 - (BOOL)appendPartWithData:(NSData*)data
                       name:(NSString*)name;
 @end
 
 @interface WTJSONRequestSerialization : WTURLRequestSerialization
-//加上JSON请求
-- (NSURLRequest *)requestBySerializingRequest:(NSURLRequest *)request
-                               withParameters:(id)parameters
-                                        error:(NSError *__autoreleasing *)error;
+
 @end
 
 /*

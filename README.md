@@ -1,6 +1,7 @@
 WTRequestCenter
 ===============
 
+
 方便缓存的请求库，提供了方便的HTTP请求方法，传入请求url和参数，返回成功和失败的回调。
 UIKit扩展提供了许多不错的方法，快速缓存图片，图片查看，缩放功能，
 颜色创建，设备UUID，网页缓存，数据缓存等功能。
@@ -21,16 +22,16 @@ UIKit扩展提供了许多不错的方法，快速缓存图片，图片查看，
         NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
         [parameters setValue:@"value" forKey:@"key"];
         [parameters setValue:@"v2" forKey:@"key2"];
-        
+
         [WTRequestCenter getWithURL:url
-                         parameters:parameters 
-                           finished:^(NSURLResponse *response, NSData *data) 
+                         parameters:parameters
+                           finished:^(NSURLResponse *response, NSData *data)
         {
-            NSString *string = [[NSString alloc] initWithData:data 
+            NSString *string = [[NSString alloc] initWithData:data
                                                      encoding:NSUTF8StringEncoding];
             NSLog(@"%@",string);
-        } 
-                             failed:^(NSURLResponse *response, NSError *error) 
+        }
+                             failed:^(NSURLResponse *response, NSError *error)
         {
             NSLog(@"%@",response);
         }];
@@ -45,14 +46,14 @@ UIKit扩展提供了许多不错的方法，快速缓存图片，图片查看，
         NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
         [parameters setValue:@"aaa" forKey:@"uid"];
         [parameters setValue:@"1" forKey:@"type"];
-        
-        [WTRequestCenter postWithURL:url 
-                          parameters:parameters 
-                            finished:^(NSURLResponse *response, NSData *data) 
+
+        [WTRequestCenter postWithURL:url
+                          parameters:parameters
+                            finished:^(NSURLResponse *response, NSData *data)
         {
             NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             NSLog(@"%@",string);
-        } 
+        }
                               failed:^(NSURLResponse *response, NSError *error)
         {
             NSLog(@"%@",response);
@@ -70,19 +71,19 @@ UIKit扩展提供了许多不错的方法，快速缓存图片，图片查看，
     WTRequestCenterCachePolicyOnlyCache,
     WTRequestCenterCachePolicyCacheAndRefresh,in
     WTRequestCenterCachePolicyCacheAndWeb
-    
+
     WTRequestCenterCachePolicyNormal
     普通请求，没什么特别的
-    
+
     WTRequestCenterCachePolicyCacheElseWeb
     如果本地有就用本地，否则用网络的
- 
+
     WTRequestCenterCachePolicyOnlyCache
     仅使用缓存缓存，不请求
- 
+
     WTRequestCenterCachePolicyCacheAndRefresh
     本地和网络的，本地没有也会刷新,本地有也会刷新(刷新后不回调)
- 
+
     WTRequestCenterCachePolicyCacheAndWeb
     本地有，会用，也会刷新，也会回调，本地没有会刷新
     注意：这种情况非常少见，只有调用网页的时候可能会用得到
@@ -149,7 +150,7 @@ WTDataSaver 是个文件存取类，用于自定的方式把数据存取到本�
 
 需要版本  
 ===============
-iOS 5.0 
+iOS 5.0
 
 
 ##  UIKit+WTRequestCenter
@@ -192,4 +193,4 @@ iOS 5.0
 
 ##作者
 - <a href = "https://github.com/swtlovewtt">宋文通</a>
-- 
+-
