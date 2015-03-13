@@ -138,7 +138,10 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
                      failed:(WTRequestFailedBlock)failed;
 
 /*!
-    POST request
+ Performs an asynchronous post request of the given
+ url,parameters. When the request has completed or failed,
+ corresponding block will be executed，is there is a local
+ response,it will be used.
  */
 +(NSURLRequest*)postWithURL:(NSString*)url
                  parameters:(NSDictionary*)parameters
@@ -148,7 +151,10 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
 
 
 /*!
-    PUT reqeust
+ Performs an asynchronous post request of the given
+ url,parameters. When the request has completed or failed,
+ corresponding block will be executed，is there is a local
+ response,it will be used.
  */
 +(NSURLRequest*)putWithURL:(NSString*)url
                 parameters:(NSDictionary*)parameters
@@ -157,7 +163,10 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
 
 
 /*!
-    Delete request
+ Performs an asynchronous post request of the given
+ url,parameters. When the request has completed or failed,
+ corresponding block will be executed，is there is a local
+ response,it will be used.
  */
 +(NSURLRequest*)deleteWithURL:(NSString*)url
                    parameters:(NSDictionary*)parameters
@@ -166,7 +175,10 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
 
 
 /*!
-    HEAD   请求
+ Performs an asynchronous post request of the given
+ url,parameters. When the request has completed or failed,
+ corresponding block will be executed，is there is a local
+ response,it will be used.
  */
 +(NSURLRequest*)headWithURL:(NSString*)url
                  parameters:(NSDictionary*)parameters
