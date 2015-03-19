@@ -69,40 +69,35 @@ static const void * const WTImageViewOperationKey = @"WT ImageView Operation Key
                 if (image) {
                     if (!wself) return;
                     __strong UIImageView *strongSelf = wself;
-                    
-                    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                    dispatch_block_t block = ^{
                         strongSelf.image = image;
                         [strongSelf setNeedsLayout];
-                    }];
-                    strongSelf.wtImageRequestOperation = nil;
+                    };
+                    [[NSOperationQueue mainQueue] addOperationWithBlock:block];
+
                 }
                 
                 
             }];
             
             
-            dispatch_block_t block = ^{
+            
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 if (finished) {
                     finished(response,data);
                 }
-            };
-            if ([NSThread isMainThread]) {
-                block();
-            }else
-            {
-                dispatch_sync(dispatch_get_main_queue(), block);
-            }
+            }];
 
             
             
         } failed:^(NSURLResponse *response, NSError *error)
         {
             if (!wself) return;
-            __strong UIImageView *strongSelf = wself;
+//            __strong UIImageView *strongSelf = wself;
             if (failed) {
                 failed(self.wtImageRequestOperation.response,self.wtImageRequestOperation.error);
             }
-            strongSelf.wtImageRequestOperation = nil;
+//            strongSelf.wtImageRequestOperation = nil;
         }];
         
         self.wtImageRequestOperation = operation;
