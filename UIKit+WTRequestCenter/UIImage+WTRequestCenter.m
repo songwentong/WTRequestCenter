@@ -127,6 +127,8 @@ static UIImage *animatedImageWithAnimatedGIFReleasingImageSource(CGImageSourceRe
 
 +(void)imageWithData:(NSData *)data complectionHandler:(void(^)(UIImage *image))complection
 {
+    
+    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         UIImage *image = [UIImage imageWithData:data];
         if (complection) {

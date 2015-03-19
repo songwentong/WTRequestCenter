@@ -80,11 +80,19 @@ static const void * const WTImageViewOperationKey = @"WT ImageView Operation Key
                 
             }];
             
-                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                    if (finished) {
+            
+            dispatch_block_t block = ^{
+                if (finished) {
                     finished(response,data);
-                    }
-                }];
+                }
+            };
+            if ([NSThread isMainThread]) {
+                block();
+            }else
+            {
+                dispatch_sync(dispatch_get_main_queue(), block);
+            }
+
             
             
         } failed:^(NSURLResponse *response, NSError *error)
