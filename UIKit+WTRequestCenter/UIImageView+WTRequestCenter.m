@@ -61,7 +61,8 @@ static const void * const WTImageViewOperationKey = @"WT ImageView Operation Key
         __weak UIImageView *wself    = self;
         
         
-        WTURLRequestOperation *operation = [WTRequestCenter testGetWithURL:url parameters:nil option:WTRequestCenterCachePolicyCacheElseWeb finished:^(NSURLResponse *response, NSData *data) {
+        WTURLRequestOperation *operation = [WTRequestCenter testGetWithURL:url parameters:nil option:WTRequestCenterCachePolicyCacheElseWeb finished:^(NSURLResponse *response, NSData *data)
+        {
             
             [UIImage imageWithData:data complectionHandler:^(UIImage *image) {
                 
@@ -86,7 +87,8 @@ static const void * const WTImageViewOperationKey = @"WT ImageView Operation Key
                 }];
             
             
-        } failed:^(NSURLResponse *response, NSError *error) {
+        } failed:^(NSURLResponse *response, NSError *error)
+        {
             if (!wself) return;
             __strong UIImageView *strongSelf = wself;
             if (failed) {
