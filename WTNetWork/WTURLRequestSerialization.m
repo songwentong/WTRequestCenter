@@ -119,8 +119,8 @@ static NSString *const WTReuqestCenterUserAgent = @"WTURLRequestUserAgent";
 //    设置contentType
     [_request setValue:value forHTTPHeaderField:@"Content-Type"];
 //    设置长度
-    NSString *ContentLength = [NSNumber numberWithUnsignedInteger:_request.HTTPBody.length].stringValue;
-    [_request setValue:ContentLength forKey:@"Content-Length"];
+    NSString *contentLength = [NSNumber numberWithUnsignedInteger:_request.HTTPBody.length].stringValue;
+    [_request setValue:contentLength forHTTPHeaderField:@"Content-Length"];
     
     
     return _request;

@@ -55,16 +55,17 @@
     [self configView];
     
     
-    
+    /*
     [WTRequestCenter postWithURL:@"http://passport.baidu.com/v2/sapi/center/setportrait"
                       parameters:nil
        constructingBodyWithBlock:^(id<WTMultipartFormData> formData) {
-           
+           [formData appendPartWithData:[@"dasdasd" dataUsingEncoding:NSUTF8StringEncoding] name:@"file"];
        } finished:^(NSURLResponse *response, NSData *data) {
            
        } failed:^(NSURLResponse *response, NSError *error) {
            
        }];
+     */
 
 //    NSData *data = request.HTTPBody;
 //    NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
