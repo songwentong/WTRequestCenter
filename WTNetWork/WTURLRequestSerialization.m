@@ -114,6 +114,14 @@ static NSString *const WTReuqestCenterUserAgent = @"WTURLRequestUserAgent";
         
     }
     
+    
+    NSString *value = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",kboundary];
+//    设置contentType
+    [_request setValue:value forHTTPHeaderField:@"Content-Type"];
+//    设置长度
+    [_request setValue:[NSNumber numberWithUnsignedInteger:_request.HTTPBody.length] forKey:@"Content-Length"];
+    
+    
     return _request;
 }
 @end
@@ -344,12 +352,13 @@ static NSString *defaultUserAgentString = nil;
     
     __block WTMultiFormData *formData = [[WTMultiFormData alloc] initWithURLRequest:request];
     
-    NSString *value = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",kboundary];
-    [request setValue:value forHTTPHeaderField:@"Content-Type"];
-    
+
     [_HTTPRequestHeaders enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
         [request setValue:value forHTTPHeaderField:key];
     }];
+    NSString *value = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",kboundary];
+    [request setValue:value forHTTPHeaderField:@"Content-Type"];
+//    [request setValue:@"1" forKey:@"Content-Length"];
     if (block) {
         block(formData);
     }
