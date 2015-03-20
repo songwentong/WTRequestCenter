@@ -47,7 +47,7 @@ static NSString *const WTReuqestCenterUserAgent = @"WTURLRequestUserAgent";
                         error:(NSError * __autoreleasing *)error
 {
     BOOL result = YES;
-    assert(!fileURL);
+    assert(fileURL!=nil);
     
     NSData *data = [[NSData alloc] initWithContentsOfURL:fileURL];
     
