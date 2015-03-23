@@ -333,18 +333,30 @@ static NSString *defaultUserAgentString = nil;
     if (parameters && [[parameters allKeys] count]>0) {
         
         NSMutableData *myData = [[NSMutableData alloc] init];
+        
+//        1.边界
         [myData appendData:[@"--" dataUsingEncoding:NSUTF8StringEncoding]];
         [myData appendData:[kboundary dataUsingEncoding:NSUTF8StringEncoding]];
+        
+        
         [parameters enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
             //            Content-Disposition: form-data; name="abc"
-            NSString *keyString = [NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"",key];
-            [myData appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
-            
+//            2.Content-Disposition
+            NSString *keyString = [NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\" \r\n",key];
             [myData appendData:[keyString dataUsingEncoding:NSUTF8StringEncoding]];
-            [myData appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
-            [myData appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
+            [myData appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+//            3.Content-Type
+            [myData appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+
+//
+//            [myData appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
+//            [myData appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
+            
+            //    4.图片数据
             [myData appendData:[value dataUsingEncoding:NSUTF8StringEncoding]];
-            [myData appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
+            [myData appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+            
+//            5.边界
             [myData appendData:[@"--" dataUsingEncoding:NSUTF8StringEncoding]];
             [myData appendData:[kboundary dataUsingEncoding:NSUTF8StringEncoding]];
         }];
