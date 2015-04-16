@@ -47,7 +47,7 @@ static NSString *const WTReuqestCenterUserAgent = @"WTURLRequestUserAgent";
                         error:(NSError * __autoreleasing *)error
 {
     BOOL result = YES;
-    assert(fileURL!=nil);
+    assert(!fileURL);
     
     NSData *data = [[NSData alloc] initWithContentsOfURL:fileURL];
     
@@ -113,15 +113,6 @@ static NSString *const WTReuqestCenterUserAgent = @"WTURLRequestUserAgent";
         _request.HTTPBody = HTTPBody;
         
     }
-    
-    
-    NSString *value = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",kboundary];
-//    设置contentType
-    [_request setValue:value forHTTPHeaderField:@"Content-Type"];
-//    设置长度
-    NSString *contentLength = [NSNumber numberWithUnsignedInteger:_request.HTTPBody.length].stringValue;
-    [_request setValue:contentLength forHTTPHeaderField:@"Content-Length"];
-    
     
     return _request;
 }
@@ -261,8 +252,9 @@ static NSString *defaultUserAgentString = nil;
     assert(URLString!=nil);
     NSURL *url = [NSURL URLWithString:[URLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:_timeoutInterval];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     request.HTTPMethod = method;
+    request.timeoutInterval = _timeoutInterval;
     request = [[self requestBySerializingRequest:request
                                   withParameters:parameters
                                            error:error] mutableCopy];
@@ -293,7 +285,7 @@ static NSString *defaultUserAgentString = nil;
             [mutableRequest setHTTPBody:httpBodyData];
         }
     }
-
+    
     
     return mutableRequest;
 }
@@ -333,48 +325,40 @@ static NSString *defaultUserAgentString = nil;
     if (parameters && [[parameters allKeys] count]>0) {
         
         NSMutableData *myData = [[NSMutableData alloc] init];
-        
-//        1.边界
         [myData appendData:[@"--" dataUsingEncoding:NSUTF8StringEncoding]];
         [myData appendData:[kboundary dataUsingEncoding:NSUTF8StringEncoding]];
-        
-        
         [parameters enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
             //            Content-Disposition: form-data; name="abc"
-//            2.Content-Disposition
-            NSString *keyString = [NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\" \r\n",key];
+            NSString *keyString = [NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"",key];
+            [myData appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
+            
             [myData appendData:[keyString dataUsingEncoding:NSUTF8StringEncoding]];
-            [myData appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-//            3.Content-Type
-            [myData appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-
-//
-//            [myData appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
-//            [myData appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
-            
-            //    4.图片数据
+            [myData appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
+            [myData appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
             [myData appendData:[value dataUsingEncoding:NSUTF8StringEncoding]];
-            [myData appendData:[@"\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-            
-//            5.边界
+            [myData appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
             [myData appendData:[@"--" dataUsingEncoding:NSUTF8StringEncoding]];
             [myData appendData:[kboundary dataUsingEncoding:NSUTF8StringEncoding]];
         }];
         [request setHTTPBody:myData];
     }
     
-    __block WTMultiFormData *formData = [[WTMultiFormData alloc] initWithURLRequest:request];
     
-
+    NSString *value = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",kboundary];
+    [request setValue:value forHTTPHeaderField:@"Content-Type"];
+    
     [_HTTPRequestHeaders enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
         [request setValue:value forHTTPHeaderField:key];
     }];
-    NSString *value = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",kboundary];
-    [request setValue:value forHTTPHeaderField:@"Content-Type"];
-//    [request setValue:@"1" forKey:@"Content-Length"];
+    __block WTMultiFormData *formData = [[WTMultiFormData alloc] initWithURLRequest:request];
+    
+    
+    
+    
     if (block) {
         block(formData);
     }
+    
     return [formData requestByFinalizingMultipartFormData];
 }
 

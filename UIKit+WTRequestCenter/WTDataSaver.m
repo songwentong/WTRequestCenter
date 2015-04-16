@@ -186,13 +186,47 @@ static NSOperationQueue *dataQueue = nil;
         }];
     }
     }];
+}
 
++(void)saveObject:(id)obj withName:(NSString*)name complection:(void(^)())complection
+{
+    [self configureDirectory];
+    NSString *filePath = [NSString stringWithFormat:@"%@/%@",[self rootDir],name];
+    [[self sharedDataQueue] addOperationWithBlock:^{
+        
+        if ([obj isKindOfClass:[NSString class]]) {
+            [((NSString*)obj) writeToFile:filePath
+                               atomically:YES
+                                 encoding:NSUTF8StringEncoding
+                                    error:nil];
+        }
+        
+        if ([obj isKindOfClass:[NSDictionary class]]) {
+            [((NSDictionary*)obj) writeToFile:filePath
+                                   atomically:YES];
+        }
+        
+        if ([obj isKindOfClass:[NSArray class]]) {
+            [((NSArray*)obj) writeToFile:filePath
+                              atomically:YES];
+        }
+        
+        if ([obj isKindOfClass:[NSData class]]) {
+            [((NSData*)obj) writeToFile:filePath atomically:YES];
+        }
+        
+    }];
     
-   
+    
 }
 
 
-
++(void)objectWithName:(NSString*)name
+{
+    [self configureDirectory];
+    NSString *filePath = [NSString stringWithFormat:@"%@/%@",[self rootDir],name];
+//    NSObject *obje = [[NSObject alloc] init]
+}
 
 #pragma mark - 取数据
 +(NSData*)dataWithName:(NSString*)name
