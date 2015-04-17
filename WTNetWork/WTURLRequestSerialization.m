@@ -82,7 +82,7 @@ static NSString *const WTReuqestCenterUserAgent = @"WTURLRequestUserAgent";
         NSInteger count = [_HTTPBodyParts count];
         [_HTTPBodyParts enumerateObjectsUsingBlock:^(NSDictionary *dict, NSUInteger idx, BOOL *stop) {
             
-            NSString *keyString = [[dict allKeys] lastObject];
+            //            NSString *keyString = [[dict allKeys] lastObject];
             
             
             
@@ -121,29 +121,47 @@ static NSString *const WTReuqestCenterUserAgent = @"WTURLRequestUserAgent";
             [HTTPBody appendData:data];
             
             
-            NSString *bodySuffixStr = [NSString stringWithFormat:
-                                       @
-                                       "\r\n"
-                                       "--%@\r\n"
-                                       "Content-Disposition: form-data; name=\"uploadButton\"\r\n"
-                                       "\r\n"
-                                       "Upload File\r\n"
-                                       "--%@--\r\n"
-                                       "\r\n"
-                                       //empty epilogue
-                                       ,
-                                       kboundary,
-                                       kboundary
-                                       ];
             
-            [HTTPBody appendData:[bodySuffixStr dataUsingEncoding:4]];
+            
+            NSString *separateString = [NSString stringWithFormat:
+                                        @
+                                        "\r\n"
+                                        "--%@\r\n"
+                                        "Content-Disposition: form-data; name=\"uploadButton\"\r\n"
+                                        "\r\n"
+                                        "Upload File\r\n"
+                                        "--%@\r\n"
+                                        "\r\n"
+                                        //empty epilogue
+                                        ,
+                                        kboundary,
+                                        kboundary
+                                        ];
+            
+            
+            
+            
             
             //            [HTTPBody appendData:[@"\r\n--" dataUsingEncoding:NSUTF8StringEncoding]];
             //            [HTTPBody appendData:[kboundary
             //                                  dataUsingEncoding:NSUTF8StringEncoding]];
-            //            if (count == idx+1) {
-            //                [HTTPBody appendData:[@"--\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-            //            }
+            if (count == idx+1) {
+                separateString = [NSString stringWithFormat:
+                                  @
+                                  "\r\n"
+                                  "--%@\r\n"
+                                  "Content-Disposition: form-data; name=\"uploadButton\"\r\n"
+                                  "\r\n"
+                                  "Upload File\r\n"
+                                  "--%@--\r\n"
+                                  "\r\n"
+                                  //empty epilogue
+                                  ,
+                                  kboundary,
+                                  kboundary
+                                  ];;
+            }
+            [HTTPBody appendData:[separateString dataUsingEncoding:4]];
             
         }];
         
