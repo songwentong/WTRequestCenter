@@ -85,28 +85,65 @@ static NSString *const WTReuqestCenterUserAgent = @"WTURLRequestUserAgent";
             NSString *keyString = [[dict allKeys] lastObject];
             
             
-            //            1.边界
-            [HTTPBody appendData:[@"--" dataUsingEncoding:NSUTF8StringEncoding]];
-            [HTTPBody appendData:[kboundary
-                                  dataUsingEncoding:NSUTF8StringEncoding]];
-            //          2.Content-Disposition
-            [HTTPBody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\";  \n\n",keyString] dataUsingEncoding:NSUTF8StringEncoding]];
-            //          3.Content-Type
-            [HTTPBody appendData:[@"Content-Type:image/jpeg\n\n" dataUsingEncoding:NSUTF8StringEncoding]];
+            
+            
+            NSString *bodyPrefixStr = [NSString stringWithFormat:
+                                       @
+                                       // empty preamble
+                                       "\r\n"
+                                       "--%@\r\n"
+                                       "Content-Disposition: form-data; name=\"fileContents\"; filename=\"%@\"\r\n"
+                                       "Content-Type: %@\r\n"
+                                       "\r\n",
+                                       kboundary,
+                                       @"b.png",       // +++ very broken for non-ASCII
+                                       @"image/png"
+                                       ];
+            
+            
+            [HTTPBody appendData:[bodyPrefixStr dataUsingEncoding:4]];
             
             NSData *data = [[dict allValues] lastObject];
-            
+            /*
+             --Boundary-BA33E376-4435-4063-92E3-537C135A8F82
+             Content-Disposition: form-data; name="fileContents"; filename="TestImage1.png"
+             Content-Type: image/png
+             
+             
+             --Boundary-BA33E376-4435-4063-92E3-537C135A8F82
+             Content-Disposition: form-data; name="uploadButton"
+             
+             Upload File
+             --Boundary-BA33E376-4435-4063-92E3-537C135A8F82--
+             */
             
             //            4.图片数据
             [HTTPBody appendData:data];
             
             
-            [HTTPBody appendData:[@"--" dataUsingEncoding:NSUTF8StringEncoding]];
-            [HTTPBody appendData:[kboundary
-                                  dataUsingEncoding:NSUTF8StringEncoding]];
-            if (count == idx+1) {
-                [HTTPBody appendData:[@"--" dataUsingEncoding:NSUTF8StringEncoding]];
-            }
+            NSString *bodySuffixStr = [NSString stringWithFormat:
+                                       @
+                                       "\r\n"
+                                       "--%@\r\n"
+                                       "Content-Disposition: form-data; name=\"uploadButton\"\r\n"
+                                       "\r\n"
+                                       "Upload File\r\n"
+                                       "--%@--\r\n"
+                                       "\r\n"
+                                       //empty epilogue
+                                       ,
+                                       kboundary,
+                                       kboundary
+                                       ];
+            
+            [HTTPBody appendData:[bodySuffixStr dataUsingEncoding:4]];
+            
+            //            [HTTPBody appendData:[@"\r\n--" dataUsingEncoding:NSUTF8StringEncoding]];
+            //            [HTTPBody appendData:[kboundary
+            //                                  dataUsingEncoding:NSUTF8StringEncoding]];
+            //            if (count == idx+1) {
+            //                [HTTPBody appendData:[@"--\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+            //            }
             
         }];
         
@@ -114,6 +151,12 @@ static NSString *const WTReuqestCenterUserAgent = @"WTURLRequestUserAgent";
         
     }
     
+    /*
+     [self.request setValue:[NSString stringWithFormat:@"multipart/form-data; boundary=%@", self.boundary] forHTTPHeaderField:@"Content-Type"];
+     [self.request setValue:[NSString stringWithFormat:@"%llu", [self.bodyStream contentLength]] forHTTPHeaderField:@"Content-Length"];
+     */
+    [_request setValue:[NSNumber numberWithUnsignedInteger:_request.HTTPBody.length].stringValue forHTTPHeaderField:@"Content-Length"];
+    //    todo
     return _request;
 }
 @end
@@ -337,7 +380,7 @@ static NSString *defaultUserAgentString = nil;
             [myData appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
             [myData appendData:[value dataUsingEncoding:NSUTF8StringEncoding]];
             [myData appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
-            [myData appendData:[@"--" dataUsingEncoding:NSUTF8StringEncoding]];
+            //            [myData appendData:[@"--" dataUsingEncoding:NSUTF8StringEncoding]];
             [myData appendData:[kboundary dataUsingEncoding:NSUTF8StringEncoding]];
         }];
         [request setHTTPBody:myData];

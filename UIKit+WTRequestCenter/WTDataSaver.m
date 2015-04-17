@@ -221,12 +221,12 @@ static NSOperationQueue *dataQueue = nil;
 }
 
 
-+(void)objectWithName:(NSString*)name
-{
-    [self configureDirectory];
-    NSString *filePath = [NSString stringWithFormat:@"%@/%@",[self rootDir],name];
-//    NSObject *obje = [[NSObject alloc] init]
-}
+//+(void)objectWithName:(NSString*)name
+//{
+//    [self configureDirectory];
+//    NSString *filePath = [NSString stringWithFormat:@"%@/%@",[self rootDir],name];
+////    NSObject *obje = [[NSObject alloc] init]
+//}
 
 #pragma mark - 取数据
 +(NSData*)dataWithName:(NSString*)name
