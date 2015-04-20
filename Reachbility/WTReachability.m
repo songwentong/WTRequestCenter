@@ -52,10 +52,10 @@
 
 #import <CoreFoundation/CoreFoundation.h>
 
-#import "Reachability.h"
+#import "WTReachability.h"
 
 
-NSString *kReachabilityChangedNotification = @"kNetworkReachabilityChangedNotification";
+NSString *kWTReachabilityChangedNotification = @"kNetworkReachabilityChangedNotification";
 
 
 #pragma mark - Supporting functions
@@ -87,17 +87,17 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 {
 #pragma unused (target, flags)
 	NSCAssert(info != NULL, @"info was NULL in ReachabilityCallback");
-	NSCAssert([(__bridge NSObject*) info isKindOfClass: [Reachability class]], @"info was wrong class in ReachabilityCallback");
+	NSCAssert([(__bridge NSObject*) info isKindOfClass: [WTReachability class]], @"info was wrong class in ReachabilityCallback");
 
-    Reachability* noteObject = (__bridge Reachability *)info;
+    WTReachability* noteObject = (__bridge WTReachability *)info;
     // Post a notification to notify the client that the network reachability changed.
-    [[NSNotificationCenter defaultCenter] postNotificationName: kReachabilityChangedNotification object: noteObject];
+    [[NSNotificationCenter defaultCenter] postNotificationName: kWTReachabilityChangedNotification object: noteObject];
 }
 
 
 #pragma mark - Reachability implementation
 
-@implementation Reachability
+@implementation WTReachability
 {
 	BOOL _alwaysReturnLocalWiFiStatus; //default is NO
 	SCNetworkReachabilityRef _reachabilityRef;
@@ -105,7 +105,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 
 + (instancetype)reachabilityWithHostName:(NSString *)hostName
 {
-	Reachability* returnValue = NULL;
+	WTReachability* returnValue = NULL;
 	SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithName(NULL, [hostName UTF8String]);
 	if (reachability != NULL)
 	{
@@ -124,7 +124,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 {
 	SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithAddress(kCFAllocatorDefault, (const struct sockaddr *)hostAddress);
 
-	Reachability* returnValue = NULL;
+	WTReachability* returnValue = NULL;
 
 	if (reachability != NULL)
 	{
@@ -161,7 +161,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 	// IN_LINKLOCALNETNUM is defined in <netinet/in.h> as 169.254.0.0.
 	localWifiAddress.sin_addr.s_addr = htonl(IN_LINKLOCALNETNUM);
 
-	Reachability* returnValue = [self reachabilityWithAddress: &localWifiAddress];
+	WTReachability* returnValue = [self reachabilityWithAddress: &localWifiAddress];
 	if (returnValue != NULL)
 	{
 		returnValue->_alwaysReturnLocalWiFiStatus = YES;

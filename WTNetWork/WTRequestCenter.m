@@ -9,7 +9,7 @@
 #import "WTRequestCenter.h"
 #import "WTURLRequestOperation.h"
 #import "WTURLRequestSerialization.h"
-#import "Reachability.h"
+#import "WTReachability.h"
 #if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
 #endif
@@ -26,12 +26,12 @@ BOOL const WTRequestCenterDebugMode = YES;
 
 
 #pragma mark - Reachability
-static Reachability *sharedReachbility = nil;
-+(Reachability*)sharedReachability
+static WTReachability *sharedReachbility = nil;
++(WTReachability*)sharedReachability
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedReachbility = [Reachability reachabilityForInternetConnection];
+        sharedReachbility = [WTReachability reachabilityForInternetConnection];
         [sharedReachbility startNotifier];
     });
     
@@ -344,7 +344,7 @@ static NSURLCache* sharedCache = nil;
     };
     
     
-    Reachability *r = [self sharedReachability];
+    WTReachability *r = [self sharedReachability];
     NetworkStatus n = r.currentReachabilityStatus;
     if (n == NotReachable) {
         
