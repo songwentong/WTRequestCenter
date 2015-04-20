@@ -11,6 +11,7 @@
 		A3B4A7C9199AF92000A8BAF0 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B4A7C8199AF92000A8BAF0 /* ImageIO.framework */; };
 		A3B70F591988BDFA002776F4 /* image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A3B70F581988BDFA002776F4 /* image.jpg */; };
 		E10C0A021A6FFE7F0064F51F /* WTNetworkHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E10C0A011A6FFE7F0064F51F /* WTNetworkHUD.m */; };
+		E110FC4C1AE50D5600FCEF19 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E110FC4B1AE50D5600FCEF19 /* Reachability.m */; };
 		E15118011A1D9E410060AAB1 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E15118001A1D9E410060AAB1 /* MobileCoreServices.framework */; };
 		E161B2881A8DA37A00A69C09 /* SingleRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E161B2861A8DA37A00A69C09 /* SingleRequestViewController.m */; };
 		E161B2891A8DA37A00A69C09 /* SingleRequestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E161B2871A8DA37A00A69C09 /* SingleRequestViewController.xib */; };
@@ -32,7 +33,6 @@
 		E162A4A01A6A168900CBC2C5 /* WTNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E162A4931A6A168900CBC2C5 /* WTNetworkActivityIndicatorManager.m */; };
 		E1632C8C19EE02EB00089FFA /* WTRequestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1632C8A19EE02EB00089FFA /* WTRequestViewController.m */; };
 		E1632C8D19EE02EB00089FFA /* WTRequestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1632C8B19EE02EB00089FFA /* WTRequestViewController.xib */; };
-		E1779F601A6F9803008F3550 /* UIViewController+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E1779F5F1A6F9803008F3550 /* UIViewController+WTRequestCenter.m */; };
 		E181F7761A81138700832D0B /* WTNumberLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E181F7751A81138700832D0B /* WTNumberLabel.m */; };
 		E191E06D1AA560BB008FD6BF /* WTCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E191E06C1AA560BB008FD6BF /* WTCycleScrollView.m */; };
 		E19B62C11A2469BA004713F2 /* UIImageViewCacheTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E19B62C01A2469BA004713F2 /* UIImageViewCacheTests.m */; };
@@ -74,6 +74,8 @@
 		A3B70F581988BDFA002776F4 /* image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = image.jpg; path = WTRequestCenter/image.jpg; sourceTree = "<group>"; };
 		E10C0A001A6FFE7F0064F51F /* WTNetworkHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WTNetworkHUD.h; path = "UIKit+WTRequestCenter/WTNetworkHUD.h"; sourceTree = SOURCE_ROOT; };
 		E10C0A011A6FFE7F0064F51F /* WTNetworkHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WTNetworkHUD.m; path = "UIKit+WTRequestCenter/WTNetworkHUD.m"; sourceTree = SOURCE_ROOT; };
+		E110FC4A1AE50D5600FCEF19 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = Reachbility/Reachability.h; sourceTree = SOURCE_ROOT; };
+		E110FC4B1AE50D5600FCEF19 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = Reachbility/Reachability.m; sourceTree = SOURCE_ROOT; };
 		E15118001A1D9E410060AAB1 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		E161B2851A8DA37A00A69C09 /* SingleRequestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleRequestViewController.h; sourceTree = "<group>"; };
 		E161B2861A8DA37A00A69C09 /* SingleRequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleRequestViewController.m; sourceTree = "<group>"; };
@@ -115,8 +117,6 @@
 		E1632C8919EE02EB00089FFA /* WTRequestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTRequestViewController.h; sourceTree = "<group>"; };
 		E1632C8A19EE02EB00089FFA /* WTRequestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTRequestViewController.m; sourceTree = "<group>"; };
 		E1632C8B19EE02EB00089FFA /* WTRequestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WTRequestViewController.xib; sourceTree = "<group>"; };
-		E1779F5E1A6F9803008F3550 /* UIViewController+WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+WTRequestCenter.h"; path = "UIKit+WTRequestCenter/UIViewController+WTRequestCenter.h"; sourceTree = SOURCE_ROOT; };
-		E1779F5F1A6F9803008F3550 /* UIViewController+WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+WTRequestCenter.m"; path = "UIKit+WTRequestCenter/UIViewController+WTRequestCenter.m"; sourceTree = SOURCE_ROOT; };
 		E181F7741A81138700832D0B /* WTNumberLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WTNumberLabel.h; path = "UIKit+WTRequestCenter/WTNumberLabel.h"; sourceTree = SOURCE_ROOT; };
 		E181F7751A81138700832D0B /* WTNumberLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WTNumberLabel.m; path = "UIKit+WTRequestCenter/WTNumberLabel.m"; sourceTree = SOURCE_ROOT; };
 		E191E06B1AA560BB008FD6BF /* WTCycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WTCycleScrollView.h; path = "UIKit+WTRequestCenter/WTCycleScrollView.h"; sourceTree = SOURCE_ROOT; };
@@ -216,8 +216,6 @@
 				E162A4911A6A168900CBC2C5 /* WTImageViewer.m */,
 				E162A4921A6A168900CBC2C5 /* WTNetworkActivityIndicatorManager.h */,
 				E162A4931A6A168900CBC2C5 /* WTNetworkActivityIndicatorManager.m */,
-				E1779F5E1A6F9803008F3550 /* UIViewController+WTRequestCenter.h */,
-				E1779F5F1A6F9803008F3550 /* UIViewController+WTRequestCenter.m */,
 				E10C0A001A6FFE7F0064F51F /* WTNetworkHUD.h */,
 				E10C0A011A6FFE7F0064F51F /* WTNetworkHUD.m */,
 				E181F7741A81138700832D0B /* WTNumberLabel.h */,
@@ -229,10 +227,21 @@
 			path = "WTRequestCenter/UIKit+WTRequestCenter";
 			sourceTree = "<group>";
 		};
+		E110FC491AE50D4100FCEF19 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				E110FC4A1AE50D5600FCEF19 /* Reachability.h */,
+				E110FC4B1AE50D5600FCEF19 /* Reachability.m */,
+			);
+			name = Reachability;
+			path = WTRequestCenter;
+			sourceTree = "<group>";
+		};
 		E4440D64197A01B1001E6D88 = {
 			isa = PBXGroup;
 			children = (
 				E4440D76197A01B1001E6D88 /* WTRequestCenter */,
+				E110FC491AE50D4100FCEF19 /* Reachability */,
 				E4DBC941197D14C9004F9393 /* WTRequestCenter */,
 				A3B70F5F1988DC5B002776F4 /* UIKit+WTRequestCenter */,
 				E4440D95197A01B1001E6D88 /* WTRequestCenterTests */,
@@ -453,7 +462,6 @@
 				E162A49F1A6A168900CBC2C5 /* WTImageViewer.m in Sources */,
 				E161B2881A8DA37A00A69C09 /* SingleRequestViewController.m in Sources */,
 				E19F0C2A1A0201460049C1A2 /* RulerView.m in Sources */,
-				E1779F601A6F9803008F3550 /* UIViewController+WTRequestCenter.m in Sources */,
 				E181F7761A81138700832D0B /* WTNumberLabel.m in Sources */,
 				E162A4961A6A168900CBC2C5 /* UIApplication+WTRequestCenter.m in Sources */,
 				E162A47A1A6A167300CBC2C5 /* WTURLSessionManager.m in Sources */,
@@ -474,6 +482,7 @@
 				E162A49E1A6A168900CBC2C5 /* WTDataSaver.m in Sources */,
 				E191E06D1AA560BB008FD6BF /* WTCycleScrollView.m in Sources */,
 				E4440D7D197A01B1001E6D88 /* main.m in Sources */,
+				E110FC4C1AE50D5600FCEF19 /* Reachability.m in Sources */,
 				E10C0A021A6FFE7F0064F51F /* WTNetworkHUD.m in Sources */,
 				E162A49D1A6A168900CBC2C5 /* UIWebView+WTRequestCenter.m in Sources */,
 				E162A4771A6A167300CBC2C5 /* WTRequestCenter.m in Sources */,

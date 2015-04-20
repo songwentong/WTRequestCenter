@@ -31,9 +31,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self initHUD];
-    [self wtActiveIndicatorView].delegate = self;
-    [self.wtActiveIndicatorView startAnimating];
+//    [self initHUD];
+//    [self wtActiveIndicatorView].delegate = self;
+//    [self.wtActiveIndicatorView startAnimating];
     
     switch (_indexPath.row) {
         case 0:
@@ -83,7 +83,7 @@
         [WTRequestCenter getWithURL:url parameters:nil option:WTRequestCenterCachePolicyNormal finished:^(NSURLResponse *response, NSData *data) {
             finishCount = finishCount + 1;
             if (finishCount == [array count]) {
-                [self stopLoadWTHud];
+//                [self stopLoadWTHud];
             }
 //            NSLog(@"------finished %@",response.URL);
         [self appendLogString:[NSString stringWithFormat:@"request finished :%@",url]];
@@ -94,7 +94,7 @@
             
             finishCount = finishCount + 1;
             if (finishCount == [array count]) {
-                [self stopLoadWTHud];
+//                [self stopLoadWTHud];
             }
         }];
         

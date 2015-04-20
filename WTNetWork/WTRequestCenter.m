@@ -9,7 +9,7 @@
 #import "WTRequestCenter.h"
 #import "WTURLRequestOperation.h"
 #import "WTURLRequestSerialization.h"
-
+#import "Reachability.h"
 #if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
 #endif
@@ -25,6 +25,19 @@ BOOL const WTRequestCenterDebugMode = YES;
 
 
 
+#pragma mark - Reachability
+static Reachability *sharedReachbility = nil;
++(Reachability*)sharedReachability
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedReachbility = [Reachability reachabilityForInternetConnection];
+        [sharedReachbility startNotifier];
+    });
+    
+    return sharedReachbility;
+    
+}
 #pragma mark - 请求队列和缓存
 //请求队列
 static NSOperationQueue *sharedQueue = nil;
@@ -252,12 +265,15 @@ static NSURLCache* sharedCache = nil;
 
 
 #pragma mark - Request
+
+
 +(void)doURLRequest:(NSURLRequest*)request
            finished:(WTRequestFinishedBlock)finished
              failed:(WTRequestFailedBlock)failed
 {
     [self doURLRequest:request finished:finished failed:failed shouldCache:NO];
 }
+
 
 +(void)doURLRequest:(NSURLRequest*)request
            finished:(WTRequestFinishedBlock)finished
@@ -328,11 +344,26 @@ static NSURLCache* sharedCache = nil;
     };
     
     
-//    [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
-        [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-            complection(response,data,connectionError);
-        }];
-//    }];
+    Reachability *r = [self sharedReachability];
+    NetworkStatus n = r.currentReachabilityStatus;
+    if (n == NotReachable) {
+        
+        NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
+        [userInfo setValue:@"似乎已断开与互联网的连接。"
+                    forKey:@"NSLocalizedDescription"];
+        NSError *error = [NSError errorWithDomain:NSURLErrorDomain
+                                             code:-1009
+                                         userInfo:userInfo];
+        if (complection) {
+            complection(nil,nil,error);
+        }
+    }
+    
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        complection(response,data,connectionError);
+    }];
+    
     
     
 }
