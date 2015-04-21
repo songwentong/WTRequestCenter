@@ -25,7 +25,10 @@ static NSString *const WTReuqestCenterUserAgent = @"WTURLRequestUserAgent";
 //请求
 @property (readwrite, nonatomic, copy) NSMutableURLRequest *request;
 
-//
+
+@property (nonatomic,strong,readwrite) NSMutableDictionary *parameters;
+
+//HTTPBody
 @property (readwrite, nonatomic, strong) NSMutableArray *HTTPBodyParts;
 
 @end
@@ -69,110 +72,67 @@ static NSString *const WTReuqestCenterUserAgent = @"WTURLRequestUserAgent";
 }
 - (NSMutableURLRequest *)requestByFinalizingMultipartFormData
 {
+    NSMutableData *HTTPBody = [_request.HTTPBody mutableCopy];
+    if (!HTTPBody) {
+        HTTPBody = [[NSMutableData alloc] init];
+    }
+    
+    
+    NSString *endItemBoundary = [NSString stringWithFormat:@"\r\n--%@\r\n",kboundary];
+    if (_parameters && [[_parameters allKeys] count]>0) {
+        
+        //        NSMutableData *myData = [[NSMutableData alloc] init];
+        //        [myData appendData:[@"--" dataUsingEncoding:NSUTF8StringEncoding]];
+        //        [myData appendData:[kboundary dataUsingEncoding:NSUTF8StringEncoding]];
+        [HTTPBody appendData:[[NSString stringWithFormat:@"--%@\r\n",kboundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        
+        
+        
+        __block NSInteger count = 0;
+        [_parameters enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
+            //            Content-Disposition: form-data; name="abc"
+            NSString *keyString = [NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n",key];
+            [HTTPBody appendData:[keyString dataUsingEncoding:NSUTF8StringEncoding]];
+            
+            [HTTPBody appendData:[value dataUsingEncoding:NSUTF8StringEncoding]];
+            count ++;
+            if ([_HTTPBodyParts count]>0 || [_parameters count]!= count+1) {
+                //                如果后面还有文件或者参数不是最后一个
+                //Only add the boundary if this is not the last item in the post body
+                [HTTPBody appendData:[endItemBoundary dataUsingEncoding:NSUTF8StringEncoding]];
+            }
+            
+        }];
+        //        [_request setHTTPBody:myData];
+    }
+    
     if ([_HTTPBodyParts count]>0) {
         
         
-        NSMutableData *HTTPBody = [_request.HTTPBody mutableCopy];
-        if (!HTTPBody) {
-            HTTPBody = [[NSMutableData alloc] init];
-        }
+        
         //        分割线
         
         [_request setHTTPMethod:@"POST"];
-        NSInteger count = [_HTTPBodyParts count];
         [_HTTPBodyParts enumerateObjectsUsingBlock:^(NSDictionary *dict, NSUInteger idx, BOOL *stop) {
             
-            //            NSString *keyString = [[dict allKeys] lastObject];
-            
-            
-            
-            
-            NSString *bodyPrefixStr = [NSString stringWithFormat:
-                                       @
-                                       // empty preamble
-                                       "\r\n"
-                                       "--%@\r\n"
-                                       "Content-Disposition: form-data; name=\"fileContents\"; filename=\"%@\"\r\n"
-                                       "Content-Type: %@\r\n"
-                                       "\r\n",
-                                       kboundary,
-                                       @"b.png",       // +++ very broken for non-ASCII
-                                       @"image/png"
-                                       ];
-            
-            
-            [HTTPBody appendData:[bodyPrefixStr dataUsingEncoding:4]];
-            
-            NSData *data = [[dict allValues] lastObject];
-            /*
-             --Boundary-BA33E376-4435-4063-92E3-537C135A8F82
-             Content-Disposition: form-data; name="fileContents"; filename="TestImage1.png"
-             Content-Type: image/png
-             
-             
-             --Boundary-BA33E376-4435-4063-92E3-537C135A8F82
-             Content-Disposition: form-data; name="uploadButton"
-             
-             Upload File
-             --Boundary-BA33E376-4435-4063-92E3-537C135A8F82--
-             */
-            
-            //            4.图片数据
-            [HTTPBody appendData:data];
-            
-            
-            
-            
-            NSString *separateString = [NSString stringWithFormat:
-                                        @
-                                        "\r\n"
-                                        "--%@\r\n"
-                                        "Content-Disposition: form-data; name=\"uploadButton\"\r\n"
-                                        "\r\n"
-                                        "Upload File\r\n"
-                                        "--%@\r\n"
-                                        "\r\n"
-                                        //empty epilogue
-                                        ,
-                                        kboundary,
-                                        kboundary
-                                        ];
-            
-            
-            
-            
-            
-            //            [HTTPBody appendData:[@"\r\n--" dataUsingEncoding:NSUTF8StringEncoding]];
-            //            [HTTPBody appendData:[kboundary
-            //                                  dataUsingEncoding:NSUTF8StringEncoding]];
-            if (count == idx+1) {
-                separateString = [NSString stringWithFormat:
-                                  @
-                                  "\r\n"
-                                  "--%@\r\n"
-                                  "Content-Disposition: form-data; name=\"uploadButton\"\r\n"
-                                  "\r\n"
-                                  "Upload File\r\n"
-                                  "--%@--\r\n"
-                                  "\r\n"
-                                  //empty epilogue
-                                  ,
-                                  kboundary,
-                                  kboundary
-                                  ];;
+            //            NSString *name = [NSNumber numberWithInt:rand()].stringValue;
+            NSString *str1 =  [NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", [[dict allKeys] lastObject], [[dict allKeys] lastObject]];
+            [HTTPBody appendData:[str1 dataUsingEncoding:NSUTF8StringEncoding]];
+            NSString *str2 = [NSString stringWithFormat:@"Content-Type: %@\r\n\r\n", @"image/jpeg"];
+            [HTTPBody appendData:[str2 dataUsingEncoding:NSUTF8StringEncoding]];
+            [HTTPBody appendData:[[dict allValues] lastObject]];
+            if (idx+1!= [_HTTPBodyParts count]) {
+                [HTTPBody appendData:[endItemBoundary dataUsingEncoding:NSUTF8StringEncoding]];
             }
-            [HTTPBody appendData:[separateString dataUsingEncoding:4]];
             
         }];
+        
+        [HTTPBody appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",kboundary] dataUsingEncoding:NSUTF8StringEncoding]];
         
         _request.HTTPBody = HTTPBody;
         
     }
     
-    /*
-     [self.request setValue:[NSString stringWithFormat:@"multipart/form-data; boundary=%@", self.boundary] forHTTPHeaderField:@"Content-Type"];
-     [self.request setValue:[NSString stringWithFormat:@"%llu", [self.bodyStream contentLength]] forHTTPHeaderField:@"Content-Length"];
-     */
     [_request setValue:[NSNumber numberWithUnsignedInteger:_request.HTTPBody.length].stringValue forHTTPHeaderField:@"Content-Length"];
     //    todo
     return _request;
@@ -382,28 +342,28 @@ static NSString *defaultUserAgentString = nil;
     
     
     
-    
-    if (parameters && [[parameters allKeys] count]>0) {
-        
-        NSMutableData *myData = [[NSMutableData alloc] init];
-        [myData appendData:[@"--" dataUsingEncoding:NSUTF8StringEncoding]];
-        [myData appendData:[kboundary dataUsingEncoding:NSUTF8StringEncoding]];
-        [parameters enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
-            //            Content-Disposition: form-data; name="abc"
-            NSString *keyString = [NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"",key];
-            [myData appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
-            
-            [myData appendData:[keyString dataUsingEncoding:NSUTF8StringEncoding]];
-            [myData appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
-            [myData appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
-            [myData appendData:[value dataUsingEncoding:NSUTF8StringEncoding]];
-            [myData appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
-            //            [myData appendData:[@"--" dataUsingEncoding:NSUTF8StringEncoding]];
-            [myData appendData:[kboundary dataUsingEncoding:NSUTF8StringEncoding]];
-        }];
-        [request setHTTPBody:myData];
-    }
-    
+    /*
+     if (parameters && [[parameters allKeys] count]>0) {
+     
+     NSMutableData *myData = [[NSMutableData alloc] init];
+     [myData appendData:[@"--" dataUsingEncoding:NSUTF8StringEncoding]];
+     [myData appendData:[kboundary dataUsingEncoding:NSUTF8StringEncoding]];
+     [parameters enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
+     //            Content-Disposition: form-data; name="abc"
+     NSString *keyString = [NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"",key];
+     [myData appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
+     
+     [myData appendData:[keyString dataUsingEncoding:NSUTF8StringEncoding]];
+     [myData appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
+     [myData appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
+     [myData appendData:[value dataUsingEncoding:NSUTF8StringEncoding]];
+     [myData appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
+     //            [myData appendData:[@"--" dataUsingEncoding:NSUTF8StringEncoding]];
+     [myData appendData:[kboundary dataUsingEncoding:NSUTF8StringEncoding]];
+     }];
+     [request setHTTPBody:myData];
+     }
+     */
     
     NSString *value = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",kboundary];
     [request setValue:value forHTTPHeaderField:@"Content-Type"];
@@ -412,7 +372,7 @@ static NSString *defaultUserAgentString = nil;
         [request setValue:value forHTTPHeaderField:key];
     }];
     __block WTMultiFormData *formData = [[WTMultiFormData alloc] initWithURLRequest:request];
-    
+    formData.parameters = [parameters mutableCopy];
     
     
     
