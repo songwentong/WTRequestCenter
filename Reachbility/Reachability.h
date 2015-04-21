@@ -57,10 +57,10 @@ typedef enum : NSInteger {
 } NetworkStatus;
 
 
-extern NSString *kWTReachabilityChangedNotification;
+extern NSString *kReachabilityChangedNotification;
 
 
-@interface WTReachability : NSObject
+@interface Reachability : NSObject
 
 /*!
  * Use to check the reachability of a given host name.
