@@ -288,7 +288,11 @@ static NSURLCache* sharedCache = nil;
     
     NSTimeInterval startTimeInterval = [[NSDate date] timeIntervalSince1970];
     if (WTRequestCenterDebugMode) {
-        NSLog(@"WTRequestCenter request start:%@",request);
+        NSString *parameters = @"";
+        parameters = [[NSString alloc] initWithData:request.HTTPBody
+                                           encoding:NSUTF8StringEncoding];
+        NSLog(@"\n\nWTRequestCenter request start:\n%@\nparameters:%@\n\n",request,parameters);
+        
         
     }
     
@@ -306,7 +310,7 @@ static NSURLCache* sharedCache = nil;
         if (connectionError) {
             if (WTRequestCenterDebugMode) {
                 //                    访问出错
-                NSLog(@"WTRequestCenter request failed:\n\nrequest:%@\n\nresponse：%@\n\nerror：%@  time:%f",request,response,connectionError,endTimeInterval-startTimeInterval);
+                NSLog(@"\n\nWTRequestCenter request failed:\n\nrequest:%@\n\nresponse：%@\n\nerror：%@  time:%f\n\n",request,response,connectionError,endTimeInterval-startTimeInterval);
             }
         }else
         {
@@ -322,7 +326,7 @@ static NSURLCache* sharedCache = nil;
             }
             
             if (WTRequestCenterDebugMode) {
-                NSLog(@"WTRequestCenter request finished:%@  time:%f",request,endTimeInterval-startTimeInterval);
+                NSLog(@"\n\nWTRequestCenter request finished:%@  time:%f\n\n",request,endTimeInterval-startTimeInterval);
             }
         }
         
