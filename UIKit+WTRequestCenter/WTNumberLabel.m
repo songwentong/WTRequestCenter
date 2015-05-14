@@ -83,7 +83,7 @@ CGPoint PointOnCubicBezier( CGPoint* cp, float t )
     //目标数字
     CGFloat targetValue = [self.dataSource targetValueOfNumberLabel:self];
     //显示的次数
-    CGFloat textNumber = 50;
+    CGFloat textNumber = 10;
     
     if ([self.dataSource respondsToSelector:@selector(numberOfTextForNumberLabel:)]) {
         textNumber = [self.dataSource numberOfTextForNumberLabel:self];
@@ -97,7 +97,10 @@ CGPoint PointOnCubicBezier( CGPoint* cp, float t )
     }
     
     
-    self.text = [NSString stringWithFormat:@"%.2f",currentValue];
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+    NSString *text = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:currentValue]];
+    self.text = text;
     
     [_pointsArray removeAllObjects];
     CGPoint points[4] = {CGPointZero,CGPointMake(0.5, 0.9),CGPointMake(0.7, 0.95),CGPointMake(1, 1)};
