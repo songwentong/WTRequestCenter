@@ -291,7 +291,12 @@ static NSURLCache* sharedCache = nil;
         NSString *parameters = @"";
         parameters = [[NSString alloc] initWithData:request.HTTPBody
                                            encoding:NSUTF8StringEncoding];
-        NSLog(@"\n\nWTRequestCenter request start:\n%@\nparameters:%@\n\n",request,parameters);
+        NSString *string = [NSString stringWithFormat:@"\n\nWTRequestCenter request start:\n%@\n",request];
+        if (parameters) {
+            string = [NSString stringWithFormat:@"%@parameters:%@\n\n",string,parameters];
+        }
+        NSLog(@"%@",string);
+
         
         
     }
