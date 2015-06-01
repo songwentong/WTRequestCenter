@@ -23,7 +23,18 @@
 @protocol WTMultipartFormData;
 extern NSTimeInterval const WTURLRequestSerializationTimeoutTimeInterval;
 
-@interface WTURLRequestSerialization : NSObject
+
+
+@protocol WTURLRequestSerializationProtocol <NSObject>
+
+- (NSURLRequest *)requestBySerializingRequest:(NSURLRequest *)request
+                               withParameters:(NSDictionary*)parameters
+                                        error:(NSError *__autoreleasing *)error;
+
+@end
+
+
+@interface WTURLRequestSerialization : NSObject <WTURLRequestSerializationProtocol>
 /*!
     get the shared request serialization
  */

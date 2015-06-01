@@ -61,16 +61,19 @@
     _relerView.userInteractionEnabled = NO;
     [self.view addSubview:_relerView];
   
-//    UIAccelerometer *a = nil;
+    
     /*
-    WTURLRequestOperation *operation = [WTRequestCenter testGetWithURL:@"https://www.apple.com" parameters:nil finished:^(NSURLResponse *response, NSData *data)
+    WTURLRequestOperation *operation = [[WTRequestCenter requestCenter] GET:@"http://www.baidu.com"
+                                                                 parameters:nil
+                                                                   finished:^(WTURLRequestOperation *operation, NSData *data)
     {
-        
-    } failed:^(NSURLResponse *response, NSError *error) {
-        
+        NSLog(@"%@",operation);
+    }
+                                                                     failed:^(WTURLRequestOperation *operation, NSError *error)
+    {
+        NSLog(@"%@",operation);
     }];
-    operation.credential = nil;
-    [operation start];
+    NSLog(@"%@",operation);
     */
 }
 

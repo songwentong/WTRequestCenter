@@ -38,7 +38,8 @@ typedef void(^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalBytes
 
 -(instancetype)initWithRequest:(NSURLRequest*)request;
 -(void)setCompletionHandler:(WTRequestComplectionBlock)handler;
-
+-(void)setCompletionBlockWithfinished:(void(^)(WTURLRequestOperation *operation,NSData *data))finished
+                               failed:(void(^)(WTURLRequestOperation *operation,NSError *error))failed;
 
 
 @property (nonatomic, strong) NSSet *runLoopModes;

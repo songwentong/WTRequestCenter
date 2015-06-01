@@ -23,7 +23,10 @@ BOOL const WTRequestCenterDebugMode = YES;
 
 @implementation WTRequestCenter
 
-
++(WTRequestCenter*)requestCenter
+{
+    return [[WTRequestCenter alloc] init];
+}
 
 #pragma mark - Reachability
 static Reachability *sharedReachbility = nil;
@@ -721,6 +724,8 @@ static NSString * const baseURL = @"http://www.baidu.com";
     return operation;
 }
 
+
+
 #pragma mark - 延时的方法
 void perform(dispatch_block_t block , NSTimeInterval delay)
 {
@@ -746,9 +751,111 @@ void perform(dispatch_block_t block , NSTimeInterval delay)
     });
 }
 
-//执行block
-+(void)performBlock:(void(^)())block
+
+#pragma mark - 实例方法 （1.0）
+
+- (instancetype)init
 {
-    
+    self = [super init];
+    if (self) {
+        
+//        请求生成类
+        self.requestSerializer = [[WTURLRequestSerialization alloc] init];
+        
+        self.operationQueue = [[NSOperationQueue alloc] init];
+        _operationQueue.maxConcurrentOperationCount = 4;
+        [_operationQueue setSuspended:NO];
+    }
+    return self;
 }
+
+-(WTURLRequestOperation*)HTTPRequestWithRequest:(NSURLRequest*)request
+                                       finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
+                                         failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed
+{
+    WTURLRequestOperation *operation = nil;
+    operation = [[WTURLRequestOperation alloc] initWithRequest:request];
+    [operation setCompletionBlockWithfinished:finished
+                                       failed:failed];
+    operation.credential = self.credential;
+    return operation;
+}
+
+
+- (WTURLRequestOperation *)HTTPRequestOperationWithHTTPMethod:(NSString *)method
+                                                     URLString:(NSString *)URLString
+                                                    parameters:(NSDictionary*)parameters
+                                                       finished:(void (^)(WTURLRequestOperation *operation, NSData *data))finished
+                                                       failed:(void (^)(WTURLRequestOperation *operation, NSError *error))failed
+{
+//    NSError *serializationError = nil;
+    NSMutableURLRequest *request = [self.requestSerializer requestWithMethod:method
+                                                                   URLString:URLString
+                                                                  parameters:parameters
+                                                                       error:nil];
+    return [self HTTPRequestWithRequest:request
+                               finished:finished
+                                 failed:failed];
+}
+-(WTURLRequestOperation*)GET:(NSString*)urlString
+                   parameters:(NSDictionary*)parameters
+                    finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
+                      failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed
+{
+    WTURLRequestOperation *operation = nil;
+    operation = [self HTTPRequestOperationWithHTTPMethod:@"GET"
+                                               URLString:urlString
+                                              parameters:parameters
+                                                finished:finished
+                                                  failed:failed];
+    [self.operationQueue addOperation:operation];
+    return operation;
+}
+-(WTURLRequestOperation*)HEAD:(NSString*)urlString
+                  parameters:(NSDictionary*)parameters
+                    finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
+                      failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed
+{
+    WTURLRequestOperation *operation = nil;
+    operation = [self HTTPRequestOperationWithHTTPMethod:@"HEAD"
+                                               URLString:urlString
+                                              parameters:parameters
+                                                finished:finished
+                                                  failed:failed];
+    [self.operationQueue addOperation:operation];
+    return operation;
+}
+-(WTURLRequestOperation*)POST:(NSString*)urlString
+                  parameters:(NSDictionary*)parameters
+                    finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
+                      failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed
+{
+    WTURLRequestOperation *operation = nil;
+    operation = [self HTTPRequestOperationWithHTTPMethod:@"POST"
+                                               URLString:urlString
+                                              parameters:parameters
+                                                finished:finished
+                                                  failed:failed];
+    [self.operationQueue addOperation:operation];
+    return operation;
+}
+
+-(WTURLRequestOperation*)POST:(NSString*)urlString
+                   parameters:(NSDictionary*)parameters
+constructingBodyWithBlock:(void (^)(id <WTMultipartFormData> formData))block
+                     finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
+                       failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed
+{
+    WTURLRequestOperation *operation = nil;
+    NSMutableURLRequest *req = [self.requestSerializer POSTRequestWithURL:urlString
+                                                               parameters:parameters
+                                                constructingBodyWithBlock:block];
+    operation = [self HTTPRequestWithRequest:req
+                                    finished:finished
+                                      failed:failed];
+    [self.operationQueue addOperation:operation];
+    return operation;
+}
+
+
 @end

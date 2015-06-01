@@ -25,6 +25,8 @@
 @protocol WTMultipartFormData;
 @class WTURLRequestOperation;
 @class Reachability;
+@protocol WTURLRequestSerializationProtocol;
+
 #if ( ( defined(__MAC_OS_X_VERSION_MAX_ALLOWED) && __MAC_OS_X_VERSION_MAX_ALLOWED >= 1090) || \
 ( defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000 ) )
 
@@ -72,6 +74,12 @@ typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,N
 typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalBytesRead,long long totalBytesExpectedToRead);
 
 @interface WTRequestCenter : NSObject
+
+/*!
+    生成一个请求对象
+ */
++(WTRequestCenter*)requestCenter;
+
 
 
 
@@ -299,6 +307,70 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
                               parameters:(NSDictionary *)parameters
                                 finished:(WTRequestFinishedBlock)finished
                                   failed:(WTRequestFailedBlock)failed;
+
+
+
+#pragma mark - 实例方法（1.0）
+/*!
+    凭据
+ */
+@property (nonatomic, strong) NSURLCredential *credential;
+
+
+/*!
+    请求生成类
+ */
+@property (nonatomic, strong) WTURLRequestSerialization <WTURLRequestSerializationProtocol> * requestSerializer;
+
+/*!
+    自身线程
+ */
+@property (nonatomic, strong) NSOperationQueue *operationQueue;
+
+/**
+    创建一个 WTURLRequestOperation对象（没有执行）
+ */
+- (WTURLRequestOperation *)HTTPRequestOperationWithHTTPMethod:(NSString *)method
+                                                    URLString:(NSString *)URLString
+                                                   parameters:(NSDictionary*)parameters
+                                                     finished:(void (^)(WTURLRequestOperation *operation, NSData *data))finished
+                                                       failed:(void (^)(WTURLRequestOperation *operation, NSError *error))failed;
+
+/**
+    创建并且执行一个 WTURLRequestOperation对象 （GET 请求）
+ */
+-(WTURLRequestOperation*)GET:(NSString*)urlString
+                  parameters:(NSDictionary*)parameters
+                    finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
+                      failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed;
+
+/**
+    HEAD
+ */
+-(WTURLRequestOperation*)HEAD:(NSString*)urlString
+                   parameters:(NSDictionary*)parameters
+                     finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
+                       failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed;
+
+/**
+    POST
+ */
+-(WTURLRequestOperation*)POST:(NSString*)urlString
+                   parameters:(NSDictionary*)parameters
+                     finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
+                       failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed;
+/**
+    用POST请求，创建并执行一个 WTURLRequestOperation对象。
+ 
+ */
+-(WTURLRequestOperation*)POST:(NSString*)urlString
+                   parameters:(NSDictionary*)parameters
+    constructingBodyWithBlock:(void (^)(id <WTMultipartFormData> formData))block
+                     finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
+                       failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed;
+
+
+
 @end
 
 ///--------------------
