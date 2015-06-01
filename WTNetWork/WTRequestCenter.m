@@ -859,7 +859,7 @@ void perform(dispatch_block_t block , NSTimeInterval delay)
 
 -(WTURLRequestOperation*)POST:(NSString*)urlString
                    parameters:(NSDictionary*)parameters
-constructingBodyWithBlock:(void (^)(id <WTMultipartFormData> formData))block
+    constructingBodyWithBlock:(void (^)(id <WTMultipartFormData> formData))block
                      finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
                        failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed
 {
