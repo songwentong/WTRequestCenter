@@ -215,10 +215,8 @@ static inline NSString * WTKeyPathFromOperationState(WTOperationState state) {
     if (_shouldCache) {
         NSCachedURLResponse *response = [[WTRequestCenter sharedCache] cachedResponseForRequest:_request];
         if (response) {
-            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 self.response = response.response;
                 self.responseData = [response.data mutableCopy];
-            }];
             [self finish];
             return;
         }

@@ -66,9 +66,15 @@ static const void * const WTButtonBackGroundImageOperationKey = @"WT Button Back
     }
     __weak UIButton *weakSelf = self;
     
-
-    WTURLRequestOperation *operation = [WTRequestCenter testGetWithURL:url parameters:nil option:WTRequestCenterCachePolicyCacheElseWeb finished:^(NSURLResponse *response, NSData *data) {
-        
+    
+    WTURLRequestOperation *operation = nil;
+    
+    
+    operation = [[WTRequestCenter requestCenter] GET:url
+                                          parameters:nil
+                                         shouldCache:YES
+                                            finished:^(WTURLRequestOperation *operation, NSData *data)
+    {
         [UIImage imageWithData:data complectionHandler:^(UIImage *image) {
             
             if (image) {
@@ -82,16 +88,10 @@ static const void * const WTButtonBackGroundImageOperationKey = @"WT Button Back
                 strongSelf.wtImageRequestOperation = nil;
             }
         }];
-        [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
-//            UIImage *image = [UIImage imageWithData:data];
-            
-        }];
+    }
+                                            failed:^(WTURLRequestOperation *operation, NSError *error)
+    {
         
-    } failed:^(NSURLResponse *response, NSError *error) {
-
-//        if (!weakSelf) return;
-//        __strong UIImageView *strongSelf = weakSelf;
-//        strongSelf.wtImageRequestOperation = nil;
     }];
     
     self.wtImageRequestOperation = operation;
@@ -119,10 +119,35 @@ static const void * const WTButtonBackGroundImageOperationKey = @"WT Button Back
         return;
     }
     __weak UIButton *weakSelf = self;
+//    
+//    self.wtBackGroundImageRequestOperation = [WTRequestCenter testGetWithURL:url parameters:nil option:WTRequestCenterCachePolicyCacheElseWeb finished:^(NSURLResponse *response, NSData *data) {
+//        
+//        
+//        [UIImage imageWithData:data complectionHandler:^(UIImage *image) {
+//            if (image) {
+//                if (weakSelf) {
+//                    __strong UIButton *strongSelf = weakSelf;
+//                    
+//                    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+//                        [strongSelf setBackgroundImage:image forState:state];
+//                        [strongSelf setNeedsLayout];
+//                    }];
+//                    
+//                }
+//            }
+//
+//        }];
+//
+//    } failed:^(NSURLResponse *response, NSError *error) {
+//        
+//    }];
+//    
     
-    self.wtBackGroundImageRequestOperation = [WTRequestCenter testGetWithURL:url parameters:nil option:WTRequestCenterCachePolicyCacheElseWeb finished:^(NSURLResponse *response, NSData *data) {
-        
-        
+    self.wtBackGroundImageRequestOperation = [[WTRequestCenter requestCenter] GET:url
+                                                                       parameters:nil
+                                                                      shouldCache:YES
+                                                                         finished:^(WTURLRequestOperation *operation, NSData *data)
+    {
         [UIImage imageWithData:data complectionHandler:^(UIImage *image) {
             if (image) {
                 if (weakSelf) {
@@ -135,11 +160,11 @@ static const void * const WTButtonBackGroundImageOperationKey = @"WT Button Back
                     
                 }
             }
-
+            
         }];
-
-    } failed:^(NSURLResponse *response, NSError *error) {
-        
+    }
+                                                                        failed:^(WTURLRequestOperation *operation, NSError *error)
+    {
     }];
              
 }

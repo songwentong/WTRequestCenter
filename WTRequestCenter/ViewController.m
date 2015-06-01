@@ -52,8 +52,8 @@
 //    [[WTURLRequestSerialization sharedRequestSerialization] setValue:@"value"
 //                                                  forHTTPHeaderField:@"User-Agent"];
 
-//    [self configModel];
-//    [self configView];
+    [self configModel];
+    [self configView];
     
     
   

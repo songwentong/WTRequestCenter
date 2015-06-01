@@ -61,9 +61,13 @@ static const void * const WTImageViewOperationKey = @"WT ImageView Operation Key
         __weak UIImageView *wself    = self;
         
         
-        WTURLRequestOperation *operation = [WTRequestCenter testGetWithURL:url parameters:nil option:WTRequestCenterCachePolicyCacheElseWeb finished:^(NSURLResponse *response, NSData *data)
+        WTURLRequestOperation *operation = nil;
+        
+        operation = [[WTRequestCenter requestCenter] GET:url
+                                              parameters:nil
+                                             shouldCache:YES
+                                                finished:^(WTURLRequestOperation *operation, NSData *data)
         {
-            
             [UIImage imageWithData:data complectionHandler:^(UIImage *image) {
                 
                 if (image) {
@@ -74,7 +78,7 @@ static const void * const WTImageViewOperationKey = @"WT ImageView Operation Key
                         [strongSelf setNeedsLayout];
                     };
                     [[NSOperationQueue mainQueue] addOperationWithBlock:block];
-
+                    
                 }
                 
                 
@@ -84,21 +88,15 @@ static const void * const WTImageViewOperationKey = @"WT ImageView Operation Key
             
             [[NSOperationQueue mainQueue] addOperationWithBlock:^{
                 if (finished) {
-                    finished(response,data);
+                    finished(operation.response,operation.responseData);
                 }
             }];
 
-            
-            
-        } failed:^(NSURLResponse *response, NSError *error)
+        } failed:^(WTURLRequestOperation *operation, NSError *error)
         {
-            if (!wself) return;
-//            __strong UIImageView *strongSelf = wself;
-            if (failed) {
-                failed(self.wtImageRequestOperation.response,self.wtImageRequestOperation.error);
-            }
-//            strongSelf.wtImageRequestOperation = nil;
+        
         }];
+        
         
         self.wtImageRequestOperation = operation;
     }else
