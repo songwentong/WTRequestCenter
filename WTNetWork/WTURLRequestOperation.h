@@ -20,6 +20,7 @@
  
  */
 #import <Foundation/Foundation.h>
+#import "WTRequestCenter.h"
 typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,NSError *error);
 typedef void(^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalBytesRead,long long totalBytesExpectedToRead);
 
@@ -33,6 +34,10 @@ typedef void(^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalBytes
     
 
 }
+/*!
+    缓存策略
+ */
+@property(nonatomic) WTRequestCenterCachePolicy cachePolicy;
 
 @property (readwrite, nonatomic, copy) WTDownLoadProgressBlock downloadProgress;
 

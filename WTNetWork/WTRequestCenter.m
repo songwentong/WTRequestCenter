@@ -811,6 +811,23 @@ void perform(dispatch_block_t block , NSTimeInterval delay)
     [self.operationQueue addOperation:operation];
     return operation;
 }
+-(WTURLRequestOperation*)GET:(NSString*)urlString
+                  parameters:(NSDictionary*)parameters
+                       cache:(WTRequestCenterCachePolicy)policy
+                    finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
+                      failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed
+{
+    WTURLRequestOperation *operation = nil;
+    operation = [self HTTPRequestOperationWithHTTPMethod:@"GET"
+                                               URLString:urlString
+                                              parameters:parameters
+                                                finished:finished
+                                                  failed:failed];
+    operation.cachePolicy = policy;
+    [self.operationQueue addOperation:operation];
+    return operation;
+}
+
 -(WTURLRequestOperation*)HEAD:(NSString*)urlString
                   parameters:(NSDictionary*)parameters
                     finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
