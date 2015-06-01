@@ -250,10 +250,21 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
 
 
 #pragma mark - 延时的方法
-//void perform(dispatch_block_t block , double delay);
-
-+(void)performBlock:(dispatch_block_t)block afterDelay:(NSTimeInterval)delay;
-+(void)performBlock:(dispatch_block_t)block inQueue:(dispatch_queue_t)queue afterDelay:(NSTimeInterval)delay;
+/*!
+    在daley秒后执行一个block
+ */
+void perform(dispatch_block_t block , NSTimeInterval delay);
+/*!
+    在daley秒后执行一个block
+ */
++(void)performBlock:(dispatch_block_t)block
+         afterDelay:(NSTimeInterval)delay;
+/*!
+    在daley秒后执行一个block
+ */
++(void)performBlock:(dispatch_block_t)block
+            inQueue:(dispatch_queue_t)queue
+         afterDelay:(NSTimeInterval)delay;
 
 
 
@@ -276,6 +287,9 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
 
 /**
     创建一个 WTURLRequestOperation对象（没有执行）
+ 
+ 
+    note: 并没有执行
  */
 - (WTURLRequestOperation *)HTTPRequestOperationWithHTTPMethod:(NSString *)method
                                                     URLString:(NSString *)URLString
