@@ -71,7 +71,7 @@ static inline NSString * WTKeyPathFromOperationState(WTOperationState state) {
         self.request = request;
         self.lock = [[NSRecursiveLock alloc] init];
         self.lock.name = @"WTRequestCenter.WTURLRequestOperation.lock";
-        
+        self.cachePolicy = WTRequestCenterCachePolicyNormal;
         _state = WTOperationStateReady;
         
         
