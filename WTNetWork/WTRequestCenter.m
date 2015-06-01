@@ -561,6 +561,169 @@ static NSString * const baseURL = @"http://www.baidu.com";
 }
 
 
+#pragma mark - Testing Method
+
+
+
++(WTURLRequestOperation*)testdoURLRequest:(NSURLRequest*)request
+                                 progress:(WTDownLoadProgressBlock)progress
+                                 finished:(WTRequestFinishedBlock)finished
+                                   failed:(WTRequestFailedBlock)failed
+{
+    //#pragma clang diagnostic push
+    //#pragma clang diagnostic ignored "-Warc-retain-cycles"
+    //#pragma clang diagnostic ignored "-Wgnu"
+    WTURLRequestOperation *operation = nil;
+    operation = [[WTURLRequestOperation alloc] initWithRequest:request];
+    if (progress) {
+        operation.downloadProgress = progress;
+    }
+    [operation setCompletionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        if (error) {
+            if (failed) {
+                failed(response,error);
+            }
+        }else
+        {
+            if (finished) {
+                finished(response,data);
+            }
+        }
+    }];
+    [[self sharedQueue] addOperation:operation];
+    return operation;
+    //#pragma clang diagnostic pop
+    
+}
+
+
++(WTURLRequestOperation*)testdoURLRequest:(NSURLRequest*)request
+                                   option:(WTRequestCenterCachePolicy)option
+                                 progress:(WTDownLoadProgressBlock)progress
+                                 finished:(WTRequestFinishedBlock)finished
+                                   failed:(WTRequestFailedBlock)failed
+{
+    WTURLRequestOperation *operation = nil;
+    operation = [[WTURLRequestOperation alloc] initWithRequest:request];
+    if (progress) {
+        operation.downloadProgress = progress;
+    }
+    NSCachedURLResponse *response = [[self sharedCache] cachedResponseForRequest:request];
+    switch (option) {
+        case WTRequestCenterCachePolicyNormal:
+        {
+            operation = [self testdoURLRequest:request progress:progress finished:finished failed:failed];
+        }
+            break;
+        case WTRequestCenterCachePolicyCacheElseWeb:
+        {
+            if (response) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (finished) {
+                        finished(response.response,response.data);
+                    }
+                });
+            }else
+            {
+                operation =  [self testdoURLRequest:request progress:progress finished:finished failed:failed];
+            }
+        }
+            break;
+        case WTRequestCenterCachePolicyOnlyCache:
+        {
+            if (response) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (finished) {
+                        finished(response.response,response.data);
+                    }
+                });
+            }else
+            {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (finished) {
+                        finished(nil,nil);
+                    }
+                });
+            }
+        }
+            break;
+        case WTRequestCenterCachePolicyCacheAndRefresh:
+        {
+            if (response) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (finished) {
+                        finished(response.response,response.data);
+                    }
+                });
+                
+            }
+            
+            operation = [self testdoURLRequest:request progress:progress finished:finished failed:failed];
+        }
+            break;
+        case WTRequestCenterCachePolicyCacheAndWeb:
+        {
+            
+            if (response) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (finished) {
+                        finished(response.response,response.data);
+                    }
+                });
+                operation = [self testdoURLRequest:request progress:nil finished:nil failed:nil];
+            }else
+            {
+                operation = [self testdoURLRequest:request progress:progress finished:finished failed:failed];
+            }
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+    return operation;
+}
+
+
+
++(WTURLRequestOperation*)testGetWithURL:(NSString *)url parameters:(NSDictionary *)parameters finished:(WTRequestFinishedBlock)finished failed:(WTRequestFailedBlock)failed
+{
+    return [self testGetWithURL:url parameters:parameters option:WTRequestCenterCachePolicyNormal finished:finished failed:failed];
+}
++(WTURLRequestOperation*)testGetWithURL:(NSString*)url
+                             parameters:(NSDictionary *)parameters
+                                 option:(WTRequestCenterCachePolicy)option
+                               finished:(WTRequestFinishedBlock)finished
+                                 failed:(WTRequestFailedBlock)failed
+{
+    return [self testGetWithURL:url parameters:parameters option:option progress:nil finished:finished failed:failed];
+}
+
++(WTURLRequestOperation*)testGetWithURL:(NSString*)url
+                             parameters:(NSDictionary *)parameters
+                                 option:(WTRequestCenterCachePolicy)option
+                               progress:(WTDownLoadProgressBlock)progress
+                               finished:(WTRequestFinishedBlock)finished
+                                 failed:(WTRequestFailedBlock)failed
+{
+    NSURLRequest *request = [[WTURLRequestSerialization sharedRequestSerialization] requestWithMethod:@"GET" URLString:url parameters:parameters error:nil];
+    WTURLRequestOperation *operation = [self testdoURLRequest:request option:option progress:progress finished:finished failed:failed];
+    return operation;
+}
+
+
+
++(WTURLRequestOperation*)testPOSTWithURL:(NSString*)url
+                              parameters:(NSDictionary *)parameters
+                                finished:(WTRequestFinishedBlock)finished
+                                  failed:(WTRequestFailedBlock)failed
+{
+    NSURLRequest *request = [[WTURLRequestSerialization sharedRequestSerialization] requestWithMethod:@"POST" URLString:url parameters:parameters error:nil];
+    WTURLRequestOperation *operation = [self testdoURLRequest:request progress:nil finished:finished failed:failed];
+    return operation;
+}
+
 
 
 #pragma mark - 延时的方法

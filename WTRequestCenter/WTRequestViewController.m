@@ -124,6 +124,31 @@
 //    NSLog(@"%@",string2);
 }
 
+-(void)testGet
+{
+//    [WTRequestCenter clearAllCache];
+//    [WTRequestCenter currentDiskUsage]
+//    [WTRequestCenter get]
+    
+    NSString *url = @"http://b.hiphotos.baidu.com/image/pic/item/5bafa40f4bfbfbed42c3044e7bf0f736afc31f6c.jpg";
+    [WTRequestCenter testGetWithURL:url
+                         parameters:nil
+                             option:WTRequestCenterCachePolicyNormal
+                           progress:^(NSUInteger bytesRead, long long totalBytesRead,
+                                      long long totalBytesExpectedToRead)
+     {
+//         NSString *string = [NSString stringWithFormat:@"本次数据接收量：%d,当前收到的总数据量：%lld,期望的总数据量：%lld",bytesRead,totalBytesRead,totalBytesExpectedToRead];
+//         NSLog(@"%@",string);
+     } finished:^(NSURLResponse *response, NSData *data) {
+         
+     } failed:^(NSURLResponse *response, NSError *error) {
+         
+     }];
+    //    for (WTURLRequestOperation *operation in [WTRequestCenter sharedQueue].operations) {
+    //        [operation cancel];
+    //    }
+    //    NSLog(@"%@",[WTRequestCenter sharedQueue].operations);
+}
 
 -(void)post
 {
