@@ -349,7 +349,7 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
  */
 -(WTURLRequestOperation*)GET:(NSString*)urlString
                   parameters:(NSDictionary*)parameters
-                 cachePolicy:(WTRequestCenterCachePolicy)cachePolicy
+                 shouldCache:(BOOL)shouldCache
                     finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
                       failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed;
 

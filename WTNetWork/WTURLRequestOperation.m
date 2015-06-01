@@ -71,7 +71,7 @@ static inline NSString * WTKeyPathFromOperationState(WTOperationState state) {
         self.request = request;
         self.lock = [[NSRecursiveLock alloc] init];
         self.lock.name = @"WTRequestCenter.WTURLRequestOperation.lock";
-        self.cachePolicy = WTRequestCenterCachePolicyNormal;
+        self.shouldCache = NO;
         _state = WTOperationStateReady;
         
         
@@ -210,6 +210,19 @@ static inline NSString * WTKeyPathFromOperationState(WTOperationState state) {
 - (void)operationDidStart
 {
     [self.lock lock];
+    
+    
+    if (_shouldCache) {
+        NSCachedURLResponse *response = [[WTRequestCenter sharedCache] cachedResponseForRequest:_request];
+        if (response) {
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                self.response = response.response;
+                self.responseData = [response.data mutableCopy];
+            }];
+            [self finish];
+            return;
+        }
+    }
     wtURLConnection = [[NSURLConnection alloc] initWithRequest:self.request delegate:self startImmediately:NO];
     
     NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
@@ -289,6 +302,12 @@ static inline NSString * WTKeyPathFromOperationState(WTOperationState state) {
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     wtURLConnection = nil;
+    if (_shouldCache) {
+        
+        NSCachedURLResponse *tempURLResponse = [[NSCachedURLResponse alloc] initWithResponse:_response data:_responseData userInfo:nil storagePolicy:NSURLCacheStorageAllowed];
+        
+        [[WTRequestCenter sharedCache] storeCachedResponse:tempURLResponse forRequest:_request];
+    }
     [self finish];
 }
 

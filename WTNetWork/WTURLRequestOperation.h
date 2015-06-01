@@ -37,7 +37,7 @@ typedef void(^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalBytes
 /*!
     缓存策略
  */
-@property(nonatomic) WTRequestCenterCachePolicy cachePolicy;
+@property(nonatomic) BOOL shouldCache;
 
 @property (readwrite, nonatomic, copy) WTDownLoadProgressBlock downloadProgress;
 
