@@ -119,29 +119,6 @@ static const void * const WTButtonBackGroundImageOperationKey = @"WT Button Back
         return;
     }
     __weak UIButton *weakSelf = self;
-//    
-//    self.wtBackGroundImageRequestOperation = [WTRequestCenter testGetWithURL:url parameters:nil option:WTRequestCenterCachePolicyCacheElseWeb finished:^(NSURLResponse *response, NSData *data) {
-//        
-//        
-//        [UIImage imageWithData:data complectionHandler:^(UIImage *image) {
-//            if (image) {
-//                if (weakSelf) {
-//                    __strong UIButton *strongSelf = weakSelf;
-//                    
-//                    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-//                        [strongSelf setBackgroundImage:image forState:state];
-//                        [strongSelf setNeedsLayout];
-//                    }];
-//                    
-//                }
-//            }
-//
-//        }];
-//
-//    } failed:^(NSURLResponse *response, NSError *error) {
-//        
-//    }];
-//    
     
     self.wtBackGroundImageRequestOperation = [[WTRequestCenter requestCenter] GET:url
                                                                        parameters:nil
