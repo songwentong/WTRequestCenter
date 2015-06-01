@@ -52,79 +52,26 @@
 //    [[WTURLRequestSerialization sharedRequestSerialization] setValue:@"value"
 //                                                  forHTTPHeaderField:@"User-Agent"];
 
-    [self configModel];
-    [self configView];
+//    [self configModel];
+//    [self configView];
     
     
-    /*
-    [WTRequestCenter postWithURL:@"http://passport.baidu.com/v2/sapi/center/setportrait"
-                      parameters:nil
-       constructingBodyWithBlock:^(id<WTMultipartFormData> formData) {
-           [formData appendPartWithData:[@"dasdasd" dataUsingEncoding:NSUTF8StringEncoding] name:@"file"];
-       } finished:^(NSURLResponse *response, NSData *data) {
-           
-       } failed:^(NSURLResponse *response, NSError *error) {
-           
-       }];
-     */
-
-//    NSData *data = request.HTTPBody;
-//    NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-//    NSLog(@"%@",str);
-    /*
-    [[WTNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
-    NSData *data = [@"dsajlkfjlsd" dataUsingEncoding:NSUTF8StringEncoding];
-    [WTDataSaver saveData:data withName:@"aaa"];
-    
-    [WTDataSaver dataWithName:@"aaa" completion:^(NSData *data) {
-//        NSLog(@"xxx");
-    }];
-    
-    [WTDataSaver removeDataWithName:@"aaa"];
-    */
-//    [WTDataSaver clearAllData];
-    
+  
     _relerView = [[RulerView alloc] initWithFrame:self.view.bounds];
     _relerView.userInteractionEnabled = NO;
     [self.view addSubview:_relerView];
+  
+//    UIAccelerometer *a = nil;
     /*
-    [WTRequestCenter getCacheWithURL:@"http://www.baidu.com"
-                          parameters:nil
-                            finished:^(NSURLResponse *response, NSData *data)
-    {
-        NSString *string = [[NSString alloc] initWithData:data
-                                                 encoding:NSUTF8StringEncoding];
-        NSLog(@"%@",string);
-        
-    }
-                              failed:^(NSURLResponse *response, NSError *error)
+    WTURLRequestOperation *operation = [WTRequestCenter testGetWithURL:@"https://www.apple.com" parameters:nil finished:^(NSURLResponse *response, NSData *data)
     {
         
+    } failed:^(NSURLResponse *response, NSError *error) {
+        
     }];
+    operation.credential = nil;
+    [operation start];
     */
-    /*
-    NSURLRequest *request = [WTURLRequestSerialization POSTRequestWithURL:@"a"
-                                                               parameters:@{@"abc": @"123"}
-                                                constructingBodyWithBlock:^(id<WTMultipartFormData> formData)
-    {
-        NSData *data = [@"123" dataUsingEncoding:NSUTF8StringEncoding];
-        [formData appendPartWithData:data name:@"pic"];
-        NSData *data2 = [@"456" dataUsingEncoding:NSUTF8StringEncoding];
-        [formData appendPartWithData:data2 name:@"pic2"];
-//        ...
-    }];
-    */
-    /*
-    [WTRequestCenter doURLRequest:request
-                         finished:^(NSURLResponse *response, NSData *data)
-    {
-        NSLog(@"finished");
-    } failed:^(NSURLResponse *response, NSError *error)
-    {
-        NSLog(@"failed");
-    }];
-     */
-    
 }
 
 

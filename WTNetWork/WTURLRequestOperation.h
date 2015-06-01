@@ -47,4 +47,10 @@ typedef void(^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalBytes
 @property (nonatomic,retain,readonly)NSURLRequest *request;
 @property (nonatomic,retain,readonly)NSURLResponse *response;
 @property (nonatomic,retain)NSError *error;
+
+
+/*!
+    凭据
+ */
+@property (nonatomic, strong) NSURLCredential *credential;
 @end

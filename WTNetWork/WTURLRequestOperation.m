@@ -80,6 +80,33 @@ static inline NSString * WTKeyPathFromOperationState(WTOperationState state) {
     return self;
 }
 
+
+-(void)setCompletionBlockWithfinished:(void(^)(WTURLRequestOperation *operation,NSData *data))finished
+                               failed:(void(^)(WTURLRequestOperation *operation,NSError *error))failed
+{
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-retain-cycles"
+#pragma clang diagnostic ignored "-Wgnu"
+    [self setCompletionBlock:^{
+        if (_error) {
+            if (failed) {
+                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                    failed(self,self.error);
+                }];
+            }
+
+
+        }else
+        {
+            if (finished) {
+                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                    finished(self,self.responseData);
+                }];
+            }
+        }
+    }];
+#pragma clang diagnostic pop
+}
 -(void)setCompletionHandler:(void (^)(NSURLResponse* response,NSData *data,NSError *error))handler
 {
 #pragma clang diagnostic push
@@ -266,6 +293,13 @@ static inline NSString * WTKeyPathFromOperationState(WTOperationState state) {
 }
 
 #pragma mark - NSURLConnectionDelegate
+- (void)connection:(NSURLConnection *)connection willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
+{
+    [challenge.sender useCredential:_credential
+         forAuthenticationChallenge:challenge];
+}
+
+
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
     self.error = error;
