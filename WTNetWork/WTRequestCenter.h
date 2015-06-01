@@ -73,6 +73,14 @@ typedef void (^WTRequestFailedBlock)(NSURLResponse *response,NSError *error);
 typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,NSError *error);
 typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalBytesRead,long long totalBytesExpectedToRead);
 
+
+
+
+#if !__has_feature(objc_arc)
+#error WTNetwork must be built with ARC.
+// You can turn on ARC for only WTNetwork files by adding -fobjc-arc to the build phase for each of its files.
+#endif
+
 @interface WTRequestCenter : NSObject
 
 /*!
