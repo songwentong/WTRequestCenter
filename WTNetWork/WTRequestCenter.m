@@ -813,7 +813,7 @@ void perform(dispatch_block_t block , NSTimeInterval delay)
 }
 -(WTURLRequestOperation*)GET:(NSString*)urlString
                   parameters:(NSDictionary*)parameters
-                       cache:(WTRequestCenterCachePolicy)policy
+                       cachePolicy:(WTRequestCenterCachePolicy)cachePolicy
                     finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
                       failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed
 {
@@ -823,7 +823,7 @@ void perform(dispatch_block_t block , NSTimeInterval delay)
                                               parameters:parameters
                                                 finished:finished
                                                   failed:failed];
-    operation.cachePolicy = policy;
+    operation.cachePolicy = cachePolicy;
     [self.operationQueue addOperation:operation];
     return operation;
 }

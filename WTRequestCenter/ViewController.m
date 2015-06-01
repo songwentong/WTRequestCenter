@@ -62,6 +62,8 @@
     [self.view addSubview:_relerView];
   
     
+    
+
     /*
     WTURLRequestOperation *operation = [[WTRequestCenter requestCenter] GET:@"http://www.baidu.com"
                                                                  parameters:nil
