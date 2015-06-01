@@ -230,7 +230,7 @@ static inline NSString * WTKeyPathFromOperationState(WTOperationState state) {
     [wtURLConnection start];
     
     [WTRequestCenter sendRequestStartNotificationWithRequest:_request];
-    
+    [WTRequestCenter logRequestStart:_request];
     [self.lock unlock];
 }
 - (void)cancel
@@ -274,6 +274,9 @@ static inline NSString * WTKeyPathFromOperationState(WTOperationState state) {
     [WTRequestCenter sendRequestCompleteNotificationWithRequest:_request
                                                        response:self.response
                                                            data:self.responseData];
+    [WTRequestCenter logRequesEndWithRequest:_request
+                                    response:_response
+                                       error:_error];
     
     [self.lock unlock];
     

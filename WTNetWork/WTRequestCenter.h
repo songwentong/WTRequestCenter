@@ -340,7 +340,18 @@ void perform(dispatch_block_t block , NSTimeInterval delay);
                        failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed;
 
 
+/*!
+    请求开始的输出
+ */
++(void)logRequestStart:(NSURLRequest*)request;
 
+
+/*!
+    请求结束的输出
+ */
++(void)logRequesEndWithRequest:(NSURLRequest*)request
+                      response:(NSURLResponse*)response
+                         error:(NSError*)error;
 @end
 
 ///--------------------

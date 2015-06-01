@@ -290,19 +290,6 @@ static NSURLCache* sharedCache = nil;
     [self sendRequestStartNotificationWithRequest:request];
     
     NSTimeInterval startTimeInterval = [[NSDate date] timeIntervalSince1970];
-    if (WTRequestCenterDebugMode) {
-        NSString *parameters = @"";
-        parameters = [[NSString alloc] initWithData:request.HTTPBody
-                                           encoding:NSUTF8StringEncoding];
-        NSString *string = [NSString stringWithFormat:@"\n\nWTRequestCenter request start:\n%@\n",request];
-        if (parameters) {
-            string = [NSString stringWithFormat:@"%@parameters:%@\n\n",string,parameters];
-        }
-        NSLog(@"%@",string);
-
-        
-        
-    }
     
     void (^complection)(NSURLResponse *response,NSData *data,NSError *error);
     
@@ -314,12 +301,11 @@ static NSURLCache* sharedCache = nil;
                                                 response:response
                                                     data:data];
         
-        
+        [self logRequesEndWithRequest:request
+                             response:response
+                                error:connectionError];
         if (connectionError) {
-            if (WTRequestCenterDebugMode) {
-                //                    访问出错
-                NSLog(@"\n\nWTRequestCenter request failed:\n\nrequest:%@\n\nresponse：%@\n\nerror：%@  time:%f\n\n",request,response,connectionError,endTimeInterval-startTimeInterval);
-            }
+
         }else
         {
             if (shouldCache) {
@@ -333,9 +319,7 @@ static NSURLCache* sharedCache = nil;
                 [[self sharedCache] storeCachedResponse:tempURLResponse forRequest:request];
             }
             
-            if (WTRequestCenterDebugMode) {
-                NSLog(@"\n\nWTRequestCenter request finished:%@  time:%f\n\n",request,endTimeInterval-startTimeInterval);
-            }
+            
         }
         
         
@@ -371,7 +355,7 @@ static NSURLCache* sharedCache = nil;
         }
     }
     
-    
+    [self logRequestStart:request];
     [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         complection(response,data,connectionError);
     }];
@@ -502,7 +486,48 @@ static NSURLCache* sharedCache = nil;
                                                             object:nil
                                                           userInfo:userInfo];
     }];
+    
+
+
 }
+
++(void)logRequestStart:(NSURLRequest*)request
+{
+    if (WTRequestCenterDebugMode) {
+        NSString *parameters = @"";
+        parameters = [[NSString alloc] initWithData:request.HTTPBody
+                                           encoding:NSUTF8StringEncoding];
+        NSString *string = [NSString stringWithFormat:@"\n\nWTRequestCenter request start:\n%@\n",request];
+        if (parameters) {
+            string = [NSString stringWithFormat:@"%@parameters:%@\n\n",string,parameters];
+        }
+        NSLog(@"%@",string);
+        
+        
+        
+    }
+}
+
++(void)logRequesEndWithRequest:(NSURLRequest*)request
+                      response:(NSURLResponse*)response
+                         error:(NSError*)error
+{
+    if (WTRequestCenterDebugMode) {
+        NSString *text = @"";
+        if (error) {
+            text = [NSString stringWithFormat:@"\n\nWTRequestCenter request failed:\n\nrequest:%@\n",request];
+        }else
+        {
+            text = [NSString stringWithFormat:@"\n\nWTRequestCenter request finished:%@  time:\n\n",request];
+
+        }
+        NSLog(@"%@",text);
+    }
+
+}
+
+
+
 
 //请求失败的消息
 +(void)sendRequestCompleteNotificationWithRequest:(NSURLRequest*)request
