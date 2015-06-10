@@ -239,6 +239,21 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
 +(void)sendRequestCompleteNotificationWithRequest:(NSURLRequest*)request
                                          response:(NSURLResponse*)response
                                              data:(NSData*)data;
+
+
+#pragma mark - 请求开始和结束的输出
+/*!
+ 请求开始的输出
+ */
++(void)logRequestStart:(NSURLRequest*)request;
+
+
+/*!
+ 请求结束的输出
+ */
++(void)logRequesEndWithRequest:(NSURLRequest*)request
+                      response:(NSURLResponse*)response
+                         error:(NSError*)error;
 #pragma mark - 辅助
 // convert json data to object
 +(id)JSONObjectWithData:(NSData*)data;
@@ -358,18 +373,7 @@ void perform(dispatch_block_t block , NSTimeInterval delay);
                        finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
                          failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed;
 
-/*!
-    请求开始的输出
- */
-+(void)logRequestStart:(NSURLRequest*)request;
 
-
-/*!
-    请求结束的输出
- */
-+(void)logRequesEndWithRequest:(NSURLRequest*)request
-                      response:(NSURLResponse*)response
-                         error:(NSError*)error;
 @end
 
 ///--------------------
