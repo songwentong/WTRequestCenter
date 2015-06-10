@@ -257,7 +257,7 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
 
 
 
-#pragma mark - 实例方法（1.0）
+#pragma mark - 属性
 /*!
     凭据
  */
@@ -274,6 +274,9 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
  */
 @property (nonatomic, strong) NSOperationQueue *operationQueue;
 
+
+
+#pragma mark - 实例方法（1.0）
 /**
     创建一个 WTURLRequestOperation对象（没有执行）
  
