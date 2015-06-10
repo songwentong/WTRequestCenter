@@ -555,29 +555,6 @@ static NSURLCache* sharedCache = nil;
 
 
 
-#pragma mark - URL
-
-static NSString * const baseURL = @"http://www.baidu.com";
-+(NSString *)baseURL
-{
-    return baseURL;
-}
-
-//实际应用示例
-+(NSString*)URLWithIndex:(NSInteger)index
-{
-    NSMutableArray *urls = [[NSMutableArray alloc] init];
-    //    0-9
-    [urls addObject:@"article/detail"];
-    [urls addObject:@"interface1"];
-    [urls addObject:@"interface2"];
-    [urls addObject:@"interface3"];
-    
-    
-    NSString *url = urls[index];
-    NSString *urlString = [NSString stringWithFormat:@"%@/%@",[WTRequestCenter baseURL],url];
-    return urlString;
-}
 
 
 + (NSString *)debugDescription

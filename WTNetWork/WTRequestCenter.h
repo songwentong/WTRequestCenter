@@ -254,36 +254,6 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
 +(void)logRequesEndWithRequest:(NSURLRequest*)request
                       response:(NSURLResponse*)response
                          error:(NSError*)error;
-#pragma mark - 辅助
-// convert json data to object
-+(id)JSONObjectWithData:(NSData*)data;
-+(NSString*)stringWithData:(NSObject*)data;
-
-// convert object to json data
-+(NSData*)dataFromJSONObject:(id)object;
-#pragma mark - URL
-// base URL
-+(NSString *)baseURL;
-// url with index
-+(NSString*)URLWithIndex:(NSInteger)index;
-
-
-#pragma mark - 延时的方法
-/*!
-    在daley秒后执行一个block
- */
-void perform(dispatch_block_t block , NSTimeInterval delay);
-/*!
-    在daley秒后执行一个block
- */
-+(void)performBlock:(dispatch_block_t)block
-         afterDelay:(NSTimeInterval)delay;
-/*!
-    在daley秒后执行一个block
- */
-+(void)performBlock:(dispatch_block_t)block
-            inQueue:(dispatch_queue_t)queue
-         afterDelay:(NSTimeInterval)delay;
 
 
 
@@ -373,6 +343,30 @@ void perform(dispatch_block_t block , NSTimeInterval delay);
                        finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
                          failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed;
 
+#pragma mark - 辅助
+// convert json data to object
++(id)JSONObjectWithData:(NSData*)data;
++(NSString*)stringWithData:(NSObject*)data;
+
+// convert object to json data
++(NSData*)dataFromJSONObject:(id)object;
+
+#pragma mark - 延时的方法
+/*!
+ 在daley秒后执行一个block
+ */
+void perform(dispatch_block_t block , NSTimeInterval delay);
+/*!
+ 在daley秒后执行一个block
+ */
++(void)performBlock:(dispatch_block_t)block
+         afterDelay:(NSTimeInterval)delay;
+/*!
+ 在daley秒后执行一个block
+ */
++(void)performBlock:(dispatch_block_t)block
+            inQueue:(dispatch_queue_t)queue
+         afterDelay:(NSTimeInterval)delay;
 
 @end
 
