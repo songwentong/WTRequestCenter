@@ -39,18 +39,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    /*
-    imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
-    [self.view addSubview:imageView];
-    imageView.backgroundColor = [UIColor redColor];
-    [self performSelector:@selector(loadimage) withObject:nil afterDelay:3];
-   */
 
-    
-    
-//    [[WTURLRequestSerialization sharedRequestSerialization] setValue:@"value"
-//                                                  forHTTPHeaderField:@"User-Agent"];
 
     [self configModel];
     [self configView];
@@ -63,20 +52,10 @@
   
     
 
-
-    /*
-    WTURLRequestOperation *operation = [[WTRequestCenter requestCenter] GET:@"http://www.baidu.com"
-                                                                 parameters:nil
-                                                                   finished:^(WTURLRequestOperation *operation, NSData *data)
-    {
-        NSLog(@"%@",operation);
-    }
-                                                                     failed:^(WTURLRequestOperation *operation, NSError *error)
-    {
-        NSLog(@"%@",operation);
-    }];
-    NSLog(@"%@",operation);
-    */
+    
+    
+    
+    
 }
 
 

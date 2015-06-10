@@ -19,7 +19,7 @@ NSString * const WTNetworkingOperationDidStartNotification = @"WTNetworkingOpera
 NSString * const WTNetworkingOperationDidFinishNotification = @"WTNetworkingOperationDidFinishNotification";
 
 
-BOOL const WTRequestCenterDebugMode = YES;
+BOOL const WTRequestCenterDebugMode = NO;
 
 @implementation WTRequestCenter
 
