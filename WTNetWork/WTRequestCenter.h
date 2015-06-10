@@ -111,7 +111,8 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
              option:(WTRequestCenterCachePolicy)option
            finished:(WTRequestFinishedBlock)finished
              failed:(WTRequestFailedBlock)failed;
-#pragma mark - GET
+
+#pragma mark - 安全请求
 
 
 /*!
@@ -136,11 +137,6 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
                   finished:(WTRequestFinishedBlock)finished
                     failed:(WTRequestFailedBlock)failed;
 
-
-
-
-
-#pragma mark - POST
 
 /*!
  Performs an asynchronous post request of the given
@@ -346,7 +342,21 @@ void perform(dispatch_block_t block , NSTimeInterval delay);
     constructingBodyWithBlock:(void (^)(id <WTMultipartFormData> formData))block
                      finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
                        failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed;
+/*!
+    PUT方法
+ */
+-(WTURLRequestOperation*)PUT:(NSString*)urlString
+                  parameters:(NSDictionary*)parameters
+                    finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
+                      failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed;
 
+/*!
+ DELETE方法
+ */
+-(WTURLRequestOperation*)DELETE:(NSString*)urlString
+                     parameters:(NSDictionary*)parameters
+                       finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
+                         failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed;
 
 /*!
     请求开始的输出

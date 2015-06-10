@@ -305,7 +305,7 @@ static NSURLCache* sharedCache = nil;
                              response:response
                                 error:connectionError];
         if (connectionError) {
-
+            
         }else
         {
             if (shouldCache) {
@@ -487,8 +487,8 @@ static NSURLCache* sharedCache = nil;
                                                           userInfo:userInfo];
     }];
     
-
-
+    
+    
 }
 
 +(void)logRequestStart:(NSURLRequest*)request
@@ -519,11 +519,11 @@ static NSURLCache* sharedCache = nil;
         }else
         {
             text = [NSString stringWithFormat:@"\n\nWTRequestCenter request finished:%@  time:\n\n",request];
-
+            
         }
         NSLog(@"%@",text);
     }
-
+    
 }
 
 
@@ -621,7 +621,7 @@ void perform(dispatch_block_t block , NSTimeInterval delay)
     self = [super init];
     if (self) {
         
-//        请求生成类
+        //        请求生成类
         self.requestSerializer = [[WTURLRequestSerialization alloc] init];
         
         self.operationQueue = [[NSOperationQueue alloc] init];
@@ -645,12 +645,12 @@ void perform(dispatch_block_t block , NSTimeInterval delay)
 
 
 - (WTURLRequestOperation *)HTTPRequestOperationWithHTTPMethod:(NSString *)method
-                                                     URLString:(NSString *)URLString
-                                                    parameters:(NSDictionary*)parameters
-                                                       finished:(void (^)(WTURLRequestOperation *operation, NSData *data))finished
+                                                    URLString:(NSString *)URLString
+                                                   parameters:(NSDictionary*)parameters
+                                                     finished:(void (^)(WTURLRequestOperation *operation, NSData *data))finished
                                                        failed:(void (^)(WTURLRequestOperation *operation, NSError *error))failed
 {
-//    NSError *serializationError = nil;
+    //    NSError *serializationError = nil;
     NSMutableURLRequest *request = [self.requestSerializer requestWithMethod:method
                                                                    URLString:URLString
                                                                   parameters:parameters
@@ -660,7 +660,7 @@ void perform(dispatch_block_t block , NSTimeInterval delay)
                                  failed:failed];
 }
 -(WTURLRequestOperation*)GET:(NSString*)urlString
-                   parameters:(NSDictionary*)parameters
+                  parameters:(NSDictionary*)parameters
                     finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
                       failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed
 {
@@ -673,6 +673,7 @@ void perform(dispatch_block_t block , NSTimeInterval delay)
     [self.operationQueue addOperation:operation];
     return operation;
 }
+
 -(WTURLRequestOperation*)GET:(NSString*)urlString
                   parameters:(NSDictionary*)parameters
                  shouldCache:(BOOL)shouldCache
@@ -691,9 +692,9 @@ void perform(dispatch_block_t block , NSTimeInterval delay)
 }
 
 -(WTURLRequestOperation*)HEAD:(NSString*)urlString
-                  parameters:(NSDictionary*)parameters
-                    finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
-                      failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed
+                   parameters:(NSDictionary*)parameters
+                     finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
+                       failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed
 {
     WTURLRequestOperation *operation = nil;
     operation = [self HTTPRequestOperationWithHTTPMethod:@"HEAD"
@@ -705,9 +706,9 @@ void perform(dispatch_block_t block , NSTimeInterval delay)
     return operation;
 }
 -(WTURLRequestOperation*)POST:(NSString*)urlString
-                  parameters:(NSDictionary*)parameters
-                    finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
-                      failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed
+                   parameters:(NSDictionary*)parameters
+                     finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
+                       failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed
 {
     WTURLRequestOperation *operation = nil;
     operation = [self HTTPRequestOperationWithHTTPMethod:@"POST"
@@ -737,4 +738,33 @@ void perform(dispatch_block_t block , NSTimeInterval delay)
 }
 
 
+-(WTURLRequestOperation*)PUT:(NSString*)urlString
+                  parameters:(NSDictionary*)parameters
+                    finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
+                      failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed
+{
+    WTURLRequestOperation *operation = nil;
+    operation = [self HTTPRequestOperationWithHTTPMethod:@"PUT"
+                                               URLString:urlString
+                                              parameters:parameters
+                                                finished:finished
+                                                  failed:failed];
+    [self.operationQueue addOperation:operation];
+    return operation;
+}
+
+-(WTURLRequestOperation*)DELETE:(NSString*)urlString
+                     parameters:(NSDictionary*)parameters
+                       finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
+                         failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed
+{
+    WTURLRequestOperation *operation = nil;
+    operation = [self HTTPRequestOperationWithHTTPMethod:@"DELETE"
+                                               URLString:urlString
+                                              parameters:parameters
+                                                finished:finished
+                                                  failed:failed];
+    [self.operationQueue addOperation:operation];
+    return operation;
+}
 @end
