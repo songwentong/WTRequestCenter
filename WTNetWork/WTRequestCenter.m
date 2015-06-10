@@ -14,9 +14,9 @@
 #import <UIKit/UIKit.h>
 #endif
 //请求开始的消息
-NSString * const WTNetworkingOperationDidStartNotification = @"WTNetworkingOperationDidStartNotification";
+NSString * const WTNetworkingOperationDidStartNotification = @"WT Networking Operation Did Start Notification";
 //请求结束的消息
-NSString * const WTNetworkingOperationDidFinishNotification = @"WTNetworkingOperationDidFinishNotification";
+NSString * const WTNetworkingOperationDidFinishNotification = @"WT Networking Operation Did Finish Notification";
 
 
 BOOL const WTRequestCenterDebugMode = NO;
