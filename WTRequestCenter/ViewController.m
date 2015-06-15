@@ -93,7 +93,6 @@
     requestTypesArray = [[NSMutableArray alloc] init];
     [requestTypesArray addObject:@"GET 请求"];
     [requestTypesArray addObject:@"单发请求"];
-    [requestTypesArray addObject:@"WebView"];
     [requestTypesArray addObject:@"图片请求"];
 }
 
@@ -326,14 +325,14 @@
             switch (indexPath.row) {
                 case 0:
                 case 1:
-                case 2:
+
                 {
 
                     NSString *text = requestTypesArray[indexPath.row];
                     cell.textLabel.text = text;
                 }
                     break;
-                case 3:
+                case 2:
                 {
                     if (!imageCell)
                     {
@@ -346,6 +345,7 @@
                         [imageCell.contentView addSubview:viewer];
 
                     }
+                    imageCell.clipsToBounds = YES;
                     return imageCell;
                 }
                     
@@ -424,15 +424,7 @@
                                                          animated:YES];
                 }
                     break;
-                    break;
-                case 2:
-                {
-                    //            网页
-                    WTWebViewController *vc = [[WTWebViewController alloc] init];
-                    [self.navigationController pushViewController:vc animated:YES];
-                }
-                    break;
-                    case 3:
+                    case 2:
                 {
 //                    图片
                     WTImageViewController *vc = [[WTImageViewController alloc] init];
