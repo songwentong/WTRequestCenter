@@ -240,7 +240,7 @@
 		E4440D64197A01B1001E6D88 = {
 			isa = PBXGroup;
 			children = (
-				E4440D76197A01B1001E6D88 /* WTRequestCenter */,
+				E4440D76197A01B1001E6D88 /* Classes */,
 				E110FC491AE50D4100FCEF19 /* Reachability */,
 				E4DBC941197D14C9004F9393 /* WTRequestCenter */,
 				A3B70F5F1988DC5B002776F4 /* UIKit+WTRequestCenter */,
@@ -273,7 +273,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E4440D76197A01B1001E6D88 /* WTRequestCenter */ = {
+		E4440D76197A01B1001E6D88 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				E1F4BE021AE0EF4F000F7F21 /* About */,
@@ -298,6 +298,7 @@
 				E4440D88197A01B1001E6D88 /* Images.xcassets */,
 				E4440D77197A01B1001E6D88 /* Supporting Files */,
 			);
+			name = Classes;
 			path = WTRequestCenter;
 			sourceTree = "<group>";
 		};
