@@ -68,12 +68,7 @@ static const void * const WTButtonBackGroundImageOperationKey = @"WT Button Back
     
     
     WTURLRequestOperation *operation = nil;
-    
-    
-    operation = [[WTRequestCenter requestCenter] GET:url
-                                          parameters:nil
-                                         shouldCache:YES
-                                            finished:^(WTURLRequestOperation *operation, NSData *data)
+    operation = [[WTRequestCenter requestCenter] GETUsingCache:url parameters:nil finished:^(WTURLRequestOperation *operation, NSData *data)
     {
         [UIImage imageWithData:data complectionHandler:^(UIImage *image) {
             
@@ -88,9 +83,7 @@ static const void * const WTButtonBackGroundImageOperationKey = @"WT Button Back
                 strongSelf.wtImageRequestOperation = nil;
             }
         }];
-    }
-                                            failed:^(WTURLRequestOperation *operation, NSError *error)
-    {
+    } failed:^(WTURLRequestOperation *operation, NSError *error) {
         
     }];
     
@@ -120,9 +113,8 @@ static const void * const WTButtonBackGroundImageOperationKey = @"WT Button Back
     }
     __weak UIButton *weakSelf = self;
     
-    self.wtBackGroundImageRequestOperation = [[WTRequestCenter requestCenter] GET:url
+    self.wtBackGroundImageRequestOperation = [[WTRequestCenter requestCenter] GETUsingCache:url
                                                                        parameters:nil
-                                                                      shouldCache:YES
                                                                          finished:^(WTURLRequestOperation *operation, NSData *data)
     {
         [UIImage imageWithData:data complectionHandler:^(UIImage *image) {

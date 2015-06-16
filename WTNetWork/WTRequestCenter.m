@@ -676,11 +676,10 @@ void perform(dispatch_block_t block , NSTimeInterval delay)
     return operation;
 }
 
--(WTURLRequestOperation*)GET:(NSString*)urlString
-                  parameters:(NSDictionary*)parameters
-                 shouldCache:(BOOL)shouldCache
-                    finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
-                      failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed
+-(WTURLRequestOperation*)GETUsingCache:(NSString*)urlString
+                            parameters:(NSDictionary*)parameters
+                              finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
+                                failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed
 {
     WTURLRequestOperation *operation = nil;
     operation = [self HTTPRequestOperationWithHTTPMethod:@"GET"
@@ -688,7 +687,7 @@ void perform(dispatch_block_t block , NSTimeInterval delay)
                                               parameters:parameters
                                                 finished:finished
                                                   failed:failed];
-    operation.shouldCache = shouldCache;
+    operation.shouldCache = YES;
     [self.operationQueue addOperation:operation];
     return operation;
 }

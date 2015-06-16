@@ -308,11 +308,10 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
 /**
     GET + 缓存策略
  */
--(WTURLRequestOperation*)GET:(NSString*)urlString
-                  parameters:(NSDictionary*)parameters
-                 shouldCache:(BOOL)shouldCache
-                    finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
-                      failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed;
+-(WTURLRequestOperation*)GETUsingCache:(NSString*)urlString
+                            parameters:(NSDictionary*)parameters
+                              finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
+                                failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed;
 
 /**
     HEAD

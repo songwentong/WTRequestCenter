@@ -63,10 +63,9 @@ static const void * const WTImageViewOperationKey = @"WT ImageView Operation Key
         
         WTURLRequestOperation *operation = nil;
         
-        operation = [[WTRequestCenter requestCenter] GET:url
-                                              parameters:nil
-                                             shouldCache:YES
-                                                finished:^(WTURLRequestOperation *operation, NSData *data)
+        operation = [[WTRequestCenter requestCenter] GETUsingCache:url
+                                                        parameters:nil
+                                                          finished:^(WTURLRequestOperation *operation, NSData *data)
         {
             [UIImage imageWithData:data complectionHandler:^(UIImage *image) {
                 
