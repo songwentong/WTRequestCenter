@@ -58,14 +58,6 @@
  
  */
 
-typedef NS_ENUM(NSUInteger, WTRequestCenterCachePolicy) {
-    WTRequestCenterCachePolicyNormal,
-    WTRequestCenterCachePolicyCacheElseWeb,
-    WTRequestCenterCachePolicyOnlyCache,
-    WTRequestCenterCachePolicyCacheAndRefresh,
-    WTRequestCenterCachePolicyCacheAndWeb
-};
-
 
 //call back block
 typedef void (^WTRequestFinishedBlock)(NSURLResponse *response,NSData *data);

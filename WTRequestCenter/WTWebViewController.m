@@ -32,7 +32,7 @@
 //    [webView loadWithURL:@"http://image.baidu.com/channel/star/林志玲" option:WTRequestCenterCachePolicyCacheAndWeb];
     NSURL *url = [NSURL URLWithString:@"http://www.jd.com"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    [webView loadRequest:request option:WTRequestCenterCachePolicyNormal];
+    [webView loadRequest:request];
     [self.view addSubview:webView];
 
     

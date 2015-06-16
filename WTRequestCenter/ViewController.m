@@ -134,9 +134,7 @@
 
 -(void)testWebView
 {
-    UIWebView *webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
-    [webView loadWithURL:@"http://99.h5gwyx.sinaapp.com/game?gid=1" option:WTRequestCenterCachePolicyNormal];
-    [self.view addSubview:webView];
+
 }
 
 
