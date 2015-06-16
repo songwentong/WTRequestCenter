@@ -30,12 +30,23 @@ BOOL const WTRequestCenterDebugMode = NO;
 
 #pragma mark - Reachability
 static Reachability *sharedReachbility = nil;
+static NetworkStatus currentNetworkStatus = NotReachable;
 +(Reachability*)sharedReachability
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedReachbility = [Reachability reachabilityForInternetConnection];
         [sharedReachbility startNotifier];
+        currentNetworkStatus = [sharedReachbility currentReachabilityStatus];
+        
+        
+        
+        [[NSNotificationCenter defaultCenter] addObserverForName:kReachabilityChangedNotification
+                                                          object:nil
+                                                           queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note)
+        {
+            currentNetworkStatus = [sharedReachbility currentReachabilityStatus];
+        }];
     });
     
     return sharedReachbility;
@@ -293,7 +304,7 @@ static NSURLCache* sharedCache = nil;
     //    有效性判断
     assert(request != nil);
     
-    
+    [self sharedReachability];
     [self sendRequestStartNotificationWithRequest:request];
     
     NSTimeInterval startTimeInterval = [[NSDate date] timeIntervalSince1970];
@@ -347,8 +358,8 @@ static NSURLCache* sharedCache = nil;
     };
     
     
-    Reachability *r = [self sharedReachability];
-    NetworkStatus n = r.currentReachabilityStatus;
+    
+    NetworkStatus n = currentNetworkStatus;
     if (n == NotReachable) {
         
         NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
@@ -536,7 +547,7 @@ void perform(dispatch_block_t block , NSTimeInterval delay)
                                                      finished:(void (^)(WTURLRequestOperation *operation, NSData *data))finished
                                                        failed:(void (^)(WTURLRequestOperation *operation, NSError *error))failed
 {
-    //    NSError *serializationError = nil;
+    [[self class] sharedReachability];
     NSMutableURLRequest *request = [self.requestSerializer requestWithMethod:method
                                                                    URLString:URLString
                                                                   parameters:parameters
