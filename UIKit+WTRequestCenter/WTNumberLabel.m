@@ -18,6 +18,8 @@
     NSMutableArray *_pointsArray;
     
     NSTimeInterval _timerTimeInterval;
+    
+    NSNumberFormatter *_myNumberFormatter;
 }
 @end
 CGPoint PointOnCubicBezier( CGPoint* cp, float t )
@@ -49,10 +51,21 @@ CGPoint PointOnCubicBezier( CGPoint* cp, float t )
     
     return result;
 }
-
+@interface WTNumberLabel()
+{
+    CGFloat _targetNumber;
+}
+@end
 @implementation WTNumberLabel
 
-
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        [self configModelAndView];
+    }
+    return self;
+}
 - (instancetype)init
 {
     self = [super init];
@@ -74,6 +87,11 @@ CGPoint PointOnCubicBezier( CGPoint* cp, float t )
 {
     _pointsArray = [[NSMutableArray alloc] init];
     _currintIndex = 0;
+    
+    _myNumberFormatter = [[NSNumberFormatter alloc] init];
+    _myNumberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+    _myNumberFormatter.minimumFractionDigits = 2;
+    _myNumberFormatter.maximumFractionDigits = 2;
 }
 
 -(void)startAnimation
@@ -81,7 +99,11 @@ CGPoint PointOnCubicBezier( CGPoint* cp, float t )
     //当前数字
     CGFloat currentValue = [self.dataSource currentValueOfNumberLabel:self];
     //目标数字
-    CGFloat targetValue = [self.dataSource targetValueOfNumberLabel:self];
+    CGFloat targetNumber = [self.dataSource targetValueOfNumberLabel:self];
+    if (targetNumber == _targetNumber) {
+        return;
+    }
+    _targetNumber = targetNumber;
     //显示的次数
     CGFloat textNumber = 10;
     
@@ -97,20 +119,18 @@ CGPoint PointOnCubicBezier( CGPoint* cp, float t )
     }
     
     
-    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-    numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
-    NSString *text = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:currentValue]];
+    NSString *text = [self stringFromNumber:currentValue];
     self.text = text;
     
     [_pointsArray removeAllObjects];
-    CGPoint points[4] = {CGPointZero,CGPointMake(0.5, 0.9),CGPointMake(0.7, 0.95),CGPointMake(1, 1)};
+    CGPoint points[4] = {CGPointZero,CGPointMake(0.1, 0.95),CGPointMake(0.1, 0.95),CGPointMake(1, 1)};
     CGFloat dt = 1.0/(textNumber+1);
     
     _timerTimeInterval = animationTime / textNumber;
     for (int i=0; i<textNumber; i++) {
         CGPoint p = PointOnCubicBezier(points, i*dt);
         NSTimeInterval duration = p.x * animationTime;
-        CGFloat value = p.y * (targetValue - currentValue) + currentValue;
+        CGFloat value = p.y * (_targetNumber - currentValue) + currentValue;
         NSArray *tempArray = @[[NSNumber numberWithFloat:duration],[NSNumber numberWithFloat:value]];
         [_pointsArray addObject:tempArray];
     }
@@ -130,10 +150,16 @@ CGPoint PointOnCubicBezier( CGPoint* cp, float t )
 }
 
 
+-(NSString*)stringFromNumber:(CGFloat)f
+{
+    return [_myNumberFormatter stringFromNumber:[NSNumber numberWithFloat:f]];
+}
+
 -(void)run:(NSTimer*)timer
 {
     if (_currintIndex >= _strideCount) {
-        self.text = [NSString stringWithFormat:@"%.2f",[self.dataSource targetValueOfNumberLabel:self]];
+        
+        self.text = [self stringFromNumber:[self.dataSource targetValueOfNumberLabel:self]];
         [timer invalidate];
     }else
     {
@@ -142,10 +168,12 @@ CGPoint PointOnCubicBezier( CGPoint* cp, float t )
         CGFloat value = [pointValues[1] floatValue];
         //        CGFloat currentTime = [(NSNumber *)[pointValues objectAtIndex:0] floatValue];
         //        NSTimeInterval timeDuration = currentTime - lastTime;
-        self.text = [NSString stringWithFormat:@"%.2f",value];
+        NSString *text = [self stringFromNumber:value];
+        self.text = text;
         [self start];
         
     }
+    //    NSLog(@"167,WT,%@",self.text);
 }
 @end
 
