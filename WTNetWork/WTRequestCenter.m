@@ -201,6 +201,31 @@ static NSURLCache* sharedCache = nil;
     return request;
 }
 
++(NSURLRequest*)GETUsingCache:(NSString*)url
+                   parameters:(NSDictionary *)parameters
+                     finished:(WTRequestFinishedBlock)finished
+                       failed:(WTRequestFailedBlock)failed
+{
+    NSURLRequest *request = [[WTURLRequestSerialization sharedRequestSerialization]requestWithMethod:@"GET" URLString:url parameters:parameters error:nil];
+    __block NSCachedURLResponse *cachedResponse = [[self sharedCache] cachedResponseForRequest:request];
+    if (cachedResponse) {
+        if (finished) {
+            finished(cachedResponse.response,cachedResponse.data);
+        }
+    }else
+    {
+        [self doURLRequest:request finished:^(NSURLResponse *response, NSData *data) {
+            if (finished) {
+                finished(response,data);
+            }
+            cachedResponse = [[NSCachedURLResponse alloc] initWithResponse:response data:data userInfo:nil storagePolicy:NSURLCacheStorageAllowed];
+            [[self sharedCache] storeCachedResponse:cachedResponse forRequest:request];
+            
+        } failed:failed];
+    }
+    return request;
+}
+
 
 #pragma mark - POST
 

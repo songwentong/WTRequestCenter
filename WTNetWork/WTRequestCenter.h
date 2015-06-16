@@ -137,6 +137,14 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
                   finished:(WTRequestFinishedBlock)finished
                     failed:(WTRequestFailedBlock)failed;
 
+/*!
+    推荐的新缓存方法，建议使用
+ */
++(NSURLRequest*)GETUsingCache:(NSString*)url
+                   parameters:(NSDictionary *)parameters
+                     finished:(WTRequestFinishedBlock)finished
+                       failed:(WTRequestFailedBlock)failed;
+
 
 /*!
  Performs an asynchronous post request of the given
