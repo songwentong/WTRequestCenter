@@ -21,27 +21,26 @@
              option:(WTRequestCenterCachePolicy)option
 {
     
+    [WTRequestCenter GETUsingCache:request.URL.absoluteString parameters:nil finished:^(NSURLResponse *response, NSData *data) {
+        
+        if ([self isLoading]) {
+            [self stopLoading];
+        }
+        NSHTTPURLResponse *temp = (NSHTTPURLResponse*)response;
+        NSString *contentType = [temp.allHeaderFields valueForKey:@"Content-Type"];
+        NSRange range = [contentType rangeOfString:@"charset="];
+        NSString *encoding = @"utf-8";
+        if (range.length>0) {
+            encoding = [contentType substringFromIndex:range.location+range.length];
+        }
+        [self loadData:data
+              MIMEType:@"text/html"
+      textEncodingName:encoding
+               baseURL:nil];
 
-    [WTRequestCenter doURLRequest:request
-                           option:option
-                         finished:^(NSURLResponse *response, NSData *data) {
-                             
-                             if ([self isLoading]) {
-                                 [self stopLoading];
-                             }
-                             NSHTTPURLResponse *temp = (NSHTTPURLResponse*)response;
-                             NSString *contentType = [temp.allHeaderFields valueForKey:@"Content-Type"];
-                             NSRange range = [contentType rangeOfString:@"charset="];
-                             NSString *encoding = @"utf-8";
-                             if (range.length>0) {
-                                 encoding = [contentType substringFromIndex:range.location+range.length];
-                             }
-                             [self loadData:data
-                                   MIMEType:@"text/html"
-                           textEncodingName:encoding
-                                    baseURL:nil];
-                         } failed:^(NSURLResponse *response, NSError *error) {
-                             
-                         }];
+    } failed:^(NSURLResponse *response, NSError *error) {
+        
+    }];
+
 }
 @end

@@ -142,7 +142,6 @@ static UIImage *animatedImageWithAnimatedGIFReleasingImageSource(CGImageSourceRe
 {
     [WTRequestCenter getWithURL:url
                      parameters:nil
-                         option:WTRequestCenterCachePolicyCacheElseWeb
                        finished:^(NSURLResponse *response, NSData *data) {
                           [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
                               UIImage *temp = [UIImage imageWithData:data];

@@ -80,7 +80,7 @@
     [array enumerateObjectsUsingBlock:^(NSString *url, NSUInteger idx, BOOL *stop) {
         
 //        [self appendLogString:[NSString stringWithFormat:@"request start :%@",url]];
-        [WTRequestCenter getWithURL:url parameters:nil option:WTRequestCenterCachePolicyNormal finished:^(NSURLResponse *response, NSData *data) {
+        [WTRequestCenter getWithURL:url parameters:nil finished:^(NSURLResponse *response, NSData *data) {
             finishCount = finishCount + 1;
             if (finishCount == [array count]) {
 //                [self stopLoadWTHud];

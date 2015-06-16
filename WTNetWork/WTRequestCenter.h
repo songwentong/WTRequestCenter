@@ -101,16 +101,7 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
            finished:(WTRequestFinishedBlock)finished
              failed:(WTRequestFailedBlock)failed;
 
-/*
- Performs an asynchronous load of the given
- request. When the request has completed or failed,
- the block will be executed from the context of the
- main NSOperationQueue.
- */
-+(void)doURLRequest:(NSURLRequest*)request
-             option:(WTRequestCenterCachePolicy)option
-           finished:(WTRequestFinishedBlock)finished
-             failed:(WTRequestFailedBlock)failed;
+
 
 #pragma mark - 安全请求
 
@@ -125,17 +116,6 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
                   finished:(WTRequestFinishedBlock)finished
                     failed:(WTRequestFailedBlock)failed;
 
-/*!
- Performs an asynchronous get request of the given
- url,parameters，cache pilicy. When the request has completed or failed,
- corresponding block will be executed，is there is a local
- response,it will be used.
- */
-+(NSURLRequest*)getWithURL:(NSString*)url
-                parameters:(NSDictionary *)parameters
-                    option:(WTRequestCenterCachePolicy)option
-                  finished:(WTRequestFinishedBlock)finished
-                    failed:(WTRequestFailedBlock)failed;
 
 /*!
     推荐的新缓存方法，建议使用

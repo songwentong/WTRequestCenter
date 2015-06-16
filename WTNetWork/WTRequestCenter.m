@@ -185,21 +185,10 @@ static NSURLCache* sharedCache = nil;
                   finished:(WTRequestFinishedBlock)finished
                     failed:(WTRequestFailedBlock)failed
 {
-    return [self getWithURL:url parameters:parameters option:WTRequestCenterCachePolicyNormal finished:finished failed:failed];
+    return [self getWithURL:url parameters:parameters finished:finished failed:failed];
 }
 
-+(NSURLRequest*)getWithURL:(NSString*)url
-                parameters:(NSDictionary *)parameters
-                    option:(WTRequestCenterCachePolicy)option
-                  finished:(WTRequestFinishedBlock)finished
-                    failed:(WTRequestFailedBlock)failed
-{
-    NSURLRequest *request = [[WTURLRequestSerialization sharedRequestSerialization]requestWithMethod:@"GET" URLString:url parameters:parameters error:nil];
-    
-    [self doURLRequest:request option:option finished:finished failed:failed];
-    
-    return request;
-}
+
 
 +(NSURLRequest*)GETUsingCache:(NSString*)url
                    parameters:(NSDictionary *)parameters
@@ -295,18 +284,11 @@ static NSURLCache* sharedCache = nil;
 #pragma mark - Request
 
 
-+(void)doURLRequest:(NSURLRequest*)request
-           finished:(WTRequestFinishedBlock)finished
-             failed:(WTRequestFailedBlock)failed
-{
-    [self doURLRequest:request finished:finished failed:failed shouldCache:NO];
-}
-
 
 +(void)doURLRequest:(NSURLRequest*)request
            finished:(WTRequestFinishedBlock)finished
              failed:(WTRequestFailedBlock)failed
-        shouldCache:(BOOL)shouldCache
+
 {
     //    有效性判断
     assert(request != nil);
@@ -333,7 +315,7 @@ static NSURLCache* sharedCache = nil;
             
         }else
         {
-            if (shouldCache) {
+
                 NSNumber *endTime = [NSNumber numberWithFloat:endTimeInterval];
                 NSNumber *startTime = [NSNumber numberWithFloat:startTimeInterval];
                 
@@ -342,7 +324,7 @@ static NSURLCache* sharedCache = nil;
                 NSCachedURLResponse *tempURLResponse = [[NSCachedURLResponse alloc] initWithResponse:response data:data userInfo:userInfo storagePolicy:NSURLCacheStorageAllowed];
                 
                 [[self sharedCache] storeCachedResponse:tempURLResponse forRequest:request];
-            }
+            
             
             
         }
@@ -390,104 +372,6 @@ static NSURLCache* sharedCache = nil;
 }
 
 
-+(void)doURLRequest:(NSURLRequest*)request
-             option:(WTRequestCenterCachePolicy)option
-           finished:(WTRequestFinishedBlock)finished
-             failed:(WTRequestFailedBlock)failed
-{
-    NSCachedURLResponse *response = [[self sharedCache] cachedResponseForRequest:request];
-    
-    switch (option) {
-        case WTRequestCenterCachePolicyNormal:
-        {
-            //            [self doURLRequest:request finished: failed:failed];
-            [self doURLRequest:request finished:finished failed:failed shouldCache:YES];
-            
-        }
-            break;
-            
-        case WTRequestCenterCachePolicyCacheElseWeb:
-        {
-            if (response) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (finished) {
-                        finished(response.response,response.data);
-                    }
-                });
-            }else
-            {
-                [self doURLRequest:request finished:finished failed:failed shouldCache:YES];
-            }
-        }
-            break;
-            
-        case WTRequestCenterCachePolicyOnlyCache:
-        {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if (response) {
-                    if (finished) {
-                        finished(response.response,response.data);
-                    }
-                }else
-                {
-                    NSError *error = [NSError errorWithDomain:NSCocoaErrorDomain
-                                                         code:NSURLErrorBadURL
-                                                     userInfo:nil];
-                    if (failed) {
-                        failed(nil,error);
-                    }
-                }
-                
-            });
-        }
-            break;
-            
-        case WTRequestCenterCachePolicyCacheAndRefresh:
-        {
-            
-            //          如果有本地的，也去刷新，刷新后不回调，如果没有，则用网络的
-            
-            if (response) {
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (finished) {
-                        finished(response.response,response.data);
-                    }
-                });
-                [self doURLRequest:request finished:nil failed:nil];
-            }else
-            {
-                [self doURLRequest:request finished:finished failed:failed shouldCache:YES];
-            }
-            
-            
-        }
-            break;
-        case WTRequestCenterCachePolicyCacheAndWeb:
-        {
-            if (response) {
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    if (finished) {
-                        finished(response.response,response.data);
-                    }
-                });
-                [self doURLRequest:request finished:finished failed:failed shouldCache:YES];
-            }else
-            {
-                [self doURLRequest:request finished:finished failed:failed shouldCache:YES];
-            }
-            
-            
-        }
-            break;
-            
-            
-        default:
-            break;
-    }
-    
-}
 
 
 
