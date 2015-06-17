@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-//像余额宝一样的数字增长的label
+
 @class WTNumberLabel;
 @protocol NumberLabelDataSource <NSObject>
 
@@ -25,7 +25,7 @@
 
 @end
 
-//一个数字变化的label
+//像余额宝一样的数字增长的label
 @interface WTNumberLabel : UILabel
 
 -(void)startAnimation;
