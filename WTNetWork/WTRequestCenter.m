@@ -309,13 +309,12 @@ static NSURLCache* sharedCache = nil;
     [self sharedReachability];
     [self sendRequestStartNotificationWithRequest:request];
     
-    NSTimeInterval startTimeInterval = [[NSDate date] timeIntervalSince1970];
     
     void (^complection)(NSURLResponse *response,NSData *data,NSError *error);
     
     complection = ^(NSURLResponse *response,NSData *data,NSError *connectionError)
     {
-        NSTimeInterval endTimeInterval = [[NSDate date] timeIntervalSince1970];
+
         
         [self sendRequestCompleteNotificationWithRequest:request
                                                 response:response
@@ -324,26 +323,7 @@ static NSURLCache* sharedCache = nil;
         [self logRequesEndWithRequest:request
                              response:response
                                 error:connectionError];
-        if (connectionError) {
-            
-        }else
-        {
 
-                NSNumber *endTime = [NSNumber numberWithFloat:endTimeInterval];
-                NSNumber *startTime = [NSNumber numberWithFloat:startTimeInterval];
-                
-                NSDictionary *userInfo = @{@"requestTime":startTime.stringValue,@"responseTime": endTime.stringValue};
-                
-                NSCachedURLResponse *tempURLResponse = [[NSCachedURLResponse alloc] initWithResponse:response data:data userInfo:userInfo storagePolicy:NSURLCacheStorageAllowed];
-                
-                [[self sharedCache] storeCachedResponse:tempURLResponse forRequest:request];
-            
-            
-            
-        }
-        
-        
-        
         [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             if (connectionError) {
                 if (failed) {
