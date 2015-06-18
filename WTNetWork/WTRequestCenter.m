@@ -196,7 +196,9 @@ static NSURLCache* sharedCache = nil;
                   finished:(WTRequestFinishedBlock)finished
                     failed:(WTRequestFailedBlock)failed
 {
-    return [self getWithURL:url parameters:parameters finished:finished failed:failed];
+    NSURLRequest *request = [[WTURLRequestSerialization sharedRequestSerialization] requestWithMethod:@"POST" URLString:url parameters:parameters error:nil];
+    [self doURLRequest:request finished:finished failed:failed];
+    return request;
 }
 
 
