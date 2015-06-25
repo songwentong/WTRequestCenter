@@ -53,7 +53,8 @@
     
 
     
-    
+//    NSString *getDeviceType = [UIDevice getDeviceType];
+//    NSLog(@"%@",getDeviceType);
     
     
 }
