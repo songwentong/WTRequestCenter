@@ -60,56 +60,18 @@ UIKit扩展提供了许多不错的方法，快速缓存图片，图片查看，
         }];
 ```
 
-### GET+缓存策略
-
-### 缓存策略
-
-缓存策略一共有5种，分别是：
-
-    WTRequestCenterCachePolicyNormal,
-    WTRequestCenterCachePolicyCacheElseWeb,
-    WTRequestCenterCachePolicyOnlyCache,
-    WTRequestCenterCachePolicyCacheAndRefresh,in
-    WTRequestCenterCachePolicyCacheAndWeb
-
-    WTRequestCenterCachePolicyNormal
-    普通请求，没什么特别的
-
-    WTRequestCenterCachePolicyCacheElseWeb
-    如果本地有就用本地，否则用网络的
-
-    WTRequestCenterCachePolicyOnlyCache
-    仅使用缓存缓存，不请求
-
-    WTRequestCenterCachePolicyCacheAndRefresh
-    本地和网络的，本地没有也会刷新,本地有也会刷新(刷新后不回调)
-
-    WTRequestCenterCachePolicyCacheAndWeb
-    本地有，会用，也会刷新，也会回调，本地没有会刷新
-    注意：这种情况非常少见，只有调用网页的时候可能会用得到
-
-
-
-比普通的方法多了一个策略的选项，你根据需要去选择自己的缓存策略就可以了
+### GET+缓存
 ```objective-c
-+(NSURLRequest*)getWithURL:(NSString*)url
-                parameters:(NSDictionary *)parameters
-                    option:(WTRequestCenterCachePolicy)option
-                  finished:(WTRequestFinishedBlock)finished
-                    failed:(WTRequestFailedBlock)failed;
+[WTRequestCenter GETUsingCache:@"url"
+                        parameters:nil
+                          finished:^(NSURLResponse *response, NSData *data) {
+                              
+                          } failed:^(NSURLResponse *response, NSError *error) {
+                              
+                          }];
 ```
+已经完成的请求缓存下来，用作下次使用。没有请求过的重新请求，请求完后缓存。
 
-
-###   接口路径辅助功能
-      根路径的设置和获取
-```objective-c
-+(BOOL)setBaseURL:(NSString*)url;
-+(NSString *)baseURL;
-```
-      接口的路径（根据索引）
-```objective-c
-+(NSString*)URLWithIndex:(NSInteger)index;
-```
 
 Debug模式
 默认开启，会输出请求的对象，响应时间或者错误信息，
