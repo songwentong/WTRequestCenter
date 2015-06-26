@@ -158,19 +158,21 @@ static UIImage *animatedImageWithAnimatedGIFReleasingImageSource(CGImageSourceRe
 }
 
 
-
-+(void)gifImageWithURL:(NSString*)url completion:(void(^)(UIImage* image))completion
++(void)gifImageWithURL:(NSString*)url
+            completion:(void(^)(UIImage* image))completion
 {
-//    BOOL isLocal;
-
-        //        网络的
-    if (!url) {
-        return;
-    }
-    
-    
-  
-    
+    [WTRequestCenter GETUsingCache:url
+                        parameters:nil
+                          finished:^(NSURLResponse *response, NSData *data) {
+                              if (completion) {
+                                  UIImage *image = [self animatedImageWithAnimatedGIFData:data];
+                                  completion(image);
+                              }
+                          } failed:^(NSURLResponse *response, NSError *error) {
+                              if (completion) {
+                                  completion(nil);
+                              }
+                          }];
 }
 
 
