@@ -140,20 +140,21 @@ static UIImage *animatedImageWithAnimatedGIFReleasingImageSource(CGImageSourceRe
 
 +(void)imageWithURL:(NSString*)url complection:(void(^)(UIImage *image))complection
 {
-    [WTRequestCenter getWithURL:url
-                     parameters:nil
-                       finished:^(NSURLResponse *response, NSData *data) {
-                          [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
-                              UIImage *temp = [UIImage imageWithData:data];
+    
+    [WTRequestCenter GETUsingCache:url
+                        parameters:nil
+                          finished:^(NSURLResponse *response, NSData *data) {
+                              [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
+                                  UIImage *temp = [UIImage imageWithData:data];
+                                  if (complection) {
+                                      complection(temp);
+                                  }
+                              }];
+                          } failed:^(NSURLResponse *response, NSError *error) {
                               if (complection) {
-                                  complection(temp);
+                                  complection(nil);
                               }
                           }];
-                       } failed:^(NSURLResponse *response, NSError *error) {
-                           if (complection) {
-                               complection(nil);
-                           }
-                       }];
 }
 
 
