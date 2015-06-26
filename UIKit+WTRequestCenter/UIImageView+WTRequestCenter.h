@@ -33,6 +33,26 @@
 - (void)setImageWithURL:(NSString*)url
        placeholderImage:(UIImage *)placeholder;
 
--(void)setImageWithURL:(NSString *)url placeholderImage:(UIImage *)placeholder finished:(WTRequestFinishedBlock)finished failed:(WTRequestFailedBlock)failed;
+-(void)setImageWithURL:(NSString *)url
+      placeholderImage:(UIImage *)placeholder
+              finished:(WTRequestFinishedBlock)finished
+                failed:(WTRequestFailedBlock)failed;
+
+//设置高亮图
+-(void)setHighlightedImageWithURL:(NSString *)url;
+
+-(void)setHighlightedImageWithURL:(NSString *)url
+                 placeholderImage:(UIImage*)placeholderImage;
+
+-(void)setHighlightedImageWithURL:(NSString *)url
+                 placeholderImage:(UIImage*)placeholderImage
+                         finished:(WTRequestFinishedBlock)finished
+                           failed:(WTRequestFailedBlock)failed;
+
+
+
+
+
+
 
 @end
