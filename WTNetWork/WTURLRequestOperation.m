@@ -315,8 +315,16 @@ static inline NSString * WTKeyPathFromOperationState(WTOperationState state) {
 #pragma mark - NSURLConnectionDelegate
 - (void)connection:(NSURLConnection *)connection willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
 {
-    [challenge.sender useCredential:_credential
-         forAuthenticationChallenge:challenge];
+    if (_credential) {
+        [challenge.sender useCredential:_credential
+             forAuthenticationChallenge:challenge];
+    }else
+    {
+        NSURLCredential *credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
+        [[challenge sender] useCredential:credential forAuthenticationChallenge:challenge];
+    }
+   
+    
 }
 
 
