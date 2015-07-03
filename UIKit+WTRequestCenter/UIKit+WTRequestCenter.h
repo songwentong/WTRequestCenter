@@ -42,6 +42,7 @@
 #import "WTNetworkHUD.h"
 #import "WTNumberLabel.h"
 #import "WTCycleScrollView.h"
+#import "WTNetWork.h"
 #endif
 
 
