@@ -63,10 +63,10 @@ UIKit扩展提供了许多不错的方法，快速缓存图片，图片查看，
 ### GET+缓存
 ```objective-c
 [WTRequestCenter GETUsingCache:@"url"
-                        parameters:nil
-                          finished:^(NSURLResponse *response, NSData *data) {
+                    parameters:nil
+                      finished:^(NSURLResponse *response, NSData *data) {
                               
-                          } failed:^(NSURLResponse *response, NSError *error) {
+                      } failed:^(NSURLResponse *response, NSError *error) {
                               
                           }];
 ```
