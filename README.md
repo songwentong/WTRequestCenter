@@ -167,6 +167,7 @@ iOS 5.0
 - 头文件要有一定量的注释.
 - 不使用prefix header 文件,节省编译时间.
 - 图片使用Images.xcassets.
+- 使用@import framework 就不需要手动导入改库了。
 - View千万不要处理业务逻辑，只适合做UI
 - 能用OperationQueue的地方不要用GCD.
 - 常量不要用宏定义指定，用静态常量声明，这样做数据的数值就不会产生变化，宏定义里面有undefine
