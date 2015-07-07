@@ -210,21 +210,23 @@ static NSURLCache* sharedCache = nil;
 {
     NSURLRequest *request = [[WTURLRequestSerialization sharedRequestSerialization]requestWithMethod:@"GET" URLString:url parameters:parameters error:nil];
     __block NSCachedURLResponse *cachedResponse = [[self sharedCache] cachedResponseForRequest:request];
+    NSData *cacheData = cachedResponse.data;
     if (cachedResponse) {
         if (finished) {
             finished(cachedResponse.response,cachedResponse.data);
         }
-    }else
-    {
-        [self doURLRequest:request finished:^(NSURLResponse *response, NSData *data) {
+    }
+    [self doURLRequest:request finished:^(NSURLResponse *response, NSData *data) {
+        if (![data isEqualToData:cacheData]) {
             if (finished) {
                 finished(response,data);
             }
-            cachedResponse = [[NSCachedURLResponse alloc] initWithResponse:response data:data userInfo:nil storagePolicy:NSURLCacheStorageAllowed];
-            [[self sharedCache] storeCachedResponse:cachedResponse forRequest:request];
-            
-        } failed:failed];
-    }
+        }
+        cachedResponse = [[NSCachedURLResponse alloc] initWithResponse:response data:data userInfo:nil storagePolicy:NSURLCacheStorageAllowed];
+        [[self sharedCache] storeCachedResponse:cachedResponse forRequest:request];
+        
+    } failed:failed];
+    
     return request;
 }
 
