@@ -153,11 +153,6 @@ iOS 5.0
 
 
 
-##作者
-- <a href = "https://github.com/swtlovewtt">宋文通</a>
--
-
-
 ##编程规范
 - 使用xib来调整自动布局.  不要使用 storyboard（简称sb），因为大程序里面sb文件会很大，编译特别慢，影响开发效率。
 - 头文件能不import就不要import文件，节省编译时间.
