@@ -94,8 +94,8 @@ static inline NSString * WTKeyPathFromOperationState(WTOperationState state) {
                     failed(self,self.error);
                 }];
             }
-
-
+            
+            
         }else
         {
             if (finished) {
@@ -215,8 +215,8 @@ static inline NSString * WTKeyPathFromOperationState(WTOperationState state) {
     if (_shouldCache) {
         NSCachedURLResponse *response = [[WTRequestCenter sharedCache] cachedResponseForRequest:_request];
         if (response) {
-                self.response = response.response;
-                self.responseData = [response.data mutableCopy];
+            self.response = response.response;
+            self.responseData = [response.data mutableCopy];
             [self finish];
             return;
         }
@@ -315,15 +315,29 @@ static inline NSString * WTKeyPathFromOperationState(WTOperationState state) {
 #pragma mark - NSURLConnectionDelegate
 - (void)connection:(NSURLConnection *)connection willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
 {
-    if (_credential) {
-        [challenge.sender useCredential:_credential
-             forAuthenticationChallenge:challenge];
+    
+//    如果是服务器验证
+    if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
+        NSURLCredential *credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
+        if (credential) {
+            [[challenge sender] useCredential:credential forAuthenticationChallenge:challenge];
+        }else
+        {
+            [[challenge sender] cancelAuthenticationChallenge:challenge];
+        }
     }else
     {
-        NSURLCredential *credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
-        [[challenge sender] useCredential:credential forAuthenticationChallenge:challenge];
+        if (_credential) {
+            [challenge.sender useCredential:_credential
+                 forAuthenticationChallenge:challenge];
+        }else{
+            [[challenge sender] continueWithoutCredentialForAuthenticationChallenge:challenge];
+        }
     }
-   
+    
+    
+    
+    
     
 }
 
