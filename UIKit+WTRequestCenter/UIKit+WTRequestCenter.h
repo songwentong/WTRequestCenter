@@ -39,7 +39,6 @@
 #import "UIScreen+WTRequestCenter.h"
 #import "UIApplication+WTRequestCenter.h"
 #import "WTDataSaver.h"
-#import "WTNetworkHUD.h"
 #import "WTNumberLabel.h"
 #import "WTCycleScrollView.h"
 #import "WTNetWork.h"

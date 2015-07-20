@@ -9,7 +9,7 @@
 #import "WTRequestViewController.h"
 #import "WTRequestCenter.h"
 #import "UIKit+WTRequestCenter.h"
-@interface WTRequestViewController () <WTNetworkHUDDelegate>
+@interface WTRequestViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *logScrollView;
 
 @property (weak, nonatomic) IBOutlet UILabel *logLabel;
@@ -158,11 +158,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - WTNetworkHUDDelegate
--(UIImage*)wtNetWorkHUDImage:(WTNetworkHUD*)hud
-{
-    return [UIImage imageNamed:@"SampleImage"];
-}
 
 
 @end

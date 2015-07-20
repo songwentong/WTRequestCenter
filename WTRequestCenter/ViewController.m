@@ -53,8 +53,13 @@
     
 
     
-//    NSString *getDeviceType = [UIDevice getDeviceType];
-//    NSLog(@"%@",getDeviceType);
+    [WTRequestCenter GETUsingCache:@"http://www.baidu.com"
+                        parameters:nil
+                          finished:^(NSURLResponse *response, NSData *data) {
+                              NSLog(@"%@",data);
+                          } failed:^(NSURLResponse *response, NSError *error) {
+                              
+                          }];
     
     
 }
