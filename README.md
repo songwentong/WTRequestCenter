@@ -135,22 +135,6 @@ iOS 5.0
 
 
 
-###  测试中方法
-
-
-这是仿照AFNetworking写的一个请求方法，待测试。
-这是一个比较强大的方法。有缓存策略和下载进度，
-希望大家测试一下，给我一个反馈。
-
-```objective-c
-+(WTURLRequestOperation*)testGetWithURL:(NSString*)url
-                             parameters:(NSDictionary *)parameters
-                                 option:(WTRequestCenterCachePolicy)option
-                               progress:(WTDownLoadProgressBlock)progress
-                               finished:(WTRequestFinishedBlock)finished
-                                 failed:(WTRequestFailedBlock)failed;
-```
-
 
 
 
