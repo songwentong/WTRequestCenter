@@ -19,7 +19,6 @@
 		E162A4791A6A167300CBC2C5 /* WTURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = E162A4741A6A167300CBC2C5 /* WTURLRequestSerialization.m */; };
 		E162A47A1A6A167300CBC2C5 /* WTURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E162A4761A6A167300CBC2C5 /* WTURLSessionManager.m */; };
 		E162A4951A6A168900CBC2C5 /* UIAlertView+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E162A47C1A6A168900CBC2C5 /* UIAlertView+WTRequestCenter.m */; };
-		E162A4961A6A168900CBC2C5 /* UIApplication+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E162A47E1A6A168900CBC2C5 /* UIApplication+WTRequestCenter.m */; };
 		E162A4971A6A168900CBC2C5 /* UIButton+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E162A4801A6A168900CBC2C5 /* UIButton+WTRequestCenter.m */; };
 		E162A4981A6A168900CBC2C5 /* UIColor+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E162A4821A6A168900CBC2C5 /* UIColor+WTRequestCenter.m */; };
 		E162A4991A6A168900CBC2C5 /* UIDevice+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E162A4841A6A168900CBC2C5 /* UIDevice+WTRequestCenter.m */; };
@@ -88,8 +87,6 @@
 		E162A4761A6A167300CBC2C5 /* WTURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WTURLSessionManager.m; path = WTNetWork/WTURLSessionManager.m; sourceTree = SOURCE_ROOT; };
 		E162A47B1A6A168900CBC2C5 /* UIAlertView+WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIAlertView+WTRequestCenter.h"; path = "UIKit+WTRequestCenter/UIAlertView+WTRequestCenter.h"; sourceTree = SOURCE_ROOT; };
 		E162A47C1A6A168900CBC2C5 /* UIAlertView+WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIAlertView+WTRequestCenter.m"; path = "UIKit+WTRequestCenter/UIAlertView+WTRequestCenter.m"; sourceTree = SOURCE_ROOT; };
-		E162A47D1A6A168900CBC2C5 /* UIApplication+WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIApplication+WTRequestCenter.h"; path = "UIKit+WTRequestCenter/UIApplication+WTRequestCenter.h"; sourceTree = SOURCE_ROOT; };
-		E162A47E1A6A168900CBC2C5 /* UIApplication+WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIApplication+WTRequestCenter.m"; path = "UIKit+WTRequestCenter/UIApplication+WTRequestCenter.m"; sourceTree = SOURCE_ROOT; };
 		E162A47F1A6A168900CBC2C5 /* UIButton+WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIButton+WTRequestCenter.h"; path = "UIKit+WTRequestCenter/UIButton+WTRequestCenter.h"; sourceTree = SOURCE_ROOT; };
 		E162A4801A6A168900CBC2C5 /* UIButton+WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIButton+WTRequestCenter.m"; path = "UIKit+WTRequestCenter/UIButton+WTRequestCenter.m"; sourceTree = SOURCE_ROOT; };
 		E162A4811A6A168900CBC2C5 /* UIColor+WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIColor+WTRequestCenter.h"; path = "UIKit+WTRequestCenter/UIColor+WTRequestCenter.h"; sourceTree = SOURCE_ROOT; };
@@ -191,8 +188,6 @@
 				E162A4891A6A168900CBC2C5 /* UIKit+WTRequestCenter.h */,
 				E162A47B1A6A168900CBC2C5 /* UIAlertView+WTRequestCenter.h */,
 				E162A47C1A6A168900CBC2C5 /* UIAlertView+WTRequestCenter.m */,
-				E162A47D1A6A168900CBC2C5 /* UIApplication+WTRequestCenter.h */,
-				E162A47E1A6A168900CBC2C5 /* UIApplication+WTRequestCenter.m */,
 				E162A47F1A6A168900CBC2C5 /* UIButton+WTRequestCenter.h */,
 				E162A4801A6A168900CBC2C5 /* UIButton+WTRequestCenter.m */,
 				E162A4811A6A168900CBC2C5 /* UIColor+WTRequestCenter.h */,
@@ -460,7 +455,6 @@
 				E161B2881A8DA37A00A69C09 /* SingleRequestViewController.m in Sources */,
 				E19F0C2A1A0201460049C1A2 /* RulerView.m in Sources */,
 				E181F7761A81138700832D0B /* WTNumberLabel.m in Sources */,
-				E162A4961A6A168900CBC2C5 /* UIApplication+WTRequestCenter.m in Sources */,
 				E162A47A1A6A167300CBC2C5 /* WTURLSessionManager.m in Sources */,
 				E162A4991A6A168900CBC2C5 /* UIDevice+WTRequestCenter.m in Sources */,
 				E162A4A01A6A168900CBC2C5 /* WTNetworkActivityIndicatorManager.m in Sources */,
