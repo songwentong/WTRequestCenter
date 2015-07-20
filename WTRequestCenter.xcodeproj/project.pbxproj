@@ -17,7 +17,6 @@
 		E162A4771A6A167300CBC2C5 /* WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E162A4701A6A167300CBC2C5 /* WTRequestCenter.m */; };
 		E162A4781A6A167300CBC2C5 /* WTURLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = E162A4721A6A167300CBC2C5 /* WTURLRequestOperation.m */; };
 		E162A4791A6A167300CBC2C5 /* WTURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = E162A4741A6A167300CBC2C5 /* WTURLRequestSerialization.m */; };
-		E162A47A1A6A167300CBC2C5 /* WTURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E162A4761A6A167300CBC2C5 /* WTURLSessionManager.m */; };
 		E162A4951A6A168900CBC2C5 /* UIAlertView+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E162A47C1A6A168900CBC2C5 /* UIAlertView+WTRequestCenter.m */; };
 		E162A4971A6A168900CBC2C5 /* UIButton+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E162A4801A6A168900CBC2C5 /* UIButton+WTRequestCenter.m */; };
 		E162A4981A6A168900CBC2C5 /* UIColor+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E162A4821A6A168900CBC2C5 /* UIColor+WTRequestCenter.m */; };
@@ -83,8 +82,6 @@
 		E162A4721A6A167300CBC2C5 /* WTURLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WTURLRequestOperation.m; path = WTNetWork/WTURLRequestOperation.m; sourceTree = SOURCE_ROOT; };
 		E162A4731A6A167300CBC2C5 /* WTURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WTURLRequestSerialization.h; path = WTNetWork/WTURLRequestSerialization.h; sourceTree = SOURCE_ROOT; };
 		E162A4741A6A167300CBC2C5 /* WTURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WTURLRequestSerialization.m; path = WTNetWork/WTURLRequestSerialization.m; sourceTree = SOURCE_ROOT; };
-		E162A4751A6A167300CBC2C5 /* WTURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WTURLSessionManager.h; path = WTNetWork/WTURLSessionManager.h; sourceTree = SOURCE_ROOT; };
-		E162A4761A6A167300CBC2C5 /* WTURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WTURLSessionManager.m; path = WTNetWork/WTURLSessionManager.m; sourceTree = SOURCE_ROOT; };
 		E162A47B1A6A168900CBC2C5 /* UIAlertView+WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIAlertView+WTRequestCenter.h"; path = "UIKit+WTRequestCenter/UIAlertView+WTRequestCenter.h"; sourceTree = SOURCE_ROOT; };
 		E162A47C1A6A168900CBC2C5 /* UIAlertView+WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIAlertView+WTRequestCenter.m"; path = "UIKit+WTRequestCenter/UIAlertView+WTRequestCenter.m"; sourceTree = SOURCE_ROOT; };
 		E162A47F1A6A168900CBC2C5 /* UIButton+WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIButton+WTRequestCenter.h"; path = "UIKit+WTRequestCenter/UIButton+WTRequestCenter.h"; sourceTree = SOURCE_ROOT; };
@@ -332,8 +329,6 @@
 				E162A4721A6A167300CBC2C5 /* WTURLRequestOperation.m */,
 				E162A4731A6A167300CBC2C5 /* WTURLRequestSerialization.h */,
 				E162A4741A6A167300CBC2C5 /* WTURLRequestSerialization.m */,
-				E162A4751A6A167300CBC2C5 /* WTURLSessionManager.h */,
-				E162A4761A6A167300CBC2C5 /* WTURLSessionManager.m */,
 			);
 			name = WTRequestCenter;
 			path = WTRequestCenter/WTRequestCenter;
@@ -455,7 +450,6 @@
 				E161B2881A8DA37A00A69C09 /* SingleRequestViewController.m in Sources */,
 				E19F0C2A1A0201460049C1A2 /* RulerView.m in Sources */,
 				E181F7761A81138700832D0B /* WTNumberLabel.m in Sources */,
-				E162A47A1A6A167300CBC2C5 /* WTURLSessionManager.m in Sources */,
 				E162A4991A6A168900CBC2C5 /* UIDevice+WTRequestCenter.m in Sources */,
 				E162A4A01A6A168900CBC2C5 /* WTNetworkActivityIndicatorManager.m in Sources */,
 				E4440D87197A01B1001E6D88 /* ViewController.m in Sources */,
