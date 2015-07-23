@@ -90,16 +90,7 @@ static NSURLCache* sharedCache = nil;
 
 #pragma mark - 配置设置
 
--(BOOL)isRequesting
-{
-    BOOL requesting = NO;
-    NSOperationQueue *sharedQueue = [WTRequestCenter sharedQueue];
-    
-    if ([sharedQueue operationCount]!=0) {
-        requesting = YES;
-    }
-    return requesting;
-}
+
 
 //清除所有缓存(clearAllCache)
 +(void)clearAllCache

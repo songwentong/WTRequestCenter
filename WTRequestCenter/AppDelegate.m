@@ -17,10 +17,10 @@
     [WTNetworkActivityIndicatorManager sharedManager].enabled = YES;
     
     
+//    NSObject *obj = [[NSClassFromString(@"ClassName") alloc] init];
     
     
-    
-    
+//    NSLog(@"%@",obj);
     return YES;
 }
 							
