@@ -23,8 +23,10 @@
 
 @end
 
-
-//可循环的scrollview
+/*
+可循环的视图
+使用范围:轮播图
+*/
 @interface WTCycleScrollView : UIView
 @property (weak, nonatomic) id <WTCycleScrollViewDataSource> dataSource;
 @property (weak, nonatomic) id <WTCycleScrollViewDelegate> delegate;
