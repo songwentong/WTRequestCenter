@@ -9,7 +9,7 @@
 #import "WTRequestCenter.h"
 #import "WTURLRequestOperation.h"
 #import "WTURLRequestSerialization.h"
-#import "Reachability.h"
+#import "WTNetworkReachabilityManager.h"
 #if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
 #endif
@@ -29,24 +29,27 @@ BOOL const WTRequestCenterDebugMode = NO;
 }
 
 #pragma mark - Reachability
-static Reachability *sharedReachbility = nil;
-static NetworkStatus currentNetworkStatus = NotReachable;
-+(Reachability*)sharedReachability
+static WTNetworkReachabilityManager *sharedReachbility = nil;
+//static NetworkStatus currentNetworkStatus = NotReachable;
++(WTNetworkReachabilityManager*)sharedReachability
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedReachbility = [Reachability reachabilityForInternetConnection];
-        [sharedReachbility startNotifier];
-        currentNetworkStatus = [sharedReachbility currentReachabilityStatus];
+        sharedReachbility = [WTNetworkReachabilityManager sharedManager];
+        
+//        currentNetworkStatus = [sharedReachbility currentReachabilityStatus];
         
         
         
-        [[NSNotificationCenter defaultCenter] addObserverForName:kReachabilityChangedNotification
+        [[NSNotificationCenter defaultCenter] addObserverForName:WTNetworkingReachabilityDidChangeNotification
                                                           object:nil
                                                            queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note)
         {
-            currentNetworkStatus = [sharedReachbility currentReachabilityStatus];
+//            currentNetworkStatus = [sharedReachbility currentReachabilityStatus];
         }];
+         
+        [sharedReachbility startMonitoring];
+        
     });
     
     return sharedReachbility;
@@ -335,8 +338,7 @@ static NSURLCache* sharedCache = nil;
     
     
     
-    NetworkStatus n = currentNetworkStatus;
-    if (n == NotReachable) {
+    if ([self sharedReachability].reachable) {
         
         NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
         [userInfo setValue:@"似乎已断开与互联网的连接。"
