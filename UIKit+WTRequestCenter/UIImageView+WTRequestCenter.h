@@ -23,6 +23,9 @@
 
 #import <UIKit/UIKit.h>
 #import "WTRequestCenter.h"
+/*
+    方便的图片缓存功能
+ */
 @interface UIImageView (WTRequestCenter)
 
 /*

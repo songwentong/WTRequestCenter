@@ -22,6 +22,12 @@
 
 #import <UIKit/UIKit.h>
 @class WTURLRequestOperation;
+
+
+
+/*
+    方便的图片缓存功能
+ */
 @interface UIButton (WTImageCache)
 
 @property (nonatomic,strong) WTURLRequestOperation *wtImageRequestOperation;
