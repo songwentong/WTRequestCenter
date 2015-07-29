@@ -341,30 +341,6 @@ static NSString *defaultUserAgentString = nil;
     [request setHTTPMethod:@"POST"];
     
     
-    
-    /*
-     if (parameters && [[parameters allKeys] count]>0) {
-     
-     NSMutableData *myData = [[NSMutableData alloc] init];
-     [myData appendData:[@"--" dataUsingEncoding:NSUTF8StringEncoding]];
-     [myData appendData:[kboundary dataUsingEncoding:NSUTF8StringEncoding]];
-     [parameters enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
-     //            Content-Disposition: form-data; name="abc"
-     NSString *keyString = [NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"",key];
-     [myData appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
-     
-     [myData appendData:[keyString dataUsingEncoding:NSUTF8StringEncoding]];
-     [myData appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
-     [myData appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
-     [myData appendData:[value dataUsingEncoding:NSUTF8StringEncoding]];
-     [myData appendData:[@"\n" dataUsingEncoding:NSUTF8StringEncoding]];
-     //            [myData appendData:[@"--" dataUsingEncoding:NSUTF8StringEncoding]];
-     [myData appendData:[kboundary dataUsingEncoding:NSUTF8StringEncoding]];
-     }];
-     [request setHTTPBody:myData];
-     }
-     */
-    
     NSString *value = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",kboundary];
     [request setValue:value forHTTPHeaderField:@"Content-Type"];
     
