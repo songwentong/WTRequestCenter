@@ -177,6 +177,76 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
                    finished:(WTRequestFinishedBlock)finished
                      failed:(WTRequestFailedBlock)failed;
 
+#pragma mark - 实例方法（1.0）
+/**
+ 创建一个 WTURLRequestOperation对象（没有执行）
+ 
+ 
+ note: 并没有执行
+ */
+- (WTURLRequestOperation *)HTTPRequestOperationWithHTTPMethod:(NSString *)method
+                                                    URLString:(NSString *)URLString
+                                                   parameters:(NSDictionary*)parameters
+                                                     finished:(void (^)(WTURLRequestOperation *operation, NSData *data))finished
+                                                       failed:(void (^)(WTURLRequestOperation *operation, NSError *error))failed;
+
+/**
+ 创建并且执行一个 WTURLRequestOperation对象 （GET 请求）
+ */
+-(WTURLRequestOperation*)GET:(NSString*)urlString
+                  parameters:(NSDictionary*)parameters
+                    finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
+                      failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed;
+
+/**
+ GET + 缓存策略
+ */
+-(WTURLRequestOperation*)GETUsingCache:(NSString*)urlString
+                            parameters:(NSDictionary*)parameters
+                              finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
+                                failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed;
+
+/**
+ HEAD
+ */
+-(WTURLRequestOperation*)HEAD:(NSString*)urlString
+                   parameters:(NSDictionary*)parameters
+                     finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
+                       failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed;
+
+/**
+ POST
+ */
+-(WTURLRequestOperation*)POST:(NSString*)urlString
+                   parameters:(NSDictionary*)parameters
+                     finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
+                       failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed;
+/**
+ 用POST请求，创建并执行一个 WTURLRequestOperation对象。
+ 
+ */
+-(WTURLRequestOperation*)POST:(NSString*)urlString
+                   parameters:(NSDictionary*)parameters
+    constructingBodyWithBlock:(void (^)(id <WTMultipartFormData> formData))block
+                     finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
+                       failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed;
+/*!
+ PUT方法
+ */
+-(WTURLRequestOperation*)PUT:(NSString*)urlString
+                  parameters:(NSDictionary*)parameters
+                    finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
+                      failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed;
+
+/*!
+ DELETE方法
+ */
+-(WTURLRequestOperation*)DELETE:(NSString*)urlString
+                     parameters:(NSDictionary*)parameters
+                       finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
+                         failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed;
+
+
 #pragma mark - 其他
 /*!
  shared Call Back Queue
@@ -256,74 +326,6 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
 
 
 
-#pragma mark - 实例方法（1.0）
-/**
-    创建一个 WTURLRequestOperation对象（没有执行）
- 
- 
-    note: 并没有执行
- */
-- (WTURLRequestOperation *)HTTPRequestOperationWithHTTPMethod:(NSString *)method
-                                                    URLString:(NSString *)URLString
-                                                   parameters:(NSDictionary*)parameters
-                                                     finished:(void (^)(WTURLRequestOperation *operation, NSData *data))finished
-                                                       failed:(void (^)(WTURLRequestOperation *operation, NSError *error))failed;
-
-/**
-    创建并且执行一个 WTURLRequestOperation对象 （GET 请求）
- */
--(WTURLRequestOperation*)GET:(NSString*)urlString
-                  parameters:(NSDictionary*)parameters
-                    finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
-                      failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed;
-
-/**
-    GET + 缓存策略
- */
--(WTURLRequestOperation*)GETUsingCache:(NSString*)urlString
-                            parameters:(NSDictionary*)parameters
-                              finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
-                                failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed;
-
-/**
-    HEAD
- */
--(WTURLRequestOperation*)HEAD:(NSString*)urlString
-                   parameters:(NSDictionary*)parameters
-                     finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
-                       failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed;
-
-/**
-    POST
- */
--(WTURLRequestOperation*)POST:(NSString*)urlString
-                   parameters:(NSDictionary*)parameters
-                     finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
-                       failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed;
-/**
-    用POST请求，创建并执行一个 WTURLRequestOperation对象。
- 
- */
--(WTURLRequestOperation*)POST:(NSString*)urlString
-                   parameters:(NSDictionary*)parameters
-    constructingBodyWithBlock:(void (^)(id <WTMultipartFormData> formData))block
-                     finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
-                       failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed;
-/*!
-    PUT方法
- */
--(WTURLRequestOperation*)PUT:(NSString*)urlString
-                  parameters:(NSDictionary*)parameters
-                    finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
-                      failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed;
-
-/*!
- DELETE方法
- */
--(WTURLRequestOperation*)DELETE:(NSString*)urlString
-                     parameters:(NSDictionary*)parameters
-                       finished:(void(^)( WTURLRequestOperation*operation,NSData*data))finished
-                         failed:(void(^)( WTURLRequestOperation*operation,NSError *error))failed;
 
 #pragma mark - 辅助
 // convert json data to object

@@ -44,6 +44,8 @@
     [self configModel];
     [self configView];
     
+
+    
     
   
     _relerView = [[RulerView alloc] initWithFrame:self.view.bounds];
