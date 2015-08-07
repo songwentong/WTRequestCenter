@@ -64,7 +64,6 @@ static NSOperationQueue *sharedQueue = nil;
     dispatch_once(&onceToken, ^{
         sharedQueue = [[NSOperationQueue alloc] init];
         [sharedQueue setSuspended:NO];
-        [sharedQueue setMaxConcurrentOperationCount:32];
         sharedQueue.name = @"WTRequestCentersharedQueue";
     });
     return sharedQueue;

@@ -52,13 +52,17 @@
     _relerView.userInteractionEnabled = NO;
     [self.view addSubview:_relerView];
   
-    
-
+    NSLog(@"1");
+    [WTRequestCenter performBlock:^{
+        NSLog(@"2");
+    }
+                          inQueue:[WTRequestCenter sharedQueue].underlyingQueue
+                       afterDelay:3.0];
     
     [WTRequestCenter GETUsingCache:@"http://www.baidu.com"
                         parameters:nil
                           finished:^(NSURLResponse *response, NSData *data) {
-                              NSLog(@"%@",data);
+//                              NSLog(@"%@",data);
                           } failed:^(NSURLResponse *response, NSError *error) {
                               
                           }];
@@ -166,9 +170,9 @@
         
         [WTRequestCenter getWithURL:url parameters:parameters finished:^(NSURLResponse *response, NSData *data) {
             NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-            NSLog(@"%@",string);
+//            NSLog(@"%@",string);
         } failed:^(NSURLResponse *response, NSError *error) {
-            NSLog(@"%@",response);
+//            NSLog(@"%@",response);
         }];
         
         
@@ -205,9 +209,9 @@
                       parameters:parameters
                         finished:^(NSURLResponse *response, NSData *data) {
         NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(@"%@",string);
+//        NSLog(@"%@",string);
     }failed:^(NSURLResponse *response, NSError *error) {
-        NSLog(@"xx");
+//        NSLog(@"xx");
     }];
     
 
@@ -269,12 +273,12 @@
 {
     
     [WTDataSaver saveData:[@"hello world" dataUsingEncoding:NSUTF8StringEncoding] withIndex:2 completion:^{
-        NSLog(@"finished");
+//        NSLog(@"finished");
     }];
     
     [WTDataSaver dataWithIndex:2 completion:^(NSData *data) {
-        NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(@"%@",string);
+//        NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//        NSLog(@"%@",string);
     }];
     /*
     [WTDataSaver dataWithIndex:2 completion:^(NSData *data) {
