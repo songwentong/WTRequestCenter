@@ -51,13 +51,18 @@
     _relerView = [[RulerView alloc] initWithFrame:self.view.bounds];
     _relerView.userInteractionEnabled = NO;
     [self.view addSubview:_relerView];
-  
-    NSLog(@"1");
-    [WTRequestCenter performBlock:^{
-        NSLog(@"2");
-    }
-                          inQueue:[WTRequestCenter sharedQueue].underlyingQueue
-                       afterDelay:3.0];
+    
+    /*
+    [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
+        NSString *name = [NSOperationQueue currentQueue].name;
+        NSLog(@"%@",name);
+        NSLog(@"1");
+        [WTRequestCenter performBlock:^{
+            NSLog(@"2");
+        } inQueue:[WTRequestCenter sharedQueue].underlyingQueue
+                           afterDelay:3.0];
+    }];
+     */
     
     [WTRequestCenter GETUsingCache:@"http://www.baidu.com"
                         parameters:nil
