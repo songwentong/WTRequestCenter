@@ -20,7 +20,11 @@ NSString * const WTNetworkingOperationDidFinishNotification = @"WT Networking Op
 
 
 BOOL const WTRequestCenterDebugMode = NO;
+@interface WTRequestCenter()
+{
 
+}
+@end
 @implementation WTRequestCenter
 
 +(WTRequestCenter*)requestCenter
@@ -353,6 +357,7 @@ static NSURLCache* sharedCache = nil;
     }
     
     [self logRequestStart:request];
+    
     [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
         complection(response,data,connectionError);
     }];
@@ -443,6 +448,8 @@ static NSURLCache* sharedCache = nil;
     if (data) {
         [userInfo setValue:data forKey:@"data"];
     }
+    NSDate *date = [NSDate date];
+    [userInfo setValue:date forKey:@"date"];
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         [[NSNotificationCenter defaultCenter] postNotificationName:WTNetworkingOperationDidFinishNotification object:request userInfo:userInfo];
     }];
@@ -499,12 +506,47 @@ void perform(dispatch_block_t block , NSTimeInterval delay)
         
         //        请求生成类
         self.requestSerializer = [[WTURLRequestSerialization alloc] init];
-        
+        self.reqeustTimeInterval = 0;
+        self.localRequests = [NSMutableArray array];
         self.operationQueue = [[NSOperationQueue alloc] init];
         _operationQueue.maxConcurrentOperationCount = 4;
         [_operationQueue setSuspended:NO];
+        
+        
+        [[NSNotificationCenter defaultCenter] addObserverForName:WTNetworkingOperationDidFinishNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
+            if (_reqeustTimeInterval!=0) {
+//                NSDictionary *userInfo = note.userInfo;
+//                NSLog(@"%@",userInfo);
+                [_localRequests addObject:note.userInfo];
+            }
+        }];
+        
+        
+        
     }
     return self;
+}
+
+-(NSURLResponse*)responseInRequestTimeInterval:(NSURLRequest*)request{
+    __block NSURLResponse *result = nil;
+    if (_reqeustTimeInterval==0) {
+
+    }else
+    {
+        [_localRequests enumerateObjectsUsingBlock:^(NSDictionary *userInfo, NSUInteger idx, BOOL *stop) {
+            NSURLRequest *request2 = [userInfo valueForKey:@"request"];
+            NSDate *date2 = [userInfo valueForKey:@"date"];
+            NSDate *date1 = [NSDate date];
+//            如果两个请求相同
+            if ([request2 isEqual:request]) {
+//                并且时间间隔小于对应的时间间隔
+                if ([date1 timeIntervalSinceNow]-[date2 timeIntervalSinceNow]<_reqeustTimeInterval) {
+                                result = [userInfo valueForKey:@"response"];
+                }
+            }
+        }];
+    }
+    return result;
 }
 
 -(WTURLRequestOperation*)HTTPRequestWithRequest:(NSURLRequest*)request
@@ -513,9 +555,11 @@ void perform(dispatch_block_t block , NSTimeInterval delay)
 {
     WTURLRequestOperation *operation = nil;
     operation = [[WTURLRequestOperation alloc] initWithRequest:request];
+
     [operation setCompletionBlockWithfinished:finished
                                        failed:failed];
     operation.credential = self.credential;
+    
     return operation;
 }
 
