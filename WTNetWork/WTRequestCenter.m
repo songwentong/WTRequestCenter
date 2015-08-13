@@ -24,12 +24,25 @@ BOOL const WTRequestCenterDebugMode = NO;
 {
 
 }
+@property (nonatomic,strong) NSMutableArray *requestingArray;
+@property (nonatomic,strong) NSMutableArray *responseArray;
+
 @end
 @implementation WTRequestCenter
 
 +(WTRequestCenter*)requestCenter
 {
     return [[WTRequestCenter alloc] init];
+}
+
++(WTRequestCenter*)sharedCenter
+{
+    static dispatch_once_t onceToken;
+    static WTRequestCenter *sharedCenter;
+    dispatch_once(&onceToken, ^{
+        sharedCenter = [[WTRequestCenter alloc] init];
+    });
+    return sharedCenter;
 }
 
 #pragma mark - Reachability
@@ -407,9 +420,11 @@ static NSURLCache* sharedCache = nil;
         }
         NSLog(@"%@",string);
         
-        
-        
     }
+    if (request) {
+        [[WTRequestCenter sharedCenter].requestingArray addObject:request];
+    }
+
 }
 
 +(void)logRequesEndWithRequest:(NSURLRequest*)request
@@ -454,6 +469,18 @@ static NSURLCache* sharedCache = nil;
         [[NSNotificationCenter defaultCenter] postNotificationName:WTNetworkingOperationDidFinishNotification object:request userInfo:userInfo];
     }];
     
+    
+    __block NSUInteger index = -1;
+    [[WTRequestCenter sharedCenter].requestingArray enumerateObjectsUsingBlock:^(NSURLRequest* obj, NSUInteger idx, BOOL *stop) {
+        if ([obj isEqual:request]) {
+            index = idx;
+            *stop = YES;
+        }
+    }];
+    if (index>0) {
+        [[WTRequestCenter sharedCenter].requestingArray removeObjectAtIndex:index];
+    }
+    [[WTRequestCenter sharedCenter].responseArray addObject:userInfo];
 }
 
 
@@ -507,6 +534,7 @@ void perform(dispatch_block_t block , NSTimeInterval delay)
         //        请求生成类
         self.requestSerializer = [[WTURLRequestSerialization alloc] init];
         self.reqeustTimeInterval = 0;
+        
         self.localRequests = [NSMutableArray array];
         self.operationQueue = [[NSOperationQueue alloc] init];
         _operationQueue.maxConcurrentOperationCount = 4;

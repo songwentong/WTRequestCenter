@@ -79,7 +79,10 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
     生成一个请求对象
  */
 +(WTRequestCenter*)requestCenter;
-
+/*!
+    单例
+ */
++(WTRequestCenter*)sharedCenter;
 
 
 
