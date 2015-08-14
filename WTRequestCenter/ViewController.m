@@ -174,7 +174,7 @@
         
         
         [WTRequestCenter getWithURL:url parameters:parameters finished:^(NSURLResponse *response, NSData *data) {
-            NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//            NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 //            NSLog(@"%@",string);
         } failed:^(NSURLResponse *response, NSError *error) {
 //            NSLog(@"%@",response);
@@ -213,7 +213,7 @@
     [WTRequestCenter postWithURL:url
                       parameters:parameters
                         finished:^(NSURLResponse *response, NSData *data) {
-        NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//        NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 //        NSLog(@"%@",string);
     }failed:^(NSURLResponse *response, NSError *error) {
 //        NSLog(@"xx");
