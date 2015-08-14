@@ -196,7 +196,7 @@ static NSURLCache* sharedCache = nil;
 }
 
 
-#pragma mark - Get
+#pragma mark - 静态方法
 
 //get请求
 //Available in iOS 5.0 and later.
@@ -243,7 +243,6 @@ static NSURLCache* sharedCache = nil;
 }
 
 
-#pragma mark - POST
 
 
 +(NSURLRequest*)postWithURL:(NSString*)url
