@@ -314,7 +314,7 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
 
 //请求间隔,默认为0,每次请求都有效
 @property (nonatomic) NSTimeInterval reqeustTimeInterval;
-@property (nonatomic,strong) NSMutableArray *localRequests;
+
 
 /*!
     凭据
