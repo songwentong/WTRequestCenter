@@ -273,7 +273,8 @@ static inline NSString * WTKeyPathFromOperationState(WTOperationState state) {
     
     [WTRequestCenter sendRequestCompleteNotificationWithRequest:_request
                                                        response:self.response
-                                                           data:self.responseData];
+                                                           data:self.responseData
+                                                          error:_error];
     [WTRequestCenter logRequesEndWithRequest:_request
                                     response:_response
                                        error:_error];

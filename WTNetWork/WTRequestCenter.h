@@ -291,7 +291,8 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
 //请求失败的消息，线程安全，所有参数可传空
 +(void)sendRequestCompleteNotificationWithRequest:(NSURLRequest*)request
                                          response:(NSURLResponse*)response
-                                             data:(NSData*)data;
+                                             data:(NSData*)data
+                                            error:(NSError*)error;
 
 
 #pragma mark - 请求开始和结束的输出

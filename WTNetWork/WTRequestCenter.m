@@ -331,7 +331,8 @@ static NSURLCache* sharedCache = nil;
         
         [self sendRequestCompleteNotificationWithRequest:request
                                                 response:response
-                                                    data:data];
+                                                    data:data
+                                                   error:connectionError];
         
         [self logRequesEndWithRequest:request
                              response:response
@@ -403,7 +404,10 @@ static NSURLCache* sharedCache = nil;
                                                           userInfo:userInfo];
     }];
     
-    
+    if (request) {
+        [[WTRequestCenter sharedCenter].requestingArray addObject:request];
+    }
+
     
 }
 
@@ -419,9 +423,6 @@ static NSURLCache* sharedCache = nil;
         }
         NSLog(@"%@",string);
         
-    }
-    if (request) {
-        [[WTRequestCenter sharedCenter].requestingArray addObject:request];
     }
 
 }
@@ -451,6 +452,7 @@ static NSURLCache* sharedCache = nil;
 +(void)sendRequestCompleteNotificationWithRequest:(NSURLRequest*)request
                                          response:(NSURLResponse*)response
                                              data:(NSData*)data
+                                            error:(NSError*)error
 {
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
     if (request) {
@@ -468,7 +470,14 @@ static NSURLCache* sharedCache = nil;
         [[NSNotificationCenter defaultCenter] postNotificationName:WTNetworkingOperationDidFinishNotification object:request userInfo:userInfo];
     }];
     
-    
+    if (request) {
+        if ([[WTRequestCenter sharedCenter].requestingArray containsObject:request]) {
+            [[WTRequestCenter sharedCenter].requestingArray removeObject:request];
+        }
+        if (!error) {
+            [[WTRequestCenter sharedCenter].responseArray addObject:userInfo];
+        }
+    }
 
 }
 
@@ -529,26 +538,7 @@ void perform(dispatch_block_t block , NSTimeInterval delay)
         _operationQueue.maxConcurrentOperationCount = 4;
         [_operationQueue setSuspended:NO];
         
-        
-        [[NSNotificationCenter defaultCenter] addObserverForName:WTNetworkingOperationDidFinishNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
-            
-            
-            
-            __block NSUInteger index = -1;
-            [self.requestingArray enumerateObjectsUsingBlock:^(NSURLRequest* obj, NSUInteger idx, BOOL *stop) {
-//                if ([obj isEqual:]) {
-//                    index = idx;
-//                    *stop = YES;
-//                }
-            }];
-            if (index>0) {
-                [self.requestingArray removeObjectAtIndex:index];
-            }
-//            [[WTRequestCenter sharedCenter].responseArray addObject:userInfo];
-            [self.responseArray addObject:note.userInfo];
-            
-
-        }];
+    
         
         
         
