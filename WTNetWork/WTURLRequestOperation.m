@@ -159,8 +159,14 @@ static inline NSString * WTKeyPathFromOperationState(WTOperationState state) {
     if (![self isCancelled]) {
         if([self isReady])
         {
-            self.state = WTOperationStateExecuting;
-            [self performSelector:@selector(operationDidStart) onThread:[[self class] networkRequestThread] withObject:nil waitUntilDone:NO modes:[self.runLoopModes allObjects]];
+            NSDictionary *effectiveResponseForRequest = [WTRequestCenter effectiveResponseForRequest:_request  ];
+            if (effectiveResponseForRequest) {
+                self.response = [effectiveResponseForRequest valueForKey:@"response"];
+                self.responseData = [effectiveResponseForRequest valueForKey:@"data"];
+            }else{
+                self.state = WTOperationStateExecuting;
+                [self performSelector:@selector(operationDidStart) onThread:[[self class] networkRequestThread] withObject:nil waitUntilDone:NO modes:[self.runLoopModes allObjects]];
+            }
         }
     }
     

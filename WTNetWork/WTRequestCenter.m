@@ -389,6 +389,14 @@ static NSURLCache* sharedCache = nil;
 
 
 #pragma mark - request Notification
+
++(NSDictionary*)effectiveResponseForRequest:(NSURLRequest*)request
+{
+    return nil;
+}
+
+
+
 //请求成功的消息
 +(void)sendRequestStartNotificationWithRequest:(NSURLRequest *)request
 {
@@ -531,7 +539,7 @@ void perform(dispatch_block_t block , NSTimeInterval delay)
         
         //        请求生成类
         self.requestSerializer = [[WTURLRequestSerialization alloc] init];
-        self.reqeustTimeInterval = 0;
+        self.effectiveReqeustTimeInterval = 0;
         
 
         self.operationQueue = [[NSOperationQueue alloc] init];

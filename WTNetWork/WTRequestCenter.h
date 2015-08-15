@@ -314,8 +314,10 @@ typedef void (^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalByte
 #pragma mark - 属性
 
 //请求间隔,默认为0,每次请求都有效
-@property (nonatomic) NSTimeInterval reqeustTimeInterval;
+@property (nonatomic) NSTimeInterval effectiveReqeustTimeInterval;
 
+//根据请求获得一个信息,看请求是否在有效期内
++(NSDictionary*)effectiveResponseForRequest:(NSURLRequest*)request;
 
 /*!
     凭据
