@@ -367,13 +367,15 @@ static NSURLCache* sharedCache = nil;
         if (complection) {
             complection(nil,nil,error);
         }
+    }else{
+        [self logRequestStart:request];
+        
+        [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+            complection(response,data,connectionError);
+        }];
     }
     
-    [self logRequestStart:request];
     
-    [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-        complection(response,data,connectionError);
-    }];
     
     
     
