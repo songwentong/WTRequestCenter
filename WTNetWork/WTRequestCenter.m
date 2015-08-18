@@ -356,7 +356,7 @@ static NSURLCache* sharedCache = nil;
     
     
     
-    if ([self sharedReachability].reachable) {
+    if (![self sharedReachability].reachable) {
         
         NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
         [userInfo setValue:@"似乎已断开与互联网的连接。"
