@@ -320,7 +320,7 @@ static NSURLCache* sharedCache = nil;
     assert(request != nil);
     
     [self sharedReachability];
-    [self sendRequestStartNotificationWithRequest:request];
+    
     
     
     void (^complection)(NSURLResponse *response,NSData *data,NSError *error);
@@ -356,7 +356,15 @@ static NSURLCache* sharedCache = nil;
     
     
     
-    if (![self sharedReachability].reachable) {
+    if ([self sharedReachability].reachable) {
+        [self logRequestStart:request];
+        [self sendRequestStartNotificationWithRequest:request];
+        [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+            complection(response,data,connectionError);
+        }];
+        
+    }else{
+        
         
         NSMutableDictionary *userInfo = [NSMutableDictionary dictionary];
         [userInfo setValue:@"似乎已断开与互联网的连接。"
@@ -367,12 +375,9 @@ static NSURLCache* sharedCache = nil;
         if (complection) {
             complection(nil,nil,error);
         }
-    }else{
-        [self logRequestStart:request];
         
-        [NSURLConnection sendAsynchronousRequest:request queue:[WTRequestCenter sharedQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-            complection(response,data,connectionError);
-        }];
+        
+        
     }
     
     
