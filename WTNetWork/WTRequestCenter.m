@@ -11,7 +11,7 @@
 #import "WTURLRequestSerialization.h"
 #import "WTNetworkReachabilityManager.h"
 #if TARGET_OS_IPHONE
-#import <UIKit/UIKit.h>
+@import UIKit;
 #endif
 //请求开始的消息
 NSString * const WTNetworkingOperationDidStartNotification = @"WT Networking Operation Did Start Notification";

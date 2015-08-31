@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 song. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 #import <XCTest/XCTest.h>
 #import "WTRequestCenter.h"
 #import "UIKit+WTRequestCenter.h"

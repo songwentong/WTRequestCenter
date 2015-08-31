@@ -21,7 +21,7 @@
  
  */
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 #import "WTRequestCenter.h"
 /*
     方便的图片缓存功能

@@ -20,7 +20,7 @@
  
  */
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 @class WTURLRequestOperation;
 
 

@@ -5,7 +5,7 @@
 //  Created by SongWentong on 15/2/3.
 //  Copyright (c) 2015年 Spritekit. All rights reserved.
 //
-#import <UIKit/UIKit.h>
+@import UIKit;
 @class WTCycleScrollView;
 //数据源
 @protocol WTCycleScrollViewDataSource <NSObject>

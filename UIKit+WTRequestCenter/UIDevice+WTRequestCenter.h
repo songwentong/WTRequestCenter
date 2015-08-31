@@ -7,7 +7,7 @@
 //  site:https://github.com/swtlovewtt/WTRequestCenter
 //  install
 //  git clone https://github.com/swtlovewtt/WTRequestCenter
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @interface UIDevice (WTRequestCenter)
 

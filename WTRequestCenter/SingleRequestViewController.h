@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 song. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @interface SingleRequestViewController : UIViewController
 

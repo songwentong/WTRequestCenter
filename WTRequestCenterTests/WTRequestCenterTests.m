@@ -7,7 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import <UIKit/UIKit.h>
+@import UIKit;
 @interface WTRequestCenterTests : XCTestCase
 {
     UIApplication *app;

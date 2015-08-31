@@ -7,7 +7,8 @@
 //
 
 #import "WTNumberLabel.h"
-#import <CoreGraphics/CoreGraphics.h>
+@import CoreGraphics;
+//#import <CoreGraphics/CoreGraphics.h>
 @interface WTNumberLabel()
 {
     NSTimer *_myTimer;

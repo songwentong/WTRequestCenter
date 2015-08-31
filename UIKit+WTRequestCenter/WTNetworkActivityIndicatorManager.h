@@ -7,7 +7,7 @@
 
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 
 //  网络访问指示器，enable设置为YES后网络访问在状态栏有提示

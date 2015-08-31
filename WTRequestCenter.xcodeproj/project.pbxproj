@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27FB3FCC1B93FB1100F5CC7C /* WTURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FB3FCB1B93FB1100F5CC7C /* WTURLSessionManager.m */; };
 		A3B4A7C2199AF60C00A8BAF0 /* aaa@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = A3B4A7C1199AF60C00A8BAF0 /* aaa@2x.gif */; };
 		A3B4A7C9199AF92000A8BAF0 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B4A7C8199AF92000A8BAF0 /* ImageIO.framework */; };
 		A3B70F591988BDFA002776F4 /* image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A3B70F581988BDFA002776F4 /* image.jpg */; };
@@ -66,6 +67,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		27FB3FCA1B93FB1100F5CC7C /* WTURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WTURLSessionManager.h; path = WTNetWork/WTURLSessionManager.h; sourceTree = SOURCE_ROOT; };
+		27FB3FCB1B93FB1100F5CC7C /* WTURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WTURLSessionManager.m; path = WTNetWork/WTURLSessionManager.m; sourceTree = SOURCE_ROOT; };
 		A3B4A7C1199AF60C00A8BAF0 /* aaa@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = "aaa@2x.gif"; path = "WTRequestCenter/aaa@2x.gif"; sourceTree = "<group>"; };
 		A3B4A7C8199AF92000A8BAF0 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		A3B70F581988BDFA002776F4 /* image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = image.jpg; path = WTRequestCenter/image.jpg; sourceTree = "<group>"; };
@@ -320,6 +323,8 @@
 				E162A4741A6A167300CBC2C5 /* WTURLRequestSerialization.m */,
 				E1B954C31B60F2E700F206C5 /* WTNetworkReachabilityManager.h */,
 				E1B954C41B60F2E700F206C5 /* WTNetworkReachabilityManager.m */,
+				27FB3FCA1B93FB1100F5CC7C /* WTURLSessionManager.h */,
+				27FB3FCB1B93FB1100F5CC7C /* WTURLSessionManager.m */,
 			);
 			name = WTRequestCenter;
 			path = WTRequestCenter/WTRequestCenter;
@@ -440,6 +445,7 @@
 				E162A49F1A6A168900CBC2C5 /* WTImageViewer.m in Sources */,
 				E161B2881A8DA37A00A69C09 /* SingleRequestViewController.m in Sources */,
 				E19F0C2A1A0201460049C1A2 /* RulerView.m in Sources */,
+				27FB3FCC1B93FB1100F5CC7C /* WTURLSessionManager.m in Sources */,
 				E181F7761A81138700832D0B /* WTNumberLabel.m in Sources */,
 				E162A4991A6A168900CBC2C5 /* UIDevice+WTRequestCenter.m in Sources */,
 				E162A4A01A6A168900CBC2C5 /* WTNetworkActivityIndicatorManager.m in Sources */,

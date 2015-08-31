@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 song. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @interface UIScreen (WTRequestCenter)
 //屏幕宽度

@@ -4,8 +4,8 @@
 
 
 #import "UIImage+WTRequestCenter.h"
-#import <ImageIO/ImageIO.h>
-
+//#import <ImageIO/ImageIO.h>
+@import ImageIO;
 #if __has_feature(objc_arc)
 #define toCF (__bridge CFTypeRef)
 #define fromCF (__bridge id)

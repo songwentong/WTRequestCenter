@@ -15,7 +15,8 @@
                                         Mike
  */
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+@import UIKit;
+@import <#module#>
 @interface WTDataSaver : NSObject
 
 #pragma mark - 存数据 Save Data

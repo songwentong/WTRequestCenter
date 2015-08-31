@@ -47,7 +47,14 @@
 
     
     
-  
+    /*
+    WTURLSessionManager *manager = [[WTURLSessionManager alloc] initWithSessionConfiguration:nil];
+    NSURLRequest *request = [[WTURLRequestSerialization sharedRequestSerialization] requestWithMethod:@"GET" URLString:@"http://www.baidu.com" parameters:nil error:nil];
+    [[manager dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        NSLog(@"finish");
+    }] resume];
+    */
+    
     _relerView = [[RulerView alloc] initWithFrame:self.view.bounds];
     _relerView.userInteractionEnabled = NO;
     [self.view addSubview:_relerView];
