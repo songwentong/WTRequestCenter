@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 song. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 @interface WTURLSessionManager : NSObject
 @property (readonly, nonatomic, strong) NSURLSession *session;

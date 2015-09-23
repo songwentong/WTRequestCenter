@@ -19,7 +19,8 @@
  Mike
  
  */
-#import <Foundation/Foundation.h>
+@import Foundation;
+
 #import "WTRequestCenter.h"
 typedef void (^WTRequestComplectionBlock)(NSURLResponse *response,NSData *data,NSError *error);
 typedef void(^WTDownLoadProgressBlock)(NSUInteger bytesRead,long long totalBytesRead,long long totalBytesExpectedToRead);

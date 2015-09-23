@@ -19,7 +19,7 @@
  Mike
  
  */
-#import <Foundation/Foundation.h>
+@import Foundation;
 @protocol WTMultipartFormData;
 extern NSTimeInterval const WTURLRequestSerializationTimeoutTimeInterval;
 
