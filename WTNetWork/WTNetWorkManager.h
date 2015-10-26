@@ -6,7 +6,7 @@
 //  Copyright © 2015 song. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 @interface WTNetWorkManager : NSObject
 +(instancetype)sharedKit;

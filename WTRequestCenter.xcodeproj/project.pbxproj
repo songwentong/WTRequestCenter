@@ -8,55 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		A3B4A7C2199AF60C00A8BAF0 /* aaa@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = A3B4A7C1199AF60C00A8BAF0 /* aaa@2x.gif */; };
-		A3B4A7C9199AF92000A8BAF0 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B4A7C8199AF92000A8BAF0 /* ImageIO.framework */; };
 		A3B70F591988BDFA002776F4 /* image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A3B70F581988BDFA002776F4 /* image.jpg */; };
 		E10ECFAD1BDE331F00A89EB5 /* WTNetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E10ECFAC1BDE331F00A89EB5 /* WTNetWorkManager.m */; };
-		E15118011A1D9E410060AAB1 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E15118001A1D9E410060AAB1 /* MobileCoreServices.framework */; };
-		E19B62C11A2469BA004713F2 /* UIImageViewCacheTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E19B62C01A2469BA004713F2 /* UIImageViewCacheTests.m */; };
 		E1B954C51B60F2E700F206C5 /* WTNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B954C41B60F2E700F206C5 /* WTNetworkReachabilityManager.m */; };
 		E1F4BE031AE0EF4F000F7F21 /* plan in Resources */ = {isa = PBXBuildFile; fileRef = E1F4BE021AE0EF4F000F7F21 /* plan */; };
-		E4440D71197A01B1001E6D88 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4440D70197A01B1001E6D88 /* Foundation.framework */; };
-		E4440D73197A01B1001E6D88 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4440D72197A01B1001E6D88 /* CoreGraphics.framework */; };
-		E4440D75197A01B1001E6D88 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4440D74197A01B1001E6D88 /* UIKit.framework */; };
 		E4440D7B197A01B1001E6D88 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E4440D79197A01B1001E6D88 /* InfoPlist.strings */; };
 		E4440D7D197A01B1001E6D88 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E4440D7C197A01B1001E6D88 /* main.m */; };
 		E4440D81197A01B1001E6D88 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E4440D80197A01B1001E6D88 /* AppDelegate.m */; };
 		E4440D84197A01B1001E6D88 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4440D82197A01B1001E6D88 /* Main.storyboard */; };
 		E4440D87197A01B1001E6D88 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4440D86197A01B1001E6D88 /* ViewController.m */; };
 		E4440D89197A01B1001E6D88 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4440D88197A01B1001E6D88 /* Images.xcassets */; };
-		E4440D90197A01B1001E6D88 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4440D8F197A01B1001E6D88 /* XCTest.framework */; };
-		E4440D91197A01B1001E6D88 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4440D70197A01B1001E6D88 /* Foundation.framework */; };
-		E4440D92197A01B1001E6D88 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4440D74197A01B1001E6D88 /* UIKit.framework */; };
-		E4440D9A197A01B1001E6D88 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E4440D98197A01B1001E6D88 /* InfoPlist.strings */; };
-		E4440D9C197A01B1001E6D88 /* WTRequestCenterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E4440D9B197A01B1001E6D88 /* WTRequestCenterTests.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		E4440D93197A01B1001E6D88 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E4440D65197A01B1001E6D88 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E4440D6C197A01B1001E6D88;
-			remoteInfo = WTRequestCenter;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		A3B4A7C1199AF60C00A8BAF0 /* aaa@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = "aaa@2x.gif"; path = "WTRequestCenter/aaa@2x.gif"; sourceTree = "<group>"; };
-		A3B4A7C8199AF92000A8BAF0 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		A3B70F581988BDFA002776F4 /* image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = image.jpg; path = WTRequestCenter/image.jpg; sourceTree = "<group>"; };
 		E10ECFAB1BDE331F00A89EB5 /* WTNetWorkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WTNetWorkManager.h; path = WTNetWork/WTNetWorkManager.h; sourceTree = SOURCE_ROOT; };
 		E10ECFAC1BDE331F00A89EB5 /* WTNetWorkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WTNetWorkManager.m; path = WTNetWork/WTNetWorkManager.m; sourceTree = SOURCE_ROOT; };
-		E15118001A1D9E410060AAB1 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		E162A46E1A6A167300CBC2C5 /* WTNetWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WTNetWork.h; path = WTNetWork/WTNetWork.h; sourceTree = SOURCE_ROOT; };
-		E19B62C01A2469BA004713F2 /* UIImageViewCacheTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageViewCacheTests.m; sourceTree = "<group>"; };
 		E1B954C31B60F2E700F206C5 /* WTNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WTNetworkReachabilityManager.h; path = WTNetWork/WTNetworkReachabilityManager.h; sourceTree = SOURCE_ROOT; };
 		E1B954C41B60F2E700F206C5 /* WTNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WTNetworkReachabilityManager.m; path = WTNetWork/WTNetworkReachabilityManager.m; sourceTree = SOURCE_ROOT; };
 		E1F4BE021AE0EF4F000F7F21 /* plan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = plan; sourceTree = "<group>"; };
 		E4440D6D197A01B1001E6D88 /* WTRequestCenter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WTRequestCenter.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E4440D70197A01B1001E6D88 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		E4440D72197A01B1001E6D88 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		E4440D74197A01B1001E6D88 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E4440D78197A01B1001E6D88 /* WTRequestCenter-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WTRequestCenter-Info.plist"; sourceTree = "<group>"; };
 		E4440D7A197A01B1001E6D88 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E4440D7C197A01B1001E6D88 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -66,12 +39,7 @@
 		E4440D83197A01B1001E6D88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E4440D85197A01B1001E6D88 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		E4440D86197A01B1001E6D88 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		E4440D88197A01B1001E6D88 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		E4440D8E197A01B1001E6D88 /* WTRequestCenterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WTRequestCenterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E4440D8F197A01B1001E6D88 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		E4440D97197A01B1001E6D88 /* WTRequestCenterTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WTRequestCenterTests-Info.plist"; sourceTree = "<group>"; };
-		E4440D99197A01B1001E6D88 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		E4440D9B197A01B1001E6D88 /* WTRequestCenterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WTRequestCenterTests.m; sourceTree = "<group>"; };
+		E4440D88197A01B1001E6D88 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = WTRequestCenter/Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,21 +47,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E15118011A1D9E410060AAB1 /* MobileCoreServices.framework in Frameworks */,
-				A3B4A7C9199AF92000A8BAF0 /* ImageIO.framework in Frameworks */,
-				E4440D73197A01B1001E6D88 /* CoreGraphics.framework in Frameworks */,
-				E4440D75197A01B1001E6D88 /* UIKit.framework in Frameworks */,
-				E4440D71197A01B1001E6D88 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E4440D8B197A01B1001E6D88 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E4440D90197A01B1001E6D88 /* XCTest.framework in Frameworks */,
-				E4440D92197A01B1001E6D88 /* UIKit.framework in Frameworks */,
-				E4440D91197A01B1001E6D88 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +56,7 @@
 		A3B40EB019B04BD90060F158 /* Res */ = {
 			isa = PBXGroup;
 			children = (
+				E4440D88197A01B1001E6D88 /* Images.xcassets */,
 				A3B70F581988BDFA002776F4 /* image.jpg */,
 				A3B4A7C1199AF60C00A8BAF0 /* aaa@2x.gif */,
 				E4440D82197A01B1001E6D88 /* Main.storyboard */,
@@ -115,9 +69,7 @@
 			children = (
 				E4440D76197A01B1001E6D88 /* Classes */,
 				E4DBC941197D14C9004F9393 /* WTRequestCenter */,
-				E4440D95197A01B1001E6D88 /* WTRequestCenterTests */,
 				A3B40EB019B04BD90060F158 /* Res */,
-				E4440D6F197A01B1001E6D88 /* Frameworks */,
 				E4440D6E197A01B1001E6D88 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -126,22 +78,8 @@
 			isa = PBXGroup;
 			children = (
 				E4440D6D197A01B1001E6D88 /* WTRequestCenter.app */,
-				E4440D8E197A01B1001E6D88 /* WTRequestCenterTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		E4440D6F197A01B1001E6D88 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				E15118001A1D9E410060AAB1 /* MobileCoreServices.framework */,
-				A3B4A7C8199AF92000A8BAF0 /* ImageIO.framework */,
-				E4440D70197A01B1001E6D88 /* Foundation.framework */,
-				E4440D72197A01B1001E6D88 /* CoreGraphics.framework */,
-				E4440D74197A01B1001E6D88 /* UIKit.framework */,
-				E4440D8F197A01B1001E6D88 /* XCTest.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		E4440D76197A01B1001E6D88 /* Classes */ = {
@@ -152,7 +90,6 @@
 				E4440D80197A01B1001E6D88 /* AppDelegate.m */,
 				E4440D85197A01B1001E6D88 /* ViewController.h */,
 				E4440D86197A01B1001E6D88 /* ViewController.m */,
-				E4440D88197A01B1001E6D88 /* Images.xcassets */,
 				E4440D77197A01B1001E6D88 /* Supporting Files */,
 			);
 			name = Classes;
@@ -166,25 +103,6 @@
 				E4440D79197A01B1001E6D88 /* InfoPlist.strings */,
 				E4440D7C197A01B1001E6D88 /* main.m */,
 				E4440D7E197A01B1001E6D88 /* WTRequestCenter-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		E4440D95197A01B1001E6D88 /* WTRequestCenterTests */ = {
-			isa = PBXGroup;
-			children = (
-				E4440D9B197A01B1001E6D88 /* WTRequestCenterTests.m */,
-				E19B62C01A2469BA004713F2 /* UIImageViewCacheTests.m */,
-				E4440D96197A01B1001E6D88 /* Supporting Files */,
-			);
-			path = WTRequestCenterTests;
-			sourceTree = "<group>";
-		};
-		E4440D96197A01B1001E6D88 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				E4440D97197A01B1001E6D88 /* WTRequestCenterTests-Info.plist */,
-				E4440D98197A01B1001E6D88 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -222,24 +140,6 @@
 			productReference = E4440D6D197A01B1001E6D88 /* WTRequestCenter.app */;
 			productType = "com.apple.product-type.application";
 		};
-		E4440D8D197A01B1001E6D88 /* WTRequestCenterTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E4440DA2197A01B1001E6D88 /* Build configuration list for PBXNativeTarget "WTRequestCenterTests" */;
-			buildPhases = (
-				E4440D8A197A01B1001E6D88 /* Sources */,
-				E4440D8B197A01B1001E6D88 /* Frameworks */,
-				E4440D8C197A01B1001E6D88 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E4440D94197A01B1001E6D88 /* PBXTargetDependency */,
-			);
-			name = WTRequestCenterTests;
-			productName = WTRequestCenterTests;
-			productReference = E4440D8E197A01B1001E6D88 /* WTRequestCenterTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -257,9 +157,6 @@
 							};
 						};
 					};
-					E4440D8D197A01B1001E6D88 = {
-						TestTargetID = E4440D6C197A01B1001E6D88;
-					};
 				};
 			};
 			buildConfigurationList = E4440D68197A01B1001E6D88 /* Build configuration list for PBXProject "WTRequestCenter" */;
@@ -276,7 +173,6 @@
 			projectRoot = "";
 			targets = (
 				E4440D6C197A01B1001E6D88 /* WTRequestCenter */,
-				E4440D8D197A01B1001E6D88 /* WTRequestCenterTests */,
 			);
 		};
 /* End PBXProject section */
@@ -295,14 +191,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E4440D8C197A01B1001E6D88 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E4440D9A197A01B1001E6D88 /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -318,24 +206,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E4440D8A197A01B1001E6D88 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E4440D9C197A01B1001E6D88 /* WTRequestCenterTests.m in Sources */,
-				E19B62C11A2469BA004713F2 /* UIImageViewCacheTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		E4440D94197A01B1001E6D88 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E4440D6C197A01B1001E6D88 /* WTRequestCenter */;
-			targetProxy = E4440D93197A01B1001E6D88 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E4440D79197A01B1001E6D88 /* InfoPlist.strings */ = {
@@ -353,14 +224,6 @@
 			);
 			name = Main.storyboard;
 			path = WTRequestCenter;
-			sourceTree = "<group>";
-		};
-		E4440D98197A01B1001E6D88 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E4440D99197A01B1001E6D88 /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -470,48 +333,6 @@
 			};
 			name = Release;
 		};
-		E4440DA3197A01B1001E6D88 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/WTRequestCenter.app/WTRequestCenter";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "WTRequestCenter/WTRequestCenter-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "WTRequestCenterTests/WTRequestCenterTests-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "myCom.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		E4440DA4197A01B1001E6D88 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/WTRequestCenter.app/WTRequestCenter";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "WTRequestCenter/WTRequestCenter-Prefix.pch";
-				INFOPLIST_FILE = "WTRequestCenterTests/WTRequestCenterTests-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "myCom.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -529,15 +350,6 @@
 			buildConfigurations = (
 				E4440DA0197A01B1001E6D88 /* Debug */,
 				E4440DA1197A01B1001E6D88 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E4440DA2197A01B1001E6D88 /* Build configuration list for PBXNativeTarget "WTRequestCenterTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E4440DA3197A01B1001E6D88 /* Debug */,
-				E4440DA4197A01B1001E6D88 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

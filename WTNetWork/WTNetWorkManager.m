@@ -38,6 +38,7 @@ static WTNetWorkManager* kit = nil;
         _operationQueue.maxConcurrentOperationCount = 4;
         [_operationQueue setSuspended:NO];
         self.session = [NSURLSession sessionWithConfiguration:config delegate:nil delegateQueue:_operationQueue];
+
     }
     return self;
 }
