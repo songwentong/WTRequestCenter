@@ -4,6 +4,7 @@
 
 
 #import "UIImage+WTRequestCenter.h"
+#import "WTNetWork.h"
 //#import <ImageIO/ImageIO.h>
 @import ImageIO;
 #if __has_feature(objc_arc)
@@ -13,7 +14,7 @@
 #define toCF (CFTypeRef)
 #define fromCF (id)
 #endif
-#import "WTRequestCenter.h"
+
 @implementation UIImage (WTRequestCenter)
 
 static int delayCentisecondsForImageAtIndex(CGImageSourceRef const source, size_t const i) {
@@ -141,38 +142,31 @@ static UIImage *animatedImageWithAnimatedGIFReleasingImageSource(CGImageSourceRe
 +(void)imageWithURL:(NSString*)url complection:(void(^)(UIImage *image))complection
 {
     
-    [WTRequestCenter GETUsingCache:url
-                        parameters:nil
-                          finished:^(NSURLResponse *response, NSData *data) {
-                              [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
-                                  UIImage *temp = [UIImage imageWithData:data];
-                                  if (complection) {
-                                      complection(temp);
-                                  }
-                              }];
-                          } failed:^(NSURLResponse *response, NSError *error) {
-                              if (complection) {
-                                  complection(nil);
-                              }
-                          }];
+    NSMutableURLRequest *request = [[WTNetWorkManager sharedKit] requestWithMethod:@"GET" URLString:url parameters:nil error:nil];
+    [[WTNetWorkManager sharedKit].session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        [[[WTNetWorkManager sharedKit] operationQueue] addOperationWithBlock:^{
+            UIImage *temp = [UIImage imageWithData:data];
+            if (complection) {
+                complection(temp);
+            }
+        }];
+    }];
 }
 
 
 +(void)gifImageWithURL:(NSString*)url
             completion:(void(^)(UIImage* image))completion
 {
-    [WTRequestCenter GETUsingCache:url
-                        parameters:nil
-                          finished:^(NSURLResponse *response, NSData *data) {
-                              if (completion) {
-                                  UIImage *image = [self animatedImageWithAnimatedGIFData:data];
-                                  completion(image);
-                              }
-                          } failed:^(NSURLResponse *response, NSError *error) {
-                              if (completion) {
-                                  completion(nil);
-                              }
-                          }];
+    NSMutableURLRequest *request = [[WTNetWorkManager sharedKit] requestWithMethod:@"GET" URLString:url parameters:nil error:nil];
+    [[WTNetWorkManager sharedKit].session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        [[[WTNetWorkManager sharedKit] operationQueue] addOperationWithBlock:^{
+            if (completion) {
+                UIImage *image = [self animatedImageWithAnimatedGIFData:data];
+                completion(image);
+            }
+        }];
+    }];
+
 }
 
 

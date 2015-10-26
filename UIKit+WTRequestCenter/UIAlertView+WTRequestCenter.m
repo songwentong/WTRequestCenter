@@ -7,7 +7,7 @@
 //
 
 #import "UIAlertView+WTRequestCenter.h"
-#import "WTRequestCenter.h"
+#import "WTNetWorkManager.h"
 @implementation UIAlertView (WTRequestCenter)
 +(void)showAlertWithMessage:(NSString*)message
 {
@@ -31,7 +31,7 @@
                 block();
             }
         };
-        [WTRequestCenter performBlock:temp afterDelay:time];
+        [WTNetWorkManager performBlock:temp afterDelay:time];
     }
 }
 

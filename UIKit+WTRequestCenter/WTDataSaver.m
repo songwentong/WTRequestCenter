@@ -7,7 +7,7 @@
 //  site:https://github.com/swtlovewtt/WTRequestCenter
 
 #import "WTDataSaver.h"
-#import "WTRequestCenter.h"
+
 
 @implementation WTDataSaver
 
@@ -112,20 +112,7 @@ static NSOperationQueue *dataQueue = nil;
 }
 
 
-#pragma mark - 对象转换
-+(NSData*)dataWithJSONObject:(id)obj
-{
-    NSData *data = nil;
-    if ([NSJSONSerialization isValidJSONObject:obj]) {
-        data = [NSJSONSerialization dataWithJSONObject:obj options:NSJSONWritingPrettyPrinted error:nil];
-    }
-    return data;
-}
 
-+(id)JSONObjectWithData:(NSData*)data
-{
-    return [WTRequestCenter JSONObjectWithData:data];
-}
 
 
 #pragma mark - 保存路径
