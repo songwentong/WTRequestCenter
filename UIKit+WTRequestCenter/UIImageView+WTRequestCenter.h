@@ -22,7 +22,7 @@
  */
 
 @import UIKit;
-#import "WTRequestCenter.h"
+
 /*
     方便的图片缓存功能
  */
@@ -38,8 +38,8 @@
 
 -(void)setImageWithURL:(NSString *)url
       placeholderImage:(UIImage *)placeholder
-              finished:(WTRequestFinishedBlock)finished
-                failed:(WTRequestFailedBlock)failed;
+              finished:(dispatch_block_t)finished
+                failed:(dispatch_block_t)failed;
 
 //设置高亮图
 -(void)setHighlightedImageWithURL:(NSString *)url;
@@ -49,8 +49,8 @@
 
 -(void)setHighlightedImageWithURL:(NSString *)url
                  placeholderImage:(UIImage*)placeholderImage
-                         finished:(WTRequestFinishedBlock)finished
-                           failed:(WTRequestFailedBlock)failed;
+                         finished:(dispatch_block_t)finished
+                           failed:(dispatch_block_t)failed;
 
 
 

@@ -7,14 +7,12 @@
 //
 
 #import "AppDelegate.h"
-#import "UIKit+WTRequestCenter.h"
 #import "WTNetWork.h"
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    [WTNetworkActivityIndicatorManager sharedManager].enabled = YES;
     
     
 //    NSObject *obj = [[NSClassFromString(@"ClassName") alloc] init];

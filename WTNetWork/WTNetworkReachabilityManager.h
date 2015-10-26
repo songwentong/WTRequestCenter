@@ -20,8 +20,7 @@
 // THE SOFTWARE.
 
 @import Foundation;
-#import <SystemConfiguration/SystemConfiguration.h>
-
+@import SystemConfiguration;
 #ifndef NS_DESIGNATED_INITIALIZER
 #if __has_attribute(objc_designated_initializer)
 #define NS_DESIGNATED_INITIALIZER __attribute__((objc_designated_initializer))

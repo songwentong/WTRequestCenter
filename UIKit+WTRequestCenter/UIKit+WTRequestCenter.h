@@ -32,7 +32,6 @@
 #import "UIImage+WTRequestCenter.h"
 #import "UIColor+WTRequestCenter.h"
 #import "UIDevice+WTRequestCenter.h"
-#import "UIWebView+WTRequestCenter.h"
 #import "UIAlertView+WTRequestCenter.h"
 #import "WTImageViewer.h"
 #import "WTNetworkActivityIndicatorManager.h"

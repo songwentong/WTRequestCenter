@@ -9,7 +9,7 @@
 #import "UIImageView+WTRequestCenter.h"
 #import <objc/runtime.h>
 #import "UIImage+WTRequestCenter.h"
-#import "WTURLRequestOperation.h"
+
 
 @interface UIImageView()
 //@property (nonatomic,strong,readwrite) WTURLRequestOperation *wtImageRequestOperation;

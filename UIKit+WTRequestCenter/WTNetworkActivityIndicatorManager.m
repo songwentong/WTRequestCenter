@@ -7,7 +7,7 @@
 //
 
 #import "WTNetworkActivityIndicatorManager.h"
-#import "WTRequestCenter.h"
+#import "WTNetWorkManager.h"
 @interface WTNetworkActivityIndicatorManager ()
 @property (readwrite, nonatomic, assign) NSInteger activityCount;
 @property (readwrite, nonatomic, strong) NSTimer *activityIndicatorVisibilityTimer;

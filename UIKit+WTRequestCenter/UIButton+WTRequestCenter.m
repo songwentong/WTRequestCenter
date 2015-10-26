@@ -9,10 +9,8 @@
 
 
 #import "UIButton+WTRequestCenter.h"
-#import "WTRequestCenter.h"
-#import "UIKit+WTRequestCenter.h"
+#import "WTNetWorkManager.h"
 #import <objc/runtime.h>
-#import "WTURLRequestOperation.h"
 
 @implementation UIButton (WTImageCache)
 
@@ -20,21 +18,21 @@
 static const void * const WTButtonImageOperationKey = @"WT Button Image Operation Key";
 //设置背景图的Operation
 static const void * const WTButtonBackGroundImageOperationKey = @"WT Button Back Ground Image Operation Key";
--(WTURLRequestOperation*)wtImageRequestOperation
+-(NSOperation*)wtImageRequestOperation
 {
 
-    WTURLRequestOperation *operation = (WTURLRequestOperation*)objc_getAssociatedObject(self, WTButtonImageOperationKey);
+    NSOperation *operation = (NSOperation*)objc_getAssociatedObject(self, WTButtonImageOperationKey);
     return operation;
 }
 
--(void)setWtImageRequestOperation:(WTURLRequestOperation *)wtImageRequestOperation
+-(void)setWtImageRequestOperation:(NSOperation *)wtImageRequestOperation
 {
     objc_setAssociatedObject(self, WTButtonImageOperationKey, wtImageRequestOperation, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
--(WTURLRequestOperation*)wtBackGroundImageRequestOperation
+-(NSOperation*)wtBackGroundImageRequestOperation
 {
-    WTURLRequestOperation *operation = (WTURLRequestOperation*)objc_getAssociatedObject(self, WTButtonBackGroundImageOperationKey);
+    NSOperation *operation = (NSOperation*)objc_getAssociatedObject(self, WTButtonBackGroundImageOperationKey);
     return operation;
 }
 
@@ -68,6 +66,7 @@ static const void * const WTButtonBackGroundImageOperationKey = @"WT Button Back
     
     
     WTURLRequestOperation *operation = nil;
+//    operation = [NSOperation oper]
     operation = [[WTRequestCenter requestCenter] GETUsingCache:url parameters:nil finished:^(WTURLRequestOperation *operation, NSData *data)
     {
         [UIImage imageWithData:data complectionHandler:^(UIImage *image) {
