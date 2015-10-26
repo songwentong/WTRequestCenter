@@ -101,7 +101,7 @@ typedef NS_ENUM(NSInteger, WTNetworkReachabilityStatus) {
 
  @return An initialized network reachability manager, actively monitoring the specified reachability.
  */
-- (instancetype)initWithReachability:(SCNetworkReachabilityRef)reachability NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithReachability:(SCNetworkReachabilityRef)reachability;
 
 ///--------------------------------------------------
 /// @name Starting & Stopping Reachability Monitoring
