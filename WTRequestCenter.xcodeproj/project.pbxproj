@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		A3B4A7C2199AF60C00A8BAF0 /* aaa@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = A3B4A7C1199AF60C00A8BAF0 /* aaa@2x.gif */; };
 		A3B70F591988BDFA002776F4 /* image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A3B70F581988BDFA002776F4 /* image.jpg */; };
-		E10ECFAD1BDE331F00A89EB5 /* WTNetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E10ECFAC1BDE331F00A89EB5 /* WTNetWorkManager.m */; };
-		E1B954C51B60F2E700F206C5 /* WTNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B954C41B60F2E700F206C5 /* WTNetworkReachabilityManager.m */; };
+		E1BE635D1BDF10960059574A /* WTNetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BE635A1BDF10960059574A /* WTNetWorkManager.m */; };
+		E1BE635E1BDF10960059574A /* WTNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BE635C1BDF10960059574A /* WTNetworkReachabilityManager.m */; };
+		E1BE637E1BDF109F0059574A /* UIImageView+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BE636B1BDF109F0059574A /* UIImageView+WTRequestCenter.m */; };
 		E1F4BE031AE0EF4F000F7F21 /* plan in Resources */ = {isa = PBXBuildFile; fileRef = E1F4BE021AE0EF4F000F7F21 /* plan */; };
 		E4440D7B197A01B1001E6D88 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E4440D79197A01B1001E6D88 /* InfoPlist.strings */; };
 		E4440D7D197A01B1001E6D88 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E4440D7C197A01B1001E6D88 /* main.m */; };
@@ -23,11 +24,14 @@
 /* Begin PBXFileReference section */
 		A3B4A7C1199AF60C00A8BAF0 /* aaa@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = "aaa@2x.gif"; path = "WTRequestCenter/aaa@2x.gif"; sourceTree = "<group>"; };
 		A3B70F581988BDFA002776F4 /* image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = image.jpg; path = WTRequestCenter/image.jpg; sourceTree = "<group>"; };
-		E10ECFAB1BDE331F00A89EB5 /* WTNetWorkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WTNetWorkManager.h; path = WTNetWork/WTNetWorkManager.h; sourceTree = SOURCE_ROOT; };
-		E10ECFAC1BDE331F00A89EB5 /* WTNetWorkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WTNetWorkManager.m; path = WTNetWork/WTNetWorkManager.m; sourceTree = SOURCE_ROOT; };
-		E162A46E1A6A167300CBC2C5 /* WTNetWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WTNetWork.h; path = WTNetWork/WTNetWork.h; sourceTree = SOURCE_ROOT; };
-		E1B954C31B60F2E700F206C5 /* WTNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WTNetworkReachabilityManager.h; path = WTNetWork/WTNetworkReachabilityManager.h; sourceTree = SOURCE_ROOT; };
-		E1B954C41B60F2E700F206C5 /* WTNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WTNetworkReachabilityManager.m; path = WTNetWork/WTNetworkReachabilityManager.m; sourceTree = SOURCE_ROOT; };
+		E1BE63581BDF10960059574A /* WTNetWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTNetWork.h; sourceTree = "<group>"; };
+		E1BE63591BDF10960059574A /* WTNetWorkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTNetWorkManager.h; sourceTree = "<group>"; };
+		E1BE635A1BDF10960059574A /* WTNetWorkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTNetWorkManager.m; sourceTree = "<group>"; };
+		E1BE635B1BDF10960059574A /* WTNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		E1BE635C1BDF10960059574A /* WTNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		E1BE636A1BDF109F0059574A /* UIImageView+WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+WTRequestCenter.h"; sourceTree = "<group>"; };
+		E1BE636B1BDF109F0059574A /* UIImageView+WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WTRequestCenter.m"; sourceTree = "<group>"; };
+		E1BE636C1BDF109F0059574A /* UIKit+WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIKit+WTRequestCenter.h"; sourceTree = "<group>"; };
 		E1F4BE021AE0EF4F000F7F21 /* plan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = plan; sourceTree = "<group>"; };
 		E4440D6D197A01B1001E6D88 /* WTRequestCenter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WTRequestCenter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4440D78197A01B1001E6D88 /* WTRequestCenter-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WTRequestCenter-Info.plist"; sourceTree = "<group>"; };
@@ -64,11 +68,34 @@
 			name = Res;
 			sourceTree = "<group>";
 		};
+		E1BE63571BDF10960059574A /* WTNetWork */ = {
+			isa = PBXGroup;
+			children = (
+				E1BE63581BDF10960059574A /* WTNetWork.h */,
+				E1BE63591BDF10960059574A /* WTNetWorkManager.h */,
+				E1BE635A1BDF10960059574A /* WTNetWorkManager.m */,
+				E1BE635B1BDF10960059574A /* WTNetworkReachabilityManager.h */,
+				E1BE635C1BDF10960059574A /* WTNetworkReachabilityManager.m */,
+			);
+			path = WTNetWork;
+			sourceTree = "<group>";
+		};
+		E1BE635F1BDF109F0059574A /* UIKit+WTRequestCenter */ = {
+			isa = PBXGroup;
+			children = (
+				E1BE636C1BDF109F0059574A /* UIKit+WTRequestCenter.h */,
+				E1BE636A1BDF109F0059574A /* UIImageView+WTRequestCenter.h */,
+				E1BE636B1BDF109F0059574A /* UIImageView+WTRequestCenter.m */,
+			);
+			path = "UIKit+WTRequestCenter";
+			sourceTree = "<group>";
+		};
 		E4440D64197A01B1001E6D88 = {
 			isa = PBXGroup;
 			children = (
+				E1BE63571BDF10960059574A /* WTNetWork */,
+				E1BE635F1BDF109F0059574A /* UIKit+WTRequestCenter */,
 				E4440D76197A01B1001E6D88 /* Classes */,
-				E4DBC941197D14C9004F9393 /* WTRequestCenter */,
 				A3B40EB019B04BD90060F158 /* Res */,
 				E4440D6E197A01B1001E6D88 /* Products */,
 			);
@@ -105,19 +132,6 @@
 				E4440D7E197A01B1001E6D88 /* WTRequestCenter-Prefix.pch */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		E4DBC941197D14C9004F9393 /* WTRequestCenter */ = {
-			isa = PBXGroup;
-			children = (
-				E162A46E1A6A167300CBC2C5 /* WTNetWork.h */,
-				E10ECFAB1BDE331F00A89EB5 /* WTNetWorkManager.h */,
-				E10ECFAC1BDE331F00A89EB5 /* WTNetWorkManager.m */,
-				E1B954C31B60F2E700F206C5 /* WTNetworkReachabilityManager.h */,
-				E1B954C41B60F2E700F206C5 /* WTNetworkReachabilityManager.m */,
-			);
-			name = WTRequestCenter;
-			path = WTRequestCenter/WTRequestCenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,10 +212,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1BE637E1BDF109F0059574A /* UIImageView+WTRequestCenter.m in Sources */,
 				E4440D87197A01B1001E6D88 /* ViewController.m in Sources */,
+				E1BE635D1BDF10960059574A /* WTNetWorkManager.m in Sources */,
 				E4440D81197A01B1001E6D88 /* AppDelegate.m in Sources */,
-				E1B954C51B60F2E700F206C5 /* WTNetworkReachabilityManager.m in Sources */,
-				E10ECFAD1BDE331F00A89EB5 /* WTNetWorkManager.m in Sources */,
+				E1BE635E1BDF10960059574A /* WTNetworkReachabilityManager.m in Sources */,
 				E4440D7D197A01B1001E6D88 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
