@@ -2,116 +2,12 @@ WTRequestCenter
 ===============
 
 
-方便缓存的请求库，提供了方便的HTTP请求方法，传入请求url和参数，返回成功和失败的回调。
-UIKit扩展提供了许多不错的方法，快速缓存图片，图片查看，缩放功能，
-颜色创建，设备UUID，网页缓存，数据缓存等功能。
-无需任何import和配置，目前实现了基础需求，
-如果有其他需要请在issue 上提出，谢谢！
-完全64位支持。
-
-
-使用方法 Usage
-===============
-### GET 请求，根据URL和参数去请求
-
-用例：
-```objective-c
-        NSString  *url = @"http://www.baidu.com";
-
-        NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-        [parameters setValue:@"value" forKey:@"key"];
-        [parameters setValue:@"v2" forKey:@"key2"];
-
-        [WTRequestCenter getWithURL:url
-                         parameters:parameters
-                           finished:^(NSURLResponse *response, NSData *data)
-        {
-            NSString *string = [[NSString alloc] initWithData:data
-                                                     encoding:NSUTF8StringEncoding];
-            NSLog(@"%@",string);
-        }
-                             failed:^(NSURLResponse *response, NSError *error)
-        {
-            NSLog(@"%@",response);
-        }];
-```
-
-
-### POST 请求
-
-用例：
-```objective-c
-        NSString  *url = @"http://www.baidu.com";
-        NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-        [parameters setValue:@"aaa" forKey:@"uid"];
-        [parameters setValue:@"1" forKey:@"type"];
-
-        [WTRequestCenter postWithURL:url
-                          parameters:parameters
-                            finished:^(NSURLResponse *response, NSData *data)
-        {
-            NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-            NSLog(@"%@",string);
-        }
-                              failed:^(NSURLResponse *response, NSError *error)
-        {
-            NSLog(@"%@",response);
-        }];
-```
-
-### GET+缓存
-```objective-c
-[WTRequestCenter GETUsingCache:@"url"
-                    parameters:nil
-                      finished:^(NSURLResponse *response, NSData *data) {
-                              
-                      } failed:^(NSURLResponse *response, NSError *error) {
-                              
-                          }];
-```
-已经完成的请求缓存下来，用作下次使用。没有请求过的重新请求，请求完后缓存。
-
-
-Debug模式
-默认开启，会输出请求的对象，响应时间或者错误信息，
-可以再WTRequestCenter.h里面关闭。
-
-###安装
-点击右侧download或者终端git clone https://github.com/swtlovewtt/WTRequestCenter
-下载后找到里面的WTRequestCenter，把文件夹里面的文件粘到工程里面就可以使用了。
-UIKit扩展是一个非常好的UI扩展工具，提供了图片下载方法，颜色快速创建等cagegory。
-
-目前不提供cocoaPod安装
-
-
-
-
-
-
-
-### WTDataSaver
-WTDataSaver 是个文件存取类，用于自定的方式把数据存取到本地
-
-#### 保存数据  name只需要传文件名就可以了，无需传路径
-```objective-c
-+(void)saveData:(NSData*)data
-       withName:(NSString*)name
-     completion:(void(^)())completion;
-```
-
-#### 读取数据 name只需要传文件名就可以了，无需传路径
-```objective-c
-+(void)dataWithName:(NSString*)name
-         completion:(void(^)(NSData*data))completion;
-```
-
-
-
+升级中,暂无可参阅文档,敬请期待...
 
 
 需要版本  
 ===============
-iOS 5.0
+iOS 7.0
 
 
 ##  UIKit+WTRequestCenter
