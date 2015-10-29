@@ -73,14 +73,16 @@ static const void * const WTHighlightedImageOperationKey = @"WT Highlighted Imag
                   }
               }else{
                   UIImage *image = [UIImage imageWithData:data];
-                  [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                  
+                  dispatch_sync(dispatch_get_main_queue(), ^{
                       self.image = image;
                       [self setNeedsLayout];
                       
                       if (finished) {
                           finished();
                       }
-                  }];
+                  });
+                  
               }
               
               
@@ -149,14 +151,15 @@ static const void * const WTHighlightedImageOperationKey = @"WT Highlighted Imag
                       failed();
                   }
               }else{
+                  
                   UIImage *image = [UIImage imageWithData:data];
-                  [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                  dispatch_sync(dispatch_get_main_queue(), ^{
                       self.highlightedImage = image;
                       [self setNeedsLayout];
                       if (finished) {
                           finished();
                       }
-                  }];
+                  });
               }
               
           }] resume];
