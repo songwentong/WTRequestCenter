@@ -26,16 +26,12 @@
 /*
     方便的图片缓存功能
  */
-@interface UIImageView (WTRequestCenter)
+@interface UIImageView (ImageCache)
 
-/*
-    下载图片
- */
 - (void)setImageWithURL:(NSString*)url;
 //下载图片＋placeholder
 - (void)setImageWithURL:(NSString*)url
        placeholderImage:(UIImage *)placeholder;
-
 
 /*!
     下载图片,用于table的cell重用不会产生问题
@@ -45,6 +41,9 @@
               finished:(dispatch_block_t)finished
                 failed:(dispatch_block_t)failed;
 
+@end
+
+@interface UIImageView(highlightedImageCache)
 //设置高亮图
 -(void)setHighlightedImageWithURL:(NSString *)url;
 
@@ -55,11 +54,4 @@
                  placeholderImage:(UIImage*)placeholderImage
                          finished:(dispatch_block_t)finished
                            failed:(dispatch_block_t)failed;
-
-
-
-
-
-
-
 @end

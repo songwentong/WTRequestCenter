@@ -35,21 +35,7 @@ static const void * const WTHighlightedImageOperationKey = @"WT Highlighted Imag
     return objc_getAssociatedObject(self, WTImageViewOperationKey);
 }
 
--(void)setHighlightedImageOperation:(NSOperation*)operation
-{
-    NSOperation *old = [self highlightedImageOperation];
-    if (old) {
-        if ([old isExecuting]) {
-            [old cancel];
-        }
-    }
-    
-    objc_setAssociatedObject(self, WTHighlightedImageOperationKey, operation, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
 
--(NSOperation*)highlightedImageOperation{
-   return objc_getAssociatedObject(self, WTHighlightedImageOperationKey);
-}
 
 
 - (void)setImageWithURL:(NSString *)url
@@ -105,6 +91,28 @@ static const void * const WTHighlightedImageOperationKey = @"WT Highlighted Imag
     
 }
 
+
+
+@end
+
+@implementation UIImageView(highlightedImage)
+
+-(void)setHighlightedImageOperation:(NSOperation*)operation
+{
+    NSOperation *old = [self highlightedImageOperation];
+    if (old) {
+        if ([old isExecuting]) {
+            [old cancel];
+        }
+    }
+    
+    objc_setAssociatedObject(self, WTHighlightedImageOperationKey, operation, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+-(NSOperation*)highlightedImageOperation{
+    return objc_getAssociatedObject(self, WTHighlightedImageOperationKey);
+}
+
 -(void)setHighlightedImageWithURL:(NSString *)url
 {
     [self setHighlightedImageWithURL:url
@@ -118,7 +126,7 @@ static const void * const WTHighlightedImageOperationKey = @"WT Highlighted Imag
 
 -(void)setHighlightedImageWithURL:(NSString *)url placeholderImage:(UIImage*)placeholderImage finished:(dispatch_block_t)finished failed:(dispatch_block_t)failed
 {
-
+    
     [[NSOperationQueue mainQueue] addOperationWithBlock:^
      {
          self.highlightedImage = placeholderImage;
@@ -135,5 +143,6 @@ static const void * const WTHighlightedImageOperationKey = @"WT Highlighted Imag
           }];
       }] resume];
 }
+
 
 @end
