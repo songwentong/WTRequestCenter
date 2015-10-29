@@ -133,15 +133,24 @@ static const void * const WTHighlightedImageOperationKey = @"WT Highlighted Imag
      }];
     
     
-    NSMutableURLRequest *request = [[WTNetWorkManager sharedKit] requestWithMethod:@"GET" URLString:url parameters:nil error:nil];
-    request.cachePolicy = NSURLRequestReturnCacheDataElseLoad;
-    [[[WTNetWorkManager sharedKit].session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
-      {
-          UIImage *image = [UIImage imageWithData:data];
-          [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-              self.highlightedImage = image;
-          }];
-      }] resume];
+   
+    
+    
+    
+    NSOperation *operation = [NSBlockOperation blockOperationWithBlock:^{
+        NSMutableURLRequest *request = [[WTNetWorkManager sharedKit] requestWithMethod:@"GET" URLString:url parameters:nil error:nil];
+        request.cachePolicy = NSURLRequestReturnCacheDataElseLoad;
+        [[[WTNetWorkManager sharedKit].session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
+          {
+              UIImage *image = [UIImage imageWithData:data];
+              [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                  self.highlightedImage = image;
+              }];
+          }] resume];
+    }];
+    
+    [self setHighlightedImageOperation:operation];
+    [operation start];
 }
 
 
