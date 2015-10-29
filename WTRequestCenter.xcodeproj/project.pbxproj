@@ -37,7 +37,6 @@
 		E4440D78197A01B1001E6D88 /* WTRequestCenter-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WTRequestCenter-Info.plist"; sourceTree = "<group>"; };
 		E4440D7A197A01B1001E6D88 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E4440D7C197A01B1001E6D88 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		E4440D7E197A01B1001E6D88 /* WTRequestCenter-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WTRequestCenter-Prefix.pch"; sourceTree = "<group>"; };
 		E4440D7F197A01B1001E6D88 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E4440D80197A01B1001E6D88 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E4440D83197A01B1001E6D88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -63,7 +62,6 @@
 				E4440D88197A01B1001E6D88 /* Images.xcassets */,
 				A3B70F581988BDFA002776F4 /* image.jpg */,
 				A3B4A7C1199AF60C00A8BAF0 /* aaa@2x.gif */,
-				E4440D82197A01B1001E6D88 /* Main.storyboard */,
 			);
 			name = Res;
 			sourceTree = "<group>";
@@ -115,6 +113,7 @@
 				E1F4BE021AE0EF4F000F7F21 /* plan */,
 				E4440D7F197A01B1001E6D88 /* AppDelegate.h */,
 				E4440D80197A01B1001E6D88 /* AppDelegate.m */,
+				E4440D82197A01B1001E6D88 /* Main.storyboard */,
 				E4440D85197A01B1001E6D88 /* ViewController.h */,
 				E4440D86197A01B1001E6D88 /* ViewController.m */,
 				E4440D77197A01B1001E6D88 /* Supporting Files */,
@@ -129,7 +128,6 @@
 				E4440D78197A01B1001E6D88 /* WTRequestCenter-Info.plist */,
 				E4440D79197A01B1001E6D88 /* InfoPlist.strings */,
 				E4440D7C197A01B1001E6D88 /* main.m */,
-				E4440D7E197A01B1001E6D88 /* WTRequestCenter-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -238,7 +236,6 @@
 				E4440D83197A01B1001E6D88 /* Base */,
 			);
 			name = Main.storyboard;
-			path = WTRequestCenter;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -277,7 +274,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -309,7 +306,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -322,9 +319,9 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Yin GongJing (ER98V5DG57)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "WTRequestCenter/WTRequestCenter-Prefix.pch";
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "WTRequestCenter/WTRequestCenter-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.qg.a;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "372193c5-4528-4519-8902-00e9b69aef20";
@@ -339,9 +336,9 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "WTRequestCenter/WTRequestCenter-Prefix.pch";
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "WTRequestCenter/WTRequestCenter-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.qg.a;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
