@@ -36,6 +36,10 @@
 - (void)setImageWithURL:(NSString*)url
        placeholderImage:(UIImage *)placeholder;
 
+
+/*!
+    下载图片,用于table的cell重用不会产生问题
+ */
 -(void)setImageWithURL:(NSString *)url
       placeholderImage:(UIImage *)placeholder
               finished:(dispatch_block_t)finished
