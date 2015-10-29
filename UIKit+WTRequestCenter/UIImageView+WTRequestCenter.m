@@ -49,10 +49,22 @@
     request.cachePolicy = NSURLRequestReturnCacheDataElseLoad;
     [[[WTNetWorkManager sharedKit].session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
     {
-        UIImage *image = [UIImage imageWithData:data];
-        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            self.image = image;
-        }];
+        if (error) {
+            if (failed) {
+                failed();
+            }
+        }else{
+            UIImage *image = [UIImage imageWithData:data];
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                self.image = image;
+                if (finished) {
+                    finished();
+                }
+            }];
+        }
+
+        
+
     }] resume];
     
 }
