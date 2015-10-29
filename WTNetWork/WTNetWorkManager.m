@@ -36,6 +36,7 @@ static WTNetWorkManager* kit = nil;
         NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
         _operationQueue = [[NSOperationQueue alloc] init];
         _operationQueue.maxConcurrentOperationCount = 4;
+        _operationQueue.name = @"WTNetWork Operation Queue";
         [_operationQueue setSuspended:NO];
         self.session = [NSURLSession sessionWithConfiguration:config delegate:nil delegateQueue:_operationQueue];
 
