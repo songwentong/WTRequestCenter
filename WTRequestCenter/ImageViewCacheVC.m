@@ -41,6 +41,7 @@
     [_myImageView setImageWithURL:url placeholderImage:nil finished:^{
         [_activity stopAnimating];
     } failed:^{
+        [_activity stopAnimating];
         
     }];
 }
