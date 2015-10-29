@@ -3,27 +3,30 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 47;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		A3B4A7C2199AF60C00A8BAF0 /* aaa@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = A3B4A7C1199AF60C00A8BAF0 /* aaa@2x.gif */; };
 		A3B70F591988BDFA002776F4 /* image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A3B70F581988BDFA002776F4 /* image.jpg */; };
+		E11D04A11BE1C96F0045C421 /* ImageViewCacheVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E11D04A01BE1C96F0045C421 /* ImageViewCacheVC.m */; };
 		E1BE635D1BDF10960059574A /* WTNetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BE635A1BDF10960059574A /* WTNetWorkManager.m */; };
 		E1BE635E1BDF10960059574A /* WTNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BE635C1BDF10960059574A /* WTNetworkReachabilityManager.m */; };
 		E1BE637E1BDF109F0059574A /* UIImageView+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BE636B1BDF109F0059574A /* UIImageView+WTRequestCenter.m */; };
+		E1D7A8BA1BE1C8650022F5DC /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D7A8B91BE1C8650022F5DC /* HomeViewController.m */; };
 		E1F4BE031AE0EF4F000F7F21 /* plan in Resources */ = {isa = PBXBuildFile; fileRef = E1F4BE021AE0EF4F000F7F21 /* plan */; };
 		E4440D7B197A01B1001E6D88 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E4440D79197A01B1001E6D88 /* InfoPlist.strings */; };
 		E4440D7D197A01B1001E6D88 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E4440D7C197A01B1001E6D88 /* main.m */; };
 		E4440D81197A01B1001E6D88 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E4440D80197A01B1001E6D88 /* AppDelegate.m */; };
 		E4440D84197A01B1001E6D88 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4440D82197A01B1001E6D88 /* Main.storyboard */; };
-		E4440D87197A01B1001E6D88 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4440D86197A01B1001E6D88 /* ViewController.m */; };
 		E4440D89197A01B1001E6D88 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4440D88197A01B1001E6D88 /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A3B4A7C1199AF60C00A8BAF0 /* aaa@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = "aaa@2x.gif"; path = "WTRequestCenter/aaa@2x.gif"; sourceTree = "<group>"; };
 		A3B70F581988BDFA002776F4 /* image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = image.jpg; path = WTRequestCenter/image.jpg; sourceTree = "<group>"; };
+		E11D049F1BE1C96F0045C421 /* ImageViewCacheVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewCacheVC.h; sourceTree = "<group>"; };
+		E11D04A01BE1C96F0045C421 /* ImageViewCacheVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewCacheVC.m; sourceTree = "<group>"; };
 		E1BE63581BDF10960059574A /* WTNetWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTNetWork.h; sourceTree = "<group>"; };
 		E1BE63591BDF10960059574A /* WTNetWorkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTNetWorkManager.h; sourceTree = "<group>"; };
 		E1BE635A1BDF10960059574A /* WTNetWorkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTNetWorkManager.m; sourceTree = "<group>"; };
@@ -32,6 +35,8 @@
 		E1BE636A1BDF109F0059574A /* UIImageView+WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+WTRequestCenter.h"; sourceTree = "<group>"; };
 		E1BE636B1BDF109F0059574A /* UIImageView+WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WTRequestCenter.m"; sourceTree = "<group>"; };
 		E1BE636C1BDF109F0059574A /* UIKit+WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIKit+WTRequestCenter.h"; sourceTree = "<group>"; };
+		E1D7A8B81BE1C8650022F5DC /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		E1D7A8B91BE1C8650022F5DC /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		E1F4BE021AE0EF4F000F7F21 /* plan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = plan; sourceTree = "<group>"; };
 		E4440D6D197A01B1001E6D88 /* WTRequestCenter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WTRequestCenter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4440D78197A01B1001E6D88 /* WTRequestCenter-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WTRequestCenter-Info.plist"; sourceTree = "<group>"; };
@@ -40,8 +45,6 @@
 		E4440D7F197A01B1001E6D88 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E4440D80197A01B1001E6D88 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E4440D83197A01B1001E6D88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E4440D85197A01B1001E6D88 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		E4440D86197A01B1001E6D88 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		E4440D88197A01B1001E6D88 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = WTRequestCenter/Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,6 +67,15 @@
 				A3B4A7C1199AF60C00A8BAF0 /* aaa@2x.gif */,
 			);
 			name = Res;
+			sourceTree = "<group>";
+		};
+		E11D049E1BE1C9550045C421 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E11D049F1BE1C96F0045C421 /* ImageViewCacheVC.h */,
+				E11D04A01BE1C96F0045C421 /* ImageViewCacheVC.m */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 		E1BE63571BDF10960059574A /* WTNetWork */ = {
@@ -94,6 +106,7 @@
 				E1BE63571BDF10960059574A /* WTNetWork */,
 				E1BE635F1BDF109F0059574A /* UIKit+WTRequestCenter */,
 				E4440D76197A01B1001E6D88 /* Classes */,
+				E4440D77197A01B1001E6D88 /* Supporting Files */,
 				A3B40EB019B04BD90060F158 /* Res */,
 				E4440D6E197A01B1001E6D88 /* Products */,
 			);
@@ -110,13 +123,13 @@
 		E4440D76197A01B1001E6D88 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				E11D049E1BE1C9550045C421 /* ViewControllers */,
 				E1F4BE021AE0EF4F000F7F21 /* plan */,
 				E4440D7F197A01B1001E6D88 /* AppDelegate.h */,
 				E4440D80197A01B1001E6D88 /* AppDelegate.m */,
 				E4440D82197A01B1001E6D88 /* Main.storyboard */,
-				E4440D85197A01B1001E6D88 /* ViewController.h */,
-				E4440D86197A01B1001E6D88 /* ViewController.m */,
-				E4440D77197A01B1001E6D88 /* Supporting Files */,
+				E1D7A8B81BE1C8650022F5DC /* HomeViewController.h */,
+				E1D7A8B91BE1C8650022F5DC /* HomeViewController.m */,
 			);
 			name = Classes;
 			path = WTRequestCenter;
@@ -130,6 +143,7 @@
 				E4440D7C197A01B1001E6D88 /* main.m */,
 			);
 			name = "Supporting Files";
+			path = WTRequestCenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,7 +186,7 @@
 				};
 			};
 			buildConfigurationList = E4440D68197A01B1001E6D88 /* Build configuration list for PBXProject "WTRequestCenter" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -211,11 +225,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1BE637E1BDF109F0059574A /* UIImageView+WTRequestCenter.m in Sources */,
-				E4440D87197A01B1001E6D88 /* ViewController.m in Sources */,
 				E1BE635D1BDF10960059574A /* WTNetWorkManager.m in Sources */,
 				E4440D81197A01B1001E6D88 /* AppDelegate.m in Sources */,
 				E1BE635E1BDF10960059574A /* WTNetworkReachabilityManager.m in Sources */,
+				E11D04A11BE1C96F0045C421 /* ImageViewCacheVC.m in Sources */,
 				E4440D7D197A01B1001E6D88 /* main.m in Sources */,
+				E1D7A8BA1BE1C8650022F5DC /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

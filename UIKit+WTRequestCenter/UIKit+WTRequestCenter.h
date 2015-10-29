@@ -23,7 +23,7 @@
  使用注意
  使用gif图的时候需要import一个ImageIO.framework
  */
-@import UIKit;
+//@import UIKit;
 
 #ifndef WTRequestCenter_UIKit_WTRequestCenter_h
 #define WTRequestCenter_UIKit_WTRequestCenter_h

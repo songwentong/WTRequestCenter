@@ -1,0 +1,52 @@
+//
+//  ImageViewCacheVC.m
+//  WTRequestCenter
+//
+//  Created by SongWentong on 10/29/15.
+//  Copyright © 2015 song. All rights reserved.
+//
+
+#import "ImageViewCacheVC.h"
+#import "WTNetWork.h"
+#import "UIKit+WTRequestCenter.h"
+@interface ImageViewCacheVC ()
+
+@property (weak, nonatomic) IBOutlet UITextField *myTextField;
+@property (weak, nonatomic) IBOutlet UIImageView *myImageView;
+@end
+
+@implementation ImageViewCacheVC
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)requestUseDefaultURL:(id)sender {
+    _myTextField.text = @"http://img0.bdstatic.com/img/image/c9e2596284f50ce95cbed0d756fdd22b1409207983.jpg";
+    [_myImageView setImageWithURL:_myTextField.text];
+}
+
+- (IBAction)requestImage:(id)sender {
+    [_myImageView setImageWithURL:_myTextField.text];
+}
+- (IBAction)cleanImage:(id)sender {
+    _myImageView.image = nil;
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end
