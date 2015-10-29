@@ -13,7 +13,7 @@
 @interface UIImageView()
 
 @end
-@implementation UIImageView (WTRequestCenter)
+@implementation UIImageView (ImageCache)
 static const void * const WTImageViewOperationKey = @"WT ImageView Operation Key";
 
 static const void * const WTHighlightedImageOperationKey = @"WT Highlighted Image Operation Key";
