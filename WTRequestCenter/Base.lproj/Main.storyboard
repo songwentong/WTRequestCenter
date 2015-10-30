@@ -87,9 +87,36 @@
                     <view key="view" contentMode="scaleToFill" id="cwi-bK-C1X">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V01-cm-xeG">
+                                <rect key="frame" x="0.0" y="89" width="375" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YtO-UJ-Td4">
+                                <rect key="frame" x="118" y="291" width="139" height="85"/>
+                                <animations/>
+                                <state key="normal" title="Button" image="image.jpg"/>
+                                <connections>
+                                    <action selector="send:" destination="iYW-Jr-8b1" eventType="touchUpInside" id="PJu-HD-nZ6"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="YtO-UJ-Td4" firstAttribute="centerY" secondItem="cwi-bK-C1X" secondAttribute="centerY" id="Mfm-7A-XnT"/>
+                            <constraint firstAttribute="trailing" secondItem="V01-cm-xeG" secondAttribute="trailing" id="Pn0-bn-x7v"/>
+                            <constraint firstItem="V01-cm-xeG" firstAttribute="top" secondItem="naS-nh-RP6" secondAttribute="bottom" constant="25" id="Wup-3u-Mkc"/>
+                            <constraint firstItem="V01-cm-xeG" firstAttribute="leading" secondItem="cwi-bK-C1X" secondAttribute="leading" id="XlB-l3-ZYO"/>
+                            <constraint firstItem="YtO-UJ-Td4" firstAttribute="centerX" secondItem="cwi-bK-C1X" secondAttribute="centerX" id="cp0-35-6KD"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="statusLabel" destination="V01-cm-xeG" id="oC8-d2-8od"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fVg-ft-es1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -183,4 +210,7 @@
             <point key="canvasLocation" x="135.5" y="67.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="image.jpg" width="85" height="85"/>
+    </resources>
 </document>
