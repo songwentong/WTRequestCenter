@@ -18,9 +18,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    
+    
+    
+    //对应的文件(图片,视频)的数据
     [dict setValue:[@"content" dataUsingEncoding:NSUTF8StringEncoding] forKey:@"content"];
+//    服务端接收的key
     [dict setValue:@"name" forKey:@"name"];
+//    文件名
     [dict setValue:@"filename" forKey:@"filename"];
+    
     NSURLRequest *request = [[WTNetWorkManager sharedKit] POSTRequestWithURL:@"das" parameters:nil body:@[dict]];
     [[WTNetWorkManager sharedKit].session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         
