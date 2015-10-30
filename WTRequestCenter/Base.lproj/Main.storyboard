@@ -103,11 +103,21 @@
                                     <action selector="send:" destination="iYW-Jr-8b1" eventType="touchUpInside" id="PYD-cr-eUo"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请注意根据代码中的提示来启动服务器接收文件" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lcb-lc-Mp6">
+                                <rect key="frame" x="0.0" y="638" width="375" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="bQf-Jn-YVs" firstAttribute="top" secondItem="Lcb-lc-Mp6" secondAttribute="bottom" constant="8" id="1sK-xM-qOu"/>
                             <constraint firstItem="HXE-Ps-aj1" firstAttribute="centerX" secondItem="cwi-bK-C1X" secondAttribute="centerX" id="3uL-Ex-PG9"/>
+                            <constraint firstItem="Lcb-lc-Mp6" firstAttribute="leading" secondItem="cwi-bK-C1X" secondAttribute="leading" id="Azt-of-BfH"/>
+                            <constraint firstAttribute="trailing" secondItem="Lcb-lc-Mp6" secondAttribute="trailing" id="GfE-vI-Cwh"/>
                             <constraint firstItem="HXE-Ps-aj1" firstAttribute="centerY" secondItem="cwi-bK-C1X" secondAttribute="centerY" id="Lph-I1-grY"/>
                             <constraint firstAttribute="trailing" secondItem="V01-cm-xeG" secondAttribute="trailing" id="Pn0-bn-x7v"/>
                             <constraint firstItem="V01-cm-xeG" firstAttribute="top" secondItem="naS-nh-RP6" secondAttribute="bottom" constant="25" id="Wup-3u-Mkc"/>
