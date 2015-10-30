@@ -160,40 +160,28 @@ static WTNetWorkManager* kit = nil;
     [request setValue:value forHTTPHeaderField:@"Content-Type"];
     request.HTTPMethod = @"POST";
     
-    NSString *endItemBoundary = [NSString stringWithFormat:@"\r\n--%@\r\n",kboundary];
     
     NSMutableData *HTTPBody = [[NSMutableData alloc] init];
     [HTTPBody appendData:[[NSString stringWithFormat:@"--%@\r\n",kboundary] dataUsingEncoding:NSUTF8StringEncoding]];
     if (parameters) {
-        __block NSInteger count = 0;
+
         [parameters enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
             NSString *keyString = [NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n",key];
             [HTTPBody appendData:[keyString dataUsingEncoding:NSUTF8StringEncoding]];
-            
             [HTTPBody appendData:[value dataUsingEncoding:NSUTF8StringEncoding]];
-            count ++;
-            if ([parameters count]!= count+1) {
-                //                如果后面还有文件或者参数不是最后一个
-                //Only add the boundary if this is not the last item in the post body
-                [HTTPBody appendData:[endItemBoundary dataUsingEncoding:NSUTF8StringEncoding]];
-            }
+            [HTTPBody appendData:[[NSString stringWithFormat:@"--%@\r\n",kboundary] dataUsingEncoding:NSUTF8StringEncoding]];
         }];
     }
     
     if (body) {
-        NSInteger count = body.count;
-        __block NSInteger current = 0;
+
         [body enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
             NSString *str1 =  [NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", obj, key];
-            [HTTPBody appendData:[str1 dataUsingEncoding:NSUTF8StringEncoding]];
             NSString *str2 = [NSString stringWithFormat:@"Content-Type: %@\r\n\r\n", @"image/jpeg"];
-            [HTTPBody appendData:[str2 dataUsingEncoding:NSUTF8StringEncoding]];
-//            [HTTPBody appendData:[[dict allValues] lastObject]];
-            if (current == count-1) {
-                [HTTPBody appendData:[endItemBoundary dataUsingEncoding:NSUTF8StringEncoding]];
-            }
-            current = current + 1;
             
+            [HTTPBody appendData:[str1 dataUsingEncoding:NSUTF8StringEncoding]];
+            [HTTPBody appendData:[str2 dataUsingEncoding:NSUTF8StringEncoding]];
+            [HTTPBody appendData:[[NSString stringWithFormat:@"--%@\r\n",kboundary] dataUsingEncoding:NSUTF8StringEncoding]];
         }];
     }
     

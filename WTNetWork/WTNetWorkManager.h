@@ -16,6 +16,9 @@
 @end
 
 @interface WTNetWorkManager(CreatRequest)
+/*!
+    根据请求方法,URL和参数创建一个请求对象
+ */
 - (NSMutableURLRequest *)requestWithMethod:(NSString *)method
                                  URLString:(NSString *)URLString
                                 parameters:(id)parameters
@@ -23,7 +26,6 @@
 
 
 /*!
-    未完成...
     根据url,参数和对应的数据来创建一个请求对象
     body的key是字符串,value是对应的NSData
  */
