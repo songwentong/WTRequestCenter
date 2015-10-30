@@ -27,11 +27,18 @@
 
 /*!
     根据url,参数和对应的数据来创建一个请求对象
-    body的key是字符串,value是对应的NSData
+ 
+ body 中存的是NSDictionary,包含4个内容
+ name 是名字
+ filename 是文件名
+ contentType 是内容类型
+ content 是内容
+ 
+ 目前没有做的是同一个name对应多个文件,那个做起来比较复杂,没啥需求,就不做了.
  */
 -(NSMutableURLRequest*)POSTRequestWithURL:(NSString*)url
                                parameters:(NSDictionary*)parameters
-                                     body:(NSDictionary*)body;
+                                     body:(NSArray*)body;
 @end
 
 @interface WTNetWorkManager(GCD)

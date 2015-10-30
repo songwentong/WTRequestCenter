@@ -148,7 +148,7 @@ static WTNetWorkManager* kit = nil;
 
 -(NSMutableURLRequest*)POSTRequestWithURL:(NSString*)url
                                parameters:(NSDictionary*)parameters
-                                     body:(NSDictionary*)body
+                                     body:(NSArray*)body
 {
     
     
@@ -174,13 +174,18 @@ static WTNetWorkManager* kit = nil;
     }
     
     if (body) {
-
-        [body enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-            NSString *str1 =  [NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", obj, key];
-            NSString *str2 = [NSString stringWithFormat:@"Content-Type: %@\r\n\r\n", @"image/jpeg"];
+        [body enumerateObjectsUsingBlock:^(NSDictionary*  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSString *name = [obj valueForKey:@"name"];
+            NSString *filename = [obj valueForKey:@"filename"];
+            NSString *contentType = [obj valueForKey:@"contentType"];
+            NSData *content = [obj valueForKey:@"content"];
             
+            
+            NSString *str1 =  [NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", name, filename];
+            NSString *str2 = [NSString stringWithFormat:@"Content-Type: %@\r\n\r\n", contentType];
             [HTTPBody appendData:[str1 dataUsingEncoding:NSUTF8StringEncoding]];
             [HTTPBody appendData:[str2 dataUsingEncoding:NSUTF8StringEncoding]];
+            [HTTPBody appendData:content];
             [HTTPBody appendData:[[NSString stringWithFormat:@"--%@\r\n",kboundary] dataUsingEncoding:NSUTF8StringEncoding]];
         }];
     }
