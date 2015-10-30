@@ -36,7 +36,7 @@ static const void * const WTButtonBackGroundImageOperationKey = @"WT Button Back
     return operation;
 }
 
--(void)setWtBackGroundImageRequestOperation:(WTURLRequestOperation *)wtBackGroundImageRequestOperation
+-(void)setWtBackGroundImageRequestOperation:(NSOperation *)wtBackGroundImageRequestOperation
 {
     objc_setAssociatedObject(self, WTButtonBackGroundImageOperationKey, wtBackGroundImageRequestOperation, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
@@ -62,32 +62,36 @@ static const void * const WTButtonBackGroundImageOperationKey = @"WT Button Back
     if (!url) {
         return;
     }
-    __weak UIButton *weakSelf = self;
     
     
-    WTURLRequestOperation *operation = nil;
-//    operation = [NSOperation oper]
-    operation = [[WTRequestCenter requestCenter] GETUsingCache:url parameters:nil finished:^(WTURLRequestOperation *operation, NSData *data)
-    {
-        [UIImage imageWithData:data complectionHandler:^(UIImage *image) {
-            
-            if (image) {
-                if (!weakSelf) return;
-                __strong UIButton *strongSelf = weakSelf;
-                
-                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                    [strongSelf setImage:image forState:state];
-                    [strongSelf setNeedsLayout];
-                }];
-                strongSelf.wtImageRequestOperation = nil;
-            }
-        }];
-    } failed:^(WTURLRequestOperation *operation, NSError *error) {
-        
+    NSMutableURLRequest *request = [[WTNetWorkManager sharedKit] requestWithMethod:@"GET" URLString:url parameters:nil error:nil];
+    request.cachePolicy = NSURLRequestReturnCacheDataElseLoad;
+    
+    
+    
+    NSOperation *operation = [NSBlockOperation blockOperationWithBlock:^{
+        [[[WTNetWorkManager sharedKit].session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
+          {
+              if (error) {
+                  
+              }else{
+                  UIImage *image = [UIImage imageWithData:data];
+                  
+                  dispatch_sync(dispatch_get_main_queue(), ^{
+                      [self setImage:image forState:state];
+                      [self setNeedsLayout];
+                      
+                  });
+                  
+              }
+              
+              
+              
+          }] resume];
     }];
     
-    self.wtImageRequestOperation = operation;
-
+    [self setWtImageRequestOperation:operation];
+    [operation start];
 }
 
 - (void)setBackgroundImage:(UIControlState)state
@@ -110,30 +114,32 @@ static const void * const WTButtonBackGroundImageOperationKey = @"WT Button Back
     if (!url) {
         return;
     }
-    __weak UIButton *weakSelf = self;
+    NSMutableURLRequest *request = [[WTNetWorkManager sharedKit] requestWithMethod:@"GET" URLString:url parameters:nil error:nil];
+    request.cachePolicy = NSURLRequestReturnCacheDataElseLoad;
     
-    self.wtBackGroundImageRequestOperation = [[WTRequestCenter requestCenter] GETUsingCache:url
-                                                                       parameters:nil
-                                                                         finished:^(WTURLRequestOperation *operation, NSData *data)
-    {
-        [UIImage imageWithData:data complectionHandler:^(UIImage *image) {
-            if (image) {
-                if (weakSelf) {
-                    __strong UIButton *strongSelf = weakSelf;
-                    
-                    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                        [strongSelf setBackgroundImage:image forState:state];
-                        [strongSelf setNeedsLayout];
-                    }];
-                    
-                }
-            }
-            
-        }];
-    }
-                                                                        failed:^(WTURLRequestOperation *operation, NSError *error)
-    {
+    
+    
+    NSOperation *operation = [NSBlockOperation blockOperationWithBlock:^{
+        [[[WTNetWorkManager sharedKit].session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
+          {
+              if (error) {
+                  
+              }else{
+                  UIImage *image = [UIImage imageWithData:data];
+                  dispatch_sync(dispatch_get_main_queue(), ^{
+                      [self setBackgroundImage:image forState:state];
+                      [self setNeedsLayout];
+                  });
+                  
+              }
+              
+              
+              
+          }] resume];
     }];
+    
+    [self setWtBackGroundImageRequestOperation:operation];
+    [operation start];
              
 }
 

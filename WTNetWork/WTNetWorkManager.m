@@ -190,7 +190,6 @@ static WTNetWorkManager* kit = nil;
             NSString *str2 = [NSString stringWithFormat:@"Content-Type: %@\r\n\r\n", contentType];
             [HTTPBody appendData:[str1 dataUsingEncoding:NSUTF8StringEncoding]];
             [HTTPBody appendData:[str2 dataUsingEncoding:NSUTF8StringEncoding]];
-//            [HTTPBody appendData:<#(nonnull NSData *)#>]
             [HTTPBody appendData:content];
             [HTTPBody appendData:[[NSString stringWithFormat:@"--%@\r\n",kboundary] dataUsingEncoding:NSUTF8StringEncoding]];
         }];

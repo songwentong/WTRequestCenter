@@ -21,7 +21,6 @@
  */
 
 @import UIKit;
-@class WTURLRequestOperation;
 
 
 
@@ -29,9 +28,6 @@
     方便的图片缓存功能
  */
 @interface UIButton (WTImageCache)
-
-@property (nonatomic,strong) WTURLRequestOperation *wtImageRequestOperation;
-@property (nonatomic,strong) WTURLRequestOperation *wtBackGroundImageRequestOperation;
 
 
 /*
