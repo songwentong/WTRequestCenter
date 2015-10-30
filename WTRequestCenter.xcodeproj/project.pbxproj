@@ -11,6 +11,7 @@
 		A3B70F591988BDFA002776F4 /* image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A3B70F581988BDFA002776F4 /* image.jpg */; };
 		E11D04A11BE1C96F0045C421 /* ImageViewCacheVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E11D04A01BE1C96F0045C421 /* ImageViewCacheVC.m */; };
 		E12573321BE34FB300DB6314 /* POSTImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E12573311BE34FB300DB6314 /* POSTImageViewController.m */; };
+		E12573341BE3537D00DB6314 /* Reference in Resources */ = {isa = PBXBuildFile; fileRef = E12573331BE3537D00DB6314 /* Reference */; };
 		E1BE635D1BDF10960059574A /* WTNetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BE635A1BDF10960059574A /* WTNetWorkManager.m */; };
 		E1BE635E1BDF10960059574A /* WTNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BE635C1BDF10960059574A /* WTNetworkReachabilityManager.m */; };
 		E1BE637E1BDF109F0059574A /* UIImageView+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BE636B1BDF109F0059574A /* UIImageView+WTRequestCenter.m */; };
@@ -30,6 +31,7 @@
 		E11D04A01BE1C96F0045C421 /* ImageViewCacheVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewCacheVC.m; sourceTree = "<group>"; };
 		E12573301BE34FB300DB6314 /* POSTImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POSTImageViewController.h; sourceTree = "<group>"; };
 		E12573311BE34FB300DB6314 /* POSTImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POSTImageViewController.m; sourceTree = "<group>"; };
+		E12573331BE3537D00DB6314 /* Reference */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Reference; sourceTree = "<group>"; };
 		E1BE63581BDF10960059574A /* WTNetWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTNetWork.h; sourceTree = "<group>"; };
 		E1BE63591BDF10960059574A /* WTNetWorkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTNetWorkManager.h; sourceTree = "<group>"; };
 		E1BE635A1BDF10960059574A /* WTNetWorkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTNetWorkManager.m; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			children = (
 				E11D049E1BE1C9550045C421 /* ViewControllers */,
 				E1F4BE021AE0EF4F000F7F21 /* plan */,
+				E12573331BE3537D00DB6314 /* Reference */,
 				E4440D7F197A01B1001E6D88 /* AppDelegate.h */,
 				E4440D80197A01B1001E6D88 /* AppDelegate.m */,
 				E4440D82197A01B1001E6D88 /* Main.storyboard */,
@@ -218,6 +221,7 @@
 				E4440D84197A01B1001E6D88 /* Main.storyboard in Resources */,
 				E1F4BE031AE0EF4F000F7F21 /* plan in Resources */,
 				A3B70F591988BDFA002776F4 /* image.jpg in Resources */,
+				E12573341BE3537D00DB6314 /* Reference in Resources */,
 				A3B4A7C2199AF60C00A8BAF0 /* aaa@2x.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
