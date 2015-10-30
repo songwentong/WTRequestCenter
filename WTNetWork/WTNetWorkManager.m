@@ -177,6 +177,9 @@ static WTNetWorkManager* kit = nil;
         [body enumerateObjectsUsingBlock:^(NSDictionary*  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             NSString *name = [obj valueForKey:@"name"];
             NSString *filename = [obj valueForKey:@"filename"];
+            if (!filename) {
+                filename = name;
+            }
             NSString *contentType = [obj valueForKey:@"contentType"];
             if (!contentType) {
                 contentType = @"application/octet-stream";
