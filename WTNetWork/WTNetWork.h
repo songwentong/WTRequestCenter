@@ -23,6 +23,5 @@
 #define WTRequestCenter_WTNetWork_h
 
 #import "WTNetWorkManager.h"
-#import "WTNetworkReachabilityManager.h"
 
 #endif
