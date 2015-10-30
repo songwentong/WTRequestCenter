@@ -28,13 +28,13 @@
 //    文件数据
     [dict setValue:data1 forKey:@"content"];
 //    服务端接收的key
-    [dict setValue:@"name" forKey:@"name"];
+    [dict setValue:@"\"fileContents\"" forKey:@"name"];
 //    文件名(可不填)
-    [dict setValue:@"filename" forKey:@"filename"];
+    [dict setValue:@"image" forKey:@"filename"];
 //    文件类型(可不填)
     [dict setValue:@"image/jpeg" forKey:@"contentType"];
     
-    NSURLRequest *request = [[WTNetWorkManager sharedKit] POSTRequestWithURL:@"http://127.0.0.1:9000/" parameters:nil body:@[dict]];
+    NSURLRequest *request = [[WTNetWorkManager sharedKit] POSTRequestWithURL:@"http://localhost:9000/cgi-bin/PostIt.py" parameters:nil body:@[dict]];
     [[[WTNetWorkManager sharedKit].session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error) {
             NSLog(@"%@",error);
