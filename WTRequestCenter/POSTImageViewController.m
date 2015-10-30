@@ -44,7 +44,7 @@
         
         
         //对应的文件(图片,视频)的数据
-        UIImage *image = [UIImage imageNamed:@"image.jpg"];
+        UIImage *image = [UIImage imageNamed:@"image.png"];
         NSData *data1 = UIImageJPEGRepresentation(image, 1.0);
         
         //    文件数据
@@ -52,9 +52,9 @@
         //    服务端接收的key
         [dict setValue:@"fileContents" forKey:@"name"];
         //    文件名(可不填)
-        [dict setValue:@"image.jpg" forKey:@"filename"];
+        [dict setValue:@"image.png" forKey:@"filename"];
         //    文件类型(可不填)
-        [dict setValue:@"image/jpeg" forKey:@"contentType"];
+        [dict setValue:@"image/png" forKey:@"contentType"];
         
         NSURLRequest *request = [[WTNetWorkManager sharedKit] POSTRequestWithURL:@"http://localhost:9000/cgi-bin/PostIt.py" parameters:nil body:@[dict]];
         
