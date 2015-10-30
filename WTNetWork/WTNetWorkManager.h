@@ -20,6 +20,15 @@
                                  URLString:(NSString *)URLString
                                 parameters:(id)parameters
                                      error:(NSError *__autoreleasing *)error;
+
+
+/*!
+    根据url,参数和对应的数据来创建一个请求对象
+    body的key是字符串,value是对应的NSData
+ */
+-(NSMutableURLRequest*)POSTRequestWithURL:(NSString*)url
+                               parameters:(NSDictionary*)parameters
+                                     body:(NSDictionary*)body;
 @end
 
 @interface WTNetWorkManager(GCD)
