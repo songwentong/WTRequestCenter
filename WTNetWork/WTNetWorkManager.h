@@ -34,6 +34,21 @@
  contentType 是内容类型
  content 是内容
  目前没有做的是同一个name对应多个文件,那个做起来比较复杂,没啥需求,就不做了.
+ 
+ name 是服务端对应的key
+ 
+ filename是文件名
+ 
+ contentType
+ 可为空(默认用application/octet-stream)
+ 通常有以下几种:
+ "text/html", "image/png", "image/gif", "video/mpeg", "text/css", and "audio/basic"
+ 图片的话可以根据类型,设置成对应的,比方说 "image/jpeg","image/png", "image/gif",
+ 详情参见百度百科:
+ http://baike.baidu.com/link?url=JIKC351CPOldPwZa50dp6lUJRII_VdWelsP3jRSnHRLsa9UOWMpLhsYR3rRYfvuQfq17KQXnKpBMUbZU7UDnnK
+ 
+ content是对应的数据读出来的NSData对象
+ 
  */
 -(NSMutableURLRequest*)POSTRequestWithURL:(NSString*)url
                                parameters:(NSDictionary*)parameters

@@ -69,11 +69,31 @@
                     <connections>
                         <outlet property="tableView" destination="B4G-xB-KWP" id="RKn-7K-UWB"/>
                         <segue destination="yGB-Ja-dZS" kind="show" identifier="imageView" id="Qwg-65-r07"/>
+                        <segue destination="iYW-Jr-8b1" kind="show" identifier="postImage" id="IcR-TS-gy8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A71-7Z-dRB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-516.5" y="54.5"/>
+        </scene>
+        <!--Image View Controller-->
+        <scene sceneID="ZUc-U2-W2h">
+            <objects>
+                <viewController id="iYW-Jr-8b1" customClass="POSTImageViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="naS-nh-RP6"/>
+                        <viewControllerLayoutGuide type="bottom" id="bQf-Jn-YVs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cwi-bK-C1X">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fVg-ft-es1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="146.5" y="955.5"/>
         </scene>
         <!--Title-->
         <scene sceneID="2p4-Xk-8eT">
@@ -160,7 +180,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pCZ-rn-iz7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="113" y="55"/>
+            <point key="canvasLocation" x="135.5" y="67.5"/>
         </scene>
     </scenes>
 </document>

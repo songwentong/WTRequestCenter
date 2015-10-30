@@ -178,6 +178,9 @@ static WTNetWorkManager* kit = nil;
             NSString *name = [obj valueForKey:@"name"];
             NSString *filename = [obj valueForKey:@"filename"];
             NSString *contentType = [obj valueForKey:@"contentType"];
+            if (!contentType) {
+                contentType = @"application/octet-stream";
+            }
             NSData *content = [obj valueForKey:@"content"];
             
             

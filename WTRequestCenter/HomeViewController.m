@@ -18,8 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+
     
-//    [[WTNetWorkManager sharedKit] POSTRequestWithURL:<#(NSString *)#> parameters:<#(NSDictionary *)#> body:<#(NSDictionary *)#>]
 
 }
 
@@ -42,17 +42,33 @@
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return 2;
 }
 
 // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
 // Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
 
+-(NSArray*)titles{
+    NSMutableArray *array = [NSMutableArray array];
+    [array addObject:@"image 缓存"];
+    [array addObject:@"image 上传"];
+    
+    return array;
+}
+
+-(NSString*)segueWithIndexPath:(NSIndexPath*)indexPath
+{
+    NSMutableArray *array = [NSMutableArray array];
+    [array addObject:@"imageView"];
+    [array addObject:@"postImage"];
+    return array[indexPath.row];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = nil;
     cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    cell.textLabel.text = @"image 缓存";
+    cell.textLabel.text = [self titles][indexPath.row];
     return cell;
 }
 
@@ -61,7 +77,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self performSegueWithIdentifier:@"imageView" sender:nil];
+    [self performSegueWithIdentifier:[self segueWithIndexPath:indexPath] sender:nil];
 }
 
 @end
