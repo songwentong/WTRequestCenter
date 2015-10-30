@@ -55,3 +55,6 @@
                          finished:(dispatch_block_t)finished
                            failed:(dispatch_block_t)failed;
 @end
+@interface UIImageView(Gif)
+
+@end

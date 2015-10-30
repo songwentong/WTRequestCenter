@@ -171,3 +171,11 @@ static const void * const WTHighlightedImageOperationKey = @"WT Highlighted Imag
 
 
 @end
+
+@implementation UIImageView(Gif)
+
+
+
+@end
+
+
