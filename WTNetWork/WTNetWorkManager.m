@@ -156,8 +156,7 @@ static WTNetWorkManager* kit = nil;
     static NSString *const kboundary = @"Boundary+1F52B974B3E5F39D";
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
-    NSString *value = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",kboundary];
-    [request setValue:value forHTTPHeaderField:@"Content-Type"];
+    
     request.HTTPMethod = @"POST";
     
     
@@ -168,7 +167,7 @@ static WTNetWorkManager* kit = nil;
         [parameters enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
             NSString *keyString = [NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n",key];
             [HTTPBody appendData:[keyString dataUsingEncoding:NSUTF8StringEncoding]];
-            [HTTPBody appendData:[value dataUsingEncoding:NSUTF8StringEncoding]];
+            [HTTPBody appendData:[obj dataUsingEncoding:NSUTF8StringEncoding]];
             [HTTPBody appendData:[[NSString stringWithFormat:@"--%@\r\n",kboundary] dataUsingEncoding:NSUTF8StringEncoding]];
         }];
     }
@@ -191,6 +190,7 @@ static WTNetWorkManager* kit = nil;
             NSString *str2 = [NSString stringWithFormat:@"Content-Type: %@\r\n\r\n", contentType];
             [HTTPBody appendData:[str1 dataUsingEncoding:NSUTF8StringEncoding]];
             [HTTPBody appendData:[str2 dataUsingEncoding:NSUTF8StringEncoding]];
+//            [HTTPBody appendData:<#(nonnull NSData *)#>]
             [HTTPBody appendData:content];
             [HTTPBody appendData:[[NSString stringWithFormat:@"--%@\r\n",kboundary] dataUsingEncoding:NSUTF8StringEncoding]];
         }];
@@ -198,12 +198,27 @@ static WTNetWorkManager* kit = nil;
     
     [HTTPBody appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",kboundary] dataUsingEncoding:NSUTF8StringEncoding]];
     request.HTTPBody = HTTPBody;
+    
+    
+    
+    NSString *value = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",kboundary];
+    [request setValue:value forHTTPHeaderField:@"Content-Type"];
     [request setValue:[NSNumber numberWithUnsignedInteger:request.HTTPBody.length].stringValue forHTTPHeaderField:@"Content-Length"];
     
     return request;
 }
 
+/*
+ 
+ --Boundary-D35F0194-BBD2-446D-B5D0-2A4B66126928
+ Content-Disposition: form-data; name="fileContents"; filename="TestImage1.png"
+ Content-Type: image/png
+ 
+ --Boundary+1F52B974B3E5F39D
+ Content-Disposition: form-data; name="fileContents"; filename="image.jpg"
+ Content-Type: image/jpeg
 
+ */
 
 
 @end

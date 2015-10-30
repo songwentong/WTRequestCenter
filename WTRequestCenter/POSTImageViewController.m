@@ -14,6 +14,15 @@
 
 @implementation POSTImageViewController
 
+
+/*!
+    注意:
+    这段代码和ImageReceiveServer.py 配合使用
+    ImageReceiveServer.py在本文件所在的文件夹中.
+ 
+ 
+ */
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -28,9 +37,9 @@
 //    文件数据
     [dict setValue:data1 forKey:@"content"];
 //    服务端接收的key
-    [dict setValue:@"\"fileContents\"" forKey:@"name"];
+    [dict setValue:@"fileContents" forKey:@"name"];
 //    文件名(可不填)
-    [dict setValue:@"image" forKey:@"filename"];
+    [dict setValue:@"image.jpg" forKey:@"filename"];
 //    文件类型(可不填)
     [dict setValue:@"image/jpeg" forKey:@"contentType"];
     
