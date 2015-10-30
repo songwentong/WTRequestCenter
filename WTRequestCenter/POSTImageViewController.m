@@ -44,7 +44,7 @@
         
         
         //对应的文件(图片,视频)的数据
-        UIImage *image = [UIImage imageNamed:@"image.png"];
+        UIImage *image = [UIImage imageNamed:@"image"];
         NSData *data1 = UIImageJPEGRepresentation(image, 1.0);
         
         //    文件数据

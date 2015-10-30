@@ -98,7 +98,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HXE-Ps-aj1">
                                 <rect key="frame" x="52" y="244" width="270" height="180"/>
                                 <animations/>
-                                <state key="normal" image="image.png"/>
+                                <state key="normal" image="image"/>
                                 <connections>
                                     <action selector="send:" destination="iYW-Jr-8b1" eventType="touchUpInside" id="PYD-cr-eUo"/>
                                 </connections>
@@ -221,6 +221,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="image.png" width="270" height="180"/>
+        <image name="image" width="270" height="180"/>
     </resources>
 </document>
