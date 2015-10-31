@@ -13,6 +13,14 @@
 @property (readonly, nonatomic, strong) NSURLSession *session;
 -(NSOperationQueue*)operationQueue;
 
+
+
+/*!
+    根据请求对象生成对应的task,并执行请求
+*/
+-(NSURLSessionDataTask*)taskWithRequest:(NSURLRequest*)request
+                               finished:(void(^)(NSData * data, NSURLResponse * response))finish
+                                 failed:(void(^)(NSError * error))failed;
 @end
 
 @interface WTNetWorkManager(CreatRequest)

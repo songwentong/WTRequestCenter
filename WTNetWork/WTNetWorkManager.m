@@ -43,6 +43,27 @@ static WTNetWorkManager* kit = nil;
     }
     return self;
 }
+
+
+-(NSURLSessionDataTask*)taskWithRequest:(NSURLRequest*)request finished:(void(^)(NSData * _Nullable data, NSURLResponse * _Nullable response))finish failed:(void(^)(NSError * _Nullable error))failed
+{
+   NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error) {
+            if (failed) {
+                failed(error);
+            }
+        }else
+        {
+            if (finish) {
+                finish(data,response);
+            }
+        }
+    }];
+    [task resume];
+    return task;
+}
+
+
 @end
 @implementation WTNetWorkManager(CreatRequest)
 +(NSString*)WTQueryStringFromParameters:(NSDictionary*)parameters
