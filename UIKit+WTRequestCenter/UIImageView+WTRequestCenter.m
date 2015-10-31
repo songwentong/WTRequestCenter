@@ -23,6 +23,8 @@ static const void * const WTHighlightedImageOperationKey = @"WT Highlighted Imag
 {
     NSOperation *old = [self imageOperation];
     if (old) {
+        
+//        取消上次请求,防止请求回调产生的异常
         if ([old isExecuting]) {
             [old cancel];
         }
