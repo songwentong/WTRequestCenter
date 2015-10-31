@@ -17,6 +17,7 @@
 
 /*!
     根据请求对象生成对应的task,并执行请求
+    注意:成功和失败都是分线程回调
 */
 -(NSURLSessionDataTask*)taskWithRequest:(NSURLRequest*)request
                                finished:(void(^)(NSData * data, NSURLResponse * response))finish
