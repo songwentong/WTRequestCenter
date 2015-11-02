@@ -294,7 +294,7 @@ void perform(dispatch_block_t block , NSTimeInterval delay)
 
 +(void)performBlock:(dispatch_block_t)block inQueue:(dispatch_queue_t)queue afterDelay:(NSTimeInterval)delay
 {
-    dispatch_time_t t = dispatch_time(DISPATCH_TIME_NOW, delay*1000*1000*1000);
+    dispatch_time_t t = dispatch_time(DISPATCH_TIME_NOW, delay*NSEC_PER_SEC);
     dispatch_after(t, queue, ^{
         if (block) {
             block();
