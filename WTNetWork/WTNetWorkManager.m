@@ -69,8 +69,13 @@ static WTNetWorkManager* kit = nil;
 #endif
 }
 
--(NSURLSessionDataTask*)taskWithRequest:(NSURLRequest*)request finished:(void(^)(NSData * _Nullable data, NSURLResponse * _Nullable response))finish failed:(void(^)(NSError * _Nullable error))failed
+-(NSURLSessionDataTask*)taskWithRequest:(NSURLRequest*)request
+                               finished:(void(^)(NSData * _Nullable data, NSURLResponse * _Nullable response))finish
+                                 failed:(void(^)(NSError * _Nullable error))failed
 {
+    
+    
+    assert(request!=nil);
     _connectionCount = _connectionCount +1;
     [self checkStatus];
     NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
