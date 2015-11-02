@@ -76,10 +76,7 @@
 //Available in iOS 2.0 and later.
 
 
-#pragma mark - 对象转换
-//用于对象和Data的转换，类型可以是NSDictionary或者NSArray
-+(NSData*)dataWithJSONObject:(id)obj;
-+(id)JSONObjectWithData:(NSData*)data;
+
 
 
 //根据文件名返回文件路径，用于自定义储存NSDicitonary，NSString和NSArray

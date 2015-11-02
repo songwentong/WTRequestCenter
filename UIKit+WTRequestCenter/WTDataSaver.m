@@ -7,7 +7,7 @@
 //  site:https://github.com/swtlovewtt/WTRequestCenter
 
 #import "WTDataSaver.h"
-
+#import "WTNetWork.h"
 
 @implementation WTDataSaver
 
@@ -291,7 +291,7 @@ static NSOperationQueue *dataQueue = nil;
 +(void)removeAllData
 {
     [self configureDirectory];
-    [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
+    [[WTNetWorkManager sharedKit].operationQueue addOperationWithBlock:^{
         NSFileManager *manager = [NSFileManager defaultManager];
         NSArray *array = [manager contentsOfDirectoryAtPath:[WTDataSaver rootDir] error:nil];
         for (NSString *string  in array) {
@@ -308,8 +308,7 @@ static NSOperationQueue *dataQueue = nil;
 //  总大小，单位是字节（Byte）
     __block NSInteger totalSize = 0;
 
-    
-    [[WTRequestCenter sharedQueue] addOperationWithBlock:^{
+    [[[WTNetWorkManager sharedKit] operationQueue] addOperationWithBlock:^{
         NSFileManager *manager = [NSFileManager defaultManager];
         
         NSDirectoryEnumerator* directoryEnumerator =[manager enumeratorAtPath:[self rootDir]];
