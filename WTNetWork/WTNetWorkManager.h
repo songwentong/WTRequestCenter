@@ -16,9 +16,9 @@
 
 
 /*!
-    根据请求对象生成对应的task,并执行请求
+    推荐使用这个方法,用于直接创建task并执行
     注意:成功和失败都是分线程回调
-    使用这个方法可以查看到是否在网络访问状态,见识使用
+    使用这个方法的好处是可以查看到是否在网络访问状态
 */
 -(NSURLSessionDataTask*)taskWithRequest:(NSURLRequest*)request
                                finished:(void(^)(NSData * data, NSURLResponse * response))finish

@@ -7,7 +7,10 @@
 //
 
 #import "WTNetWorkManager.h"
+#if TARGET_OS_IOS
 @import UIKit;
+#endif
+
 @interface WTNetWorkManager() 
 {
     NSOperationQueue *_operationQueue;
@@ -55,9 +58,15 @@ static WTNetWorkManager* kit = nil;
     if (_connectionCount == 0) {
         networkActivityIndicatorVisible = NO;
     }
+#if TARGET_OS_IOS
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = networkActivityIndicatorVisible;
+        
+//        如果当前网络状态和预期的不同,就设置成预期的
+        if ([UIApplication sharedApplication].isNetworkActivityIndicatorVisible != networkActivityIndicatorVisible) {
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = networkActivityIndicatorVisible;
+        }
     }];
+#endif
 }
 
 -(NSURLSessionDataTask*)taskWithRequest:(NSURLRequest*)request finished:(void(^)(NSData * _Nullable data, NSURLResponse * _Nullable response))finish failed:(void(^)(NSError * _Nullable error))failed
