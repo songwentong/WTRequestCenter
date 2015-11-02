@@ -7,9 +7,12 @@
 //
 
 #import "WTNetWorkManager.h"
+@import UIKit;
 @interface WTNetWorkManager() 
 {
     NSOperationQueue *_operationQueue;
+    
+    NSUInteger _connectionCount;
 }
 @property (readwrite, nonatomic, strong) NSURLSession *session;
 @end
@@ -39,15 +42,32 @@ static WTNetWorkManager* kit = nil;
         _operationQueue.name = @"WTNetWork Operation Queue";
         [_operationQueue setSuspended:NO];
         self.session = [NSURLSession sessionWithConfiguration:config delegate:nil delegateQueue:_operationQueue];
+        _connectionCount = 0;
 
     }
     return self;
 }
 
 
+-(void)checkStatus
+{
+    BOOL networkActivityIndicatorVisible = YES;
+    if (_connectionCount == 0) {
+        networkActivityIndicatorVisible = NO;
+    }
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = networkActivityIndicatorVisible;
+    }];
+}
+
 -(NSURLSessionDataTask*)taskWithRequest:(NSURLRequest*)request finished:(void(^)(NSData * _Nullable data, NSURLResponse * _Nullable response))finish failed:(void(^)(NSError * _Nullable error))failed
 {
-   NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    _connectionCount = _connectionCount +1;
+    [self checkStatus];
+    NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
+    {
+        _connectionCount = _connectionCount - 1;
+        [self checkStatus];
         if (error) {
             if (failed) {
                 failed(error);

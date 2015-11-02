@@ -18,6 +18,7 @@
 /*!
     根据请求对象生成对应的task,并执行请求
     注意:成功和失败都是分线程回调
+    使用这个方法可以查看到是否在网络访问状态,见识使用
 */
 -(NSURLSessionDataTask*)taskWithRequest:(NSURLRequest*)request
                                finished:(void(^)(NSData * data, NSURLResponse * response))finish
@@ -33,6 +34,15 @@
                                 parameters:(id)parameters
                                      error:(NSError *__autoreleasing *)error;
 
+
+/*!
+    如果不需要编码功能,把userEncode传NO就可以了
+ */
+- (NSMutableURLRequest *)requestWithMethod:(NSString *)method
+                                 URLString:(NSString *)URLString
+                                parameters:(id)parameters
+                                userEncode:(BOOL)userEncode
+                                     error:(NSError *__autoreleasing *)error;
 
 /*!
     根据url,参数和对应的数据来创建一个请求对象
