@@ -65,8 +65,9 @@ static const void * const WTHighlightedImageOperationKey = @"WT Highlighted Imag
     request.cachePolicy = NSURLRequestReturnCacheDataElseLoad;
     
     
-    
-    NSOperation *operation = [NSBlockOperation blockOperationWithBlock:^{
+    NSBlockOperation *operation = [[NSBlockOperation alloc] init];
+    __weak NSBlockOperation *weakOperation = operation;
+    [operation addExecutionBlock:^{
         [[[WTNetWorkManager sharedKit].session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
           {
               if (error) {
@@ -75,13 +76,16 @@ static const void * const WTHighlightedImageOperationKey = @"WT Highlighted Imag
                   }
               }else{
                   UIImage *image = [UIImage imageWithData:data];
+
                   
                   dispatch_sync(dispatch_get_main_queue(), ^{
-                      self.image = image;
-                      [self setNeedsLayout];
-                      
-                      if (finished) {
-                          finished();
+                      if (!weakOperation.isCancelled) {
+                          self.image = image;
+                          [self setNeedsLayout];
+                          
+                          if (finished) {
+                              finished();
+                          }
                       }
                   });
                   
