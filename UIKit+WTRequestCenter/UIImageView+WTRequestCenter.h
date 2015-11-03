@@ -56,5 +56,5 @@
                            failed:(dispatch_block_t)failed;
 @end
 @interface UIImageView(Gif)
-
+-(void)setGifWithURL:(NSString*)url;
 @end

@@ -179,6 +179,16 @@ static const void * const WTHighlightedImageOperationKey = @"WT Highlighted Imag
 @end
 
 @implementation UIImageView(Gif)
+-(void)setGifWithURL:(NSString*)url
+{
+    
+}
+
+
+//给出数据,设置gif
+-(void)setGifWithData:(NSData*)data{
+    
+}
 
 
 
