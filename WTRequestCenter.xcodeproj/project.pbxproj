@@ -16,6 +16,7 @@
 		E12573411BE365EE00DB6314 /* WTImageViewer.m in Sources */ = {isa = PBXBuildFile; fileRef = E12573401BE365EE00DB6314 /* WTImageViewer.m */; };
 		E12573441BE3697700DB6314 /* UIButton+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E12573431BE3697700DB6314 /* UIButton+WTRequestCenter.m */; };
 		E12573471BE7109D00DB6314 /* WTDataSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = E12573461BE7109D00DB6314 /* WTDataSaver.m */; };
+		E125736F1BE8A73400DB6314 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E125736E1BE8A73400DB6314 /* Launch Screen.storyboard */; };
 		E1BE635D1BDF10960059574A /* WTNetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BE635A1BDF10960059574A /* WTNetWorkManager.m */; };
 		E1BE637E1BDF109F0059574A /* UIImageView+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BE636B1BDF109F0059574A /* UIImageView+WTRequestCenter.m */; };
 		E1D7A8BA1BE1C8650022F5DC /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D7A8B91BE1C8650022F5DC /* HomeViewController.m */; };
@@ -44,6 +45,7 @@
 		E12573431BE3697700DB6314 /* UIButton+WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+WTRequestCenter.m"; sourceTree = "<group>"; };
 		E12573451BE7109D00DB6314 /* WTDataSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTDataSaver.h; sourceTree = "<group>"; };
 		E12573461BE7109D00DB6314 /* WTDataSaver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTDataSaver.m; sourceTree = "<group>"; };
+		E125736E1BE8A73400DB6314 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		E1BE63581BDF10960059574A /* WTNetWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTNetWork.h; sourceTree = "<group>"; };
 		E1BE63591BDF10960059574A /* WTNetWorkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTNetWorkManager.h; sourceTree = "<group>"; };
 		E1BE635A1BDF10960059574A /* WTNetWorkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTNetWorkManager.m; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				E4440D78197A01B1001E6D88 /* WTRequestCenter-Info.plist */,
 				E4440D79197A01B1001E6D88 /* InfoPlist.strings */,
 				E4440D7C197A01B1001E6D88 /* main.m */,
+				E125736E1BE8A73400DB6314 /* Launch Screen.storyboard */,
 			);
 			name = "Supporting Files";
 			path = WTRequestCenter;
@@ -239,6 +242,7 @@
 				E1F4BE031AE0EF4F000F7F21 /* plan in Resources */,
 				E12573341BE3537D00DB6314 /* Reference in Resources */,
 				A3B4A7C2199AF60C00A8BAF0 /* aaa@2x.gif in Resources */,
+				E125736F1BE8A73400DB6314 /* Launch Screen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,7 +365,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Yin GongJing (ER98V5DG57)";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
@@ -378,7 +381,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";

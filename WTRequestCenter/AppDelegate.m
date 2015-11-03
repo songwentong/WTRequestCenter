@@ -17,8 +17,8 @@
     
 //    NSObject *obj = [[NSClassFromString(@"ClassName") alloc] init];
     
-    
-//    NSLog(@"%@",obj);
+    CGFloat scale = [UIScreen mainScreen].scale;
+    NSLog(@"%f",scale);
     return YES;
 }
 							
