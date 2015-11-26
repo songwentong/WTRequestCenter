@@ -11,7 +11,7 @@
 @import UIKit;
 #endif
 
-@interface WTNetWorkManager() 
+@interface WTNetWorkManager()
 {
     NSOperationQueue *_operationQueue;
     
@@ -46,7 +46,7 @@ static WTNetWorkManager* kit = nil;
         [_operationQueue setSuspended:NO];
         self.session = [NSURLSession sessionWithConfiguration:config delegate:nil delegateQueue:_operationQueue];
         _connectionCount = 0;
-
+        
     }
     return self;
 }
@@ -61,7 +61,7 @@ static WTNetWorkManager* kit = nil;
 #if TARGET_OS_IOS
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         
-//        如果当前网络状态和预期的不同,就设置成预期的
+        //        如果当前网络状态和预期的不同,就设置成预期的
         if ([UIApplication sharedApplication].isNetworkActivityIndicatorVisible != networkActivityIndicatorVisible) {
             [UIApplication sharedApplication].networkActivityIndicatorVisible = networkActivityIndicatorVisible;
         }
@@ -79,20 +79,20 @@ static WTNetWorkManager* kit = nil;
     _connectionCount = _connectionCount +1;
     [self checkStatus];
     NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
-    {
-        _connectionCount = _connectionCount - 1;
-        [self checkStatus];
-        if (error) {
-            if (failed) {
-                failed(error);
-            }
-        }else
-        {
-            if (finish) {
-                finish(data,response);
-            }
-        }
-    }];
+                                  {
+                                      _connectionCount = _connectionCount - 1;
+                                      [self checkStatus];
+                                      if (error) {
+                                          if (failed) {
+                                              failed(error);
+                                          }
+                                      }else
+                                      {
+                                          if (finish) {
+                                              finish(data,response);
+                                          }
+                                      }
+                                  }];
     [task resume];
     return task;
 }
@@ -127,7 +127,14 @@ static WTNetWorkManager* kit = nil;
 {
     assert(method!=nil);
     assert(URLString!=nil);
-    NSURL *url = [NSURL URLWithString:[URLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSURL *url = nil;
+    
+    
+#if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000)
+    url = [NSURL URLWithString:[URLString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@""]]];
+#else
+    url = [NSURL URLWithString:[URLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+#endif
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     request.HTTPMethod = method;
@@ -149,7 +156,14 @@ static WTNetWorkManager* kit = nil;
     assert(URLString!=nil);
     if (userEncode)
     {
+        //        URLString = [URLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        
+        
+#if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000)
+        URLString = [URLString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@""]];
+#else
         URLString = [URLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+#endif
     }
     
     NSURL *url = [NSURL URLWithString:URLString];
@@ -181,7 +195,14 @@ static WTNetWorkManager* kit = nil;
     NSString *query = [self WTQueryStringFromParameters:parameters];
     if ([query length]>0) {
         if ([self methodNeedQuery:request.HTTPMethod]) {
-            NSString *urlString = [[NSString stringWithFormat:@"%@?%@",request.URL,query] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            NSString *urlString = nil;
+            
+#if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000)
+            urlString = [[NSString stringWithFormat:@"%@?%@",request.URL,query] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@""]];
+#else
+            urlString = [[NSString stringWithFormat:@"%@?%@",request.URL,query] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+#endif
+            
             mutableRequest.URL = [NSURL URLWithString:urlString];
         }else
         {
@@ -218,7 +239,7 @@ static WTNetWorkManager* kit = nil;
     NSMutableData *HTTPBody = [[NSMutableData alloc] init];
     [HTTPBody appendData:[[NSString stringWithFormat:@"--%@\r\n",kboundary] dataUsingEncoding:NSUTF8StringEncoding]];
     if (parameters) {
-
+        
         [parameters enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
             NSString *keyString = [NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n",key];
             [HTTPBody appendData:[keyString dataUsingEncoding:NSUTF8StringEncoding]];
@@ -271,7 +292,7 @@ static WTNetWorkManager* kit = nil;
  --Boundary+1F52B974B3E5F39D
  Content-Disposition: form-data; name="fileContents"; filename="image.jpg"
  Content-Type: image/jpeg
-
+ 
  */
 
 
