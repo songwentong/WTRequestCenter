@@ -41,11 +41,13 @@ static WTNetWorkManager* kit = nil;
     if (self) {
         NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
         _operationQueue = [[NSOperationQueue alloc] init];
-        _operationQueue.maxConcurrentOperationCount = 8;
+        //        _operationQueue.maxConcurrentOperationCount = 8;
+        //operationQueue 默认最大并发数竟然是64
         _operationQueue.name = @"WTNetWork Operation Queue";
         [_operationQueue setSuspended:NO];
         self.session = [NSURLSession sessionWithConfiguration:config delegate:nil delegateQueue:_operationQueue];
         _connectionCount = 0;
+        self.lock = [NSLock new];
         
     }
     return self;
@@ -131,7 +133,8 @@ static WTNetWorkManager* kit = nil;
     
     
 #if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000)
-    url = [NSURL URLWithString:[URLString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@""]]];
+    NSMutableCharacterSet * allowedCharacterSet = [[NSCharacterSet URLQueryAllowedCharacterSet] mutableCopy];
+    url = [NSURL URLWithString:[URLString stringByAddingPercentEncodingWithAllowedCharacters:allowedCharacterSet]];
 #else
     url = [NSURL URLWithString:[URLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
 #endif
@@ -146,37 +149,6 @@ static WTNetWorkManager* kit = nil;
 }
 
 
-- (NSMutableURLRequest *)requestWithMethod:(NSString *)method
-                                 URLString:(NSString *)URLString
-                                parameters:(id)parameters
-                                userEncode:(BOOL)userEncode
-                                     error:(NSError *__autoreleasing *)error
-{
-    assert(method!=nil);
-    assert(URLString!=nil);
-    if (userEncode)
-    {
-        //        URLString = [URLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        
-        
-#if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000)
-        URLString = [URLString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@""]];
-#else
-        URLString = [URLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-#endif
-    }
-    
-    NSURL *url = [NSURL URLWithString:URLString];
-    
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    
-    request.HTTPMethod = method;
-    //    request.timeoutInterval = _timeoutInterval;
-    request = [[self requestBySerializingRequest:request
-                                  withParameters:parameters
-                                           error:error] mutableCopy];
-    return request;
-}
 
 
 - (NSURLRequest *)requestBySerializingRequest:(NSURLRequest *)request
@@ -198,7 +170,8 @@ static WTNetWorkManager* kit = nil;
             NSString *urlString = nil;
             
 #if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000)
-            urlString = [[NSString stringWithFormat:@"%@?%@",request.URL,query] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@""]];
+            NSMutableCharacterSet * allowedCharacterSet = [[NSCharacterSet URLQueryAllowedCharacterSet] mutableCopy];
+            urlString = [[NSString stringWithFormat:@"%@?%@",request.URL,query] stringByAddingPercentEncodingWithAllowedCharacters:allowedCharacterSet];
 #else
             urlString = [[NSString stringWithFormat:@"%@?%@",request.URL,query] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 #endif

@@ -11,15 +11,17 @@
 @interface WTNetWorkManager : NSObject
 +(instancetype)sharedKit;
 @property (readonly, nonatomic, strong) NSURLSession *session;
+
+
+@property (nonatomic,strong) NSLock *lock;
 -(NSOperationQueue*)operationQueue;
 
 
 
 /*!
-    推荐使用这个方法,用于直接创建task并执行
-    注意:成功和失败都是分线程回调
-    使用这个方法的好处是可以查看到是否在网络访问状态
-*/
+ 根据请求对象生成对应的task,并执行请求
+ 注意:成功和失败都是分线程回调
+ */
 -(NSURLSessionDataTask*)taskWithRequest:(NSURLRequest*)request
                                finished:(void(^)(NSData * data, NSURLResponse * response))finish
                                  failed:(void(^)(NSError * error))failed;
@@ -27,7 +29,7 @@
 
 @interface WTNetWorkManager(CreatRequest)
 /*!
-    根据请求方法,URL和参数创建一个请求对象
+ 根据请求方法,URL和参数创建一个请求对象
  */
 - (NSMutableURLRequest *)requestWithMethod:(NSString *)method
                                  URLString:(NSString *)URLString
@@ -36,16 +38,7 @@
 
 
 /*!
-    如果不需要编码功能,把userEncode传NO就可以了
- */
-- (NSMutableURLRequest *)requestWithMethod:(NSString *)method
-                                 URLString:(NSString *)URLString
-                                parameters:(id)parameters
-                                userEncode:(BOOL)userEncode
-                                     error:(NSError *__autoreleasing *)error;
-
-/*!
-    根据url,参数和对应的数据来创建一个请求对象
+ 根据url,参数和对应的数据来创建一个请求对象
  
  body 中存的是NSDictionary,包含4个内容
  name 是名字
@@ -57,7 +50,7 @@
  1.name 是服务端对应的key
  
  2.filename是文件名
-        如过不传filename,则和name同名
+ 如过不传filename,则和name同名
  
  3.contentType
  可为空(默认用application/octet-stream)
