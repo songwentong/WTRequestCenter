@@ -9,6 +9,7 @@
 
 #import <objc/runtime.h>
 #import "WTNetWork.h"
+#import "UIImage+ImageCache.h"
 @import ImageIO;
 @import UIKit;
 @interface UIImageView()
@@ -66,7 +67,7 @@ static const void * const WTHighlightedImageOperationKey = @"WT Highlighted Imag
     request.cachePolicy = NSURLRequestReturnCacheDataElseLoad;
     
     
-    NSBlockOperation *operation = [UIImageView imageOperationWithURL:url complection:^(UIImage *image) {
+    NSBlockOperation *operation = [UIImage imageOperationWithURL:url complection:^(UIImage *image) {
         dispatch_sync(dispatch_get_main_queue(), ^{
                 self.image = image;
                 [self setNeedsLayout];
@@ -79,28 +80,6 @@ static const void * const WTHighlightedImageOperationKey = @"WT Highlighted Imag
     [operation start];
     
 }
-
-+(NSBlockOperation*)imageOperationWithURL:(NSString*)url complection:(void(^)(UIImage *image))complection{
-    NSBlockOperation *operation = nil;
-    operation = [[NSBlockOperation alloc] init];
-    __weak NSBlockOperation *weakOperation = operation;
-    NSMutableURLRequest *request = [[WTNetWorkManager sharedKit] requestWithMethod:@"GET" URLString:url parameters:nil error:nil];
-    request.cachePolicy = NSURLRequestReturnCacheDataElseLoad;
-    [operation addExecutionBlock:^{
-        [[[WTNetWorkManager sharedKit].session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-            UIImage *image = nil;
-            image = [UIImage imageWithData:data];
-            if (complection) {
-                if (![weakOperation isCancelled]) {
-                    complection(image);
-                }
-            }
-        }] resume];
-    }];
-    
-    return operation;
-}
-
 
 
 @end
@@ -147,7 +126,7 @@ static const void * const WTHighlightedImageOperationKey = @"WT Highlighted Imag
     
     
     
-    NSOperation *operation = [UIImageView imageOperationWithURL:url complection:^(UIImage *image)
+    NSOperation *operation = [UIImage imageOperationWithURL:url complection:^(UIImage *image)
     {
         dispatch_sync(dispatch_get_main_queue(), ^{
             self.highlightedImage = image;
