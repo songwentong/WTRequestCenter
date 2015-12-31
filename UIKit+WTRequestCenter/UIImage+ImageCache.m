@@ -10,7 +10,7 @@
 #import "WTNetWork.h"
 @implementation UIImage (ImageCache)
 
-+(NSBlockOperation*)imageOperationWithURL:(NSString*)url complection:(void(^)(UIImage *image))complection
++(NSBlockOperation*)imageOperationWithURL:(NSString*)url complection:(void(^)(UIImage *image,NSError *error))complection
 {
     NSBlockOperation *operation = nil;
     operation = [[NSBlockOperation alloc] init];
@@ -21,10 +21,10 @@
         [[[WTNetWorkManager sharedKit].session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
             UIImage *image = nil;
             image = [UIImage imageWithData:data];
-            if (complection) {
-                if (![weakOperation isCancelled]) {
-                    complection(image);
-                }
+            
+            //如果当前block有持有者,并且operation并未被取消
+            if (complection && (![weakOperation isCancelled])) {
+                complection(image,error);
             }
         }] resume];
     }];

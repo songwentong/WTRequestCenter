@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface UIImage (ImageCache)
-+(NSBlockOperation*)imageOperationWithURL:(NSString*)url complection:(void(^)(UIImage *image))complection;
++(NSBlockOperation*)imageOperationWithURL:(NSString*)url complection:(void(^)(UIImage *image,NSError *error))complection;
 @end

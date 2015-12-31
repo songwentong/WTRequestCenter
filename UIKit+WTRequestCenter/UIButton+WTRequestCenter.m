@@ -69,7 +69,7 @@ static const void * const WTButtonBackGroundImageOperationKey = @"WT Button Back
     
     
     
-    NSOperation *operation = [UIImage imageOperationWithURL:url complection:^(UIImage *image) {
+    NSOperation *operation = [UIImage imageOperationWithURL:url complection:^(UIImage *image,NSError *error) {
         dispatch_sync(dispatch_get_main_queue(), ^{
             [self setImage:image forState:state];
             [self setNeedsLayout];
@@ -105,7 +105,7 @@ static const void * const WTButtonBackGroundImageOperationKey = @"WT Button Back
     
     
     
-    NSOperation *operation = [UIImage imageOperationWithURL:url complection:^(UIImage *image) {
+    NSOperation *operation = [UIImage imageOperationWithURL:url complection:^(UIImage *image,NSError *error) {
         dispatch_sync(dispatch_get_main_queue(), ^{
             [self setBackgroundImage:image forState:state];
             [self setNeedsLayout];

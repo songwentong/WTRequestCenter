@@ -67,7 +67,7 @@ static const void * const WTHighlightedImageOperationKey = @"WT Highlighted Imag
     request.cachePolicy = NSURLRequestReturnCacheDataElseLoad;
     
     
-    NSBlockOperation *operation = [UIImage imageOperationWithURL:url complection:^(UIImage *image) {
+    NSBlockOperation *operation = [UIImage imageOperationWithURL:url complection:^(UIImage *image,NSError *error) {
         dispatch_sync(dispatch_get_main_queue(), ^{
                 self.image = image;
                 [self setNeedsLayout];
@@ -126,7 +126,7 @@ static const void * const WTHighlightedImageOperationKey = @"WT Highlighted Imag
     
     
     
-    NSOperation *operation = [UIImage imageOperationWithURL:url complection:^(UIImage *image)
+    NSOperation *operation = [UIImage imageOperationWithURL:url complection:^(UIImage *image,NSError *error)
     {
         dispatch_sync(dispatch_get_main_queue(), ^{
             self.highlightedImage = image;
