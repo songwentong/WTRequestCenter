@@ -41,8 +41,7 @@
               finished:(dispatch_block_t)finished
                 failed:(dispatch_block_t)failed;
 
-//核心方法,提供url返回图片,给出operation
-+(NSBlockOperation*)imageOperationWithURL:(NSString*)url complection:(void(^)(UIImage *image))complection;
+
 
 @end
 
