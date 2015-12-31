@@ -31,6 +31,19 @@ static WTNetWorkManager* kit = nil;
 }
 
 
+static NSURLCache *cache =nil;
++(NSURLCache*)sharedURLcache
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        cache = [[NSURLCache alloc] initWithMemoryCapacity:10*1024*1024
+                                              diskCapacity:1000*1024*1024
+                                                  diskPath:@"WTRequestCenter"];
+    });
+    return cache;
+}
+
+
 -(NSOperationQueue*)operationQueue
 {
     return _operationQueue;
@@ -272,9 +285,22 @@ static WTNetWorkManager* kit = nil;
 @end
 
 @implementation WTNetWorkManager(GCD)
+
+
+
 void perform(dispatch_block_t block , NSTimeInterval delay)
 {
     [WTNetWorkManager performBlock:block afterDelay:delay];
+}
+
+
++(void)safeSycInMainQueue:(dispatch_block_t)block
+{
+    if ([NSThread isMainThread]) {
+        dispatch_async(dispatch_get_main_queue(), block);
+    }else{
+        dispatch_sync(dispatch_get_main_queue(), block);
+    }
 }
 
 +(void)performBlock:(dispatch_block_t)block afterDelay:(NSTimeInterval)delay

@@ -10,6 +10,9 @@
 
 @interface WTNetWorkManager : NSObject
 +(instancetype)sharedKit;
+
+//缓存
++(NSURLCache*)sharedURLcache;
 @property (readonly, nonatomic, strong) NSURLSession *session;
 
 
@@ -72,7 +75,7 @@
 void perform(dispatch_block_t block , NSTimeInterval delay);
 +(void)performBlock:(dispatch_block_t)block afterDelay:(NSTimeInterval)delay;
 +(void)performBlock:(dispatch_block_t)block inQueue:(dispatch_queue_t)queue afterDelay:(NSTimeInterval)delay;
-
++(void)safeSycInMainQueue:(dispatch_block_t)block;
 @end
 /**
  Posted when an operation begins executing.
