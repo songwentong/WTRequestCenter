@@ -10,6 +10,18 @@
 #import "WTNetWork.h"
 @implementation UIImage (ImageCache)
 
+
++(void)clearAllImages
+{
+    [[WTNetWorkManager sharedURLcache] removeAllCachedResponses];
+}
+
++(void)removeImageWithURL:(NSString*)url
+{
+    NSMutableURLRequest *request = [[WTNetWorkManager sharedKit] requestWithMethod:@"GET" URLString:url parameters:nil error:nil];
+    [[WTNetWorkManager sharedURLcache] removeCachedResponseForRequest:request];
+}
+
 +(NSBlockOperation*)imageOperationWithURL:(NSString*)url complection:(void(^)(UIImage *image,NSError *error))complection
 {
     NSBlockOperation *operation = nil;
@@ -22,13 +34,15 @@
     __block NSCachedURLResponse *cachedResponse = nil;
     cachedResponse = [[WTNetWorkManager sharedURLcache] cachedResponseForRequest:request];
     if (cachedResponse) {
-        NSData *data = cachedResponse.data;
-        UIImage *image = [UIImage imageWithData:data];
-        
-        //如果当前block有持有者,并且operation并未被取消
-        if (complection && (![weakOperation isCancelled])) {
-            complection(image,nil);
-        }
+        [[[WTNetWorkManager sharedKit] operationQueue] addOperationWithBlock:^{
+            NSData *data = cachedResponse.data;
+            UIImage *image = [UIImage imageWithData:data];
+            
+            //如果当前block有持有者,并且operation并未被取消
+            if (complection && (![weakOperation isCancelled])) {
+                complection(image,nil);
+            }
+        }];
     }else{
         [operation addExecutionBlock:^{
             [[[WTNetWorkManager sharedKit].session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
