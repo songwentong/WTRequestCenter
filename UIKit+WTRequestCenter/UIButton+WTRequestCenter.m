@@ -11,7 +11,7 @@
 #import "UIButton+WTRequestCenter.h"
 #import "WTNetWorkManager.h"
 #import <objc/runtime.h>
-
+#import "UIImage+ImageCache.h"
 @implementation UIButton (WTImageCache)
 
 //设置图片的Operation
@@ -69,27 +69,13 @@ static const void * const WTButtonBackGroundImageOperationKey = @"WT Button Back
     
     
     
-    NSOperation *operation = [NSBlockOperation blockOperationWithBlock:^{
-        [[[WTNetWorkManager sharedKit].session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
-          {
-              if (error) {
-                  
-              }else{
-                  UIImage *image = [UIImage imageWithData:data];
-                  
-                  dispatch_sync(dispatch_get_main_queue(), ^{
-                      [self setImage:image forState:state];
-                      [self setNeedsLayout];
-                      
-                  });
-                  
-              }
-              
-              
-              
-          }] resume];
+    NSOperation *operation = [UIImage imageOperationWithURL:url complection:^(UIImage *image) {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [self setImage:image forState:state];
+            [self setNeedsLayout];
+            
+        });
     }];
-    
     [self setWtImageRequestOperation:operation];
     [operation start];
 }
@@ -119,23 +105,11 @@ static const void * const WTButtonBackGroundImageOperationKey = @"WT Button Back
     
     
     
-    NSOperation *operation = [NSBlockOperation blockOperationWithBlock:^{
-        [[[WTNetWorkManager sharedKit].session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
-          {
-              if (error) {
-                  
-              }else{
-                  UIImage *image = [UIImage imageWithData:data];
-                  dispatch_sync(dispatch_get_main_queue(), ^{
-                      [self setBackgroundImage:image forState:state];
-                      [self setNeedsLayout];
-                  });
-                  
-              }
-              
-              
-              
-          }] resume];
+    NSOperation *operation = [UIImage imageOperationWithURL:url complection:^(UIImage *image) {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [self setBackgroundImage:image forState:state];
+            [self setNeedsLayout];
+        });
     }];
     
     [self setWtBackGroundImageRequestOperation:operation];
