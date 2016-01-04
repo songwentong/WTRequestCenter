@@ -9,17 +9,28 @@
 #import "UIImage+ImageCache.h"
 #import "WTNetWork.h"
 @implementation UIImage (ImageCache)
-
+static NSURLCache *sharedImageCache = nil;
++(NSURLCache*)sharedImageCache
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedImageCache = [[NSURLCache alloc] initWithMemoryCapacity:10*1024*1024
+                                                         diskCapacity:1000*1024*1025
+                                                             diskPath:@"WTNetwork Image Cache"];
+        
+    });
+    return sharedImageCache;
+}
 
 +(void)clearAllImages
 {
-    [[WTNetWorkManager sharedURLcache] removeAllCachedResponses];
+    [[UIImage sharedImageCache] removeAllCachedResponses];
 }
 
 +(void)removeImageWithURL:(NSString*)url
 {
     NSMutableURLRequest *request = [[WTNetWorkManager sharedKit] requestWithMethod:@"GET" URLString:url parameters:nil error:nil];
-    [[WTNetWorkManager sharedURLcache] removeCachedResponseForRequest:request];
+    [[UIImage sharedImageCache] removeCachedResponseForRequest:request];
 }
 
 +(NSBlockOperation*)imageOperationWithURL:(NSString*)url complection:(void(^)(UIImage *image,NSError *error))complection
@@ -32,7 +43,7 @@
     
     
     __block NSCachedURLResponse *cachedResponse = nil;
-    cachedResponse = [[WTNetWorkManager sharedURLcache] cachedResponseForRequest:request];
+    cachedResponse = [[UIImage sharedImageCache] cachedResponseForRequest:request];
     if (cachedResponse) {
         [[[WTNetWorkManager sharedKit] operationQueue] addOperationWithBlock:^{
             NSData *data = cachedResponse.data;
@@ -51,7 +62,7 @@
                 
                 if (image) {
                     cachedResponse = [[NSCachedURLResponse alloc] initWithResponse:response data:data userInfo:nil storagePolicy:NSURLCacheStorageAllowed];
-                    [[WTNetWorkManager sharedURLcache] storeCachedResponse:cachedResponse forRequest:request];
+                    [[UIImage sharedImageCache] storeCachedResponse:cachedResponse forRequest:request];
                 }
                 
                 
