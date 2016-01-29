@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Kid-i4-44k">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -136,23 +137,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开发中,请稍等" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xiJ-w8-vg9">
-                                <rect key="frame" x="134" y="323" width="107" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://www.baidu.com" borderStyle="roundedRect" placeholder="请输入一个地址,或者粘贴一下" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wOY-rw-S6U">
+                                <rect key="frame" x="10" y="87" width="285" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5IE-hf-SdK">
+                                <rect key="frame" x="329" y="86" width="30" height="30"/>
+                                <state key="normal" title="请求"/>
+                                <connections>
+                                    <action selector="requestPressed:" destination="pmf-lz-e0d" eventType="touchUpInside" id="pTD-Ag-4r9"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bOb-eP-YET">
+                                <rect key="frame" x="10" y="125" width="349" height="534"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="xiJ-w8-vg9" firstAttribute="centerX" secondItem="3gV-dm-aRh" secondAttribute="centerX" id="9Kj-f0-FeQ"/>
-                            <constraint firstItem="xiJ-w8-vg9" firstAttribute="centerY" secondItem="3gV-dm-aRh" secondAttribute="centerY" id="Tiv-EW-u4w"/>
+                            <constraint firstItem="5IE-hf-SdK" firstAttribute="top" secondItem="eBf-Zz-sIW" secondAttribute="bottom" constant="22" id="2Xy-Q1-j4I"/>
+                            <constraint firstAttribute="trailing" secondItem="wOY-rw-S6U" secondAttribute="trailing" constant="80" id="6Qe-sA-4pV"/>
+                            <constraint firstItem="wOY-rw-S6U" firstAttribute="leading" secondItem="3gV-dm-aRh" secondAttribute="leading" constant="10" id="Bh8-me-5an"/>
+                            <constraint firstItem="bOb-eP-YET" firstAttribute="leading" secondItem="3gV-dm-aRh" secondAttribute="leading" constant="10" id="Iya-FY-Iyv"/>
+                            <constraint firstItem="5IE-hf-SdK" firstAttribute="trailing" secondItem="3gV-dm-aRh" secondAttribute="trailingMargin" id="QYk-xv-Opu"/>
+                            <constraint firstItem="bOb-eP-YET" firstAttribute="top" secondItem="wOY-rw-S6U" secondAttribute="bottom" constant="8" id="XjY-6O-iHd"/>
+                            <constraint firstItem="wOY-rw-S6U" firstAttribute="top" secondItem="eBf-Zz-sIW" secondAttribute="bottom" constant="23" id="cpn-dC-c8E"/>
+                            <constraint firstAttribute="trailing" secondItem="bOb-eP-YET" secondAttribute="trailing" constant="16" id="g3i-vi-yse"/>
+                            <constraint firstItem="4V7-WQ-H0M" firstAttribute="top" secondItem="bOb-eP-YET" secondAttribute="bottom" constant="8" id="j29-cI-Vfe"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="textView" destination="bOb-eP-YET" id="pTb-ll-rcA"/>
+                        <outlet property="urlTextField" destination="wOY-rw-S6U" id="q8Q-wL-THQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="heO-qe-DmE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="124" y="-662"/>
+            <point key="canvasLocation" x="123.5" y="-662.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="fEg-fH-tt9">

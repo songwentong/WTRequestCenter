@@ -7,8 +7,12 @@
 //
 
 #import "GETViewController.h"
-
+#import "WTNetWork.h"
 @interface GETViewController ()
+
+@property (weak, nonatomic) IBOutlet UITextField *urlTextField;
+
+@property (weak, nonatomic) IBOutlet UITextView *textView;
 
 @end
 
@@ -22,6 +26,26 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)requestPressed:(id)sender
+{
+    NSError *error = nil;
+    NSURLRequest *request =  [[WTNetWorkManager sharedKit] requestWithMethod:@"GET" URLString:_urlTextField.text parameters:nil error:&error];
+    if (error) {
+//        UIAlertController *ac = [[UIAlertController alloc] init];
+//        ac.title =
+//        [self presentview]
+    }else{
+        [[WTNetWorkManager sharedKit] taskWithRequest:request finished:^(NSData *data, NSURLResponse *response) {
+            NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            if (string) {
+                _textView.text = string;
+            }
+        } failed:^(NSError *error) {
+            
+        }];
+    }
 }
 
 /*

@@ -97,16 +97,19 @@ static NSURLCache *cache =nil;
                                   {
                                       _connectionCount = _connectionCount - 1;
                                       [self checkStatus];
-                                      if (error) {
-                                          if (failed) {
-                                              failed(error);
+                                      [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                                          if (error) {
+                                              if (failed) {
+                                                  failed(error);
+                                              }
+                                          }else
+                                          {
+                                              if (finish) {
+                                                  finish(data,response);
+                                              }
                                           }
-                                      }else
-                                      {
-                                          if (finish) {
-                                              finish(data,response);
-                                          }
-                                      }
+                                      }];
+                                      
                                   }];
     [task resume];
     return task;
