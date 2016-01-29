@@ -42,7 +42,7 @@
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return [self titles].count;
 }
 
 // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
@@ -50,6 +50,8 @@
 
 -(NSArray*)titles{
     NSMutableArray *array = [NSMutableArray array];
+    [array addObject:@"GET 请求"];
+    [array addObject:@"POST 请求"];
     [array addObject:@"image 缓存"];
     [array addObject:@"image 上传"];
     
@@ -59,6 +61,8 @@
 -(NSString*)segueWithIndexPath:(NSIndexPath*)indexPath
 {
     NSMutableArray *array = [NSMutableArray array];
+    [array addObject:@"get"];
+    [array addObject:@"post"];
     [array addObject:@"imageView"];
     [array addObject:@"postImage"];
     return array[indexPath.row];

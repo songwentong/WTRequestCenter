@@ -18,6 +18,8 @@
 		E12573471BE7109D00DB6314 /* WTDataSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = E12573461BE7109D00DB6314 /* WTDataSaver.m */; };
 		E125736F1BE8A73400DB6314 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E125736E1BE8A73400DB6314 /* Launch Screen.storyboard */; };
 		E18313D41C35270A00A52665 /* UIImage+ImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E18313D31C35270A00A52665 /* UIImage+ImageCache.m */; };
+		E19EE3201C5B5565007976DC /* GETViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E19EE31F1C5B5565007976DC /* GETViewController.m */; };
+		E19EE3231C5B556F007976DC /* POSTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E19EE3221C5B556F007976DC /* POSTViewController.m */; };
 		E1BE635D1BDF10960059574A /* WTNetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BE635A1BDF10960059574A /* WTNetWorkManager.m */; };
 		E1BE637E1BDF109F0059574A /* UIImageView+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BE636B1BDF109F0059574A /* UIImageView+WTRequestCenter.m */; };
 		E1D7A8BA1BE1C8650022F5DC /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D7A8B91BE1C8650022F5DC /* HomeViewController.m */; };
@@ -49,6 +51,10 @@
 		E125736E1BE8A73400DB6314 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		E18313D21C35270A00A52665 /* UIImage+ImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageCache.h"; sourceTree = "<group>"; };
 		E18313D31C35270A00A52665 /* UIImage+ImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageCache.m"; sourceTree = "<group>"; };
+		E19EE31E1C5B5565007976DC /* GETViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GETViewController.h; sourceTree = "<group>"; };
+		E19EE31F1C5B5565007976DC /* GETViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GETViewController.m; sourceTree = "<group>"; };
+		E19EE3211C5B556F007976DC /* POSTViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POSTViewController.h; sourceTree = "<group>"; };
+		E19EE3221C5B556F007976DC /* POSTViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POSTViewController.m; sourceTree = "<group>"; };
 		E1BE63581BDF10960059574A /* WTNetWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTNetWork.h; sourceTree = "<group>"; };
 		E1BE63591BDF10960059574A /* WTNetWorkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTNetWorkManager.h; sourceTree = "<group>"; };
 		E1BE635A1BDF10960059574A /* WTNetWorkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTNetWorkManager.m; sourceTree = "<group>"; };
@@ -95,6 +101,10 @@
 				E11D04A01BE1C96F0045C421 /* ImageViewCacheVC.m */,
 				E12573301BE34FB300DB6314 /* POSTImageViewController.h */,
 				E12573311BE34FB300DB6314 /* POSTImageViewController.m */,
+				E19EE31E1C5B5565007976DC /* GETViewController.h */,
+				E19EE31F1C5B5565007976DC /* GETViewController.m */,
+				E19EE3211C5B556F007976DC /* POSTViewController.h */,
+				E19EE3221C5B556F007976DC /* POSTViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -265,7 +275,9 @@
 				E4440D81197A01B1001E6D88 /* AppDelegate.m in Sources */,
 				E12573321BE34FB300DB6314 /* POSTImageViewController.m in Sources */,
 				E125733B1BE365BE00DB6314 /* UIColor+WTRequestCenter.m in Sources */,
+				E19EE3201C5B5565007976DC /* GETViewController.m in Sources */,
 				E11D04A11BE1C96F0045C421 /* ImageViewCacheVC.m in Sources */,
+				E19EE3231C5B556F007976DC /* POSTViewController.m in Sources */,
 				E125733E1BE365E300DB6314 /* WTCycleScrollView.m in Sources */,
 				E18313D41C35270A00A52665 /* UIImage+ImageCache.m in Sources */,
 				E4440D7D197A01B1001E6D88 /* main.m in Sources */,
