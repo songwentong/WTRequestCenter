@@ -137,7 +137,7 @@ static NSURLCache *cache =nil;
 
 - (NSMutableURLRequest *)requestWithMethod:(NSString *)method
                                  URLString:(NSString *)URLString
-                                parameters:(id)parameters
+                                parameters:(NSDictionary*)parameters
                                      error:(NSError *__autoreleasing *)error
 {
     assert(method!=nil);
