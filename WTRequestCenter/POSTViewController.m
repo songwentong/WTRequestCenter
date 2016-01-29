@@ -9,7 +9,9 @@
 #import "POSTViewController.h"
 
 @interface POSTViewController ()
-
+{
+    UISegmentedControl *_segment;
+}
 @end
 
 @implementation POSTViewController
@@ -17,6 +19,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _segment = [[UISegmentedControl alloc] initWithItems:@[@"请求",@"参数"]];
+    self.navigationItem.titleView = _segment;
 }
 
 - (void)didReceiveMemoryWarning {

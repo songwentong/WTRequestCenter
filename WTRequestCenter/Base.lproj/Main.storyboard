@@ -191,8 +191,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开发中,请稍等" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udo-vl-I9p">
-                                <rect key="frame" x="134" y="323" width="107" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开发中,和POST相似,把method改成POST就可以了" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udo-vl-I9p">
+                                <rect key="frame" x="16" y="313" width="343" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -201,7 +201,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="udo-vl-I9p" firstAttribute="centerY" secondItem="Ghu-I3-eZ3" secondAttribute="centerY" id="6Vk-ML-AcF"/>
+                            <constraint firstItem="udo-vl-I9p" firstAttribute="leading" secondItem="Ghu-I3-eZ3" secondAttribute="leading" constant="16" id="FqG-Mm-aag"/>
                             <constraint firstItem="udo-vl-I9p" firstAttribute="centerX" secondItem="Ghu-I3-eZ3" secondAttribute="centerX" id="MEh-oa-7bP"/>
+                            <constraint firstAttribute="trailing" secondItem="udo-vl-I9p" secondAttribute="trailing" constant="16" id="VGd-P8-z1Y"/>
                         </constraints>
                     </view>
                 </viewController>
