@@ -33,6 +33,11 @@
 @interface WTNetWorkManager(CreatRequest)
 /*!
  根据请求方法,URL和参数创建一个请求对象
+ 
+ method 传入对应的方法就可以了,比如GET,POST
+ URLString 传入你的url
+ parameters 参数
+ error  错误
  */
 - (NSMutableURLRequest *)requestWithMethod:(NSString *)method
                                  URLString:(NSString *)URLString
