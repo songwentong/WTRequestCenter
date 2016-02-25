@@ -48,16 +48,9 @@
         }];
          */
         
-        [array WTSortedArrayUsingComparator:^NSComparisonResult(NSNumber * obj1, NSNumber * obj2) {
-            if ([obj1 integerValue]<[obj2 integerValue]) {
-                return NSOrderedAscending;
-            }else{
-                return NSOrderedDescending;
-            }
-        }];
         
-        /*
-        //6.929  stdev 4%
+        
+        //10000 6.929s  4% stdev
         [NSArray WTsortedArray2:array UsingComparator:^NSComparisonResult(NSNumber * obj1, NSNumber * obj2) {
             if ([obj1 integerValue]<[obj2 integerValue]) {
                 return NSOrderedAscending;
@@ -65,7 +58,7 @@
                 return NSOrderedDescending;
             }
         }];
-        */
+        
 //        NSLog(@"结果是 %@",result);
     }];
     
