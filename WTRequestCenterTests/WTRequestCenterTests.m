@@ -31,14 +31,30 @@
     // Use XCTAssert and related functions to verify your tests produce the correct results.
     NSMutableArray *array = [NSMutableArray array];
     for (int i=0; i<1000; i++) {
-        NSInteger integer = random();
-        NSNumber *number = [NSNumber numberWithInteger:integer];
+//        NSInteger integer = random();
+        NSNumber *number = [NSNumber numberWithInteger:(i+10)];
         [array addObject:number];
     }
+
     [self measureBlock:^{
+        
+        //1000  0.065 sec  1% STDEV
+        //10000 6.929 sec  4% stdev
+        [NSArray WTsortedArray2:array UsingComparator:^NSComparisonResult(NSNumber * obj1, NSNumber * obj2) {
+            //顺序正确,不用动
+            if ([obj1 integerValue]<[obj2 integerValue]) {
+                return NSOrderedAscending;
+            }else if([obj1 integerValue]==[obj2 integerValue]) {
+                //相同,返回same
+                return NSOrderedSame;
+            }else{
+                //顺序不正确,需要切换一下
+                return NSOrderedDescending;
+            }
+        }];
+        
         /*
          //0.007   stdev 15%
-         
         [array sortedArrayUsingComparator:^NSComparisonResult(NSNumber * obj1, NSNumber * obj2) {
             if ([obj1 integerValue]<[obj2 integerValue]) {
                 return NSOrderedAscending;
@@ -47,17 +63,7 @@
             }
         }];
          */
-        
-        
-        
-        //10000 6.929s  4% stdev
-        [NSArray WTsortedArray2:array UsingComparator:^NSComparisonResult(NSNumber * obj1, NSNumber * obj2) {
-            if ([obj1 integerValue]<[obj2 integerValue]) {
-                return NSOrderedAscending;
-            }else{
-                return NSOrderedDescending;
-            }
-        }];
+
         
 //        NSLog(@"结果是 %@",result);
     }];

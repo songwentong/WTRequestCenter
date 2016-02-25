@@ -70,14 +70,20 @@
     
     do {
         if (temp.count!=0) {
-            NSArray *minObj = temp.firstObject;
-            
+            NSObject *minObj = temp.firstObject;
+            //找到最小的数据
             for (int i=1; i<temp.count; i++) {
-                NSComparisonResult comparisonResult = comparator(minObj,array[i]);
+                NSObject *tempObj = array[i];
+                NSComparisonResult comparisonResult = comparator(minObj,tempObj);
+                
+                //顺序正确
                 if (comparisonResult == NSOrderedAscending) {
+                     minObj = temp[i];
+                }else if(comparisonResult == NSOrderedSame){
                     
-                }else if(comparisonResult==NSOrderedDescending){
-                    minObj = temp[i];
+                }else{
+                    //顺序不对
+                   
                 }
             }
             if (minObj) {
