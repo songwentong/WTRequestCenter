@@ -30,24 +30,24 @@
     // This is an example of a functional test case.
     // Use XCTAssert and related functions to verify your tests produce the correct results.
     NSMutableArray *array = [NSMutableArray array];
-    for (int i=0; i<100; i++) {
+    for (int i=0; i<1000; i++) {
         NSInteger integer = random();
         NSNumber *number = [NSNumber numberWithInteger:integer];
         [array addObject:number];
     }
     [self measureBlock:^{
-
         /*
-         0.08s
-       [array sortedArrayUsingComparator:^NSComparisonResult(NSNumber * obj1, NSNumber * obj2) {
-           if ([obj1 integerValue]<[obj2 integerValue]) {
-               return NSOrderedAscending;
-           }else{
-               return NSOrderedDescending;
-           }
-       }];
+         //0.007   stdev 15%
          
+        [array sortedArrayUsingComparator:^NSComparisonResult(NSNumber * obj1, NSNumber * obj2) {
+            if ([obj1 integerValue]<[obj2 integerValue]) {
+                return NSOrderedAscending;
+            }else{
+                return NSOrderedDescending;
+            }
+        }];
          */
+        
         [array WTSortedArrayUsingComparator:^NSComparisonResult(NSNumber * obj1, NSNumber * obj2) {
             if ([obj1 integerValue]<[obj2 integerValue]) {
                 return NSOrderedAscending;
@@ -55,6 +55,18 @@
                 return NSOrderedDescending;
             }
         }];
+        
+        /*
+        //6.929  stdev 4%
+        [NSArray WTsortedArray2:array UsingComparator:^NSComparisonResult(NSNumber * obj1, NSNumber * obj2) {
+            if ([obj1 integerValue]<[obj2 integerValue]) {
+                return NSOrderedAscending;
+            }else{
+                return NSOrderedDescending;
+            }
+        }];
+        */
+//        NSLog(@"结果是 %@",result);
     }];
     
 }

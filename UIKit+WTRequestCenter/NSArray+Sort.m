@@ -19,15 +19,19 @@
  - (NSArray<ObjectType> *)sortedArrayUsingSelector:(SEL)comparator;
  */
 
+/*!
+    这是一个失败的排序,数据量超过一千就不行了
+ */
 - (NSArray*)WTSortedArrayUsingComparator:(NSComparisonResult(^)(id o1,id o2))comparator
 {
     NSMutableArray *array = [NSMutableArray arrayWithArray:self];
-    
     
     [NSArray sortArray:array UsingComparator:comparator];
     
     return array;
 }
+
+
 
 +(void)sortArray:(NSMutableArray*)array UsingComparator:(NSComparisonResult(^)(id o1,id o2))comparator
 {
@@ -53,8 +57,38 @@
         }
     }];
     
-    
-    
 }
+
+
+/*!
+    速度是系统提供排序效率的千分之一
+ */
++(NSArray*)WTsortedArray2:(NSMutableArray*)array UsingComparator:(NSComparisonResult(^)(id o1,id o2))comparator
+{
+    NSMutableArray *temp = array.mutableCopy;
+    NSMutableArray *result = [NSMutableArray array];
+    
+    do {
+        if (temp.count!=0) {
+            NSArray *minObj = temp.firstObject;
+            
+            for (int i=1; i<temp.count; i++) {
+                NSComparisonResult comparisonResult = comparator(minObj,array[i]);
+                if (comparisonResult == NSOrderedAscending) {
+                    
+                }else if(comparisonResult==NSOrderedDescending){
+                    minObj = temp[i];
+                }
+            }
+            if (minObj) {
+                [result addObject:minObj];
+                [temp removeObject:minObj];
+            }
+        }
+    } while (temp.count!=0);
+    return result;
+}
+
+
 
 @end
