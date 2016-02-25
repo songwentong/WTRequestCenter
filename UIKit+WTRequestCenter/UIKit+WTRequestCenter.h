@@ -40,6 +40,7 @@
 #import "WTNumberLabel.h"
 #import "WTCycleScrollView.h"
 #import "WTNetWork.h"
+#import "NSArray+Sort.h"
 #endif
 
 

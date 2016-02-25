@@ -18,6 +18,7 @@
 		E12573471BE7109D00DB6314 /* WTDataSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = E12573461BE7109D00DB6314 /* WTDataSaver.m */; };
 		E125736F1BE8A73400DB6314 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E125736E1BE8A73400DB6314 /* Launch Screen.storyboard */; };
 		E14B89321C7EAA8100805600 /* NSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = E14B89311C7EAA8100805600 /* NSArray+Sort.m */; };
+		E14B893A1C7EC5EC00805600 /* WTRequestCenterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E14B89391C7EC5EC00805600 /* WTRequestCenterTests.m */; };
 		E18313D41C35270A00A52665 /* UIImage+ImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E18313D31C35270A00A52665 /* UIImage+ImageCache.m */; };
 		E19EE3201C5B5565007976DC /* GETViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E19EE31F1C5B5565007976DC /* GETViewController.m */; };
 		E19EE3231C5B556F007976DC /* POSTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E19EE3221C5B556F007976DC /* POSTViewController.m */; };
@@ -31,6 +32,16 @@
 		E4440D84197A01B1001E6D88 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4440D82197A01B1001E6D88 /* Main.storyboard */; };
 		E4440D89197A01B1001E6D88 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4440D88197A01B1001E6D88 /* Images.xcassets */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E14B893C1C7EC5EC00805600 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E4440D65197A01B1001E6D88 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E4440D6C197A01B1001E6D88;
+			remoteInfo = WTRequestCenter;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		A3B4A7C1199AF60C00A8BAF0 /* aaa@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = "aaa@2x.gif"; path = "WTRequestCenter/aaa@2x.gif"; sourceTree = "<group>"; };
@@ -52,6 +63,9 @@
 		E125736E1BE8A73400DB6314 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		E14B89301C7EAA8100805600 /* NSArray+Sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Sort.h"; sourceTree = "<group>"; };
 		E14B89311C7EAA8100805600 /* NSArray+Sort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Sort.m"; sourceTree = "<group>"; };
+		E14B89371C7EC5EC00805600 /* WTRequestCenterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WTRequestCenterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E14B89391C7EC5EC00805600 /* WTRequestCenterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WTRequestCenterTests.m; sourceTree = "<group>"; };
+		E14B893B1C7EC5EC00805600 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E18313D21C35270A00A52665 /* UIImage+ImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageCache.h"; sourceTree = "<group>"; };
 		E18313D31C35270A00A52665 /* UIImage+ImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageCache.m"; sourceTree = "<group>"; };
 		E19EE31E1C5B5565007976DC /* GETViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GETViewController.h; sourceTree = "<group>"; };
@@ -78,6 +92,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E14B89341C7EC5EC00805600 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E4440D6A197A01B1001E6D88 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -110,6 +131,15 @@
 				E19EE3221C5B556F007976DC /* POSTViewController.m */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E14B89381C7EC5EC00805600 /* WTRequestCenterTests */ = {
+			isa = PBXGroup;
+			children = (
+				E14B89391C7EC5EC00805600 /* WTRequestCenterTests.m */,
+				E14B893B1C7EC5EC00805600 /* Info.plist */,
+			);
+			path = WTRequestCenterTests;
 			sourceTree = "<group>";
 		};
 		E1BE63571BDF10960059574A /* WTNetWork */ = {
@@ -154,6 +184,7 @@
 				E4440D76197A01B1001E6D88 /* Classes */,
 				E4440D77197A01B1001E6D88 /* Supporting Files */,
 				A3B40EB019B04BD90060F158 /* Res */,
+				E14B89381C7EC5EC00805600 /* WTRequestCenterTests */,
 				E4440D6E197A01B1001E6D88 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -162,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				E4440D6D197A01B1001E6D88 /* WTRequestCenter.app */,
+				E14B89371C7EC5EC00805600 /* WTRequestCenterTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -197,6 +229,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		E14B89361C7EC5EC00805600 /* WTRequestCenterTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E14B893E1C7EC5EC00805600 /* Build configuration list for PBXNativeTarget "WTRequestCenterTests" */;
+			buildPhases = (
+				E14B89331C7EC5EC00805600 /* Sources */,
+				E14B89341C7EC5EC00805600 /* Frameworks */,
+				E14B89351C7EC5EC00805600 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E14B893D1C7EC5EC00805600 /* PBXTargetDependency */,
+			);
+			name = WTRequestCenterTests;
+			productName = WTRequestCenterTests;
+			productReference = E14B89371C7EC5EC00805600 /* WTRequestCenterTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		E4440D6C197A01B1001E6D88 /* WTRequestCenter */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E4440D9F197A01B1001E6D88 /* Build configuration list for PBXNativeTarget "WTRequestCenter" */;
@@ -223,6 +273,10 @@
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = song;
 				TargetAttributes = {
+					E14B89361C7EC5EC00805600 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = E4440D6C197A01B1001E6D88;
+					};
 					E4440D6C197A01B1001E6D88 = {
 						DevelopmentTeam = VN5SD4NGLS;
 						SystemCapabilities = {
@@ -247,11 +301,19 @@
 			projectRoot = "";
 			targets = (
 				E4440D6C197A01B1001E6D88 /* WTRequestCenter */,
+				E14B89361C7EC5EC00805600 /* WTRequestCenterTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E14B89351C7EC5EC00805600 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E4440D6B197A01B1001E6D88 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -269,6 +331,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E14B89331C7EC5EC00805600 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E14B893A1C7EC5EC00805600 /* WTRequestCenterTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E4440D69197A01B1001E6D88 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -294,6 +364,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		E14B893D1C7EC5EC00805600 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E4440D6C197A01B1001E6D88 /* WTRequestCenter */;
+			targetProxy = E14B893C1C7EC5EC00805600 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		E4440D79197A01B1001E6D88 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
@@ -314,6 +392,43 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		E14B893F1C7EC5EC00805600 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = WTRequestCenterTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mike.WTRequestCenterTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WTRequestCenter.app/WTRequestCenter";
+			};
+			name = Debug;
+		};
+		E14B89401C7EC5EC00805600 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = WTRequestCenterTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mike.WTRequestCenterTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WTRequestCenter.app/WTRequestCenter";
+			};
+			name = Release;
+		};
 		E4440D9D197A01B1001E6D88 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -419,6 +534,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E14B893E1C7EC5EC00805600 /* Build configuration list for PBXNativeTarget "WTRequestCenterTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E14B893F1C7EC5EC00805600 /* Debug */,
+				E14B89401C7EC5EC00805600 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		E4440D68197A01B1001E6D88 /* Build configuration list for PBXProject "WTRequestCenter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
