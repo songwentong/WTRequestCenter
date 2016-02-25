@@ -9,7 +9,7 @@
 #import "NSArray+Sort.h"
 
 @implementation NSArray (Sort)
-- (NSArray*)testSortedArrayUsingComparator:(NSComparisonResult(^)(id o1,id o2))comparator
+- (NSArray*)WTSortedArrayUsingComparator:(NSComparisonResult(^)(id o1,id o2))comparator
 {
     NSMutableArray *array = [NSMutableArray arrayWithArray:self];
     
