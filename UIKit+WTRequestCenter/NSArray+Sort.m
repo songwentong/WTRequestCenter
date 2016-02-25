@@ -9,6 +9,16 @@
 #import "NSArray+Sort.h"
 
 @implementation NSArray (Sort)
+
+/*
+ 
+ - (NSArray<ObjectType> *)sortedArrayUsingComparator:(NSComparator)cmptr NS_AVAILABLE(10_6, 4_0);
+ - (NSArray<ObjectType> *)sortedArrayWithOptions:(NSSortOptions)opts usingComparator:(NSComparator)cmptr NS_AVAILABLE(10_6, 4_0);
+ - (NSArray<ObjectType> *)sortedArrayUsingFunction:(NSInteger (*)(ObjectType, ObjectType, void * __nullable))comparator context:(nullable void *)context;
+ - (NSArray<ObjectType> *)sortedArrayUsingFunction:(NSInteger (*)(ObjectType, ObjectType, void * __nullable))comparator context:(nullable void *)context hint:(nullable NSData *)hint;
+ - (NSArray<ObjectType> *)sortedArrayUsingSelector:(SEL)comparator;
+ */
+
 - (NSArray*)WTSortedArrayUsingComparator:(NSComparisonResult(^)(id o1,id o2))comparator
 {
     NSMutableArray *array = [NSMutableArray arrayWithArray:self];
