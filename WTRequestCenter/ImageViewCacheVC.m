@@ -40,9 +40,8 @@
     [_myTextField resignFirstResponder];
     [_myImageView setImageWithURL:url placeholderImage:nil finished:^{
         [_activity stopAnimating];
-    } failed:^{
+    } failed:^(NSError *error) {
         [_activity stopAnimating];
-        
     }];
 }
 

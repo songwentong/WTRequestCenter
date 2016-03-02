@@ -53,7 +53,7 @@ static const void * const WTHighlightedImageOperationKey = @"WT Highlighted Imag
     [self setImageWithURL:url placeholderImage:placeholder finished:nil failed:nil];
 }
 
--(void)setImageWithURL:(NSString *)url placeholderImage:(UIImage *)placeholder finished:(dispatch_block_t)finished failed:(dispatch_block_t)failed
+-(void)setImageWithURL:(NSString *)url placeholderImage:(UIImage *)placeholder finished:(dispatch_block_t)finished failed:(void(^)(NSError*error))failed
 {
 
     
@@ -69,11 +69,19 @@ static const void * const WTHighlightedImageOperationKey = @"WT Highlighted Imag
     
     NSBlockOperation *operation = [UIImage imageOperationWithURL:url complection:^(UIImage *image,NSError *error) {
         [WTNetWorkManager safeSycInMainQueue:^{
-            self.image = image;
-            [self setNeedsLayout];
-            if (finished) {
-                finished();
+            if (image) {
+                self.image = image;
+                [self setNeedsLayout];
+                if (finished) {
+                    finished();
+                }
             }
+            if (error) {
+                if (failed) {
+                    failed(error);
+                }
+            }
+            
         }];
     }];
     [self setImageOperation:operation];
