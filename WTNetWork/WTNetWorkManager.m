@@ -121,7 +121,7 @@ static NSURLCache *cache =nil;
 {
 
     
-    NSURLCache *cache = [[NSURLCache alloc] initWithMemoryCapacity:0 diskCapacity:1024*1024 diskPath:@"WTNet"];
+    NSURLCache *cache = [WTNetWorkManager sharedURLcache];
     NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
                                       {
                                           _connectionCount = _connectionCount - 1;
