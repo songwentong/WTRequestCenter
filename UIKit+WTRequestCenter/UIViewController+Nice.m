@@ -11,15 +11,17 @@
 @implementation UIViewController (Nice)
 -(void)showAlertWithMessage:(NSString*)message
 {
-    [self showAlertWithTitle:nil message:message duration:1.0];
+    [self showAlertWithTitle:nil message:message duration:1.0 completion:nil];
 }
--(void)showAlertWithTitle:(NSString*)title message:(NSString*)message duration:(NSTimeInterval)time
+-(void)showAlertWithTitle:(NSString*)title message:(NSString*)message duration:(NSTimeInterval)time completion: (void (^ __nullable)(void))completion
 {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
-    [WTNetWorkManager performBlock:^{
-        [self presentViewController:alert animated:YES completion:^{
+    
+    [self presentViewController:alert animated:YES completion:^{
             
-        }];
+    }];
+    [WTNetWorkManager performBlock:^{
+        [alert dismissViewControllerAnimated:YES completion:completion];
     } afterDelay:time];
     
     

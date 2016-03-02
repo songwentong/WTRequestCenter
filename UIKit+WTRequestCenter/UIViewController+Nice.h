@@ -12,7 +12,7 @@
 //iOS 8可用的alertcontroller
 @interface UIViewController (Nice)
 -(void)showAlertWithMessage:(NSString*)message;
--(void)showAlertWithTitle:(NSString*)title message:(NSString*)message duration:(NSTimeInterval)time;
+-(void)showAlertWithTitle:(NSString*)title message:(NSString*)message duration:(NSTimeInterval)time completion: (void (^)(void))completion;
 @end
 
 
