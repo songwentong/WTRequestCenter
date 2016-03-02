@@ -76,7 +76,7 @@
                 NSObject *tempObj = array[i];
                 NSComparisonResult comparisonResult = comparator(minObj,tempObj);
                 
-                //顺序正确
+                //左边小于右边
                 if (comparisonResult == NSOrderedAscending) {
                      minObj = temp[i];
                 }else if(comparisonResult == NSOrderedSame){

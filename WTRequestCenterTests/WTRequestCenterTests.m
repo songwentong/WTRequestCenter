@@ -42,7 +42,7 @@
         //10000 6.929 sec  4% stdev
         
         [NSArray WTsortedArray2:array UsingComparator:^NSComparisonResult(NSNumber * obj1, NSNumber * obj2) {
-            //顺序正确,不用动
+            //左边小于右边
             if ([obj1 integerValue]<[obj2 integerValue]) {
                 return NSOrderedAscending;
             }else if([obj1 integerValue]==[obj2 integerValue]) {

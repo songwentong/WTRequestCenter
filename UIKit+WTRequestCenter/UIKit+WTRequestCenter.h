@@ -39,8 +39,10 @@
 #import "WTDataSaver.h"
 #import "WTNumberLabel.h"
 #import "WTCycleScrollView.h"
+#import "UIViewController+Nice.h"
 #import "WTNetWork.h"
 #import "NSArray+Sort.h"
+
 #endif
 
 

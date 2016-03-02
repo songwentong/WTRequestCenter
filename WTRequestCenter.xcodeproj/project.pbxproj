@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A3B4A7C2199AF60C00A8BAF0 /* aaa@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = A3B4A7C1199AF60C00A8BAF0 /* aaa@2x.gif */; };
+		E10604901C86B1F80017A469 /* UIAlertView+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E106048F1C86B1F80017A469 /* UIAlertView+WTRequestCenter.m */; };
+		E10604931C86B2C60017A469 /* UIViewController+Nice.m in Sources */ = {isa = PBXBuildFile; fileRef = E10604921C86B2C60017A469 /* UIViewController+Nice.m */; };
 		E11D04A11BE1C96F0045C421 /* ImageViewCacheVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E11D04A01BE1C96F0045C421 /* ImageViewCacheVC.m */; };
 		E12573321BE34FB300DB6314 /* POSTImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E12573311BE34FB300DB6314 /* POSTImageViewController.m */; };
 		E12573341BE3537D00DB6314 /* Reference in Resources */ = {isa = PBXBuildFile; fileRef = E12573331BE3537D00DB6314 /* Reference */; };
@@ -45,6 +47,10 @@
 
 /* Begin PBXFileReference section */
 		A3B4A7C1199AF60C00A8BAF0 /* aaa@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = "aaa@2x.gif"; path = "WTRequestCenter/aaa@2x.gif"; sourceTree = "<group>"; };
+		E106048E1C86B1F80017A469 /* UIAlertView+WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+WTRequestCenter.h"; sourceTree = "<group>"; };
+		E106048F1C86B1F80017A469 /* UIAlertView+WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+WTRequestCenter.m"; sourceTree = "<group>"; };
+		E10604911C86B2C60017A469 /* UIViewController+Nice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Nice.h"; sourceTree = "<group>"; };
+		E10604921C86B2C60017A469 /* UIViewController+Nice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Nice.m"; sourceTree = "<group>"; };
 		E11D049F1BE1C96F0045C421 /* ImageViewCacheVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewCacheVC.h; sourceTree = "<group>"; };
 		E11D04A01BE1C96F0045C421 /* ImageViewCacheVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewCacheVC.m; sourceTree = "<group>"; };
 		E12573301BE34FB300DB6314 /* POSTImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POSTImageViewController.h; sourceTree = "<group>"; };
@@ -172,6 +178,10 @@
 				E125733D1BE365E300DB6314 /* WTCycleScrollView.m */,
 				E14B89301C7EAA8100805600 /* NSArray+Sort.h */,
 				E14B89311C7EAA8100805600 /* NSArray+Sort.m */,
+				E106048E1C86B1F80017A469 /* UIAlertView+WTRequestCenter.h */,
+				E106048F1C86B1F80017A469 /* UIAlertView+WTRequestCenter.m */,
+				E10604911C86B2C60017A469 /* UIViewController+Nice.h */,
+				E10604921C86B2C60017A469 /* UIViewController+Nice.m */,
 			);
 			path = "UIKit+WTRequestCenter";
 			sourceTree = "<group>";
@@ -354,9 +364,11 @@
 				E11D04A11BE1C96F0045C421 /* ImageViewCacheVC.m in Sources */,
 				E19EE3231C5B556F007976DC /* POSTViewController.m in Sources */,
 				E125733E1BE365E300DB6314 /* WTCycleScrollView.m in Sources */,
+				E10604901C86B1F80017A469 /* UIAlertView+WTRequestCenter.m in Sources */,
 				E18313D41C35270A00A52665 /* UIImage+ImageCache.m in Sources */,
 				E14B89321C7EAA8100805600 /* NSArray+Sort.m in Sources */,
 				E4440D7D197A01B1001E6D88 /* main.m in Sources */,
+				E10604931C86B2C60017A469 /* UIViewController+Nice.m in Sources */,
 				E12573471BE7109D00DB6314 /* WTDataSaver.m in Sources */,
 				E1D7A8BA1BE1C8650022F5DC /* HomeViewController.m in Sources */,
 			);
@@ -541,6 +553,7 @@
 				E14B89401C7EC5EC00805600 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E4440D68197A01B1001E6D88 /* Build configuration list for PBXProject "WTRequestCenter" */ = {
 			isa = XCConfigurationList;

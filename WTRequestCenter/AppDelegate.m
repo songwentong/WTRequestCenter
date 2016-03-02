@@ -19,6 +19,14 @@
     
 //    CGFloat scale = [UIScreen mainScreen].scale;
 //    NSLog(@"%f",scale);
+    NSURLRequest *request = [[WTNetWorkManager sharedKit] requestWithMethod:@"GET" URLString:@"http://app.gongsibao.com/api/v1/account/getcheckcode?types=1" parameters:nil error:nil];
+    [[WTNetWorkManager sharedKit] taskWithRequest:request finished:^(NSData *data, NSURLResponse *response) {
+        UIImage *image = [UIImage imageWithData:data];
+        NSLog(@"%@",image);
+    } failed:^(NSError *error) {
+        
+    }];
+    
     return YES;
 }
 							
