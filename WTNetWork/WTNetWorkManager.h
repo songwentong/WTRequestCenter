@@ -28,6 +28,13 @@
 -(NSURLSessionDataTask*)taskWithRequest:(NSURLRequest*)request
                                finished:(void(^)(NSData * data, NSURLResponse * response))finish
                                  failed:(void(^)(NSError * error))failed;
+
+/*!
+ 缓存式请求,只缓存GET,不重复
+ */
+-(NSURLSessionDataTask*)cachedTaskWithRequest:(NSURLRequest*)request
+                    finished:(void(^)(NSData * data, NSURLResponse * response))finish
+                      failed:(void(^)(NSError * error))failed;
 @end
 
 @interface WTNetWorkManager(CreatRequest)

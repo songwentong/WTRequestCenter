@@ -115,6 +115,50 @@ static NSURLCache *cache =nil;
     return task;
 }
 
+-(NSURLSessionDataTask*)cachedTaskWithRequest:(NSURLRequest*)request
+                                     finished:(void(^)(NSData * data, NSURLResponse * response))finish
+                                       failed:(void(^)(NSError * error))failed
+{
+
+    
+    NSURLCache *cache = [[NSURLCache alloc] initWithMemoryCapacity:0 diskCapacity:1024*1024 diskPath:@"WTNet"];
+    NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
+                                      {
+                                          _connectionCount = _connectionCount - 1;
+                                          [self checkStatus];
+                                          [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                                              if (error) {
+                                                  if (failed) {
+                                                      failed(error);
+                                                  }
+                                              }else
+                                              {
+                                                  NSCachedURLResponse *cachedRes = [[NSCachedURLResponse alloc] initWithResponse:response data:data];
+                                                  [cache storeCachedResponse:cachedRes forDataTask:task];
+                                                  if (finish) {
+                                                      finish(data,response);
+                                                  }
+                                              }
+                                          }];
+                                          
+                                      }];
+    
+    [cache getCachedResponseForDataTask:task completionHandler:^(NSCachedURLResponse * _Nullable cachedResponse) {
+        //找到缓存,返回一下
+        if (cachedResponse) {
+            if (finish) {
+                finish(cachedResponse.data,cachedResponse.response);
+            }
+        }else{
+            //未找到缓存,执行请求
+            _connectionCount = _connectionCount +1;
+            [self checkStatus];
+            [task resume];
+        }
+    }];
+    return task;
+}
+
 
 @end
 @implementation WTNetWorkManager(CreatRequest)
