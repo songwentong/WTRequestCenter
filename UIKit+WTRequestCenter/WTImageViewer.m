@@ -7,7 +7,7 @@
 //
 
 #import "WTImageViewer.h"
-#import "UIKit+WTRequestCenter.h"
+#import "WTKit.h"
 
 
 @interface WTImageScrollView()

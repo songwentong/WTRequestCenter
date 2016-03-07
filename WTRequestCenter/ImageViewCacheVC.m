@@ -8,7 +8,7 @@
 
 #import "ImageViewCacheVC.h"
 #import "WTNetWork.h"
-#import "UIKit+WTRequestCenter.h"
+#import "WTKit.h"
 @interface ImageViewCacheVC ()
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activity;
