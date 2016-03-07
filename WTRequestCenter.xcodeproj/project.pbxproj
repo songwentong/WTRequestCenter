@@ -161,7 +161,7 @@
 			path = WTNetWork;
 			sourceTree = "<group>";
 		};
-		E1BE635F1BDF109F0059574A /* UIKit+WTRequestCenter */ = {
+		E1BE635F1BDF109F0059574A /* WTKit */ = {
 			isa = PBXGroup;
 			children = (
 				E1BE636C1BDF109F0059574A /* WTKit.h */,
@@ -188,6 +188,7 @@
 				E152DA1B1C8D65E700FE2860 /* NSJSONSerialization+Nice.h */,
 				E152DA1C1C8D65E700FE2860 /* NSJSONSerialization+Nice.m */,
 			);
+			name = WTKit;
 			path = "UIKit+WTRequestCenter";
 			sourceTree = "<group>";
 		};
@@ -195,7 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				E1BE63571BDF10960059574A /* WTNetWork */,
-				E1BE635F1BDF109F0059574A /* UIKit+WTRequestCenter */,
+				E1BE635F1BDF109F0059574A /* WTKit */,
 				E4440D76197A01B1001E6D88 /* Classes */,
 				E4440D77197A01B1001E6D88 /* Supporting Files */,
 				A3B40EB019B04BD90060F158 /* Res */,
