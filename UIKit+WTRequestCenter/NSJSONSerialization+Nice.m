@@ -50,8 +50,10 @@
         
         if ([obj isKindOfClass:[NSNull class]]) {
             return @"";
+        }else{
+            return obj;
         }
-        
+        /*
         if ([obj isKindOfClass:[NSString class]]) {
             return obj;
         }
@@ -59,6 +61,7 @@
         if ([obj isKindOfClass:[NSNumber class]]) {
             return obj;
         }
+         */
         
     }
       
