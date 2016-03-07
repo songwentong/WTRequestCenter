@@ -20,7 +20,13 @@
     return result;
 }
 
-//去掉null
+
+/*!
+ 去掉null
+ 
+ 
+ json中有的数据类型有array,dictionary ,string,number和null
+*/
 +(id)replaceNullJSON:(id)obj
 {
     if (obj) {
