@@ -42,7 +42,7 @@
 #import "UIViewController+Nice.h"
 #import "WTNetWork.h"
 #import "NSArray+Sort.h"
-
+#import "NSJSONSerialization+Nice.h"
 #endif
 
 
