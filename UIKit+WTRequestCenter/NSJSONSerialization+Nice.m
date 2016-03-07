@@ -42,6 +42,18 @@
             return dict2;
         }
         
+        if ([obj isKindOfClass:[NSNull class]]) {
+            return @"";
+        }
+        
+        if ([obj isKindOfClass:[NSString class]]) {
+            return obj;
+        }
+        
+        if ([obj isKindOfClass:[NSNumber class]]) {
+            return nil;
+        }
+        
     }
       
     return @"";
