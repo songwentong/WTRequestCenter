@@ -57,7 +57,7 @@
         }
         
         if ([obj isKindOfClass:[NSNumber class]]) {
-            return nil;
+            return obj;
         }
         
     }
