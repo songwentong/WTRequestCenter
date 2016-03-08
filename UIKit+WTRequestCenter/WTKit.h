@@ -51,8 +51,6 @@
 
 /*
     常用库
-    WTRequestCenter
-    UIKit+WTRequestCenter
     Reachability
     GBVersionTracking
     UICKeyChainStore
