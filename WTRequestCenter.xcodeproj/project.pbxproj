@@ -22,6 +22,7 @@
 		E14B89321C7EAA8100805600 /* NSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = E14B89311C7EAA8100805600 /* NSArray+Sort.m */; };
 		E14B893A1C7EC5EC00805600 /* WTRequestCenterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E14B89391C7EC5EC00805600 /* WTRequestCenterTests.m */; };
 		E152DA1D1C8D65E700FE2860 /* NSJSONSerialization+Nice.m in Sources */ = {isa = PBXBuildFile; fileRef = E152DA1C1C8D65E700FE2860 /* NSJSONSerialization+Nice.m */; };
+		E152DA201C8EA28000FE2860 /* NSOperationQueue+Nice.m in Sources */ = {isa = PBXBuildFile; fileRef = E152DA1F1C8EA28000FE2860 /* NSOperationQueue+Nice.m */; };
 		E18313D41C35270A00A52665 /* UIImage+ImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E18313D31C35270A00A52665 /* UIImage+ImageCache.m */; };
 		E19EE3201C5B5565007976DC /* GETViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E19EE31F1C5B5565007976DC /* GETViewController.m */; };
 		E19EE3231C5B556F007976DC /* POSTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E19EE3221C5B556F007976DC /* POSTViewController.m */; };
@@ -75,6 +76,8 @@
 		E14B893B1C7EC5EC00805600 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E152DA1B1C8D65E700FE2860 /* NSJSONSerialization+Nice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSJSONSerialization+Nice.h"; sourceTree = "<group>"; };
 		E152DA1C1C8D65E700FE2860 /* NSJSONSerialization+Nice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSJSONSerialization+Nice.m"; sourceTree = "<group>"; };
+		E152DA1E1C8EA28000FE2860 /* NSOperationQueue+Nice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSOperationQueue+Nice.h"; sourceTree = "<group>"; };
+		E152DA1F1C8EA28000FE2860 /* NSOperationQueue+Nice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSOperationQueue+Nice.m"; sourceTree = "<group>"; };
 		E18313D21C35270A00A52665 /* UIImage+ImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageCache.h"; sourceTree = "<group>"; };
 		E18313D31C35270A00A52665 /* UIImage+ImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageCache.m"; sourceTree = "<group>"; };
 		E19EE31E1C5B5565007976DC /* GETViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GETViewController.h; sourceTree = "<group>"; };
@@ -178,6 +181,8 @@
 				E10604921C86B2C60017A469 /* UIViewController+Nice.m */,
 				E152DA1B1C8D65E700FE2860 /* NSJSONSerialization+Nice.h */,
 				E152DA1C1C8D65E700FE2860 /* NSJSONSerialization+Nice.m */,
+				E152DA1E1C8EA28000FE2860 /* NSOperationQueue+Nice.h */,
+				E152DA1F1C8EA28000FE2860 /* NSOperationQueue+Nice.m */,
 			);
 			name = WTKit;
 			path = "UIKit+WTRequestCenter";
@@ -364,6 +369,7 @@
 				E18313D41C35270A00A52665 /* UIImage+ImageCache.m in Sources */,
 				E14B89321C7EAA8100805600 /* NSArray+Sort.m in Sources */,
 				E4440D7D197A01B1001E6D88 /* main.m in Sources */,
+				E152DA201C8EA28000FE2860 /* NSOperationQueue+Nice.m in Sources */,
 				E10604931C86B2C60017A469 /* UIViewController+Nice.m in Sources */,
 				E12573471BE7109D00DB6314 /* WTDataSaver.m in Sources */,
 				E1D7A8BA1BE1C8650022F5DC /* HomeViewController.m in Sources */,
