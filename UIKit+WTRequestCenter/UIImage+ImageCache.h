@@ -18,3 +18,8 @@
 //删除所有图片
 +(void)clearAllImages;
 @end
+
+@interface UIImage (Gif)
++ (UIImage *)animatedImageWithAnimatedGIFData:(NSData *)data;
++ (UIImage *)animatedImageWithAnimatedGIFURL:(NSURL *)url;
+@end
