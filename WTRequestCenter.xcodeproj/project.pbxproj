@@ -81,9 +81,8 @@
 		E19EE31F1C5B5565007976DC /* GETViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GETViewController.m; sourceTree = "<group>"; };
 		E19EE3211C5B556F007976DC /* POSTViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POSTViewController.h; sourceTree = "<group>"; };
 		E19EE3221C5B556F007976DC /* POSTViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POSTViewController.m; sourceTree = "<group>"; };
-		E1BE63581BDF10960059574A /* WTNetWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTNetWork.h; sourceTree = "<group>"; };
-		E1BE63591BDF10960059574A /* WTNetWorkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTNetWorkManager.h; sourceTree = "<group>"; };
-		E1BE635A1BDF10960059574A /* WTNetWorkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTNetWorkManager.m; sourceTree = "<group>"; };
+		E1BE63591BDF10960059574A /* WTNetWorkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WTNetWorkManager.h; path = ../WTNetWork/WTNetWorkManager.h; sourceTree = "<group>"; };
+		E1BE635A1BDF10960059574A /* WTNetWorkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WTNetWorkManager.m; path = ../WTNetWork/WTNetWorkManager.m; sourceTree = "<group>"; };
 		E1BE636A1BDF109F0059574A /* UIImageView+WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+WTRequestCenter.h"; sourceTree = "<group>"; };
 		E1BE636B1BDF109F0059574A /* UIImageView+WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WTRequestCenter.m"; sourceTree = "<group>"; };
 		E1BE636C1BDF109F0059574A /* WTKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTKit.h; sourceTree = "<group>"; };
@@ -151,20 +150,12 @@
 			path = WTRequestCenterTests;
 			sourceTree = "<group>";
 		};
-		E1BE63571BDF10960059574A /* WTNetWork */ = {
-			isa = PBXGroup;
-			children = (
-				E1BE63581BDF10960059574A /* WTNetWork.h */,
-				E1BE63591BDF10960059574A /* WTNetWorkManager.h */,
-				E1BE635A1BDF10960059574A /* WTNetWorkManager.m */,
-			);
-			path = WTNetWork;
-			sourceTree = "<group>";
-		};
 		E1BE635F1BDF109F0059574A /* WTKit */ = {
 			isa = PBXGroup;
 			children = (
 				E1BE636C1BDF109F0059574A /* WTKit.h */,
+				E1BE63591BDF10960059574A /* WTNetWorkManager.h */,
+				E1BE635A1BDF10960059574A /* WTNetWorkManager.m */,
 				E12573451BE7109D00DB6314 /* WTDataSaver.h */,
 				E12573461BE7109D00DB6314 /* WTDataSaver.m */,
 				E18313D21C35270A00A52665 /* UIImage+ImageCache.h */,
@@ -195,7 +186,6 @@
 		E4440D64197A01B1001E6D88 = {
 			isa = PBXGroup;
 			children = (
-				E1BE63571BDF10960059574A /* WTNetWork */,
 				E1BE635F1BDF109F0059574A /* WTKit */,
 				E4440D76197A01B1001E6D88 /* Classes */,
 				E4440D77197A01B1001E6D88 /* Supporting Files */,

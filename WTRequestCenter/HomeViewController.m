@@ -8,6 +8,7 @@
 
 #import "HomeViewController.h"
 #import "WTNetWork.h"
+@import AVFoundation;
 @interface HomeViewController () <UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -18,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
+    
     
 
 }

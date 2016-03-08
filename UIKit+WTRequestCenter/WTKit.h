@@ -27,6 +27,7 @@
 
 #ifndef WTRequestCenter_UIKit_WTRequestCenter_h
 #define WTRequestCenter_UIKit_WTRequestCenter_h
+#import "WTNetWorkManager.h"
 #import "UIButton+WTRequestCenter.h"
 #import "UIImageView+WTRequestCenter.h"
 #import "UIImage+WTRequestCenter.h"
@@ -40,7 +41,6 @@
 #import "WTNumberLabel.h"
 #import "WTCycleScrollView.h"
 #import "UIViewController+Nice.h"
-#import "WTNetWork.h"
 #import "NSArray+Sort.h"
 #import "NSJSONSerialization+Nice.h"
 #endif

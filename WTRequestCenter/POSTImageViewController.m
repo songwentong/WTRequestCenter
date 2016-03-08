@@ -7,7 +7,7 @@
 //
 
 #import "POSTImageViewController.h"
-#import "WTNetWork.h"
+#import "WTKit.h"
 @interface POSTImageViewController ()
 {
     BOOL _sending;
