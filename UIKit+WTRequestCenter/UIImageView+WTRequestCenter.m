@@ -8,7 +8,7 @@
 
 
 #import <objc/runtime.h>
-#import "WTNetWork.h"
+#import "WTNetWorkManager.h"
 #import "UIImage+ImageCache.h"
 @import ImageIO;
 @import UIKit;

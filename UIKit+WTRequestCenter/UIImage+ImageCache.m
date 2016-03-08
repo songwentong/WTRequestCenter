@@ -7,7 +7,7 @@
 //
 
 #import "UIImage+ImageCache.h"
-#import "WTNetWork.h"
+#import "WTNetWorkManager.h"
 @implementation UIImage (ImageCache)
 //static NSURLCache *sharedImageCache = nil;
 //+(NSURLCache*)sharedImageCache

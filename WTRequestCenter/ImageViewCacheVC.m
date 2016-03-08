@@ -7,7 +7,7 @@
 //
 
 #import "ImageViewCacheVC.h"
-#import "WTNetWork.h"
+
 #import "WTKit.h"
 @interface ImageViewCacheVC ()
 

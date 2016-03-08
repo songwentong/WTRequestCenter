@@ -7,8 +7,7 @@
 //  site:https://github.com/swtlovewtt/WTRequestCenter
 
 #import "WTDataSaver.h"
-#import "WTNetWork.h"
-
+#import "WTNetWorkManager.h"
 @implementation WTDataSaver
 
 +(void)clearAllData

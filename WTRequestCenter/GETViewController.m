@@ -7,7 +7,7 @@
 //
 
 #import "GETViewController.h"
-#import "WTNetWork.h"
+#import "WTKit.h"
 @interface GETViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *urlTextField;

@@ -7,7 +7,7 @@
 //
 
 #import "HomeViewController.h"
-#import "WTNetWork.h"
+#import "WTNetWorkManager.h"
 @import AVFoundation;
 @interface HomeViewController () <UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
