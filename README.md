@@ -4,7 +4,7 @@ WTRequestCenter
 
 升级中,暂无可参阅文档,敬请期待...
 ```objective-c
-#### 创建一个请求
+# 创建一个请求
 NSURLRequest *request =  [[WTNetWorkManager sharedKit] requestWithMethod:@"GET" URLString:_urlTextField.text parameters:nil error:nil];
 [[WTNetWorkManager sharedKit] taskWithRequest:request finished:^(NSData *data, NSURLResponse *response) {
 NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
