@@ -22,4 +22,6 @@
 @interface UIImage (Gif)
 + (UIImage *)animatedImageWithAnimatedGIFData:(NSData *)data;
 + (UIImage *)animatedImageWithAnimatedGIFURL:(NSURL *)url;
++(void)gifImageWithURL:(NSString*)url
+            completion:(void(^)(UIImage* image))completion;
 @end
