@@ -16,16 +16,16 @@
 }
 -(void)showAlertWithTitle:(NSString*)title message:(NSString*)message duration:(NSTimeInterval)time completion: (void (^ __nullable)(void))completion
 {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
-    
-    [self presentViewController:alert animated:YES completion:^{
+    if ([UIAlertController class]) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+        
+        [self presentViewController:alert animated:YES completion:^{
             
-    }];
-    [WTNetWorkManager performBlock:^{
-        [alert dismissViewControllerAnimated:YES completion:completion];
-    } afterDelay:time];
-    
-    
+        }];
+        [WTNetWorkManager performBlock:^{
+            [alert dismissViewControllerAnimated:YES completion:completion];
+        } afterDelay:time];
+    }
 }
 @end
 
