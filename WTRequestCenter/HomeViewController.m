@@ -19,7 +19,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+//    NSArray<__kindof UILayoutGuide *> *layoutGuides = self.view.layoutGuides;
+//    NSLog(@"%@",layoutGuides);
+//    id<UILayoutSupport> topLayoutGuide = self.topLayoutGuide;
+//    NSLog(@"%@",topLayoutGuide);
     
 
 }
