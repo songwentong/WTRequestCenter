@@ -168,6 +168,14 @@
 		E10C79631C9154C100AAE763 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				E10C79DA1C91672300AAE763 /* CALayer+Nice.h */,
+				E10C79DB1C91672300AAE763 /* CALayer+Nice.m */,
+				E10C79DD1C91676000AAE763 /* UIView+Nice.h */,
+				E10C79DE1C91676000AAE763 /* UIView+Nice.m */,
+				E10C79421C9154AD00AAE763 /* UIViewController+Nice.h */,
+				E10C79431C9154AD00AAE763 /* UIViewController+Nice.m */,
+				E10C793C1C9154AD00AAE763 /* UIImageView+WTRequestCenter.h */,
+				E10C793D1C9154AD00AAE763 /* UIImageView+WTRequestCenter.m */,
 				E10C794B1C9154AD00AAE763 /* WTNetworkActivityIndicatorManager.h */,
 				E10C794C1C9154AD00AAE763 /* WTNetworkActivityIndicatorManager.m */,
 				E10C794F1C9154AD00AAE763 /* WTNumberLabel.h */,
@@ -188,18 +196,10 @@
 				E10C79391C9154AD00AAE763 /* UIDevice+WTRequestCenter.m */,
 				E10C793A1C9154AD00AAE763 /* UIImage+ImageCache.h */,
 				E10C793B1C9154AD00AAE763 /* UIImage+ImageCache.m */,
-				E10C793C1C9154AD00AAE763 /* UIImageView+WTRequestCenter.h */,
-				E10C793D1C9154AD00AAE763 /* UIImageView+WTRequestCenter.m */,
 				E10C793E1C9154AD00AAE763 /* UINavigationController+Nice.h */,
 				E10C793F1C9154AD00AAE763 /* UINavigationController+Nice.m */,
 				E10C79401C9154AD00AAE763 /* UIScreen+WTRequestCenter.h */,
 				E10C79411C9154AD00AAE763 /* UIScreen+WTRequestCenter.m */,
-				E10C79421C9154AD00AAE763 /* UIViewController+Nice.h */,
-				E10C79431C9154AD00AAE763 /* UIViewController+Nice.m */,
-				E10C79DA1C91672300AAE763 /* CALayer+Nice.h */,
-				E10C79DB1C91672300AAE763 /* CALayer+Nice.m */,
-				E10C79DD1C91676000AAE763 /* UIView+Nice.h */,
-				E10C79DE1C91676000AAE763 /* UIView+Nice.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
