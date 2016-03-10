@@ -30,7 +30,6 @@
 #import "WTNetWorkManager.h"
 #import "UIButton+WTRequestCenter.h"
 #import "UIImageView+WTRequestCenter.h"
-#import "UIImage+WTRequestCenter.h"
 #import "UIColor+WTRequestCenter.h"
 #import "UIDevice+WTRequestCenter.h"
 #import "UIAlertView+WTRequestCenter.h"

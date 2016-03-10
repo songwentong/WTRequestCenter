@@ -8,7 +8,7 @@
 
 #import "UIViewController+Nice.h"
 #import "WTNetWorkManager.h"
-@implementation UIViewController (Nice)
+@implementation UIViewController (Alert)
 -(void)showAlertWithMessage:(NSString*)message
 {
     [self showAlertWithTitle:nil message:message duration:1.0 completion:nil];
@@ -29,8 +29,13 @@
 @end
 
 
-@implementation UIViewController(NavigationItem)
-
+@implementation UIViewController(Nice)
++(instancetype)instanceWithName:(NSString*)name
+{
+    Class className = NSClassFromString(name);
+    id instance = [[className alloc] init];
+    return instance;
+}
 
 
 @end
