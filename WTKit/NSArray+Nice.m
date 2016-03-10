@@ -6,7 +6,7 @@
 //  Copyright © 2016 SongWentong. All rights reserved.
 //
 
-#import "NSArray+Sort.h"
+#import "NSArray+Nice.h"
 
 @implementation NSArray (Sort)
 

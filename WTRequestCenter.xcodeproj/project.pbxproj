@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A3B4A7C2199AF60C00A8BAF0 /* aaa@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = A3B4A7C1199AF60C00A8BAF0 /* aaa@2x.gif */; };
-		E10C79511C9154AD00AAE763 /* NSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = E10C792D1C9154AD00AAE763 /* NSArray+Sort.m */; };
+		E10C79511C9154AD00AAE763 /* NSArray+Nice.m in Sources */ = {isa = PBXBuildFile; fileRef = E10C792D1C9154AD00AAE763 /* NSArray+Nice.m */; };
 		E10C79521C9154AD00AAE763 /* NSJSONSerialization+Nice.m in Sources */ = {isa = PBXBuildFile; fileRef = E10C792F1C9154AD00AAE763 /* NSJSONSerialization+Nice.m */; };
 		E10C79531C9154AD00AAE763 /* NSOperationQueue+Nice.m in Sources */ = {isa = PBXBuildFile; fileRef = E10C79311C9154AD00AAE763 /* NSOperationQueue+Nice.m */; };
 		E10C79541C9154AD00AAE763 /* UIAlertView+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E10C79331C9154AD00AAE763 /* UIAlertView+WTRequestCenter.m */; };
@@ -57,8 +57,8 @@
 
 /* Begin PBXFileReference section */
 		A3B4A7C1199AF60C00A8BAF0 /* aaa@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = "aaa@2x.gif"; path = "WTRequestCenter/aaa@2x.gif"; sourceTree = "<group>"; };
-		E10C792C1C9154AD00AAE763 /* NSArray+Sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Sort.h"; sourceTree = "<group>"; };
-		E10C792D1C9154AD00AAE763 /* NSArray+Sort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Sort.m"; sourceTree = "<group>"; };
+		E10C792C1C9154AD00AAE763 /* NSArray+Nice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Nice.h"; sourceTree = "<group>"; };
+		E10C792D1C9154AD00AAE763 /* NSArray+Nice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Nice.m"; sourceTree = "<group>"; };
 		E10C792E1C9154AD00AAE763 /* NSJSONSerialization+Nice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSJSONSerialization+Nice.h"; sourceTree = "<group>"; };
 		E10C792F1C9154AD00AAE763 /* NSJSONSerialization+Nice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSJSONSerialization+Nice.m"; sourceTree = "<group>"; };
 		E10C79301C9154AD00AAE763 /* NSOperationQueue+Nice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSOperationQueue+Nice.h"; sourceTree = "<group>"; };
@@ -225,8 +225,8 @@
 			children = (
 				E10C79E11C91686E00AAE763 /* NSObject+Nice.h */,
 				E10C79E21C91686E00AAE763 /* NSObject+Nice.m */,
-				E10C792C1C9154AD00AAE763 /* NSArray+Sort.h */,
-				E10C792D1C9154AD00AAE763 /* NSArray+Sort.m */,
+				E10C792C1C9154AD00AAE763 /* NSArray+Nice.h */,
+				E10C792D1C9154AD00AAE763 /* NSArray+Nice.m */,
 				E10C792E1C9154AD00AAE763 /* NSJSONSerialization+Nice.h */,
 				E10C792F1C9154AD00AAE763 /* NSJSONSerialization+Nice.m */,
 				E10C79301C9154AD00AAE763 /* NSOperationQueue+Nice.h */,
@@ -440,7 +440,7 @@
 				E10C79571C9154AD00AAE763 /* UIDevice+WTRequestCenter.m in Sources */,
 				E10C79611C9154AD00AAE763 /* WTNetWorkManager.m in Sources */,
 				E10C79581C9154AD00AAE763 /* UIImage+ImageCache.m in Sources */,
-				E10C79511C9154AD00AAE763 /* NSArray+Sort.m in Sources */,
+				E10C79511C9154AD00AAE763 /* NSArray+Nice.m in Sources */,
 				E10C79541C9154AD00AAE763 /* UIAlertView+WTRequestCenter.m in Sources */,
 				E19EE3231C5B556F007976DC /* POSTViewController.m in Sources */,
 				E10C79DF1C91676000AAE763 /* UIView+Nice.m in Sources */,
