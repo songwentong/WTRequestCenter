@@ -8,27 +8,31 @@
 
 /* Begin PBXBuildFile section */
 		A3B4A7C2199AF60C00A8BAF0 /* aaa@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = A3B4A7C1199AF60C00A8BAF0 /* aaa@2x.gif */; };
-		E10604901C86B1F80017A469 /* UIAlertView+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E106048F1C86B1F80017A469 /* UIAlertView+WTRequestCenter.m */; };
-		E10604931C86B2C60017A469 /* UIViewController+Nice.m in Sources */ = {isa = PBXBuildFile; fileRef = E10604921C86B2C60017A469 /* UIViewController+Nice.m */; };
-		E10C78C31C91539700AAE763 /* UINavigationController+Nice.m in Sources */ = {isa = PBXBuildFile; fileRef = E10C78C21C91539700AAE763 /* UINavigationController+Nice.m */; };
+		E10C79511C9154AD00AAE763 /* NSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = E10C792D1C9154AD00AAE763 /* NSArray+Sort.m */; };
+		E10C79521C9154AD00AAE763 /* NSJSONSerialization+Nice.m in Sources */ = {isa = PBXBuildFile; fileRef = E10C792F1C9154AD00AAE763 /* NSJSONSerialization+Nice.m */; };
+		E10C79531C9154AD00AAE763 /* NSOperationQueue+Nice.m in Sources */ = {isa = PBXBuildFile; fileRef = E10C79311C9154AD00AAE763 /* NSOperationQueue+Nice.m */; };
+		E10C79541C9154AD00AAE763 /* UIAlertView+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E10C79331C9154AD00AAE763 /* UIAlertView+WTRequestCenter.m */; };
+		E10C79551C9154AD00AAE763 /* UIButton+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E10C79351C9154AD00AAE763 /* UIButton+WTRequestCenter.m */; };
+		E10C79561C9154AD00AAE763 /* UIColor+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E10C79371C9154AD00AAE763 /* UIColor+WTRequestCenter.m */; };
+		E10C79571C9154AD00AAE763 /* UIDevice+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E10C79391C9154AD00AAE763 /* UIDevice+WTRequestCenter.m */; };
+		E10C79581C9154AD00AAE763 /* UIImage+ImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E10C793B1C9154AD00AAE763 /* UIImage+ImageCache.m */; };
+		E10C79591C9154AD00AAE763 /* UIImageView+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E10C793D1C9154AD00AAE763 /* UIImageView+WTRequestCenter.m */; };
+		E10C795A1C9154AD00AAE763 /* UINavigationController+Nice.m in Sources */ = {isa = PBXBuildFile; fileRef = E10C793F1C9154AD00AAE763 /* UINavigationController+Nice.m */; };
+		E10C795B1C9154AD00AAE763 /* UIScreen+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E10C79411C9154AD00AAE763 /* UIScreen+WTRequestCenter.m */; };
+		E10C795C1C9154AD00AAE763 /* UIViewController+Nice.m in Sources */ = {isa = PBXBuildFile; fileRef = E10C79431C9154AD00AAE763 /* UIViewController+Nice.m */; };
+		E10C795D1C9154AD00AAE763 /* WTCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E10C79451C9154AD00AAE763 /* WTCycleScrollView.m */; };
+		E10C795E1C9154AD00AAE763 /* WTDataSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = E10C79471C9154AD00AAE763 /* WTDataSaver.m */; };
+		E10C795F1C9154AD00AAE763 /* WTImageViewer.m in Sources */ = {isa = PBXBuildFile; fileRef = E10C79491C9154AD00AAE763 /* WTImageViewer.m */; };
+		E10C79601C9154AD00AAE763 /* WTNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E10C794C1C9154AD00AAE763 /* WTNetworkActivityIndicatorManager.m */; };
+		E10C79611C9154AD00AAE763 /* WTNetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E10C794E1C9154AD00AAE763 /* WTNetWorkManager.m */; };
+		E10C79621C9154AD00AAE763 /* WTNumberLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E10C79501C9154AD00AAE763 /* WTNumberLabel.m */; };
 		E11D04A11BE1C96F0045C421 /* ImageViewCacheVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E11D04A01BE1C96F0045C421 /* ImageViewCacheVC.m */; };
 		E12573321BE34FB300DB6314 /* POSTImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E12573311BE34FB300DB6314 /* POSTImageViewController.m */; };
 		E12573341BE3537D00DB6314 /* Reference in Resources */ = {isa = PBXBuildFile; fileRef = E12573331BE3537D00DB6314 /* Reference */; };
-		E125733B1BE365BE00DB6314 /* UIColor+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E125733A1BE365BE00DB6314 /* UIColor+WTRequestCenter.m */; };
-		E125733E1BE365E300DB6314 /* WTCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E125733D1BE365E300DB6314 /* WTCycleScrollView.m */; };
-		E12573411BE365EE00DB6314 /* WTImageViewer.m in Sources */ = {isa = PBXBuildFile; fileRef = E12573401BE365EE00DB6314 /* WTImageViewer.m */; };
-		E12573441BE3697700DB6314 /* UIButton+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E12573431BE3697700DB6314 /* UIButton+WTRequestCenter.m */; };
-		E12573471BE7109D00DB6314 /* WTDataSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = E12573461BE7109D00DB6314 /* WTDataSaver.m */; };
 		E125736F1BE8A73400DB6314 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E125736E1BE8A73400DB6314 /* Launch Screen.storyboard */; };
-		E14B89321C7EAA8100805600 /* NSArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = E14B89311C7EAA8100805600 /* NSArray+Sort.m */; };
 		E14B893A1C7EC5EC00805600 /* WTRequestCenterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E14B89391C7EC5EC00805600 /* WTRequestCenterTests.m */; };
-		E152DA1D1C8D65E700FE2860 /* NSJSONSerialization+Nice.m in Sources */ = {isa = PBXBuildFile; fileRef = E152DA1C1C8D65E700FE2860 /* NSJSONSerialization+Nice.m */; };
-		E152DA201C8EA28000FE2860 /* NSOperationQueue+Nice.m in Sources */ = {isa = PBXBuildFile; fileRef = E152DA1F1C8EA28000FE2860 /* NSOperationQueue+Nice.m */; };
-		E18313D41C35270A00A52665 /* UIImage+ImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E18313D31C35270A00A52665 /* UIImage+ImageCache.m */; };
 		E19EE3201C5B5565007976DC /* GETViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E19EE31F1C5B5565007976DC /* GETViewController.m */; };
 		E19EE3231C5B556F007976DC /* POSTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E19EE3221C5B556F007976DC /* POSTViewController.m */; };
-		E1BE635D1BDF10960059574A /* WTNetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BE635A1BDF10960059574A /* WTNetWorkManager.m */; };
-		E1BE637E1BDF109F0059574A /* UIImageView+WTRequestCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BE636B1BDF109F0059574A /* UIImageView+WTRequestCenter.m */; };
 		E1D7A8BA1BE1C8650022F5DC /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D7A8B91BE1C8650022F5DC /* HomeViewController.m */; };
 		E1F4BE031AE0EF4F000F7F21 /* plan in Resources */ = {isa = PBXBuildFile; fileRef = E1F4BE021AE0EF4F000F7F21 /* plan */; };
 		E4440D7B197A01B1001E6D88 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E4440D79197A01B1001E6D88 /* InfoPlist.strings */; };
@@ -50,48 +54,56 @@
 
 /* Begin PBXFileReference section */
 		A3B4A7C1199AF60C00A8BAF0 /* aaa@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = "aaa@2x.gif"; path = "WTRequestCenter/aaa@2x.gif"; sourceTree = "<group>"; };
-		E106048E1C86B1F80017A469 /* UIAlertView+WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+WTRequestCenter.h"; sourceTree = "<group>"; };
-		E106048F1C86B1F80017A469 /* UIAlertView+WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+WTRequestCenter.m"; sourceTree = "<group>"; };
-		E10604911C86B2C60017A469 /* UIViewController+Nice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Nice.h"; sourceTree = "<group>"; };
-		E10604921C86B2C60017A469 /* UIViewController+Nice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Nice.m"; sourceTree = "<group>"; };
-		E10C78C11C91539700AAE763 /* UINavigationController+Nice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+Nice.h"; sourceTree = "<group>"; };
-		E10C78C21C91539700AAE763 /* UINavigationController+Nice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Nice.m"; sourceTree = "<group>"; };
+		E10C792C1C9154AD00AAE763 /* NSArray+Sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Sort.h"; sourceTree = "<group>"; };
+		E10C792D1C9154AD00AAE763 /* NSArray+Sort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Sort.m"; sourceTree = "<group>"; };
+		E10C792E1C9154AD00AAE763 /* NSJSONSerialization+Nice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSJSONSerialization+Nice.h"; sourceTree = "<group>"; };
+		E10C792F1C9154AD00AAE763 /* NSJSONSerialization+Nice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSJSONSerialization+Nice.m"; sourceTree = "<group>"; };
+		E10C79301C9154AD00AAE763 /* NSOperationQueue+Nice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSOperationQueue+Nice.h"; sourceTree = "<group>"; };
+		E10C79311C9154AD00AAE763 /* NSOperationQueue+Nice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSOperationQueue+Nice.m"; sourceTree = "<group>"; };
+		E10C79321C9154AD00AAE763 /* UIAlertView+WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+WTRequestCenter.h"; sourceTree = "<group>"; };
+		E10C79331C9154AD00AAE763 /* UIAlertView+WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+WTRequestCenter.m"; sourceTree = "<group>"; };
+		E10C79341C9154AD00AAE763 /* UIButton+WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+WTRequestCenter.h"; sourceTree = "<group>"; };
+		E10C79351C9154AD00AAE763 /* UIButton+WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+WTRequestCenter.m"; sourceTree = "<group>"; };
+		E10C79361C9154AD00AAE763 /* UIColor+WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+WTRequestCenter.h"; sourceTree = "<group>"; };
+		E10C79371C9154AD00AAE763 /* UIColor+WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+WTRequestCenter.m"; sourceTree = "<group>"; };
+		E10C79381C9154AD00AAE763 /* UIDevice+WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+WTRequestCenter.h"; sourceTree = "<group>"; };
+		E10C79391C9154AD00AAE763 /* UIDevice+WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+WTRequestCenter.m"; sourceTree = "<group>"; };
+		E10C793A1C9154AD00AAE763 /* UIImage+ImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageCache.h"; sourceTree = "<group>"; };
+		E10C793B1C9154AD00AAE763 /* UIImage+ImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageCache.m"; sourceTree = "<group>"; };
+		E10C793C1C9154AD00AAE763 /* UIImageView+WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+WTRequestCenter.h"; sourceTree = "<group>"; };
+		E10C793D1C9154AD00AAE763 /* UIImageView+WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WTRequestCenter.m"; sourceTree = "<group>"; };
+		E10C793E1C9154AD00AAE763 /* UINavigationController+Nice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+Nice.h"; sourceTree = "<group>"; };
+		E10C793F1C9154AD00AAE763 /* UINavigationController+Nice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Nice.m"; sourceTree = "<group>"; };
+		E10C79401C9154AD00AAE763 /* UIScreen+WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScreen+WTRequestCenter.h"; sourceTree = "<group>"; };
+		E10C79411C9154AD00AAE763 /* UIScreen+WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+WTRequestCenter.m"; sourceTree = "<group>"; };
+		E10C79421C9154AD00AAE763 /* UIViewController+Nice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Nice.h"; sourceTree = "<group>"; };
+		E10C79431C9154AD00AAE763 /* UIViewController+Nice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Nice.m"; sourceTree = "<group>"; };
+		E10C79441C9154AD00AAE763 /* WTCycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTCycleScrollView.h; sourceTree = "<group>"; };
+		E10C79451C9154AD00AAE763 /* WTCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTCycleScrollView.m; sourceTree = "<group>"; };
+		E10C79461C9154AD00AAE763 /* WTDataSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTDataSaver.h; sourceTree = "<group>"; };
+		E10C79471C9154AD00AAE763 /* WTDataSaver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTDataSaver.m; sourceTree = "<group>"; };
+		E10C79481C9154AD00AAE763 /* WTImageViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTImageViewer.h; sourceTree = "<group>"; };
+		E10C79491C9154AD00AAE763 /* WTImageViewer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTImageViewer.m; sourceTree = "<group>"; };
+		E10C794A1C9154AD00AAE763 /* WTKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTKit.h; sourceTree = "<group>"; };
+		E10C794B1C9154AD00AAE763 /* WTNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
+		E10C794C1C9154AD00AAE763 /* WTNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
+		E10C794D1C9154AD00AAE763 /* WTNetWorkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTNetWorkManager.h; sourceTree = "<group>"; };
+		E10C794E1C9154AD00AAE763 /* WTNetWorkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTNetWorkManager.m; sourceTree = "<group>"; };
+		E10C794F1C9154AD00AAE763 /* WTNumberLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTNumberLabel.h; sourceTree = "<group>"; };
+		E10C79501C9154AD00AAE763 /* WTNumberLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTNumberLabel.m; sourceTree = "<group>"; };
 		E11D049F1BE1C96F0045C421 /* ImageViewCacheVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewCacheVC.h; sourceTree = "<group>"; };
 		E11D04A01BE1C96F0045C421 /* ImageViewCacheVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewCacheVC.m; sourceTree = "<group>"; };
 		E12573301BE34FB300DB6314 /* POSTImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POSTImageViewController.h; sourceTree = "<group>"; };
 		E12573311BE34FB300DB6314 /* POSTImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POSTImageViewController.m; sourceTree = "<group>"; };
 		E12573331BE3537D00DB6314 /* Reference */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Reference; sourceTree = "<group>"; };
-		E12573391BE365BE00DB6314 /* UIColor+WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+WTRequestCenter.h"; sourceTree = "<group>"; };
-		E125733A1BE365BE00DB6314 /* UIColor+WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+WTRequestCenter.m"; sourceTree = "<group>"; };
-		E125733C1BE365E300DB6314 /* WTCycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTCycleScrollView.h; sourceTree = "<group>"; };
-		E125733D1BE365E300DB6314 /* WTCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTCycleScrollView.m; sourceTree = "<group>"; };
-		E125733F1BE365EE00DB6314 /* WTImageViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTImageViewer.h; sourceTree = "<group>"; };
-		E12573401BE365EE00DB6314 /* WTImageViewer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTImageViewer.m; sourceTree = "<group>"; };
-		E12573421BE3697700DB6314 /* UIButton+WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+WTRequestCenter.h"; sourceTree = "<group>"; };
-		E12573431BE3697700DB6314 /* UIButton+WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+WTRequestCenter.m"; sourceTree = "<group>"; };
-		E12573451BE7109D00DB6314 /* WTDataSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTDataSaver.h; sourceTree = "<group>"; };
-		E12573461BE7109D00DB6314 /* WTDataSaver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTDataSaver.m; sourceTree = "<group>"; };
 		E125736E1BE8A73400DB6314 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		E14B89301C7EAA8100805600 /* NSArray+Sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Sort.h"; sourceTree = "<group>"; };
-		E14B89311C7EAA8100805600 /* NSArray+Sort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Sort.m"; sourceTree = "<group>"; };
 		E14B89371C7EC5EC00805600 /* WTRequestCenterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WTRequestCenterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E14B89391C7EC5EC00805600 /* WTRequestCenterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WTRequestCenterTests.m; sourceTree = "<group>"; };
 		E14B893B1C7EC5EC00805600 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E152DA1B1C8D65E700FE2860 /* NSJSONSerialization+Nice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSJSONSerialization+Nice.h"; sourceTree = "<group>"; };
-		E152DA1C1C8D65E700FE2860 /* NSJSONSerialization+Nice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSJSONSerialization+Nice.m"; sourceTree = "<group>"; };
-		E152DA1E1C8EA28000FE2860 /* NSOperationQueue+Nice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSOperationQueue+Nice.h"; sourceTree = "<group>"; };
-		E152DA1F1C8EA28000FE2860 /* NSOperationQueue+Nice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSOperationQueue+Nice.m"; sourceTree = "<group>"; };
-		E18313D21C35270A00A52665 /* UIImage+ImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageCache.h"; sourceTree = "<group>"; };
-		E18313D31C35270A00A52665 /* UIImage+ImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageCache.m"; sourceTree = "<group>"; };
 		E19EE31E1C5B5565007976DC /* GETViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GETViewController.h; sourceTree = "<group>"; };
 		E19EE31F1C5B5565007976DC /* GETViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GETViewController.m; sourceTree = "<group>"; };
 		E19EE3211C5B556F007976DC /* POSTViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POSTViewController.h; sourceTree = "<group>"; };
 		E19EE3221C5B556F007976DC /* POSTViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POSTViewController.m; sourceTree = "<group>"; };
-		E1BE63591BDF10960059574A /* WTNetWorkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WTNetWorkManager.h; path = ../WTNetWork/WTNetWorkManager.h; sourceTree = "<group>"; };
-		E1BE635A1BDF10960059574A /* WTNetWorkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WTNetWorkManager.m; path = ../WTNetWork/WTNetWorkManager.m; sourceTree = "<group>"; };
-		E1BE636A1BDF109F0059574A /* UIImageView+WTRequestCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+WTRequestCenter.h"; sourceTree = "<group>"; };
-		E1BE636B1BDF109F0059574A /* UIImageView+WTRequestCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WTRequestCenter.m"; sourceTree = "<group>"; };
-		E1BE636C1BDF109F0059574A /* WTKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTKit.h; sourceTree = "<group>"; };
 		E1D7A8B81BE1C8650022F5DC /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		E1D7A8B91BE1C8650022F5DC /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		E1F4BE021AE0EF4F000F7F21 /* plan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = plan; sourceTree = "<group>"; };
@@ -132,53 +144,48 @@
 			name = Res;
 			sourceTree = "<group>";
 		};
-		E10C78C41C9153B300AAE763 /* 网络 */ = {
+		E10C792B1C9154AD00AAE763 /* WTKit */ = {
 			isa = PBXGroup;
 			children = (
-				E1BE63591BDF10960059574A /* WTNetWorkManager.h */,
-				E1BE635A1BDF10960059574A /* WTNetWorkManager.m */,
+				E10C792C1C9154AD00AAE763 /* NSArray+Sort.h */,
+				E10C792D1C9154AD00AAE763 /* NSArray+Sort.m */,
+				E10C792E1C9154AD00AAE763 /* NSJSONSerialization+Nice.h */,
+				E10C792F1C9154AD00AAE763 /* NSJSONSerialization+Nice.m */,
+				E10C79301C9154AD00AAE763 /* NSOperationQueue+Nice.h */,
+				E10C79311C9154AD00AAE763 /* NSOperationQueue+Nice.m */,
+				E10C79321C9154AD00AAE763 /* UIAlertView+WTRequestCenter.h */,
+				E10C79331C9154AD00AAE763 /* UIAlertView+WTRequestCenter.m */,
+				E10C79341C9154AD00AAE763 /* UIButton+WTRequestCenter.h */,
+				E10C79351C9154AD00AAE763 /* UIButton+WTRequestCenter.m */,
+				E10C79361C9154AD00AAE763 /* UIColor+WTRequestCenter.h */,
+				E10C79371C9154AD00AAE763 /* UIColor+WTRequestCenter.m */,
+				E10C79381C9154AD00AAE763 /* UIDevice+WTRequestCenter.h */,
+				E10C79391C9154AD00AAE763 /* UIDevice+WTRequestCenter.m */,
+				E10C793A1C9154AD00AAE763 /* UIImage+ImageCache.h */,
+				E10C793B1C9154AD00AAE763 /* UIImage+ImageCache.m */,
+				E10C793C1C9154AD00AAE763 /* UIImageView+WTRequestCenter.h */,
+				E10C793D1C9154AD00AAE763 /* UIImageView+WTRequestCenter.m */,
+				E10C793E1C9154AD00AAE763 /* UINavigationController+Nice.h */,
+				E10C793F1C9154AD00AAE763 /* UINavigationController+Nice.m */,
+				E10C79401C9154AD00AAE763 /* UIScreen+WTRequestCenter.h */,
+				E10C79411C9154AD00AAE763 /* UIScreen+WTRequestCenter.m */,
+				E10C79421C9154AD00AAE763 /* UIViewController+Nice.h */,
+				E10C79431C9154AD00AAE763 /* UIViewController+Nice.m */,
+				E10C79441C9154AD00AAE763 /* WTCycleScrollView.h */,
+				E10C79451C9154AD00AAE763 /* WTCycleScrollView.m */,
+				E10C79461C9154AD00AAE763 /* WTDataSaver.h */,
+				E10C79471C9154AD00AAE763 /* WTDataSaver.m */,
+				E10C79481C9154AD00AAE763 /* WTImageViewer.h */,
+				E10C79491C9154AD00AAE763 /* WTImageViewer.m */,
+				E10C794A1C9154AD00AAE763 /* WTKit.h */,
+				E10C794B1C9154AD00AAE763 /* WTNetworkActivityIndicatorManager.h */,
+				E10C794C1C9154AD00AAE763 /* WTNetworkActivityIndicatorManager.m */,
+				E10C794D1C9154AD00AAE763 /* WTNetWorkManager.h */,
+				E10C794E1C9154AD00AAE763 /* WTNetWorkManager.m */,
+				E10C794F1C9154AD00AAE763 /* WTNumberLabel.h */,
+				E10C79501C9154AD00AAE763 /* WTNumberLabel.m */,
 			);
-			name = "网络";
-			sourceTree = "<group>";
-		};
-		E10C78C51C9153BA00AAE763 /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				E10C78C11C91539700AAE763 /* UINavigationController+Nice.h */,
-				E10C78C21C91539700AAE763 /* UINavigationController+Nice.m */,
-				E18313D21C35270A00A52665 /* UIImage+ImageCache.h */,
-				E18313D31C35270A00A52665 /* UIImage+ImageCache.m */,
-				E1BE636A1BDF109F0059574A /* UIImageView+WTRequestCenter.h */,
-				E1BE636B1BDF109F0059574A /* UIImageView+WTRequestCenter.m */,
-				E12573421BE3697700DB6314 /* UIButton+WTRequestCenter.h */,
-				E12573431BE3697700DB6314 /* UIButton+WTRequestCenter.m */,
-				E12573391BE365BE00DB6314 /* UIColor+WTRequestCenter.h */,
-				E125733A1BE365BE00DB6314 /* UIColor+WTRequestCenter.m */,
-				E125733F1BE365EE00DB6314 /* WTImageViewer.h */,
-				E12573401BE365EE00DB6314 /* WTImageViewer.m */,
-				E125733C1BE365E300DB6314 /* WTCycleScrollView.h */,
-				E125733D1BE365E300DB6314 /* WTCycleScrollView.m */,
-				E106048E1C86B1F80017A469 /* UIAlertView+WTRequestCenter.h */,
-				E106048F1C86B1F80017A469 /* UIAlertView+WTRequestCenter.m */,
-				E10604911C86B2C60017A469 /* UIViewController+Nice.h */,
-				E10604921C86B2C60017A469 /* UIViewController+Nice.m */,
-			);
-			name = UI;
-			sourceTree = "<group>";
-		};
-		E10C78C61C9153CE00AAE763 /* 其他 */ = {
-			isa = PBXGroup;
-			children = (
-				E152DA1E1C8EA28000FE2860 /* NSOperationQueue+Nice.h */,
-				E152DA1F1C8EA28000FE2860 /* NSOperationQueue+Nice.m */,
-				E152DA1B1C8D65E700FE2860 /* NSJSONSerialization+Nice.h */,
-				E152DA1C1C8D65E700FE2860 /* NSJSONSerialization+Nice.m */,
-				E14B89301C7EAA8100805600 /* NSArray+Sort.h */,
-				E14B89311C7EAA8100805600 /* NSArray+Sort.m */,
-				E12573451BE7109D00DB6314 /* WTDataSaver.h */,
-				E12573461BE7109D00DB6314 /* WTDataSaver.m */,
-			);
-			name = "其他";
+			path = WTKit;
 			sourceTree = "<group>";
 		};
 		E11D049E1BE1C9550045C421 /* ViewControllers */ = {
@@ -205,22 +212,10 @@
 			path = WTRequestCenterTests;
 			sourceTree = "<group>";
 		};
-		E1BE635F1BDF109F0059574A /* WTKit */ = {
-			isa = PBXGroup;
-			children = (
-				E1BE636C1BDF109F0059574A /* WTKit.h */,
-				E10C78C41C9153B300AAE763 /* 网络 */,
-				E10C78C51C9153BA00AAE763 /* UI */,
-				E10C78C61C9153CE00AAE763 /* 其他 */,
-			);
-			name = WTKit;
-			path = "UIKit+WTRequestCenter";
-			sourceTree = "<group>";
-		};
 		E4440D64197A01B1001E6D88 = {
 			isa = PBXGroup;
 			children = (
-				E1BE635F1BDF109F0059574A /* WTKit */,
+				E10C792B1C9154AD00AAE763 /* WTKit */,
 				E4440D76197A01B1001E6D88 /* Classes */,
 				E4440D77197A01B1001E6D88 /* Supporting Files */,
 				A3B40EB019B04BD90060F158 /* Res */,
@@ -383,27 +378,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E12573411BE365EE00DB6314 /* WTImageViewer.m in Sources */,
-				E1BE637E1BDF109F0059574A /* UIImageView+WTRequestCenter.m in Sources */,
-				E1BE635D1BDF10960059574A /* WTNetWorkManager.m in Sources */,
-				E12573441BE3697700DB6314 /* UIButton+WTRequestCenter.m in Sources */,
+				E10C795F1C9154AD00AAE763 /* WTImageViewer.m in Sources */,
 				E4440D81197A01B1001E6D88 /* AppDelegate.m in Sources */,
-				E10C78C31C91539700AAE763 /* UINavigationController+Nice.m in Sources */,
 				E12573321BE34FB300DB6314 /* POSTImageViewController.m in Sources */,
-				E125733B1BE365BE00DB6314 /* UIColor+WTRequestCenter.m in Sources */,
 				E19EE3201C5B5565007976DC /* GETViewController.m in Sources */,
+				E10C79551C9154AD00AAE763 /* UIButton+WTRequestCenter.m in Sources */,
+				E10C79601C9154AD00AAE763 /* WTNetworkActivityIndicatorManager.m in Sources */,
+				E10C79591C9154AD00AAE763 /* UIImageView+WTRequestCenter.m in Sources */,
 				E11D04A11BE1C96F0045C421 /* ImageViewCacheVC.m in Sources */,
+				E10C79521C9154AD00AAE763 /* NSJSONSerialization+Nice.m in Sources */,
+				E10C795D1C9154AD00AAE763 /* WTCycleScrollView.m in Sources */,
+				E10C795A1C9154AD00AAE763 /* UINavigationController+Nice.m in Sources */,
+				E10C79531C9154AD00AAE763 /* NSOperationQueue+Nice.m in Sources */,
+				E10C79571C9154AD00AAE763 /* UIDevice+WTRequestCenter.m in Sources */,
+				E10C79611C9154AD00AAE763 /* WTNetWorkManager.m in Sources */,
+				E10C79581C9154AD00AAE763 /* UIImage+ImageCache.m in Sources */,
+				E10C79511C9154AD00AAE763 /* NSArray+Sort.m in Sources */,
+				E10C79541C9154AD00AAE763 /* UIAlertView+WTRequestCenter.m in Sources */,
 				E19EE3231C5B556F007976DC /* POSTViewController.m in Sources */,
-				E125733E1BE365E300DB6314 /* WTCycleScrollView.m in Sources */,
-				E10604901C86B1F80017A469 /* UIAlertView+WTRequestCenter.m in Sources */,
-				E18313D41C35270A00A52665 /* UIImage+ImageCache.m in Sources */,
-				E14B89321C7EAA8100805600 /* NSArray+Sort.m in Sources */,
+				E10C79561C9154AD00AAE763 /* UIColor+WTRequestCenter.m in Sources */,
+				E10C795E1C9154AD00AAE763 /* WTDataSaver.m in Sources */,
 				E4440D7D197A01B1001E6D88 /* main.m in Sources */,
-				E152DA201C8EA28000FE2860 /* NSOperationQueue+Nice.m in Sources */,
-				E10604931C86B2C60017A469 /* UIViewController+Nice.m in Sources */,
-				E12573471BE7109D00DB6314 /* WTDataSaver.m in Sources */,
+				E10C795C1C9154AD00AAE763 /* UIViewController+Nice.m in Sources */,
+				E10C79621C9154AD00AAE763 /* WTNumberLabel.m in Sources */,
 				E1D7A8BA1BE1C8650022F5DC /* HomeViewController.m in Sources */,
-				E152DA1D1C8D65E700FE2860 /* NSJSONSerialization+Nice.m in Sources */,
+				E10C795B1C9154AD00AAE763 /* UIScreen+WTRequestCenter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
