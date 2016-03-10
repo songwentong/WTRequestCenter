@@ -8,6 +8,7 @@
 
 #import "UIAlertView+WTRequestCenter.h"
 #import "WTNetWorkManager.h"
+#import "NSObject+Nice.h"
 @implementation UIAlertView (WTRequestCenter)
 +(void)showAlertWithMessage:(NSString*)message
 {

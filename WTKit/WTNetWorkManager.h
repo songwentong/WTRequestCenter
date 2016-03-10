@@ -84,10 +84,10 @@
 @end
 
 @interface WTNetWorkManager(GCD)
-void perform(dispatch_block_t block , NSTimeInterval delay);
-+(void)performBlock:(dispatch_block_t)block afterDelay:(NSTimeInterval)delay;
-+(void)performBlock:(dispatch_block_t)block inQueue:(dispatch_queue_t)queue afterDelay:(NSTimeInterval)delay;
-+(void)safeSycInMainQueue:(dispatch_block_t)block;
+//void perform(dispatch_block_t block , NSTimeInterval delay);
+//+(void)performBlock:(dispatch_block_t)block afterDelay:(NSTimeInterval)delay;
+//+(void)performBlock:(dispatch_block_t)block inQueue:(dispatch_queue_t)queue afterDelay:(NSTimeInterval)delay;
+//+(void)safeSycInMainQueue:(dispatch_block_t)block;
 @end
 /**
  Posted when an operation begins executing.

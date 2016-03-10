@@ -8,6 +8,7 @@
 
 #import "UIViewController+Nice.h"
 #import "WTNetWorkManager.h"
+#import "NSObject+Nice.h"
 @implementation UIViewController (Alert)
 -(void)showAlertWithMessage:(NSString*)message
 {

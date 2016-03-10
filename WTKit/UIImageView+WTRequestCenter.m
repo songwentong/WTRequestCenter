@@ -10,6 +10,7 @@
 #import <objc/runtime.h>
 #import "WTNetWorkManager.h"
 #import "UIImage+ImageCache.h"
+#import "NSObject+Nice.h"
 @import ImageIO;
 @import UIKit;
 @interface UIImageView()
@@ -68,7 +69,7 @@ static const void * const WTHighlightedImageOperationKey = @"WT Highlighted Imag
     
     
     NSBlockOperation *operation = [UIImage imageOperationWithURL:url complection:^(UIImage *image,NSError *error) {
-        [WTNetWorkManager safeSycInMainQueue:^{
+        [NSObject safeSycInMainQueue:^{
             if (image) {
                 self.image = image;
                 [self setNeedsLayout];

@@ -12,6 +12,7 @@
 #import "WTNetWorkManager.h"
 #import <objc/runtime.h>
 #import "UIImage+ImageCache.h"
+#import "NSObject+Nice.h"
 @implementation UIButton (WTImageCache)
 
 //设置图片的Operation

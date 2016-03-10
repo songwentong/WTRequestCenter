@@ -45,6 +45,10 @@
 #import "NSOperationQueue+Nice.h"
 #import "CALayer+Nice.h"
 #import "UIView+Nice.h"
+
+
+
+#import "NSObject+Nice.h"
 #endif
 
 
