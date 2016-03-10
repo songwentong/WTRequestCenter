@@ -147,12 +147,27 @@
 		E10C792B1C9154AD00AAE763 /* WTKit */ = {
 			isa = PBXGroup;
 			children = (
-				E10C792C1C9154AD00AAE763 /* NSArray+Sort.h */,
-				E10C792D1C9154AD00AAE763 /* NSArray+Sort.m */,
-				E10C792E1C9154AD00AAE763 /* NSJSONSerialization+Nice.h */,
-				E10C792F1C9154AD00AAE763 /* NSJSONSerialization+Nice.m */,
-				E10C79301C9154AD00AAE763 /* NSOperationQueue+Nice.h */,
-				E10C79311C9154AD00AAE763 /* NSOperationQueue+Nice.m */,
+				E10C794A1C9154AD00AAE763 /* WTKit.h */,
+				E10C79641C9154C800AAE763 /* 网络 */,
+				E10C79631C9154C100AAE763 /* UI */,
+				E10C79651C9154D200AAE763 /* 其他 */,
+			);
+			path = WTKit;
+			sourceTree = "<group>";
+		};
+		E10C79631C9154C100AAE763 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				E10C794B1C9154AD00AAE763 /* WTNetworkActivityIndicatorManager.h */,
+				E10C794C1C9154AD00AAE763 /* WTNetworkActivityIndicatorManager.m */,
+				E10C794F1C9154AD00AAE763 /* WTNumberLabel.h */,
+				E10C79501C9154AD00AAE763 /* WTNumberLabel.m */,
+				E10C79441C9154AD00AAE763 /* WTCycleScrollView.h */,
+				E10C79451C9154AD00AAE763 /* WTCycleScrollView.m */,
+				E10C79461C9154AD00AAE763 /* WTDataSaver.h */,
+				E10C79471C9154AD00AAE763 /* WTDataSaver.m */,
+				E10C79481C9154AD00AAE763 /* WTImageViewer.h */,
+				E10C79491C9154AD00AAE763 /* WTImageViewer.m */,
 				E10C79321C9154AD00AAE763 /* UIAlertView+WTRequestCenter.h */,
 				E10C79331C9154AD00AAE763 /* UIAlertView+WTRequestCenter.m */,
 				E10C79341C9154AD00AAE763 /* UIButton+WTRequestCenter.h */,
@@ -171,21 +186,30 @@
 				E10C79411C9154AD00AAE763 /* UIScreen+WTRequestCenter.m */,
 				E10C79421C9154AD00AAE763 /* UIViewController+Nice.h */,
 				E10C79431C9154AD00AAE763 /* UIViewController+Nice.m */,
-				E10C79441C9154AD00AAE763 /* WTCycleScrollView.h */,
-				E10C79451C9154AD00AAE763 /* WTCycleScrollView.m */,
-				E10C79461C9154AD00AAE763 /* WTDataSaver.h */,
-				E10C79471C9154AD00AAE763 /* WTDataSaver.m */,
-				E10C79481C9154AD00AAE763 /* WTImageViewer.h */,
-				E10C79491C9154AD00AAE763 /* WTImageViewer.m */,
-				E10C794A1C9154AD00AAE763 /* WTKit.h */,
-				E10C794B1C9154AD00AAE763 /* WTNetworkActivityIndicatorManager.h */,
-				E10C794C1C9154AD00AAE763 /* WTNetworkActivityIndicatorManager.m */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		E10C79641C9154C800AAE763 /* 网络 */ = {
+			isa = PBXGroup;
+			children = (
 				E10C794D1C9154AD00AAE763 /* WTNetWorkManager.h */,
 				E10C794E1C9154AD00AAE763 /* WTNetWorkManager.m */,
-				E10C794F1C9154AD00AAE763 /* WTNumberLabel.h */,
-				E10C79501C9154AD00AAE763 /* WTNumberLabel.m */,
 			);
-			path = WTKit;
+			name = "网络";
+			sourceTree = "<group>";
+		};
+		E10C79651C9154D200AAE763 /* 其他 */ = {
+			isa = PBXGroup;
+			children = (
+				E10C792C1C9154AD00AAE763 /* NSArray+Sort.h */,
+				E10C792D1C9154AD00AAE763 /* NSArray+Sort.m */,
+				E10C792E1C9154AD00AAE763 /* NSJSONSerialization+Nice.h */,
+				E10C792F1C9154AD00AAE763 /* NSJSONSerialization+Nice.m */,
+				E10C79301C9154AD00AAE763 /* NSOperationQueue+Nice.h */,
+				E10C79311C9154AD00AAE763 /* NSOperationQueue+Nice.m */,
+			);
+			name = "其他";
 			sourceTree = "<group>";
 		};
 		E11D049E1BE1C9550045C421 /* ViewControllers */ = {
