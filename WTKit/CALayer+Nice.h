@@ -6,7 +6,9 @@
 //  Copyright © 2016 song. All rights reserved.
 //
 
-#import <QuartzCore/QuartzCore.h>
+
+@import QuartzCore;
+@class CALayer;
 @class UIImage;
 @interface CALayer (Nice)
 - (UIImage *)snapshot;
