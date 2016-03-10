@@ -9,6 +9,8 @@
 #import "UIAlertView+WTRequestCenter.h"
 #import "WTNetWorkManager.h"
 #import "NSObject+Nice.h"
+#if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED <= 80000)
+
 @implementation UIAlertView (WTRequestCenter)
 +(void)showAlertWithMessage:(NSString*)message
 {
@@ -37,3 +39,4 @@
 }
 
 @end
+#endif

@@ -7,7 +7,7 @@
 //
 
 @import UIKit;
-
+#if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED <= 80000)
 @interface UIAlertView (WTRequestCenter)
 +(void)showAlertWithMessage:(NSString*)message;
 
@@ -15,3 +15,4 @@
 //显示一个提示框
 +(void)showAlertWithTitle:(NSString*)title message:(NSString*)message duration:(NSTimeInterval)time complectionHandler:(dispatch_block_t)block;
 @end
+#endif
