@@ -26,6 +26,8 @@
 		E10C79601C9154AD00AAE763 /* WTNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E10C794C1C9154AD00AAE763 /* WTNetworkActivityIndicatorManager.m */; };
 		E10C79611C9154AD00AAE763 /* WTNetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E10C794E1C9154AD00AAE763 /* WTNetWorkManager.m */; };
 		E10C79621C9154AD00AAE763 /* WTNumberLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E10C79501C9154AD00AAE763 /* WTNumberLabel.m */; };
+		E10C79DC1C91672300AAE763 /* CALayer+Nice.m in Sources */ = {isa = PBXBuildFile; fileRef = E10C79DB1C91672300AAE763 /* CALayer+Nice.m */; };
+		E10C79DF1C91676000AAE763 /* UIView+Nice.m in Sources */ = {isa = PBXBuildFile; fileRef = E10C79DE1C91676000AAE763 /* UIView+Nice.m */; };
 		E11D04A11BE1C96F0045C421 /* ImageViewCacheVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E11D04A01BE1C96F0045C421 /* ImageViewCacheVC.m */; };
 		E12573321BE34FB300DB6314 /* POSTImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E12573311BE34FB300DB6314 /* POSTImageViewController.m */; };
 		E12573341BE3537D00DB6314 /* Reference in Resources */ = {isa = PBXBuildFile; fileRef = E12573331BE3537D00DB6314 /* Reference */; };
@@ -91,6 +93,10 @@
 		E10C794E1C9154AD00AAE763 /* WTNetWorkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTNetWorkManager.m; sourceTree = "<group>"; };
 		E10C794F1C9154AD00AAE763 /* WTNumberLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTNumberLabel.h; sourceTree = "<group>"; };
 		E10C79501C9154AD00AAE763 /* WTNumberLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTNumberLabel.m; sourceTree = "<group>"; };
+		E10C79DA1C91672300AAE763 /* CALayer+Nice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+Nice.h"; sourceTree = "<group>"; };
+		E10C79DB1C91672300AAE763 /* CALayer+Nice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+Nice.m"; sourceTree = "<group>"; };
+		E10C79DD1C91676000AAE763 /* UIView+Nice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Nice.h"; sourceTree = "<group>"; };
+		E10C79DE1C91676000AAE763 /* UIView+Nice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Nice.m"; sourceTree = "<group>"; };
 		E11D049F1BE1C96F0045C421 /* ImageViewCacheVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewCacheVC.h; sourceTree = "<group>"; };
 		E11D04A01BE1C96F0045C421 /* ImageViewCacheVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewCacheVC.m; sourceTree = "<group>"; };
 		E12573301BE34FB300DB6314 /* POSTImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POSTImageViewController.h; sourceTree = "<group>"; };
@@ -186,6 +192,10 @@
 				E10C79411C9154AD00AAE763 /* UIScreen+WTRequestCenter.m */,
 				E10C79421C9154AD00AAE763 /* UIViewController+Nice.h */,
 				E10C79431C9154AD00AAE763 /* UIViewController+Nice.m */,
+				E10C79DA1C91672300AAE763 /* CALayer+Nice.h */,
+				E10C79DB1C91672300AAE763 /* CALayer+Nice.m */,
+				E10C79DD1C91676000AAE763 /* UIView+Nice.h */,
+				E10C79DE1C91676000AAE763 /* UIView+Nice.m */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -420,10 +430,12 @@
 				E10C79511C9154AD00AAE763 /* NSArray+Sort.m in Sources */,
 				E10C79541C9154AD00AAE763 /* UIAlertView+WTRequestCenter.m in Sources */,
 				E19EE3231C5B556F007976DC /* POSTViewController.m in Sources */,
+				E10C79DF1C91676000AAE763 /* UIView+Nice.m in Sources */,
 				E10C79561C9154AD00AAE763 /* UIColor+WTRequestCenter.m in Sources */,
 				E10C795E1C9154AD00AAE763 /* WTDataSaver.m in Sources */,
 				E4440D7D197A01B1001E6D88 /* main.m in Sources */,
 				E10C795C1C9154AD00AAE763 /* UIViewController+Nice.m in Sources */,
+				E10C79DC1C91672300AAE763 /* CALayer+Nice.m in Sources */,
 				E10C79621C9154AD00AAE763 /* WTNumberLabel.m in Sources */,
 				E1D7A8BA1BE1C8650022F5DC /* HomeViewController.m in Sources */,
 				E10C795B1C9154AD00AAE763 /* UIScreen+WTRequestCenter.m in Sources */,

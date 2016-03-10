@@ -43,6 +43,8 @@
 #import "NSArray+Sort.h"
 #import "NSJSONSerialization+Nice.h"
 #import "NSOperationQueue+Nice.h"
+#import "CALayer+Nice.h"
+#import "UIView+Nice.h"
 #endif
 
 
