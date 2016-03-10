@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface UIView (Nice)
-- (UIImage *)snapshotImage;
+- (UIImage *)snapshot;
 @end

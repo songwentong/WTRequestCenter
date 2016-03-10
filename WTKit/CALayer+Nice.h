@@ -9,5 +9,5 @@
 #import <QuartzCore/QuartzCore.h>
 @class UIImage;
 @interface CALayer (Nice)
-- (UIImage *)snapshotImage;
+- (UIImage *)snapshot;
 @end

@@ -9,7 +9,7 @@
 #import "CALayer+Nice.h"
 @import UIKit;
 @implementation CALayer (Nice)
-- (UIImage *)snapshotImage
+- (UIImage *)snapshot
 {
     UIGraphicsBeginImageContextWithOptions(self.bounds.size, self.opaque, 0);
     CGContextRef context = UIGraphicsGetCurrentContext();

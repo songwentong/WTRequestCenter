@@ -9,8 +9,13 @@
 #import "UIView+Nice.h"
 #import "CALayer+Nice.h"
 @implementation UIView (Nice)
-- (UIImage *)snapshotImage
+- (UIImage *)snapshot
 {
-    return self.layer.snapshotImage;
+    UIGraphicsBeginImageContextWithOptions(self.bounds.size, YES, 0);
+    [self drawViewHierarchyInRect:self.bounds afterScreenUpdates:YES];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
 }
 @end
