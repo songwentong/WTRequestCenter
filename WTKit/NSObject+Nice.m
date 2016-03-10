@@ -9,6 +9,37 @@
 #import "NSObject+Nice.h"
 
 @implementation NSObject (Nice)
+
++(void)debugBlock:(dispatch_block_t)block
+{
+#if DEBUG
+    if (block) {
+        block();
+    }
+#endif
+}
+
+-(void)debugBlock:(dispatch_block_t)block
+{
+    [NSObject debugBlock:block];
+}
+
++(void)releaseBlock:(dispatch_block_t)block
+{
+#if DEBUG
+#else
+    if (block) {
+        block();
+    }
+#endif
+}
+
+-(void)releaseBlock:(dispatch_block_t)block
+{
+    [NSObject releaseBlock:block];
+}
+
+
 void perform(dispatch_block_t block , NSTimeInterval delay)
 {
     [NSObject performBlock:block afterDelay:delay];
