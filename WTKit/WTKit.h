@@ -40,15 +40,15 @@
 #import "WTNumberLabel.h"
 #import "WTCycleScrollView.h"
 #import "UIViewController+Nice.h"
-#import "NSArray+Nice.h"
-#import "NSJSONSerialization+Nice.h"
-#import "NSOperationQueue+Nice.h"
 #import "CALayer+Nice.h"
 #import "UIView+Nice.h"
 
 
-
+//-------------Foundation
 #import "NSObject+Nice.h"
+#import "NSArray+Nice.h"
+#import "NSJSONSerialization+Nice.h"
+#import "NSOperationQueue+Nice.h"
 #endif
 
 
