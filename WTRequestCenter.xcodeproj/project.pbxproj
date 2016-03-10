@@ -132,6 +132,55 @@
 			name = Res;
 			sourceTree = "<group>";
 		};
+		E10C78C41C9153B300AAE763 /* 网络 */ = {
+			isa = PBXGroup;
+			children = (
+				E1BE63591BDF10960059574A /* WTNetWorkManager.h */,
+				E1BE635A1BDF10960059574A /* WTNetWorkManager.m */,
+			);
+			name = "网络";
+			sourceTree = "<group>";
+		};
+		E10C78C51C9153BA00AAE763 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				E10C78C11C91539700AAE763 /* UINavigationController+Nice.h */,
+				E10C78C21C91539700AAE763 /* UINavigationController+Nice.m */,
+				E18313D21C35270A00A52665 /* UIImage+ImageCache.h */,
+				E18313D31C35270A00A52665 /* UIImage+ImageCache.m */,
+				E1BE636A1BDF109F0059574A /* UIImageView+WTRequestCenter.h */,
+				E1BE636B1BDF109F0059574A /* UIImageView+WTRequestCenter.m */,
+				E12573421BE3697700DB6314 /* UIButton+WTRequestCenter.h */,
+				E12573431BE3697700DB6314 /* UIButton+WTRequestCenter.m */,
+				E12573391BE365BE00DB6314 /* UIColor+WTRequestCenter.h */,
+				E125733A1BE365BE00DB6314 /* UIColor+WTRequestCenter.m */,
+				E125733F1BE365EE00DB6314 /* WTImageViewer.h */,
+				E12573401BE365EE00DB6314 /* WTImageViewer.m */,
+				E125733C1BE365E300DB6314 /* WTCycleScrollView.h */,
+				E125733D1BE365E300DB6314 /* WTCycleScrollView.m */,
+				E106048E1C86B1F80017A469 /* UIAlertView+WTRequestCenter.h */,
+				E106048F1C86B1F80017A469 /* UIAlertView+WTRequestCenter.m */,
+				E10604911C86B2C60017A469 /* UIViewController+Nice.h */,
+				E10604921C86B2C60017A469 /* UIViewController+Nice.m */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		E10C78C61C9153CE00AAE763 /* 其他 */ = {
+			isa = PBXGroup;
+			children = (
+				E152DA1E1C8EA28000FE2860 /* NSOperationQueue+Nice.h */,
+				E152DA1F1C8EA28000FE2860 /* NSOperationQueue+Nice.m */,
+				E152DA1B1C8D65E700FE2860 /* NSJSONSerialization+Nice.h */,
+				E152DA1C1C8D65E700FE2860 /* NSJSONSerialization+Nice.m */,
+				E14B89301C7EAA8100805600 /* NSArray+Sort.h */,
+				E14B89311C7EAA8100805600 /* NSArray+Sort.m */,
+				E12573451BE7109D00DB6314 /* WTDataSaver.h */,
+				E12573461BE7109D00DB6314 /* WTDataSaver.m */,
+			);
+			name = "其他";
+			sourceTree = "<group>";
+		};
 		E11D049E1BE1C9550045C421 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,34 +209,9 @@
 			isa = PBXGroup;
 			children = (
 				E1BE636C1BDF109F0059574A /* WTKit.h */,
-				E1BE63591BDF10960059574A /* WTNetWorkManager.h */,
-				E1BE635A1BDF10960059574A /* WTNetWorkManager.m */,
-				E12573451BE7109D00DB6314 /* WTDataSaver.h */,
-				E12573461BE7109D00DB6314 /* WTDataSaver.m */,
-				E18313D21C35270A00A52665 /* UIImage+ImageCache.h */,
-				E18313D31C35270A00A52665 /* UIImage+ImageCache.m */,
-				E1BE636A1BDF109F0059574A /* UIImageView+WTRequestCenter.h */,
-				E1BE636B1BDF109F0059574A /* UIImageView+WTRequestCenter.m */,
-				E12573421BE3697700DB6314 /* UIButton+WTRequestCenter.h */,
-				E12573431BE3697700DB6314 /* UIButton+WTRequestCenter.m */,
-				E12573391BE365BE00DB6314 /* UIColor+WTRequestCenter.h */,
-				E125733A1BE365BE00DB6314 /* UIColor+WTRequestCenter.m */,
-				E125733F1BE365EE00DB6314 /* WTImageViewer.h */,
-				E12573401BE365EE00DB6314 /* WTImageViewer.m */,
-				E125733C1BE365E300DB6314 /* WTCycleScrollView.h */,
-				E125733D1BE365E300DB6314 /* WTCycleScrollView.m */,
-				E14B89301C7EAA8100805600 /* NSArray+Sort.h */,
-				E14B89311C7EAA8100805600 /* NSArray+Sort.m */,
-				E106048E1C86B1F80017A469 /* UIAlertView+WTRequestCenter.h */,
-				E106048F1C86B1F80017A469 /* UIAlertView+WTRequestCenter.m */,
-				E10604911C86B2C60017A469 /* UIViewController+Nice.h */,
-				E10604921C86B2C60017A469 /* UIViewController+Nice.m */,
-				E152DA1B1C8D65E700FE2860 /* NSJSONSerialization+Nice.h */,
-				E152DA1C1C8D65E700FE2860 /* NSJSONSerialization+Nice.m */,
-				E152DA1E1C8EA28000FE2860 /* NSOperationQueue+Nice.h */,
-				E152DA1F1C8EA28000FE2860 /* NSOperationQueue+Nice.m */,
-				E10C78C11C91539700AAE763 /* UINavigationController+Nice.h */,
-				E10C78C21C91539700AAE763 /* UINavigationController+Nice.m */,
+				E10C78C41C9153B300AAE763 /* 网络 */,
+				E10C78C51C9153BA00AAE763 /* UI */,
+				E10C78C61C9153CE00AAE763 /* 其他 */,
 			);
 			name = WTKit;
 			path = "UIKit+WTRequestCenter";
