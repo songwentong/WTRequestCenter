@@ -16,6 +16,9 @@
 @end
 
 @interface UIViewController (Nice)
+/*!
+    如果不需要特殊的设置,不想import的时候可以调用
+ */
 +(instancetype)instanceWithName:(NSString*)name;
 @end
 
