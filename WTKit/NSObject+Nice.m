@@ -55,7 +55,16 @@ void perform(dispatch_block_t block , NSTimeInterval delay)
     }
 }
 
-
+void safeSyncInMainQueue( dispatch_block_t block)
+{
+    if (block) {
+        if ([NSThread isMainThread]) {
+            block();
+        }else{
+            dispatch_sync(dispatch_get_main_queue(), block);
+        }
+    }
+}
 
 -(void)safeSyncInMainQueue:(dispatch_block_t)block
 {

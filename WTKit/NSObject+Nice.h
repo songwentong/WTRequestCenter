@@ -20,5 +20,8 @@
 +(void)performBlock:(dispatch_block_t)block afterDelay:(NSTimeInterval)delay;
 +(void)performBlock:(dispatch_block_t)block inQueue:(dispatch_queue_t)queue afterDelay:(NSTimeInterval)delay;
 
+
+
+void safeSyncInMainQueue( dispatch_block_t block);
 -(void)safeSyncInMainQueue:(dispatch_block_t)block;
 @end
