@@ -259,6 +259,14 @@
 			path = WTRequestCenterTests;
 			sourceTree = "<group>";
 		};
+		E1A131E11C99042D0082BCDF /* IB */ = {
+			isa = PBXGroup;
+			children = (
+				E4440D82197A01B1001E6D88 /* Main.storyboard */,
+			);
+			name = IB;
+			sourceTree = "<group>";
+		};
 		E4440D64197A01B1001E6D88 = {
 			isa = PBXGroup;
 			children = (
@@ -283,12 +291,12 @@
 		E4440D76197A01B1001E6D88 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				E1A131E11C99042D0082BCDF /* IB */,
 				E11D049E1BE1C9550045C421 /* ViewControllers */,
 				E1F4BE021AE0EF4F000F7F21 /* plan */,
 				E12573331BE3537D00DB6314 /* Reference */,
 				E4440D7F197A01B1001E6D88 /* AppDelegate.h */,
 				E4440D80197A01B1001E6D88 /* AppDelegate.m */,
-				E4440D82197A01B1001E6D88 /* Main.storyboard */,
 				E1D7A8B81BE1C8650022F5DC /* HomeViewController.h */,
 				E1D7A8B91BE1C8650022F5DC /* HomeViewController.m */,
 			);

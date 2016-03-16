@@ -21,10 +21,10 @@
             </objects>
             <point key="canvasLocation" x="-1265.625" y="54.929577464788728"/>
         </scene>
-        <!--Home View Controller-->
+        <!--示例-->
         <scene sceneID="0Ew-uh-Lxi">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="9NY-5j-kle" customClass="HomeViewController" sceneMemberID="viewController">
+                <viewController title="示例" automaticallyAdjustsScrollViewInsets="NO" id="9NY-5j-kle" customClass="HomeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="09B-SF-Sab"/>
                         <viewControllerLayoutGuide type="bottom" id="o2S-ce-mGv"/>
@@ -60,7 +60,7 @@
                             <constraint firstItem="B4G-xB-KWP" firstAttribute="top" secondItem="09B-SF-Sab" secondAttribute="bottom" id="swS-YO-hqf"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="IYk-bc-iBy"/>
+                    <navigationItem key="navigationItem" title="使用示例" id="IYk-bc-iBy"/>
                     <connections>
                         <outlet property="tableView" destination="B4G-xB-KWP" id="RKn-7K-UWB"/>
                         <segue destination="yGB-Ja-dZS" kind="show" identifier="imageView" id="Qwg-65-r07"/>

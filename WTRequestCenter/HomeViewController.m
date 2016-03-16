@@ -71,6 +71,15 @@
     [array addObject:@"postImage"];
     return array[indexPath.row];
 }
+- (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString *string = @"";
+    NSMutableArray *array = [NSMutableArray array];
+    [array addObject:@"网络请求"];
+    string = array[section];
+    
+    return string;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
