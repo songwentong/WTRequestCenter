@@ -7,7 +7,7 @@
 //  https://github.com/swtlovewtt/WTRequestCenter
 
 @import Foundation;
-
+NS_ASSUME_NONNULL_BEGIN
 @interface WTNetWorkManager : NSObject
 +(instancetype)sharedKit;
 
@@ -48,7 +48,7 @@
  */
 - (NSMutableURLRequest *)requestWithMethod:(NSString *)method
                                  URLString:(NSString *)URLString
-                                parameters:(NSDictionary*)parameters
+                                parameters:(nullable NSDictionary*)parameters
                                      error:(NSError *__autoreleasing *)error;
 
 
@@ -79,7 +79,7 @@
  
  */
 -(NSMutableURLRequest*)POSTRequestWithURL:(NSString*)url
-                               parameters:(NSDictionary*)parameters
+                               parameters:(nullable NSDictionary*)parameters
                                      body:(NSArray*)body;
 @end
 
@@ -93,3 +93,4 @@ extern NSString * const WTNetworkingOperationDidStartNotification;
  Posted when an operation finishes.
  */
 extern NSString * const WTNetworkingOperationDidFinishNotification;
+NS_ASSUME_NONNULL_END
