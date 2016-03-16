@@ -11,7 +11,10 @@
 
 //iOS 8可用的alertcontroller
 @interface UIViewController (Alert)
+//弹出一个提示内容后在1秒后隐藏
 -(void)showAlertWithMessage:(NSString*)message;
+
+//弹出一个提示框在若干秒后隐藏.
 -(void)showAlertWithTitle:(NSString*)title message:(NSString*)message duration:(NSTimeInterval)time completion: (void (^)(void))completion;
 @end
 
