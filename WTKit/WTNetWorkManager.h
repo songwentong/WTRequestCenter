@@ -26,15 +26,15 @@ NS_ASSUME_NONNULL_BEGIN
  注意:成功和失败都是分线程回调
  */
 -(NSURLSessionDataTask*)taskWithRequest:(NSURLRequest*)request
-                               finished:(void(^)(NSData * data, NSURLResponse * response))finish
-                                 failed:(void(^)(NSError * error))failed;
+                               finished:(nullable void(^)(NSData * data, NSURLResponse * response))finish
+                                 failed:(nullable void(^)(NSError * error))failed;
 
 /*!
  缓存式请求,只缓存GET,不重复
  */
 -(NSURLSessionDataTask*)cachedTaskWithRequest:(NSURLRequest*)request
-                    finished:(void(^)(NSData * data, NSURLResponse * response))finish
-                      failed:(void(^)(NSError * error))failed;
+                    finished:(nullable void(^)(NSData * data, NSURLResponse * response))finish
+                      failed:(nullable void(^)(NSError * error))failed;
 @end
 
 @interface WTNetWorkManager(CreatRequest)
