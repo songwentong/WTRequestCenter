@@ -10,7 +10,7 @@
 
 @interface NSJSONSerialization (Nice)
 /*!
- 得到一个没有null的数据,防止objectForKey崩溃
+    得到一个没有null的数据,防止objectForKey崩溃,效率没有测试,请小心使用
  */
 +(id)niceJsonWithData:(NSData *)data;
 @end
