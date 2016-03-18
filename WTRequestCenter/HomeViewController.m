@@ -87,7 +87,7 @@
     
     //section2
     NSMutableArray *section2 = [NSMutableArray array];
-    [section2 addObject:@"ActionSheet"];
+    [section2 addObject:@"UIAlertController"];
     [array addObject:section2];
     
     
@@ -131,7 +131,7 @@
     if (indexPath.section==0) {
         [self performSegueWithIdentifier:[self segueWithIndexPath:indexPath] sender:nil];
     }else{
-        UIAlertController *con = [UIAlertController alertControllerWithTitle:@"alert" message:@"msg" preferredStyle:UIAlertControllerStyleActionSheet];
+        UIAlertController *con = [UIAlertController alertControllerWithTitle:@"alert" message:@"msg" preferredStyle:UIAlertControllerStyleAlert];
         [con addAction:[UIAlertAction actionWithTitle:@"UIAlertActionStyleDefault" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
         }]];
