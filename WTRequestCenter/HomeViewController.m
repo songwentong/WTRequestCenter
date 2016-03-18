@@ -44,22 +44,56 @@
 //imageView
 
 #pragma mark - UITableViewDataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self titles].count;
+    switch (section) {
+        case 0:
+        {
+            return 4;
+        }
+            break;
+        case 1:
+        {
+            return 1;
+        }
+            break;
+        default:
+        {
+            return 0;
+        }
+            break;
+    }
 }
 
 // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
 // Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
 
--(NSArray*)titles{
+-(NSString*)titleForIndexPath:(NSIndexPath*)indexPath
+{
+    NSString *string = @"";
     NSMutableArray *array = [NSMutableArray array];
-    [array addObject:@"GET 请求"];
-    [array addObject:@"POST 请求"];
-    [array addObject:@"image 缓存"];
-    [array addObject:@"image 上传"];
     
-    return array;
+    //section1
+    NSMutableArray *section1 = [NSMutableArray array];
+    [section1 addObject:@"GET 请求"];
+    [section1 addObject:@"POST 请求"];
+    [section1 addObject:@"image 缓存"];
+    [section1 addObject:@"image 上传"];
+    [array addObject:section1];
+    
+    //section2
+    NSMutableArray *section2 = [NSMutableArray array];
+    [section2 addObject:@"ActionSheet"];
+    [array addObject:section2];
+    
+    
+    
+    string = array[indexPath.section][indexPath.row];
+    return string;
 }
 
 -(NSString*)segueWithIndexPath:(NSIndexPath*)indexPath
@@ -75,7 +109,7 @@
 {
     NSString *string = @"";
     NSMutableArray *array = [NSMutableArray array];
-    [array addObject:@"网络请求"];
+    [array addObjectsFromArray:@[@"网络请求",@"UI"]];
     string = array[section];
     
     return string;
@@ -85,7 +119,7 @@
 {
     UITableViewCell *cell = nil;
     cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
-    cell.textLabel.text = [self titles][indexPath.row];
+    cell.textLabel.text = [self titleForIndexPath:indexPath];
     return cell;
 }
 
@@ -94,7 +128,25 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self performSegueWithIdentifier:[self segueWithIndexPath:indexPath] sender:nil];
+    if (indexPath.section==0) {
+        [self performSegueWithIdentifier:[self segueWithIndexPath:indexPath] sender:nil];
+    }else{
+        UIAlertController *con = [UIAlertController alertControllerWithTitle:@"alert" message:@"msg" preferredStyle:UIAlertControllerStyleActionSheet];
+        [con addAction:[UIAlertAction actionWithTitle:@"UIAlertActionStyleDefault" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }]];
+        [con addAction:[UIAlertAction actionWithTitle:@"UIAlertActionStyleCancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            
+        }]];
+        [con addAction:[UIAlertAction actionWithTitle:@"UIAlertActionStyleDestructive" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            
+        }]];
+        [self presentViewController:con animated:YES completion:^{
+            
+        }];
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
+    
 }
 
 @end
