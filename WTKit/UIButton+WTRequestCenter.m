@@ -117,5 +117,18 @@ static const void * const WTButtonBackGroundImageOperationKey = @"WT Button Back
              
 }
 
+#pragma MARK - Event
+-(void)addtargetforControlEventsTouchUpInside:(dispatch_block_t)block{
+    objc_setAssociatedObject(self, "touchUpInside", block, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    
+    [self addTarget:self action:@selector(methodUIControlEventTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
+    
+}
 
+-(void)methodUIControlEventTouchUpInside:(id)sender{
+    dispatch_block_t block = objc_getAssociatedObject(self, "touchUpInside");
+    if (block) {
+        block();
+    }
+}
 @end

@@ -51,4 +51,10 @@
 - (void)setBackgroundImage:(UIControlState)state
                    withURL:(NSString *)url
           placeholderImage:(UIImage *)placeholderImage;
+
+
+
+
+//添加一个button点击事件的block调用
+-(void)addtargetforControlEventsTouchUpInside:(dispatch_block_t)block;
 @end
