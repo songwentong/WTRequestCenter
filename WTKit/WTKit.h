@@ -42,6 +42,7 @@
 #import "UIViewController+Nice.h"
 #import "CALayer+Nice.h"
 #import "UIView+Nice.h"
+#import "UIApplication+Nice.h"
 
 
 //-------------Foundation
