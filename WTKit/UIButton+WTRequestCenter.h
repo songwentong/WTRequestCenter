@@ -56,5 +56,5 @@
 
 
 //添加一个button点击事件的block调用
--(void)addtargetforControlEventsTouchUpInside:(dispatch_block_t)block;
+-(void)setOnClick:(dispatch_block_t)block;
 @end
