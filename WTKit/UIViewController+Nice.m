@@ -9,6 +9,7 @@
 #import "UIViewController+Nice.h"
 #import "WTNetWorkManager.h"
 #import "NSObject+Nice.h"
+@import StoreKit;
 @implementation UIViewController (Alert)
 -(void)showAlertWithMessage:(NSString*)message
 {
@@ -36,6 +37,28 @@
     Class className = NSClassFromString(name);
     id instance = [[className alloc] init];
     return instance;
+}
+
+
+/*!
+    打开appstore中的页面
+ */
+-(void)showAppStoreWithAppID:(NSString*)appId inapp:(BOOL)inApp
+{
+    
+    if (inApp) {
+        SKStoreProductViewController *storeVC = [SKStoreProductViewController new];
+        [storeVC loadProductWithParameters:@{SKStoreProductParameterITunesItemIdentifier:appId} completionBlock:^(BOOL result, NSError * _Nullable error) {
+            [self presentViewController:storeVC animated:YES completion:^{
+                
+            }];
+        }];
+    }else{
+        NSString *string = [NSString stringWithFormat:@"https://itunes.apple.com/us/app/%@",appId];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:string]];
+    }
+    
+    
 }
 
 

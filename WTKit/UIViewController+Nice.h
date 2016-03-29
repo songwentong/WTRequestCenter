@@ -23,6 +23,11 @@
     如果不需要特殊的设置,不想import的时候可以调用
  */
 +(instancetype)instanceWithName:(NSString*)name;
+
+/*!
+    打开appstore中的页面
+ */
+-(void)showAppStoreWithAppID:(NSString*)appId inapp:(BOOL)inApp;
 @end
 
 
