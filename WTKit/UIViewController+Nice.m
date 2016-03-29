@@ -43,7 +43,7 @@
 /*!
     打开appstore中的页面
  */
--(void)showAppStoreWithAppID:(NSString*)appId inapp:(BOOL)inApp
+-(id)showAppStoreWithAppID:(NSString*)appId inapp:(BOOL)inApp
 {
     
     if (inApp) {
@@ -53,12 +53,13 @@
                 
             }];
         }];
+        return storeVC;
     }else{
         NSString *string = [NSString stringWithFormat:@"https://itunes.apple.com/us/app/%@",appId];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:string]];
     }
     
-    
+    return nil;
 }
 
 

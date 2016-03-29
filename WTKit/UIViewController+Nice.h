@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 /*!
     打开appstore中的页面
  */
--(void)showAppStoreWithAppID:(NSString*)appId inapp:(BOOL)inApp;
+-(id)showAppStoreWithAppID:(NSString*)appId inapp:(BOOL)inApp;
 @end
 
 
