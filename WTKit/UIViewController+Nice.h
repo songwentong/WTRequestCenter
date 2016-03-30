@@ -11,10 +11,17 @@
 NS_ASSUME_NONNULL_BEGIN
 //iOS 8可用的alertcontroller
 @interface UIViewController (Alert)
-//弹出一个提示内容后在1秒后隐藏
+/*!
+ 弹出一个提示内容后在1秒后隐藏
+ iOS 8 可用
+ */
 -(void)showAlertWithMessage:(NSString*)message;
 
-//弹出一个提示框在若干秒后隐藏.
+
+/*!
+ 弹出一个提示框在若干秒后隐藏.
+ iOS 8 可用
+ */
 -(void)showAlertWithTitle:(nullable NSString*)title message:(nullable NSString*)message duration:(NSTimeInterval)time completion: (nullable void (^)(void))completion;
 @end
 
