@@ -191,35 +191,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开发中,和GET相似,把method改成POST就可以了" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udo-vl-I9p">
-                                <rect key="frame" x="16" y="313" width="343" height="41"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="输入URL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LJi-XE-lMt">
+                                <rect key="frame" x="16" y="86" width="279" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="JJk-yN-46P"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1wd-8T-cCW">
+                                <rect key="frame" x="329" y="85" width="30" height="30"/>
+                                <state key="normal" title="请求"/>
+                                <connections>
+                                    <action selector="request:" destination="1Sf-70-sgr" eventType="touchUpInside" id="0aB-T3-50F"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="未请求" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="DQL-AR-jc0">
+                                <rect key="frame" x="20" y="132" width="335" height="515"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="udo-vl-I9p" firstAttribute="centerY" secondItem="Ghu-I3-eZ3" secondAttribute="centerY" id="6Vk-ML-AcF"/>
-                            <constraint firstItem="udo-vl-I9p" firstAttribute="leading" secondItem="Ghu-I3-eZ3" secondAttribute="leading" constant="16" id="FqG-Mm-aag"/>
-                            <constraint firstItem="udo-vl-I9p" firstAttribute="centerX" secondItem="Ghu-I3-eZ3" secondAttribute="centerX" id="MEh-oa-7bP"/>
-                            <constraint firstAttribute="trailing" secondItem="udo-vl-I9p" secondAttribute="trailing" constant="16" id="VGd-P8-z1Y"/>
+                            <constraint firstItem="LJi-XE-lMt" firstAttribute="leading" secondItem="Ghu-I3-eZ3" secondAttribute="leading" constant="16" id="1QA-FV-ele"/>
+                            <constraint firstItem="DQL-AR-jc0" firstAttribute="leading" secondItem="Ghu-I3-eZ3" secondAttribute="leading" constant="20" id="L1M-DP-A2L"/>
+                            <constraint firstItem="DQL-AR-jc0" firstAttribute="top" secondItem="LJi-XE-lMt" secondAttribute="bottom" constant="16" id="Q02-c5-6IB"/>
+                            <constraint firstAttribute="trailing" secondItem="LJi-XE-lMt" secondAttribute="trailing" constant="80" id="Vkd-bI-aex"/>
+                            <constraint firstItem="1wd-8T-cCW" firstAttribute="top" secondItem="jb7-rD-c3q" secondAttribute="bottom" constant="21" id="YTl-RB-Okx"/>
+                            <constraint firstItem="LJi-XE-lMt" firstAttribute="top" secondItem="jb7-rD-c3q" secondAttribute="bottom" constant="22" id="c3Y-yE-aRn"/>
+                            <constraint firstAttribute="trailing" secondItem="DQL-AR-jc0" secondAttribute="trailing" constant="20" id="nJk-g1-kYB"/>
+                            <constraint firstAttribute="trailing" secondItem="1wd-8T-cCW" secondAttribute="trailing" constant="16" id="w8g-io-E4c"/>
+                            <constraint firstItem="Lrs-Aa-OIz" firstAttribute="top" secondItem="DQL-AR-jc0" secondAttribute="bottom" constant="20" id="wvf-DH-sMV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="POST请求" id="h9U-G7-mo4">
                         <barButtonItem key="rightBarButtonItem" title="参数" id="zyY-Zh-3ha">
                             <connections>
-                                <action selector="setParameters:" destination="1Sf-70-sgr" id="rH1-vg-f0V"/>
+                                <action selector="configParas:" destination="1Sf-70-sgr" id="5XC-v7-L3h"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="resultTextView" destination="DQL-AR-jc0" id="AQg-RV-gER"/>
+                        <outlet property="urlTextField" destination="LJi-XE-lMt" id="hEv-TZ-q9J"/>
                         <segue destination="Vgi-1w-ozw" kind="show" identifier="parameters" id="5d8-p4-WgT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nb3-2h-HhK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="644" y="-383"/>
+            <point key="canvasLocation" x="643.5" y="-383.5"/>
         </scene>
         <!--Title-->
         <scene sceneID="1wS-Ow-gBa">
@@ -271,6 +293,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Title" id="vzB-dv-WaH">
+                        <barButtonItem key="leftBarButtonItem" title="提交" id="vTo-wt-y0o">
+                            <connections>
+                                <action selector="commitParameters:" destination="Vgi-1w-ozw" id="0w9-mg-USq"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="清空" id="jTv-gF-u5v" userLabel="清空">
                             <connections>
                                 <action selector="clearParameters:" destination="Vgi-1w-ozw" id="GWB-Ws-s3Z"/>

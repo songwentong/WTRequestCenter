@@ -15,14 +15,15 @@
 @end
 
 @implementation ParametersVC
-- (instancetype)init
+- (instancetype)initWithCoder:(NSCoder *)coder
 {
-    self = [super init];
+    self = [super initWithCoder:coder];
     if (self) {
-        self.parameters = [NSMutableDictionary dictionary];
+        self.parameters = [NSMutableArray array];
     }
     return self;
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -33,6 +34,10 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
 }
+- (IBAction)commitParameters:(id)sender {
+    [self.delegate parametersVCGetParameters:self];
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 
 - (IBAction)clearParameters:(id)sender {
@@ -42,6 +47,21 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)savePressed:(UIButton*)sender{
+    UITableViewCell *cell = (UITableViewCell*)sender.superview.superview;
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    UITextField *tf1 = [cell viewWithTag:1];
+    UITextField *tf2 = [cell viewWithTag:2];
+    NSDictionary *dict = @{tf1.text:tf2.text};
+    if (indexPath.row==_parameters.count) {
+        [_parameters addObject:dict];
+    }else{
+        [_parameters replaceObjectAtIndex:indexPath.row withObject:dict];
+    }
+    
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
@@ -72,13 +92,14 @@
 {
     UITextField *tf1 = [cell viewWithTag:1];
     UITextField *tf2 = [cell viewWithTag:2];
+    UIButton *button = [cell viewWithTag:3];
     
-    if (indexPath.row<_parameters.allKeys.count) {
-        NSArray *allkey = [_parameters allKeys];
-        NSString *key = allkey[indexPath.row];
+    [button addTarget:self action:@selector(savePressed:) forControlEvents:UIControlEventTouchUpInside];
+    if (indexPath.row<_parameters.count) {
+        NSDictionary *dict = _parameters[indexPath.row];
+        NSString *key = [[dict allKeys] lastObject];
         tf1.text = key;
-        
-        tf2.text = [_parameters valueForKey:key];
+        tf2.text = [dict valueForKey:key];
     }
 }
 

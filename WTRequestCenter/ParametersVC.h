@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class ParametersVC;
+@protocol ParametersVCDelegate
+@optional
+-(void)parametersVCGetParameters:(ParametersVC*)vc;
+@end
 @interface ParametersVC : UITableViewController
-@property (nonatomic,strong) NSMutableDictionary *parameters;
+@property (nonatomic,weak) id <ParametersVCDelegate> delegate;
+@property (nonatomic,strong) NSMutableArray *parameters;
 @end
