@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Kid-i4-44k">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Kid-i4-44k">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -258,15 +258,25 @@
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="RrK-tA-HAR">
                                 <rect key="frame" x="120" y="166" width="20" height="20"/>
                             </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IJi-0k-Zge">
+                                <rect key="frame" x="16" y="323" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="RrK-tA-HAR" firstAttribute="centerX" secondItem="yYs-DG-D6M" secondAttribute="centerX" id="2Bf-4G-ETG"/>
                             <constraint firstItem="RrK-tA-HAR" firstAttribute="centerY" secondItem="yYs-DG-D6M" secondAttribute="centerY" id="3do-Xl-rA5"/>
                             <constraint firstAttribute="trailing" secondItem="yYs-DG-D6M" secondAttribute="trailing" constant="125" id="738-Bb-4bj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="IJi-0k-Zge" secondAttribute="trailing" id="M0H-sN-JzC"/>
                             <constraint firstItem="x9Q-hi-D7F" firstAttribute="top" secondItem="SBN-YB-csG" secondAttribute="bottom" constant="20" id="Mwb-za-XQb"/>
                             <constraint firstItem="yYs-DG-D6M" firstAttribute="top" secondItem="Alr-hz-qbz" secondAttribute="bottom" constant="8" id="TaS-2y-MRn"/>
+                            <constraint firstItem="IJi-0k-Zge" firstAttribute="leading" secondItem="FLQ-yG-tqU" secondAttribute="leadingMargin" id="Xgq-ez-rRA"/>
                             <constraint firstItem="Alr-hz-qbz" firstAttribute="top" secondItem="7hc-Bv-BEc" secondAttribute="bottom" constant="10" id="ZN1-0x-AFK"/>
+                            <constraint firstItem="IJi-0k-Zge" firstAttribute="top" secondItem="yYs-DG-D6M" secondAttribute="bottom" constant="83" id="ZnB-6s-Zpy"/>
+                            <constraint firstItem="YTf-vW-bHE" firstAttribute="top" secondItem="IJi-0k-Zge" secondAttribute="bottom" constant="8" id="eOd-HK-vKP"/>
                             <constraint firstItem="yYs-DG-D6M" firstAttribute="leading" secondItem="FLQ-yG-tqU" secondAttribute="leading" constant="10" id="elk-f8-QJo"/>
                             <constraint firstAttribute="trailing" secondItem="x9Q-hi-D7F" secondAttribute="trailing" constant="20" id="gGy-M3-ghx"/>
                             <constraint firstAttribute="trailing" secondItem="Alr-hz-qbz" secondAttribute="trailing" constant="10" id="lc0-vi-hzi"/>
@@ -274,6 +284,11 @@
                             <constraint firstItem="SBN-YB-csG" firstAttribute="top" secondItem="Alr-hz-qbz" secondAttribute="bottom" constant="8" id="rDq-3T-iem"/>
                             <constraint firstAttribute="trailing" secondItem="SBN-YB-csG" secondAttribute="trailing" constant="20" id="tff-c0-yjA"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="eOd-HK-vKP"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="ffK-DO-FAS">
                         <barButtonItem key="rightBarButtonItem" title="给出URL并请求" id="RxM-7k-kWR">
@@ -286,6 +301,7 @@
                         <outlet property="activity" destination="RrK-tA-HAR" id="Kux-W9-gh5"/>
                         <outlet property="myImageView" destination="yYs-DG-D6M" id="0cL-np-7kr"/>
                         <outlet property="myTextField" destination="Alr-hz-qbz" id="MHR-8c-p2X"/>
+                        <outlet property="statusLabel" destination="IJi-0k-Zge" id="53W-V4-3Jf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pCZ-rn-iz7" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -11,6 +11,7 @@
 #import "WTKit.h"
 @interface ImageViewCacheVC ()
 
+@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activity;
 @property (weak, nonatomic) IBOutlet UITextField *myTextField;
 @property (weak, nonatomic) IBOutlet UIImageView *myImageView;
@@ -21,6 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _statusLabel.text = @"";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,10 +40,13 @@
 {
     [_activity startAnimating];
     [_myTextField resignFirstResponder];
+    _statusLabel.text = @"请求中";
     [_myImageView setImageWithURL:url placeholderImage:nil finished:^{
         [_activity stopAnimating];
+        _statusLabel.text = @"请求成功";
     } failed:^(NSError *error) {
         [_activity stopAnimating];
+        _statusLabel.text = [NSString stringWithFormat:@"请求失败:%@",error.localizedDescription];
     }];
 }
 
