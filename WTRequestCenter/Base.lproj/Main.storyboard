@@ -73,10 +73,10 @@
             </objects>
             <point key="canvasLocation" x="-516.5" y="54.5"/>
         </scene>
-        <!--Image View Controller-->
+        <!--图片上传-->
         <scene sceneID="ZUc-U2-W2h">
             <objects>
-                <viewController id="iYW-Jr-8b1" customClass="POSTImageViewController" sceneMemberID="viewController">
+                <viewController title="图片上传" id="iYW-Jr-8b1" customClass="POSTImageViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="naS-nh-RP6"/>
                         <viewControllerLayoutGuide type="bottom" id="bQf-Jn-YVs"/>
@@ -125,10 +125,10 @@
             </objects>
             <point key="canvasLocation" x="146.5" y="955.5"/>
         </scene>
-        <!--View Controller-->
+        <!--GET请求-->
         <scene sceneID="8dw-CF-jLF">
             <objects>
-                <viewController id="pmf-lz-e0d" customClass="GETViewController" sceneMemberID="viewController">
+                <viewController title="GET请求" id="pmf-lz-e0d" customClass="GETViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eBf-Zz-sIW"/>
                         <viewControllerLayoutGuide type="bottom" id="4V7-WQ-H0M"/>
@@ -309,7 +309,7 @@
             </objects>
             <point key="canvasLocation" x="1180.5" y="-383.5"/>
         </scene>
-        <!--Title-->
+        <!--图片缓存-->
         <scene sceneID="2p4-Xk-8eT">
             <objects>
                 <viewController id="yGB-Ja-dZS" customClass="ImageViewCacheVC" sceneMemberID="viewController">
@@ -388,7 +388,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="ffK-DO-FAS">
+                    <navigationItem key="navigationItem" title="图片缓存" id="ffK-DO-FAS">
                         <barButtonItem key="rightBarButtonItem" title="给出URL并请求" id="RxM-7k-kWR">
                             <connections>
                                 <action selector="requestUseDefaultURL:" destination="yGB-Ja-dZS" id="CCK-2Q-2y8"/>
