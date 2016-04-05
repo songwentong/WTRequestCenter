@@ -43,7 +43,7 @@
                 _textView.text = string;
             }
         } failed:^(NSError *error) {
-            
+            _textView.text = [NSString stringWithFormat:@"请求失败:%@",error.localizedDescription];
         }];
     }
 }

@@ -618,14 +618,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yin GongJing (ER98V5DG57)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: wen tong song (WVXF8UY82Q)";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "WTRequestCenter/WTRequestCenter-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.qg.a;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mb.security;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "372193c5-4528-4519-8902-00e9b69aef20";
+				PROVISIONING_PROFILE = "0b9b461f-54c5-4271-8af2-8583736affd5";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -639,7 +639,7 @@
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "WTRequestCenter/WTRequestCenter-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.qg.a;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mb.security;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
