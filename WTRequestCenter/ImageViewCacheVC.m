@@ -51,9 +51,11 @@
 }
 
 - (IBAction)requestImage:(id)sender {
+    
     [self requestUseDefaultURL:_myTextField.text];
 }
 - (IBAction)cleanImage:(id)sender {
+    [[WTNetWorkManager sharedURLcache] removeAllCachedResponses];
     _myImageView.image = nil;
 }
 
