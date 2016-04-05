@@ -27,6 +27,13 @@
 
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    NSIndexPath *indexPath = self.tableView.indexPathForSelectedRow;
+    [_tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
