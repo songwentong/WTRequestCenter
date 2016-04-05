@@ -37,6 +37,7 @@
 
 - (IBAction)request:(id)sender {
     NSString *url = _urlTextField.text;
+    [_urlTextField resignFirstResponder];
     if (![url hasPrefix:@"http://"]) {
         url = [NSString stringWithFormat:@"http://%@",url];
     }
