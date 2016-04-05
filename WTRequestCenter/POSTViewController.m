@@ -10,7 +10,7 @@
 
 @interface POSTViewController ()
 {
-    UISegmentedControl *_segment;
+//    UISegmentedControl *_segment;
 }
 @end
 
@@ -19,8 +19,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    _segment = [[UISegmentedControl alloc] initWithItems:@[@"请求",@"参数"]];
-    self.navigationItem.titleView = _segment;
+//    _segment = [[UISegmentedControl alloc] initWithItems:@[@"请求",@"参数"]];
+//    self.navigationItem.titleView = _segment;
+}
+- (IBAction)setParameters:(id)sender {
+    [self performSegueWithIdentifier:@"parameters" sender:nil];
 }
 
 - (void)didReceiveMemoryWarning {

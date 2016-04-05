@@ -179,10 +179,10 @@
             </objects>
             <point key="canvasLocation" x="123.5" y="-662.5"/>
         </scene>
-        <!--View Controller-->
+        <!--POST请求-->
         <scene sceneID="fEg-fH-tt9">
             <objects>
-                <viewController id="1Sf-70-sgr" customClass="POSTViewController" sceneMemberID="viewController">
+                <viewController title="POST请求" id="1Sf-70-sgr" customClass="POSTViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jb7-rD-c3q"/>
                         <viewControllerLayoutGuide type="bottom" id="Lrs-Aa-OIz"/>
@@ -206,10 +206,81 @@
                             <constraint firstAttribute="trailing" secondItem="udo-vl-I9p" secondAttribute="trailing" constant="16" id="VGd-P8-z1Y"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="POST请求" id="h9U-G7-mo4">
+                        <barButtonItem key="rightBarButtonItem" title="参数" id="zyY-Zh-3ha">
+                            <connections>
+                                <action selector="setParameters:" destination="1Sf-70-sgr" id="rH1-vg-f0V"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="Vgi-1w-ozw" kind="show" identifier="parameters" id="5d8-p4-WgT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nb3-2h-HhK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="644" y="-383"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="1wS-Ow-gBa">
+            <objects>
+                <tableViewController id="Vgi-1w-ozw" customClass="ParametersVC" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="71" sectionHeaderHeight="28" sectionFooterHeight="28" id="5PK-Wt-ThX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="71" id="Xdg-Gp-Bcc">
+                                <rect key="frame" x="0.0" y="92" width="375" height="71"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xdg-Gp-Bcc" id="73H-dt-uKu">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="key" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vdW-oJ-fx8">
+                                            <rect key="frame" x="14" y="20" width="136" height="30"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="value" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mcU-Ee-AlY">
+                                            <rect key="frame" x="160" y="20" width="135" height="30"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NXt-cN-nY8">
+                                            <rect key="frame" x="331" y="20" width="30" height="30"/>
+                                            <state key="normal" title="确认"/>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="mcU-Ee-AlY" secondAttribute="trailing" constant="80" id="0Dc-Ik-KTU"/>
+                                        <constraint firstItem="mcU-Ee-AlY" firstAttribute="centerY" secondItem="73H-dt-uKu" secondAttribute="centerY" id="8fV-sG-CCo"/>
+                                        <constraint firstItem="vdW-oJ-fx8" firstAttribute="centerY" secondItem="73H-dt-uKu" secondAttribute="centerY" id="FHa-yM-xXc"/>
+                                        <constraint firstAttribute="trailing" secondItem="NXt-cN-nY8" secondAttribute="trailing" constant="14" id="Gpr-Wj-Ahe"/>
+                                        <constraint firstItem="vdW-oJ-fx8" firstAttribute="width" secondItem="mcU-Ee-AlY" secondAttribute="width" id="Vcl-K9-Ei2"/>
+                                        <constraint firstItem="mcU-Ee-AlY" firstAttribute="leading" secondItem="vdW-oJ-fx8" secondAttribute="trailing" constant="10" id="X1z-1e-NSK"/>
+                                        <constraint firstItem="NXt-cN-nY8" firstAttribute="centerY" secondItem="73H-dt-uKu" secondAttribute="centerY" id="bSn-Yi-Faf"/>
+                                        <constraint firstItem="vdW-oJ-fx8" firstAttribute="leading" secondItem="73H-dt-uKu" secondAttribute="leading" constant="14" id="ywn-Je-9ft"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Vgi-1w-ozw" id="kjz-Qu-hSL"/>
+                            <outlet property="delegate" destination="Vgi-1w-ozw" id="UKC-eg-Rke"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="vzB-dv-WaH">
+                        <barButtonItem key="rightBarButtonItem" title="清空" id="jTv-gF-u5v" userLabel="清空">
+                            <connections>
+                                <action selector="clearParameters:" destination="Vgi-1w-ozw" id="GWB-Ws-s3Z"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="efJ-XX-hYw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1180.5" y="-383.5"/>
         </scene>
         <!--Title-->
         <scene sceneID="2p4-Xk-8eT">
