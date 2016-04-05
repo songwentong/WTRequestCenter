@@ -37,6 +37,9 @@
 
 - (IBAction)request:(id)sender {
     NSString *url = _urlTextField.text;
+    if (![url hasPrefix:@"http://"]) {
+        url = [NSString stringWithFormat:@"http://%@",url];
+    }
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [_parameters enumerateObjectsUsingBlock:^(NSDictionary *dict, NSUInteger idx, BOOL * _Nonnull stop) {
         [parameters setDictionary:dict];

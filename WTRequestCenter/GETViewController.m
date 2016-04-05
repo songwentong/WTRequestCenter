@@ -31,7 +31,11 @@
 - (IBAction)requestPressed:(id)sender
 {
     NSError *error = nil;
-    NSURLRequest *request =  [[WTNetWorkManager sharedKit] requestWithMethod:@"GET" URLString:_urlTextField.text parameters:nil error:&error];
+    NSString *url = _urlTextField.text;
+    if (![url hasPrefix:@"http://"]) {
+        url = [NSString stringWithFormat:@"http://%@",url];
+    }
+    NSURLRequest *request =  [[WTNetWorkManager sharedKit] requestWithMethod:@"GET" URLString:url parameters:nil error:&error];
     if (error) {
 //        UIAlertController *ac = [[UIAlertController alloc] init];
 //        ac.title =
