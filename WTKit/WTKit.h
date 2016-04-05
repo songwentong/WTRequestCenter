@@ -57,7 +57,6 @@
 
 /*
     常用库
-    Reachability
     GBVersionTracking
     UICKeyChainStore
     MBProgressHUD
