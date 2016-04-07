@@ -60,29 +60,22 @@
         
         
         _statusLabel.text = @"发送中";
-        [[[WTNetWorkManager sharedKit].session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-            _sending = NO;
-            if (error) {
-//                NSLog(@"%@",error);
-                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                _statusLabel.text = @"失败";
-                }];
-
-            }else{
-                NSString *s = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-//                NSLog(@"%@",s);
-                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                    if (s.length==0) {
-                        _statusLabel.text = @"POST 成功";
-                    }else{
-                        _statusLabel.text = @"失败";
-                    }
-                }];
-
-                
-            }
+        [[WTNetWorkManager sharedKit] taskWithRequest:request finished:^(NSData * _Nonnull data, NSURLResponse * _Nonnull response) {
+            NSString *s = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             
-        }] resume];
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                if (s.length==0) {
+                    _statusLabel.text = @"POST 成功";
+                }else{
+                    _statusLabel.text = @"失败";
+                }
+            }];
+        } failed:^(NSError * _Nonnull error) {
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                _statusLabel.text = @"失败";
+            }];
+        }];
+
         
     }
 }
