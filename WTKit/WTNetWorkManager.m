@@ -194,8 +194,9 @@ static NSURLCache *cache =nil;
     NSURL *url = nil;
     
     
-
+    //获得URL字符集
     NSMutableCharacterSet * allowedCharacterSet = [[NSCharacterSet URLQueryAllowedCharacterSet] mutableCopy];
+    //转码为URL可用的字符集
     url = [NSURL URLWithString:[URLString stringByAddingPercentEncodingWithAllowedCharacters:allowedCharacterSet]];
 
     
