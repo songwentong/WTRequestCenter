@@ -230,8 +230,9 @@ static NSURLCache *cache =nil;
         if ([self methodNeedQuery:request.HTTPMethod]) {
             NSString *urlString = nil;
             
-
+            //获得URL可用字符集
             NSMutableCharacterSet * allowedCharacterSet = [[NSCharacterSet URLQueryAllowedCharacterSet] mutableCopy];
+            //转码为URL + 百分号的字符串
             urlString = [[NSString stringWithFormat:@"%@?%@",request.URL,query] stringByAddingPercentEncodingWithAllowedCharacters:allowedCharacterSet];
 
             
