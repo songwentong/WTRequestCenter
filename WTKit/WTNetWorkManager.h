@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
                                  failed:(nullable void(^)(NSError * error))failed;
 
 /*!
- 缓存式请求,只缓存GET,不重复
+ 缓存式请求,只缓存GET,不重复请求
  */
 -(NSURLSessionDataTask*)cachedTaskWithRequest:(NSURLRequest*)request
                     finished:(nullable void(^)(NSData * data, NSURLResponse * response))finish
