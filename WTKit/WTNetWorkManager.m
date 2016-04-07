@@ -194,12 +194,10 @@ static NSURLCache *cache =nil;
     NSURL *url = nil;
     
     
-#if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000)
+
     NSMutableCharacterSet * allowedCharacterSet = [[NSCharacterSet URLQueryAllowedCharacterSet] mutableCopy];
     url = [NSURL URLWithString:[URLString stringByAddingPercentEncodingWithAllowedCharacters:allowedCharacterSet]];
-#else
-    url = [NSURL URLWithString:[URLString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-#endif
+
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     request.HTTPMethod = method;
@@ -231,12 +229,10 @@ static NSURLCache *cache =nil;
         if ([self methodNeedQuery:request.HTTPMethod]) {
             NSString *urlString = nil;
             
-#if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000)
+
             NSMutableCharacterSet * allowedCharacterSet = [[NSCharacterSet URLQueryAllowedCharacterSet] mutableCopy];
             urlString = [[NSString stringWithFormat:@"%@?%@",request.URL,query] stringByAddingPercentEncodingWithAllowedCharacters:allowedCharacterSet];
-#else
-            urlString = [[NSString stringWithFormat:@"%@?%@",request.URL,query] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-#endif
+
             
             mutableRequest.URL = [NSURL URLWithString:urlString];
         }else
