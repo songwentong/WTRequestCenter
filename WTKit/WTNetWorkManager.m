@@ -17,7 +17,9 @@
     
     NSUInteger _connectionCount;
 }
+
 @property (readwrite, nonatomic, strong) NSURLSession *session;
+@property (nonatomic,strong) NSMutableDictionary *HTTPRequestHeaders;
 @end
 @implementation WTNetWorkManager
 static WTNetWorkManager* kit = nil;
@@ -219,9 +221,9 @@ static NSURLCache *cache =nil;
     assert(request!=nil);
     NSMutableURLRequest *mutableRequest = [request mutableCopy];
     
-    //    [_HTTPRequestHeaders enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
-    //        [mutableRequest setValue:value forHTTPHeaderField:key];
-    //    }];
+    [_HTTPRequestHeaders enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop) {
+        [mutableRequest setValue:value forHTTPHeaderField:key];
+    }];
     
     
     NSString *query = [self WTQueryStringFromParameters:parameters];
