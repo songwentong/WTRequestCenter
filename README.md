@@ -3,9 +3,9 @@ WTRequestCenter
 
 ```bash
 ```
-升级中,暂无可参阅文档,敬请期待...
+运行Demo以查看基本功能
 
-# 创建一个请求
+# 创建并执行一个请求
 
 ```objective-c
 
