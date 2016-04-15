@@ -55,7 +55,7 @@ iOS 7.0
 
 
 
-1.使用auto layout 来做UI，这样的话就能适配各种屏幕尺寸（size classes建议用any width,any height 这样适配的是所有的屏幕）
+1.使用auto layout 来做UI，这样的话就能适配各种屏幕尺寸（size classes建议用any width,any height 这样适配的是所有的屏幕）\n
 2.头文件能不import就不要import文件，节省编译时间.
 3.用枚举来表示状态,选项,状态码
 4.本地如果要读取实例变量就直接调用( _var ),如果要写入就调用属性的方法,这样做效率比较高
