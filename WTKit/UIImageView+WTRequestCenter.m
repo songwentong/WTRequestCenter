@@ -121,7 +121,7 @@ static const void * const WTHighlightedImageOperationKey = @"WT Highlighted Imag
 
 -(void)setHighlightedImageWithURL:(NSString *)url placeholderImage:(UIImage*)placeholderImage
 {
-    [self setHighlightedImageWithURL:url placeholderImage:placeholderImage];
+    [self setHighlightedImageWithURL:url placeholderImage:placeholderImage finished:nil failed:nil];
 }
 
 -(void)setHighlightedImageWithURL:(NSString *)url placeholderImage:(UIImage*)placeholderImage finished:(dispatch_block_t)finished failed:(dispatch_block_t)failed
