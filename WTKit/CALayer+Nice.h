@@ -6,8 +6,9 @@
 //  Copyright © 2016 song. All rights reserved.
 //
 
-NS_ASSUME_NONNULL_BEGIN
+
 @import QuartzCore;
+NS_ASSUME_NONNULL_BEGIN
 @class CALayer;
 @class UIImage;
 @interface CALayer (Nice)
