@@ -7,7 +7,7 @@
 //
 
 #import "HomeViewController.h"
-#import "WTNetWorkManager.h"
+#import "WTKit.h"
 @import AVFoundation;
 @interface HomeViewController () <UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -23,7 +23,10 @@
 //    NSLog(@"%@",layoutGuides);
 //    id<UILayoutSupport> topLayoutGuide = self.topLayoutGuide;
 //    NSLog(@"%@",topLayoutGuide);
-    
+    [self WTLog:@"%@%@",@"a",@"b"];
+//    NSMutableArray *array = [NSMutableArray new];
+//    [array appendObjects:@"%@%@",@"a",@"b"];
+//    NSLog(@"%@",array);
 
 }
 

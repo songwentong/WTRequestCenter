@@ -10,6 +10,36 @@
 
 @implementation NSObject (Nice)
 
++(void)WTLog:(NSString*)format,...
+{
+#if DEBUG
+    va_list argumentList;
+    va_start(argumentList, format);
+    NSString *string = [[NSString alloc] initWithFormat:format arguments:argumentList];
+    // clean up
+    va_end(argumentList);
+    NSLog(@"%@",string);
+#else
+    //do nothing
+#endif
+}
+-(void)WTLog:(NSString*)format,...
+{
+#if DEBUG
+    va_list argumentList;
+    va_start(argumentList, format);
+    
+    NSString *string = [[NSString alloc] initWithFormat:format arguments:argumentList];
+    
+    // clean up
+    va_end(argumentList);
+    NSLog(@"%@",string);
+#else
+    //do nothing
+#endif
+
+
+}
 +(void)debugBlock:(dispatch_block_t)block
 {
 #if DEBUG
@@ -21,6 +51,7 @@
 
 -(void)debugBlock:(dispatch_block_t)block
 {
+    [self WTLog:@"%@",@"sadads"];
     [NSObject debugBlock:block];
 }
 

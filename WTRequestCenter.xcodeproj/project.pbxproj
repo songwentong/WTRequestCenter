@@ -36,6 +36,7 @@
 		E12573321BE34FB300DB6314 /* POSTImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E12573311BE34FB300DB6314 /* POSTImageViewController.m */; };
 		E12573341BE3537D00DB6314 /* Reference in Resources */ = {isa = PBXBuildFile; fileRef = E12573331BE3537D00DB6314 /* Reference */; };
 		E125736F1BE8A73400DB6314 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E125736E1BE8A73400DB6314 /* Launch Screen.storyboard */; };
+		E13E3F461CD9A94200C0C721 /* NSMutableArray+Nice.m in Sources */ = {isa = PBXBuildFile; fileRef = E13E3F451CD9A94200C0C721 /* NSMutableArray+Nice.m */; };
 		E14B893A1C7EC5EC00805600 /* WTRequestCenterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E14B89391C7EC5EC00805600 /* WTRequestCenterTests.m */; };
 		E19EE3201C5B5565007976DC /* GETViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E19EE31F1C5B5565007976DC /* GETViewController.m */; };
 		E19EE3231C5B556F007976DC /* POSTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E19EE3221C5B556F007976DC /* POSTViewController.m */; };
@@ -115,6 +116,8 @@
 		E12573311BE34FB300DB6314 /* POSTImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POSTImageViewController.m; sourceTree = "<group>"; };
 		E12573331BE3537D00DB6314 /* Reference */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Reference; sourceTree = "<group>"; };
 		E125736E1BE8A73400DB6314 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		E13E3F441CD9A94200C0C721 /* NSMutableArray+Nice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Nice.h"; sourceTree = "<group>"; };
+		E13E3F451CD9A94200C0C721 /* NSMutableArray+Nice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Nice.m"; sourceTree = "<group>"; };
 		E14B89371C7EC5EC00805600 /* WTRequestCenterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WTRequestCenterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E14B89391C7EC5EC00805600 /* WTRequestCenterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WTRequestCenterTests.m; sourceTree = "<group>"; };
 		E14B893B1C7EC5EC00805600 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -240,6 +243,8 @@
 				E10C79E21C91686E00AAE763 /* NSObject+Nice.m */,
 				E10C792C1C9154AD00AAE763 /* NSArray+Nice.h */,
 				E10C792D1C9154AD00AAE763 /* NSArray+Nice.m */,
+				E13E3F441CD9A94200C0C721 /* NSMutableArray+Nice.h */,
+				E13E3F451CD9A94200C0C721 /* NSMutableArray+Nice.m */,
 				E10C792E1C9154AD00AAE763 /* NSJSONSerialization+Nice.h */,
 				E10C792F1C9154AD00AAE763 /* NSJSONSerialization+Nice.m */,
 				E10C79301C9154AD00AAE763 /* NSOperationQueue+Nice.h */,
@@ -452,6 +457,7 @@
 				E4440D81197A01B1001E6D88 /* AppDelegate.m in Sources */,
 				E12573321BE34FB300DB6314 /* POSTImageViewController.m in Sources */,
 				E19EE3201C5B5565007976DC /* GETViewController.m in Sources */,
+				E13E3F461CD9A94200C0C721 /* NSMutableArray+Nice.m in Sources */,
 				E10C79551C9154AD00AAE763 /* UIButton+WTRequestCenter.m in Sources */,
 				E10C79601C9154AD00AAE763 /* WTNetworkActivityIndicatorManager.m in Sources */,
 				E10C79591C9154AD00AAE763 /* UIImageView+WTRequestCenter.m in Sources */,
