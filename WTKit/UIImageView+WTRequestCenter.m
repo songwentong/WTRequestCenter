@@ -69,7 +69,7 @@ static const void * const WTHighlightedImageOperationKey = @"WT Highlighted Imag
     
     
     NSBlockOperation *operation = [UIImage imageOperationWithURL:url complection:^(UIImage *image,NSError *error) {
-        [NSObject safeSyncInMainQueue:^{
+        safeSyncInMainQueue(^{
             if (image) {
                 self.image = image;
                 [self setNeedsLayout];
@@ -82,8 +82,8 @@ static const void * const WTHighlightedImageOperationKey = @"WT Highlighted Imag
                     failed(error);
                 }
             }
-            
-        }];
+
+        });
     }];
     [self setImageOperation:operation];
     [operation start];
@@ -139,13 +139,13 @@ static const void * const WTHighlightedImageOperationKey = @"WT Highlighted Imag
     
     NSOperation *operation = [UIImage imageOperationWithURL:url complection:^(UIImage *image,NSError *error)
     {
-        [WTNetWorkManager safeSyncInMainQueue:^{
+        safeSyncInMainQueue(^{
             self.highlightedImage = image;
             [self setNeedsLayout];
             if (finished) {
                 finished();
             }
-        }];
+        });
     }];
     
     [self setHighlightedImageOperation:operation];

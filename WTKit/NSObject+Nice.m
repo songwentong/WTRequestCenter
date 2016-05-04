@@ -23,6 +23,24 @@ void WTLog(NSString *format,...)
 #endif
 }
 
+void DEBUGBlock(dispatch_block_t block){
+#if DEBUG
+    if (block) {
+        block();
+    }
+#endif
+}
+void ReleaseBlock(dispatch_block_t block)
+{
+#if DEBUG
+    //do nothing
+#else
+    if (block) {
+        block();
+    }
+#endif
+}
+
 +(void)debugBlock:(dispatch_block_t)block
 {
 #if DEBUG

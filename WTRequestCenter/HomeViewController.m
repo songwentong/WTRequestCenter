@@ -24,6 +24,12 @@
 //    id<UILayoutSupport> topLayoutGuide = self.topLayoutGuide;
 //    NSLog(@"%@",topLayoutGuide);
     WTLog(@"%@%@",@"a",@"b");
+    DEBUGBlock(^{
+        NSLog(@"xasdasd");
+    });
+    
+    
+    
 //    NSMutableArray *array = [NSMutableArray new];
 //    [array appendObjects:@"%@%@",@"a",@"b"];
 //    NSLog(@"%@",array);
