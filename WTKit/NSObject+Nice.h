@@ -9,9 +9,10 @@
 #import <Foundation/Foundation.h>
 
 @interface NSObject (Nice)
-//用于DEBUG时候的输出
-+(void)WTLog:(NSString*)format,...;
--(void)WTLog:(NSString*)format,...;
+/*!
+    修改了NSLog,只用于DEBUG的时候输出
+ */
+void WTLog(NSString *format,...);
 
 +(void)debugBlock:(dispatch_block_t)block;
 -(void)debugBlock:(dispatch_block_t)block;
