@@ -41,49 +41,9 @@ void ReleaseBlock(dispatch_block_t block)
 #endif
 }
 
-+(void)debugBlock:(dispatch_block_t)block
-{
-#if DEBUG
-    if (block) {
-        block();
-    }
-#endif
-}
-
--(void)debugBlock:(dispatch_block_t)block
-{
-    [NSObject debugBlock:block];
-}
-
-+(void)releaseBlock:(dispatch_block_t)block
-{
-#if DEBUG
-#else
-    if (block) {
-        block();
-    }
-#endif
-}
-
--(void)releaseBlock:(dispatch_block_t)block
-{
-    [NSObject releaseBlock:block];
-}
-
-
 void perform(dispatch_block_t block , NSTimeInterval delay)
 {
     [NSObject performBlock:block afterDelay:delay];
-}
-
-
-+(void)safeSyncInMainQueue:(dispatch_block_t)block
-{
-    if ([NSThread isMainThread]) {
-        dispatch_async(dispatch_get_main_queue(), block);
-    }else{
-        dispatch_sync(dispatch_get_main_queue(), block);
-    }
 }
 
 void safeSyncInMainQueue( dispatch_block_t block)
@@ -97,14 +57,7 @@ void safeSyncInMainQueue( dispatch_block_t block)
     }
 }
 
--(void)safeSyncInMainQueue:(dispatch_block_t)block
-{
-    if ([NSThread isMainThread]) {
-        dispatch_async(dispatch_get_main_queue(), block);
-    }else{
-        dispatch_sync(dispatch_get_main_queue(), block);
-    }
-}
+
 
 +(void)performBlock:(dispatch_block_t)block afterDelay:(NSTimeInterval)delay
 {
