@@ -6,24 +6,15 @@
 //  Copyright (c) Mike song(mailto:275712575@qq.com). All rights reserved.
 //  site:https://github.com/swtlovewtt/WTRequestCenter
 /*
- 这是一个方便的缓存式网络请求的缓存库，在网络不好
- 或者没有网络的情况下方便读取缓存来看。
- 
- 使用方法很简单，只需要传URL和参数就可以了。
-
- 还提供上传图片功能，下载图片功能，缓存图片功能
- 还有JSON解析功能，还提供来一个URL的表让你来填写
- 然后直接快捷取URL。
+ 欢迎使用我的WTKit
+ 这是一个便捷的网络库,并提供一些UIKit和Foundation的扩展
+ 本来只想提供一些网络库给大家使用的,但是使用的时候发现需要集成很多其他的功能,
+ 比如创建一个颜色创建,比如图片缓存,比如屏幕截图,比如输出重写,我都做了一些集成.
  希望能帮到你，谢谢。
  如果有任何问题可以在github上向我提出
  Mike
  
  */
-/*
- 使用注意
- 使用gif图的时候需要import一个ImageIO.framework
- */
-//@import UIKit;
 
 #ifndef WTRequestCenter_UIKit_WTRequestCenter_h
 #define WTRequestCenter_UIKit_WTRequestCenter_h
@@ -58,10 +49,10 @@
 
 
 /*
-    常用库
-    GBVersionTracking
-    UICKeyChainStore
-    MBProgressHUD
+    以下是我不熟悉,并且已经集成的非常好的功能,推荐给大家
+    版本记录器   GBVersionTracking
+    钥匙串管理   UICKeyChainStore
+    悬浮框管理   MBProgressHUD
  */
 
 
