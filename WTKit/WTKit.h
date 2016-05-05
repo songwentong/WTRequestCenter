@@ -43,6 +43,7 @@
 #import "CALayer+Nice.h"
 #import "UIView+Nice.h"
 #import "UIApplication+Nice.h"
+#import "UIImage+ImageCache.h"
 
 
 //-------------Foundation

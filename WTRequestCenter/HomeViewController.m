@@ -99,7 +99,7 @@
     
     //section2
     NSMutableArray *section2 = [NSMutableArray array];
-    [section2 addObject:@"UIAlertController"];
+    [section2 addObject:@"Gif"];
     [array addObject:section2];
     
     
@@ -140,8 +140,25 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    switch (indexPath.section) {
+        case 0:
+        {
+            [self performSegueWithIdentifier:[self segueWithIndexPath:indexPath] sender:nil];
+        }
+            break;
+        case 1:
+        {
+            //gif
+            [self performSegueWithIdentifier:@"gif" sender:nil];
+        }
+            break;
+            
+        default:
+            break;
+    }
+    /*
     if (indexPath.section==0) {
-        [self performSegueWithIdentifier:[self segueWithIndexPath:indexPath] sender:nil];
+        
     }else{
         UIAlertController *con = [UIAlertController alertControllerWithTitle:@"alert" message:@"msg" preferredStyle:UIAlertControllerStyleAlert];
         [con addAction:[UIAlertAction actionWithTitle:@"UIAlertActionStyleDefault" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -158,6 +175,7 @@
         }];
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
+     */
     
 }
 

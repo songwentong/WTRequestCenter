@@ -38,6 +38,7 @@
 		E125736F1BE8A73400DB6314 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E125736E1BE8A73400DB6314 /* Launch Screen.storyboard */; };
 		E13E3F461CD9A94200C0C721 /* NSMutableArray+Nice.m in Sources */ = {isa = PBXBuildFile; fileRef = E13E3F451CD9A94200C0C721 /* NSMutableArray+Nice.m */; };
 		E14560431CDAE54900372817 /* IconViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E14560421CDAE54900372817 /* IconViewController.m */; };
+		E14560481CDB1A2A00372817 /* GifViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E14560471CDB1A2A00372817 /* GifViewController.m */; };
 		E14B893A1C7EC5EC00805600 /* WTRequestCenterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E14B89391C7EC5EC00805600 /* WTRequestCenterTests.m */; };
 		E19EE3201C5B5565007976DC /* GETViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E19EE31F1C5B5565007976DC /* GETViewController.m */; };
 		E19EE3231C5B556F007976DC /* POSTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E19EE3221C5B556F007976DC /* POSTViewController.m */; };
@@ -116,11 +117,13 @@
 		E12573301BE34FB300DB6314 /* POSTImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POSTImageViewController.h; sourceTree = "<group>"; };
 		E12573311BE34FB300DB6314 /* POSTImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POSTImageViewController.m; sourceTree = "<group>"; };
 		E12573331BE3537D00DB6314 /* Reference */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Reference; path = WTRequestCenter/Reference; sourceTree = "<group>"; };
-		E125736E1BE8A73400DB6314 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		E125736E1BE8A73400DB6314 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "WTRequestCenter/Launch Screen.storyboard"; sourceTree = "<group>"; };
 		E13E3F441CD9A94200C0C721 /* NSMutableArray+Nice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Nice.h"; sourceTree = "<group>"; };
 		E13E3F451CD9A94200C0C721 /* NSMutableArray+Nice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Nice.m"; sourceTree = "<group>"; };
 		E14560411CDAE54900372817 /* IconViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconViewController.h; sourceTree = "<group>"; };
 		E14560421CDAE54900372817 /* IconViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconViewController.m; sourceTree = "<group>"; };
+		E14560461CDB1A2A00372817 /* GifViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GifViewController.h; sourceTree = "<group>"; };
+		E14560471CDB1A2A00372817 /* GifViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GifViewController.m; sourceTree = "<group>"; };
 		E14B89371C7EC5EC00805600 /* WTRequestCenterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WTRequestCenterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E14B89391C7EC5EC00805600 /* WTRequestCenterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WTRequestCenterTests.m; sourceTree = "<group>"; };
 		E14B893B1C7EC5EC00805600 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -164,6 +167,7 @@
 			children = (
 				E1F4BE021AE0EF4F000F7F21 /* plan */,
 				E12573331BE3537D00DB6314 /* Reference */,
+				E125736E1BE8A73400DB6314 /* Launch Screen.storyboard */,
 				E4440D77197A01B1001E6D88 /* Supporting Files */,
 				E4440D88197A01B1001E6D88 /* Images.xcassets */,
 				A3B4A7C1199AF60C00A8BAF0 /* aaa@2x.gif */,
@@ -262,6 +266,15 @@
 		E11D049E1BE1C9550045C421 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E14560451CDB1A2100372817 /* UI */,
+				E14560441CDB1A1600372817 /* Network */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E14560441CDB1A1600372817 /* Network */ = {
+			isa = PBXGroup;
+			children = (
 				E11D049F1BE1C96F0045C421 /* ImageViewCacheVC.h */,
 				E11D04A01BE1C96F0045C421 /* ImageViewCacheVC.m */,
 				E12573301BE34FB300DB6314 /* POSTImageViewController.h */,
@@ -275,7 +288,16 @@
 				E14560411CDAE54900372817 /* IconViewController.h */,
 				E14560421CDAE54900372817 /* IconViewController.m */,
 			);
-			name = ViewControllers;
+			name = Network;
+			sourceTree = "<group>";
+		};
+		E14560451CDB1A2100372817 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				E14560461CDB1A2A00372817 /* GifViewController.h */,
+				E14560471CDB1A2A00372817 /* GifViewController.m */,
+			);
+			name = UI;
 			sourceTree = "<group>";
 		};
 		E14B89381C7EC5EC00805600 /* WTRequestCenterTests */ = {
@@ -335,7 +357,6 @@
 				E4440D78197A01B1001E6D88 /* WTRequestCenter-Info.plist */,
 				E4440D79197A01B1001E6D88 /* InfoPlist.strings */,
 				E4440D7C197A01B1001E6D88 /* main.m */,
-				E125736E1BE8A73400DB6314 /* Launch Screen.storyboard */,
 			);
 			name = "Supporting Files";
 			path = WTRequestCenter;
@@ -463,6 +484,7 @@
 				E12573321BE34FB300DB6314 /* POSTImageViewController.m in Sources */,
 				E19EE3201C5B5565007976DC /* GETViewController.m in Sources */,
 				E13E3F461CD9A94200C0C721 /* NSMutableArray+Nice.m in Sources */,
+				E14560481CDB1A2A00372817 /* GifViewController.m in Sources */,
 				E10C79551C9154AD00AAE763 /* UIButton+WTRequestCenter.m in Sources */,
 				E10C79601C9154AD00AAE763 /* WTNetworkActivityIndicatorManager.m in Sources */,
 				E10C79591C9154AD00AAE763 /* UIImageView+WTRequestCenter.m in Sources */,

@@ -67,7 +67,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E0Z-KO-OVW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="890" y="643"/>
+            <point key="canvasLocation" x="945.5" y="942.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Mgl-kH-toC">
@@ -137,6 +137,7 @@
                         <segue destination="iYW-Jr-8b1" kind="show" identifier="postImage" id="IcR-TS-gy8"/>
                         <segue destination="pmf-lz-e0d" kind="show" identifier="get" id="L3H-1F-YQv"/>
                         <segue destination="1Sf-70-sgr" kind="show" identifier="post" id="Hdh-ZG-mZ6"/>
+                        <segue destination="j5f-Yv-G2B" kind="show" identifier="gif" id="fvG-hl-U7n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A71-7Z-dRB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -377,6 +378,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="efJ-XX-hYw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1180.5" y="-383.5"/>
+        </scene>
+        <!--Gif View Controller-->
+        <scene sceneID="PUt-6r-CKc">
+            <objects>
+                <viewController id="j5f-Yv-G2B" customClass="GifViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yAR-j8-ocK"/>
+                        <viewControllerLayoutGuide type="bottom" id="2s3-eu-0xc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Xul-wk-5gC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tgY-PD-V1r">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="tgY-PD-V1r" firstAttribute="top" secondItem="yAR-j8-ocK" secondAttribute="bottom" id="FXN-Q1-wup"/>
+                            <constraint firstItem="tgY-PD-V1r" firstAttribute="leading" secondItem="Xul-wk-5gC" secondAttribute="leading" id="Ogw-qC-zcw"/>
+                            <constraint firstItem="2s3-eu-0xc" firstAttribute="top" secondItem="tgY-PD-V1r" secondAttribute="bottom" id="Qjr-q2-Ub3"/>
+                            <constraint firstAttribute="trailing" secondItem="tgY-PD-V1r" secondAttribute="trailing" id="vbi-Tc-QZQ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="tgY-PD-V1r" id="noy-UA-cpO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m3s-jk-bPr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1384" y="425"/>
         </scene>
         <!--图片缓存-->
         <scene sceneID="2p4-Xk-8eT">
