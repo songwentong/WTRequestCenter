@@ -379,7 +379,7 @@
             </objects>
             <point key="canvasLocation" x="1180.5" y="-383.5"/>
         </scene>
-        <!--Gif View Controller-->
+        <!--Gif图展示-->
         <scene sceneID="PUt-6r-CKc">
             <objects>
                 <viewController id="j5f-Yv-G2B" customClass="GifViewController" sceneMemberID="viewController">
@@ -411,6 +411,7 @@
                             <constraint firstAttribute="trailing" secondItem="tgY-PD-V1r" secondAttribute="trailing" id="vbi-Tc-QZQ"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Gif图展示" id="TL1-L6-CE2"/>
                     <connections>
                         <outlet property="imageView" destination="tgY-PD-V1r" id="noy-UA-cpO"/>
                     </connections>
