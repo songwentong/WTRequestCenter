@@ -17,6 +17,8 @@ void WTLog(NSString *format,...)
     NSString *string = [[NSString alloc] initWithFormat:format arguments:argumentList];
     // clean up
     va_end(argumentList);
+
+//    NSLog(@"%@\n%@",[NSThread callStackSymbols][1],string);
     NSLog(@"%@",string);
 #else
     //do nothing

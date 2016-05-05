@@ -23,12 +23,12 @@
 //    NSLog(@"%@",layoutGuides);
 //    id<UILayoutSupport> topLayoutGuide = self.topLayoutGuide;
 //    NSLog(@"%@",topLayoutGuide);
-
     
     
-//    NSMutableArray *array = [NSMutableArray new];
-//    [array appendObjects:@"%@%@",@"a",@"b"];
-//    NSLog(@"%@",array);
+    
+//    WTLog(@"asdas");
+    
+    
 
 }
 
