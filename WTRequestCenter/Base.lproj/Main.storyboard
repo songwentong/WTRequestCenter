@@ -392,14 +392,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tgY-PD-V1r">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="164" width="375" height="203"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="罗帅" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rgl-l2-sB7">
+                                <rect key="frame" x="161" y="383" width="52" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="tgY-PD-V1r" firstAttribute="top" secondItem="yAR-j8-ocK" secondAttribute="bottom" id="FXN-Q1-wup"/>
+                            <constraint firstItem="Rgl-l2-sB7" firstAttribute="centerX" secondItem="tgY-PD-V1r" secondAttribute="centerX" id="7UM-zu-8jD"/>
+                            <constraint firstItem="tgY-PD-V1r" firstAttribute="top" secondItem="yAR-j8-ocK" secondAttribute="bottom" constant="100" id="FXN-Q1-wup"/>
                             <constraint firstItem="tgY-PD-V1r" firstAttribute="leading" secondItem="Xul-wk-5gC" secondAttribute="leading" id="Ogw-qC-zcw"/>
-                            <constraint firstItem="2s3-eu-0xc" firstAttribute="top" secondItem="tgY-PD-V1r" secondAttribute="bottom" id="Qjr-q2-Ub3"/>
+                            <constraint firstItem="2s3-eu-0xc" firstAttribute="top" secondItem="tgY-PD-V1r" secondAttribute="bottom" constant="300" id="Qjr-q2-Ub3"/>
+                            <constraint firstItem="Rgl-l2-sB7" firstAttribute="top" secondItem="tgY-PD-V1r" secondAttribute="bottom" constant="16" id="mGZ-j2-YG3"/>
                             <constraint firstAttribute="trailing" secondItem="tgY-PD-V1r" secondAttribute="trailing" id="vbi-Tc-QZQ"/>
                         </constraints>
                     </view>
