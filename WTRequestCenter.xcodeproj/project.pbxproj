@@ -37,6 +37,7 @@
 		E12573341BE3537D00DB6314 /* Reference in Resources */ = {isa = PBXBuildFile; fileRef = E12573331BE3537D00DB6314 /* Reference */; };
 		E125736F1BE8A73400DB6314 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E125736E1BE8A73400DB6314 /* Launch Screen.storyboard */; };
 		E13E3F461CD9A94200C0C721 /* NSMutableArray+Nice.m in Sources */ = {isa = PBXBuildFile; fileRef = E13E3F451CD9A94200C0C721 /* NSMutableArray+Nice.m */; };
+		E14560431CDAE54900372817 /* IconViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E14560421CDAE54900372817 /* IconViewController.m */; };
 		E14B893A1C7EC5EC00805600 /* WTRequestCenterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E14B89391C7EC5EC00805600 /* WTRequestCenterTests.m */; };
 		E19EE3201C5B5565007976DC /* GETViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E19EE31F1C5B5565007976DC /* GETViewController.m */; };
 		E19EE3231C5B556F007976DC /* POSTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E19EE3221C5B556F007976DC /* POSTViewController.m */; };
@@ -118,6 +119,8 @@
 		E125736E1BE8A73400DB6314 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		E13E3F441CD9A94200C0C721 /* NSMutableArray+Nice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Nice.h"; sourceTree = "<group>"; };
 		E13E3F451CD9A94200C0C721 /* NSMutableArray+Nice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Nice.m"; sourceTree = "<group>"; };
+		E14560411CDAE54900372817 /* IconViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconViewController.h; sourceTree = "<group>"; };
+		E14560421CDAE54900372817 /* IconViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconViewController.m; sourceTree = "<group>"; };
 		E14B89371C7EC5EC00805600 /* WTRequestCenterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WTRequestCenterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E14B89391C7EC5EC00805600 /* WTRequestCenterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WTRequestCenterTests.m; sourceTree = "<group>"; };
 		E14B893B1C7EC5EC00805600 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -159,6 +162,7 @@
 		A3B40EB019B04BD90060F158 /* Res */ = {
 			isa = PBXGroup;
 			children = (
+				E4440D77197A01B1001E6D88 /* Supporting Files */,
 				E4440D88197A01B1001E6D88 /* Images.xcassets */,
 				A3B4A7C1199AF60C00A8BAF0 /* aaa@2x.gif */,
 			);
@@ -266,6 +270,8 @@
 				E19EE3221C5B556F007976DC /* POSTViewController.m */,
 				E11FCCEE1CB399EA002D9D2B /* ParametersVC.h */,
 				E11FCCEF1CB399EA002D9D2B /* ParametersVC.m */,
+				E14560411CDAE54900372817 /* IconViewController.h */,
+				E14560421CDAE54900372817 /* IconViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -292,7 +298,6 @@
 			children = (
 				E10C792B1C9154AD00AAE763 /* WTKit */,
 				E4440D76197A01B1001E6D88 /* Classes */,
-				E4440D77197A01B1001E6D88 /* Supporting Files */,
 				A3B40EB019B04BD90060F158 /* Res */,
 				E14B89381C7EC5EC00805600 /* WTRequestCenterTests */,
 				E4440D6E197A01B1001E6D88 /* Products */,
@@ -388,7 +393,7 @@
 						TestTargetID = E4440D6C197A01B1001E6D88;
 					};
 					E4440D6C197A01B1001E6D88 = {
-						DevelopmentTeam = VN5SD4NGLS;
+						DevelopmentTeam = QZFW9RQ778;
 						SystemCapabilities = {
 							com.apple.iOS = {
 								enabled = 0;
@@ -465,6 +470,7 @@
 				E10C79521C9154AD00AAE763 /* NSJSONSerialization+Nice.m in Sources */,
 				E10C795D1C9154AD00AAE763 /* WTCycleScrollView.m in Sources */,
 				E11FCCF01CB399EA002D9D2B /* ParametersVC.m in Sources */,
+				E14560431CDAE54900372817 /* IconViewController.m in Sources */,
 				E10C795A1C9154AD00AAE763 /* UINavigationController+Nice.m in Sources */,
 				E10C79531C9154AD00AAE763 /* NSOperationQueue+Nice.m in Sources */,
 				E10C79571C9154AD00AAE763 /* UIDevice+WTRequestCenter.m in Sources */,
@@ -630,14 +636,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: wen tong song (WVXF8UY82Q)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "WTRequestCenter/WTRequestCenter-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mb.security;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swt.WTKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0b9b461f-54c5-4271-8af2-8583736affd5";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -647,12 +654,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "WTRequestCenter/WTRequestCenter-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mb.security;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swt.WTKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
