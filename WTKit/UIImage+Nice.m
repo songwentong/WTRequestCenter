@@ -6,7 +6,7 @@
 //  Copyright © 2015 song. All rights reserved.
 //
 
-#import "UIImage+ImageCache.h"
+#import "UIImage+Nice.h"
 #import "WTNetWorkManager.h"
 @import ImageIO;
 @implementation UIImage (ImageCache)

@@ -9,7 +9,7 @@
 
 #import <objc/runtime.h>
 #import "WTNetWorkManager.h"
-#import "UIImage+ImageCache.h"
+#import "UIImage+Nice.h"
 #import "NSObject+Nice.h"
 @import ImageIO;
 @import UIKit;

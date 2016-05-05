@@ -11,7 +11,7 @@
 #import "UIButton+WTRequestCenter.h"
 #import "WTNetWorkManager.h"
 #import <objc/runtime.h>
-#import "UIImage+ImageCache.h"
+#import "UIImage+Nice.h"
 #import "NSObject+Nice.h"
 @implementation UIButton (WTImageCache)
 
