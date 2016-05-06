@@ -36,8 +36,8 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSURLSessionDataTask*)taskWithWithMethod:(NSString *)method
                                  URLString:(NSString *)URLString
                                 parameters:(NSDictionary*)parameters
-                                  finished:(void(^)(NSData * _Nullable data, NSURLResponse * _Nullable response))finish
-                                    failed:(void(^)(NSError * _Nullable error))failed;
+                                  finished:(nullable void(^)(NSData *data, NSURLResponse *response))finish
+                                    failed:(nullable void(^)(NSError *error))failed;
 
 
 /*!
