@@ -30,27 +30,21 @@
 
 - (IBAction)requestPressed:(id)sender
 {
-    NSError *error = nil;
     NSString *url = _urlTextField.text;
     [_urlTextField resignFirstResponder];
     if (![url hasPrefix:@"http://"]) {
         url = [NSString stringWithFormat:@"http://%@",url];
     }
-    NSURLRequest *request =  [[WTNetWorkManager sharedKit] requestWithMethod:@"GET" URLString:url parameters:nil error:&error];
-    if (error) {
-//        UIAlertController *ac = [[UIAlertController alloc] init];
-//        ac.title =
-//        [self presentview]
-    }else{
-        [[WTNetWorkManager sharedKit] taskWithRequest:request finished:^(NSData *data, NSURLResponse *response) {
-            NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-            if (string) {
-                _textView.text = string;
-            }
-        } failed:^(NSError *error) {
-            _textView.text = [NSString stringWithFormat:@"请求失败:%@",error.localizedDescription];
-        }];
-    }
+    [[WTNetWorkManager sharedKit] taskWithWithMethod:@"GET" URLString:url parameters:nil finished:^(NSData * _Nonnull data, NSURLResponse * _Nonnull response) {
+        NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        if (string) {
+            _textView.text = string;
+        }
+    } failed:^(NSError * _Nonnull error) {
+        _textView.text = [NSString stringWithFormat:@"请求失败:%@",error.localizedDescription];
+    }];
+    
+
 }
 
 /*
