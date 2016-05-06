@@ -86,6 +86,16 @@ static NSURLCache *cache =nil;
 #endif
 }
 
+-(NSURLSessionDataTask*)taskWithWithMethod:(NSString *)method
+                                 URLString:(NSString *)URLString
+                                parameters:(NSDictionary*)parameters
+                                  finished:(void(^)(NSData * _Nullable data, NSURLResponse * _Nullable response))finish
+                                    failed:(void(^)(NSError * _Nullable error))failed
+{
+    NSMutableURLRequest *request = [self requestWithMethod:method URLString:URLString parameters:parameters error:nil];
+    return [self taskWithRequest:request finished:finish failed:failed];
+}
+
 -(NSURLSessionDataTask*)taskWithRequest:(NSURLRequest*)request
                                finished:(void(^)(NSData * _Nullable data, NSURLResponse * _Nullable response))finish
                                  failed:(void(^)(NSError * _Nullable error))failed

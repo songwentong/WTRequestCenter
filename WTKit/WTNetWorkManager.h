@@ -23,11 +23,22 @@ NS_ASSUME_NONNULL_BEGIN
 
 /*!
  根据请求对象生成对应的task,并执行请求
- 注意:成功和失败都是分线程回调
+ 主线程回调
  */
 -(NSURLSessionDataTask*)taskWithRequest:(NSURLRequest*)request
                                finished:(nullable void(^)(NSData * data, NSURLResponse * response))finish
                                  failed:(nullable void(^)(NSError * error))failed;
+
+/*!
+ 根据请求参数,url,参数,执行一个请求
+ 主线程回调
+ */
+-(NSURLSessionDataTask*)taskWithWithMethod:(NSString *)method
+                                 URLString:(NSString *)URLString
+                                parameters:(NSDictionary*)parameters
+                                  finished:(void(^)(NSData * _Nullable data, NSURLResponse * _Nullable response))finish
+                                    failed:(void(^)(NSError * _Nullable error))failed;
+
 
 /*!
     缓存式请求,只建议执行GET请求.

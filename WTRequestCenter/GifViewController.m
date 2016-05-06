@@ -22,6 +22,12 @@
     UIImage *image = [UIImage animatedImageWithAnimatedGIFData:data];
     _imageView.contentMode = UIViewContentModeCenter;
     _imageView.image = image;
+    CADisplayLink *link = [CADisplayLink displayLinkWithTarget:self selector:@selector(displayLink:)];
+    [link addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+}
+-(void)displayLink:(CADisplayLink *)link
+{
+    
 }
 
 - (void)didReceiveMemoryWarning {
