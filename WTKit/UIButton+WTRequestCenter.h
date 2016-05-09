@@ -31,7 +31,7 @@
 
 
 /*
-    设置图片
+    下载网络的图片,并缓存下来用于下次使用
  */
 - (void)setImageForState:(UIControlState)state
                  withURL:(NSString *)url;

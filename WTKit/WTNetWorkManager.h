@@ -44,8 +44,8 @@ NS_ASSUME_NONNULL_BEGIN
     缓存式请求,只建议执行GET请求.
  */
 -(NSURLSessionDataTask*)cachedTaskWithRequest:(NSURLRequest*)request
-                    finished:(nullable void(^)(NSData * data, NSURLResponse * response))finish
-                      failed:(nullable void(^)(NSError * error))failed;
+                                     finished:(nullable void(^)(NSData * data, NSURLResponse * response))finish
+                                       failed:(nullable void(^)(NSError * error))failed;
 /*!
     缓存并刷新的请求
  */
