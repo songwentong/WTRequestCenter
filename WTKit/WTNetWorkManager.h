@@ -46,6 +46,14 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSURLSessionDataTask*)cachedTaskWithRequest:(NSURLRequest*)request
                     finished:(nullable void(^)(NSData * data, NSURLResponse * response))finish
                       failed:(nullable void(^)(NSError * error))failed;
+/*!
+    缓存并刷新的请求
+ */
+-(NSURLSessionDataTask*)cachedTaskWithRequest:(NSURLRequest*)request
+                                      recache:(BOOL)recache
+                                     finished:(void(^)(NSData * data, NSURLResponse * response))finish
+                                       failed:(void(^)(NSError * error))failed;
+
 @end
 
 @interface WTNetWorkManager(CreatRequest)
