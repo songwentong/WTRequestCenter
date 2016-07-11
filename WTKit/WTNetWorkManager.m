@@ -10,9 +10,21 @@
 #if TARGET_OS_IOS
 @import UIKit;
 #endif
+//@class WTURLSessionDelegate;
 
-@interface WTNetWorkManager()
+@interface WTURLSessionDelegate : NSObject<NSURLSessionDataDelegate>
+
+typedef void (^complection_block)(NSData *data,NSURLResponse *response,NSError *error);
+
+@property (nonatomic,strong) NSMutableData *data;
+@property (nonatomic,strong) NSError *error;
+@property (nonatomic,strong) NSURLResponse *response;
+@property (nonatomic,strong) complection_block complection;
+@end
+
+@interface WTNetWorkManager() <NSURLSessionDelegate>
 {
+    
     NSOperationQueue *_operationQueue;
     
     NSUInteger _connectionCount;
@@ -105,24 +117,22 @@ static NSURLCache *cache =nil;
     assert(request!=nil);
     _connectionCount = _connectionCount +1;
     [self checkStatus];
-    NSURLSessionDataTask *task = [self.session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
-                                  {
-                                      _connectionCount = _connectionCount - 1;
-                                      [self checkStatus];
-                                      [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                                          if (error) {
-                                              if (failed) {
-                                                  failed(error);
-                                              }
-                                          }else
-                                          {
-                                              if (finish) {
-                                                  finish(data,response);
-                                              }
-                                          }
-                                      }];
-                                      
-                                  }];
+    WTURLSessionDelegate *delegate = [WTURLSessionDelegate new];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:delegate delegateQueue:nil];
+    delegate.complection = ^(NSData *data,NSURLResponse *response,NSError *error){
+        _connectionCount = _connectionCount - 1;
+        if (error) {
+            if (failed) {
+                failed(error);
+            }
+        }else{
+            if (finish) {
+                finish(data,response);
+            }
+        }
+    };
+    
+    NSURLSessionDataTask *task = [session dataTaskWithRequest:request];
     [task resume];
     return task;
 }
@@ -182,7 +192,6 @@ static NSURLCache *cache =nil;
     }];
     return task;
 }
-
 @end
 @implementation WTNetWorkManager(CreatRequest)
 +(NSString*)WTQueryStringFromParameters:(NSDictionary*)parameters
@@ -349,6 +358,58 @@ static NSURLCache *cache =nil;
  
  */
 
+
+@end
+
+
+@implementation WTURLSessionDelegate
+
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task
+didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
+ completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential * _Nullable credential))completionHandler{
+//    dispatch_block_t
+//    typedef void (^dispatch_block_t)(void);
+    NSURLSessionAuthChallengeDisposition dis = NSURLSessionAuthChallengePerformDefaultHandling;
+    NSURLCredential *credential = nil;
+    if (challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust) {
+        SecTrustRef serverTrust = challenge.protectionSpace.serverTrust;
+        credential = [NSURLCredential credentialForTrust:serverTrust];
+    }
+    completionHandler(dis,credential);
+}
+
+
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
+didReceiveResponse:(NSURLResponse *)response
+ completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler{
+    self.data = [NSMutableData new];
+    self.response = response;
+    completionHandler(NSURLSessionResponseAllow);
+}
+
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
+    didReceiveData:(NSData *)data{
+    [self.data appendData:data];
+}
+
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task
+didCompleteWithError:(nullable NSError *)error{
+    self.error = error;
+    [self finish];
+}
+
+- (void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(nullable NSError *)error{
+    self.error = error;
+    [self finish];
+}
+
+- (void)finish{
+[[NSOperationQueue mainQueue] addOperationWithBlock:^{
+    if (self.complection) {
+        _complection(_data,_response,_error);
+    }
+}];
+}
 
 @end
 
