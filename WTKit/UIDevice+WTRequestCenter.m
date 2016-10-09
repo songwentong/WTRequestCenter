@@ -29,7 +29,64 @@
     
     return uuid;
 }
-
++(CGFloat)getScreenSize
+{
+    struct utsname systemInfo;
+    uname(&systemInfo);
+    NSString *platform = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
+    
+    if ([platform isEqualToString:@"iPhone1,1"]) return 3.5;
+    if ([platform isEqualToString:@"iPhone1,2"]) return 3.5;
+    if ([platform isEqualToString:@"iPhone2,1"]) return 3.5;
+    if ([platform isEqualToString:@"iPhone3,1"]) return 3.5;
+    if ([platform isEqualToString:@"iPhone3,2"]) return 3.5;
+    if ([platform isEqualToString:@"iPhone3,3"]) return 3.5;
+    if ([platform isEqualToString:@"iPhone4,1"]) return 3.5;
+    if ([platform isEqualToString:@"iPhone5,1"]) return 4;
+    if ([platform isEqualToString:@"iPhone5,2"]) return 4;
+    if ([platform isEqualToString:@"iPhone5,3"]) return 4;
+    if ([platform isEqualToString:@"iPhone5,4"]) return 4;
+    if ([platform isEqualToString:@"iPhone6,1"]) return 4;
+    if ([platform isEqualToString:@"iPhone6,2"]) return 4;
+    if ([platform isEqualToString:@"iPhone7,1"]) return 5.5;
+    if ([platform isEqualToString:@"iPhone7,2"]) return 4.7;
+    if ([platform isEqualToString:@"iPhone8,1"]) return 4.7;
+    if ([platform isEqualToString:@"iPhone8,2"]) return 5.5;
+    
+    if ([platform isEqualToString:@"iPod1,1"])   return 3.5;
+    if ([platform isEqualToString:@"iPod2,1"])   return 3.5;
+    if ([platform isEqualToString:@"iPod3,1"])   return 3.5;
+    if ([platform isEqualToString:@"iPod4,1"])   return 3.5;
+    if ([platform isEqualToString:@"iPod5,1"])   return 4;
+    
+    if ([platform isEqualToString:@"iPad1,1"])   return 9.7;
+    
+    if ([platform isEqualToString:@"iPad2,1"])   return 9.7;
+    if ([platform isEqualToString:@"iPad2,2"])   return 9.7;
+    if ([platform isEqualToString:@"iPad2,3"])   return 9.7;
+    if ([platform isEqualToString:@"iPad2,4"])   return 9.7;
+    if ([platform isEqualToString:@"iPad2,5"])   return 7.9;
+    if ([platform isEqualToString:@"iPad2,6"])   return 7.9;
+    if ([platform isEqualToString:@"iPad2,7"])   return 7.9;
+    
+    if ([platform isEqualToString:@"iPad3,1"])   return 9.7;
+    if ([platform isEqualToString:@"iPad3,2"])   return 9.7;
+    if ([platform isEqualToString:@"iPad3,3"])   return 9.7;
+    if ([platform isEqualToString:@"iPad3,4"])   return 9.7;
+    if ([platform isEqualToString:@"iPad3,5"])   return 9.7;
+    if ([platform isEqualToString:@"iPad3,6"])   return 9.7;
+    
+    if ([platform isEqualToString:@"iPad4,1"])   return 9.7;
+    if ([platform isEqualToString:@"iPad4,2"])   return 9.7;
+    if ([platform isEqualToString:@"iPad4,3"])   return 9.7;
+    if ([platform isEqualToString:@"iPad4,4"])   return 7.9;
+    if ([platform isEqualToString:@"iPad4,5"])   return 7.9;
+    if ([platform isEqualToString:@"iPad4,6"])   return 7.9;
+    
+    if ([platform isEqualToString:@"i386"])      return 0;
+    if ([platform isEqualToString:@"x86_64"])    return 0;
+    return 0;
+}
 +(CGFloat)systemVersion
 {
     CGFloat version = 0;

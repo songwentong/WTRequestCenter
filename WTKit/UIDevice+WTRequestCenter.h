@@ -21,6 +21,13 @@
 +(NSString*)WTUUID;
 
 
+
+/**
+ 取得屏幕大小
+
+ @return 得到屏幕尺寸,模拟器没有
+ */
++(CGFloat)getScreenSize;
 /*!
  系统版本
  */
