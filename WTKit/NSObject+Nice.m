@@ -79,4 +79,35 @@ void safeSyncInMainQueue( dispatch_block_t block)
         }
     });
 }
+
++(id)forEach:(id)obj replaceNullWith:(id(^)(id key))block
+{
+    
+    if ([obj isKindOfClass:[NSArray class]]) {
+        NSArray *array1 = (NSArray*)obj;
+        NSMutableArray *array2 = [NSMutableArray array];
+        
+        [array1 enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            id result = [self forEach:obj replaceNullWith:block];
+            [array2 addObject:result];
+        }];
+        return array2;
+    }
+    if ([obj isKindOfClass:[NSDictionary class]]) {
+        NSDictionary *dict1 = (NSDictionary*)obj;
+        NSMutableDictionary *dict2 = [NSMutableDictionary dictionary];
+        [dict1 enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+            if ([obj isEqual:[NSNull null]] && block) {
+                [dict2 setValue:block(key) forKey:key];
+            }else{
+                id result = [self forEach:obj replaceNullWith:block];
+                [dict2 setValue:result forKey:key];
+            }
+           
+        }];
+        return dict2;
+    }
+    return obj;
+    
+}
 @end

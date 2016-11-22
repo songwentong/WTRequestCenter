@@ -17,6 +17,6 @@ NS_ASSUME_NONNULL_BEGIN
 /*!
    把遍历到的null转变成自定义类型
  */
-+(nullable id)niceJSONWithData:(NSData*)data replaceNullWith:(__nullable id(^)())block;
++(nullable id)niceJSONWithData:(NSData*)data replaceNullWith:(id(^)(id key))block;
 @end
 NS_ASSUME_NONNULL_END

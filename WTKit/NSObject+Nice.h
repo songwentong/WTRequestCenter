@@ -28,5 +28,5 @@ void safeSyncInMainQueue( dispatch_block_t block);
 
 +(void)performBlock:(dispatch_block_t)block afterDelay:(NSTimeInterval)delay;
 +(void)performBlock:(dispatch_block_t)block inQueue:(dispatch_queue_t)queue afterDelay:(NSTimeInterval)delay;
-
++(id)forEach:(id)obj replaceNullWith:(id(^)(id key))block;
 @end

@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "WTKit.h"
+#import "WeatherModel.h"
 @interface WTRequestCenterTests : XCTestCase
 
 @end
@@ -24,6 +25,12 @@
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
+}
+
+-(void)testJSONModel{
+    NSData *data = [NSData dataWithContentsOfFile:@"/Users/songwentong/Github/WTRequestCenter/WTRequestCenterTests/JSONData"];
+    WeatherModel *model = [[WeatherModel alloc] initWithJSONData:data];
+    NSLog(@"%@",model.tz);
 }
 
 - (void)testExample {
