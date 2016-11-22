@@ -84,5 +84,43 @@
     }
 }
 
-
+-(id)attemptConvertToJSON
+{
+    unsigned int propertyListCount = 0;
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+    objc_property_t *pList = class_copyPropertyList(self.class, &propertyListCount);
+    for (int i=0; i<propertyListCount; i++) {
+        const char *property = property_getAttributes(pList[i]);
+        NSString *propertyString = [[NSString alloc] initWithCString:property encoding:NSUTF8StringEncoding];
+        __block NSString *typeString = @"";
+        __block NSString *propertyName = @"";
+        [[propertyString componentsSeparatedByString:@","] enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([obj hasPrefix:@"T"]) {
+                typeString = [obj substringFromIndex:1];
+            }
+            if ([obj hasPrefix:@"V"]) {
+                propertyName = [obj substringFromIndex:2];
+            }
+        }];
+        id value = [self valueForKey:propertyName];
+        if ([value isKindOfClass:[NSString class]]) {
+            [dictionary setValue:[self valueForKey:propertyName] forKey:propertyName];
+        }else if ([value isKindOfClass:[NSNumber class]]){
+            [dictionary setValue:[self valueForKey:propertyName] forKey:propertyName];
+        }else if ([value isKindOfClass:[NSArray class]]){
+            NSMutableArray *array = [NSMutableArray array];
+            [value enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if ([obj attemptConvertToJSON]) {
+                    [array addObject:[obj attemptConvertToJSON]];
+                }
+            }];
+            [dictionary setValue:array forKey:propertyName];
+        }else{
+            if ([value attemptConvertToJSON]) {
+                [dictionary setValue:[value attemptConvertToJSON] forKey:propertyName];
+            }
+        }
+    }
+    return dictionary;
+}
 @end

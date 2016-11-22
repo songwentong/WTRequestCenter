@@ -19,7 +19,13 @@
 //    [w travelData:[NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"JSONData" ofType:nil]] options:0 error:nil]];
 //    NSLog(@"%@",w);
     
-
+//    NSData *data = [NSData dataWithContentsOfFile:@"/Users/songwentong/Github/WTRequestCenter/WTRequestCenterTests/JSONData"];
+//    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+//    //    [dict printModel];
+//    //    [dict printModelCopy];
+//    WeatherModel *w = [WeatherModel new];
+//    [w travelData:dict];
+//    NSLog(@"%@",w.attemptConvertToJSON);
     
     return YES;
 }
