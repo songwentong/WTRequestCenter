@@ -14,7 +14,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    WeatherModel *w = [WeatherModel new];
+//    WeatherModel *w = [WeatherModel new];
     
 //    [w travelData:[NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"JSONData" ofType:nil]] options:0 error:nil]];
 //    NSLog(@"%@",w);
