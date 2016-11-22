@@ -44,6 +44,7 @@
 #import "NSOperationQueue+Nice.h"
 #import "NSMutableArray+Nice.h"
 #import "NSObject+JSONModel.h"
+#import "NSDictionary+JSONModel.h"
 #endif
 
 

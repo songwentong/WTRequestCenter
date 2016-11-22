@@ -42,10 +42,10 @@
 		E14B893A1C7EC5EC00805600 /* WTRequestCenterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E14B89391C7EC5EC00805600 /* WTRequestCenterTests.m */; };
 		E16BD3AD1DE439BA003BAB6F /* WeatherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E16BD3AC1DE439BA003BAB6F /* WeatherModel.m */; };
 		E16BD3AF1DE43A74003BAB6F /* JSONData in Resources */ = {isa = PBXBuildFile; fileRef = E16BD3AE1DE43A74003BAB6F /* JSONData */; };
+		E16BD3B91DE443A4003BAB6F /* NSDictionary+JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E16BD3B81DE443A4003BAB6F /* NSDictionary+JSONModel.m */; };
 		E19EE3201C5B5565007976DC /* GETViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E19EE31F1C5B5565007976DC /* GETViewController.m */; };
 		E19EE3231C5B556F007976DC /* POSTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E19EE3221C5B556F007976DC /* POSTViewController.m */; };
 		E1D21B091DE28A320011F302 /* NSObject+JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D21B081DE28A320011F302 /* NSObject+JSONModel.m */; };
-		E1D21B0C1DE2953D0011F302 /* WeatherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D21B0B1DE2953D0011F302 /* WeatherModel.m */; };
 		E1D21B101DE29CE10011F302 /* JSONData in Resources */ = {isa = PBXBuildFile; fileRef = E1D21B0F1DE29CE10011F302 /* JSONData */; };
 		E1D7A8BA1BE1C8650022F5DC /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D7A8B91BE1C8650022F5DC /* HomeViewController.m */; };
 		E1F4BE031AE0EF4F000F7F21 /* plan in Resources */ = {isa = PBXBuildFile; fileRef = E1F4BE021AE0EF4F000F7F21 /* plan */; };
@@ -135,15 +135,15 @@
 		E16BD3AB1DE439BA003BAB6F /* WeatherModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherModel.h; sourceTree = "<group>"; };
 		E16BD3AC1DE439BA003BAB6F /* WeatherModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherModel.m; sourceTree = "<group>"; };
 		E16BD3AE1DE43A74003BAB6F /* JSONData */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = JSONData; sourceTree = "<group>"; };
+		E16BD3B71DE443A4003BAB6F /* NSDictionary+JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+JSONModel.h"; sourceTree = "<group>"; };
+		E16BD3B81DE443A4003BAB6F /* NSDictionary+JSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+JSONModel.m"; sourceTree = "<group>"; };
 		E19EE31E1C5B5565007976DC /* GETViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GETViewController.h; sourceTree = "<group>"; };
 		E19EE31F1C5B5565007976DC /* GETViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GETViewController.m; sourceTree = "<group>"; };
 		E19EE3211C5B556F007976DC /* POSTViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POSTViewController.h; sourceTree = "<group>"; };
 		E19EE3221C5B556F007976DC /* POSTViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POSTViewController.m; sourceTree = "<group>"; };
 		E1D21B071DE28A320011F302 /* NSObject+JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JSONModel.h"; sourceTree = "<group>"; };
 		E1D21B081DE28A320011F302 /* NSObject+JSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JSONModel.m"; sourceTree = "<group>"; };
-		E1D21B0A1DE2953D0011F302 /* WeatherModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherModel.h; sourceTree = "<group>"; };
-		E1D21B0B1DE2953D0011F302 /* WeatherModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherModel.m; sourceTree = "<group>"; };
-		E1D21B0F1DE29CE10011F302 /* JSONData */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = JSONData; sourceTree = "<group>"; };
+		E1D21B0F1DE29CE10011F302 /* JSONData */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = JSONData; path = WTRequestCenterTests/JSONData; sourceTree = SOURCE_ROOT; };
 		E1D7A8B81BE1C8650022F5DC /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		E1D7A8B91BE1C8650022F5DC /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		E1F4BE021AE0EF4F000F7F21 /* plan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = plan; path = WTRequestCenter/plan; sourceTree = "<group>"; };
@@ -265,6 +265,8 @@
 			children = (
 				E1D21B071DE28A320011F302 /* NSObject+JSONModel.h */,
 				E1D21B081DE28A320011F302 /* NSObject+JSONModel.m */,
+				E16BD3B71DE443A4003BAB6F /* NSDictionary+JSONModel.h */,
+				E16BD3B81DE443A4003BAB6F /* NSDictionary+JSONModel.m */,
 				E10C79E11C91686E00AAE763 /* NSObject+Nice.h */,
 				E10C79E21C91686E00AAE763 /* NSObject+Nice.m */,
 				E10C792C1C9154AD00AAE763 /* NSArray+Nice.h */,
@@ -320,9 +322,6 @@
 		E14B89381C7EC5EC00805600 /* WTRequestCenterTests */ = {
 			isa = PBXGroup;
 			children = (
-				E1D21B0F1DE29CE10011F302 /* JSONData */,
-				E1D21B0A1DE2953D0011F302 /* WeatherModel.h */,
-				E1D21B0B1DE2953D0011F302 /* WeatherModel.m */,
 				E14B89391C7EC5EC00805600 /* WTRequestCenterTests.m */,
 				E14B893B1C7EC5EC00805600 /* Info.plist */,
 			);
@@ -332,6 +331,7 @@
 		E16BD3AA1DE439AC003BAB6F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E1D21B0F1DE29CE10011F302 /* JSONData */,
 				E16BD3AB1DE439BA003BAB6F /* WeatherModel.h */,
 				E16BD3AC1DE439BA003BAB6F /* WeatherModel.m */,
 			);
@@ -502,7 +502,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1D21B0C1DE2953D0011F302 /* WeatherModel.m in Sources */,
 				E14B893A1C7EC5EC00805600 /* WTRequestCenterTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -537,6 +536,7 @@
 				E19EE3231C5B556F007976DC /* POSTViewController.m in Sources */,
 				E10C79DF1C91676000AAE763 /* UIView+Nice.m in Sources */,
 				E10C79561C9154AD00AAE763 /* UIColor+WTRequestCenter.m in Sources */,
+				E16BD3B91DE443A4003BAB6F /* NSDictionary+JSONModel.m in Sources */,
 				E11E80B41C9FF71E00432D19 /* UIControl+Nice.m in Sources */,
 				E10C795E1C9154AD00AAE763 /* WTDataSaver.m in Sources */,
 				E4440D7D197A01B1001E6D88 /* main.m in Sources */,

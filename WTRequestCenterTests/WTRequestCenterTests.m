@@ -8,7 +8,6 @@
 
 #import <XCTest/XCTest.h>
 #import "WTKit.h"
-#import "WeatherModel.h"
 @interface WTRequestCenterTests : XCTestCase
 
 @end
@@ -29,8 +28,9 @@
 
 -(void)testJSONModel{
     NSData *data = [NSData dataWithContentsOfFile:@"/Users/songwentong/Github/WTRequestCenter/WTRequestCenterTests/JSONData"];
-    WeatherModel *model = [[WeatherModel alloc] initWithJSONData:data];
-    NSLog(@"%@",model.tz);
+    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    [dict printModel];
+    [dict printModelCopy];
 }
 
 - (void)testExample {

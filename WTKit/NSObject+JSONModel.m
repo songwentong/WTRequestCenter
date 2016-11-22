@@ -49,17 +49,19 @@
                 }
             }else if ([typeString containsString:@"Array"]) {
                 if ([[jsonData valueForKey:propertyName] isKindOfClass:[NSArray class]]) {
-                SEL selector = @selector(WTJSONModelProtocolInstanceForKey:);
-                if ([self respondsToSelector:selector]) {
-                    NSMutableArray *array = [NSMutableArray new];
-                    [[jsonData valueForKey:propertyName] enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                        IMP imp = [self methodForSelector:selector];
-                        id (*func)(id, SEL,NSString*) = (void *)imp;
-                        [array addObject:func(self, selector, propertyName)] ;
-//                        [array addObject:[self performSelector:selector withObject:propertyName]];
-                    }];
-                    [self setValue:array forKey:propertyName];
-                }
+                    SEL selector = @selector(WTJSONModelProtocolInstanceForKey:);
+                    if ([self respondsToSelector:selector]) {
+                        NSMutableArray *array = [NSMutableArray new];
+                        [[jsonData valueForKey:propertyName] enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                            IMP imp = [self methodForSelector:selector];
+                            id (*func)(id, SEL,NSString*) = (void *)imp;
+                            id value = func(self, selector,propertyName);
+                            if (value) {
+                                [array addObject:value];
+                            }
+                        }];
+                        [self setValue:array forKey:propertyName];
+                    }
                 }
             }else {
                 SEL selector = @selector(WTJSONModelProtocolInstanceForKey:);
@@ -72,7 +74,7 @@
                         [self setValue:value forKey:propertyName];
                     }
                     //上面和下面的代码是等效的,下面有警告,上面没有警告.
-//                    [self setValue:[self performSelector:selector withObject:propertyName] forKey:propertyName];
+                    //                    [self setValue:[self performSelector:selector withObject:propertyName] forKey:propertyName];
                 }
             }
             

@@ -9,10 +9,14 @@
 #import <Foundation/Foundation.h>
 
 @interface WeatherModel : NSObject
-@property (nonatomic,copy)NSNumber *tz;
-@property (nonatomic,copy)NSString *area;
-@property (nonatomic,copy)NSString *tz_name;
-@property (nonatomic,copy)NSString *id;
-@property (nonatomic,copy)NSString *name;
-@property (nonatomic,copy)NSString *province;
+@property (strong, nonatomic) NSNumber* tz;
+@property (strong, nonatomic) NSString* area;
+@property (strong, nonatomic) NSString* tz_name;
+@property (strong, nonatomic) NSString* id;
+@property (strong, nonatomic) id null;
+@property (strong, nonatomic) id current;
+@property (strong, nonatomic) id day;
+@property (strong, nonatomic) id hour;
+@property (strong, nonatomic) NSString* name;
+@property (strong, nonatomic) NSString* province;
 @end
