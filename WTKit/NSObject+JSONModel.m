@@ -48,7 +48,10 @@
                     [self setValue:jsonData[propertyName] forKey:propertyName];
                 }
             }else if ([typeString containsString:@"Array"]) {
+                if ([[jsonData valueForKey:propertyName] isKindOfClass:[NSArray class]]) {
                 SEL selector = @selector(WTJSONModelProtocolInstanceForKey:);
+                
+                    
                 
                 if ([self respondsToSelector:selector]) {
                     NSMutableArray *array = [NSMutableArray new];
@@ -60,13 +63,17 @@
                     }];
                     [self setValue:array forKey:propertyName];
                 }
-                
+                }
             }else {
                 SEL selector = @selector(WTJSONModelProtocolInstanceForKey:);
                 if ([self respondsToSelector:selector]) {
                     IMP imp = [self methodForSelector:selector];
                     id (*func)(id, SEL, NSString*) = (void *)imp;
-                    [self setValue:func(self, selector,propertyName) forKey:propertyName];
+                    id value = func(self, selector,propertyName);
+                    if (value) {
+                        [value travelData:[jsonData valueForKey:propertyName]];
+                        [self setValue:value forKey:propertyName];
+                    }
                     //上面和下面的代码是等效的,下面有警告,上面没有警告.
 //                    [self setValue:[self performSelector:selector withObject:propertyName] forKey:propertyName];
                 }
