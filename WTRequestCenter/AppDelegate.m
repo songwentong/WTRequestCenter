@@ -8,24 +8,18 @@
 
 #import "AppDelegate.h"
 #import "WTKit.h"
+#import "WeatherModel.h"
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    WeatherModel *w = [WeatherModel new];
+    
+//    [w travelData:[NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"JSONData" ofType:nil]] options:0 error:nil]];
+//    NSLog(@"%@",w);
+    
 
-    
-//    NSObject *obj = [[NSClassFromString(@"ClassName") alloc] init];
-    
-//    CGFloat scale = [UIScreen mainScreen].scale;
-//    NSLog(@"%f",scale);
-//    NSURLRequest *request = [[WTNetWorkManager sharedKit] requestWithMethod:@"GET" URLString:@"http://app.gongsibao.com/api/v1/account/getcheckcode?types=1" parameters:nil error:nil];
-//    [[WTNetWorkManager sharedKit] taskWithRequest:request finished:^(NSData *data, NSURLResponse *response) {
-//        UIImage *image = [UIImage imageWithData:data];
-//        NSLog(@"%@",image);
-//    } failed:^(NSError *error) {
-//        
-//    }];
     
     return YES;
 }

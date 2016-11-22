@@ -26,7 +26,7 @@
     unsigned int propertyListCount = 0;
     objc_property_t *pList = class_copyPropertyList(self.class, &propertyListCount);
     for (int i=0; i<propertyListCount; i++) {
-        const char *property = property_getAttributes(*pList);
+        const char *property = property_getAttributes(pList[i]);
         NSString *propertyString = [[NSString alloc] initWithCString:property encoding:NSUTF8StringEncoding];
         __block NSString *typeString = @"";
         __block NSString *propertyName = @"";
@@ -35,11 +35,11 @@
                 typeString = [obj substringFromIndex:1];
             }
             if ([obj hasPrefix:@"V"]) {
-                propertyName = [obj substringFromIndex:1];
+                propertyName = [obj substringFromIndex:2];
             }
         }];
         if ([jsonData valueForKey:propertyName]) {
-            if ([typeString containsString:@"String"]) {
+            if ([typeString containsString:@"NSString"]) {
                 if ([[jsonData valueForKey:propertyName] isKindOfClass:[NSString class]]) {
                     [self setValue:jsonData[propertyName] forKey:propertyName];
                 }
@@ -50,9 +50,6 @@
             }else if ([typeString containsString:@"Array"]) {
                 if ([[jsonData valueForKey:propertyName] isKindOfClass:[NSArray class]]) {
                 SEL selector = @selector(WTJSONModelProtocolInstanceForKey:);
-                
-                    
-                
                 if ([self respondsToSelector:selector]) {
                     NSMutableArray *array = [NSMutableArray new];
                     [[jsonData valueForKey:propertyName] enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
