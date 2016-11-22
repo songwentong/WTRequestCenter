@@ -54,8 +54,8 @@
                     NSMutableArray *array = [NSMutableArray new];
                     [[jsonData valueForKey:propertyName] enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                         IMP imp = [self methodForSelector:selector];
-                        id (*func)(id, SEL) = (void *)imp;
-                        [array addObject:func(self, selector)] ;
+                        id (*func)(id, SEL,NSString*) = (void *)imp;
+                        [array addObject:func(self, selector, propertyName)] ;
 //                        [array addObject:[self performSelector:selector withObject:propertyName]];
                     }];
                     [self setValue:array forKey:propertyName];
@@ -65,8 +65,8 @@
                 SEL selector = @selector(WTJSONModelProtocolInstanceForKey:);
                 if ([self respondsToSelector:selector]) {
                     IMP imp = [self methodForSelector:selector];
-                    id (*func)(id, SEL) = (void *)imp;
-                    [self setValue:func(self, selector) forKey:propertyName];
+                    id (*func)(id, SEL, NSString*) = (void *)imp;
+                    [self setValue:func(self, selector,propertyName) forKey:propertyName];
                     //上面和下面的代码是等效的,下面有警告,上面没有警告.
 //                    [self setValue:[self performSelector:selector withObject:propertyName] forKey:propertyName];
                 }
