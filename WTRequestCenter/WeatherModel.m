@@ -7,7 +7,8 @@
 //
 
 #import "WeatherModel.h"
-
+@interface WeatherModel()
+@end
 @implementation WeatherModel
 
 @end

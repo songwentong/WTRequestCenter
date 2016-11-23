@@ -536,19 +536,50 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="BAs-af-nFF">
-                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gHK-bK-TAv">
+                                <rect key="frame" x="0.0" y="615" width="375" height="52"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="类名:XXX" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dqb-cF-Jug">
+                                        <rect key="frame" x="8" y="0.0" width="73" height="52"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GSX-Om-DR4">
+                                        <rect key="frame" x="336" y="0.0" width="31" height="52"/>
+                                        <state key="normal" title="修改"/>
+                                        <connections>
+                                            <action selector="changeClassName:" destination="3uX-xh-TiZ" eventType="touchUpInside" id="E7L-Rz-gQC"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.34473069566414272" blue="0.16507851615658675" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Dqb-cF-Jug" firstAttribute="leading" secondItem="gHK-bK-TAv" secondAttribute="leading" constant="8" id="5Cl-FG-bZC"/>
+                                    <constraint firstItem="GSX-Om-DR4" firstAttribute="top" secondItem="gHK-bK-TAv" secondAttribute="top" id="HWo-rP-yug"/>
+                                    <constraint firstAttribute="bottom" secondItem="Dqb-cF-Jug" secondAttribute="bottom" id="PJr-Oi-XYi"/>
+                                    <constraint firstAttribute="height" constant="52" id="Wie-O2-fbS"/>
+                                    <constraint firstAttribute="trailing" secondItem="GSX-Om-DR4" secondAttribute="trailing" constant="8" id="Xu7-Vl-cg7"/>
+                                    <constraint firstAttribute="bottom" secondItem="GSX-Om-DR4" secondAttribute="bottom" id="eCC-59-PVH"/>
+                                    <constraint firstItem="Dqb-cF-Jug" firstAttribute="top" secondItem="gHK-bK-TAv" secondAttribute="top" id="noR-ON-5S0"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="BAs-af-nFF" secondAttribute="trailing" id="69Z-A0-VvE"/>
+                            <constraint firstItem="gHK-bK-TAv" firstAttribute="leading" secondItem="Uhe-ze-eFP" secondAttribute="leading" id="NjY-zW-hK0"/>
                             <constraint firstItem="BAs-af-nFF" firstAttribute="leading" secondItem="Uhe-ze-eFP" secondAttribute="leading" id="UN2-4C-vuA"/>
-                            <constraint firstItem="qDK-Po-rpo" firstAttribute="top" secondItem="BAs-af-nFF" secondAttribute="bottom" id="kLQ-6o-1L3"/>
+                            <constraint firstItem="qDK-Po-rpo" firstAttribute="top" secondItem="gHK-bK-TAv" secondAttribute="bottom" id="hab-36-hTQ"/>
+                            <constraint firstItem="qDK-Po-rpo" firstAttribute="top" secondItem="BAs-af-nFF" secondAttribute="bottom" constant="52" id="kLQ-6o-1L3"/>
                             <constraint firstItem="BAs-af-nFF" firstAttribute="top" secondItem="5Mj-Dv-48m" secondAttribute="bottom" id="m0L-G5-PYE"/>
+                            <constraint firstAttribute="trailing" secondItem="gHK-bK-TAv" secondAttribute="trailing" id="zDB-R4-mwp"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -566,14 +597,15 @@
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="classNameLabel" destination="Dqb-cF-Jug" id="uYC-u6-m8B"/>
                         <outlet property="jsonTextView" destination="BAs-af-nFF" id="2wx-7u-0np"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NXN-eM-oZn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="855" y="1737"/>
+            <point key="canvasLocation" x="853.60000000000002" y="1736.5817091454273"/>
         </scene>
     </scenes>
     <resources>
