@@ -8,6 +8,8 @@
 
 #import "JSONModelDemoVC.h"
 #import "NSDictionary+JSONModel.h"
+#import "NSObject+JSONModel.h"
+
 @interface JSONModelDemoVC () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *jsonTextView;
 @property (nonatomic,strong) NSString *className;
@@ -25,11 +27,12 @@
     NSData *data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"JSONData" ofType:nil]];
     NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     _jsonTextView.text = string;
+    
 }
 - (IBAction)print:(id)sender {
     NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:[_jsonTextView.text dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
     
-    NSLog(@"%@",[dict WTModelString]);
+    NSLog(@"%@",[dict WTModelStringFromClassName:_className]);
 }
 - (IBAction)writeToFile:(id)sender {
     NSError *error = nil;
@@ -38,7 +41,7 @@
         NSLog(@"JSON解析失败");
         return;
     }
-    NSString *printModel = [dict WTModelString];
+    NSString *printModel = [dict WTModelStringFromClassName:_className];
     
 #if TARGET_OS_SIMULATOR
     //模拟器写到桌面
@@ -56,7 +59,7 @@
         NSLog(@"writefile to:%@",homePath);
 //        NSString *filePath = [NSString stringWithFormat:@"%@/XXX.h",NSHomeDirectory()];
         [printModel writeToURL:[url URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.h",_className]] atomically:YES encoding:NSUTF8StringEncoding error:nil];
-        NSString *implementationString = [NSString stringWithFormat:@"@implementation %@\n-(id)WTJSONModelProtocolInstanceForKey:(NSString*)key{\n    return nil;\n}\n@end",_className];
+        NSString *implementationString = [dict WTimplementationFromClassName:_className];
         [implementationString writeToURL:[url URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.m",_className]] atomically:YES encoding:NSUTF8StringEncoding error:nil];
         NSLog(@"文件已写入");
     }

@@ -9,9 +9,12 @@
 #import "NSDictionary+JSONModel.h"
 
 @implementation NSDictionary (JSONModel)
--(NSString*)WTModelString{
+-(NSString*)WTModelStringFromClassName:(NSString*)className{
+    
     __block NSMutableString *stringToPrint = [NSMutableString new];
-    [stringToPrint appendString:@"@interface XXX : NSObject\n"];
+    [stringToPrint appendFormat:@"//  this file is Auto create by WTKit(https://github.com/swtlovewtt/WTRequestCenter)\n"];
+    [stringToPrint appendFormat:@"//  Thank you for use my json model maker\n\n"];
+    [stringToPrint appendFormat:@"@import UIKit;\n\n@interface %@ : NSObject\n",className];
     [self enumerateKeysAndObjectsUsingBlock:^(NSString* key, id  _Nonnull obj, BOOL * _Nonnull stop) {
         [stringToPrint appendFormat:@"@property (strong, nonatomic) "];
         
@@ -29,6 +32,11 @@
     [stringToPrint appendString:@"@end"];
 //    NSLog(@"\n%@",stringToPrint);
     return stringToPrint;
+}
+-(NSString*)WTimplementationFromClassName:(NSString*)className
+{
+    NSString *implementationString = [NSString stringWithFormat:@"#import \"%@.h\"\n\n@implementation %@\n-(id)WTJSONModelProtocolInstanceForKey:(NSString*)key{\n    return nil;\n}\n@end",className,className];
+    return implementationString;
 }
 -(void)printModelCopy{
 #if DEBUG

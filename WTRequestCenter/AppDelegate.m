@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "WTKit.h"
-#import "WeatherModel.h"
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions

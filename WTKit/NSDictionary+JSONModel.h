@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface NSDictionary (JSONModel)
--(NSString*)WTModelString;
+-(NSString*)WTModelStringFromClassName:(NSString*)className;
+-(NSString*)WTimplementationFromClassName:(NSString*)className;
 -(void)printModelCopy;
 @end
