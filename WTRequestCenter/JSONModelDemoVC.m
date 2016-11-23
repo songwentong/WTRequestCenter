@@ -49,7 +49,7 @@
         [printModel writeToURL:[url URLByAppendingPathComponent:@"XXX.h"] atomically:YES encoding:NSUTF8StringEncoding error:nil];
 //        [printModel writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
 //        NSString *path2 = [NSString stringWithFormat:@"%@/XXX.m",NSHomeDirectory()];
-        [@"@implementation XXX\n@end" writeToURL:[url URLByAppendingPathComponent:@"XXX.m"] atomically:YES encoding:NSUTF8StringEncoding error:nil];
+        [@"@implementation XXX\n-(id)WTJSONModelProtocolInstanceForKey:(NSString*)key{\n    return nil;\n}\n@end" writeToURL:[url URLByAppendingPathComponent:@"XXX.m"] atomically:YES encoding:NSUTF8StringEncoding error:nil];
     }
     
 #else
