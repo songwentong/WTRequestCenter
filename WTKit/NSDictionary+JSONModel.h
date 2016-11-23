@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface NSDictionary (JSONModel)
--(void)printModel;
+-(NSString*)WTModelString;
 -(void)printModelCopy;
 @end

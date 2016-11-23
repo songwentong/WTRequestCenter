@@ -124,7 +124,7 @@
                            blue:blue
                           alpha:alpha];
 }
-
+/*
 +(uint8_t)randomColorValue
 {
     uint8_t color;
@@ -143,5 +143,5 @@
                           green:green
                            blue:blue];
 }
-
+*/
 @end

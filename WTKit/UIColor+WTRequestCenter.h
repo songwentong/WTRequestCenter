@@ -50,7 +50,7 @@
 /*!
     随机得到一个颜色
  */
-+(UIColor*)WTRandomColor;
+//+(UIColor*)WTRandomColor;
 
 
 /*!

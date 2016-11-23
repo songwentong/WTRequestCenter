@@ -23,5 +23,5 @@
 //读取json数据,给响应的属性赋值
 -(void)travelData:(id)jsonData;
 //尝试把对象的数据转换成json数据(支持NSCoding的部分都可以被转换)
--(id)attemptConvertToJSON;
+-(NSDictionary*)attemptConvertToJSON;
 @end

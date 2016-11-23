@@ -58,7 +58,7 @@
 #pragma mark - UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -69,6 +69,11 @@
         }
             break;
         case 1:
+        {
+            return 1;
+        }
+            break;
+        case 2:
         {
             return 1;
         }
@@ -101,7 +106,7 @@
     NSMutableArray *section2 = [NSMutableArray array];
     [section2 addObject:@"Gif"];
     [array addObject:section2];
-    
+    [array addObject:@[@"JSONModel"]];
     
     
     string = array[indexPath.section][indexPath.row];
@@ -121,7 +126,7 @@
 {
     NSString *string = @"";
     NSMutableArray *array = [NSMutableArray array];
-    [array addObjectsFromArray:@[@"网络请求",@"UI"]];
+    [array addObjectsFromArray:@[@"网络请求",@"UI",@"JSON Model"]];
     string = array[section];
     
     return string;
@@ -150,6 +155,11 @@
         {
             //gif
             [self performSegueWithIdentifier:@"gif" sender:nil];
+        }
+            break;
+        case 2:
+        {
+            [self performSegueWithIdentifier:@"jsonModelDemo" sender:nil];
         }
             break;
             

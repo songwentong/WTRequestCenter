@@ -9,9 +9,9 @@
 #import "NSDictionary+JSONModel.h"
 
 @implementation NSDictionary (JSONModel)
--(void)printModel{
-#if DEBUG
+-(NSString*)WTModelString{
     __block NSMutableString *stringToPrint = [NSMutableString new];
+    [stringToPrint appendString:@"@interface XXX : NSObject\n"];
     [self enumerateKeysAndObjectsUsingBlock:^(NSString* key, id  _Nonnull obj, BOOL * _Nonnull stop) {
         [stringToPrint appendFormat:@"@property (strong, nonatomic) "];
         
@@ -26,8 +26,9 @@
         }
         [stringToPrint appendFormat:@";\n"];
     }];
-    NSLog(@"\n%@",stringToPrint);
-#endif
+    [stringToPrint appendString:@"@end"];
+//    NSLog(@"\n%@",stringToPrint);
+    return stringToPrint;
 }
 -(void)printModelCopy{
 #if DEBUG

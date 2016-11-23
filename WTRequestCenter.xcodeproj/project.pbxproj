@@ -46,6 +46,7 @@
 		E16BD3D81DE45ADB003BAB6F /* WeatherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E16BD3AC1DE439BA003BAB6F /* WeatherModel.m */; };
 		E16BD3D91DE45B0E003BAB6F /* NSObject+JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D21B081DE28A320011F302 /* NSObject+JSONModel.m */; };
 		E16BD3DA1DE45B1D003BAB6F /* NSDictionary+JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E16BD3B81DE443A4003BAB6F /* NSDictionary+JSONModel.m */; };
+		E16BD3E01DE54B16003BAB6F /* JSONModelDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E16BD3DF1DE54B16003BAB6F /* JSONModelDemoVC.m */; };
 		E19EE3201C5B5565007976DC /* GETViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E19EE31F1C5B5565007976DC /* GETViewController.m */; };
 		E19EE3231C5B556F007976DC /* POSTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E19EE3221C5B556F007976DC /* POSTViewController.m */; };
 		E1D21B091DE28A320011F302 /* NSObject+JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D21B081DE28A320011F302 /* NSObject+JSONModel.m */; };
@@ -140,6 +141,8 @@
 		E16BD3AE1DE43A74003BAB6F /* JSONData */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = JSONData; sourceTree = "<group>"; };
 		E16BD3B71DE443A4003BAB6F /* NSDictionary+JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+JSONModel.h"; sourceTree = "<group>"; };
 		E16BD3B81DE443A4003BAB6F /* NSDictionary+JSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+JSONModel.m"; sourceTree = "<group>"; };
+		E16BD3DE1DE54B16003BAB6F /* JSONModelDemoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONModelDemoVC.h; sourceTree = "<group>"; };
+		E16BD3DF1DE54B16003BAB6F /* JSONModelDemoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONModelDemoVC.m; sourceTree = "<group>"; };
 		E19EE31E1C5B5565007976DC /* GETViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GETViewController.h; sourceTree = "<group>"; };
 		E19EE31F1C5B5565007976DC /* GETViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GETViewController.m; sourceTree = "<group>"; };
 		E19EE3211C5B556F007976DC /* POSTViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POSTViewController.h; sourceTree = "<group>"; };
@@ -337,6 +340,8 @@
 				E1D21B0F1DE29CE10011F302 /* JSONData */,
 				E16BD3AB1DE439BA003BAB6F /* WeatherModel.h */,
 				E16BD3AC1DE439BA003BAB6F /* WeatherModel.m */,
+				E16BD3DE1DE54B16003BAB6F /* JSONModelDemoVC.h */,
+				E16BD3DF1DE54B16003BAB6F /* JSONModelDemoVC.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -533,6 +538,7 @@
 				E14560431CDAE54900372817 /* IconViewController.m in Sources */,
 				E10C795A1C9154AD00AAE763 /* UINavigationController+Nice.m in Sources */,
 				E10C79531C9154AD00AAE763 /* NSOperationQueue+Nice.m in Sources */,
+				E16BD3E01DE54B16003BAB6F /* JSONModelDemoVC.m in Sources */,
 				E10C79571C9154AD00AAE763 /* UIDevice+WTRequestCenter.m in Sources */,
 				E10C79611C9154AD00AAE763 /* WTNetWorkManager.m in Sources */,
 				E10C79581C9154AD00AAE763 /* UIImage+Nice.m in Sources */,

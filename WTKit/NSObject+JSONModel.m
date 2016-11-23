@@ -84,7 +84,7 @@
     }
 }
 
--(id)attemptConvertToJSON
+-(NSDictionary*)attemptConvertToJSON
 {
     unsigned int propertyListCount = 0;
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
