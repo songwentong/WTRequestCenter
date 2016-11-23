@@ -40,10 +40,8 @@
 		E14560431CDAE54900372817 /* IconViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E14560421CDAE54900372817 /* IconViewController.m */; };
 		E14560481CDB1A2A00372817 /* GifViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E14560471CDB1A2A00372817 /* GifViewController.m */; };
 		E14B893A1C7EC5EC00805600 /* WTRequestCenterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E14B89391C7EC5EC00805600 /* WTRequestCenterTests.m */; };
-		E16BD3AD1DE439BA003BAB6F /* WeatherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E16BD3AC1DE439BA003BAB6F /* WeatherModel.m */; };
 		E16BD3AF1DE43A74003BAB6F /* JSONData in Resources */ = {isa = PBXBuildFile; fileRef = E16BD3AE1DE43A74003BAB6F /* JSONData */; };
 		E16BD3B91DE443A4003BAB6F /* NSDictionary+JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E16BD3B81DE443A4003BAB6F /* NSDictionary+JSONModel.m */; };
-		E16BD3D81DE45ADB003BAB6F /* WeatherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E16BD3AC1DE439BA003BAB6F /* WeatherModel.m */; };
 		E16BD3D91DE45B0E003BAB6F /* NSObject+JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D21B081DE28A320011F302 /* NSObject+JSONModel.m */; };
 		E16BD3DA1DE45B1D003BAB6F /* NSDictionary+JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E16BD3B81DE443A4003BAB6F /* NSDictionary+JSONModel.m */; };
 		E16BD3E01DE54B16003BAB6F /* JSONModelDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E16BD3DF1DE54B16003BAB6F /* JSONModelDemoVC.m */; };
@@ -136,8 +134,6 @@
 		E14B89371C7EC5EC00805600 /* WTRequestCenterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WTRequestCenterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E14B89391C7EC5EC00805600 /* WTRequestCenterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WTRequestCenterTests.m; sourceTree = "<group>"; };
 		E14B893B1C7EC5EC00805600 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E16BD3AB1DE439BA003BAB6F /* WeatherModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherModel.h; sourceTree = "<group>"; };
-		E16BD3AC1DE439BA003BAB6F /* WeatherModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherModel.m; sourceTree = "<group>"; };
 		E16BD3AE1DE43A74003BAB6F /* JSONData */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = JSONData; sourceTree = "<group>"; };
 		E16BD3B71DE443A4003BAB6F /* NSDictionary+JSONModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+JSONModel.h"; sourceTree = "<group>"; };
 		E16BD3B81DE443A4003BAB6F /* NSDictionary+JSONModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+JSONModel.m"; sourceTree = "<group>"; };
@@ -338,8 +334,6 @@
 			isa = PBXGroup;
 			children = (
 				E1D21B0F1DE29CE10011F302 /* JSONData */,
-				E16BD3AB1DE439BA003BAB6F /* WeatherModel.h */,
-				E16BD3AC1DE439BA003BAB6F /* WeatherModel.m */,
 				E16BD3DE1DE54B16003BAB6F /* JSONModelDemoVC.h */,
 				E16BD3DF1DE54B16003BAB6F /* JSONModelDemoVC.m */,
 			);
@@ -511,7 +505,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E16BD3DA1DE45B1D003BAB6F /* NSDictionary+JSONModel.m in Sources */,
-				E16BD3D81DE45ADB003BAB6F /* WeatherModel.m in Sources */,
 				E14B893A1C7EC5EC00805600 /* WTRequestCenterTests.m in Sources */,
 				E16BD3D91DE45B0E003BAB6F /* NSObject+JSONModel.m in Sources */,
 			);
@@ -553,7 +546,6 @@
 				E10C795E1C9154AD00AAE763 /* WTDataSaver.m in Sources */,
 				E4440D7D197A01B1001E6D88 /* main.m in Sources */,
 				E10C795C1C9154AD00AAE763 /* UIViewController+Nice.m in Sources */,
-				E16BD3AD1DE439BA003BAB6F /* WeatherModel.m in Sources */,
 				E10C79DC1C91672300AAE763 /* CALayer+Nice.m in Sources */,
 				E10C79E31C91686E00AAE763 /* NSObject+Nice.m in Sources */,
 				E10C79621C9154AD00AAE763 /* WTNumberLabel.m in Sources */,

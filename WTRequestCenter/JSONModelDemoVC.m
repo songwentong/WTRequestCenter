@@ -32,8 +32,14 @@
     NSLog(@"%@",[dict WTModelString]);
 }
 - (IBAction)writeToFile:(id)sender {
-    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:[_jsonTextView.text dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
+    NSError *error = nil;
+    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:[_jsonTextView.text dataUsingEncoding:NSUTF8StringEncoding] options:0 error:&error];
+    if (error) {
+        NSLog(@"JSON解析失败");
+        return;
+    }
     NSString *printModel = [dict WTModelString];
+    
 #if TARGET_OS_SIMULATOR
     //模拟器写到桌面
     NSString *homePath = NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES)[0];
@@ -50,10 +56,9 @@
         NSLog(@"writefile to:%@",homePath);
 //        NSString *filePath = [NSString stringWithFormat:@"%@/XXX.h",NSHomeDirectory()];
         [printModel writeToURL:[url URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.h",_className]] atomically:YES encoding:NSUTF8StringEncoding error:nil];
-//        [printModel writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
-//        NSString *path2 = [NSString stringWithFormat:@"%@/XXX.m",NSHomeDirectory()];
         NSString *implementationString = [NSString stringWithFormat:@"@implementation %@\n-(id)WTJSONModelProtocolInstanceForKey:(NSString*)key{\n    return nil;\n}\n@end",_className];
         [implementationString writeToURL:[url URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.m",_className]] atomically:YES encoding:NSUTF8StringEncoding error:nil];
+        NSLog(@"文件已写入");
     }
     
 #else
