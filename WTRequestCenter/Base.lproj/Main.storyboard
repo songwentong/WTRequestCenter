@@ -6,7 +6,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -542,64 +541,40 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gHK-bK-TAv">
-                                <rect key="frame" x="0.0" y="615" width="375" height="52"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="类名:XXX" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dqb-cF-Jug">
-                                        <rect key="frame" x="8" y="0.0" width="73" height="52"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GSX-Om-DR4">
-                                        <rect key="frame" x="336" y="0.0" width="31" height="52"/>
-                                        <state key="normal" title="修改"/>
-                                        <connections>
-                                            <action selector="changeClassName:" destination="3uX-xh-TiZ" eventType="touchUpInside" id="E7L-Rz-gQC"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="1" green="0.34473069566414272" blue="0.16507851615658675" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KFp-EG-8zW">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <constraints>
-                                    <constraint firstItem="Dqb-cF-Jug" firstAttribute="leading" secondItem="gHK-bK-TAv" secondAttribute="leading" constant="8" id="5Cl-FG-bZC"/>
-                                    <constraint firstItem="GSX-Om-DR4" firstAttribute="top" secondItem="gHK-bK-TAv" secondAttribute="top" id="HWo-rP-yug"/>
-                                    <constraint firstAttribute="bottom" secondItem="Dqb-cF-Jug" secondAttribute="bottom" id="PJr-Oi-XYi"/>
-                                    <constraint firstAttribute="height" constant="52" id="Wie-O2-fbS"/>
-                                    <constraint firstAttribute="trailing" secondItem="GSX-Om-DR4" secondAttribute="trailing" constant="8" id="Xu7-Vl-cg7"/>
-                                    <constraint firstAttribute="bottom" secondItem="GSX-Om-DR4" secondAttribute="bottom" id="eCC-59-PVH"/>
-                                    <constraint firstItem="Dqb-cF-Jug" firstAttribute="top" secondItem="gHK-bK-TAv" secondAttribute="top" id="noR-ON-5S0"/>
+                                    <constraint firstAttribute="height" constant="44" id="ema-8W-UDo"/>
                                 </constraints>
-                            </view>
+                                <items>
+                                    <barButtonItem title="修改类名" id="fqP-GB-nvq">
+                                        <connections>
+                                            <action selector="changeClassName:" destination="3uX-xh-TiZ" id="8Mz-qn-qk2"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="写到桌面" id="Xbm-Ie-xzT">
+                                        <connections>
+                                            <action selector="writeToFile:" destination="3uX-xh-TiZ" id="gc8-zs-Z0g"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="KFp-EG-8zW" firstAttribute="leading" secondItem="Uhe-ze-eFP" secondAttribute="leading" id="3g6-Dv-HW6"/>
                             <constraint firstAttribute="trailing" secondItem="BAs-af-nFF" secondAttribute="trailing" id="69Z-A0-VvE"/>
-                            <constraint firstItem="gHK-bK-TAv" firstAttribute="leading" secondItem="Uhe-ze-eFP" secondAttribute="leading" id="NjY-zW-hK0"/>
                             <constraint firstItem="BAs-af-nFF" firstAttribute="leading" secondItem="Uhe-ze-eFP" secondAttribute="leading" id="UN2-4C-vuA"/>
-                            <constraint firstItem="qDK-Po-rpo" firstAttribute="top" secondItem="gHK-bK-TAv" secondAttribute="bottom" id="hab-36-hTQ"/>
                             <constraint firstItem="qDK-Po-rpo" firstAttribute="top" secondItem="BAs-af-nFF" secondAttribute="bottom" constant="52" id="kLQ-6o-1L3"/>
                             <constraint firstItem="BAs-af-nFF" firstAttribute="top" secondItem="5Mj-Dv-48m" secondAttribute="bottom" id="m0L-G5-PYE"/>
-                            <constraint firstAttribute="trailing" secondItem="gHK-bK-TAv" secondAttribute="trailing" id="zDB-R4-mwp"/>
+                            <constraint firstAttribute="trailing" secondItem="KFp-EG-8zW" secondAttribute="trailing" id="owb-2Y-XTN"/>
+                            <constraint firstItem="qDK-Po-rpo" firstAttribute="top" secondItem="KFp-EG-8zW" secondAttribute="bottom" id="sAK-gh-X7b"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Title" id="dLM-6t-TYg">
-                        <rightBarButtonItems>
-                            <barButtonItem title="writeToDeskTop" id="85L-5T-4FJ">
-                                <connections>
-                                    <action selector="writeToFile:" destination="3uX-xh-TiZ" id="zpL-6g-rzM"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Print" id="eeK-jP-vXs">
-                                <connections>
-                                    <action selector="print:" destination="3uX-xh-TiZ" id="ON4-wr-IMX"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Title" id="dLM-6t-TYg"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="classNameLabel" destination="Dqb-cF-Jug" id="uYC-u6-m8B"/>
                         <outlet property="jsonTextView" destination="BAs-af-nFF" id="2wx-7u-0np"/>
                     </connections>
                 </viewController>

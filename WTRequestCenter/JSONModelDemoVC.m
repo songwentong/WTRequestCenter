@@ -13,7 +13,6 @@
 @interface JSONModelDemoVC () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextView *jsonTextView;
 @property (nonatomic,strong) NSString *className;
-@property (weak, nonatomic) IBOutlet UILabel *classNameLabel;
 @property (nonatomic,strong) UIAlertController *alertController;
 @end
 
@@ -24,6 +23,7 @@
     // Do any additional setup after loading the view.
 //    NSString *path = [n]
     self.className = @"XXX";
+    self.title = _className;
     NSData *data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"JSONData" ofType:nil]];
     NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     _jsonTextView.text = string;
@@ -81,7 +81,8 @@
     }];
     [_alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         weakSelf.className = [_alertController textFields][0].text;
-        weakSelf.classNameLabel.text = [NSString stringWithFormat:@"类名:%@",weakSelf.className];
+        
+        weakSelf.title = _className;
         [_alertController dismissViewControllerAnimated:YES completion:^{
             
         }];
