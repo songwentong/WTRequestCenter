@@ -24,6 +24,8 @@
             [stringToPrint appendFormat:@"NSNumber* %@",key];
         }else if ([obj isKindOfClass:[NSArray class]]){
             [stringToPrint appendFormat:@"NSArray* %@",key];
+        }else if ([obj isKindOfClass:[NSDictionary class]]){
+            [stringToPrint appendFormat:@"NSDictionary * %@",key];
         }else{
             [stringToPrint appendFormat:@"id %@",key];
         }
