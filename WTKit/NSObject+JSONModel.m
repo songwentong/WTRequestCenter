@@ -63,6 +63,8 @@
                         [self setValue:array forKey:propertyName];
                     }
                 }
+            }else if ([typeString containsString:@"NSNull"]){
+                [self setValue:[NSNull null] forKey:propertyName];
             }else {
                 SEL selector = @selector(WTJSONModelProtocolInstanceForKey:);
                 if ([self respondsToSelector:selector]) {

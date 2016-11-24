@@ -28,6 +28,8 @@
     NSData *data = [NSData dataWithContentsOfFile:filePath];
     NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     _jsonTextView.text = string;
+    NSDictionary *jsonObj = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    NSLog(@"%@",jsonObj);
     
 }
 - (IBAction)print:(id)sender {
