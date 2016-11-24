@@ -24,7 +24,8 @@
 //    NSString *path = [n]
     self.className = @"XXX";
     self.title = _className;
-    NSData *data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"JSONData" ofType:nil]];
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"JSONData" ofType:nil];
+    NSData *data = [NSData dataWithContentsOfFile:filePath];
     NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     _jsonTextView.text = string;
     

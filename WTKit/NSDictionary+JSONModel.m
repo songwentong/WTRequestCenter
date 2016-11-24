@@ -17,7 +17,7 @@
     [stringToPrint appendFormat:@"//  this file is auto create by WTKit\n"];
     [stringToPrint appendFormat:@"//  site:https://github.com/swtlovewtt/WTRequestCenter\n"];
     [stringToPrint appendFormat:@"//  Thank you for use my json model maker\n"];
-    [stringToPrint appendFormat:@"//\n\n"];
+    [stringToPrint appendFormat:@"//\n//\n\n"];
     [stringToPrint appendFormat:@"@import UIKit;\n\n@interface %@ : NSObject\n",className];
     [self enumerateKeysAndObjectsUsingBlock:^(NSString* key, id  _Nonnull obj, BOOL * _Nonnull stop) {
         [stringToPrint appendFormat:@"@property (strong, nonatomic) "];
