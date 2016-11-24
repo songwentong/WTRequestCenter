@@ -12,8 +12,12 @@
 -(NSString*)WTModelStringFromClassName:(NSString*)className{
     
     __block NSMutableString *stringToPrint = [NSMutableString new];
-    [stringToPrint appendFormat:@"//  this file is auto create by WTKit( https://github.com/swtlovewtt/WTRequestCenter )\n"];
-    [stringToPrint appendFormat:@"//  Thank you for use my json model maker\n\n"];
+    [stringToPrint appendFormat:@"//\n"];
+    [stringToPrint appendFormat:@"//  %@.h\n",className];
+    [stringToPrint appendFormat:@"//  this file is auto create by WTKit\n"];
+    [stringToPrint appendFormat:@"//  site:https://github.com/swtlovewtt/WTRequestCenter\n"];
+    [stringToPrint appendFormat:@"//  Thank you for use my json model maker\n"];
+    [stringToPrint appendFormat:@"//\n\n"];
     [stringToPrint appendFormat:@"@import UIKit;\n\n@interface %@ : NSObject\n",className];
     [self enumerateKeysAndObjectsUsingBlock:^(NSString* key, id  _Nonnull obj, BOOL * _Nonnull stop) {
         [stringToPrint appendFormat:@"@property (strong, nonatomic) "];
@@ -37,8 +41,17 @@
 }
 -(NSString*)WTimplementationFromClassName:(NSString*)className
 {
-    NSString *implementationString = [NSString stringWithFormat:@"#import \"%@.h\"\n\n@implementation %@\n-(id)WTJSONModelProtocolInstanceForKey:(NSString*)key{\n    return nil;\n}\n@end",className,className];
-    return implementationString;
+    NSMutableString *stringToPrint = [NSMutableString string];
+    [stringToPrint appendFormat:@"//\n"];
+    [stringToPrint appendFormat:@"//  %@.m\n",className];
+    [stringToPrint appendFormat:@"//  this file is auto create by WTKit\n"];
+    [stringToPrint appendFormat:@"//  site:https://github.com/swtlovewtt/WTRequestCenter\n"];
+    [stringToPrint appendFormat:@"//  Thank you for use my json model maker\n"];
+    [stringToPrint appendFormat:@"//\n"];
+    [stringToPrint appendFormat:@"//\n\n"];
+    [stringToPrint appendFormat:@"#import \"%@.h\"\n\n@implementation %@\n-(id)WTJSONModelProtocolInstanceForKey:(NSString*)key{\n    return nil;\n}\n@end",className,className];
+    
+    return stringToPrint;
 }
 -(void)printModelCopy{
 #if DEBUG
