@@ -11,5 +11,5 @@
 @interface NSDictionary (JSONModel)
 -(NSString*)WTModelStringFromClassName:(NSString*)className;
 -(NSString*)WTimplementationFromClassName:(NSString*)className;
--(void)printModelCopy;
+
 @end
