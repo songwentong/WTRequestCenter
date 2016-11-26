@@ -9,21 +9,7 @@
 #import "NSObject+Nice.h"
 
 @implementation NSObject (Nice)
-void WTLog(NSString *format,...)
-{
-#if DEBUG
-    va_list argumentList;
-    va_start(argumentList, format);
-    NSString *string = [[NSString alloc] initWithFormat:format arguments:argumentList];
-    // clean up
-    va_end(argumentList);
 
-//    NSLog(@"%@\n%@",[NSThread callStackSymbols][1],string);
-    NSLog(@"%@",string);
-#else
-    //do nothing
-#endif
-}
 
 void DEBUGBlock(dispatch_block_t block){
 #if DEBUG

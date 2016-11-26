@@ -26,7 +26,7 @@
 //    WeatherModel *w = [WeatherModel new];
 //    [w travelData:dict];
 //    NSLog(@"%@",w.attemptConvertToJSON);
-    
+    WTLog(@"hello");
     return YES;
 }
 							

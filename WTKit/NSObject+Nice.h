@@ -12,7 +12,7 @@
 /*!
     修改了NSLog,只用于DEBUG的时候输出
  */
-void WTLog(NSString *format,...);
+
 /*!
     用于DEBUG模式下的操作
  */

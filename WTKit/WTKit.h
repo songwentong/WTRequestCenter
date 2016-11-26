@@ -58,13 +58,13 @@
  */
 
 
-/*
- #ifdef DEBUG
- #define NSLog(s, ...) NSLog(@"[%@@%@:%d]\n%@", NSStringFromSelector(_cmd), [@__FILE__ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__]);
+
+ #if DEBUG
+ #define WTLog(s, ...) NSLog(@"[%@@%@:%d]\n%@", NSStringFromSelector(_cmd), [@__FILE__ lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__]);
  #else
  #define NSLog(s, ...) do{}while(0)
  #endif
- */
+
 
 
 
