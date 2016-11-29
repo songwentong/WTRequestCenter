@@ -21,6 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _urlTextField.text = @"http://www.baidu.com";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,17 +33,22 @@
 {
     NSString *url = _urlTextField.text;
     [_urlTextField resignFirstResponder];
-    if (![url hasPrefix:@"http://"]) {
-        url = [NSString stringWithFormat:@"http://%@",url];
-    }
-    [[WTNetWorkManager sharedKit] taskWithWithMethod:@"GET" URLString:url parameters:nil finished:^(NSData * _Nonnull data, NSURLResponse * _Nonnull response) {
+
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+    WTURLSessionTask *task = [[WTNetWorkManager sharedKit] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         if (string) {
             _textView.text = string;
         }
+    }];
+    [task resume];
+    /*
+    [[WTNetWorkManager sharedKit] taskWithWithMethod:@"GET" URLString:url parameters:nil finished:^(NSData * _Nonnull data, NSURLResponse * _Nonnull response) {
+     
     } failed:^(NSError * _Nonnull error) {
         _textView.text = [NSString stringWithFormat:@"请求失败:%@",error.localizedDescription];
     }];
+     */
     
 
 }

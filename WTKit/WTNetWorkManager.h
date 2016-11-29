@@ -8,6 +8,25 @@
 
 @import Foundation;
 NS_ASSUME_NONNULL_BEGIN
+
+
+
+
+@interface WTURLSessionTask : NSObject<NSURLSessionDataDelegate>
+
+typedef void (^complection_block)(NSData *_Nullable data,NSURLResponse *_Nullable response,NSError *_Nullable error);
+@property (nonatomic,strong) NSURLSessionDataTask *task;
+@property (nonatomic,strong) NSMutableData *data;
+@property (nonatomic,strong) NSError *error;
+@property (nonatomic,strong) NSURLResponse *response;
+@property (nonatomic,strong) complection_block complection;
+//使用cacheTime时间以内的上次缓存
+@property (nonatomic) NSTimeInterval cacheTime;
+- (void)resume;
+- (void)suspend;
+- (void)cancel;
+@end
+
 @interface WTNetWorkManager : NSObject
 +(instancetype)sharedKit;
 
@@ -15,8 +34,6 @@ NS_ASSUME_NONNULL_BEGIN
 +(NSURLCache*)sharedURLcache;
 @property (readonly, nonatomic, strong) NSURLSession *session;
 
-
-@property (nonatomic,strong) NSLock *lock;
 -(NSOperationQueue*)operationQueue;
 
 
@@ -39,6 +56,9 @@ NS_ASSUME_NONNULL_BEGIN
                                   finished:(nullable void(^)(NSData *data, NSURLResponse *response))finish
                                     failed:(nullable void(^)(NSError *error))failed;
 
+//data task
+-(WTURLSessionTask*)dataTaskWithRequest:(NSURLRequest*)request
+                      completionHandler:(complection_block)completionHandler;
 
 /*!
     缓存式请求,只建议执行GET请求.
