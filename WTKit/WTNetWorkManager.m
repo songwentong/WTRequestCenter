@@ -322,7 +322,8 @@ static NSURLCache *cache =nil;
 {
     return [[self class] WTQueryStringFromParameters:parameters];
 }
-
+static NSString * const kAFCharactersGeneralDelimitersToEncode = @":#[]@"; // does not include "?" or "/" due to RFC 3986 - Section 3.4
+static NSString * const kAFCharactersSubDelimitersToEncode = @"!$&'()*+,;=";
 - (NSMutableURLRequest *)requestWithMethod:(NSString *)method
                                  URLString:(NSString *)URLString
                                 parameters:(NSDictionary*)parameters
@@ -335,6 +336,8 @@ static NSURLCache *cache =nil;
     
     //获得URL字符集
     NSMutableCharacterSet * allowedCharacterSet = [[NSCharacterSet URLQueryAllowedCharacterSet] mutableCopy];
+
+    [allowedCharacterSet removeCharactersInString:[kAFCharactersGeneralDelimitersToEncode stringByAppendingString:kAFCharactersSubDelimitersToEncode]];
     //转码为URL可用的字符集
     url = [NSURL URLWithString:[URLString stringByAddingPercentEncodingWithAllowedCharacters:allowedCharacterSet]];
 
@@ -372,9 +375,10 @@ static NSURLCache *cache =nil;
             //获得URL可用字符集
             NSMutableCharacterSet * allowedCharacterSet = [[NSCharacterSet URLQueryAllowedCharacterSet] mutableCopy];
             //转码为URL + 百分号的字符串
+            [allowedCharacterSet removeCharactersInString:[kAFCharactersGeneralDelimitersToEncode stringByAppendingString:kAFCharactersSubDelimitersToEncode]];
             urlString = [[NSString stringWithFormat:@"%@?%@",request.URL,query] stringByAddingPercentEncodingWithAllowedCharacters:allowedCharacterSet];
-
-            
+            //转码为URL可用的字符集
+            urlString = [urlString stringByAddingPercentEncodingWithAllowedCharacters:allowedCharacterSet];
             mutableRequest.URL = [NSURL URLWithString:urlString];
         }else
         {
