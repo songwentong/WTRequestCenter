@@ -259,15 +259,7 @@ static NSString * const kAFCharactersSubDelimitersToEncode = @"!$&'()*+,;=";
     assert(method!=nil);
     assert(URLString!=nil);
     NSURL *url = nil;
-    
-    
-    //获得URL字符集
-    NSMutableCharacterSet * allowedCharacterSet = [[NSCharacterSet URLQueryAllowedCharacterSet] mutableCopy];
-
-//    [allowedCharacterSet removeCharactersInString:[kAFCharactersGeneralDelimitersToEncode stringByAppendingString:kAFCharactersSubDelimitersToEncode]];
-    //转码为URL可用的字符集
-    url = [NSURL URLWithString:[URLString stringByAddingPercentEncodingWithAllowedCharacters:allowedCharacterSet]];
-
+    url = [NSURL URLWithString:URLString];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     request.HTTPMethod = method;
