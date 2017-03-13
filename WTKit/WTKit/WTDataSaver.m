@@ -290,14 +290,14 @@ static NSOperationQueue *dataQueue = nil;
 +(void)removeAllData
 {
     [self configureDirectory];
-    [[WTNetWorkManager sharedKit].operationQueue addOperationWithBlock:^{
+    dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0), ^{
         NSFileManager *manager = [NSFileManager defaultManager];
         NSArray *array = [manager contentsOfDirectoryAtPath:[WTDataSaver rootDir] error:nil];
         for (NSString *string  in array) {
             NSString *filePath = [NSString stringWithFormat:@"%@/%@",[self rootDir],string];
             [manager removeItemAtPath:filePath error:nil];
         }
-    }];
+    });
 }
 
 #pragma mark - 其他
@@ -306,8 +306,7 @@ static NSOperationQueue *dataQueue = nil;
     [self configureDirectory];
 //  总大小，单位是字节（Byte）
     __block NSInteger totalSize = 0;
-
-    [[[WTNetWorkManager sharedKit] operationQueue] addOperationWithBlock:^{
+    dispatch_async(dispatch_get_global_queue(QOS_CLASS_UTILITY, 0), ^{
         NSFileManager *manager = [NSFileManager defaultManager];
         
         NSDirectoryEnumerator* directoryEnumerator =[manager enumeratorAtPath:[self rootDir]];
@@ -321,7 +320,8 @@ static NSOperationQueue *dataQueue = nil;
                 complection(totalSize);
             }];
         }
-    }];
+    });
+    
 }
 
 + (NSString *)debugDescription

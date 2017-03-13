@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 +(NSURLCache*)sharedURLcache;
 @property (readonly, nonatomic, strong) NSURLSession *session;
 
--(NSOperationQueue*)operationQueue;
+
 
 
 //data task

@@ -16,13 +16,8 @@
 
 @interface WTNetWorkManager() <NSURLSessionDelegate>
 {
-    
-    NSOperationQueue *_operationQueue;
     NSUInteger _connectionCount;
 }
-@property (nonatomic,strong) NSOperationQueue *taskDictQueue;
-@property (nonatomic,strong) NSMutableDictionary *taskDictionary;
-@property (readwrite, nonatomic, strong) NSURLSession *session;
 @property (nonatomic,strong) NSMutableDictionary *HTTPRequestHeaders;
 @end
 @implementation WTNetWorkManager
@@ -50,46 +45,16 @@ static NSURLCache *cache =nil;
 }
 
 
--(NSOperationQueue*)operationQueue
-{
-    return _operationQueue;
-}
 - (instancetype)init
 {
     self = [super init];
     if (self) {
-        self.taskDictionary = [NSMutableDictionary dictionary];
-        self.taskDictQueue = [NSOperationQueue new];
-        _taskDictQueue.maxConcurrentOperationCount = 1;
-        [_taskDictQueue setSuspended:NO];
-        NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
-        config.URLCache = [WTNetWorkManager sharedURLcache];
-        _operationQueue = [[NSOperationQueue alloc] init];
-        //        _operationQueue.maxConcurrentOperationCount = 8;
-        //operationQueue 默认最大并发数竟然是64
-        _operationQueue.name = @"WTNetWork Operation Queue";
-        [_operationQueue setSuspended:NO];
-        self.session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:_operationQueue];
         _connectionCount = 0;
-        
     }
     return self;
 }
 
--(void)setdelegate:(WTURLSessionTask*)delegate forTask:(NSURLSessionTask*)task{
-    __weak WTNetWorkManager* weakSelf = self;
-    [_taskDictQueue addOperations:@[[NSBlockOperation blockOperationWithBlock:^{
-        [weakSelf.taskDictionary setObject:delegate forKey:@(task.taskIdentifier)];
-    }]] waitUntilFinished:YES];
-}
--(WTURLSessionTask*)delegateForTask:(NSURLSessionTask*)task{
-    __weak WTNetWorkManager *weakSelf = self;
-    __block WTURLSessionTask *delegate = nil;
-    [_taskDictQueue addOperations:@[[NSBlockOperation blockOperationWithBlock:^{
-        delegate = weakSelf.taskDictionary[@(task.taskIdentifier)];
-    }]] waitUntilFinished:YES];
-    return delegate;
-}
+
 
 -(void)checkStatus
 {
@@ -127,7 +92,6 @@ static NSURLCache *cache =nil;
     wtTask.complection = completionHandler;
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request];
     wtTask.task = task;
-    [self setdelegate:wtTask forTask:task];
     wtTask.complection = completionHandler;
     [[WTURLSessionManager sharedSessionManager] setWTTask:wtTask forKey:task];
     [wtTask resume];
@@ -144,7 +108,6 @@ static NSURLCache *cache =nil;
     wtTask.complection = completionHandler;
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request];
     wtTask.task = task;
-    [self setdelegate:wtTask forTask:task];
     wtTask.complection = completionHandler;
     wtTask.cacheTime = -1;
     [[WTURLSessionManager sharedSessionManager] setWTTask:wtTask forKey:task];
@@ -303,82 +266,7 @@ static NSString * const kAFCharactersSubDelimitersToEncode = @"!$&'()*+,;=";
     return request;
 }
 
-/*
- 
- --Boundary-D35F0194-BBD2-446D-B5D0-2A4B66126928
- Content-Disposition: form-data; name="fileContents"; filename="TestImage1.png"
- Content-Type: image/png
- 
- --Boundary+1F52B974B3E5F39D
- Content-Disposition: form-data; name="fileContents"; filename="image.jpg"
- Content-Type: image/jpeg
- 
- */
 
-#pragma mark - NSURLSessionDelegate
-- (void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(nullable NSError *)error{
-    
-}
-- (void)URLSession:(NSURLSession *)session didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge
- completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential * _Nullable credential))completionHandler
-{
-    NSURLSessionAuthChallengeDisposition dis = NSURLSessionAuthChallengePerformDefaultHandling;
-    NSURLCredential *credential = nil;
-    if (challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust) {
-        SecTrustRef serverTrust = challenge.protectionSpace.serverTrust;
-        credential = [NSURLCredential credentialForTrust:serverTrust];
-    }
-    completionHandler(dis,credential);
-}
-- (void)URLSessionDidFinishEventsForBackgroundURLSession:(NSURLSession *)session
-{
-    
-}
-#pragma mark - NSURLSessionTaskDelegate
-- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task
-didCompleteWithError:(nullable NSError *)error
-{
-    WTURLSessionTask *delegate = [self delegateForTask:task];
-    if (delegate) {
-        [delegate URLSession:session task:task didCompleteWithError:error];
-    }
-    
-}
-- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task
-   didSendBodyData:(int64_t)bytesSent
-    totalBytesSent:(int64_t)totalBytesSent
-totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend{
-
-}
-
-#pragma mark - NSURLSessionDataDelegate
-/*
-- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
-didReceiveResponse:(NSURLResponse *)response
- completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler
-{
-    WTURLSessionTask *delegate = [self delegateForTask:dataTask];
-    if (delegate) {
-        [delegate URLSession:session dataTask:dataTask didReceiveResponse:response completionHandler:completionHandler];
-    }
-}
-- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
-    didReceiveData:(NSData *)data{
-    WTURLSessionTask *delegate = [self delegateForTask:dataTask];
-    if (delegate) {
-        [delegate URLSession:session dataTask:dataTask didReceiveData:data];
-    }
-}
-- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask
- willCacheResponse:(NSCachedURLResponse *)proposedResponse
- completionHandler:(void (^)(NSCachedURLResponse * _Nullable cachedResponse))completionHandler
-{
-    WTURLSessionTask *delegate = [self delegateForTask:dataTask];
-    if (delegate && !delegate.error) {
-        [delegate URLSession:session dataTask:dataTask willCacheResponse:proposedResponse completionHandler:completionHandler];
-    }
-}
-*/
 @end
 
 

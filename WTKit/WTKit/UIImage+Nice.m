@@ -270,12 +270,12 @@ static UIImage *animatedImageWithAnimatedGIFReleasingImageSource(CGImageSourceRe
     
     NSMutableURLRequest *request = [[WTNetWorkManager sharedKit] requestWithMethod:@"GET" URLString:url parameters:nil error:nil];
     [[WTNetWorkManager sharedKit].session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        [[[WTNetWorkManager sharedKit] operationQueue] addOperationWithBlock:^{
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_UTILITY, 0), ^{
             UIImage *temp = [UIImage imageWithData:data];
             if (complection) {
                 complection(temp);
             }
-        }];
+        });
     }];
 }
 
@@ -285,12 +285,12 @@ static UIImage *animatedImageWithAnimatedGIFReleasingImageSource(CGImageSourceRe
 {
     NSMutableURLRequest *request = [[WTNetWorkManager sharedKit] requestWithMethod:@"GET" URLString:url parameters:nil error:nil];
     [[WTNetWorkManager sharedKit].session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        [[[WTNetWorkManager sharedKit] operationQueue] addOperationWithBlock:^{
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_UTILITY, 0), ^{
             if (completion) {
                 UIImage *image = [self animatedImageWithAnimatedGIFData:data];
                 completion(image);
             }
-        }];
+        });
     }];
     
 }

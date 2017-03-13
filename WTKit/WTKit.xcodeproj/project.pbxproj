@@ -146,48 +146,9 @@
 		E18B9EAB1E729D460013EFA8 /* WTKit */ = {
 			isa = PBXGroup;
 			children = (
+				E18B9F901E76AEA80013EFA8 /* Foundation */,
 				E18B9F871E7678340013EFA8 /* UIKit */,
 				E18B9F7F1E72AAF50013EFA8 /* NetWork */,
-				E18B9ED91E729E440013EFA8 /* CALayer+Nice.h */,
-				E18B9EDA1E729E440013EFA8 /* CALayer+Nice.m */,
-				E18B9EDB1E729E440013EFA8 /* NSArray+Nice.h */,
-				E18B9EDC1E729E440013EFA8 /* NSArray+Nice.m */,
-				E18B9EDD1E729E440013EFA8 /* NSDictionary+JSONModel.h */,
-				E18B9EDE1E729E440013EFA8 /* NSDictionary+JSONModel.m */,
-				E18B9EDF1E729E440013EFA8 /* NSJSONSerialization+Nice.h */,
-				E18B9EE01E729E440013EFA8 /* NSJSONSerialization+Nice.m */,
-				E18B9EE11E729E440013EFA8 /* NSMutableArray+Nice.h */,
-				E18B9EE21E729E440013EFA8 /* NSMutableArray+Nice.m */,
-				E18B9EE31E729E440013EFA8 /* NSObject+JSONModel.h */,
-				E18B9EE41E729E440013EFA8 /* NSObject+JSONModel.m */,
-				E18B9EE51E729E440013EFA8 /* NSObject+Nice.h */,
-				E18B9EE61E729E440013EFA8 /* NSObject+Nice.m */,
-				E18B9EE71E729E440013EFA8 /* NSOperationQueue+Nice.h */,
-				E18B9EE81E729E440013EFA8 /* NSOperationQueue+Nice.m */,
-				E18B9EE91E729E440013EFA8 /* UIAlertView+WTRequestCenter.h */,
-				E18B9EEA1E729E440013EFA8 /* UIAlertView+WTRequestCenter.m */,
-				E18B9EEB1E729E440013EFA8 /* UIApplication+Nice.h */,
-				E18B9EEC1E729E440013EFA8 /* UIApplication+Nice.m */,
-				E18B9EEF1E729E440013EFA8 /* UIColor+WTRequestCenter.h */,
-				E18B9EF01E729E440013EFA8 /* UIColor+WTRequestCenter.m */,
-				E18B9EF31E729E440013EFA8 /* UIDevice+WTRequestCenter.h */,
-				E18B9EF41E729E440013EFA8 /* UIDevice+WTRequestCenter.m */,
-				E18B9EFB1E729E440013EFA8 /* UIScreen+WTRequestCenter.h */,
-				E18B9EFC1E729E440013EFA8 /* UIScreen+WTRequestCenter.m */,
-				E18B9EFD1E729E440013EFA8 /* UIView+Nice.h */,
-				E18B9EFE1E729E440013EFA8 /* UIView+Nice.m */,
-				E18B9EFF1E729E440013EFA8 /* UIViewController+Nice.h */,
-				E18B9F001E729E440013EFA8 /* UIViewController+Nice.m */,
-				E18B9F011E729E440013EFA8 /* WTCycleScrollView.h */,
-				E18B9F021E729E440013EFA8 /* WTCycleScrollView.m */,
-				E18B9F031E729E440013EFA8 /* WTDataSaver.h */,
-				E18B9F041E729E440013EFA8 /* WTDataSaver.m */,
-				E18B9F051E729E440013EFA8 /* WTImageViewer.h */,
-				E18B9F061E729E440013EFA8 /* WTImageViewer.m */,
-				E18B9F071E729E440013EFA8 /* WTNetworkActivityIndicatorManager.h */,
-				E18B9F081E729E440013EFA8 /* WTNetworkActivityIndicatorManager.m */,
-				E18B9F0B1E729E440013EFA8 /* WTNumberLabel.h */,
-				E18B9F0C1E729E440013EFA8 /* WTNumberLabel.m */,
 				E18B9EAC1E729D460013EFA8 /* WTKit.h */,
 				E18B9EAD1E729D460013EFA8 /* Info.plist */,
 			);
@@ -208,6 +169,30 @@
 		E18B9F871E7678340013EFA8 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				E18B9F071E729E440013EFA8 /* WTNetworkActivityIndicatorManager.h */,
+				E18B9F081E729E440013EFA8 /* WTNetworkActivityIndicatorManager.m */,
+				E18B9F051E729E440013EFA8 /* WTImageViewer.h */,
+				E18B9F061E729E440013EFA8 /* WTImageViewer.m */,
+				E18B9F0B1E729E440013EFA8 /* WTNumberLabel.h */,
+				E18B9F0C1E729E440013EFA8 /* WTNumberLabel.m */,
+				E18B9F011E729E440013EFA8 /* WTCycleScrollView.h */,
+				E18B9F021E729E440013EFA8 /* WTCycleScrollView.m */,
+				E18B9EFF1E729E440013EFA8 /* UIViewController+Nice.h */,
+				E18B9F001E729E440013EFA8 /* UIViewController+Nice.m */,
+				E18B9EE91E729E440013EFA8 /* UIAlertView+WTRequestCenter.h */,
+				E18B9EEA1E729E440013EFA8 /* UIAlertView+WTRequestCenter.m */,
+				E18B9EEB1E729E440013EFA8 /* UIApplication+Nice.h */,
+				E18B9EEC1E729E440013EFA8 /* UIApplication+Nice.m */,
+				E18B9EF31E729E440013EFA8 /* UIDevice+WTRequestCenter.h */,
+				E18B9EF41E729E440013EFA8 /* UIDevice+WTRequestCenter.m */,
+				E18B9EFB1E729E440013EFA8 /* UIScreen+WTRequestCenter.h */,
+				E18B9EFC1E729E440013EFA8 /* UIScreen+WTRequestCenter.m */,
+				E18B9EFD1E729E440013EFA8 /* UIView+Nice.h */,
+				E18B9EFE1E729E440013EFA8 /* UIView+Nice.m */,
+				E18B9EEF1E729E440013EFA8 /* UIColor+WTRequestCenter.h */,
+				E18B9EF01E729E440013EFA8 /* UIColor+WTRequestCenter.m */,
+				E18B9ED91E729E440013EFA8 /* CALayer+Nice.h */,
+				E18B9EDA1E729E440013EFA8 /* CALayer+Nice.m */,
 				E18B9EF71E729E440013EFA8 /* UIImageView+WTRequestCenter.h */,
 				E18B9EF81E729E440013EFA8 /* UIImageView+WTRequestCenter.m */,
 				E18B9EF51E729E440013EFA8 /* UIImage+Nice.h */,
@@ -216,6 +201,29 @@
 				E18B9EEE1E729E440013EFA8 /* UIButton+WTRequestCenter.m */,
 			);
 			name = UIKit;
+			sourceTree = "<group>";
+		};
+		E18B9F901E76AEA80013EFA8 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				E18B9F031E729E440013EFA8 /* WTDataSaver.h */,
+				E18B9F041E729E440013EFA8 /* WTDataSaver.m */,
+				E18B9EE71E729E440013EFA8 /* NSOperationQueue+Nice.h */,
+				E18B9EE81E729E440013EFA8 /* NSOperationQueue+Nice.m */,
+				E18B9EE11E729E440013EFA8 /* NSMutableArray+Nice.h */,
+				E18B9EE21E729E440013EFA8 /* NSMutableArray+Nice.m */,
+				E18B9EE31E729E440013EFA8 /* NSObject+JSONModel.h */,
+				E18B9EE41E729E440013EFA8 /* NSObject+JSONModel.m */,
+				E18B9EE51E729E440013EFA8 /* NSObject+Nice.h */,
+				E18B9EE61E729E440013EFA8 /* NSObject+Nice.m */,
+				E18B9EDB1E729E440013EFA8 /* NSArray+Nice.h */,
+				E18B9EDC1E729E440013EFA8 /* NSArray+Nice.m */,
+				E18B9EDD1E729E440013EFA8 /* NSDictionary+JSONModel.h */,
+				E18B9EDE1E729E440013EFA8 /* NSDictionary+JSONModel.m */,
+				E18B9EDF1E729E440013EFA8 /* NSJSONSerialization+Nice.h */,
+				E18B9EE01E729E440013EFA8 /* NSJSONSerialization+Nice.m */,
+			);
+			name = Foundation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
