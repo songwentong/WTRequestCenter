@@ -10,32 +10,15 @@
 #import "WTNetWorkManager.h"
 @import ImageIO;
 @implementation UIImage (ImageCache)
-//static NSURLCache *sharedImageCache = nil;
-//+(NSURLCache*)sharedImageCache
-//{
-//    static dispatch_once_t onceToken;
-//    dispatch_once(&onceToken, ^{
-//        sharedImageCache = [[NSURLCache alloc] initWithMemoryCapacity:10*1024*1024
-//                                                         diskCapacity:1000*1024*1025
-//                                                             diskPath:@"WTNetwork Image Cache"];
-//        
-//    });
-//    return sharedImageCache;
-//}
-/*
- //根据图片的URL给出一个operation对象,会返回一个图片和失败的装填
- +(NSBlockOperation*)imageOperationWithURL:(NSString*)url
- complection:(void(^)(UIImage *image,NSError *error))complection;
- */
 +(WTURLSessionDataTask*)imageCacheTaskWithURL:(NSString*)url complection:(void(^)(UIImage *_Nullable image,NSError *_Nullable error))complection
 {
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     WTURLSessionDataTask *task = (WTURLSessionDataTask*)[[WTNetWorkManager sharedKit] cachedDataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        UIImage *image = nil;
+        if (data) {
+            image = [UIImage imageWithData:data];
+        }
         dispatch_async(dispatch_get_main_queue(), ^{
-            UIImage *image = nil;
-            if (data) {
-                image = [UIImage imageWithData:data];
-            }
             if (complection) {
                 complection(image,error);
             }
