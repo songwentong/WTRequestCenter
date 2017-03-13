@@ -99,29 +99,11 @@ static NSURLCache *cache =nil;
     }
 }
 
--(NSURLSessionDataTask*)taskWithWithMethod:(NSString *)method
-                                 URLString:(NSString *)URLString
-                                parameters:(NSDictionary*)parameters
-                                  finished:(void(^)(NSData * _Nullable data, NSURLResponse * _Nullable response))finish
-                                    failed:(void(^)(NSError * _Nullable error))failed
-{
-    NSMutableURLRequest *request = [self requestWithMethod:method URLString:URLString parameters:parameters error:nil];
-    return [self taskWithRequest:request finished:finish failed:failed];
-}
-
--(NSURLSessionDataTask*)taskWithRequest:(NSURLRequest*)request
+-(WTURLSessionTask*)taskWithRequest:(NSURLRequest*)request
                                finished:(void(^)(NSData * _Nullable data, NSURLResponse * _Nullable response))finish
-                                 failed:(void(^)(NSError * _Nullable error))failed
+                             failed:(void(^)(NSError * _Nullable error))failed
 {
-    
-    
-    assert(request!=nil);
-    _connectionCount = _connectionCount +1;
-    [self checkStatus];
-    WTURLSessionTask *delegate = [WTURLSessionTask new];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:delegate delegateQueue:nil];
-    delegate.complection = ^(NSData *data,NSURLResponse *response,NSError *error){
-        _connectionCount = _connectionCount - 1;
+    return [self dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (error) {
             if (failed) {
                 failed(error);
@@ -131,11 +113,8 @@ static NSURLCache *cache =nil;
                 finish(data,response);
             }
         }
-    };
-    
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request];
-    [task resume];
-    return task;
+        
+    }];
 }
 -(WTURLSessionTask*)dataTaskWithRequest:(NSURLRequest*)request
                       completionHandler:(complection_block)completionHandler

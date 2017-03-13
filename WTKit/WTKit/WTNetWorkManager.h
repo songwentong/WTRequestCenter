@@ -20,7 +20,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(NSOperationQueue*)operationQueue;
 
+
 //data task
+-(WTURLSessionTask*)taskWithRequest:(NSURLRequest*)request
+                           finished:(void(^)(NSData * _Nullable data, NSURLResponse * _Nullable response))finish
+                             failed:(void(^)(NSError * _Nullable error))failed;
 -(WTURLSessionTask*)dataTaskWithRequest:(NSURLRequest*)request
                       completionHandler:(complection_block)completionHandler;
 -(WTURLSessionTask*)cachedDataTaskWithRequest:(NSURLRequest*)request

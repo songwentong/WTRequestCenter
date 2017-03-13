@@ -14,15 +14,19 @@
 {
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
     WTURLSessionDataTask *task = (WTURLSessionDataTask*)[[WTNetWorkManager sharedKit] cachedDataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        UIImage *image = nil;
-        if (data) {
-            image = [UIImage imageWithData:data];
-        }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (complection) {
-                complection(image,error);
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^{
+            UIImage *image = nil;
+            if (data) {
+                image = [UIImage imageWithData:data];
+                image = [UIImage decodedImageWithImage:image];
             }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (complection) {
+                    complection(image,error);
+                }
+            });
         });
+        
     }];
     [task resume];
     return task;

@@ -60,11 +60,8 @@ static const void * const WTHighlightedImageOperationKey = @"WT Highlighted Imag
     
     NSMutableURLRequest *request = [[WTNetWorkManager sharedKit] requestWithMethod:@"GET" URLString:url parameters:nil error:nil];
     request.cachePolicy = NSURLRequestReturnCacheDataElseLoad;
-    
-    WTURLSessionDataTask *task = (WTURLSessionDataTask*)[[WTNetWorkManager sharedKit] cachedDataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
-    {
+    WTURLSessionDataTask *task = [UIImage imageCacheTaskWithURL:url complection:^(UIImage * _Nullable image, NSError * _Nullable error) {
         if (!error) {
-            UIImage *image = [UIImage imageWithData:data];
             safeSyncInMainQueue(^{
                 if (image) {
                     self.image = image;
