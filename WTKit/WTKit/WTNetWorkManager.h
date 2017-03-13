@@ -20,45 +20,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(NSOperationQueue*)operationQueue;
 
-
-
-/*!
- 根据请求对象生成对应的task,并执行请求
- 主线程回调
- */
--(NSURLSessionDataTask*)taskWithRequest:(NSURLRequest*)request
-                               finished:(nullable void(^)(NSData * data, NSURLResponse * response))finish
-                                 failed:(nullable void(^)(NSError * error))failed;
-
-/*!
- 根据请求参数,url,参数,执行一个请求
- 主线程回调
- */
--(NSURLSessionDataTask*)taskWithWithMethod:(NSString *)method
-                                 URLString:(NSString *)URLString
-                                parameters:(nullable NSDictionary*)parameters
-                                  finished:(nullable void(^)(NSData *data, NSURLResponse *response))finish
-                                    failed:(nullable void(^)(NSError *error))failed;
-
 //data task
 -(WTURLSessionTask*)dataTaskWithRequest:(NSURLRequest*)request
                       completionHandler:(complection_block)completionHandler;
 -(WTURLSessionTask*)cachedDataTaskWithRequest:(NSURLRequest*)request
                             completionHandler:(complection_block)completionHandler;
-
-/*!
-    缓存式请求,只建议执行GET请求.
- */
--(NSURLSessionDataTask*)cachedTaskWithRequest:(NSURLRequest*)request
-                                     finished:(nullable void(^)(NSData * data, NSURLResponse * response))finish
-                                       failed:(nullable void(^)(NSError * error))failed;
-/*!
-    缓存并刷新的请求
- */
--(NSURLSessionDataTask*)cachedTaskWithRequest:(NSURLRequest*)request
-                                      recache:(BOOL)recache
-                                     finished:(void(^)(NSData * data, NSURLResponse * response))finish
-                                       failed:(void(^)(NSError * error))failed;
 
 @end
 

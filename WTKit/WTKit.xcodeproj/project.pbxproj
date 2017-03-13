@@ -168,8 +168,6 @@
 				E18B9EEA1E729E440013EFA8 /* UIAlertView+WTRequestCenter.m */,
 				E18B9EEB1E729E440013EFA8 /* UIApplication+Nice.h */,
 				E18B9EEC1E729E440013EFA8 /* UIApplication+Nice.m */,
-				E18B9EED1E729E440013EFA8 /* UIButton+WTRequestCenter.h */,
-				E18B9EEE1E729E440013EFA8 /* UIButton+WTRequestCenter.m */,
 				E18B9EEF1E729E440013EFA8 /* UIColor+WTRequestCenter.h */,
 				E18B9EF01E729E440013EFA8 /* UIColor+WTRequestCenter.m */,
 				E18B9EF31E729E440013EFA8 /* UIDevice+WTRequestCenter.h */,
@@ -214,6 +212,8 @@
 				E18B9EF81E729E440013EFA8 /* UIImageView+WTRequestCenter.m */,
 				E18B9EF51E729E440013EFA8 /* UIImage+Nice.h */,
 				E18B9EF61E729E440013EFA8 /* UIImage+Nice.m */,
+				E18B9EED1E729E440013EFA8 /* UIButton+WTRequestCenter.h */,
+				E18B9EEE1E729E440013EFA8 /* UIButton+WTRequestCenter.m */,
 			);
 			name = UIKit;
 			sourceTree = "<group>";

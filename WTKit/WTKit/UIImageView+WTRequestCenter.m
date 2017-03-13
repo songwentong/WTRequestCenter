@@ -25,13 +25,7 @@ static const void * const WTHighlightedImageOperationKey = @"WT Highlighted Imag
 -(void)setImageOperation:(WTURLSessionDataTask*)operation
 {
     WTURLSessionDataTask *old = [self imageOperation];
-    if (old) {
-        
-//        取消上次请求,防止请求回调产生的异常
-        if ([old.task state] != NSURLSessionTaskStateCompleted) {
-            [old cancel];
-        }
-    }
+    [old cancel];
     
     objc_setAssociatedObject(self, WTImageViewOperationKey, operation, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
@@ -98,19 +92,14 @@ static const void * const WTHighlightedImageOperationKey = @"WT Highlighted Imag
 
 @implementation UIImageView(highlightedImage)
 
--(void)setHighlightedImageOperation:(NSOperation*)operation
+-(void)setHighlightedImageOperation:(WTURLSessionDataTask*)operation
 {
-    NSOperation *old = [self highlightedImageOperation];
-    if (old) {
-        if ([old isExecuting]) {
-            [old cancel];
-        }
-    }
-    
+    WTURLSessionDataTask *old = [self highlightedImageOperation];
+    [old cancel];
     objc_setAssociatedObject(self, WTHighlightedImageOperationKey, operation, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
--(NSOperation*)highlightedImageOperation{
+-(WTURLSessionDataTask*)highlightedImageOperation{
     return objc_getAssociatedObject(self, WTHighlightedImageOperationKey);
 }
 
@@ -138,8 +127,7 @@ static const void * const WTHighlightedImageOperationKey = @"WT Highlighted Imag
     
     
     
-    NSOperation *operation = [UIImage imageOperationWithURL:url complection:^(UIImage *image,NSError *error)
-    {
+    WTURLSessionDataTask *operation = [UIImage imageCacheTaskWithURL:url complection:^(UIImage * _Nullable image, NSError * _Nullable error) {
         safeSyncInMainQueue(^{
             self.highlightedImage = image;
             [self setNeedsLayout];
@@ -150,7 +138,7 @@ static const void * const WTHighlightedImageOperationKey = @"WT Highlighted Imag
     }];
     
     [self setHighlightedImageOperation:operation];
-    [operation start];
+    [operation resume];
 }
 
 
@@ -160,11 +148,10 @@ static const void * const WTHighlightedImageOperationKey = @"WT Highlighted Imag
 -(void)setGifWithURL:(NSString*)url
 {
     NSMutableURLRequest *request = [[WTNetWorkManager sharedKit] requestWithMethod:@"GET" URLString:url parameters:nil error:nil];
-    [[WTNetWorkManager sharedKit] taskWithRequest:request finished:^(NSData *data, NSURLResponse *response)
-    {
-        [self setGifWithData:data];
-    } failed:^(NSError *error) {
-        
+    [[WTNetWorkManager sharedKit] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (data) {
+            [self setGifWithData:data];
+        }
     }];
 }
 

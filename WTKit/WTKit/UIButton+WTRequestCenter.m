@@ -19,26 +19,28 @@
 static const void * const WTButtonImageOperationKey = @"WT Button Image Operation Key";
 //设置背景图的Operation
 static const void * const WTButtonBackGroundImageOperationKey = @"WT Button Back Ground Image Operation Key";
--(NSOperation*)wtImageRequestOperation
+-(WTURLSessionDataTask*)wtImageRequestOperation
 {
 
-    NSOperation *operation = (NSOperation*)objc_getAssociatedObject(self, WTButtonImageOperationKey);
+    WTURLSessionDataTask *operation = (WTURLSessionDataTask*)objc_getAssociatedObject(self, WTButtonImageOperationKey);
     return operation;
 }
 
--(void)setWtImageRequestOperation:(NSOperation *)wtImageRequestOperation
+-(void)setWtImageRequestOperation:(WTURLSessionDataTask *)wtImageRequestOperation
 {
+    [[self wtImageRequestOperation] cancel];
     objc_setAssociatedObject(self, WTButtonImageOperationKey, wtImageRequestOperation, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
--(NSOperation*)wtBackGroundImageRequestOperation
+-(WTURLSessionDataTask*)wtBackGroundImageRequestOperation
 {
-    NSOperation *operation = (NSOperation*)objc_getAssociatedObject(self, WTButtonBackGroundImageOperationKey);
+    WTURLSessionDataTask *operation = (WTURLSessionDataTask*)objc_getAssociatedObject(self, WTButtonBackGroundImageOperationKey);
     return operation;
 }
 
--(void)setWtBackGroundImageRequestOperation:(NSOperation *)wtBackGroundImageRequestOperation
+-(void)setWtBackGroundImageRequestOperation:(WTURLSessionDataTask *)wtBackGroundImageRequestOperation
 {
+    [[self wtBackGroundImageRequestOperation] cancel];
     objc_setAssociatedObject(self, WTButtonBackGroundImageOperationKey, wtBackGroundImageRequestOperation, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
@@ -55,11 +57,6 @@ static const void * const WTButtonBackGroundImageOperationKey = @"WT Button Back
 {
     [self setImage:placeholderImage forState:state];
     
-    if (self.wtImageRequestOperation) {
-        [self.wtImageRequestOperation cancel];
-        self.wtImageRequestOperation = nil;
-    }
-    
     if (!url) {
         return;
     }
@@ -70,14 +67,18 @@ static const void * const WTButtonBackGroundImageOperationKey = @"WT Button Back
     
     
     
-    NSOperation *operation = [UIImage imageOperationWithURL:url complection:^(UIImage *image,NSError *error) {
+    WTURLSessionDataTask *operation = [UIImage imageCacheTaskWithURL:url complection:^(UIImage * _Nullable image, NSError * _Nullable error) {
         safeSyncInMainQueue(^{
             [self setImage:image forState:state];
             [self setNeedsLayout];
         });
     }];
+    
+    /*
+     
+     */
     [self setWtImageRequestOperation:operation];
-    [operation start];
+    [operation resume];
 }
 
 - (void)setBackgroundImage:(UIControlState)state
@@ -90,11 +91,6 @@ static const void * const WTButtonBackGroundImageOperationKey = @"WT Button Back
                  withURL:(NSString *)url
         placeholderImage:(UIImage *)placeholderImage
 {
-    
-    if (self.wtBackGroundImageRequestOperation) {
-        [self.wtBackGroundImageRequestOperation cancel];
-        self.wtBackGroundImageRequestOperation = nil;
-    }
     [self setBackgroundImage:placeholderImage forState:state];
     
     if (!url) {
@@ -105,7 +101,7 @@ static const void * const WTButtonBackGroundImageOperationKey = @"WT Button Back
     
     
     
-    NSOperation *operation = [UIImage imageOperationWithURL:url complection:^(UIImage *image,NSError *error) {
+    WTURLSessionDataTask *operation = [UIImage imageCacheTaskWithURL:url complection:^(UIImage * _Nullable image, NSError * _Nullable error) {
         safeSyncInMainQueue(^{
             [self setBackgroundImage:image forState:state];
             [self setNeedsLayout];
@@ -113,7 +109,7 @@ static const void * const WTButtonBackGroundImageOperationKey = @"WT Button Back
     }];
     
     [self setWtBackGroundImageRequestOperation:operation];
-    [operation start];
+    [operation resume];
              
 }
 
