@@ -146,6 +146,7 @@
 		E18B9EAB1E729D460013EFA8 /* WTKit */ = {
 			isa = PBXGroup;
 			children = (
+				E18B9F871E7678340013EFA8 /* UIKit */,
 				E18B9F7F1E72AAF50013EFA8 /* NetWork */,
 				E18B9ED91E729E440013EFA8 /* CALayer+Nice.h */,
 				E18B9EDA1E729E440013EFA8 /* CALayer+Nice.m */,
@@ -173,10 +174,6 @@
 				E18B9EF01E729E440013EFA8 /* UIColor+WTRequestCenter.m */,
 				E18B9EF31E729E440013EFA8 /* UIDevice+WTRequestCenter.h */,
 				E18B9EF41E729E440013EFA8 /* UIDevice+WTRequestCenter.m */,
-				E18B9EF51E729E440013EFA8 /* UIImage+Nice.h */,
-				E18B9EF61E729E440013EFA8 /* UIImage+Nice.m */,
-				E18B9EF71E729E440013EFA8 /* UIImageView+WTRequestCenter.h */,
-				E18B9EF81E729E440013EFA8 /* UIImageView+WTRequestCenter.m */,
 				E18B9EFB1E729E440013EFA8 /* UIScreen+WTRequestCenter.h */,
 				E18B9EFC1E729E440013EFA8 /* UIScreen+WTRequestCenter.m */,
 				E18B9EFD1E729E440013EFA8 /* UIView+Nice.h */,
@@ -208,6 +205,17 @@
 				E18B9F811E72AB3F0013EFA8 /* WTURLSessionTask.m */,
 			);
 			name = NetWork;
+			sourceTree = "<group>";
+		};
+		E18B9F871E7678340013EFA8 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				E18B9EF71E729E440013EFA8 /* UIImageView+WTRequestCenter.h */,
+				E18B9EF81E729E440013EFA8 /* UIImageView+WTRequestCenter.m */,
+				E18B9EF51E729E440013EFA8 /* UIImage+Nice.h */,
+				E18B9EF61E729E440013EFA8 /* UIImage+Nice.m */,
+			);
+			name = UIKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

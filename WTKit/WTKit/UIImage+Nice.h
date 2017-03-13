@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+NS_ASSUME_NONNULL_BEGIN
 @interface UIImage (ImageCache)
 
 //根据图片的URL给出一个operation对象,会返回一个图片和失败的装填
@@ -17,6 +17,8 @@
 +(void)removeImageWithURL:(NSString*)url;
 //删除所有图片
 +(void)clearAllImages;
+//图片解码
++ (nullable UIImage *)decodedImageWithImage:(nullable UIImage *)image;
 @end
 
 @interface UIImage (Gif)
@@ -25,3 +27,4 @@
 +(void)gifImageWithURL:(NSString*)url
             completion:(void(^)(UIImage* image))completion;
 @end
+NS_ASSUME_NONNULL_END

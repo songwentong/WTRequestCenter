@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 @interface WTURLSessionManager:NSObject
 @property (nonatomic,strong) NSURLSession *mySession;
+@property dispatch_queue_t queueToProcessGetAndSetMethod;
 +(instancetype)sharedSessionManager;
 -(WTURLSessionTask*)getWTTaskForTask:(NSURLSessionTask*)task;
 -(void)setWTTask:(WTURLSessionTask*)wtTask forKey:(NSURLSessionTask*)task;

@@ -10,7 +10,7 @@
 #import "WTNetWorkManager.h"
 @interface WTURLSessionManager() <NSURLSessionDelegate,NSURLSessionTaskDelegate,NSURLSessionDataDelegate>
 @property NSMutableDictionary<NSString*,WTURLSessionTask *> *dictToSaveRequests;
-@property dispatch_queue_t queueToProcessGetAndSetMethod;
+
 @property (nonatomic,strong) NSOperationQueue *delegateQueue;
 @end
 @implementation WTURLSessionManager
@@ -40,6 +40,7 @@ static WTURLSessionManager* sharedManager = nil;
 -(WTURLSessionTask*)getWTTaskForTask:(NSURLSessionTask*)task
 {
     __block WTURLSessionTask *wtTask = nil;
+    
     dispatch_sync(_queueToProcessGetAndSetMethod, ^{
         wtTask = [_dictToSaveRequests valueForKey:[NSString stringWithFormat:@"%ld",task.taskIdentifier]];
     });
