@@ -28,6 +28,7 @@
 		E18B9F7B1E72A0820013EFA8 /* POSTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9F671E72A0820013EFA8 /* POSTViewController.m */; };
 		E18B9F7C1E72A0820013EFA8 /* Reference in Resources */ = {isa = PBXBuildFile; fileRef = E18B9F681E72A0820013EFA8 /* Reference */; };
 		E18B9F7D1E72A0820013EFA8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9F6A1E72A0820013EFA8 /* ViewController.m */; };
+		E18B9F921E77C7960013EFA8 /* JSONData in Resources */ = {isa = PBXBuildFile; fileRef = E18B9F911E77C7960013EFA8 /* JSONData */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		E18B9F681E72A0820013EFA8 /* Reference */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Reference; sourceTree = "<group>"; };
 		E18B9F691E72A0820013EFA8 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		E18B9F6A1E72A0820013EFA8 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		E18B9F911E77C7960013EFA8 /* JSONData */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = JSONData; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 				E18B9F5D1E72A0820013EFA8 /* ImageViewCacheVC.m */,
 				E18B9F5E1E72A0820013EFA8 /* JSONModelDemoVC.h */,
 				E18B9F5F1E72A0820013EFA8 /* JSONModelDemoVC.m */,
+				E18B9F911E77C7960013EFA8 /* JSONData */,
 				E18B9F601E72A0820013EFA8 /* Launch Screen.storyboard */,
 				E18B9F611E72A0820013EFA8 /* ParametersVC.h */,
 				E18B9F621E72A0820013EFA8 /* ParametersVC.m */,
@@ -259,6 +262,7 @@
 				E18B9F6E1E72A0820013EFA8 /* LaunchScreen.storyboard in Resources */,
 				E18B9F6D1E72A0820013EFA8 /* Assets.xcassets in Resources */,
 				E18B9F6B1E72A0820013EFA8 /* aaa@2x.gif in Resources */,
+				E18B9F921E77C7960013EFA8 /* JSONData in Resources */,
 				E18B9F771E72A0820013EFA8 /* Launch Screen.storyboard in Resources */,
 				E18B9F791E72A0820013EFA8 /* plan in Resources */,
 				E18B9F7C1E72A0820013EFA8 /* Reference in Resources */,

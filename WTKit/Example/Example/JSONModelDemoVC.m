@@ -23,11 +23,14 @@
     self.className = @"XXX";
     self.title = _className;
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"JSONData" ofType:nil];
-    NSData *data = [NSData dataWithContentsOfFile:filePath];
-    NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    _jsonTextView.text = string;
-    NSDictionary *jsonObj = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-    NSLog(@"%@",jsonObj);
+    if (filePath) {
+        NSData *data = [NSData dataWithContentsOfFile:filePath];
+        NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        _jsonTextView.text = string;
+        NSDictionary *jsonObj = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+        NSLog(@"%@",jsonObj);
+    }
+    
     
 }
 - (IBAction)print:(id)sender {
