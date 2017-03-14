@@ -146,6 +146,7 @@
 		E18B9EAB1E729D460013EFA8 /* WTKit */ = {
 			isa = PBXGroup;
 			children = (
+				E18B9F931E77C9330013EFA8 /* JSONModel */,
 				E18B9F901E76AEA80013EFA8 /* Foundation */,
 				E18B9F871E7678340013EFA8 /* UIKit */,
 				E18B9F7F1E72AAF50013EFA8 /* NetWork */,
@@ -212,18 +213,25 @@
 				E18B9EE81E729E440013EFA8 /* NSOperationQueue+Nice.m */,
 				E18B9EE11E729E440013EFA8 /* NSMutableArray+Nice.h */,
 				E18B9EE21E729E440013EFA8 /* NSMutableArray+Nice.m */,
-				E18B9EE31E729E440013EFA8 /* NSObject+JSONModel.h */,
-				E18B9EE41E729E440013EFA8 /* NSObject+JSONModel.m */,
 				E18B9EE51E729E440013EFA8 /* NSObject+Nice.h */,
 				E18B9EE61E729E440013EFA8 /* NSObject+Nice.m */,
 				E18B9EDB1E729E440013EFA8 /* NSArray+Nice.h */,
 				E18B9EDC1E729E440013EFA8 /* NSArray+Nice.m */,
-				E18B9EDD1E729E440013EFA8 /* NSDictionary+JSONModel.h */,
-				E18B9EDE1E729E440013EFA8 /* NSDictionary+JSONModel.m */,
 				E18B9EDF1E729E440013EFA8 /* NSJSONSerialization+Nice.h */,
 				E18B9EE01E729E440013EFA8 /* NSJSONSerialization+Nice.m */,
 			);
 			name = Foundation;
+			sourceTree = "<group>";
+		};
+		E18B9F931E77C9330013EFA8 /* JSONModel */ = {
+			isa = PBXGroup;
+			children = (
+				E18B9EE31E729E440013EFA8 /* NSObject+JSONModel.h */,
+				E18B9EE41E729E440013EFA8 /* NSObject+JSONModel.m */,
+				E18B9EDD1E729E440013EFA8 /* NSDictionary+JSONModel.h */,
+				E18B9EDE1E729E440013EFA8 /* NSDictionary+JSONModel.m */,
+			);
+			name = JSONModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

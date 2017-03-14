@@ -10,7 +10,7 @@
 #import <objc/runtime.h>
 
 @implementation NSObject (JSONModel)
--(instancetype)initWithJSONData:(NSData*)data{
+-(instancetype)initWTJSONModelWithData:(NSData*)data{
     self = [self init];
     id obj = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     [self travelData:obj];

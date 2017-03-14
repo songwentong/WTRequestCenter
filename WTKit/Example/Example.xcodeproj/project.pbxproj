@@ -29,6 +29,7 @@
 		E18B9F7C1E72A0820013EFA8 /* Reference in Resources */ = {isa = PBXBuildFile; fileRef = E18B9F681E72A0820013EFA8 /* Reference */; };
 		E18B9F7D1E72A0820013EFA8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9F6A1E72A0820013EFA8 /* ViewController.m */; };
 		E18B9F921E77C7960013EFA8 /* JSONData in Resources */ = {isa = PBXBuildFile; fileRef = E18B9F911E77C7960013EFA8 /* JSONData */; };
+		E18B9F9A1E77CA760013EFA8 /* XXX.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9F981E77CA760013EFA8 /* XXX.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,8 @@
 		E18B9F691E72A0820013EFA8 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		E18B9F6A1E72A0820013EFA8 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		E18B9F911E77C7960013EFA8 /* JSONData */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = JSONData; sourceTree = "<group>"; };
+		E18B9F981E77CA760013EFA8 /* XXX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXX.m; sourceTree = "<group>"; };
+		E18B9F991E77CA760013EFA8 /* XXX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXX.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +121,7 @@
 		E18B9EC11E729D990013EFA8 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				E18B9F941E77CA2F0013EFA8 /* JSON */,
 				E18B9F4A1E72A0820013EFA8 /* aaa@2x.gif */,
 				E18B9F4B1E72A0820013EFA8 /* AppDelegate.h */,
 				E18B9F4C1E72A0820013EFA8 /* AppDelegate.m */,
@@ -178,6 +182,15 @@
 				E18B9F511E72A0820013EFA8 /* Main.storyboard */,
 			);
 			path = Base.lproj;
+			sourceTree = "<group>";
+		};
+		E18B9F941E77CA2F0013EFA8 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				E18B9F991E77CA760013EFA8 /* XXX.h */,
+				E18B9F981E77CA760013EFA8 /* XXX.m */,
+			);
+			name = JSON;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E18B9F7B1E72A0820013EFA8 /* POSTViewController.m in Sources */,
+				E18B9F9A1E77CA760013EFA8 /* XXX.m in Sources */,
 				E18B9F7A1E72A0820013EFA8 /* POSTImageViewController.m in Sources */,
 				E18B9F701E72A0820013EFA8 /* GETViewController.m in Sources */,
 				E18B9F6C1E72A0820013EFA8 /* AppDelegate.m in Sources */,

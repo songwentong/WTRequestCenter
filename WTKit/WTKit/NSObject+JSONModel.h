@@ -17,9 +17,16 @@
     给自定义属性创建一个实例返回
  */
 -(id)WTJSONModelProtocolInstanceForKey:(NSString*)key;
+/*
+    根据json数据来初始化
+ */
+-(instancetype)initWTJSONModelWithData:(NSData*)data;
 @end
 @interface NSObject (JSONModel)
--(instancetype)initWithJSONData:(NSData*)data;
+/*
+    这个方法
+ */
+-(instancetype)initWTJSONModelWithData:(NSData*)data;
 //读取json数据,给响应的属性赋值
 -(void)travelData:(id)jsonData;
 //尝试把对象的数据转换成json数据(支持NSCoding的部分都可以被转换)
