@@ -3,8 +3,7 @@ WTRequestCenter
 
 ```bash
 ```
-运行Demo以查看基本功能
-
+WTKit is a networking library for iOS and Mac OS X.It's built on top of the [Foundation URL Loading System](http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/URLLoadingSystem/URLLoadingSystem.html).
 # 创建并执行一个请求
 
 ```objective-c
