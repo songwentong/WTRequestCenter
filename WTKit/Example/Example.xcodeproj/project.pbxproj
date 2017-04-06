@@ -11,7 +11,6 @@
 		E18B9ECF1E729D990013EFA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E18B9ECE1E729D990013EFA8 /* Assets.xcassets */; };
 		E18B9F6B1E72A0820013EFA8 /* aaa@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = E18B9F4A1E72A0820013EFA8 /* aaa@2x.gif */; };
 		E18B9F6C1E72A0820013EFA8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9F4C1E72A0820013EFA8 /* AppDelegate.m */; };
-		E18B9F6D1E72A0820013EFA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E18B9F4D1E72A0820013EFA8 /* Assets.xcassets */; };
 		E18B9F6E1E72A0820013EFA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E18B9F4F1E72A0820013EFA8 /* LaunchScreen.storyboard */; };
 		E18B9F6F1E72A0820013EFA8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E18B9F511E72A0820013EFA8 /* Main.storyboard */; };
 		E18B9F701E72A0820013EFA8 /* GETViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9F541E72A0820013EFA8 /* GETViewController.m */; };
@@ -220,7 +219,7 @@
 		E18B9EB71E729D990013EFA8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = songwentong;
 				TargetAttributes = {
 					E18B9EBE1E729D990013EFA8 = {
@@ -273,7 +272,6 @@
 				E18B9F741E72A0820013EFA8 /* ImageReceiveServer.py in Resources */,
 				E18B9F6F1E72A0820013EFA8 /* Main.storyboard in Resources */,
 				E18B9F6E1E72A0820013EFA8 /* LaunchScreen.storyboard in Resources */,
-				E18B9F6D1E72A0820013EFA8 /* Assets.xcassets in Resources */,
 				E18B9F6B1E72A0820013EFA8 /* aaa@2x.gif in Resources */,
 				E18B9F921E77C7960013EFA8 /* JSONData in Resources */,
 				E18B9F771E72A0820013EFA8 /* Launch Screen.storyboard in Resources */,
