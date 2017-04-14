@@ -8,20 +8,29 @@
 
 #import "GETViewController.h"
 @import WTKit;
-@interface GETViewController ()
-
-@property (weak, nonatomic) IBOutlet UITextField *urlTextField;
-
-@property (weak, nonatomic) IBOutlet UITextView *textView;
-
+@interface GETViewController () <UITableViewDataSource,UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *myTableView;
+@property (copy) NSDictionary *allHeaderFields;
 @end
 
 @implementation GETViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    _urlTextField.text = @"http://www.baidu.com";
+    NSURLRequest *request = [[WTNetWorkManager sharedKit] requestWithMethod:@"GET" URLString:@"https://httpbin.org/get" parameters:nil error:nil];
+    [[WTNetWorkManager sharedKit] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        //complection
+        if (!error) {
+            if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+                NSHTTPURLResponse *httpRes = (NSHTTPURLResponse*)response;
+                self.allHeaderFields = httpRes.allHeaderFields;
+                [self.myTableView reloadData];
+                self.myTableView.hidden = NO;
+            }
+        }else{
+            
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -29,38 +38,50 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)requestPressed:(id)sender
-{
-    NSString *url = _urlTextField.text;
-    [_urlTextField resignFirstResponder];
-
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
-    WTURLSessionTask *task = [[WTNetWorkManager sharedKit] dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        NSString *string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        if (string) {
-            _textView.text = string;
+#pragma mark - UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+    {
+        switch (section) {
+            case 0:
+                return _allHeaderFields.count;
+            break;
+            
+            default:
+            break;
         }
-    }];
-    [task resume];
-    /*
-    [[WTNetWorkManager sharedKit] taskWithWithMethod:@"GET" URLString:url parameters:nil finished:^(NSData * _Nonnull data, NSURLResponse * _Nonnull response) {
-     
-    } failed:^(NSError * _Nonnull error) {
-        _textView.text = [NSString stringWithFormat:@"请求失败:%@",error.localizedDescription];
-    }];
-     */
+        return 0;
+    }
     
-
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+    // Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
+    // Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
+    
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+    {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+        switch (indexPath.section) {
+            case 0:
+            {
+                NSArray *keysArray = [_allHeaderFields.allKeys sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+                    if (obj1<obj2) {
+                        return NSOrderedAscending;
+                    }else{
+                        return NSOrderedDescending;
+                    }
+                }];
+                NSString *key = keysArray[indexPath.row];
+                cell.textLabel.text = key;
+                cell.detailTextLabel.text = _allHeaderFields[key];
+            }
+            break;
+            
+            default:
+            break;
+        }
+        return cell;
+    }
+#pragma mark - UITableViewDelegate
+    - (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+        return @"HEADERS";
+    }
 
 @end

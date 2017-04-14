@@ -96,10 +96,10 @@
     
     //section1
     NSMutableArray *section1 = [NSMutableArray array];
-    [section1 addObject:@"GET 请求"];
-    [section1 addObject:@"POST 请求"];
-    [section1 addObject:@"image 缓存"];
-    [section1 addObject:@"image 上传"];
+    [section1 addObject:@"GET Request"];
+    [section1 addObject:@"POST Request"];
+    [section1 addObject:@"image"];
+    [section1 addObject:@"image"];
     [array addObject:section1];
     
     //section2
