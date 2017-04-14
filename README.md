@@ -1,7 +1,9 @@
 WTKit
 ===============
 [![Build Status](https://travis-ci.org/swtlovewtt/WTRequestCenter.svg?branch=master)](https://travis-ci.org/swtlovewtt/WTRequestCenter)
-
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/WTRequestCenter.svg)](https://img.shields.io/cocoapods/v/WTRequestCenter.svg)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Platform](https://img.shields.io/cocoapods/p/WTRequestCenter.svg?style=flat)](http://cocoadocs.org/docsets/WTRequestCenter)
 
 WTKit is my Code accumulation
 
