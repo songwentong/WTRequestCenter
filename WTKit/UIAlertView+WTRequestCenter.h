@@ -5,9 +5,9 @@
 //  Created by SongWentong on 14-10-16.
 //  Copyright (c) 2014年 song. All rights reserved.
 //
-
+#if TARGET_OS_IPHONE
 @import UIKit;
-#if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED <= 80000)
+//#if (defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED <= 80000)
 @interface UIAlertView (WTRequestCenter)
 +(void)showAlertWithMessage:(NSString*)message;
 

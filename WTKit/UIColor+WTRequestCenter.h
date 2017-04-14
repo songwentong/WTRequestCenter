@@ -5,7 +5,7 @@
 //  Created by songwt on 14-8-14.
 //  Copyright (c) 2014年 song. All rights reserved.
 //
-
+#if TARGET_OS_IOS
 @import UIKit;
 
 @interface UIColor (WTRequestCenter)
@@ -63,3 +63,4 @@
  */
 -(UIColor*)WTAntiColorWithStride:(CGFloat)stride;
 @end
+#endifb

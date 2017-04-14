@@ -5,7 +5,7 @@
 //  Created by SongWentong on 3/2/16.
 //  Copyright © 2016 song. All rights reserved.
 //
-
+#if TARGET_OS_IOS
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -49,3 +49,4 @@ NS_ASSUME_NONNULL_BEGIN
 +(instancetype)instanceFromStoryBoard:(UIStoryboard*)sb name:(NSString*)name;
 @end
 NS_ASSUME_NONNULL_END
+#endif

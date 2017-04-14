@@ -5,7 +5,7 @@
 //  Created by song on 14-8-15.
 //  Copyright (c) 2014年 song. All rights reserved.
 //
-
+#if TARGET_OS_IOS
 #import "UIDevice+WTRequestCenter.h"
 #import <sys/utsname.h>
 @implementation UIDevice (WTRequestCenter)
@@ -154,3 +154,4 @@
     return platform;
 }
 @end
+#endif

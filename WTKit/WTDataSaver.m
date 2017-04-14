@@ -5,7 +5,7 @@
 //  Created by songwt on 14-8-7.
 //  Copyright (c) Mike song(mailto:275712575@qq.com). All rights reserved.
 //  site:https://github.com/swtlovewtt/WTRequestCenter
-
+#if TARGET_OS_IOS
 #import "WTDataSaver.h"
 #import "WTNetWorkManager.h"
 @implementation WTDataSaver
@@ -333,3 +333,4 @@ static NSOperationQueue *dataQueue = nil;
 
 
 @end
+#endif

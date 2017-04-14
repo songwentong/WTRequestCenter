@@ -7,6 +7,9 @@
 //  site:https://github.com/swtlovewtt/WTRequestCenter
 //  install
 //  git clone https://github.com/swtlovewtt/WTRequestCenter
+
+
+#if TARGET_OS_IOS
 @import UIKit;
 
 @interface UIDevice (WTRequestCenter)
@@ -38,3 +41,4 @@
  */
 +(NSString *)getDeviceType;
 @end
+#endif

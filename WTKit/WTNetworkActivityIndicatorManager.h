@@ -7,6 +7,7 @@
 
 
 @import Foundation;
+#if TARGET_OS_IPHONE
 @import UIKit;
 
 
@@ -24,3 +25,4 @@
 
 - (void)decrementActivityCount;
 @end
+#endif

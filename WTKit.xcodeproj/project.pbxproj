@@ -58,6 +58,23 @@
 		E18B9F401E729E440013EFA8 /* WTNumberLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9F0C1E729E440013EFA8 /* WTNumberLabel.m */; };
 		E18B9F821E72AB3F0013EFA8 /* WTURLSessionTask.h in Headers */ = {isa = PBXBuildFile; fileRef = E18B9F801E72AB3F0013EFA8 /* WTURLSessionTask.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E18B9F831E72AB3F0013EFA8 /* WTURLSessionTask.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9F811E72AB3F0013EFA8 /* WTURLSessionTask.m */; };
+		E1EDEDB81EA0AA2800DDC372 /* WTKitMacOS.h in Headers */ = {isa = PBXBuildFile; fileRef = E1EDEDB61EA0AA2800DDC372 /* WTKitMacOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E1EDEDBD1EA0AA3300DDC372 /* NSObject+JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9EE41E729E440013EFA8 /* NSObject+JSONModel.m */; };
+		E1EDEDBF1EA0AA3300DDC372 /* NSDictionary+JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9EDE1E729E440013EFA8 /* NSDictionary+JSONModel.m */; };
+		E1EDEDC11EA0AA3300DDC372 /* WTDataSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9F041E729E440013EFA8 /* WTDataSaver.m */; };
+		E1EDEDC31EA0AA3300DDC372 /* NSOperationQueue+Nice.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9EE81E729E440013EFA8 /* NSOperationQueue+Nice.m */; };
+		E1EDEDC51EA0AA3300DDC372 /* NSMutableArray+Nice.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9EE21E729E440013EFA8 /* NSMutableArray+Nice.m */; };
+		E1EDEDC71EA0AA3300DDC372 /* NSObject+Nice.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9EE61E729E440013EFA8 /* NSObject+Nice.m */; };
+		E1EDEDC91EA0AA3300DDC372 /* NSArray+Nice.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9EDC1E729E440013EFA8 /* NSArray+Nice.m */; };
+		E1EDEDCB1EA0AA3300DDC372 /* NSJSONSerialization+Nice.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9EE01E729E440013EFA8 /* NSJSONSerialization+Nice.m */; };
+		E1EDEDEB1EA0AA3300DDC372 /* WTNetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9F0A1E729E440013EFA8 /* WTNetWorkManager.m */; };
+		E1EDEDED1EA0AA3300DDC372 /* WTURLSessionTask.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9F811E72AB3F0013EFA8 /* WTURLSessionTask.m */; };
+		E1EDEDF81EA0AEE700DDC372 /* WTKitWatchOS.h in Headers */ = {isa = PBXBuildFile; fileRef = E1EDEDF61EA0AEE700DDC372 /* WTKitWatchOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E1EDEE051EA0AEF100DDC372 /* WTKitTVOS.h in Headers */ = {isa = PBXBuildFile; fileRef = E1EDEE031EA0AEF100DDC372 /* WTKitTVOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E1EDEE091EA0AF0400DDC372 /* WTNetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9F0A1E729E440013EFA8 /* WTNetWorkManager.m */; };
+		E1EDEE0A1EA0AF0400DDC372 /* WTURLSessionTask.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9F811E72AB3F0013EFA8 /* WTURLSessionTask.m */; };
+		E1EDEE0B1EA0AF3500DDC372 /* WTNetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9F0A1E729E440013EFA8 /* WTNetWorkManager.m */; };
+		E1EDEE0C1EA0AF3500DDC372 /* WTURLSessionTask.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9F811E72AB3F0013EFA8 /* WTURLSessionTask.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -114,10 +131,40 @@
 		E18B9F0C1E729E440013EFA8 /* WTNumberLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTNumberLabel.m; sourceTree = "<group>"; };
 		E18B9F801E72AB3F0013EFA8 /* WTURLSessionTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTURLSessionTask.h; sourceTree = "<group>"; };
 		E18B9F811E72AB3F0013EFA8 /* WTURLSessionTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTURLSessionTask.m; sourceTree = "<group>"; };
+		E1EDEDB41EA0AA2800DDC372 /* WTKitMacOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WTKitMacOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1EDEDB61EA0AA2800DDC372 /* WTKitMacOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WTKitMacOS.h; sourceTree = "<group>"; };
+		E1EDEDB71EA0AA2800DDC372 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1EDEDF41EA0AEE700DDC372 /* WTKitWatchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WTKitWatchOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1EDEDF61EA0AEE700DDC372 /* WTKitWatchOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WTKitWatchOS.h; sourceTree = "<group>"; };
+		E1EDEDF71EA0AEE700DDC372 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1EDEE011EA0AEF100DDC372 /* WTKitTVOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WTKitTVOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1EDEE031EA0AEF100DDC372 /* WTKitTVOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WTKitTVOS.h; sourceTree = "<group>"; };
+		E1EDEE041EA0AEF100DDC372 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		E18B9EA51E729D460013EFA8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1EDEDB01EA0AA2800DDC372 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1EDEDF01EA0AEE700DDC372 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1EDEDFD1EA0AEF100DDC372 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -131,6 +178,9 @@
 			isa = PBXGroup;
 			children = (
 				E18B9EAB1E729D460013EFA8 /* WTKit */,
+				E1EDEDB51EA0AA2800DDC372 /* WTKitMacOS */,
+				E1EDEDF51EA0AEE700DDC372 /* WTKitWatchOS */,
+				E1EDEE021EA0AEF100DDC372 /* WTKitTVOS */,
 				E18B9EAA1E729D460013EFA8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -139,6 +189,9 @@
 			isa = PBXGroup;
 			children = (
 				E18B9EA91E729D460013EFA8 /* WTKit.framework */,
+				E1EDEDB41EA0AA2800DDC372 /* WTKitMacOS.framework */,
+				E1EDEDF41EA0AEE700DDC372 /* WTKitWatchOS.framework */,
+				E1EDEE011EA0AEF100DDC372 /* WTKitTVOS.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -234,6 +287,33 @@
 			name = JSONModel;
 			sourceTree = "<group>";
 		};
+		E1EDEDB51EA0AA2800DDC372 /* WTKitMacOS */ = {
+			isa = PBXGroup;
+			children = (
+				E1EDEDB61EA0AA2800DDC372 /* WTKitMacOS.h */,
+				E1EDEDB71EA0AA2800DDC372 /* Info.plist */,
+			);
+			path = WTKitMacOS;
+			sourceTree = "<group>";
+		};
+		E1EDEDF51EA0AEE700DDC372 /* WTKitWatchOS */ = {
+			isa = PBXGroup;
+			children = (
+				E1EDEDF61EA0AEE700DDC372 /* WTKitWatchOS.h */,
+				E1EDEDF71EA0AEE700DDC372 /* Info.plist */,
+			);
+			path = WTKitWatchOS;
+			sourceTree = "<group>";
+		};
+		E1EDEE021EA0AEF100DDC372 /* WTKitTVOS */ = {
+			isa = PBXGroup;
+			children = (
+				E1EDEE031EA0AEF100DDC372 /* WTKitTVOS.h */,
+				E1EDEE041EA0AEF100DDC372 /* Info.plist */,
+			);
+			path = WTKitTVOS;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -270,6 +350,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E1EDEDB11EA0AA2800DDC372 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1EDEDB81EA0AA2800DDC372 /* WTKitMacOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1EDEDF11EA0AEE700DDC372 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1EDEDF81EA0AEE700DDC372 /* WTKitWatchOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1EDEDFE1EA0AEF100DDC372 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1EDEE051EA0AEF100DDC372 /* WTKitTVOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -291,6 +395,60 @@
 			productReference = E18B9EA91E729D460013EFA8 /* WTKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		E1EDEDB31EA0AA2800DDC372 /* WTKitMacOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1EDEDBB1EA0AA2800DDC372 /* Build configuration list for PBXNativeTarget "WTKitMacOS" */;
+			buildPhases = (
+				E1EDEDAF1EA0AA2800DDC372 /* Sources */,
+				E1EDEDB01EA0AA2800DDC372 /* Frameworks */,
+				E1EDEDB11EA0AA2800DDC372 /* Headers */,
+				E1EDEDB21EA0AA2800DDC372 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WTKitMacOS;
+			productName = WTKitMacOS;
+			productReference = E1EDEDB41EA0AA2800DDC372 /* WTKitMacOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E1EDEDF31EA0AEE700DDC372 /* WTKitWatchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1EDEDF91EA0AEE700DDC372 /* Build configuration list for PBXNativeTarget "WTKitWatchOS" */;
+			buildPhases = (
+				E1EDEDEF1EA0AEE700DDC372 /* Sources */,
+				E1EDEDF01EA0AEE700DDC372 /* Frameworks */,
+				E1EDEDF11EA0AEE700DDC372 /* Headers */,
+				E1EDEDF21EA0AEE700DDC372 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WTKitWatchOS;
+			productName = WTKitWatchOS;
+			productReference = E1EDEDF41EA0AEE700DDC372 /* WTKitWatchOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E1EDEE001EA0AEF100DDC372 /* WTKitTVOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1EDEE061EA0AEF100DDC372 /* Build configuration list for PBXNativeTarget "WTKitTVOS" */;
+			buildPhases = (
+				E1EDEDFC1EA0AEF100DDC372 /* Sources */,
+				E1EDEDFD1EA0AEF100DDC372 /* Frameworks */,
+				E1EDEDFE1EA0AEF100DDC372 /* Headers */,
+				E1EDEDFF1EA0AEF100DDC372 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WTKitTVOS;
+			productName = WTKitTVOS;
+			productReference = E1EDEE011EA0AEF100DDC372 /* WTKitTVOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -302,6 +460,21 @@
 				TargetAttributes = {
 					E18B9EA81E729D460013EFA8 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = QZFW9RQ778;
+						ProvisioningStyle = Automatic;
+					};
+					E1EDEDB31EA0AA2800DDC372 = {
+						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = QZFW9RQ778;
+						ProvisioningStyle = Automatic;
+					};
+					E1EDEDF31EA0AEE700DDC372 = {
+						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = QZFW9RQ778;
+						ProvisioningStyle = Automatic;
+					};
+					E1EDEE001EA0AEF100DDC372 = {
+						CreatedOnToolsVersion = 8.3.1;
 						DevelopmentTeam = QZFW9RQ778;
 						ProvisioningStyle = Automatic;
 					};
@@ -320,12 +493,36 @@
 			projectRoot = "";
 			targets = (
 				E18B9EA81E729D460013EFA8 /* WTKit */,
+				E1EDEDB31EA0AA2800DDC372 /* WTKitMacOS */,
+				E1EDEDF31EA0AEE700DDC372 /* WTKitWatchOS */,
+				E1EDEE001EA0AEF100DDC372 /* WTKitTVOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		E18B9EA71E729D460013EFA8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1EDEDB21EA0AA2800DDC372 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1EDEDF21EA0AEE700DDC372 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1EDEDFF1EA0AEF100DDC372 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -364,6 +561,41 @@
 				E18B9F181E729E440013EFA8 /* NSObject+JSONModel.m in Sources */,
 				E18B9F301E729E440013EFA8 /* UIScreen+WTRequestCenter.m in Sources */,
 				E18B9F3A1E729E440013EFA8 /* WTImageViewer.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1EDEDAF1EA0AA2800DDC372 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1EDEDBD1EA0AA3300DDC372 /* NSObject+JSONModel.m in Sources */,
+				E1EDEDBF1EA0AA3300DDC372 /* NSDictionary+JSONModel.m in Sources */,
+				E1EDEDC11EA0AA3300DDC372 /* WTDataSaver.m in Sources */,
+				E1EDEDC31EA0AA3300DDC372 /* NSOperationQueue+Nice.m in Sources */,
+				E1EDEDC51EA0AA3300DDC372 /* NSMutableArray+Nice.m in Sources */,
+				E1EDEDC71EA0AA3300DDC372 /* NSObject+Nice.m in Sources */,
+				E1EDEDC91EA0AA3300DDC372 /* NSArray+Nice.m in Sources */,
+				E1EDEDCB1EA0AA3300DDC372 /* NSJSONSerialization+Nice.m in Sources */,
+				E1EDEDEB1EA0AA3300DDC372 /* WTNetWorkManager.m in Sources */,
+				E1EDEDED1EA0AA3300DDC372 /* WTURLSessionTask.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1EDEDEF1EA0AEE700DDC372 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1EDEE091EA0AF0400DDC372 /* WTNetWorkManager.m in Sources */,
+				E1EDEE0A1EA0AF0400DDC372 /* WTURLSessionTask.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1EDEDFC1EA0AEF100DDC372 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1EDEE0B1EA0AF3500DDC372 /* WTNetWorkManager.m in Sources */,
+				E1EDEE0C1EA0AF3500DDC372 /* WTURLSessionTask.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,6 +734,142 @@
 			};
 			name = Release;
 		};
+		E1EDEDB91EA0AA2800DDC372 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = QZFW9RQ778;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = WTKitMacOS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = com.songwentong.WTKitMacOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		E1EDEDBA1EA0AA2800DDC372 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = QZFW9RQ778;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = WTKitMacOS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = com.songwentong.WTKitMacOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		E1EDEDFA1EA0AEE700DDC372 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = QZFW9RQ778;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = WTKitWatchOS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.songwentong.WTKitWatchOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.2;
+			};
+			name = Debug;
+		};
+		E1EDEDFB1EA0AEE700DDC372 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = QZFW9RQ778;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = WTKitWatchOS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.songwentong.WTKitWatchOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 3.2;
+			};
+			name = Release;
+		};
+		E1EDEE071EA0AEF100DDC372 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = QZFW9RQ778;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = WTKitTVOS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.songwentong.WTKitTVOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.2;
+			};
+			name = Debug;
+		};
+		E1EDEE081EA0AEF100DDC372 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = QZFW9RQ778;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = WTKitTVOS/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.songwentong.WTKitTVOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.2;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -522,6 +890,30 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		E1EDEDBB1EA0AA2800DDC372 /* Build configuration list for PBXNativeTarget "WTKitMacOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1EDEDB91EA0AA2800DDC372 /* Debug */,
+				E1EDEDBA1EA0AA2800DDC372 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		E1EDEDF91EA0AEE700DDC372 /* Build configuration list for PBXNativeTarget "WTKitWatchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1EDEDFA1EA0AEE700DDC372 /* Debug */,
+				E1EDEDFB1EA0AEE700DDC372 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		E1EDEE061EA0AEF100DDC372 /* Build configuration list for PBXNativeTarget "WTKitTVOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1EDEE071EA0AEF100DDC372 /* Debug */,
+				E1EDEE081EA0AEF100DDC372 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

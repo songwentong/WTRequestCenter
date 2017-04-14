@@ -8,6 +8,7 @@
 
 #import "WTNetworkActivityIndicatorManager.h"
 #import "WTNetWorkManager.h"
+#if TARGET_OS_IPHONE
 @interface WTNetworkActivityIndicatorManager ()
 @property (readwrite, nonatomic, assign) NSInteger activityCount;
 @property (readwrite, nonatomic, strong) NSTimer *activityIndicatorVisibilityTimer;
@@ -133,3 +134,4 @@
 }
 
 @end
+#endif

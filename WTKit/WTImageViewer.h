@@ -5,7 +5,7 @@
 //  Created by song on 14/10/19.
 //  Copyright (c) 2014年 song. All rights reserved.
 //
-
+#if TARGET_OS_IOS
 @import UIKit;
 @interface WTImageScrollView : UIScrollView
 {
@@ -46,3 +46,4 @@
 
 
 @end
+#endif

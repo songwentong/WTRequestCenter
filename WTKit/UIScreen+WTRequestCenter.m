@@ -5,7 +5,7 @@
 //  Created by SongWentong on 14/11/27.
 //  Copyright (c) 2014年 song. All rights reserved.
 //
-
+#if TARGET_OS_IOS
 #import "UIScreen+WTRequestCenter.h"
 
 @implementation UIScreen (WTRequestCenter)
@@ -25,3 +25,4 @@
 }
 
 @end
+#endif

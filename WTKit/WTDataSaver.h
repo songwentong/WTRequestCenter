@@ -14,7 +14,7 @@
                                             
                                         Mike
  */
-
+#if TARGET_OS_IOS
 @import UIKit;
 @import Foundation;
 @interface WTDataSaver : NSObject
@@ -104,3 +104,4 @@
  b：b页面b数据
  c：c页面c数据
  */
+#endif
