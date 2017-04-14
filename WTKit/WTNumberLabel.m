@@ -5,7 +5,7 @@
 //  Created by SongWentong on 15/2/3.
 //  Copyright (c) 2015年 song. All rights reserved.
 //
-
+#if TARGET_OS_IOS
 #import "WTNumberLabel.h"
 @import CoreGraphics;
 //#import <CoreGraphics/CoreGraphics.h>
@@ -177,4 +177,4 @@ CGPoint PointOnCubicBezier( CGPoint* cp, float t )
     //    NSLog(@"167,WT,%@",self.text);
 }
 @end
-
+#endif
