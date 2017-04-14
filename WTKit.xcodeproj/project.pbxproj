@@ -75,6 +75,19 @@
 		E1EDEE0A1EA0AF0400DDC372 /* WTURLSessionTask.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9F811E72AB3F0013EFA8 /* WTURLSessionTask.m */; };
 		E1EDEE0B1EA0AF3500DDC372 /* WTNetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9F0A1E729E440013EFA8 /* WTNetWorkManager.m */; };
 		E1EDEE0C1EA0AF3500DDC372 /* WTURLSessionTask.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9F811E72AB3F0013EFA8 /* WTURLSessionTask.m */; };
+		E1EDEE0D1EA0B01800DDC372 /* NSDictionary+JSONModel.h in Headers */ = {isa = PBXBuildFile; fileRef = E18B9EDD1E729E440013EFA8 /* NSDictionary+JSONModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E1EDEE0E1EA0B01800DDC372 /* WTDataSaver.h in Headers */ = {isa = PBXBuildFile; fileRef = E18B9F031E729E440013EFA8 /* WTDataSaver.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E1EDEE0F1EA0B01800DDC372 /* NSOperationQueue+Nice.h in Headers */ = {isa = PBXBuildFile; fileRef = E18B9EE71E729E440013EFA8 /* NSOperationQueue+Nice.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E1EDEE101EA0B01800DDC372 /* NSMutableArray+Nice.h in Headers */ = {isa = PBXBuildFile; fileRef = E18B9EE11E729E440013EFA8 /* NSMutableArray+Nice.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E1EDEE111EA0B01800DDC372 /* NSObject+Nice.h in Headers */ = {isa = PBXBuildFile; fileRef = E18B9EE51E729E440013EFA8 /* NSObject+Nice.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E1EDEE121EA0B01800DDC372 /* NSArray+Nice.h in Headers */ = {isa = PBXBuildFile; fileRef = E18B9EDB1E729E440013EFA8 /* NSArray+Nice.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E1EDEE131EA0B01800DDC372 /* NSJSONSerialization+Nice.h in Headers */ = {isa = PBXBuildFile; fileRef = E18B9EDF1E729E440013EFA8 /* NSJSONSerialization+Nice.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E1EDEE141EA0B02C00DDC372 /* WTNetWorkManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E18B9F091E729E440013EFA8 /* WTNetWorkManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E1EDEE151EA0B02C00DDC372 /* WTURLSessionTask.h in Headers */ = {isa = PBXBuildFile; fileRef = E18B9F801E72AB3F0013EFA8 /* WTURLSessionTask.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E1EDEE161EA0B04300DDC372 /* WTNetWorkManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E18B9F091E729E440013EFA8 /* WTNetWorkManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E1EDEE171EA0B04300DDC372 /* WTURLSessionTask.h in Headers */ = {isa = PBXBuildFile; fileRef = E18B9F801E72AB3F0013EFA8 /* WTURLSessionTask.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E1EDEE181EA0B04D00DDC372 /* WTNetWorkManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E18B9F091E729E440013EFA8 /* WTNetWorkManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E1EDEE191EA0B04D00DDC372 /* WTURLSessionTask.h in Headers */ = {isa = PBXBuildFile; fileRef = E18B9F801E72AB3F0013EFA8 /* WTURLSessionTask.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -355,6 +368,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1EDEDB81EA0AA2800DDC372 /* WTKitMacOS.h in Headers */,
+				E1EDEE0D1EA0B01800DDC372 /* NSDictionary+JSONModel.h in Headers */,
+				E1EDEE0E1EA0B01800DDC372 /* WTDataSaver.h in Headers */,
+				E1EDEE0F1EA0B01800DDC372 /* NSOperationQueue+Nice.h in Headers */,
+				E1EDEE101EA0B01800DDC372 /* NSMutableArray+Nice.h in Headers */,
+				E1EDEE111EA0B01800DDC372 /* NSObject+Nice.h in Headers */,
+				E1EDEE121EA0B01800DDC372 /* NSArray+Nice.h in Headers */,
+				E1EDEE141EA0B02C00DDC372 /* WTNetWorkManager.h in Headers */,
+				E1EDEE151EA0B02C00DDC372 /* WTURLSessionTask.h in Headers */,
+				E1EDEE131EA0B01800DDC372 /* NSJSONSerialization+Nice.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +385,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1EDEDF81EA0AEE700DDC372 /* WTKitWatchOS.h in Headers */,
+				E1EDEE161EA0B04300DDC372 /* WTNetWorkManager.h in Headers */,
+				E1EDEE171EA0B04300DDC372 /* WTURLSessionTask.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +395,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1EDEE051EA0AEF100DDC372 /* WTKitTVOS.h in Headers */,
+				E1EDEE181EA0B04D00DDC372 /* WTNetWorkManager.h in Headers */,
+				E1EDEE191EA0B04D00DDC372 /* WTURLSessionTask.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
