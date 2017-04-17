@@ -8,6 +8,7 @@
 
 #import "WTURLSessionTask.h"
 #import "WTNetWorkManager.h"
+#import "NSOperationQueue+Nice.h"
 @interface WTURLSessionManager() <NSURLSessionDelegate,NSURLSessionTaskDelegate,NSURLSessionDataDelegate>
 @property NSMutableDictionary<NSString*,WTURLSessionTask *> *dictToSaveRequests;
 
@@ -42,13 +43,13 @@ static WTURLSessionManager* sharedManager = nil;
     __block WTURLSessionTask *wtTask = nil;
     
     dispatch_sync(_queueToProcessGetAndSetMethod, ^{
-        wtTask = [_dictToSaveRequests valueForKey:[NSString stringWithFormat:@"%ld",task.taskIdentifier]];
+        wtTask = [_dictToSaveRequests valueForKey:[NSString stringWithFormat:@"%ld",(unsigned long)task.taskIdentifier]];
     });
     return wtTask;
 }
 -(void)setWTTask:(WTURLSessionTask*)wtTask forKey:(NSURLSessionTask*)task
 {
-    NSString *key = [NSString stringWithFormat:@"%ld",task.taskIdentifier];
+    NSString *key = [NSString stringWithFormat:@"%ld",(unsigned long)task.taskIdentifier];
     dispatch_sync(_queueToProcessGetAndSetMethod, ^{
         [_dictToSaveRequests setValue:wtTask forKey:key];
     });
@@ -109,6 +110,25 @@ didReceiveResponse:(NSURLResponse *)response
     [_task cancel];
 }
 - (void)finish{
+    [[NSOperationQueue globalQueue] addOperationWithBlock:^{
+        if (self.jsonHandler) {
+            NSError *error = self.error;
+            NSError *jsonError = nil;
+            id jsonObj = [NSJSONSerialization JSONObjectWithData:self.data options:NSJSONReadingMutableContainers error:&jsonError];
+            if (error == nil) {
+                error = jsonError;
+            }
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                self.jsonHandler(jsonObj, error);
+            }];
+        }
+        if (self.stringHandler) {
+            NSString *string = [[NSString alloc] initWithData:self.data encoding:NSUTF8StringEncoding];
+            [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                self.stringHandler(string, self.error);
+            }];
+        }
+    }];
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         if (self.complection) {
             self.complection(self.data,self.response,self.error);

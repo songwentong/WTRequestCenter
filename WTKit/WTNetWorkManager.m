@@ -63,8 +63,18 @@ static NSURLCache *cache =nil;
         networkActivityIndicatorVisible = NO;
     }
 }
-
--(WTURLSessionTask*)taskWithRequest:(NSURLRequest*)request
+-(WTURLSessionDataTask*)taskWithMethod:(NSString *)method
+                             URLString:(NSString *)URLString
+                            parameters:(NSDictionary*)parameters
+                                 error:(NSError *__autoreleasing *)error
+                              finished:(void(^)(NSData * _Nullable data, NSURLResponse * _Nullable response))finish
+                                failed:(void(^)(NSError * _Nullable error))failed
+{
+    NSURLRequest *request = [self requestWithMethod:method URLString:URLString parameters:parameters error:error];
+    WTURLSessionDataTask *task = (WTURLSessionDataTask*)[self taskWithRequest:request finished:finish failed:failed];
+    return task;
+}
+-(WTURLSessionDataTask*)taskWithRequest:(NSURLRequest*)request
                                finished:(void(^)(NSData * _Nullable data, NSURLResponse * _Nullable response))finish
                              failed:(void(^)(NSError * _Nullable error))failed
 {
@@ -81,7 +91,7 @@ static NSURLCache *cache =nil;
         
     }];
 }
--(WTURLSessionTask*)dataTaskWithRequest:(NSURLRequest*)request
+-(WTURLSessionDataTask*)dataTaskWithRequest:(NSURLRequest*)request
                       completionHandler:(complection_block)completionHandler
 {
     assert(request!=nil);
@@ -97,7 +107,7 @@ static NSURLCache *cache =nil;
     [wtTask resume];
     return wtTask;
 }
--(WTURLSessionTask*)cachedDataTaskWithRequest:(NSURLRequest*)request
+-(WTURLSessionDataTask*)cachedDataTaskWithRequest:(NSURLRequest*)request
                             completionHandler:(complection_block)completionHandler
 {
     assert(request!=nil);

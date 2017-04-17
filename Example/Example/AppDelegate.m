@@ -27,6 +27,8 @@
 //    WeatherModel *w = [WeatherModel new];
 //    [w travelData:dict];
 //    NSLog(@"%@",w.attemptConvertToJSON);
+//    CGFloat a = 34.6f - 34.0f;
+//    WTLog(@"%f",a);
     WTLog(@"hello");
     return YES;
 }

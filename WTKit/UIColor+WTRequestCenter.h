@@ -63,4 +63,4 @@
  */
 -(UIColor*)WTAntiColorWithStride:(CGFloat)stride;
 @end
-#endifb
+#endif

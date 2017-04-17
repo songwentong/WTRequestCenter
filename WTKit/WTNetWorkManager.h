@@ -20,14 +20,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 
-
+-(WTURLSessionDataTask*)taskWithMethod:(NSString *)method
+                             URLString:(NSString *)URLString
+                            parameters:(NSDictionary*)parameters
+                                 error:(NSError *__autoreleasing *)error
+                              finished:(void(^)(NSData * _Nullable data, NSURLResponse * _Nullable response))finish
+                                failed:(void(^)(NSError * _Nullable error))failed;
 //data task
--(WTURLSessionTask*)taskWithRequest:(NSURLRequest*)request
+-(WTURLSessionDataTask*)taskWithRequest:(NSURLRequest*)request
                            finished:(void(^)(NSData * _Nullable data, NSURLResponse * _Nullable response))finish
                              failed:(void(^)(NSError * _Nullable error))failed;
--(WTURLSessionTask*)dataTaskWithRequest:(NSURLRequest*)request
+-(WTURLSessionDataTask*)dataTaskWithRequest:(NSURLRequest*)request
                       completionHandler:(complection_block)completionHandler;
--(WTURLSessionTask*)cachedDataTaskWithRequest:(NSURLRequest*)request
+-(WTURLSessionDataTask*)cachedDataTaskWithRequest:(NSURLRequest*)request
                             completionHandler:(complection_block)completionHandler;
 
 @end
