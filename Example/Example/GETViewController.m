@@ -24,9 +24,10 @@
     
     self.myTableView.hidden = YES;
     __weak GETViewController* weakSelf = self;
-    
+    [self showLoadingView];
     NSTimeInterval start = [[NSDate date] timeIntervalSince1970];
     self.complectionBlock = ^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        [weakSelf stopLoadingView];
         //complection
         if (!error) {
             if ([response isKindOfClass:[NSHTTPURLResponse class]]) {

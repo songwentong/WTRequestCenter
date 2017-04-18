@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E17E4ABC1EA61FA000AF9B67 /* WTHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E17E4ABA1EA61FA000AF9B67 /* WTHUD.m */; };
+		E17E4AC01EA620B500AF9B67 /* WTHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = E17E4ABE1EA620B500AF9B67 /* WTHUDView.m */; };
 		E18B9EAE1E729D460013EFA8 /* WTKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E18B9EAC1E729D460013EFA8 /* WTKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E18B9F0D1E729E440013EFA8 /* CALayer+Nice.h in Headers */ = {isa = PBXBuildFile; fileRef = E18B9ED91E729E440013EFA8 /* CALayer+Nice.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E18B9F0E1E729E440013EFA8 /* CALayer+Nice.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9EDA1E729E440013EFA8 /* CALayer+Nice.m */; };
@@ -58,6 +60,8 @@
 		E18B9F401E729E440013EFA8 /* WTNumberLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9F0C1E729E440013EFA8 /* WTNumberLabel.m */; };
 		E18B9F821E72AB3F0013EFA8 /* WTURLSessionTask.h in Headers */ = {isa = PBXBuildFile; fileRef = E18B9F801E72AB3F0013EFA8 /* WTURLSessionTask.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E18B9F831E72AB3F0013EFA8 /* WTURLSessionTask.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9F811E72AB3F0013EFA8 /* WTURLSessionTask.m */; };
+		E19F49AC1EA62B7C00842DE0 /* WTHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = E17E4AB91EA61FA000AF9B67 /* WTHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E19F49AD1EA62B7C00842DE0 /* WTHUDView.h in Headers */ = {isa = PBXBuildFile; fileRef = E17E4ABD1EA620B500AF9B67 /* WTHUDView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E1EDEDB81EA0AA2800DDC372 /* WTKitMacOS.h in Headers */ = {isa = PBXBuildFile; fileRef = E1EDEDB61EA0AA2800DDC372 /* WTKitMacOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E1EDEDBD1EA0AA3300DDC372 /* NSObject+JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9EE41E729E440013EFA8 /* NSObject+JSONModel.m */; };
 		E1EDEDBF1EA0AA3300DDC372 /* NSDictionary+JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9EDE1E729E440013EFA8 /* NSDictionary+JSONModel.m */; };
@@ -91,6 +95,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E17E4AB91EA61FA000AF9B67 /* WTHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHUD.h; sourceTree = "<group>"; };
+		E17E4ABA1EA61FA000AF9B67 /* WTHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHUD.m; sourceTree = "<group>"; };
+		E17E4ABD1EA620B500AF9B67 /* WTHUDView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTHUDView.h; sourceTree = "<group>"; };
+		E17E4ABE1EA620B500AF9B67 /* WTHUDView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTHUDView.m; sourceTree = "<group>"; };
 		E18B9EA91E729D460013EFA8 /* WTKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WTKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E18B9EAC1E729D460013EFA8 /* WTKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WTKit.h; sourceTree = "<group>"; };
 		E18B9EAD1E729D460013EFA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -187,6 +195,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E17E4AB81EA61F7B00AF9B67 /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				E17E4AB91EA61FA000AF9B67 /* WTHUD.h */,
+				E17E4ABA1EA61FA000AF9B67 /* WTHUD.m */,
+				E17E4ABD1EA620B500AF9B67 /* WTHUDView.h */,
+				E17E4ABE1EA620B500AF9B67 /* WTHUDView.m */,
+			);
+			name = HUD;
+			sourceTree = "<group>";
+		};
+		E17E4AC11EA6241300AF9B67 /* WebImage */ = {
+			isa = PBXGroup;
+			children = (
+				E18B9EED1E729E440013EFA8 /* UIButton+WTRequestCenter.h */,
+				E18B9EEE1E729E440013EFA8 /* UIButton+WTRequestCenter.m */,
+				E18B9EF71E729E440013EFA8 /* UIImageView+WTRequestCenter.h */,
+				E18B9EF81E729E440013EFA8 /* UIImageView+WTRequestCenter.m */,
+			);
+			name = WebImage;
+			sourceTree = "<group>";
+		};
 		E18B9E9F1E729D460013EFA8 = {
 			isa = PBXGroup;
 			children = (
@@ -212,6 +242,8 @@
 		E18B9EAB1E729D460013EFA8 /* WTKit */ = {
 			isa = PBXGroup;
 			children = (
+				E17E4AC11EA6241300AF9B67 /* WebImage */,
+				E17E4AB81EA61F7B00AF9B67 /* HUD */,
 				E18B9F931E77C9330013EFA8 /* JSONModel */,
 				E18B9F901E76AEA80013EFA8 /* Foundation */,
 				E18B9F871E7678340013EFA8 /* UIKit */,
@@ -260,12 +292,8 @@
 				E18B9EF01E729E440013EFA8 /* UIColor+WTRequestCenter.m */,
 				E18B9ED91E729E440013EFA8 /* CALayer+Nice.h */,
 				E18B9EDA1E729E440013EFA8 /* CALayer+Nice.m */,
-				E18B9EF71E729E440013EFA8 /* UIImageView+WTRequestCenter.h */,
-				E18B9EF81E729E440013EFA8 /* UIImageView+WTRequestCenter.m */,
 				E18B9EF51E729E440013EFA8 /* UIImage+Nice.h */,
 				E18B9EF61E729E440013EFA8 /* UIImage+Nice.m */,
-				E18B9EED1E729E440013EFA8 /* UIButton+WTRequestCenter.h */,
-				E18B9EEE1E729E440013EFA8 /* UIButton+WTRequestCenter.m */,
 			);
 			name = UIKit;
 			sourceTree = "<group>";
@@ -359,6 +387,8 @@
 				E18B9F1B1E729E440013EFA8 /* NSOperationQueue+Nice.h in Headers */,
 				E18B9F191E729E440013EFA8 /* NSObject+Nice.h in Headers */,
 				E18B9F821E72AB3F0013EFA8 /* WTURLSessionTask.h in Headers */,
+				E19F49AC1EA62B7C00842DE0 /* WTHUD.h in Headers */,
+				E19F49AD1EA62B7C00842DE0 /* WTHUDView.h in Headers */,
 				E18B9F291E729E440013EFA8 /* UIImage+Nice.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -568,6 +598,8 @@
 				E18B9F831E72AB3F0013EFA8 /* WTURLSessionTask.m in Sources */,
 				E18B9F321E729E440013EFA8 /* UIView+Nice.m in Sources */,
 				E18B9F141E729E440013EFA8 /* NSJSONSerialization+Nice.m in Sources */,
+				E17E4AC01EA620B500AF9B67 /* WTHUDView.m in Sources */,
+				E17E4ABC1EA61FA000AF9B67 /* WTHUD.m in Sources */,
 				E18B9F1E1E729E440013EFA8 /* UIAlertView+WTRequestCenter.m in Sources */,
 				E18B9F0E1E729E440013EFA8 /* CALayer+Nice.m in Sources */,
 				E18B9F2C1E729E440013EFA8 /* UIImageView+WTRequestCenter.m in Sources */,
@@ -924,6 +956,7 @@
 				E1EDEDBA1EA0AA2800DDC372 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E1EDEDF91EA0AEE700DDC372 /* Build configuration list for PBXNativeTarget "WTKitWatchOS" */ = {
 			isa = XCConfigurationList;
@@ -932,6 +965,7 @@
 				E1EDEDFB1EA0AEE700DDC372 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E1EDEE061EA0AEF100DDC372 /* Build configuration list for PBXNativeTarget "WTKitTVOS" */ = {
 			isa = XCConfigurationList;
@@ -940,6 +974,7 @@
 				E1EDEE081EA0AEF100DDC372 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
