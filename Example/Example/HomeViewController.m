@@ -9,6 +9,7 @@
 #import "HomeViewController.h"
 @import WTKit;
 @import AVFoundation;
+#import "GETViewController.h"
 @interface HomeViewController () <UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -44,15 +45,24 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
+
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    UIViewController *destinationViewController = segue.destinationViewController;
+    if ([destinationViewController isKindOfClass:[GETViewController class]]) {
+        NSIndexPath *indexPath = (NSIndexPath*)sender;
+        GETViewController *get = (GETViewController*)destinationViewController;
+        get.demoIndex = indexPath.row;
+        
+    }
 }
-*/
+
 //imageView
 
 #pragma mark - UITableViewDataSource
@@ -98,8 +108,8 @@
     NSMutableArray *section1 = [NSMutableArray array];
     [section1 addObject:@"GET Request"];
     [section1 addObject:@"POST Request"];
-    [section1 addObject:@"image"];
-    [section1 addObject:@"image"];
+    [section1 addObject:@"PUT Request"];
+    [section1 addObject:@"DELETE Request"];
     [array addObject:section1];
     
     //section2
@@ -117,9 +127,9 @@
 {
     NSMutableArray *array = [NSMutableArray array];
     [array addObject:@"get"];
-    [array addObject:@"post"];
-    [array addObject:@"imageView"];
-    [array addObject:@"postImage"];
+    [array addObject:@"get"];
+    [array addObject:@"get"];
+    [array addObject:@"get"];
     return array[indexPath.row];
 }
 - (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -148,7 +158,8 @@
     switch (indexPath.section) {
         case 0:
         {
-            [self performSegueWithIdentifier:[self segueWithIndexPath:indexPath] sender:nil];
+            [self performSegueWithIdentifier:@"get" sender:indexPath];
+//            [self performSegueWithIdentifier:[self segueWithIndexPath:indexPath] sender:indexPath];
         }
             break;
         case 1:

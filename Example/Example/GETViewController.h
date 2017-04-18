@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface GETViewController : UIViewController
-
+@property NSInteger demoIndex;
 @end

@@ -219,7 +219,7 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="ysI-yU-q1r" detailTextLabel="rNf-PI-KWK" style="IBUITableViewCellStyleValue1" id="r6B-ku-ikk">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="r6B-ku-ikk" id="XhQ-dt-OTr">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -240,6 +240,28 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="body" rowHeight="119" id="iOx-5d-klS">
+                                        <rect key="frame" x="0.0" y="100" width="375" height="119"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iOx-5d-klS" id="TjF-gD-77Q">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="118"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="luL-tY-lZp">
+                                                    <rect key="frame" x="5" y="5" width="365" height="108.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="luL-tY-lZp" secondAttribute="bottom" constant="5" id="4Ft-wS-sIC"/>
+                                                <constraint firstItem="luL-tY-lZp" firstAttribute="leading" secondItem="TjF-gD-77Q" secondAttribute="leading" constant="5" id="Aa3-b4-LMI"/>
+                                                <constraint firstAttribute="trailing" secondItem="luL-tY-lZp" secondAttribute="trailing" constant="5" id="ZLi-fs-A9G"/>
+                                                <constraint firstItem="luL-tY-lZp" firstAttribute="top" secondItem="TjF-gD-77Q" secondAttribute="top" constant="5" id="oVj-1D-kgq"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
