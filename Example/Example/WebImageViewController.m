@@ -7,7 +7,7 @@
 //
 
 #import "WebImageViewController.h"
-
+@import WTKit;
 @interface WebImageViewController ()
 
 @end
@@ -24,16 +24,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -44,8 +34,15 @@
 // Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    return nil;
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    ////"https://s3.amazonaws.com/fast-image-cache/demo-images/FICDDemoImage001"
+    int index = (int)indexPath.row;
+    NSString *imageURL = [NSString stringWithFormat:@"https://s3.amazonaws.com/fast-image-cache/demo-images/FICDDemoImage%03d.jpg",index];
+    UIImageView *imageView = [cell.contentView viewWithTag:1];
+    [imageView setImageWithURL:imageURL];
+    UILabel *label = [cell.contentView viewWithTag:2];
+    label.text = [NSString stringWithFormat:@"#%ld",indexPath.row];
+    return cell;
 }
 
 @end

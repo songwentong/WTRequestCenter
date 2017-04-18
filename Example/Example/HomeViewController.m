@@ -80,7 +80,7 @@
             break;
         case 1:
         {
-            return 1;
+            return 2;
         }
             break;
         case 2:
@@ -114,6 +114,7 @@
     
     //section2
     NSMutableArray *section2 = [NSMutableArray array];
+    [section2 addObject:@"Web Image"];
     [section2 addObject:@"Gif"];
     [array addObject:section2];
     [array addObject:@[@"JSONModel"]];
@@ -164,8 +165,23 @@
             break;
         case 1:
         {
+            switch (indexPath.row) {
+                case 0:
+                {
+                    [self performSegueWithIdentifier:@"webImage" sender:nil];
+                }
+                    break;
+                case 1:
+                {
+                [self performSegueWithIdentifier:@"gif" sender:nil];
+                }
+                    break;
+                    
+                default:
+                    break;
+            }
             //gif
-            [self performSegueWithIdentifier:@"gif" sender:nil];
+            
         }
             break;
         case 2:

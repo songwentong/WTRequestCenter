@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E17E4AB51EA5F52200AF9B67 /* WebImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E17E4AB41EA5F52200AF9B67 /* WebImageViewController.m */; };
 		E18B9EC41E729D990013EFA8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9EC31E729D990013EFA8 /* main.m */; };
 		E18B9ECF1E729D990013EFA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E18B9ECE1E729D990013EFA8 /* Assets.xcassets */; };
 		E18B9F6B1E72A0820013EFA8 /* aaa@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = E18B9F4A1E72A0820013EFA8 /* aaa@2x.gif */; };
@@ -63,8 +64,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E16AE9E21EA5EF68009080DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Base; path = WebImageViewController.h; sourceTree = "<group>"; };
-		E16AE9E41EA5EF68009080DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Base; path = WebImageViewController.m; sourceTree = "<group>"; };
+		E17E4AB31EA5F52200AF9B67 /* WebImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebImageViewController.h; sourceTree = "<group>"; };
+		E17E4AB41EA5F52200AF9B67 /* WebImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebImageViewController.m; sourceTree = "<group>"; };
 		E18B9EBF1E729D990013EFA8 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E18B9EC31E729D990013EFA8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E18B9ECE1E729D990013EFA8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -129,14 +130,14 @@
 				E18B9F4C1E72A0820013EFA8 /* AppDelegate.m */,
 				E18B9F4D1E72A0820013EFA8 /* Assets.xcassets */,
 				E18B9F4E1E72A0820013EFA8 /* Base.lproj */,
-				E18B9F531E72A0820013EFA8 /* GETViewController.h */,
-				E18B9F541E72A0820013EFA8 /* GETViewController.m */,
-				E16AE9E11EA5EF68009080DE /* WebImageViewController.h */,
-				E16AE9E31EA5EF68009080DE /* WebImageViewController.m */,
-				E18B9F551E72A0820013EFA8 /* GifViewController.h */,
-				E18B9F561E72A0820013EFA8 /* GifViewController.m */,
 				E18B9F571E72A0820013EFA8 /* HomeViewController.h */,
 				E18B9F581E72A0820013EFA8 /* HomeViewController.m */,
+				E18B9F531E72A0820013EFA8 /* GETViewController.h */,
+				E18B9F541E72A0820013EFA8 /* GETViewController.m */,
+				E17E4AB31EA5F52200AF9B67 /* WebImageViewController.h */,
+				E17E4AB41EA5F52200AF9B67 /* WebImageViewController.m */,
+				E18B9F551E72A0820013EFA8 /* GifViewController.h */,
+				E18B9F561E72A0820013EFA8 /* GifViewController.m */,
 				E18B9F5E1E72A0820013EFA8 /* JSONModelDemoVC.h */,
 				E18B9F5F1E72A0820013EFA8 /* JSONModelDemoVC.m */,
 				E18B9F911E77C7960013EFA8 /* JSONData */,
@@ -305,6 +306,7 @@
 				E18B9F9A1E77CA760013EFA8 /* XXX.m in Sources */,
 				E18B9F701E72A0820013EFA8 /* GETViewController.m in Sources */,
 				E18B9F6C1E72A0820013EFA8 /* AppDelegate.m in Sources */,
+				E17E4AB51EA5F52200AF9B67 /* WebImageViewController.m in Sources */,
 				E18B9EC41E729D990013EFA8 /* main.m in Sources */,
 				E18B9F761E72A0820013EFA8 /* JSONModelDemoVC.m in Sources */,
 				E18B9F721E72A0820013EFA8 /* HomeViewController.m in Sources */,
@@ -323,24 +325,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E16AE9E11EA5EF68009080DE /* WebImageViewController.h */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E16AE9E21EA5EF68009080DE /* Base */,
-			);
-			name = WebImageViewController.h;
-			path = Base.lproj;
-			sourceTree = "<group>";
-		};
-		E16AE9E31EA5EF68009080DE /* WebImageViewController.m */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E16AE9E41EA5EF68009080DE /* Base */,
-			);
-			name = WebImageViewController.m;
-			path = Base.lproj;
-			sourceTree = "<group>";
-		};
 		E18B9F4F1E72A0820013EFA8 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
