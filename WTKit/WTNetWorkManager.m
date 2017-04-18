@@ -117,11 +117,13 @@ static NSURLCache *cache =nil;
     NSURLSession *session = [WTURLSessionManager sharedSessionManager].mySession;
     wtTask.complection = completionHandler;
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request];
+
     wtTask.task = task;
     wtTask.complection = completionHandler;
     wtTask.cacheTime = -1;
     [[WTURLSessionManager sharedSessionManager] setWTTask:wtTask forKey:task];
     [wtTask resume];
+
     return wtTask;
 }
 

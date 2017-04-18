@@ -166,6 +166,26 @@ didCompleteWithError:(nullable NSError *)error{
     }
     return self;
 }
+
+-(void)resume{
+    [[NSOperationQueue globalQueue] addOperationWithBlock:^{
+        __weak WTURLSessionTask *weakSelf = self;
+        NSURLSessionDataTask *dataTask = self.task;
+        NSURLCache *cache = [WTNetWorkManager sharedURLcache];
+        [cache getCachedResponseForDataTask:dataTask completionHandler:^(NSCachedURLResponse * _Nullable cachedResponse) {
+            if (weakSelf) {
+                if (cachedResponse) {
+                    weakSelf.response = cachedResponse.response;
+                    weakSelf.data = [cachedResponse.data mutableCopy];
+                    [weakSelf finish];
+                }else{
+                    [weakSelf.task resume];
+                }
+            }
+        }];
+    }];
+
+}
 #pragma mark - NSURLSessionDataDelegate
 
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask

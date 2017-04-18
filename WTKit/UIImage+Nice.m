@@ -12,7 +12,8 @@
 @implementation UIImage (ImageCache)
 +(WTURLSessionDataTask*)imageCacheTaskWithURL:(NSString*)url complection:(void(^)(UIImage *_Nullable image,NSError *_Nullable error))complection
 {
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+    NSMutableURLRequest *request = [[NSURLRequest requestWithURL:[NSURL URLWithString:url]] mutableCopy];
+    request.cachePolicy = NSURLRequestReturnCacheDataElseLoad;
     WTURLSessionDataTask *task = (WTURLSessionDataTask*)[[WTNetWorkManager sharedKit] cachedDataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^{
             UIImage *image = nil;
@@ -28,7 +29,6 @@
         });
         
     }];
-    [task resume];
     return task;
 }
 +(void)clearAllImages
