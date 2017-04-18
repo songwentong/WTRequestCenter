@@ -23,7 +23,12 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(void)clearCache{
+    [WTNetWorkManager.sharedURLcache removeAllCachedResponses];
+}
+- (IBAction)clearPressed:(id)sender {
+    [self clearCache];
+}
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

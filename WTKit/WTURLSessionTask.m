@@ -33,6 +33,7 @@ static WTURLSessionManager* sharedManager = nil;
         [_delegateQueue setSuspended:NO];
         self.queueToProcessGetAndSetMethod = dispatch_queue_create("serial_queue_get_set", DISPATCH_QUEUE_SERIAL);
         NSURLSessionConfiguration *config = NSURLSessionConfiguration.defaultSessionConfiguration;
+        config.URLCache = [WTNetWorkManager sharedURLcache];
         self.mySession = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:_delegateQueue];
     }
     return self;
@@ -186,9 +187,8 @@ didReceiveResponse:(NSURLResponse *)response
  willCacheResponse:(NSCachedURLResponse *)proposedResponse
  completionHandler:(void (^)(NSCachedURLResponse * _Nullable cachedResponse))completionHandler
 {
-    if (self.cacheTime != 0) {
-        NSCachedURLResponse *response = [[NSCachedURLResponse alloc] initWithResponse:proposedResponse.response data:proposedResponse.data userInfo:@{@"date":[NSDate date]} storagePolicy:NSURLCacheStorageAllowed];
-        completionHandler(response);
+    if (dataTask.originalRequest.cachePolicy == NSURLRequestReturnCacheDataElseLoad) {
+        completionHandler(proposedResponse);
     }
     [self finish];
 }
