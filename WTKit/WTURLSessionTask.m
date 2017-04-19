@@ -171,7 +171,7 @@ didCompleteWithError:(nullable NSError *)error{
     [[NSOperationQueue globalQueue] addOperationWithBlock:^{
         __weak WTURLSessionTask *weakSelf = self;
         NSURLSessionDataTask *dataTask = self.task;
-        NSURLCache *cache = [WTNetWorkManager sharedURLcache];
+        NSURLCache *cache = [WTURLSessionManager sharedSessionManager].mySession.configuration.URLCache;
         [cache getCachedResponseForDataTask:dataTask completionHandler:^(NSCachedURLResponse * _Nullable cachedResponse) {
             if (weakSelf) {
                 if (cachedResponse) {
