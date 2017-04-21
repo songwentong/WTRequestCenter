@@ -29,6 +29,13 @@
 //    NSLog(@"%@",w.attemptConvertToJSON);
 //    CGFloat a = 34.6f - 34.0f;
 //    WTLog(@"%f",a);
+    /*
+    NSMutableDictionary *options = [NSMutableDictionary dictionary];
+    [options setValue:@NO forKey:UIApplicationOpenURLOptionUniversalLinksOnly];
+    [application openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString] options:options completionHandler:^(BOOL success) {
+        
+    }];
+     */
     WTLog(@"hello");
     return YES;
 }

@@ -61,4 +61,25 @@
     
     return stringToPrint;
 }
+//防栈溢出的遍历
+-(void)travelDict:(NSDictionary*)dict{
+    NSMutableArray *objsToTravel = [NSMutableArray array];
+    [objsToTravel addObject:dict];
+    do {
+        NSMutableArray *tempArray = [NSMutableArray array];
+        [objsToTravel enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            if ([obj isKindOfClass:[NSArray class]]) {
+                [tempArray addObjectsFromArray:obj];
+            }else if ([obj isKindOfClass:[NSDictionary class]]){
+                NSDictionary *tempDict = obj;
+                [tempArray addObjectsFromArray:[tempDict allValues]];
+            }else{
+                NSLog(@"%@",obj);
+            }
+        }];
+        [objsToTravel removeAllObjects];
+        [objsToTravel addObjectsFromArray:tempArray];
+    } while (objsToTravel.count == 0);
+}
+
 @end

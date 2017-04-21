@@ -21,3 +21,7 @@
 -(NSString*)WTimplementationFromClassName:(NSString*)className;
 
 @end
+/*
+ base type
+ NSNumber NSString NSString NSArray NSDictionary NSNull
+ */
