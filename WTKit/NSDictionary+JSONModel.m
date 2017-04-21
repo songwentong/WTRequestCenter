@@ -79,7 +79,8 @@
         }];
         [objsToTravel removeAllObjects];
         [objsToTravel addObjectsFromArray:tempArray];
-    } while (objsToTravel.count == 0);
+    } while (objsToTravel.count != 0);
+    
 }
 
 @end
