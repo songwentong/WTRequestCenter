@@ -61,11 +61,15 @@
     
     return stringToPrint;
 }
+
+/*
+ do-while和while-do的共同点是里面的条件都必须为true才会继续执行
+ */
 //防栈溢出的遍历
 -(void)travelDict:(NSDictionary*)dict{
     NSMutableArray *objsToTravel = [NSMutableArray array];
     [objsToTravel addObject:dict];
-    do {
+    while (objsToTravel.count != 0) {
         NSMutableArray *tempArray = [NSMutableArray array];
         [objsToTravel enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             if ([obj isKindOfClass:[NSArray class]]) {
@@ -79,8 +83,7 @@
         }];
         [objsToTravel removeAllObjects];
         [objsToTravel addObjectsFromArray:tempArray];
-    } while (objsToTravel.count != 0);
-    
+    }
 }
 
 @end
