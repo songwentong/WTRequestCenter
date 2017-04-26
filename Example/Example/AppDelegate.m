@@ -37,6 +37,15 @@
     }];
      */
     WTLog(@"hello");
+    /*
+     isMemberOfClass 和 isKindOfClass 都针对实例就好了,对类用这种方法就是装逼用的
+    BOOL res1 = [(id)[NSObject class] isKindOfClass:[NSObject class]];//yes
+    BOOL res2 = [(id)[NSObject class] isMemberOfClass:[NSObject class]];//no
+    BOOL res3 = [(id)[self class] isKindOfClass:[AppDelegate class]];//no
+    BOOL res4 = [(id)[self class] isMemberOfClass:[AppDelegate class]];//no
+    BOOL res5 = [(id)[self class] isKindOfClass:[NSObject class]];//yes
+    BOOL res6 = [(id)[self class] isMemberOfClass:[NSObject class]];//no
+    */
     return YES;
 }
 							
