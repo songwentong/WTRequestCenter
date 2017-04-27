@@ -62,11 +62,30 @@
     return stringToPrint;
 }
 
+
+/*
+    递归遍历,深度优先.容易导致栈溢出.
+ */
++(void)travel:(NSObject*)travelObj{
+    if ([travelObj isKindOfClass:[NSDictionary class]]) {
+        NSDictionary *tempDict = (NSDictionary*)travelObj;
+        [tempDict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+            [self travel:obj];
+        }];
+    }else if ([travelObj isKindOfClass:[NSArray class]]){
+        NSArray *tempArray = (NSArray*)travelObj;
+        [tempArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [self travel:obj];
+        }];
+    }else{
+        NSLog(@"%@",travelObj);
+    }
+}
 /*
  do-while和while-do的共同点是里面的条件都必须为true才会继续执行
+ 广度优先,防栈溢出的遍历
  */
-//防栈溢出的遍历
--(void)travelDict:(NSDictionary*)dict{
++(void)travelDict:(NSDictionary*)dict{
     NSMutableArray *objsToTravel = [NSMutableArray array];
     [objsToTravel addObject:dict];
     while (objsToTravel.count != 0) {
