@@ -92,6 +92,7 @@
 		E1EDEE171EA0B04300DDC372 /* WTURLSessionTask.h in Headers */ = {isa = PBXBuildFile; fileRef = E18B9F801E72AB3F0013EFA8 /* WTURLSessionTask.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E1EDEE181EA0B04D00DDC372 /* WTNetWorkManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E18B9F091E729E440013EFA8 /* WTNetWorkManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E1EDEE191EA0B04D00DDC372 /* WTURLSessionTask.h in Headers */ = {isa = PBXBuildFile; fileRef = E18B9F801E72AB3F0013EFA8 /* WTURLSessionTask.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E1F03B8D1F4EFA26007E06F8 /* NSObject+JSONModel.h in Headers */ = {isa = PBXBuildFile; fileRef = E18B9EE31E729E440013EFA8 /* NSObject+JSONModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -405,6 +406,7 @@
 				E1EDEE111EA0B01800DDC372 /* NSObject+Nice.h in Headers */,
 				E1EDEE121EA0B01800DDC372 /* NSArray+Nice.h in Headers */,
 				E1EDEE141EA0B02C00DDC372 /* WTNetWorkManager.h in Headers */,
+				E1F03B8D1F4EFA26007E06F8 /* NSObject+JSONModel.h in Headers */,
 				E1EDEE151EA0B02C00DDC372 /* WTURLSessionTask.h in Headers */,
 				E1EDEE131EA0B01800DDC372 /* NSJSONSerialization+Nice.h in Headers */,
 			);

@@ -23,6 +23,12 @@
 		E18B9F7C1E72A0820013EFA8 /* Reference in Resources */ = {isa = PBXBuildFile; fileRef = E18B9F681E72A0820013EFA8 /* Reference */; };
 		E18B9F921E77C7960013EFA8 /* JSONData in Resources */ = {isa = PBXBuildFile; fileRef = E18B9F911E77C7960013EFA8 /* JSONData */; };
 		E18B9F9A1E77CA760013EFA8 /* XXX.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9F981E77CA760013EFA8 /* XXX.m */; };
+		E1F03B661F4EF845007E06F8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F03B651F4EF845007E06F8 /* AppDelegate.m */; };
+		E1F03B691F4EF845007E06F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F03B681F4EF845007E06F8 /* main.m */; };
+		E1F03B6C1F4EF845007E06F8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F03B6B1F4EF845007E06F8 /* ViewController.m */; };
+		E1F03B6E1F4EF845007E06F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1F03B6D1F4EF845007E06F8 /* Assets.xcassets */; };
+		E1F03B711F4EF845007E06F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1F03B6F1F4EF845007E06F8 /* Main.storyboard */; };
+		E1F03B8A1F4EF97E007E06F8 /* WTKitMacOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E16AE9DC1EA5EF1B009080DE /* WTKitMacOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +67,13 @@
 			remoteGlobalIDString = E18B9EA81E729D460013EFA8;
 			remoteInfo = WTKit;
 		};
+		E1F03B881F4EF91F007E06F8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E18B9F421E729FFD0013EFA8 /* WTKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = E1EDEDB31EA0AA2800DDC372;
+			remoteInfo = WTKitMacOS;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +104,15 @@
 		E18B9F911E77C7960013EFA8 /* JSONData */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = JSONData; sourceTree = "<group>"; };
 		E18B9F981E77CA760013EFA8 /* XXX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXX.m; sourceTree = "<group>"; };
 		E18B9F991E77CA760013EFA8 /* XXX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXX.h; sourceTree = "<group>"; };
+		E1F03B621F4EF844007E06F8 /* ModelMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ModelMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1F03B641F4EF845007E06F8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E1F03B651F4EF845007E06F8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E1F03B681F4EF845007E06F8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E1F03B6A1F4EF845007E06F8 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		E1F03B6B1F4EF845007E06F8 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		E1F03B6D1F4EF845007E06F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E1F03B701F4EF845007E06F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E1F03B721F4EF845007E06F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +120,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1F03B5F1F4EF844007E06F8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1F03B8A1F4EF97E007E06F8 /* WTKitMacOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +139,7 @@
 			children = (
 				E18B9F421E729FFD0013EFA8 /* WTKit.xcodeproj */,
 				E18B9EC11E729D990013EFA8 /* Example */,
+				E1F03B631F4EF845007E06F8 /* ModelMaker */,
 				E18B9EC01E729D990013EFA8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -117,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				E18B9EBF1E729D990013EFA8 /* Example.app */,
+				E1F03B621F4EF844007E06F8 /* ModelMaker.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -188,6 +220,29 @@
 			name = JSON;
 			sourceTree = "<group>";
 		};
+		E1F03B631F4EF845007E06F8 /* ModelMaker */ = {
+			isa = PBXGroup;
+			children = (
+				E1F03B641F4EF845007E06F8 /* AppDelegate.h */,
+				E1F03B651F4EF845007E06F8 /* AppDelegate.m */,
+				E1F03B6A1F4EF845007E06F8 /* ViewController.h */,
+				E1F03B6B1F4EF845007E06F8 /* ViewController.m */,
+				E1F03B6D1F4EF845007E06F8 /* Assets.xcassets */,
+				E1F03B6F1F4EF845007E06F8 /* Main.storyboard */,
+				E1F03B721F4EF845007E06F8 /* Info.plist */,
+				E1F03B671F4EF845007E06F8 /* Supporting Files */,
+			);
+			path = ModelMaker;
+			sourceTree = "<group>";
+		};
+		E1F03B671F4EF845007E06F8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E1F03B681F4EF845007E06F8 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -209,6 +264,24 @@
 			productReference = E18B9EBF1E729D990013EFA8 /* Example.app */;
 			productType = "com.apple.product-type.application";
 		};
+		E1F03B611F4EF844007E06F8 /* ModelMaker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1F03B781F4EF845007E06F8 /* Build configuration list for PBXNativeTarget "ModelMaker" */;
+			buildPhases = (
+				E1F03B5E1F4EF844007E06F8 /* Sources */,
+				E1F03B5F1F4EF844007E06F8 /* Frameworks */,
+				E1F03B601F4EF844007E06F8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E1F03B891F4EF91F007E06F8 /* PBXTargetDependency */,
+			);
+			name = ModelMaker;
+			productName = ModelMaker;
+			productReference = E1F03B621F4EF844007E06F8 /* ModelMaker.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -220,6 +293,11 @@
 				TargetAttributes = {
 					E18B9EBE1E729D990013EFA8 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = QZFW9RQ778;
+						ProvisioningStyle = Automatic;
+					};
+					E1F03B611F4EF844007E06F8 = {
+						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = QZFW9RQ778;
 						ProvisioningStyle = Automatic;
 					};
@@ -245,6 +323,7 @@
 			projectRoot = "";
 			targets = (
 				E18B9EBE1E729D990013EFA8 /* Example */,
+				E1F03B611F4EF844007E06F8 /* ModelMaker */,
 			);
 		};
 /* End PBXProject section */
@@ -296,6 +375,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E1F03B601F4EF844007E06F8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1F03B6E1F4EF845007E06F8 /* Assets.xcassets in Resources */,
+				E1F03B711F4EF845007E06F8 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -314,6 +402,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E1F03B5E1F4EF844007E06F8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1F03B6C1F4EF845007E06F8 /* ViewController.m in Sources */,
+				E1F03B691F4EF845007E06F8 /* main.m in Sources */,
+				E1F03B661F4EF845007E06F8 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -321,6 +419,11 @@
 			isa = PBXTargetDependency;
 			name = WTKit;
 			targetProxy = E18B9F481E72A0040013EFA8 /* PBXContainerItemProxy */;
+		};
+		E1F03B891F4EF91F007E06F8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = WTKitMacOS;
+			targetProxy = E1F03B881F4EF91F007E06F8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -337,6 +440,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				E18B9F521E72A0820013EFA8 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E1F03B6F1F4EF845007E06F8 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E1F03B701F4EF845007E06F8 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -458,6 +569,40 @@
 			};
 			name = Release;
 		};
+		E1F03B731F4EF845007E06F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = QZFW9RQ778;
+				INFOPLIST_FILE = ModelMaker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = com.songwentong.ModelMaker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		E1F03B741F4EF845007E06F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = QZFW9RQ778;
+				INFOPLIST_FILE = ModelMaker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = com.songwentong.ModelMaker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -478,6 +623,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		E1F03B781F4EF845007E06F8 /* Build configuration list for PBXNativeTarget "ModelMaker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1F03B731F4EF845007E06F8 /* Debug */,
+				E1F03B741F4EF845007E06F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
