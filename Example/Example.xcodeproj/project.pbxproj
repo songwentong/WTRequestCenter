@@ -23,6 +23,7 @@
 		E18B9F7C1E72A0820013EFA8 /* Reference in Resources */ = {isa = PBXBuildFile; fileRef = E18B9F681E72A0820013EFA8 /* Reference */; };
 		E18B9F921E77C7960013EFA8 /* JSONData in Resources */ = {isa = PBXBuildFile; fileRef = E18B9F911E77C7960013EFA8 /* JSONData */; };
 		E18B9F9A1E77CA760013EFA8 /* XXX.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9F981E77CA760013EFA8 /* XXX.m */; };
+		E1BD1E241F53B08D00384D11 /* JSONData in Resources */ = {isa = PBXBuildFile; fileRef = E18B9F911E77C7960013EFA8 /* JSONData */; };
 		E1F03B661F4EF845007E06F8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F03B651F4EF845007E06F8 /* AppDelegate.m */; };
 		E1F03B691F4EF845007E06F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F03B681F4EF845007E06F8 /* main.m */; };
 		E1F03B6C1F4EF845007E06F8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F03B6B1F4EF845007E06F8 /* ViewController.m */; };
@@ -380,6 +381,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1F03B6E1F4EF845007E06F8 /* Assets.xcassets in Resources */,
+				E1BD1E241F53B08D00384D11 /* JSONData in Resources */,
 				E1F03B711F4EF845007E06F8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -631,6 +633,7 @@
 				E1F03B741F4EF845007E06F8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
