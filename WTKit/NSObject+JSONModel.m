@@ -24,12 +24,16 @@
         return;
     }
     unsigned int propertyListCount = 0;
+    //取出属性列表
     objc_property_t *pList = class_copyPropertyList(self.class, &propertyListCount);
+    //遍历每一条属性
     for (int i=0; i<propertyListCount; i++) {
+        //获得属性
         const char *property = property_getAttributes(pList[i]);
         NSString *propertyString = [[NSString alloc] initWithCString:property encoding:NSUTF8StringEncoding];
         __block NSString *typeString = @"";
         __block NSString *propertyName = @"";
+        //属性描述字符串,T是类型,V是属性名
         [[propertyString componentsSeparatedByString:@","] enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             if ([obj hasPrefix:@"T"]) {
                 typeString = [obj substringFromIndex:1];
@@ -38,7 +42,10 @@
                 propertyName = [obj substringFromIndex:2];
             }
         }];
+        //用属性名从数据源取出value
         if ([jsonData valueForKey:propertyName]) {
+            //检查到数据存在
+            //检查数据类型,string,number或者是数组,如果class对应上了,就赋值
             if ([typeString containsString:@"NSString"]) {
                 if ([[jsonData valueForKey:propertyName] isKindOfClass:[NSString class]]) {
                     [self setValue:jsonData[propertyName] forKey:propertyName];
@@ -66,6 +73,7 @@
             }else if ([typeString containsString:@"NSNull"]){
                 [self setValue:[NSNull null] forKey:propertyName];
             }else {
+                //如果是字典,就递归实现此操作
                 SEL selector = @selector(WTJSONModelProtocolInstanceForKey:);
                 if ([self respondsToSelector:selector]) {
                     IMP imp = [self methodForSelector:selector];
@@ -79,6 +87,8 @@
                     //                    [self setValue:[self performSelector:selector withObject:propertyName] forKey:propertyName];
                 }
             }
+            
+        }else{
             
         }
         
