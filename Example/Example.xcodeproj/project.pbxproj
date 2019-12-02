@@ -22,7 +22,7 @@
 		E18B9F791E72A0820013EFA8 /* plan in Resources */ = {isa = PBXBuildFile; fileRef = E18B9F631E72A0820013EFA8 /* plan */; };
 		E18B9F7C1E72A0820013EFA8 /* Reference in Resources */ = {isa = PBXBuildFile; fileRef = E18B9F681E72A0820013EFA8 /* Reference */; };
 		E18B9F921E77C7960013EFA8 /* JSONData in Resources */ = {isa = PBXBuildFile; fileRef = E18B9F911E77C7960013EFA8 /* JSONData */; };
-		E18B9F9A1E77CA760013EFA8 /* XXX.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9F981E77CA760013EFA8 /* XXX.m */; };
+		E1B3E8132394FD0E00F85879 /* WeatherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B3E80F2394FD0E00F85879 /* WeatherModel.m */; };
 		E1BD1E241F53B08D00384D11 /* JSONData in Resources */ = {isa = PBXBuildFile; fileRef = E18B9F911E77C7960013EFA8 /* JSONData */; };
 		E1F03B661F4EF845007E06F8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F03B651F4EF845007E06F8 /* AppDelegate.m */; };
 		E1F03B691F4EF845007E06F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1F03B681F4EF845007E06F8 /* main.m */; };
@@ -103,8 +103,8 @@
 		E18B9F631E72A0820013EFA8 /* plan */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = plan; sourceTree = "<group>"; };
 		E18B9F681E72A0820013EFA8 /* Reference */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Reference; sourceTree = "<group>"; };
 		E18B9F911E77C7960013EFA8 /* JSONData */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = JSONData; sourceTree = "<group>"; };
-		E18B9F981E77CA760013EFA8 /* XXX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXX.m; sourceTree = "<group>"; };
-		E18B9F991E77CA760013EFA8 /* XXX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXX.h; sourceTree = "<group>"; };
+		E1B3E80F2394FD0E00F85879 /* WeatherModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherModel.m; sourceTree = "<group>"; };
+		E1B3E8122394FD0E00F85879 /* WeatherModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherModel.h; sourceTree = "<group>"; };
 		E1F03B621F4EF844007E06F8 /* ModelMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ModelMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1F03B641F4EF845007E06F8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E1F03B651F4EF845007E06F8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -215,8 +215,8 @@
 		E18B9F941E77CA2F0013EFA8 /* JSON */ = {
 			isa = PBXGroup;
 			children = (
-				E18B9F991E77CA760013EFA8 /* XXX.h */,
-				E18B9F981E77CA760013EFA8 /* XXX.m */,
+				E1B3E8122394FD0E00F85879 /* WeatherModel.h */,
+				E1B3E80F2394FD0E00F85879 /* WeatherModel.m */,
 			);
 			name = JSON;
 			sourceTree = "<group>";
@@ -393,9 +393,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E18B9F9A1E77CA760013EFA8 /* XXX.m in Sources */,
 				E18B9F701E72A0820013EFA8 /* GETViewController.m in Sources */,
 				E18B9F6C1E72A0820013EFA8 /* AppDelegate.m in Sources */,
+				E1B3E8132394FD0E00F85879 /* WeatherModel.m in Sources */,
 				E17E4AB51EA5F52200AF9B67 /* WebImageViewController.m in Sources */,
 				E18B9EC41E729D990013EFA8 /* main.m in Sources */,
 				E18B9F761E72A0820013EFA8 /* JSONModelDemoVC.m in Sources */,

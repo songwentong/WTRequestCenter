@@ -10,7 +10,7 @@
 @protocol WTJSONModelProtocol;
 @import UIKit;
 
-@interface XXX : NSObject<WTJSONModelProtocol>
+@interface WeatherModel : NSObject<WTJSONModelProtocol>
 
 @property (strong, nonatomic) NSArray *Array;
 @property (strong, nonatomic) NSNumber *tz;

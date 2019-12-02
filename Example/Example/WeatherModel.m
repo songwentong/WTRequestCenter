@@ -6,9 +6,9 @@
 //
 //
 
-#import "XXX.h"
+#import "WeatherModel.h"
 
-@implementation XXX
+@implementation WeatherModel
 
 #pragma mark - WTJSONModelProtocol
 -(id)WTJSONModelProtocolInstanceForKey:(NSString*)key{

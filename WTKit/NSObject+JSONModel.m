@@ -31,6 +31,88 @@
         //获得属性
         const char *property = property_getAttributes(pList[i]);
         NSString *propertyString = [[NSString alloc] initWithCString:property encoding:NSUTF8StringEncoding];
+        /*
+         T@"NSString",&,N,V_area
+         T@"NSArray",&,N,V_Array
+         T@"NSNumber",&,N,V_tz
+         
+         Code
+         Meaning
+         R
+         The property is read-only (readonly).
+         C
+         The property is a copy of the value last assigned (copy).
+         &
+         The property is a reference to the value last assigned (retain).
+         N
+         The property is non-atomic (nonatomic).
+         G<name>
+         The property defines a custom getter selector name. The name follows the G (for example, GcustomGetter,).
+         S<name>
+         The property defines a custom setter selector name. The name follows the S (for example, ScustomSetter:,).
+         D
+         The property is dynamic (@dynamic).  手动实现get/set方法
+         W
+         The property is a weak reference (__weak).    弱引用
+         P
+         The property is eligible for garbage collection.  符合垃圾收集
+         t<encoding>
+         Specifies the type using old-style encoding.     属性名
+         */
+        /*
+         Table 6-1  Objective-C type encodings
+         Code
+         Meaning
+         c
+         A char
+         i
+         An int
+         s
+         A short
+         l
+         A long
+         l is treated as a 32-bit quantity on 64-bit programs.
+         q
+         A long long
+         C
+         An unsigned char
+         I
+         An unsigned int
+         S
+         An unsigned short
+         L
+         An unsigned long
+         Q
+         An unsigned long long
+         f
+         A float
+         d
+         A double
+         B
+         A C++ bool or a C99 _Bool
+         v
+         A void
+         *
+         A character string (char *)
+         @
+         An object (whether statically typed or typed id)
+         #
+         A class object (Class)
+         :
+         A method selector (SEL)
+         [array type]
+         An array
+         {name=type...}
+         A structure
+         (name=type...)
+         A union
+         bnum
+         A bit field of num bits
+         ^type
+         A pointer to type
+         ?
+         An unknown type (among other things, this code is used for function pointers)
+         */
         __block NSString *typeString = @"";
         __block NSString *propertyName = @"";
         //属性描述字符串,T是类型,V是属性名

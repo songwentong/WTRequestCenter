@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "WeatherModel.h"
 //@import WTKit;
 @import WTKit;
 
@@ -19,16 +20,17 @@
     
 //    [w travelData:[NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"JSONData" ofType:nil]] options:0 error:nil]];
 //    NSLog(@"%@",w);
-    
-//    NSData *data = [NSData dataWithContentsOfFile:@"/Users/songwentong/Github/WTRequestCenter/WTRequestCenterTests/JSONData"];
-//    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-//    //    [dict printModel];
-//    //    [dict printModelCopy];
-//    WeatherModel *w = [WeatherModel new];
-//    [w travelData:dict];
+    NSString *jsonPath = [[NSBundle mainBundle] pathForResource:@"JSONData" ofType:nil];
+    NSData *data = [NSData dataWithContentsOfFile:jsonPath];
+    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    //    [dict printModel];
+    //    [dict printModelCopy];
+    WeatherModel *w = [WeatherModel new];
+    [w travelData:dict];
 //    NSLog(@"%@",w.attemptConvertToJSON);
-//    CGFloat a = 34.6f - 34.0f;
-//    WTLog(@"%f",a);
+    CGFloat a = 34.6f - 34.0f;
+    WTLog(@"%f",a);
+    
     /*
     NSMutableDictionary *options = [NSMutableDictionary dictionary];
     [options setValue:@NO forKey:UIApplicationOpenURLOptionUniversalLinksOnly];
