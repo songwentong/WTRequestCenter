@@ -26,11 +26,11 @@
 //完成回调
 +(void)saveData:(NSData *)data
       withIndex:(NSInteger)index
-     completion:(void (^)())completion;
+     completion:(void (^)(void))completion;
 
 +(void)saveData:(NSData*)data
        withName:(NSString*)name
-     completion:(void(^)())completion;
+     completion:(void(^)(void))completion;
 
 
 

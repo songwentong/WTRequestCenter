@@ -84,15 +84,15 @@
         
     }];
     [_alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        weakSelf.className = [_alertController textFields][0].text;
+        weakSelf.className = [self->_alertController textFields][0].text;
         
-        weakSelf.title = _className;
-        [_alertController dismissViewControllerAnimated:YES completion:^{
+        weakSelf.title = self->_className;
+        [self->_alertController dismissViewControllerAnimated:YES completion:^{
             
         }];
     }]];
     [_alertController addAction:[UIAlertAction actionWithTitle:@"CANCEL" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        [_alertController dismissViewControllerAnimated:YES completion:^{
+        [self->_alertController dismissViewControllerAnimated:YES completion:^{
             
         }];
     }]];
