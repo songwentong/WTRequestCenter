@@ -27,7 +27,7 @@
 #import "WTImageViewer.h"
 #import "WTNetworkActivityIndicatorManager.h"
 #import "UIScreen+WTRequestCenter.h"
-#import "WTDataSaver.h"
+//#import "WTDataSaver.h"
 #import "WTNumberLabel.h"
 #import "WTCycleScrollView.h"
 #import "UIViewController+Nice.h"

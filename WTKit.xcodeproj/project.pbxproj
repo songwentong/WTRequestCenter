@@ -48,8 +48,6 @@
 		E18B9F341E729E440013EFA8 /* UIViewController+Nice.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9F001E729E440013EFA8 /* UIViewController+Nice.m */; };
 		E18B9F351E729E440013EFA8 /* WTCycleScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = E18B9F011E729E440013EFA8 /* WTCycleScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E18B9F361E729E440013EFA8 /* WTCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9F021E729E440013EFA8 /* WTCycleScrollView.m */; };
-		E18B9F371E729E440013EFA8 /* WTDataSaver.h in Headers */ = {isa = PBXBuildFile; fileRef = E18B9F031E729E440013EFA8 /* WTDataSaver.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E18B9F381E729E440013EFA8 /* WTDataSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9F041E729E440013EFA8 /* WTDataSaver.m */; };
 		E18B9F391E729E440013EFA8 /* WTImageViewer.h in Headers */ = {isa = PBXBuildFile; fileRef = E18B9F051E729E440013EFA8 /* WTImageViewer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E18B9F3A1E729E440013EFA8 /* WTImageViewer.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9F061E729E440013EFA8 /* WTImageViewer.m */; };
 		E18B9F3B1E729E440013EFA8 /* WTNetworkActivityIndicatorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = E18B9F071E729E440013EFA8 /* WTNetworkActivityIndicatorManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -65,7 +63,6 @@
 		E1EDEDB81EA0AA2800DDC372 /* WTKitMacOS.h in Headers */ = {isa = PBXBuildFile; fileRef = E1EDEDB61EA0AA2800DDC372 /* WTKitMacOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E1EDEDBD1EA0AA3300DDC372 /* NSObject+JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9EE41E729E440013EFA8 /* NSObject+JSONModel.m */; };
 		E1EDEDBF1EA0AA3300DDC372 /* NSDictionary+JSONModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9EDE1E729E440013EFA8 /* NSDictionary+JSONModel.m */; };
-		E1EDEDC11EA0AA3300DDC372 /* WTDataSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9F041E729E440013EFA8 /* WTDataSaver.m */; };
 		E1EDEDC31EA0AA3300DDC372 /* NSOperationQueue+Nice.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9EE81E729E440013EFA8 /* NSOperationQueue+Nice.m */; };
 		E1EDEDC51EA0AA3300DDC372 /* NSMutableArray+Nice.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9EE21E729E440013EFA8 /* NSMutableArray+Nice.m */; };
 		E1EDEDC71EA0AA3300DDC372 /* NSObject+Nice.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9EE61E729E440013EFA8 /* NSObject+Nice.m */; };
@@ -80,7 +77,6 @@
 		E1EDEE0B1EA0AF3500DDC372 /* WTNetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9F0A1E729E440013EFA8 /* WTNetWorkManager.m */; };
 		E1EDEE0C1EA0AF3500DDC372 /* WTURLSessionTask.m in Sources */ = {isa = PBXBuildFile; fileRef = E18B9F811E72AB3F0013EFA8 /* WTURLSessionTask.m */; };
 		E1EDEE0D1EA0B01800DDC372 /* NSDictionary+JSONModel.h in Headers */ = {isa = PBXBuildFile; fileRef = E18B9EDD1E729E440013EFA8 /* NSDictionary+JSONModel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E1EDEE0E1EA0B01800DDC372 /* WTDataSaver.h in Headers */ = {isa = PBXBuildFile; fileRef = E18B9F031E729E440013EFA8 /* WTDataSaver.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E1EDEE0F1EA0B01800DDC372 /* NSOperationQueue+Nice.h in Headers */ = {isa = PBXBuildFile; fileRef = E18B9EE71E729E440013EFA8 /* NSOperationQueue+Nice.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E1EDEE101EA0B01800DDC372 /* NSMutableArray+Nice.h in Headers */ = {isa = PBXBuildFile; fileRef = E18B9EE11E729E440013EFA8 /* NSMutableArray+Nice.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E1EDEE111EA0B01800DDC372 /* NSObject+Nice.h in Headers */ = {isa = PBXBuildFile; fileRef = E18B9EE51E729E440013EFA8 /* NSObject+Nice.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -141,8 +137,6 @@
 		E18B9F001E729E440013EFA8 /* UIViewController+Nice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Nice.m"; sourceTree = "<group>"; };
 		E18B9F011E729E440013EFA8 /* WTCycleScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTCycleScrollView.h; sourceTree = "<group>"; };
 		E18B9F021E729E440013EFA8 /* WTCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTCycleScrollView.m; sourceTree = "<group>"; };
-		E18B9F031E729E440013EFA8 /* WTDataSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTDataSaver.h; sourceTree = "<group>"; };
-		E18B9F041E729E440013EFA8 /* WTDataSaver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTDataSaver.m; sourceTree = "<group>"; };
 		E18B9F051E729E440013EFA8 /* WTImageViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTImageViewer.h; sourceTree = "<group>"; };
 		E18B9F061E729E440013EFA8 /* WTImageViewer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTImageViewer.m; sourceTree = "<group>"; };
 		E18B9F071E729E440013EFA8 /* WTNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
@@ -302,8 +296,6 @@
 		E18B9F901E76AEA80013EFA8 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				E18B9F031E729E440013EFA8 /* WTDataSaver.h */,
-				E18B9F041E729E440013EFA8 /* WTDataSaver.m */,
 				E18B9EE71E729E440013EFA8 /* NSOperationQueue+Nice.h */,
 				E18B9EE81E729E440013EFA8 /* NSOperationQueue+Nice.m */,
 				E18B9EE11E729E440013EFA8 /* NSMutableArray+Nice.h */,
@@ -381,7 +373,6 @@
 				E18B9F391E729E440013EFA8 /* WTImageViewer.h in Headers */,
 				E18B9F331E729E440013EFA8 /* UIViewController+Nice.h in Headers */,
 				E18B9F151E729E440013EFA8 /* NSMutableArray+Nice.h in Headers */,
-				E18B9F371E729E440013EFA8 /* WTDataSaver.h in Headers */,
 				E18B9F311E729E440013EFA8 /* UIView+Nice.h in Headers */,
 				E18B9F3F1E729E440013EFA8 /* WTNumberLabel.h in Headers */,
 				E18B9F2B1E729E440013EFA8 /* UIImageView+WTRequestCenter.h in Headers */,
@@ -400,7 +391,6 @@
 			files = (
 				E1EDEDB81EA0AA2800DDC372 /* WTKitMacOS.h in Headers */,
 				E1EDEE0D1EA0B01800DDC372 /* NSDictionary+JSONModel.h in Headers */,
-				E1EDEE0E1EA0B01800DDC372 /* WTDataSaver.h in Headers */,
 				E1EDEE0F1EA0B01800DDC372 /* NSOperationQueue+Nice.h in Headers */,
 				E1EDEE101EA0B01800DDC372 /* NSMutableArray+Nice.h in Headers */,
 				E1EDEE111EA0B01800DDC372 /* NSObject+Nice.h in Headers */,
@@ -607,7 +597,6 @@
 				E18B9F0E1E729E440013EFA8 /* CALayer+Nice.m in Sources */,
 				E18B9F2C1E729E440013EFA8 /* UIImageView+WTRequestCenter.m in Sources */,
 				E18B9F1C1E729E440013EFA8 /* NSOperationQueue+Nice.m in Sources */,
-				E18B9F381E729E440013EFA8 /* WTDataSaver.m in Sources */,
 				E18B9F401E729E440013EFA8 /* WTNumberLabel.m in Sources */,
 				E18B9F241E729E440013EFA8 /* UIColor+WTRequestCenter.m in Sources */,
 				E18B9F201E729E440013EFA8 /* UIApplication+Nice.m in Sources */,
@@ -631,7 +620,6 @@
 			files = (
 				E1EDEDBD1EA0AA3300DDC372 /* NSObject+JSONModel.m in Sources */,
 				E1EDEDBF1EA0AA3300DDC372 /* NSDictionary+JSONModel.m in Sources */,
-				E1EDEDC11EA0AA3300DDC372 /* WTDataSaver.m in Sources */,
 				E1EDEDC31EA0AA3300DDC372 /* NSOperationQueue+Nice.m in Sources */,
 				E1EDEDC51EA0AA3300DDC372 /* NSMutableArray+Nice.m in Sources */,
 				E1EDEDC71EA0AA3300DDC372 /* NSObject+Nice.m in Sources */,

@@ -8,6 +8,7 @@
 
 #import "WTDataSaver.h"
 #import "WTNetWorkManager.h"
+
 @implementation WTDataSaver
 
 +(void)clearAllData
@@ -39,7 +40,7 @@ static NSOperationQueue *dataQueue = nil;
 }
 
 
-
+/*
 +(NSData*)base64EncodedData:(NSData*)data
 {
 
@@ -109,7 +110,7 @@ static NSOperationQueue *dataQueue = nil;
     #endif
     return result;
 }
-
+*/
 
 
 
