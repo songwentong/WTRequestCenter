@@ -116,6 +116,8 @@
         __block NSString *typeString = @"";
         __block NSString *propertyName = @"";
         //属性描述字符串,T是类型,V是属性名
+        //propertyString大概是这个样子
+        //T@"NSString",&,N,V_area
         [[propertyString componentsSeparatedByString:@","] enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             if ([obj hasPrefix:@"T"]) {
                 typeString = [obj substringFromIndex:1];
